@@ -78,7 +78,8 @@ string YardInvType::ToString(const string& delim) const {
         << m_reorderLevel << delim 
         << m_reorderQuantity << delim 
         << q << m_itemType << q << delim 
-        << m_taxType << delim
+        << m_invGroup << delim
+		<< m_taxType << delim
         << m_vendorId << delim 
         << m_retailPrice << delim 
         << m_wholesalePrice << delim 
@@ -138,7 +139,9 @@ void YardInvType::FillFromStream(otl_stream * stream)
             >> m_quantityOnOrder
             >> m_reorderLevel
             >> m_reorderQuantity
-            >> m_itemType >> m_taxType
+            >> m_itemType 
+			>> m_invGroup
+			>> m_taxType
             >> m_vendorId
             >> m_retailPrice
             >> m_wholesalePrice
@@ -185,6 +188,7 @@ YardInvType& YardInvType::operator=(const YardInvType& obj) {
     m_reorderLevel = obj.m_reorderLevel;
     m_reorderQuantity = obj.m_reorderQuantity;
     m_itemType = obj.m_itemType;
+	m_invGroup = obj.m_invGroup;
     m_itemWeight = obj.m_itemWeight;
     m_taxType = obj.m_taxType;
     m_vendorId = obj.m_vendorId;
