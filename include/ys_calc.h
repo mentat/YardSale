@@ -103,6 +103,8 @@ class YardCalc: public wxPanel {
      */
     double StringToDouble(wxString str);
     
+    void DumpStack();
+    
     /**
      * Enumeration of the possible calculator operations
      */
