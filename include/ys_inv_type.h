@@ -33,7 +33,7 @@ class YardDatabase;
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
  * @author Jesse Lovelace
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @see YardDBType
  */
 
@@ -66,6 +66,7 @@ class YardInvType: public YardDBType
     unsigned long GetReorderLevel() const { return m_reorderLevel; }
     
     string GetItemType() const { return m_itemType; }
+
     float GetItemWeightLbs() const { return m_itemWeight; } 
     float GetTaxType() const { return m_taxType; }
     long int GetVendorId() const { return m_vendorId; }
@@ -112,6 +113,7 @@ class YardInvType: public YardDBType
     unsigned long m_reorderLevel;
     unsigned long m_reorderQuantity;
     string m_itemType;
+
     float m_itemWeight;
     float m_taxType;
     long int m_vendorId;
