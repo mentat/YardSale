@@ -1,5 +1,13 @@
+You need automake 1.6 and autoconf 2.57
+
 Run ./autogen.sh to configure the project and then:
 make
-the binary will be in src/
+
+The binary will be in src/
+
+If you accidently modify something get a clean copy with:
+
+cvs update -C
+
 
 If you have a problem email jesse
