@@ -61,7 +61,7 @@ class YardTransType: public YardDBType
     void SetItemSalePrice(const float& a_num) { m_salePrice = a_num; }
     void SetTransID(const int& a_num) { m_transID = a_num; }
     void SetQuantity(const int& a_num) { m_quantity = a_num; }
-    void SetComment(const string& str) { m_comment = str; }
+    void SetComment(const string& str) { m_comment = exstr; }
     
     /* member functions */
     float SubTotal(const vector<YardTransType> transVect);
