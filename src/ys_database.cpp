@@ -12,6 +12,8 @@ YardDatabase::YardDatabase(const wxString& dsn, const wxString& name, const wxSt
 }
   
 YardDatabase::YardDatabase() {
+    m_db = 0;
+    m_table = 0;
     m_inv = 0;
     m_connectInfo = 0;
 }
@@ -20,10 +22,13 @@ YardDatabase::~YardDatabase()
 {
     delete m_inv;
     delete m_connectInfo;
+    delete m_db;
+    delete m_table;
 }
 
 
 bool YardDatabase::connect(){
+    
     if(!m_connectInfo || !m_connectInfo->GetHenv()){
 //	cerr << "You messed up, G." << endl;
         return false;
