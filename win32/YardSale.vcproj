@@ -140,6 +140,9 @@
 				RelativePath="..\src\ys_config.cpp">
 			</File>
 			<File
+				RelativePath="..\src\ys_cust_type.cpp">
+			</File>
+			<File
 				RelativePath="..\src\ys_database.cpp">
 			</File>
 			<File
@@ -182,7 +185,13 @@
 				RelativePath="..\src\ys_sale.cpp">
 			</File>
 			<File
+				RelativePath="..\src\ys_shipping_type.cpp">
+			</File>
+			<File
 				RelativePath="..\src\ys_splash.cpp">
+			</File>
+			<File
+				RelativePath="..\src\ys_trans_type.cpp">
 			</File>
 			<File
 				RelativePath="..\src\ys_vend_type.cpp">
@@ -215,6 +224,9 @@
 			</File>
 			<File
 				RelativePath="..\include\ys_config.h">
+			</File>
+			<File
+				RelativePath="..\include\ys_cust_type.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_database.h">
@@ -268,10 +280,16 @@
 				RelativePath="..\include\ys_sale.h">
 			</File>
 			<File
+				RelativePath="..\include\ys_shipping_type.h">
+			</File>
+			<File
 				RelativePath="..\include\ys_splash.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_test.h">
+			</File>
+			<File
+				RelativePath="..\include\ys_trans_type.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_util.h">
