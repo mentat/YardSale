@@ -53,6 +53,7 @@ YardInvType& YardInvType::operator=(const YardInvType& obj) {
 
 #ifdef YS_TEST_MAIN
 #include <iostream>
+#include <vector>
 #include "ys_test.h"
 
 using namespace std;
@@ -90,7 +91,21 @@ int main()
     
     VERIFY(test3.GetDepartment(), test2.GetDepartment());
     VERIFY(test3.IsOverSized(), test2.IsOverSized());
+
+
+    vector<YardInvType> anArray;
     
+    anArray.push_back(test1);
+    anArray.push_back(test2);
+    anArray.push_back(test3);
+    
+    VERIFY(anArray[1].GetDepartment(), anArray[2].GetDepartment());
+    
+    vector<YardInvType> copyArray;
+    copyArray = anArray;
+    
+    VERIFY(anArray[0].GetBarCode(), copyArray[0].GetBarCode());
+
     return failure;
 }
 
