@@ -146,19 +146,19 @@ INSERT INTO ACL_Table VALUES('Warehouse','Powerful Peon');
 
 INSERT INTO Employee_Table VALUES('','222334545','Bilbo','','Baggins',
 	'<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Manager',1);
+	'No Phone','The Shire','23456','','','Manager',1,'');
 
 INSERT INTO Employee_Table VALUES('','245334545','Frodo','','Baggins',
         '<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Clerk',1);
+	'No Phone','The Shire','23456','','','Clerk',1,'');
 
 INSERT INTO Employee_Table VALUES('','221334545','Smeagle','','',
         '<ADDRESS><1>Lake Placid</1><2></2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Warehouse',1);
+	'No Phone','The Shire','23456','','','Warehouse',1,'');
 
 INSERT INTO Employee_Table VALUES('','999999999','G','O','D',
         '<ADDRESS><1></1><2></2></ADDRESS>',
-	'','','','','','Administrator',1);
+	'','','','','','Administrator',1,'');
 		
 SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type = ACL_Table.ACL_Type;
 
