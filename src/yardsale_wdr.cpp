@@ -39,6 +39,7 @@
 */
 #include "ys_calc.h"
 #include "ys_log.h"
+#include "ys_footer.h"
 
 // Implement window functions
 
@@ -287,9 +288,8 @@ wxSizer *Main( wxWindow *parent, bool call_fit, bool set_sizer )
 
     item0->Add( item1, 0, wxALL, 5 );
 
-    wxPanel *item9 = new wxPanel( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
-    item9->SetBackgroundColour( *wxBLUE );
-    item0->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    YardFooter *item9 = new YardFooter( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
+    item0->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
 
     if (set_sizer)
     {

@@ -28,7 +28,10 @@ class YardBitmaps
         USER_PIC1 = 6,
         USER_PIC2 = 7,
         USER_PIC3 = 8,
-        TUX = 9
+        TUX = 9,
+        FOOT_CALC = 17,
+        FOOT_KEY = 18,
+        FOOT_UNDO = 19
     };
         
     YardBitmaps();

@@ -30,7 +30,8 @@ yardsale_SOURCES = \
 	ys_database.cpp\
 	ys_bitmaps.cpp\
 	ys_debug.cpp\
-	ys_config.cpp
+	ys_config.cpp\
+	ys_footer.cpp
 
 
 yardsale_LDFLAGS = 
