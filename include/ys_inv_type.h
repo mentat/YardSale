@@ -26,6 +26,7 @@
 using namespace std;
 
 class YardDatabase;
+class otl_stream;
 
 /**
  * The YardSale Inventory Type is a OO representation of the datebase
@@ -35,7 +36,7 @@ class YardDatabase;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version \$Revision: 1.14 $$
+ * @version \$Revision: 1.15 $$
  * @see YardDBType
  */
 
@@ -63,7 +64,7 @@ class YardInvType: public YardDBType
     YardInvType& operator=(const YardInvType& obj);
     
     /// Get SKU
-    long int GetSKU() const { return m_skuNumber; }
+    string GetSKU() const { return m_skuNumber; }
     /// Get barcode
     string GetBarCode() const { return m_barCode; }
     /// Get item description
@@ -143,11 +144,13 @@ class YardInvType: public YardDBType
      * @return A string representation of the object
      */
     virtual string ToString(const string& delim = "\n") const;
+    
+    void FillFromStream(otl_stream * stream);
    
  private:
     
     /* These variables directly correspond with the database */
-    long int m_skuNumber;
+    string m_skuNumber;
     string m_barCode;
     string m_itemDescription;
     string m_itemDepartment;

@@ -115,9 +115,27 @@ class YardDatabase {
      */
     vector<YardInvType> InvGet() throw (YardDBException);
     
+    /*-----------Customers----------------*/
+#if 0
+    int AddCustomer(const YardCustType& newCust);
+    vector<YardCustType> CustomerGetList();
+    vector<YardCustType> CustomerSearch(const YardCustType& criteria);
+    void DisableCustomer(int key);
+    YardCustType GetCustomer(int key);
+    
+    /// Check for key in cust so will not try to edit non-existant customer
+    void EditCustomer(const YardCustType& cust);
+#endif
+    /*----------Employee-------------------*/
+    
+    
+    
  private:
      
     vector<YardInvType> FillFromStream(otl_stream * stream);
+ 
+    //template<class T>
+    //vector<T> FillFromStream(otl_stream * stream);
  
     otl_connect * m_db;
     string m_dsn;
