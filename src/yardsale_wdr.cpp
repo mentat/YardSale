@@ -173,100 +173,161 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
     item1->AddGrowableCol( 1 );
     item1->AddGrowableCol( 3 );
 
-    wxFlexGridSizer *item2 = new wxFlexGridSizer( 4, 0, 0 );
+    wxFlexGridSizer *item2 = new wxFlexGridSizer( 2, 0, 0 );
+    item2->AddGrowableCol( 0 );
     item2->AddGrowableCol( 1 );
-    item2->AddGrowableRow( 3 );
 
-    wxStaticText *item3 = new wxStaticText( parent, ID_TEXT, wxT("SKU"), wxDefaultPosition, wxDefaultSize, 0 );
-    item2->Add( item3, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxFlexGridSizer *item3 = new wxFlexGridSizer( 2, 0, 0 );
+    item3->AddGrowableCol( 1 );
 
-    wxTextCtrl *item4 = new wxTextCtrl( parent, ID_INV_SKU, wxT(""), wxDefaultPosition, wxSize(150,-1), 0 );
-    item2->Add( item4, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item4 = new wxStaticText( parent, ID_TEXT, wxT("SKU"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item4, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item5 = new wxStaticText( parent, ID_TEXT, wxT("Bar Code"), wxDefaultPosition, wxDefaultSize, 0 );
-    item2->Add( item5, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxTextCtrl *item5 = new wxTextCtrl( parent, ID_INV_SKU, wxT(""), wxDefaultPosition, wxSize(140,-1), 0 );
+    item3->Add( item5, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item6 = new wxTextCtrl( parent, ID_INV_BARCODE, wxT(""), wxDefaultPosition, wxSize(120,-1), 0 );
-    item2->Add( item6, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, wxT("Name"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item6, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item7 = new wxStaticText( parent, ID_TEXT, wxT("Item Name"), wxDefaultPosition, wxDefaultSize, 0 );
-    item2->Add( item7, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxTextCtrl *item7 = new wxTextCtrl( parent, ID_INV_ITEMNAME, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item3->Add( item7, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item8 = new wxTextCtrl( parent, ID_INV_ITEMNAME, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
-    item2->Add( item8, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item8 = new wxStaticText( parent, ID_TEXT, wxT("Department"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item8, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item9 = new wxStaticText( parent, ID_TEXT, wxT("Price"), wxDefaultPosition, wxDefaultSize, 0 );
-    item2->Add( item9, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxTextCtrl *item9 = new wxTextCtrl( parent, ID_INV_DEPARTMENT, wxT(""), wxDefaultPosition, wxSize(70,-1), 0 );
+    item3->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item10 = new wxTextCtrl( parent, ID_INV_PRICE, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
-    item2->Add( item10, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, wxT("Item Type"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item10, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item11 = new wxStaticText( parent, ID_TEXT, wxT("Description"), wxDefaultPosition, wxDefaultSize, 0 );
-    item2->Add( item11, 0, wxALIGN_RIGHT|wxALL, 5 );
+    wxTextCtrl *item11 = new wxTextCtrl( parent, ID_INV_TYPE, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item3->Add( item11, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item12 = new wxTextCtrl( parent, ID_INV_DESC, wxT(""), wxDefaultPosition, wxSize(80,-1), wxTE_MULTILINE );
-    item2->Add( item12, 0, wxGROW|wxALL, 5 );
+    wxStaticText *item12 = new wxStaticText( parent, ID_TEXT, wxT("Price"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item12, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    item2->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxTextCtrl *item13 = new wxTextCtrl( parent, ID_INV_PRICE, wxT(""), wxDefaultPosition, wxSize(70,-1), 0 );
+    item3->Add( item13, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxFlexGridSizer *item13 = new wxFlexGridSizer( 1, 0, 0 );
+    wxStaticText *item14 = new wxStaticText( parent, ID_TEXT, wxT("Wholesale"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item14, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxCheckBox *item14 = new wxCheckBox( parent, ID_INV_OVERSIZE, wxT("Overshized"), wxDefaultPosition, wxDefaultSize, 0 );
-    item13->Add( item14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxTextCtrl *item15 = new wxTextCtrl( parent, ID_INV_WHOLESALE, wxT(""), wxDefaultPosition, wxSize(150,-1), 0 );
+    item3->Add( item15, 0, wxALL, 5 );
 
-    wxCheckBox *item15 = new wxCheckBox( parent, ID_INV_FRIEGHT, wxT("Freight Only"), wxDefaultPosition, wxDefaultSize, 0 );
-    item13->Add( item15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item16 = new wxStaticText( parent, ID_TEXT, wxT("Weight (lbs)"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item16, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    item2->Add( item13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxTextCtrl *item17 = new wxTextCtrl( parent, ID_INV_WEIGHT, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item3->Add( item17, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item16 = new wxStaticText( parent, ID_TEXT, wxT("Wholesale"), wxDefaultPosition, wxDefaultSize, 0 );
-    item2->Add( item16, 0, wxALIGN_RIGHT|wxALL, 5 );
+    wxStaticText *item18 = new wxStaticText( parent, ID_TEXT, wxT("Vendor"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item18, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item17 = new wxTextCtrl( parent, ID_INV_WHOLESALE, wxT(""), wxDefaultPosition, wxSize(160,-1), 0 );
-    item2->Add( item17, 0, wxALL, 5 );
+    wxTextCtrl *item19 = new wxTextCtrl( parent, ID_INV_VENDOR, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item3->Add( item19, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item20 = new wxStaticText( parent, ID_TEXT, wxT("Tax Type"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item20, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxString strs21[] = 
+    {
+        wxT("ChoiceItem")
+    };
+    wxChoice *item21 = new wxChoice( parent, ID_INV_TAX_TYPE, wxDefaultPosition, wxSize(100,-1), 1, strs21, 0 );
+    item3->Add( item21, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item2->Add( item3, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+
+    wxFlexGridSizer *item22 = new wxFlexGridSizer( 2, 0, 0 );
+    item22->AddGrowableCol( 1 );
+    item22->AddGrowableRow( 1 );
+
+    wxStaticText *item23 = new wxStaticText( parent, ID_TEXT, wxT("Bar Code"), wxDefaultPosition, wxDefaultSize, 0 );
+    item22->Add( item23, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item24 = new wxTextCtrl( parent, ID_INV_BARCODE, wxT(""), wxDefaultPosition, wxSize(120,-1), 0 );
+    item22->Add( item24, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item25 = new wxStaticText( parent, ID_TEXT, wxT("Description"), wxDefaultPosition, wxDefaultSize, 0 );
+    item22->Add( item25, 0, wxALIGN_RIGHT|wxALL, 5 );
+
+    wxTextCtrl *item26 = new wxTextCtrl( parent, ID_INV_DESC, wxT(""), wxDefaultPosition, wxSize(150,-1), wxTE_MULTILINE );
+    item22->Add( item26, 0, wxGROW|wxALL, 5 );
+
+    item22->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxCheckBox *item27 = new wxCheckBox( parent, ID_INV_FRIEGHT, wxT("Freight Only"), wxDefaultPosition, wxDefaultSize, 0 );
+    item22->Add( item27, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item22->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxCheckBox *item28 = new wxCheckBox( parent, ID_INV_OVERSIZE, wxT("Oversized"), wxDefaultPosition, wxDefaultSize, 0 );
+    item22->Add( item28, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item29 = new wxStaticText( parent, ID_TEXT, wxT("On Hand"), wxDefaultPosition, wxDefaultSize, 0 );
+    item22->Add( item29, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxSpinCtrl *item30 = new wxSpinCtrl( parent, ID_INV_ONHAND, wxT("0"), wxDefaultPosition, wxSize(100,-1), 0, 0, 1000000, 0 );
+    item22->Add( item30, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item31 = new wxStaticText( parent, ID_TEXT, wxT("On Order"), wxDefaultPosition, wxDefaultSize, 0 );
+    item22->Add( item31, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxSpinCtrl *item32 = new wxSpinCtrl( parent, ID_INV_ONORDER, wxT("0"), wxDefaultPosition, wxSize(100,-1), 0, 0, 1000000, 0 );
+    item22->Add( item32, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item33 = new wxStaticText( parent, ID_TEXT, wxT("Reorder Level"), wxDefaultPosition, wxDefaultSize, 0 );
+    item22->Add( item33, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxSpinCtrl *item34 = new wxSpinCtrl( parent, ID_INV_REORDER_LEVEL, wxT("0"), wxDefaultPosition, wxSize(100,-1), 0, 0, 100000, 0 );
+    item22->Add( item34, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item2->Add( item22, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     item1->Add( item2, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxBoxSizer *item18 = new wxBoxSizer( wxVERTICAL );
+    wxBoxSizer *item35 = new wxBoxSizer( wxVERTICAL );
 
-    wxButton *item19 = new wxButton( parent, ID_INV_NEW, wxT("New Item"), wxDefaultPosition, wxDefaultSize, 0 );
-    item18->Add( item19, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item36 = new wxButton( parent, ID_INV_NEW, wxT("New Item"), wxDefaultPosition, wxDefaultSize, 0 );
+    item35->Add( item36, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item20 = new wxButton( parent, ID_INV_SEARCH, wxT("Search"), wxDefaultPosition, wxDefaultSize, 0 );
-    item20->SetToolTip( wxT("Search by text in field") );
-    item18->Add( item20, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item37 = new wxButton( parent, ID_INV_SEARCH, wxT("Search"), wxDefaultPosition, wxDefaultSize, 0 );
+    item37->SetToolTip( wxT("Search by text in field") );
+    item35->Add( item37, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item21 = new wxButton( parent, ID_INV_CLEAR, wxT("Clear"), wxDefaultPosition, wxDefaultSize, 0 );
-    item18->Add( item21, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item38 = new wxButton( parent, ID_INV_CLEAR, wxT("Clear"), wxDefaultPosition, wxDefaultSize, 0 );
+    item35->Add( item38, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxStaticLine *item22 = new wxStaticLine( parent, ID_LINE, wxDefaultPosition, wxSize(20,-1), wxLI_HORIZONTAL );
-    item18->Add( item22, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticLine *item39 = new wxStaticLine( parent, ID_LINE, wxDefaultPosition, wxSize(20,-1), wxLI_HORIZONTAL );
+    item35->Add( item39, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxButton *item23 = new wxButton( parent, ID_INV_SAVE, wxT("Save"), wxDefaultPosition, wxDefaultSize, 0 );
-    item23->Enable( FALSE );
-    item18->Add( item23, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item40 = new wxButton( parent, ID_INV_SAVE, wxT("Save"), wxDefaultPosition, wxDefaultSize, 0 );
+    item40->Enable( FALSE );
+    item35->Add( item40, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item24 = new wxButton( parent, ID_INV_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
-    item18->Add( item24, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item41 = new wxButton( parent, ID_INV_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+    item35->Add( item41, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxStaticLine *item25 = new wxStaticLine( parent, ID_LINE, wxDefaultPosition, wxSize(20,-1), wxLI_HORIZONTAL );
-    item18->Add( item25, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticLine *item42 = new wxStaticLine( parent, ID_LINE, wxDefaultPosition, wxSize(20,-1), wxLI_HORIZONTAL );
+    item35->Add( item42, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxButton *item26 = new wxButton( parent, ID_INV_CLEAR_RESULTS, wxT("Clear Results"), wxDefaultPosition, wxDefaultSize, 0 );
-    item18->Add( item26, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item43 = new wxButton( parent, ID_INV_CLEAR_RESULTS, wxT("Clear Results"), wxDefaultPosition, wxDefaultSize, 0 );
+    item35->Add( item43, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    item1->Add( item18, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+    item1->Add( item35, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
     item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticLine *item27 = new wxStaticLine( parent, ID_LINE, wxDefaultPosition, wxSize(20,-1), wxLI_HORIZONTAL );
-    item0->Add( item27, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticLine *item44 = new wxStaticLine( parent, ID_LINE, wxDefaultPosition, wxSize(20,-1), wxLI_HORIZONTAL );
+    item0->Add( item44, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxListCtrl *item28 = new wxListCtrl( parent, ID_INV_LIST, wxDefaultPosition, wxSize(160,120), wxLC_REPORT|wxSUNKEN_BORDER );
-    item0->Add( item28, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxListCtrl *item45 = new wxListCtrl( parent, ID_INV_LIST, wxDefaultPosition, wxSize(160,140), wxLC_REPORT|wxSUNKEN_BORDER );
+    item0->Add( item45, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    YardFooter *item29 = new YardFooter( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
-    item0->Add( item29, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    YardFooter *item46 = new YardFooter( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
+    item0->Add( item46, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     if (set_sizer)
     {
