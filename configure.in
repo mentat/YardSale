@@ -87,7 +87,7 @@ CFLAGS="$WX_CFLAGS"
 CXXFLAGS="$WX_CXXFLAGS"
 
 dnl normal linking mode is fully dynamic
-GUI_LIBS="$WX_LIBS"
+GUI_LIBS="-lsablot -lodbc -lexpat $WX_LIBS"
 
 AC_ARG_WITH(optimize,
 	[  --with-optimize         Build YardSale optimized.], [
@@ -103,13 +103,13 @@ AC_ARG_WITH(static,
 
 dnl ------------- Check for other libs ----------------
 AC_CHECK_LIB(expat,XML_ParserCreate,[
-                GUI_LIBS="-lexpat $GUI_LIBS"],
+                echo "Expat..."],
                 [AC_MSG_WARN([
 	   YardSale requires expat to be installed on your system.
    ])])
 
 AC_CHECK_LIB(sablot,SablotGetOptions,[
-                GUI_LIBS="-lsablot $GUI_LIBS"],
+                echo "Sablot..."],
                 [AC_MSG_WARN([
 	   YardSale requires Sablotron to be installed on your system.
 
@@ -117,7 +117,7 @@ AC_CHECK_LIB(sablot,SablotGetOptions,[
 	GUI_LIBS="-lsablot $GUI_LIBS"])
    
 AC_CHECK_LIB(odbc,SQLConnect,[
-                GUI_LIBS="-lodbc $GUI_LIBS"],
+                echo "ODBC..."],
                 [AC_MSG_WARN([
 	   YardSale requires ODBC to be installed on your system.
    ])])
