@@ -21,12 +21,14 @@
 
 #include "ys_inv_type.h"
 #include <vector>
+#include <string>
 
 using namespace std;
 
 // Forward declarations for speed -jll
 class YardDBConfig;
-
+class otl_connect;
+    
 /**
  * @defgroup database Database Related Documentation
  */
@@ -47,7 +49,7 @@ class YardDatabase {
      * @param name Name of the user for DB
      * @param pass Password for DB
      */
-    YardDatabase(const wxString& dsn, const wxString& name, const wxString& pass);
+    YardDatabase(const string& dsn, const string& name, const string& pass);
     //YardDatabase(const YardDBConfig& config);  
     
     /**
@@ -61,7 +63,7 @@ class YardDatabase {
      * @param name Name of the user for DB
      * @param pass Password for DB
      */    
-    bool Init(const wxString& dsn, const wxString& name, const wxString& pass);
+    bool Init(const string& dsn, const string& name, const string& pass);
     
     /** Destructor **/
     ~YardDatabase();
@@ -72,6 +74,8 @@ class YardDatabase {
      * @return True if connection was successful, @sa GetStatus    
      */
     bool connect();
+    
+    bool disconnect();
      
     /**
      * Get Database Status reported by ODBC 
@@ -83,24 +87,30 @@ class YardDatabase {
     /*------------Inventory-------------*/
     
     /**
-     * Find all inventory matches of keyword search
+     * Find all inventory matches of SKU search
      * @note This could be dangerous, need to limit all returns to some set
      *  value (or configured value).
      * @param keyword A text string to search for.
      * @return A std::vector of YardInvType objects
+     * @throws YardException if databae not initialized
      */
-    vector<YardInvType> InvSearchKeyword(const unsigned long &sku);
+    vector<YardInvType> InvSearchSKU(unsigned long sku);
     
     /**
      * Get a batch of inventory items.
      * @param num The number of items to get.
      * @param offset The item index to start at.
      * @return A std::vector of YardInvType objects
+     * @throws YardException if database not initialized
      */
     vector<YardInvType> InvGet(unsigned int num, unsigned int offset);
     
  private:
-    YardInvType m_inv;
+    otl_connect * m_db;
+    string m_dsn;
+    string m_name;
+    string m_pass;
+     
 };
 
 #endif

@@ -6,8 +6,8 @@
 
 using namespace std;
 
-int failure;
-int success;
+int failure = 0;
+int success = 0;
 
 #define VERIFY(a,b) { \
     if ((a)==(b)) \

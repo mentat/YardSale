@@ -2,6 +2,7 @@
 #include <sstream>
 using namespace std;
 
+#ifndef 
 #define OTL_ODBC_UNIX
 #include <otlv4.h>
 

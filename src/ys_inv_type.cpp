@@ -48,10 +48,10 @@ YardInvType& YardInvType::operator=(const YardInvType& obj) {
     m_oversized = obj.m_oversized;
     m_mustShipFreight = obj.m_mustShipFreight;
 
-
+    return *this;
 }
 
-#ifdef YS_TEST_MAIN
+#if (defined(YS_TEST_MAIN) || defined(YS_TEST_INV_TYPE))
 #include <iostream>
 #include <vector>
 #include "ys_test.h"

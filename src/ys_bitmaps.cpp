@@ -2,6 +2,7 @@
 #include "ys_exception.h"
 
 #include "wx/bitmap.h"
+#include "wx/string.h"
 #include <iostream>
 
 using namespace std;
@@ -70,7 +71,7 @@ wxBitmap& YardBitmaps::GetBitmap(unsigned int id) {
 
 }
 
-#ifdef YS_TEST_MAIN
+#if (defined(YS_TEST_MAIN) || defined(YS_TEST_BITMAPS))
 #include <iostream>
 #include <vector>
 #include "ys_test.h"
@@ -84,19 +85,21 @@ int main()
     try {
         while(test.LoadBitmaps() != 0){}
     } catch (YardException &e){
+        VERIFY(0,1);
         cout << "YardException: " << e.what() << endl;
-        return false;
+        return failure;
     }
     catch (exception &e) {
-         cout << "std::exception: " << e.what() << endl;
-        return false;
+        VERIFY(0,1);
+        cout << "std::exception: " << e.what() << endl;
+        return failure;
     }
     catch(...) {
-         cout << "Unknown exception" << endl;
-        return false;
+        VERIFY(0,1); 
+        cout << "Unknown exception" << endl;
+        return failure;
     }
-    
-    
-    
+    return failure;
+
 }
 #endif

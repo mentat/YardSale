@@ -27,7 +27,6 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     m_inventory = 0;
     
     wxPanel * panel = new wxPanel(this);
-    wxImage::AddHandler(new wxPNGHandler);
     
     //panel->SetBackgroundColour(wxColor("BLUE VIOLET"));
     /// @todo Make these compiled into the binary.
