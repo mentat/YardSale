@@ -7,9 +7,17 @@
 
 \begin{document}
 
-\section{Overview}
+\section{Introduction}
 
-OpenPOS is an open source solution to small business point of sale and inventory tracking needs. This document entails all of the minimal requirements set by the AS Logic Systems development team for the OpenPOS hereafter referred to as YardSale.\\
+YardSale is an open source Point of Sale system that is being designed by A.S Logic Systems to revolutionize the way Point of Sale systems are implemented in today's market.  Current implementations of Point of Sale systems are fraught with a number of issues; including often being extremely overpriced, difficult to administer, dated in their functionality, and lacking necessary operations.  YardSale was designed to alleviate these problems and allow for extensibility as the market of retail sale expands in the future.
+
+Being that YardSale is an open source project with little funding, the initial niche market will target small, locally owned retail stores.  This type of market will allow for extensive on-site research, as many of these businesses should be willing to work with us to improve on the functionality of their existing POS system.  In addition, because A.S. Logic has decided to take the open source route, the software itself will be freely available to all who wish to use it, the only expense that will come into play is if the company wishes to enlist our services in setup, troubleshooting, support, expansion, or customization.
+
+\section{Functional Requirements}
+
+\subsection{Overview}
+
+This section entails all of the minimal requirements set by the AS Logic Systems development team for the OpenPOS hereafter referred to as YardSale.\\
 \\
 YardSale at its most minimal functionality level should accomplish the following goals:
 
@@ -24,7 +32,7 @@ YardSale at its most minimal functionality level should accomplish the following
 
 Each of these tasks is described in depth in their corresponding sub sections. There is planned functionality above and beyond this basic featureset, although without these functions other functionality can not be added.
 
-\section{Database Management}
+\subsection{Database Management}
 
 The goal of the database management tasks is to add, modify, and delete information in the database. The database backend will run on a MySQL server and all relevant data will be stored in its own table or set of tables. More information on the database design can be found in the database design document.
 
@@ -36,14 +44,61 @@ The employee management system here again will also function similarly to the pr
 
 Among the more specific functionality of each of these sections would be to allow the user to retrieve any item stored in either inventory, customer, or employee tables given a search criteria. 
 
-\section{Transactions}
+\subsection{Transactions}
 
-Transactions in YardSale are basically a () step process. The first step in the process is to select a customer to do business with or select a cash "quick" customer.
+Transactions in YardSale are basically a 4 step process. The first step in the process is to select a customer to do business with or select a cash "quick" customer. After the customer is selected their basic information will be displayed on the main checkout screen. The user will will then either select items from the inventory from a hierarchy, scan them in with the barcode scanner, or manually type in their information in lookup fields to checkout a customer. A running total will be kept as well as tax calculations for the sale. After all items are accounted for a checkout screen will be called. This will allow the user to select the customer's preferred method of payment and also provide the user with the ability to calculate the correct amount of change.
 
-\section{Logging}
+All transactions will be maintained with a table in the database that will link related elements of the transaction together for later reporting.
 
-\section{Reporting}
+\subsection{Logging}
 
+Many program logging features will be provided inherently due to the database backend. Among the logging facilities will be the following items:
 
+\begin{itemize}
+\item {Employee Time Tracking}
+\item {Transaction Logging}
+\item {Shipment Logs}
+\item {SQL String Execution Logging}
+\end{itemize}
+
+Employee time tracking will be logged based on when the login to their first client and when the logout of their last client. An entry in the Login table will track this for each instance of a session. The transaction logging as was discussed earlier will be maintained in a table of its own tracking related items, customers, and employees with transactions. The shipment logs will be an offshoot of a transaction in that some will be shipped. If so a log of the shipping information will be available as it relates to the customer and the carrier. As a debugging feature a SQL String Execution Log facility will also be included. For every SQL string used on the database, there will be a stored procedure that adds it to the log table for later searching and debug use. This feature will likely be disabled in the final deliverable.
+
+\subsection{Reporting}
+
+There will be a wide variety of reporting features available also as a result of the database backend. The following basic reporting functionality will be available in the first iteration of YardSale.
+
+\begin{itemize}
+\item{Payroll for Employees}
+\item{Top Sales for Inventory Items}
+\item{Top Sales for Employees}
+\item{Top Sales for Customer}
+\item{Revenue Reporting given any time frame}
+\item{Hourly Employee Log Reporting}
+\end{itemize}
+
+All of the reports will be outputted to a pdf via \LaTeX type setting. This will provide ease of portability and a wide range of flexibility in reporting.
+
+\section{Design}
+
+This section is still in the works
+
+\section{Implementation}
+
+\subsection{Class Documentation}
+
+Please note the following section was auto-generated. We are working on tweaking this output a little, but currently it is sectioned wrong.
+
+\include{Imp/classYardDatabase}
+\include{Imp/classYardDBType}
+\include{Imp/classYardEmployee}
+\include{Imp/classYardInventory}
+\include{Imp/classYardInvType}
+\include{Imp/classYardLogin}
+\include{Imp/classYardMain}
+\include{Imp/classYardSale}
+\include{Imp/classYardSaleScreen}
+\include{Imp/classYardSplash}
+
+\section{Test Plan}
 
 \end{document}
