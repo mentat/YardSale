@@ -8,6 +8,9 @@ using namespace std;
 BEGIN_EVENT_TABLE(YardCalc, wxPanel)
     EVT_BUTTON(ID_CALC_PLUS, YardCalc::OnPlus)
     EVT_BUTTON(ID_CALC_EQUALS, YardCalc::OnEqual)
+    EVT_BUTTON(ID_CALC_CLEAR, YardCalc::OnClear)
+    EVT_BUTTON(ID_CALC_AC, YardCalc::OnAllClear)
+    EVT_BUTTON(ID_CALC_DOT, YardCalc::OnDot)
     EVT_BUTTON(-1, YardCalc::OnNumber)
 END_EVENT_TABLE()
 
@@ -52,13 +55,15 @@ void YardCalc::OnNumber(wxCommandEvent & event)
         case (ID_CALC_8): ch = '8'; break;
         case (ID_CALC_9): ch = '9'; break;
         case (ID_CALC_0): ch = '0'; break;
-        default: wxLogError(wxT("Should not see me")); return;
+        case (ID_CALC_DOT): ch = '.'; break;
+   
+   	default: wxLogError(wxT("Should not see me")); return;
     }
     
-
     if (m_screen->GetValue() == wxT("0"))
         m_screen->SetValue(ch);
     else
+    	// set the value of the screen to origional concatonated with new char
         m_screen->SetValue(m_screen->GetValue() + ch);
     
 }
@@ -86,6 +91,18 @@ void YardCalc::OnPlus(wxCommandEvent & event)
         
 }
 
+void YardCalc::OnClear(wxCommandEvent & event){ 
+
+}
+
+void YardCalc::OnAllClear(wxCommandEvent & event){
+
+}
+
+void YardCalc::OnDot(wxCommandEvent & event){
+
+}
+
 void YardCalc::OnEqual(wxCommandEvent & event)
 {
     long int tmp = 0;
@@ -104,5 +121,4 @@ void YardCalc::OnEqual(wxCommandEvent & event)
         m_screen->SetValue(num.str().c_str());
         m_inAdd = false;
     }
-    
 }
