@@ -118,9 +118,6 @@ void YardCalc::OnNumber(wxCommandEvent & event)
 		m_calcstack.top().m_type.m_number = m_tempstring;
 	}
 	else{
-		//TODO:bombs here, because if we  just push back onto the stack with value '123.' it will barf
-		//going to have to code in a special case here
-        //maybe i can push '.0'? that will probably work
 		if (ch == '.'){
 			if (! m_calcstack.top().m_type.m_number.Contains(".") ){
 				m_calcstack.top().m_type.m_number.Append(ch);
