@@ -2,7 +2,6 @@
 #include "receipt.h"
 using namespace std;
 
-/// Constructor, specify com port for printer.
 Receipt::Receipt(const string& port): outport(port)
 {
 	tm = new ofstream(outport.c_str(), ios::out );
@@ -16,13 +15,11 @@ Receipt::Receipt(const string& port): outport(port)
 	//*tm << EP_initialize << header << EP_jleft;
 }
 
-/// Annnnd, the empty constructor.
 Receipt::Receipt()
 {
     tm = 0;
 }
 
-/// Resets all those critical values, lets you redef the port.
 void Receipt::Init(const string& port)
 {
     if (tm) 
@@ -44,8 +41,6 @@ void Receipt::Init(const string& port)
  * YardSale" feeling, any time of the day you want it.
  */
 
-/// Starts the printing process all over again, clears any data from
-/// prev. transaction.
 void Receipt::reset(){
     if (!tm) return;
 	colist.clear();
@@ -58,7 +53,6 @@ void Receipt::reset(){
  * objects.  WHOOPEE!
  */
 
-/// This takes an array of transaction items and creates a receipt.
 void Receipt::addTlist(vector <RTransType> tlist){
     for (int ii = 0; ii < tlist.size(); ii++)
 		additem(tlist[ii].item, tlist[ii].price);
@@ -71,7 +65,6 @@ void Receipt::addTlist(vector <RTransType> tlist){
  * to do this.
  */
 
-/// Generate receipt one item at a time.
 void Receipt::additem(const string& item, const string& price){
 	string nitem = item.substr(0, 31);
 	if (item.length() < 33) {
@@ -87,14 +80,12 @@ void Receipt::additem(const string& item, const string& price){
  * U R St00pid if you don't know what this does.
  */
 
-/// sets up the taxes/subtotal/total data.
 void Receipt::totdata(const string& total, const string& ttx, const string& taxtotal){
 	tot = total;
 	tax = ttx;
 	tottax = taxtotal;
 }
 
-/// Jesse added this.
 void Receipt::change(const string& type, const string& tender, const string& change)
 {
     m_type = type;
@@ -111,8 +102,6 @@ void Receipt::change(const string& type, const string& tender, const string& cha
  * paper!)
  */
 
-/// This just prints the data gathered in a nice format, and chops
-/// the paper (on some printarz.)
 void Receipt::print(){
     if (!tm) return;
 	for(int ii = 0; ii < colist.size(); ii++)
@@ -139,7 +128,6 @@ void Receipt::print(){
  * returns the printing to left justification.
  */
 
-/// Formatting directives.
 void Receipt::printheader(){
     if (!tm) return;
 	EP_jcenter();
@@ -151,7 +139,6 @@ void Receipt::printheader(){
  * ???
  */
 
-/// Jesse added this.
 void Receipt::test() {
     if (!tm) return;
 	char test[] = { 0x00, 0x00, 0x61 };
@@ -164,55 +151,46 @@ void Receipt::test() {
  * contain the NULL byte.  Hah.
  */
 
-/// reset printer
 void Receipt::EP_initialize(){
     if (!tm) return;
 	*tm << '\x1b' << '\x40';
 }
 
-/// cut paper
 void Receipt::EP_cutpaper(){
     if (!tm) return;
 	*tm << '\x1d' << '\x56' << '\x01' << endl;
 }
 
-/// print to pole only
 void Receipt::EP_ppole(){
     if (!tm) return;
 	*tm << '\x1b' << '\x3d' << '\x02';
 }
 
-/// print to printer only
 void Receipt::EP_pprinter(){
     if (!tm) return;
 	*tm << '\x1b' << '\x3d' << '\x01';
 }
 
-/// print to printer and pole.
 void Receipt::EP_pboth(){
     if (!tm) return;
 	*tm << '\x1b' << '\x3d' << '\x03';
 }
 
-/// justify my left.
 void Receipt::EP_jleft(){
     if (!tm) return;
 	*tm << '\x1b' << '\x61' << '\x00';
 }
 
-/// justify center
 void Receipt::EP_jcenter(){
     if (!tm) return;
 	*tm << '\x1b' << '\x61' << '\x01';
 }
 
-/// justify right
 void Receipt::EP_jright(){
     if (!tm) return;
 	*tm << '\x1b' << '\x61' << '\x02';
 }
 
-/// kick out cash drawer
 void Receipt::EP_dkd(){ //kicks out cash drizzawer
 	if (!tm) return;
     *tm << '\x1b' << 'p' << '\x00' << '\x64' << '\x64';
