@@ -167,6 +167,9 @@
 				RelativePath="..\src\ys_main.cpp">
 			</File>
 			<File
+				RelativePath=".\ys_package_type.cpp">
+			</File>
+			<File
 				RelativePath="..\src\ys_sale.cpp">
 			</File>
 			<File
@@ -239,6 +242,9 @@
 			</File>
 			<File
 				RelativePath="..\include\ys_main.h">
+			</File>
+			<File
+				RelativePath=".\ys_package_type.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_sale.h">
