@@ -87,7 +87,6 @@ CFLAGS="$WX_CFLAGS"
 CXXFLAGS="$WX_CXXFLAGS"
 
 dnl normal linking mode is fully dynamic
-GUI_LIBS="-lsablot -lodbc -lexpat $WX_LIBS"
 
 AC_ARG_WITH(optimize,
 	[  --with-optimize         Build YardSale optimized.], [
@@ -158,6 +157,9 @@ AC_ARG_WITH(debug,
     CFLAGS="$CFLAGS -g"])
 
 CXXFLAGS="$CXXFLAGS -DYS_OS=\\\"$OSTYPE\\\""
+GUI_LIBS="-lsablot -lodbc -lexpat $GUI_LIBS"
+
+
 
 AC_ARG_WITH(glabout,
 	[  --with-glabout           Build gratuitous gl about.], [
