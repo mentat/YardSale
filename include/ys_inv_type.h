@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version \$Revision: 1.20 $$
+ * @version \$Revision: 1.21 $$
  * @see YardDBType
  */
 
@@ -99,6 +99,8 @@ class YardInvType: public YardDBType
     /// Return if item must be shipped by freight
     /// @return True if item must be shipped by freight
     bool MustShipFreight() const { return m_mustShipFreight; }
+	/// Return the group ID
+	int GetGroupID(){ return m_invGroup; }
   
     /* settors */
     /// @throws YardDBIntegrityException if you try to overwrite
@@ -117,7 +119,9 @@ class YardInvType: public YardDBType
     void SetQuantOnOrder(unsigned long num) { m_quantityOnOrder = num; }
     /// Set reorder level
     void SetReorderLevel(unsigned long num) { m_reorderLevel = num; }
-   
+	/// Set the group id
+	void SetGroupID(int a_num){ m_invGroup = a_num; }
+	
     /// Set general item type
     void SetItemType(const string& str);
     /// Set weight in pounds
@@ -167,10 +171,11 @@ class YardInvType: public YardDBType
     string m_itemType;
 
     float m_itemWeight;
+ 	long int m_invGroup;
     long int m_taxType;
     long int m_vendorId;
     float m_retailPrice;
-    float m_wholesalePrice;
+    float m_wholesalePrice;	
  
     string m_bulkPrice;
     vector<BulkPricing> m_bulkPricing;
