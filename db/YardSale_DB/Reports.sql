@@ -1,3 +1,7 @@
+# Connection: rau
+# Host: rau.ece.ncsu.edu
+# Saved: 2004-04-11 02:13:44
+# 
 # Connection: local
 # Host: localhost
 # Saved: 2004-04-10 05:21:30
@@ -51,13 +55,13 @@ FROM   Transaction_Log_Table JOIN Employee_Table
 WHERE
 TRANS_Time BETWEEN
 '2004-04-01 00:00:00' AND NOW()
-GROUP BY TRANS_ID
-UNION
+GROUP BY TRANS_ID;
+
 #Get an hourly profit with this query
 SELECT TRANS_ID, TRANS_REF_EMP_ID_Number AS Employee_ID, 
              TRANS_REF_INV_Item_ID, TRANS_REF_CUST_Account_Number, 
              TRANS_Sale_Price, TRANS_ID, TRANS_Quantity, TRANS_Comment,
-             TRANS_Time,
+             EXTRACT(HOUR FROM TRANS_Time),
              EMP_ID_Number, EMP_First_Name, EMP_Middle_Name, EMP_Last_Name
              INV_Item_Description, SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT # 
 FROM   Transaction_Log_Table JOIN Employee_Table 
@@ -67,6 +71,32 @@ FROM   Transaction_Log_Table JOIN Employee_Table
 WHERE
 TRANS_Time BETWEEN
 '2004-04-01 00:00:00' AND '2004-04-10 23:00:00'
-GROUP BY TRANS_Time; #Fix so that time does not have to be exactly the same - should be within the same hour
+GROUP BY EXTRACT(HOUR FROM TRANS_Time); 
+
+#This is a combined query. It Gives a total amount of profit made over each hour given a date range.
+#This date range should normally be a open - close period although it could range from any 
+#amount of time.
+#
+#The last column will always be the sum of all of the profit - the Hour field for this last column will
+#always be totally bogus information but is required to allow the UNION operation to work.
+SELECT EXTRACT(HOUR FROM TRANS_Time) AS Hour,
+             SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT # 
+FROM   Transaction_Log_Table  JOIN Inventory_Table
+            ON Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID
+WHERE
+TRANS_Time BETWEEN
+'2004-04-01 00:00:00' AND '2004-04-10 23:00:00'
+GROUP BY EXTRACT(HOUR FROM TRANS_Time)
+UNION
+SELECT TRANS_Time AS Hour, 
+              SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT # 
+FROM    Transaction_Log_Table  JOIN Inventory_Table
+             ON Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID
+WHERE
+TRANS_Time BETWEEN
+'2004-04-01 00:00:00' AND '2004-04-10 23:00:00'
+GROUP BY TRANS_Always_Null;
+
+
 
              

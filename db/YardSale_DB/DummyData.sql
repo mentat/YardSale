@@ -167,14 +167,14 @@ SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type =
 #BEGIN TRANSACTION STUFF
 
 #Transaction 1
-INSERT INTO Transaction_Log_Table VALUES(1,'1',2001, 1.20, 10000, 5, '' ,now());
-INSERT INTO Transaction_Log_Table VALUES(1,'2',2001, 1.99, 10000, 10, '' ,now());
-INSERT INTO Transaction_Log_Table VALUES(1,'3',2001, 9.50, 10000, 1, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(1,'1',2001, 1.20, 10000, 5, '' ,now(),0,'');
+INSERT INTO Transaction_Log_Table VALUES(1,'2',2001, 1.99, 10000, 10, '' ,now(),0,'');
+INSERT INTO Transaction_Log_Table VALUES(1,'3',2001, 9.50, 10000, 1, '' ,now(),0,'');
 
 #Transaction 2
-INSERT INTO Transaction_Log_Table VALUES(2,'1',2001, 1.20, 10001, 5, '' ,now());
-INSERT INTO Transaction_Log_Table VALUES(2,'2',2001, 1.99, 10001, 10, '' ,now());
-INSERT INTO Transaction_Log_Table VALUES(2,'3',2001, 9.50, 10001, 1, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(2,'1',2001, 1.20, 10001, 5, '' ,now(),0,'');
+INSERT INTO Transaction_Log_Table VALUES(2,'2',2001, 1.99, 10001, 10, '' ,now(),0,'');
+INSERT INTO Transaction_Log_Table VALUES(2,'3',2001, 9.50, 10001, 1, '' ,now(),0,'');
 
 
 #THIS QUERY RETURNS A LOT OF INFORMATION
