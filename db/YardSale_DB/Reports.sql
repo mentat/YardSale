@@ -36,7 +36,7 @@ TRANS_Time BETWEEN
 '2004-04-01 00:00:00' AND '2004-04-10 23:00:00'
 GROUP BY EXTRACT(HOUR FROM TRANS_Time)
 UNION
-SELECT TRANS_Time AS Hour, 
+SELECT EXTRACT(HOUR FROM TRANS_Time)  AS Hour, 
               SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT # 
 FROM    Transaction_Log_Table  JOIN Inventory_Table
              ON Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID
