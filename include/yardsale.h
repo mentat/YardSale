@@ -21,8 +21,20 @@
 #include "wx/app.h"
 
 /**	\mainpage YardSale
- * <strong>Reference Manual</strong>
- * Yardsale is an open source point of sale program.
+ * <h1>Reference Manual</h1>
+ * <p>Yardsale is an open source point of sale program. 
+ * The program execution of YardSale goes as follows:
+ * Splash (load windows, db in backgorund)->Login->Main
+ * From the Main screen you can select: </p>
+ * <ul>
+ * <li>Employee Managment @see YardEmployee
+ * <li>Sales
+ * <li>Inventory Managment
+ * <li>Reports
+ * <li>Customer Managment
+ * <li>Logout
+ * </ul>
+ * <p>
  *
  * <a href="http://yardsale.sf.net">YardSale</a> 
  * @author Jesse Lovelace
@@ -31,7 +43,7 @@
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 class YardSale: public wxApp {
     public:

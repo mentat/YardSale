@@ -24,7 +24,7 @@
 /**
  * Eye-candy splash screen
  * @author Jesse Lovelace
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 class YardSplash: public wxDialog {
     public:
@@ -36,9 +36,18 @@ class YardSplash: public wxDialog {
         
     virtual ~YardSplash();
     
+    /**
+     * Mouse click event handler
+     * @deprecated This handler is for testing only and will be removed
+     */
     void OnClick(wxMouseEvent& event);
+    /// Timer event handler
     void OnTimer(wxTimerEvent& event);
     
+    /**
+     * Called to nudge progress bar over
+     * @param amount Number of pixels to nudge
+     */
     void Bump(unsigned int amount = 10);
     
     private:

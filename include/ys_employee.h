@@ -21,7 +21,6 @@
 
 #include "wx/statbmp.h"
 
-
 /**
  * YardEmployee is the employee managment screen for YardSale.
  * Depending on access level, users may insert/modify employee 
@@ -40,9 +39,6 @@ class YardEmployee: public wxFrame
     virtual ~YardEmployee();
 
     private:
-        
-    /// The employee picture control pointer
-    wxStaticBitmap * m_picture;
         
    // DECLARE_EVENT_TABLE()
 
