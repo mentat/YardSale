@@ -24,20 +24,33 @@ class YardDatabase;
 class YardBitmaps;
 
 /**	\mainpage YardSale
- * <h1>Reference Manual</h1>
+ * <h1>Design and Reference Manual</h1>
  *
- * Yardsale is an open source point of sale program. 
+ * YardSale is an open source point of sale program.
+ * YardSale uses C++, OTL, and wxWindows.  YardSale runs on 
+ * any system that supports ANSI C++ including, but not limited
+ * to, Linux (most architectures), FreeBSD, Microsoft Windows, 
+ * and Mac OSX.
+ *
+ *   Copyright (C) 2004 - YardSale authors
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program; if not, write to the Free Software
+ *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
  * From the Main screen you can select: 
- * <ul>
- * <li>Employee Managment @sa YardEmployee
- * <li>Sales @sa YardSaleScreen
- * <li>Inventory Managment @sa YardInventory
- * <li>Reports 
- * <li>Customer Managment
- * <li>Logout
- * </ul>
- * 
- *
+ * \image html program_flow.png
+ * \image latex program_flow.png "Program Flow" width=450px
  * @author Jesse Lovelace - jllovela at ncsu dot edu
  * @author Adam Parrish - waparris at ncsu dot edu
  * @author Mike Swigon - mrswigon at ncsu dot edu
@@ -48,7 +61,7 @@ class YardBitmaps;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.12 $
+ * @version \$Revision: 1.13 $
  */
 class YardSale: public wxApp {
  public:
