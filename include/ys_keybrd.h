@@ -47,6 +47,12 @@ class YardKeybrd: public wxPanel {
     DECLARE_EVENT_TABLE()
 	
 	void OnButton(wxCommandEvent & event);
+    void OnButtonSpace(wxCommandEvent & event);
+    void OnButtonDelete(wxCommandEvent & event);
+    void OnButtonShift(wxCommandEvent & event);
+
+    void OnButtonClear(wxCommandEvent & event);
+    void OnButtonDone(wxCommandEvent & event);
  
     void OnChar(wxCommandEvent & event);
     void AddString(wxString string);
