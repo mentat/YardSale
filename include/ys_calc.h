@@ -35,16 +35,18 @@ class YardCalc: public wxPanel {
     void OnClear(wxCommandEvent & event);
     void OnAllClear(wxCommandEvent & event);
     void OnDot(wxCommandEvent & event);
+	void Evaluate();
     void OnEqual(wxCommandEvent & event);
     
     private:
         
     DECLARE_EVENT_TABLE()
     
-    long int m_number;
+    long int m_tempnumber;
     long int m_savednumber;
     wxTextCtrl * m_screen;
 	wxString m_state;
+	wxString m_operand;
 };
 
 #endif
