@@ -1,13 +1,12 @@
-This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  5 MAR 2004 00:29
-entering extended mode
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2004.1.5)  5 MAR 2004 01:48
 **Requirements.tex
-(Requirements.tex{pdftex.cfg}
+(./Requirements.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
 LaTeX2e <2001/06/01>
-Babel <v3.7m> and hyphenation patterns for english, french, german, ngerman, du
-mylang, nohyphenation, loaded.
-(C:\texmf\tex\latex\base\report.cls
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/share/texmf/tex/latex/base/report.cls
 Document Class: report 2001/04/21 v1.4e Standard LaTeX document class
-(C:\texmf\tex\latex\base\size10.clo
+(/usr/share/texmf/tex/latex/base/size10.clo
 File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -22,84 +21,93 @@ File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (C:\texmf\tex\latex\graphics\graphicx.sty
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-(C:\texmf\tex\latex\graphics\keyval.sty
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(C:\texmf\tex\latex\graphics\graphics.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
 Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
- (C:\texmf\tex\latex\graphics\trig.sty
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-) (C:\texmf\tex\latex\00miktex\graphics.cfg
-File: graphics.cfg 2003/03/12 v1.1 MiKTeX 'graphics' configuration
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 80.
 
-(C:\texmf\tex\latex\graphics\pdftex.def
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
 File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
 \Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(C:\texmf\tex\latex\fancyhdr\fancyhdr.sty
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
 \headwidth=\dimen105
-) (Requirements.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+) (./Requirements.aux
 
-(C:\texmf\tex\context\base\supp-pdf.tex (C:\texmf\tex\context\base\supp-mis.tex
-loading : Context Support Macros / Missing
-\protectiondepth=\count89
-\scratchcounter=\count90
-\scratchtoks=\toks15
-\scratchdimen=\dimen106
-\scratchskip=\skip43
-\scratchmuskip=\muskip10
-\scratchbox=\box26
-\scratchread=\read1
-\scratchwrite=\write3
-\zeropoint=\dimen107
-\minusone=\count91
-\thousandpoint=\dimen108
-\emptytoks=\toks16
-\nextbox=\box27
-\nextdepth=\dimen109
-\everyline=\toks17
-\!!counta=\count92
-\!!countb=\count93
-\recursecounter=\count94
-)
-loading : Context Support Macros / PDF
-\nofMPsegments=\count95
-\nofMParguments=\count96
-\everyMPtoPDFconversion=\toks18
-) <aslogic_smaller.png, id=1, 200.75pt x 202.7575pt>
-File: aslogic_smaller.png Graphic file (type png)
- <use aslogic_smaller.png>
-[1
+! LaTeX Error: Missing \begin{document}.
 
-{psfonts.map} <aslogic_smaller.png>] (Requirements.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 w
+      ritefile{toc}{\contentsline {chapter}{\numberline {3}Implementation}{21}}
+
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 ...hapter}{\numberline {3}Implementation}{21}
+                                                  }
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 ...hapter}{\numberline {3}Implementation}{21}
+                                                  }
+? ^^X
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? x
+ 
+Here is how much of TeX's memory you used:
+ 648 strings out of 95437
+ 7356 string characters out of 1190234
+ 53193 words of memory out of 1000001
+ 3712 multiletter control sequences out of 10000+50000
+ 3640 words of font info for 14 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 25i,0n,43p,210b,43s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 0 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 0 words of extra memory for PDF output out of 65536
+No pages of output.
+e
 (Font)              <5> on input line 2.
  [1
 
 ])
 \tf@toc=\write4
+\openout4 = `Requirements.toc'.
+
  [2]
 Chapter 1.
 
@@ -108,7 +116,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--80
  []
 
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 82.
-(C:\texmf\tex\latex\base\omscmr.fd
+(/usr/share/texmf/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -132,11 +140,14 @@ File: yardsale_modules.png Graphic file (type png)
 <organization.png, id=53, 451.6875pt x 222.8325pt>
 File: organization.png Graphic file (type png)
  <use organization.png>
-[8 <yardsale_modules.png>] [9 <organization.png>]
+[8 <./yardsale_modules.png>] [9 <./organization.png>]
 Chapter 2.
 [10
 
-]
+] <Database_Layout.png, id=63, 401.5pt x 350.30875pt>
+File: Database_Layout.png Graphic file (type png)
+
+<use Database_Layout.png>
 Underfull \hbox (badness 10000) in paragraph at lines 435--439
 
  []
@@ -146,12 +157,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 435--439
 
  []
 
+[11 <./Database_Layout.png>]
+<Tables/CustomerTable.png, id=67, 180.675pt x 164.615pt>
+File: Tables/CustomerTable.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--439
-
- []
-
-[11]
+<use Tables/CustomerTable.png>
 Underfull \hbox (badness 10000) in paragraph at lines 448--459
 
  []
@@ -166,7 +176,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 448--459
 
  []
 
-[12]
+[12 <./Tables/CustomerTable.png>]
+<Tables/InventoryTable.png, id=72, 351.3125pt x 304.13625pt>
+File: Tables/InventoryTable.png Graphic file (type png)
+
+<use Tables/InventoryTable.png>
+<Tables/TaxTable.png, id=73, 150.5625pt x 77.28876pt>
+File: Tables/TaxTable.png Graphic file (type png)
+
+<use Tables/TaxTable.png>
+<Tables/VendorTable.png, id=74, 200.75pt x 194.7275pt>
+File: Tables/VendorTable.png Graphic file (type png)
+
+<use Tables/VendorTable.png>
 Underfull \hbox (badness 10000) in paragraph at lines 476--533
 
  []
@@ -241,7 +263,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 476--533
 
  []
 
+[13 <./Tables/InventoryTable.png>]
+<Tables/TransactionLogTable.png, id=78, 401.5pt x 151.56625pt>
+File: Tables/TransactionLogTable.png Graphic file (type png)
 
+<use Tables/TransactionLogTable.png>
+<Tables/PackageTable.png, id=79, 401.5pt x 171.64125pt>
+File: Tables/PackageTable.png Graphic file (type png)
+
+<use Tables/PackageTable.png>
+<Tables/CarrierTable.png, id=80, 159.59625pt x 96.36pt>
+File: Tables/CarrierTable.png Graphic file (type png)
+
+<use Tables/CarrierTable.png>
+<Tables/ShippingTable.png, id=81, 401.5pt x 130.4875pt>
+File: Tables/ShippingTable.png Graphic file (type png)
+
+<use Tables/ShippingTable.png>
 Underfull \hbox (badness 10000) in paragraph at lines 536--591
 
  []
@@ -351,7 +389,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 536--591
 
  []
 
-[13]
+[14 <./Tables/TaxTable.png> <./Tables/VendorTable.png>] [15 <./Tables/Transacti
+onLogTable.png> <./Tables/PackageTable.png>]
+<Tables/EmployeeTable.png, id=88, 401.5pt x 183.68625pt>
+File: Tables/EmployeeTable.png Graphic file (type png)
+
+<use Tables/EmployeeTable.png>
+<Tables/LoginTable.png, id=89, 199.74625pt x 78.2925pt>
+File: Tables/LoginTable.png Graphic file (type png)
+
+<use Tables/LoginTable.png>
 Underfull \hbox (badness 10000) in paragraph at lines 593--628
 
  []
@@ -396,12 +443,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 593--628
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 593--628
-
- []
-
-[14]
+[16 <./Tables/CarrierTable.png> <./Tables/ShippingTable.png>]
+<Tables/ACL.png, id=93, 125.46875pt x 64.24pt>
+File: Tables/ACL.png Graphic file (type png)
+ <use Tables/ACL.png>
+<Tables/KeyTable.png, id=94, 301.125pt x 62.2325pt>
+File: Tables/KeyTable.png Graphic file (type png)
+ <use Tables/KeyTable.png>
 Underfull \hbox (badness 10000) in paragraph at lines 631--657
 
  []
@@ -461,23 +509,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 631--657
 
  []
 
-[15] [16] <ys_main_screener.png, id=82, 266.56967pt x 316.55455pt>
+[17 <./Tables/EmployeeTable.png> <./Tables/LoginTable.png>] [18 <./Tables/ACL.p
+ng> <./Tables/KeyTable.png>]
+<ys_main_screener.png, id=102, 266.56967pt x 316.55455pt>
 File: ys_main_screener.png Graphic file (type png)
 
 <use ys_main_screener.png>
-<ys_sales_screener.png, id=83, 266.56967pt x 209.04546pt>
+<ys_sales_screener.png, id=103, 266.56967pt x 209.04546pt>
 File: ys_sales_screener.png Graphic file (type png)
 
 <use ys_sales_screener.png>
-<ys_inv_screener.png, id=84, 266.56967pt x 260.4109pt>
+<ys_inv_screener.png, id=104, 266.56967pt x 260.4109pt>
 File: ys_inv_screener.png Graphic file (type png)
 
 <use ys_inv_screener.png>
-<ys_employee_screener.png, id=85, 266.56967pt x 229.95pt>
+<ys_employee_screener.png, id=105, 266.56967pt x 229.95pt>
 File: ys_employee_screener.png Graphic file (type png)
 
 <use ys_employee_screener.png>
-<ys_calc_screener.png, id=86, 191.93016pt x 242.49272pt>
+<ys_calc_screener.png, id=106, 191.93016pt x 242.49272pt>
 File: ys_calc_screener.png Graphic file (type png)
 
 <use ys_calc_screener.png>
@@ -575,27 +625,1007 @@ Underfull \hbox (badness 10000) in paragraph at lines 661--698
 
  []
 
-[17 <ys_main_screener.png>] [18 <ys_sales_screener.png> <ys_inv_screener.png>]
-[19 <ys_employee_screener.png> <ys_calc_screener.png>]
+[19 <./ys_main_screener.png>] [20 <./ys_sales_screener.png> <./ys_inv_screener.
+png>] [21 <./ys_employee_screener.png> <./ys_calc_screener.png>]
 Chapter 3.
-[20
+
+Underfull \hbox (badness 10000) in paragraph at lines 707--711
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 707--711
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.726 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.727 ^^I)
+          type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 733--737
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 733--737
+
+ []
+
+[22
 
 ]
-Chapter 4.
-[21
 
-] (Requirements.aux) ) 
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.765 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.766 ^^I)
+           type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 770--774
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 779--781
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 786--790
+
+ []
+
+[23]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.812 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.813 ^^I)
+          type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 817--821
+
+ []
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.836 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.837 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.838 ^^I)
+           type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 842--846
+
+ []
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.851 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.851 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.851 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.851 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.851 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.852 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.853 ^^I)
+          type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 856--860
+
+ []
+
+[24]
+! Missing } inserted.
+<inserted text> 
+                }
+l.867 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.867 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.867 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.867 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.867 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.867 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.867 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.868 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.869 ^^I)
+          type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 876--880
+
+ []
+
+! You can't use `macro parameter character #' in vertical mode.
+l.892 ^^I^^I\item{#
+                   EMP\_REF\_CUST\_Account\_Number            INT,
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in vertical mode.
+l.896 ^^I^^I\item{#
+                   INDEX acct\_number (EMP\_REF\_CUST\_Account\_Number),
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in vertical mode.
+l.898 ^^I^^I\item{#
+                   FOREIGN KEY (EMP\_REF\_CUST\_Account\_Number) REFERENCES ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.899 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.900 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.901 ^^I)
+           type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 904--908
+
+ []
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.914 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.914 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.914 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.914 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.914 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.914 ^^I\end{list}
+                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.915 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.916 ^^I)
+          type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 920--924
+
+ []
+
+[25]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.928 ^^I\\
+           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.929 ^^I)
+           type=InnoDB
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[26]
+Chapter 4.
+
+Overfull \hbox (12.1894pt too wide) in paragraph at lines 987--992
+/cmtt9/The passive testing of YardSale is accomplished by our auto build system
+. The auto build system pulls
+ []
+
+
+Overfull \hbox (12.1894pt too wide) in paragraph at lines 987--992
+/cmtt9/the latest source code from the repository and compiles it with the most
+ strict settings. If the code
+ []
+
+
+Overfull \hbox (2.73952pt too wide) in paragraph at lines 987--992
+/cmtt9/fails the system reports the error on our website. The auto build system
+ will also compile the code
+ []
+
+
+Overfull \hbox (21.6393pt too wide) in paragraph at lines 987--992
+/cmtt9/on six other architechures including Amd64, Sparc, Mac OSX, Linux, and M
+icrosoft Windows. The extensive
+ []
+
+
+Overfull \hbox (12.1894pt too wide) in paragraph at lines 987--992
+/cmtt9/compilation of the source code ensures that no platform dependant source
+ code violates the portability
+ []
+
+
+Overfull \hbox (21.6393pt too wide) in paragraph at lines 996--999
+/cmtt9/Each non-gui object in the YardSale system has an integrated main loop w
+hich allows the program to build
+ []
+
+
+Overfull \hbox (16.91435pt too wide) in paragraph at lines 996--999
+/cmtt9/test versions of each of the objects. These test objects then execute a 
+series of tests to ensure that
+ []
+
+
+Overfull \hbox (12.1894pt too wide) in paragraph at lines 996--999
+/cmtt9/the object is working exactly to specification. If any of these tests fa
+il the system will report the
+ []
+
+
+Overfull \hbox (16.91435pt too wide) in paragraph at lines 1001--1003
+/cmtt9/Each GUI screen is tested by our virtual employees for both functionalit
+y and usability. The employees
+ []
+
+
+Overfull \hbox (2.73952pt too wide) in paragraph at lines 1001--1003
+/cmtt9/report back to the developers with any bugs they find through our bug tr
+acking system. We also have
+ []
+
+
+Overfull \hbox (7.46446pt too wide) in paragraph at lines 1005--1009
+/cmtt9/YardSale is designed to report back a large amount of valuable debug inf
+ormation to the developer and
+ []
+
+
+Overfull \hbox (7.46446pt too wide) in paragraph at lines 1005--1009
+/cmtt9/to keep the non-technical user informed about the status of the program.
+ YardSale uses exceptions to
+ []
+
+
+Overfull \hbox (21.6393pt too wide) in paragraph at lines 1005--1009
+/cmtt9/ensure that single functions cannot violate the integrity of the system 
+on a global level. In addition,
+ []
+
+
+Overfull \hbox (12.1894pt too wide) in paragraph at lines 1005--1009
+/cmtt9/all database interfaces have special logging information that reports th
+e exact status of all database
+ []
+
+[27
+
+] (./Requirements.aux) )
+(\end occurred inside a group at level 4) 
 Here is how much of TeX's memory you used:
- 1109 strings out of 95518
- 12641 string characters out of 1189726
- 63702 words of memory out of 1062133
- 4167 multiletter control sequences out of 35000
- 7329 words of font info for 26 fonts, out of 500000 for 1000
- 14 hyphenation exceptions out of 607
- 25i,5n,43p,210b,187s stack positions out of 1500i,500n,5000p,200000b,32768s
- 102 PDF objects out of 65536
- 0 named destinations out of 20000
- 41 words of extra memory for PDF output out of 65536
-<cmr7.pfb><cmsl10.pfb><cmsy10.pfb><cmr10.pfb><cmbx10.pfb>
-<cmr12.pfb><cmr17.pfb><cmbx12.pfb>
-Output written on Requirements.pdf (22 pages, 366299 bytes).
+ 1135 strings out of 95437
+ 14653 string characters out of 1190234
+ 63940 words of memory out of 1000001
+ 4151 multiletter control sequences out of 10000+50000
+ 7963 words of font info for 29 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 25i,5n,43p,210b,630s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 137 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 105 words of extra memory for PDF output out of 65536
+{/usr/share/texmf/dvips/tetex/09fbbfac
+.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmtt9.pfb>{/usr/share/texmf/dvips
+/tetex/f7b6d320.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/sha
+re/texmf/fonts/type1/bluesky/cm/cmsl10.pfb>{/usr/share/texmf/dvips/tetex/bbad15
+3f.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fo
+nts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.
+pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/
+type1/bluesky/cm/cmr17.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb>
+
+Output written on Requirements.pdf (28 pages, 478253 bytes).

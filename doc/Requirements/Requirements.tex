@@ -435,7 +435,7 @@ functionality can not be added.
     {\bf YardSale Global Database Diagram}\\
     \\
     \\
-%   \includegraphics{Database_Layout.png}
+    \includegraphics{Database_Layout.png}
 
     \newpage
 
@@ -448,7 +448,7 @@ functionality can not be added.
     {\bf Customer Table}\\
     \\
     \\
-%    \includegraphics{Tables/CustomerTable.png}\\
+    \includegraphics{Tables/CustomerTable.png}\\
     \\
     The above UML diagram shows the layout of the customer table. The object of this
     table is to manage customer personal information for later reference in
@@ -483,7 +483,7 @@ functionality can not be added.
     {\bf Inventory Table}\\
     \\
     \\
-%    \includegraphics{Tables/InventoryTable.png}\\
+    \includegraphics{Tables/InventoryTable.png}\\
     \\
     \\
     This table being the main Inventory storage structure contains all information needed
@@ -508,7 +508,7 @@ functionality can not be added.
     {\bf Tax Table}\\
     \\
     \\
-%    \includegraphics{Tables/TaxTable.png}\\
+    \includegraphics{Tables/TaxTable.png}\\
     \\
     \\
     The tax table is just a support table for the inventory items. It is referenced by ID
@@ -520,7 +520,7 @@ functionality can not be added.
     {\bf Vendor Table}\\
     \\
     \\
-%    \includegraphics{Tables/VendorTable.png}\\
+    \includegraphics{Tables/VendorTable.png}\\
     \\
     \\
     The Vendor Table is used also as a supporting table for the inventory. This information
@@ -542,7 +542,7 @@ functionality can not be added.
     {\bf Transaction Table}\\
     \\
     \\
-%    \includegraphics{Tables/TransactionLogTable.png}\\
+    \includegraphics{Tables/TransactionLogTable.png}\\
     \\
     \\
     The Transaction Log Table is used to store information that links Customers, Employees, and
@@ -555,7 +555,7 @@ functionality can not be added.
     {\bf Package Table}\\
     \\
     \\
-%    \includegraphics{Tables/PackageTable.png}\\
+    \includegraphics{Tables/PackageTable.png}\\
     \\
     \\
     The Package Table is used to store information about a package. There is a link to a transaction ID
@@ -569,7 +569,7 @@ functionality can not be added.
     {\bf Carrier Table}\\
     \\
     \\
-%    \includegraphics{Tables/CarrierTable.png}\\
+    \includegraphics{Tables/CarrierTable.png}\\
     \\
     \\
     The Carrier table is a support table for the Package table. It provides information about the different
@@ -586,7 +586,7 @@ functionality can not be added.
     this table. The table just contains the name for the type of shipping, the carrier, and how much
     it costs.\\
     \\
-%    \includegraphics{Tables/ShippingTable.png}\\
+    \includegraphics{Tables/ShippingTable.png}\\
     \\
     \subsection{Employee Management}
 
@@ -599,7 +599,7 @@ functionality can not be added.
     {\bf Employee Table}\\
     \\
     \\
-%    \includegraphics{Tables/EmployeeTable.png}
+    \includegraphics{Tables/EmployeeTable.png}
     \\
     \\
     The Employee Table keeps track of all pertinent information about employees that would
@@ -616,7 +616,7 @@ functionality can not be added.
     {\bf Login Table}\\
     \\
     \\
-%    \includegraphics{Tables/LoginTable.png}\\
+    \includegraphics{Tables/LoginTable.png}\\
     \\
     \\
     The Login Table tracks the amount of time an employee has been logged in based on when
@@ -631,7 +631,7 @@ functionality can not be added.
     {\bf Access Control List Table}\\
     \\
     \\
-%    \includegraphics{Tables/ACL.png}\\
+    \includegraphics{Tables/ACL.png}\\
     \\
     \\
     The ACL table which is short for Access Control List Table manages which user types have access
@@ -643,7 +643,7 @@ functionality can not be added.
     {\bf Key Table}\\
     \\
     \\
-%    \includegraphics{Tables/KeyTable.png}\\
+    \includegraphics{Tables/KeyTable.png}\\
     \\
     \\
     The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
@@ -700,6 +700,237 @@ The on screen calculator provides quick access to a number pad.
 \chapter{Implementation}
 
     \section{Database Level Implementation}
+
+
+    \subsection{Customer Management}
+	{\tt\small
+	DROP TABLE IF EXISTS Customer\_Table;\\
+	\\
+	CREATE TABLE Customer\_Table(\\
+	\begin{list}{}
+		\item{CUST\_Account\_Number             INT AUTO\_INCREMENT NOT NULL,}
+		\item{CUST\_First\_Name                 varchar(25),}
+		\item{CUST\_Middle\_Name                varchar(25),}
+		\item{CUST\_Last\_Name                  varchar(50),}
+		\item{CUST\_Address                    TEXT,}
+		\item{CUST\_Phone                      varchar(20),}
+		\item{CUST\_City                       varchar(50),}
+		\item{CUST\_Zip                        varchar(12),}
+		\item{CUST\_Credit\_Card\_Number         varchar(20),}
+		\item{CUST\_CC\_Exp\_Date                varchar(6),}
+		\item{CUST\_Name\_On\_CC                 TEXT,}
+		\item{CUST\_Signature                  TEXT,}
+		\item{CUST\_Photo                      TEXT,}
+		\item{Primary Key(CUST\_Account\_Number)}
+	\end{list}\\
+	\\
+	)type=InnoDB
+	}
+
+    \subsection{Inventory Management}
+
+    	{\tt\small
+	DROP TABLE IF EXISTS Inventory\_Table;\\
+	\\
+	CREATE TABLE Inventory\_Table(\\
+	\begin{list}{}
+		\item{INV\_SKU\_Number                  varchar(10),}
+		\item{INV\_Bar\_Code\_Number             varchar(30),}
+		\item{INV\_Item\_Description            TEXT,}
+		\item{INV\_Item\_Department             varchar(30),}
+		\item{INV\_Quantity\_On\_Hand            INT,}
+		\item{INV\_Quantity\_On\_Order           INT,}
+		\item{INV\_Reorder\_Level               INT,}
+		\item{INV\_Reorder\_Quantity            INT,}
+		\item{INV\_Item\_Type                   varchar(20),}
+		\item{INV\_REF\_TAX\_Tax\_Type            INT NOT NULL,}
+		\item{INV\_REF\_VND\_Vendor\_ID           INT NOT NULL,}
+		\item{INV\_Retail\_Price                DECIMAL(7,2),}
+		\item{INV\_Wholesale\_Price             DECIMAL(7,2),}
+		\item{INV\_Bulk\_Price                  TEXT,}
+		\item{INV\_Date\_Last\_Received          DATETIME,}
+		\item{INV\_Weight\_Pounds               FLOAT,}
+		\item{INV\_Oversized\_Flag              enum('T','F'),}
+		\item{INV\_Ship\_By\_Freight             enum('T','F'),}
+		\item{INV\_Comment                     TEXT,}
+		\item{Primary Key (INV\_SKU\_Number),}
+		\item{UNIQUE INDEX (INV\_Bar\_Code\_Number),}
+		\item{INDEX tax\_id (INV\_REF\_TAX\_Tax\_Type),}
+		\item{INDEX vnd\_id (INV\_REF\_VND\_Vendor\_ID),}
+		\item{FOREIGN KEY (INV\_REF\_TAX\_Tax\_Type)}
+		\item{REFERENCES Tax\_Table(TAX\_ID),}
+		\item{FOREIGN KEY (INV\_REF\_VND\_Vendor\_ID)}
+		\item{REFERENCES Vendor\_Table(VND\_ID)}
+	\end{list}\\
+	\\
+	) type=InnoDB
+	}
+
+	{\tt\small
+	DROP TABLE IF EXISTS Tax\_Table;\\
+	\\
+	CREATE TABLE Tax\_Table(
+	\begin{list}{}
+		\item{TAX\_ID          INT AUTO\_INCREMENT NOT NULL,}
+		\item{TAX\_Name        varchar(20),}
+		\item{TAX\_Percent     FLOAT,}
+		\item{Primary Key (TAX\_ID)}
+	\end{list}
+	)type=InnoDB\\
+	}
+
+
+    \subsection{Transaction Handling}
+
+    	{\tt\small
+	DROP TABLE IF EXISTS Transaction\_Log\_Table;\\
+	\\
+	CREATE TABLE Transaction\_Log\_Table(
+	\begin{list}{}
+		\item{TRANS\_REF\_EMP\_ID\_Number                 INT,}
+		\item{TRANS\_REF\_INV\_SKU\_Number                varchar(10),}
+		\item{TRANS\_REF\_CUST\_Account\_Number           INT,}
+		\item{TRANS\_Sale\_Price                        DECIMAL(10,2),}
+		\item{TRANS\_ID                                INT NOT NULL,}
+		\item{TRANS\_Quantity                          INT,}
+		\item{TRANS\_Comment                           TEXT,}
+		\item{Primary Key(TRANS\_REF\_EMP\_ID\_Number,}
+		\begin{list}{}
+			\item{TRANS\_REF\_INV\_SKU\_Number,}
+			\item{TRANS\_REF\_CUST\_Account\_Number,}
+			\item{TRANS\_Sale\_Price, TRANS\_ID,}
+			\item{TRANS\_Quantity),}
+		\end{list}
+		\item{INDEX trans\_id (TRANS\_ID),}
+		\item{INDEX emp\_id (TRANS\_REF\_EMP\_ID\_Number),}
+		\item{INDEX sku\_num (TRANS\_REF\_INV\_SKU\_Number),}
+		\item{INDEX cust\_acct (TRANS\_REF\_CUST\_Account\_Number),}
+		\item{FOREIGN KEY (TRANS\_REF\_EMP\_ID\_Number) REFERENCES Employee\_Table(EMP\_ID\_Number),}
+		\item{FOREIGN KEY (TRANS\_REF\_INV\_SKU\_Number) REFERENCES Inventory\_Table(INV\_SKU\_Number),}
+		\item{FOREIGN KEY (TRANS\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table(CUST\_Account\_Number)}
+	\end{list}\\
+	\\
+	)type=InnoDB
+	}
+
+	{\tt\small
+	DROP TABLE IF EXISTS Package\_Table;\\
+	\\
+	CREATE TABLE Package\_Table(
+	\begin{list}{}
+		\item{PKG\_ID\_Number                           INT AUTO\_INCREMENT NOT NULL,}
+		\item{PKG\_REF\_TRANS\_ID                        INT,
+		\item{PKG\_REF\_CUST\_Account\_Number             INT,
+		\item{PKG\_REF\_CRR\_ID\_Number                   INT,
+		\item{PKG\_Tracking\_Number                     varchar(50),
+		\item{PKG\_REF\_SHP\_Shipping\_Type               varchar(30),
+		\item{Primary Key(PKG\_ID\_Number),
+		\item{INDEX trans\_id (PKG\_REF\_TRANS\_ID),
+		\item{INDEX cust\_acct (PKG\_REF\_CUST\_Account\_Number),
+		\item{INDEX crr\_id (PKG\_REF\_CRR\_ID\_number),
+		\item{INDEX shp\_type (PKG\_REF\_SHP\_Shipping\_Type),
+		\item{FOREIGN KEY (PKG\_REF\_TRANS\_ID) REFERENCES Transaction\_Log\_Table( TRANS\_ID ),
+		\item{FOREIGN KEY (PKG\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table( CUST\_Account\_Number ),
+		\item{FOREIGN KEY (PKG\_REF\_CRR\_ID\_Number) REFERENCES Carrier\_Table( CRR\_ID ),
+		\item{FOREIGN KEY (PKG\_REF\_SHP\_Shipping\_Type) REFERENCES Shipping\_Table( SHP\_Type )
+	\end{list}\\
+	\\
+	) type=InnoDB
+	}
+
+	{\tt\small
+	DROP TABLE IF EXISTS Carrier\_Table;\\
+	\\
+	CREATE TABLE Carrier\_Table(
+	\begin{list}{}
+		\item{CRR\_ID                          INT AUTO\_INCREMENT NOT NULL,
+		\item{CRR\_Name                        varchar(50),
+		\item{CRR\_Pickup\_Location             TEXT,
+		\item{CRR\_Phone\_Number                varchar(20),
+		\item{Primary Key (CRR\_ID)
+	\end{list}\\
+	\\
+	)type=InnoDB
+
+	{\tt\small
+	DROP TABLE IF EXISTS Shipping\_Table;\\
+	\\
+	CREATE TABLE Shipping\_Table(
+	\begin{list}{}
+		\item{SHP\_Type                varchar(30),
+		\item{SHP\_REF\_CRR\_ID          INT,
+		\item{SHP\_Cost                DECIMAL(7,2),
+		\item{Primary Key(SHP\_Type, SHP\_REF\_CRR\_ID, SHP\_Cost),
+		\item{INDEX crr\_id (SHP\_REF\_CRR\_ID ),
+		\item{INDEX shp\_type (SHP\_Type),
+		\item{FOREIGN KEY (SHP\_REF\_CRR\_ID) REFERENCES Carrier\_Table( CRR\_ID )
+	\end{list}\\
+	\\
+	)type=InnoDB
+
+
+
+    \subsection{Employee Management}
+
+        {\tt\small
+	DROP TABLE IF EXISTS Employee\_Table;\\
+	\\
+	CREATE TABLE Employee\_Table(
+	\begin{list}{}
+		\item{EMP\_Social\_Security\_Number              varchar(13) NOT NULL,
+		\item{EMP\_ID\_Number                           INT NOT NULL,
+		\item{EMP\_First\_Name                          varchar(25),
+		\item{EMP\_Middle\_Name                         varchar(25),
+		\item{EMP\_Last\_Name                           varchar(50),
+		\item{EMP\_Address                             TEXT,
+		\item{EMP\_Phone\_Number                        varchar(20),
+		\item{EMP\_City                                varchar(50),
+		\item{EMP\_Zip                                 varchar(12),
+		\item{EMP\_Picture                             TEXT,
+		\item{EMP\_Signature                           TEXT,
+		\item{EMP\_REF\_ACL\_Type                        varchar(30),
+		\item{#EMP\_REF\_CUST\_Account\_Number            INT,
+		\item{Primary Key (EMP\_Social\_Security\_Number),
+		\item{UNIQUE INDEX(EMP\_ID\_Number),
+		\item{INDEX acl\_type (EMP\_REF\_ACL\_Type),
+		\item{#INDEX acct\_number (EMP\_REF\_CUST\_Account\_Number),
+		\item{FOREIGN KEY (EMP\_REF\_ACL\_Type) REFERENCES ACL\_Table(ACL\_Type),
+		\item{#FOREIGN KEY (EMP\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table(CUST\_Account\_Number)
+	\end{list}\\
+	\\
+	) type=InnoDB
+
+   	{\tt\small
+	DROP TABLE IF EXISTS Key\_Table;\\
+	\\
+	CREATE TABLE Key\_Table(
+	\begin{list}{}
+		\item{KEY\_ID                          INT AUTO\_INCREMENT,
+		\item{KEY\_REF\_EMP\_ID\_Number           INT,
+		\item{KEY\_Keys                        TEXT,
+		\item{PRIMARY KEY ( KEY\_ID ),
+		\item{INDEX ( KEY\_REF\_EMP\_ID\_Number ),
+		\item{FOREIGN KEY (KEY\_REF\_EMP\_ID\_Number) REFERENCES Employee\_Table( EMP\_ID\_Number )
+	\end{list}\\
+	\\
+	)type=InnoDB
+
+
+   	{\tt\small
+	DROP TABLE IF EXISTS ACL\_Table;\\
+	\\
+	CREATE TABLE ACL\_Table(
+	\begin{list}{}
+		\item{ACL\_Type varchar(30),}
+		\item{ACL\_Description TEXT,}
+		\item{Primary Key (ACL\_Type)}
+	\end{list}\\
+	\\
+	) type=InnoDB
+	}
+
+
+
 
     \section{Application Level Implementation}
 
