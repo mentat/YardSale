@@ -42,9 +42,25 @@ AM_PATH_WXCONFIG(2.3.2, wxWin=1)
                CXXFLAGS=$ac_save_CXXFLAGS
         fi
 
-AM_PATH_GTK(1.2.7, ,
-            AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?),
-            gthread)
+if test "x$OSTYPE" = "x"; then
+	OSTYPE=`uname`;
+fi
+
+case "$OSTYPE" in
+	darwin* | Darwin*)
+	USE_MAC=1
+	;;
+	*)
+	USE_MAC=0
+	AM_PATH_GTK(1.2.7, ,
+		AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?),
+		gthread)
+	;;
+esac
+
+dnl AM_PATH_GTK(1.2.7, ,
+dnl            AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?),
+dnl            gthread)
 
 dnl Checks for programs.
 dnl Checks for libraries.

@@ -8635,6 +8635,16 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
                CXXFLAGS=$ac_save_CXXFLAGS
         fi
 
+if test "x$OSTYPE" = "x"; then
+	OSTYPE=`uname`;
+fi
+
+case "$OSTYPE" in
+	darwin* | Darwin*)
+	USE_MAC=1
+	;;
+	*)
+	USE_MAC=0
 
 # Check whether --with-gtk-prefix or --without-gtk-prefix was given.
 if test "${with_gtk_prefix+set}" = set; then
@@ -8941,6 +8951,9 @@ echo "$as_me: error: Cannot find GTK: Is gtk-config in path?" >&2;}
 
 
   rm -f conf.gtktest
+
+	;;
+esac
 
 
 GETTEXT_PACKAGE=YardSale
