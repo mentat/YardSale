@@ -1136,7 +1136,7 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
 
     wxFlexGridSizer *item46 = new wxFlexGridSizer( 7, 0, 0 );
 
-    wxButton *item47 = new wxButton( parent, ID_KBD_DELETE, wxT("backspace"), wxDefaultPosition, wxSize(92,32), 0 );
+    wxButton *item47 = new wxButton( parent, ID_KBD_DELETE, wxT("backspace"), wxDefaultPosition, wxSize(50,32), 0 );
     item47->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item46->Add( item47, 0, wxALIGN_CENTER|wxALL, 5 );
 
