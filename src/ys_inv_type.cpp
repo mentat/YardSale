@@ -32,7 +32,21 @@ void YardInvType::SetBarCode(const string& str) {
 }
    
 YardInvType::YardInvType() {
+    m_key = -1;
+    /* These variables directly correspond with the database */
+    m_quantityOnHand = 0;
+    m_quantityOnOrder = 0;
+    m_reorderLevel = 0;
+    m_reorderQuantity = 0;
     
+    m_itemWeight = 0.0;
+    m_taxType = 1;
+    m_vendorId = 1;
+    m_retailPrice = 0.00;
+    m_wholesalePrice = 0.00;
+ 
+    m_oversized = false;
+    m_mustShipFreight = false;
 }
 
 YardInvType::YardInvType(const YardInvType& obj) {

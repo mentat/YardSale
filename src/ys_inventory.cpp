@@ -127,12 +127,11 @@ void YardInventory::OnNew(wxCommandEvent & event) {
     temp.SetItemType(m_type->GetValue().c_str());
     double doubleTemp;
     wxString doubleTxt = m_weight->GetValue();
+    
     if (!doubleTxt.ToDouble(&doubleTemp))
         doubleTemp = -1.0;
     
     temp.SetItemWeightLbs((float)doubleTemp);
-    temp.SetTaxType(1);
-    temp.SetVendorId(1);
     
     doubleTxt = m_price->GetValue();
     if (!doubleTxt.ToDouble(&doubleTemp))
@@ -146,7 +145,8 @@ void YardInventory::OnNew(wxCommandEvent & event) {
     }
     catch (YardDBException &e)
     {
-        wxLogError(e.what());
+        wxLogDebug(wxT("Error (insert): %s\n%s"),e.what(), e.GetSQL().c_str());
+        wxLogError(wxT("Error (insert): %s\n%s"),e.what(), e.GetSQL().c_str());
     }
     
 }
