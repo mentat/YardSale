@@ -13,14 +13,14 @@ test_inv_SOURCES = ../ys_inv_type.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp
 test_inv_LDADD = -lodbc -lexpat $(WX_LIBS)
 test_inv_CXXFLAGS =  -DYS_TEST_INV_TYPE
 
-test_emp_SOURCES = ../ys_employee_type.cpp
-test_emp_LDADD = -lodbc
+test_emp_SOURCES = ../ys_employee_type.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp ../ys_date.cpp
+test_emp_LDADD = -lodbc $(WX_LIBS)
 test_emp_CXXFLAGS =  -DYS_TEST_EMPLOYEE_TYPE
 
-test_cust_SOURCES = ../ys_cust_type.cpp
-test_cust_LDADD = -lodbc
+test_cust_SOURCES = ../ys_cust_type.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp ../ys_date.cpp
+test_cust_LDADD = -lodbc $(WX_LIBS)
 test_cust_CXXFLAGS = -DYS_TEST_CUST_TYPE
 
-test_trans_SOURCES = ../ys_trans_type.cpp
-test_trans_LDADD = -lodbc
+test_trans_SOURCES = ../ys_trans_type.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp ../ys_date.cpp
+test_trans_LDADD = -lodbc $(WX_LIBS) 
 test_trans_CXXFLAGS = -DYS_TEST_TRANS_TYPE
