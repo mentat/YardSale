@@ -1,5 +1,5 @@
 /*
-    $Id: xmlnode.h,v 1.2 2004/04/22 13:46:30 thementat Exp $
+    $Id: xmlnode.h,v 1.3 2004/04/26 01:20:53 thementat Exp $
  
     XMLNode - A XML DOM tree
     
@@ -220,6 +220,8 @@ public:
 
     /// Return all children (read only)
     vector<XMLNode> const_children() const;
+    
+    NodeMap& getMap() const { return m_xmlData->m_children; }
     
     /// Return a single child
     /// @param name name of tag to look for

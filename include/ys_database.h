@@ -202,6 +202,12 @@ class YardDatabase {
 
     /*-----------Reports--------------*/
     string ReportXML(const string& sql, long& count) const;
+    
+    
+    /*----------GENERIC---------------*/
+    
+    void GenericUpdate(const string& table, const string& values);
+    void GenericInsert(const string& table, const string& value);
         
     /* helpers */
     static string tab(int level);

@@ -13,6 +13,8 @@
 #include "ys_exception.h"
 #include "ys_inventory.h"
 #include "ys_inv_type.h"
+#include "ys_generic.h"
+#include "ys_new_item.h"
 
 #include "extra/xrc/xmlres.h"
 
@@ -23,6 +25,10 @@ BEGIN_EVENT_TABLE(YardInventory, wxDialog)
     EVT_BUTTON(XRCID("ID_INV_NEW"), YardInventory::OnNew)
     EVT_BUTTON(XRCID("ID_INV_SEARCH"), YardInventory::OnSearch)
     EVT_BUTTON(XRCID("ID_INV_LEAVE"), YardInventory::OnExitButton)
+    EVT_BUTTON(XRCID("ID_INV_EDIT_VENDOR"), YardInventory::OnEditVendor)
+    EVT_BUTTON(XRCID("ID_INV_EDIT_DEPTS"), YardInventory::OnEditDepts)
+    EVT_BUTTON(XRCID("ID_INV_EDIT_GROUPS"), YardInventory::OnEditGroups)
+    EVT_BUTTON(XRCID("ID_INV_TAX_EDIT"), YardInventory::OnEditTax)
     EVT_LIST_ITEM_SELECTED(XRCID("ID_INV_LIST"), YardInventory::OnSelect)
 END_EVENT_TABLE()
 
@@ -103,21 +109,21 @@ void YardInventory::SetPointers()
     m_det_desc = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_DESC")));
     m_det_barcode = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_BARCODE")));
     m_det_dept = static_cast<wxComboBox *>(FindWindow(XRCID("ID_INV_DEPARTMENT")));
-    m_dep_dept_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_EDIT_DEPTS")));
+    //m_dep_dept_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_EDIT_DEPTS")));
     m_dep_group = static_cast<wxComboBox *>(FindWindow(XRCID("ID_INV_GROUP")));
-    m_dep_group_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_EDIT_GROUPS")));
+    //m_dep_group_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_EDIT_GROUPS")));
     m_dep_image = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_INV_IMAGE")));
     m_dep_vendor = static_cast<wxComboBox *>(FindWindow(XRCID("ID_INV_VENDOR")));
-    m_dep_vendor_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_EDIT_VENDOR")));
+    //m_dep_vendor_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_EDIT_VENDOR")));
     
     // pricing
     m_price_retail = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_PRICE")));
     m_price_wholesale = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_WHOLESALE")));
     m_price_bulk = static_cast<wxListCtrl *>(FindWindow(XRCID("ID_INV_BULK_TALBE")));
-    m_price_bulk_add = static_cast<wxButton *>(FindWindow(XRCID("ID_INV_ADD_BULK")));
-    m_price_bulk_rm = static_cast<wxButton *>(FindWindow(XRCID("ID_INV_REMOVE_BULK")));
+    //m_price_bulk_add = static_cast<wxButton *>(FindWindow(XRCID("ID_INV_ADD_BULK")));
+    //m_price_bulk_rm = static_cast<wxButton *>(FindWindow(XRCID("ID_INV_REMOVE_BULK")));
     m_price_tax = static_cast<wxComboBox *>(FindWindow(XRCID("ID_INV_TAX")));
-    m_price_tax_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_TAX_EDIT")));
+    //m_price_tax_edit = static_cast<wxBitmapButton *>(FindWindow(XRCID("ID_INV_TAX_EDIT")));
     
     m_ship_weight = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_ITEM_WEIGHT")));
     m_ship_date_rec = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_DATE_RECEIVED")));
@@ -131,6 +137,66 @@ void YardInventory::SetPointers()
 
 }
 
+void YardInventory::OnEditVendor(wxCommandEvent& event)
+{
+     ///@todo This is to much db traffic, optimize!
+    vector<YardVendType> vends; 
+    try {
+        vends = wxGetApp().DB().VendorGetAll();
+    }
+    catch (YardDBException& e)
+    {
+        wxLogDebug(wxT("Error (vend load): %s, %s"),e.what(), e.GetSQL().c_str());
+        return;
+    }
+    YardGenericEdit<YardVendType> * myEdit = new YardGenericEdit<YardVendType>(this, -1, wxT("Vendor Edit"));
+    myEdit->SetObjects(vends);
+    myEdit->ShowModal();
+    myEdit->Destroy();
+}
+
+void YardInventory::OnEditDepts(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("No departments in db"));
+    
+}
+
+void YardInventory::OnEditGroups(wxCommandEvent& event)
+{
+    vector<YardGroup> grps; 
+    try {
+        grps = wxGetApp().DB().GroupGetAll();
+    }
+    catch (YardDBException& e)
+    {
+        wxLogDebug(wxT("Error (grp load): %s, %s"),e.what(), e.GetSQL().c_str());
+        return;
+    }
+    YardGenericEdit<YardGroup> * myEdit = new YardGenericEdit<YardGroup>(this, -1, wxT("Group Edit"));
+    myEdit->SetObjects(grps);
+    myEdit->ShowModal();
+    myEdit->Destroy();
+    
+}
+
+void YardInventory::OnEditTax(wxCommandEvent& event)
+{
+    vector<YardTaxType> taxes; 
+    try {
+        taxes = wxGetApp().DB().TaxTypeGetAll();
+    }
+    catch (YardDBException& e)
+    {
+        wxLogDebug(wxT("Error (tax load): %s, %s"),e.what(), e.GetSQL().c_str());
+        return;
+    }
+    YardGenericEdit<YardTaxType> * myEdit = new YardGenericEdit<YardTaxType>(this, -1, wxT("Tax Edit"));
+    myEdit->SetObjects(taxes);
+    myEdit->ShowModal();
+    myEdit->Destroy();
+    
+}
+
 void YardInventory::OnExitButton(wxCommandEvent & event)
 {
     wxLogDebug("OnExit");
@@ -140,41 +206,38 @@ void YardInventory::OnExitButton(wxCommandEvent & event)
 
 void YardInventory::OnNew(wxCommandEvent & event) {
     wxLogDebug(wxT("OnNew"));
-    #if 0
-    YardInvType temp;
-    temp.SetSKU(m_sku->GetValue().c_str());
-    temp.SetBarCode(m_barcode->GetValue().c_str());
-    temp.SetDescription(m_desc->GetValue().c_str()); 
-    temp.SetDepartment(m_department->GetValue().c_str());
-    temp.SetQuantOnHand(m_onHand->GetValue());
-    temp.SetQuantOnOrder(m_onOrder->GetValue());
-    temp.SetReorderLevel(m_reOrder->GetValue());
-   
-    temp.SetType(m_type->GetValue().c_str());
-    double doubleTemp;
-    wxString doubleTxt = m_weight->GetValue();
     
-    if (!doubleTxt.ToDouble(&doubleTemp))
-        doubleTemp = 0.0;
+    wxBitmap logo("res/ys_inventory_128x128.png", wxBITMAP_TYPE_PNG);
+    YardNewItem * wizard = new YardNewItem(this, -1, 
+        wxT("New Item Wizard"), logo);
     
-    temp.SetWeightLbs(doubleTemp);
+    YardNewItem1 * page1 = new YardNewItem1(wizard);
+    YardNewItem2 * page2 = new YardNewItem2(wizard);
+    YardNewItem3 * page3 = new YardNewItem3(wizard);
+    YardNewItem4 * page4 = new YardNewItem4(wizard);
     
-    doubleTxt = m_price->GetValue();
-    if (!doubleTxt.ToDouble(&doubleTemp))
-        doubleTemp = 0.0;
+    wxWizardPageSimple::Chain(page1, page2);
+    wxWizardPageSimple::Chain(page2, page3);
+    wxWizardPageSimple::Chain(page3, page4);
     
-    temp.SetRetailPrice(doubleTemp);
-    temp.SetWholesalePrice(doubleTemp);
-    
-    try {
-        wxGetApp().DB().InventoryAdd(temp);
-    }
-    catch (YardDBException &e)
+    wxSize min = page4->GetMin();
+    wizard->SetPageSize(min);
+
+    if ( wizard->RunWizard(page1) )
     {
-        wxLogDebug(wxT("Error (insert): %s\n%s"),e.what(), e.GetSQL().c_str());
-        wxLogError(wxT("Error (insert): %s\n%s"),e.what(), e.GetSQL().c_str());
+        wxLogDebug(wxT("Wizard completed OK"));
+        
+        YardInvType temp = wizard->GetItem();
+        
+        try {
+            wxGetApp().DB().InventoryAdd(temp);
+        }
+        catch (YardDBException& e)
+        {
+            wxLogDebug(wxT("Error (inv not added): %s, %s"),e.what(), e.GetSQL().c_str());
+        }
     }
-    #endif
+    wizard->Destroy();
 }
 
 void YardInventory::LoadFromDB() {

@@ -11,6 +11,7 @@ string YardEmployeeType::ToString(const string& delim, bool quotes) const {
     
     strm 
         << GetId() << delim 
+        << q << GetUserName() << q << delim
         << GetTaxId() << delim
         << q << GetFirst() << q << delim
         << q << GetMiddle() << q << delim
@@ -22,7 +23,8 @@ string YardEmployeeType::ToString(const string& delim, bool quotes) const {
         << q << GetPicLocal() << q << delim
         << q << GetSigLocal() << q << delim
         << q << GetACL() << q << delim
-        << "1,0" ;
+        << "1" << delim
+        << q << GetSince().ToString() << q;
     
     return strm.str();
 }

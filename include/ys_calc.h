@@ -49,6 +49,14 @@ class YardCalc: public wxPanel {
         const wxSize& size = wxDefaultSize, 
         long style = wxTAB_TRAVERSAL, 
         const wxString& name = "YardCalc");
+ 
+    YardCalc(): wxPanel() {}
+        
+    bool Create(wxWindow* parent, wxWindowID id = -1, 
+        const wxPoint& pos = wxDefaultPosition, 
+        const wxSize& size = wxDefaultSize, 
+        long style = wxTAB_TRAVERSAL, 
+        const wxString& name = "YardCalc");
     
     double GetCalcContents();
  
@@ -58,6 +66,7 @@ class YardCalc: public wxPanel {
  private:
    	
     DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(YardCalc)
 	
     /**
      * Runs whenever an operator is pressed such as "+" or "-" or "="

@@ -35,6 +35,8 @@ class YardGroup: public XMLNode
       
     YardGroup() { setName("Inventory_Group_Table"); }
     YardGroup(const string& xml): XMLNode(xml, XMLNode::Str) {}
+        
+    static const char * GetUnique() { return "INVGRP_Group_Name"; }
     
     /* Getters */
     string GetIdS() const

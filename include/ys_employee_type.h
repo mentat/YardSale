@@ -20,6 +20,7 @@
 #define YS_EMPLOY_TYPE_H
 
 #include <string>
+#include "ys_date.h"
 #include "xmlnode.h"
 
 class YardDatabase;
@@ -34,7 +35,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @see XMLNode
  */
 class YardEmployeeType: public XMLNode {
@@ -46,6 +47,8 @@ class YardEmployeeType: public XMLNode {
     YardEmployeeType(const string& xml): XMLNode(xml, XMLNode::Str) {}
         
     virtual ~YardEmployeeType() {}
+        
+    static const char * GetUnique() { return "EMP_ID_Number"; }    
  
     virtual string ToString(const string& delim=",", bool quotes = true) const;
         
@@ -56,6 +59,10 @@ class YardEmployeeType: public XMLNode {
         { return child("EMP_ID_Number").data(); }
     long GetId() const 
         { return ToLong(GetIdS()); }
+        
+    string GetUserName() const
+        {   return child("EMP_Username").data(); }
+           
     /// Return Tax ID, usually SS
     string GetTaxIdS() const
         { return child("EMP_Social_Security_Number").data(); }
@@ -104,6 +111,9 @@ class YardEmployeeType: public XMLNode {
     /// Check enabled
     int GetEnabled() const 
         { return ToInt(child("EMP_Enabled").data()); }
+        
+    YardDate GetSince() const
+        { return YardDate(child("EMP_Employee_Since")); }
     
     //-----------------Settors-------------------
     /// @note You cannot set the employee ID, it is set by the DB
@@ -111,6 +121,8 @@ class YardEmployeeType: public XMLNode {
     ///  violates size limitations.
     void SetTaxId(long id)
         { child("EMP_Social_Security_Number").setData(ToStr(id)); }
+    void SetUserName(const string& str)
+        { child("EMP_Username").setData(str); }
     /// Set first name
     void SetFirstName(const string& name)
         { child("EMP_First_Name").setData(name); }
@@ -149,6 +161,10 @@ class YardEmployeeType: public XMLNode {
     void SetEnabled(bool yes = true)
         { (yes) ? child("EMP_Enabled").setData("1") : child("EMP_Enabled").setData("0"); }
  
+    void SetSince(YardDate& date)
+        {   date.setName("EMP_Employee_Since");
+            child("EMP_Employee_Since") = date;
+        }
 };
 
 #endif

@@ -38,7 +38,7 @@ class YardDatabase;
  * @ingroup database 
  * @see XMLNode
  * @author Jesse Lovelace
- * @version \$Revision: 1.25 $$
+ * @version \$Revision: 1.26 $$
  */
 
 class YardInvType: public XMLNode
@@ -57,6 +57,8 @@ class YardInvType: public XMLNode
   
     YardInvType() { setName("Inventory_Table"); }
     YardInvType(const string& xml): XMLNode(xml, XMLNode::Str) {}
+        
+    static const char * GetUnique() { return "INV_Item_ID"; }    
     
     string GetKeyS() const 
         { return child("INV_Item_ID").data(); }
@@ -108,8 +110,8 @@ class YardInvType: public XMLNode
     /// Get index of tax type, see tax table in DB
     string GetTaxTypeS() const
         { return child("INV_REF_TAX_Tax_Type").data(); }
-    int GetTaxType() const 
-        { return ToInt(GetTaxTypeS()); }
+    long GetTaxType() const 
+        { return ToLong(GetTaxTypeS()); }
     /// Get vendor ID, see vendor table in DB
     string GetVendorIdS() const
         { return child("INV_REF_VND_Vendor_ID").data(); }

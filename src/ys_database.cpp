@@ -875,20 +875,23 @@ string YardDatabase::ToXML(otl_stream * stream, const string& record) const
     /// @todo This is most likely faster with a string that I don't recreate in the loop
     for(int i = 0; i < length; i++)
     {
-        xml << tab(1) << "<" << desc[i].name << ">";
+        xml << tab(1) << "<" << desc[i].name;
         
         switch(desc[i].otl_var_dbtype) {
             case(otl_var_varchar_long): {
+                xml << " type=\"xs:string\">";
                 string i;
                 *stream >> i;
                 xml << escape(i);}
                 break;
             case(otl_var_int):{
+                xml << " type=\"xs:int\">";
                 int i;
                 *stream >> i;
                 xml << i;}
                 break;
              case(otl_var_char):{
+                xml << " type=\"xs:string\">";
                 string i;
                 *stream >> i;
                 xml << escape(i);}
@@ -898,38 +901,45 @@ string YardDatabase::ToXML(otl_stream * stream, const string& record) const
             case(otl_var_ltz_timestamp): 
             case(otl_var_timestamp): 
             case(otl_var_tz_timestamp): {
+                xml << " type=\"xs:dateTime\">";
                 otl_datetime i;
                 *stream >> i;
                 xml << i;
                 }
                 break;
             case(otl_var_float):{
+                xml << " type=\"xs:float\">";
                 float i;
                 *stream >> i;
                 xml << i;}
                 break;
             case(otl_var_double): {
+                xml << " type=\"xs:double\">";
                 double i;
                 *stream >> i;
                 xml << i;}
                 break;
             case(otl_var_long_int): {
+                xml << " type=\"xs:long\">";
                 long int i;
                 *stream >> i;
                 xml << i;}
                 break;
             case(otl_var_short):{
+                xml << " type=\"xs:short\">";
                 short i;
                 *stream >> i;
                 xml << i;}
                 break;
             case(otl_var_unsigned_int): {
+                xml << " type=\"xs:unsignedInt\">";
                 unsigned int i;
                 *stream >> i;
                 xml << i;}
                 break;
             #ifdef OTL_BIGINT
             case(otl_var_bigint): {
+                xml << " type=\"xs:integer\">";
                 long long i;
                 *stream >> i;
                 xml << i; }
@@ -937,12 +947,14 @@ string YardDatabase::ToXML(otl_stream * stream, const string& record) const
             #endif
             
             case(otl_var_clob): {
+                xml << " type=\"xs:string\">";
                 string i;
                 *stream >> i;
                 xml << escape(i); }
                 break;
-            #if 0
+            #if 0 ///@todo Change this function to take in binary chunks and base64 encode, then set type to base64binary
             case(otl_var_blob): {
+                xml << " type=\"xs:string\">";
                 otl_lob_stream i;
                 *stream >> i;
                 xml << i;}

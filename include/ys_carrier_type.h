@@ -36,7 +36,7 @@ class YardDatabase;
  * @ingroup database 
  * @see YardCarrierType
  * @author Michael Swigon	
- * @version \$Revision: 1.4 $$
+ * @version \$Revision: 1.5 $$
  * @see XMLNode
  */
 
@@ -46,17 +46,20 @@ class YardCarrierType: public XMLNode
    
     friend class YardDatabase;
   
-    YardCarrierType() { setName("Carrier_Table"); }
-        
+    YardCarrierType() { setName("Carrier_Table"); }     
     YardCarrierType(const string& xml):XMLNode(xml, XMLNode::Str) {}
         
     ~YardCarrierType();
+        
+    static const char * GetUnique() { return "CRR_Name"; }
     
 	/* gettors */
 
 	/// Get carrier id
-    long GetID() const 
-        { return ToLong(child("CRR_ID").data()); }
+    string GetIdS() const 
+        { return child("CRR_ID").data(); }
+    long GetId() const 
+        { return ToLong(GetIdS()); }
 	/// Get carrier name
 	string GetName() const 
         { return child("CRR_Name").data(); }

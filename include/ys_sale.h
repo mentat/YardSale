@@ -20,10 +20,17 @@
 #define YS_SALE_H
 
 #include <vector>
+#include <map>
+#include <ext/hash_map>
 #include "wx/treebase.h"
 #include "wx/dialog.h"
 
 #include "ys_inv_type.h"
+
+#ifdef __GNUC__
+using namespace __gnu_cxx;
+#endif
+using namespace std;
 
 class wxListCtrl;
 class wxTreeCtrl;
@@ -35,7 +42,7 @@ class wxStaticText;
  * From the transaction screen you can access the payment screen.
  * 
  * @author Jesse Lovelace
- * @version \$Revision: 1.10 $$
+ * @version \$Revision: 1.11 $$
  */
 class YardSaleScreen: public wxDialog{
  public:
@@ -56,19 +63,24 @@ class YardSaleScreen: public wxDialog{
     void OnChange(wxTreeEvent& event);
     void OnRemove(wxCommandEvent& event);
     void OnCheckout(wxCommandEvent& event);
+    void OnItem(wxCommandEvent& event);
  
     private:
         
-    //wxTreeCtrl * m_tree;
+    // maps window ids to keys
+    hash_map<long, long> m_lookup;
+    
+    // Caches tax percents to cut down on DB lookup
+    hash_map<long, double> m_taxCache;
+        
+    void BuildNotebook(wxNotebook * nb);
     wxNotebook * m_book;
     wxListCtrl * m_list;
     
     wxStaticText * m_subTotal;
     wxStaticText * m_tax;
     wxStaticText * m_total;
-    void LoadTreeItems(wxTreeCtrl * tree);
-    void CreateImageList(wxTreeCtrl * tree);
-    
+
     std::vector<YardInvType> m_items;    
     
     DECLARE_EVENT_TABLE()

@@ -35,6 +35,8 @@ class YardTaxType: public XMLNode
       
     YardTaxType() { setName("Tax_Table"); }
     YardTaxType(const string& xml):XMLNode(xml, XMLNode::Str) {}
+        
+    static const char * GetUnique() { return "TAX_Name"; }
     
     /* Getters */
     string GetIdS() const

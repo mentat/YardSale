@@ -11,6 +11,7 @@
 
 using namespace std;
 
+IMPLEMENT_DYNAMIC_CLASS(YardCalc, wxPanel)
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardCalc, wxPanel)
     EVT_BUTTON(XRCID("ID_CALC_CLEAR"), YardCalc::OnClear)
@@ -29,7 +30,7 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
         :wxPanel(parent, id, pos, size, style, name)
 {
     
-    wxXmlResource::Get()->Load("res/number_pad.xrc");
+    wxXmlResource::Get()->Load("res/calc_wdr.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "NumberPad");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
@@ -53,8 +54,40 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
     
     //so now the stack should have a number pushed onto it, and an operator
 	RefreshScreen();
-    
+    Show();
     //DumpStack();
+}
+
+bool YardCalc::Create(wxWindow* parent, wxWindowID id, 
+     const wxPoint& pos, const wxSize& size, long style, const wxString& name)
+{
+    if ( !wxPanel::Create(parent, id, pos, size, style, name) )
+        return false;
+    
+    wxXmlResource::Get()->Load("res/calc_wdr.xrc");
+    wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "NumberPad");
+    wxSizer * sizer = panel->GetSizer();
+    sizer->SetSizeHints(this);
+    SetSize(sizer->GetMinSize());
+        
+    //initialize a way to get to the screen
+    m_screen = (wxTextCtrl *)FindWindow(XRCID("ID_CALC_SCREEN"));
+    
+    //make sure that the pointer is active
+    wxASSERT(m_screen);
+   	
+	PushBlankNumber();
+    
+    CalcInstance m_tempstackitem;
+
+	m_tempstackitem.m_isNumber = false;
+	m_tempstackitem.m_type.m_op = Addition;
+	m_calcstack.push(m_tempstackitem);
+    
+    PushBlankNumber();
+    
+    //so now the stack should have a number pushed onto it, and an operator
+	RefreshScreen();
 }
 
 void YardCalc::PushBlankNumber()

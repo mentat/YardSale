@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardPackageType
  * @author Michael Swigon	
- * @version \$Revision: 1.2 $$
+ * @version \$Revision: 1.3 $$
  * @see XMLNode
  */
 
@@ -49,13 +49,7 @@ class YardPackageType: public XMLNode
 	  
     YardPackageType() {}
     
-    /**
-     * Copy constructor
-     */
-    YardPackageType(const YardPackageType& obj);
-    
-    YardPackageType& operator=(const YardPackageType& obj);
-
+    static const char * GetUnique() { return "PKG_ID_Number"; }
 	/* gettors */
 
 	/// Get package id

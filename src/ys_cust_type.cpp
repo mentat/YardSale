@@ -20,7 +20,9 @@ string YardCustType::ToString(const string& delim, bool quotes) const {
         << q << GetCreditCardExpiration() << q << delim
         << q << GetCreditCardName() << q << delim
         << q << GetSigLocal() << q << delim
-        << q << GetPicLocal() << q;
+        << q << GetPicLocal() << q << delim
+        << q << GetSince().ToString() << q << delim
+        << GetHashS();
     return output.str();
         
 }

@@ -35,7 +35,7 @@ class YardDatabase;
  * @ingroup database 
  * @see YardVendType
  * @author Michael Swigon	
- * @version \$Revision: 1.3 $$
+ * @version \$Revision: 1.4 $$
  * @see XMLNode
  */
 
@@ -47,6 +47,8 @@ class YardVendType: public XMLNode
 
     YardVendType() { setName("Vendor_Table"); }
     YardVendType(const string& xml): XMLNode(xml, Str) {}
+        
+    static const char * GetUnique() { return "VND_Name"; }
 
 	/// Get vendor id
     string GetIdS() const

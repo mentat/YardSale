@@ -1,67 +1,17 @@
-#include <sstream>
-
-#define OTL_ODBC_MYSQL
-#define OTL_STL
-
-#ifndef _WIN32
-#define OTL_ODBC_UNIX
-#else
-#define OTL_ODBC
-#endif
-
-
-#include "otlv4.h"
 #include "ys_shipping_type.h"
-#include "ys_exception.h"
-
-using namespace std;
-
-YardShipType::YardShipType(const YardShipType& obj) {
-    
-    *this = obj;
-    
-}
 
 string YardShipType::ToString(const string& delim) const {
     
     stringstream output;
-    output << m_shipType << delim << m_carrierID << delim << m_cost << delim << m_enabled;
+    char q = '\'';
+    output << 
+        q << GetShipType() q << delim 
+        << GetCarrierIdS() << delim 
+        << GetCostS() << delim
+        << GetEnabledS();
     
     return output.str();
         
-}
-
-void YardShipType::FillFromStream(otl_stream * stream)
-{  
-    if (!stream)
-        return;
-    /// maybe throw here
-    
-    //char oversized, freight;
-    otl_datetime lastRec;
-    
-    YardShipType temp;
-        
-    try {
-        *stream 
-            >> m_shipType 
-            >> m_carrierID
-            >> m_cost
-			>> m_enabled;
-            
-    } catch (otl_exception &e) {
-        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-    }
-}
-
-YardShipType& YardShipType::operator=(const YardShipType& obj) {
-    
-    m_shipType = obj.m_shipType;
-    m_carrierID = obj.m_carrierID;
-    m_cost = obj.m_cost;
-	m_enabled = obj.m_enabled;
-    
-    return *this;
 }
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_SHIPPING_TYPE))

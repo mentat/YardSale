@@ -8,6 +8,7 @@
 #include "wx/log.h"
 #include "wx/stattext.h"
 #include "wx/notebook.h"
+#include "wx/button.h"
 
 #include "yardsale.h"
 #include "ys_exception.h"
@@ -15,18 +16,17 @@
 #include "ys_inv_type.h"
 #include "ys_sale.h"
 #include "ys_database.h"
-/*
-#include "images/sprocket_32x32.xpm"
-#include "images/paperclip_32x32.xpm"
-#include "images/package_32x32.xpm"
-#include "images/electronics_32x32.xpm"
-*/
+#include "ys_checkout.h"
+
+#define SALE_BUTTON_HEIGHT  40
+#define START_BUTTON_ID      14333
 using namespace std;
 
 BEGIN_EVENT_TABLE(YardSaleScreen, wxDialog)
     EVT_BUTTON(XRCID("ID_SALES_EXIT"), YardSaleScreen::OnExitButton)
     EVT_BUTTON(XRCID("ID_SALES_REMOVE"), YardSaleScreen::OnRemove)
     EVT_BUTTON(XRCID("ID_SALES_CHECKOUT"), YardSaleScreen::OnCheckout)
+    EVT_BUTTON(-1, YardSaleScreen::OnItem)
     //EVT_TREE_ITEM_ACTIVATED(XRCID("ID_SALE_TREE"), YardSaleScreen::OnChange)
 END_EVENT_TABLE()
 
@@ -50,8 +50,8 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
                    const wxPoint& pos, const wxSize& size, long style, const wxString& name)
 :wxDialog(parent, id, title, pos, size, style, name) {
     
-    wxXmlResource::Get()->Load("res/sale.xrc");
-    wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Sale");
+    wxXmlResource::Get()->Load("res/new_sales_wdr.xrc");
+    wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Checkout");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());   
@@ -74,24 +74,124 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     itemCol.m_text = _T("Price");
     m_list->InsertColumn(2, itemCol);   
     
-    m_list->InsertItem(0, "      Total:", -1);
-    m_list->SetItemData(0, 0);
-    m_list->SetItem(0, 1, "  ");
-    m_list->SetItem(0, 2, "   $0.00");
-    
-    wxListItem item2;
-    item2.m_itemId = 0;
-    item2.SetTextColour(*wxRED);
-    m_list->SetItem(item2);
-    
     m_list->SetColumnWidth( 0, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 1, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
     
-    //m_tree = static_cast<wxTreeCtrl *>(FindWindow(XRCID("ID_SALE_TREE")));
+    BuildNotebook(m_book);
+    ///@todo Could make this static and only do it once per program run...?
+    vector<YardTaxType> tax;
+    try {
+        tax = wxGetApp().DB().TaxTypeGetAll();
+    }
+    catch (YardDBException& e)
+    {
+        wxLogDebug(wxT("Error (tax load): %s, %s"),e.what(), e.GetSQL().c_str());
+        return;
+    }
+    wxLogDebug(wxT("Loading %d tax types..."), tax.size());
+    for (unsigned int i = 0; i < tax.size(); i++)
+    {
+        m_taxCache[tax[i].GetId()] = tax[i].GetPercent();
+    }
     
-    //CreateImageList(m_tree);
-    //LoadTreeItems(m_tree);
+}
+
+void YardSaleScreen::OnItem(wxCommandEvent& event)
+{
+    
+    long id = event.GetId();
+    if (id < START_BUTTON_ID)
+    {
+        wxLogDebug(wxT("Bad event ID"));
+        return;
+    }
+    
+    YardInvType temp;
+    try {
+        temp = wxGetApp().DB().InventoryGet(m_lookup[id]);
+    }
+    catch (YardDBException& e)
+    {
+        wxLogDebug(wxT("Error (item not loaded): %s, %s"),e.what(), e.GetSQL().c_str());
+        return;
+    }
+      
+    m_items.push_back(temp);
+ 
+    m_list->InsertItem(0, temp.GetName().c_str(), 0);
+    m_list->SetItemData(0, temp.GetKey());
+    m_list->SetItem(0, 1, "1");
+    m_list->SetItem(0, 2, temp.GetRetailPriceS().c_str());
+   
+    m_list->SetColumnWidth( 0, wxLIST_AUTOSIZE );
+    m_list->SetColumnWidth( 1, wxLIST_AUTOSIZE );
+    m_list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
+     
+    // calc total
+    double total = 0;
+    double tax = 0;
+    for (int i = 0; i < m_items.size(); i++)
+    {
+        total += m_items[i].GetRetailPrice();
+        long taxid = m_items[i].GetTaxType();
+        tax += m_taxCache[taxid] * m_items[i].GetRetailPrice();
+    }
+    
+    m_subTotal->SetLabel(XMLNode::ToStr(total, 2).c_str());
+    m_tax->SetLabel(XMLNode::ToStr(tax, 2).c_str()); 
+    m_total->SetLabel(XMLNode::ToStr(total + tax, 2).c_str()); 
+    
+}
+
+void YardSaleScreen::BuildNotebook(wxNotebook * nb)
+{
+    vector<YardGroup> groups;
+    
+    try {
+        groups = wxGetApp().DB().GroupGetAll();
+    }
+    catch (YardDBException& e)
+    {
+        wxLogDebug(wxT("Error (grp load): %s, %s"),e.what(), e.GetSQL().c_str());
+        return;
+    }
+    
+    long id = START_BUTTON_ID;
+    
+    for (unsigned int i = 0; i < groups.size(); i++)
+    {
+        wxPanel * panel = new wxPanel(nb);
+        wxFlexGridSizer *sizer = new wxFlexGridSizer( 3, 0, 0 );
+                
+        vector<YardInvType> items;
+        try {
+            items = wxGetApp().DB().InventoryGetInGroup(groups[i].GetId());
+        }
+        catch (YardDBException& e)            
+        {
+            wxLogDebug(wxT("Error (item load): %s, %s"),e.what(), e.GetSQL().c_str());
+            return;
+        }
+        for (int k = 0; k < items.size(); k++)
+        {
+            wxLogDebug(wxT("Adding item %s, %d"), items[k].GetType().c_str(), items[k].GetKey());
+
+            m_lookup[id] = items[k].GetKey();
+            wxButton * button = new wxButton(panel, id++ , items[k].GetName().c_str());
+            wxSize size = button->GetSize();
+            
+            size.SetHeight(SALE_BUTTON_HEIGHT);
+            button->SetSize(size);
+            button->SetBackgroundColour(*wxBLUE);
+            sizer->Add(button,  0, wxALIGN_CENTER|wxALL, 5);
+            
+        }
+        panel->SetAutoLayout( TRUE );
+        panel->SetSizer(sizer);
+        nb->AddPage(panel, groups[i].GetName().c_str());
+    }
+    
     
 }
 
@@ -104,120 +204,13 @@ void YardSaleScreen::OnRemove(wxCommandEvent& event)
 void YardSaleScreen::OnCheckout(wxCommandEvent& event)
 {
     wxLogDebug(wxT("OnCheckout"));
-}
-
-void YardSaleScreen::CreateImageList(wxTreeCtrl * tree)
-{
-    #if 0
- 	// Make an image list containing small icons
-    wxImageList *images = new wxImageList(32, 32, true);
-
-    wxIcon icons[4];
-	
-    icons[0] = wxIcon(sprocket_32x32_xpm);
-    icons[1] = wxIcon(paperclip_32x32_xpm);
-    icons[2] = wxIcon(package_32x32_xpm);
-    icons[3] = wxIcon(electronics_32x32_xpm);
-	
-    for ( size_t i = 0; i < WXSIZEOF(icons); i++ )
-    { 
-		images->Add(wxBitmap(icons[i]));
-    }
-
-    tree->AssignImageList(images);
-    m_list->SetImageList(images,wxIMAGE_LIST_SMALL); // the list wont delete them
-    #endif
-}
-
-void YardSaleScreen::LoadTreeItems(wxTreeCtrl * tree)
-{
-    #if 0
-    tree->SetWindowStyleFlag(wxTR_NO_LINES | wxTR_HIDE_ROOT | wxTR_FULL_ROW_HIGHLIGHT);
-    tree->AddRoot(wxT("Root"));
-    tree->SetIndent(10);
-	tree->SetSpacing(3);
-    // load groups first
-    
-    vector<YardGroup> groups;
-    
-    try {
-        groups = wxGetApp().DB().GroupGetAll();
-    }
-    catch (YardDBException& e)
+    YardCheckout * co = new YardCheckout(this, -1, wxT("Checkout"));
+    if (co->ShowModal() == 0)
     {
-        wxLogDebug(wxT("Error (grp load): %s, %s"),e.what(), e.GetSQL().c_str());
-        return;
+        co->Destroy();
+        Close();
     }
-    
-    for (unsigned int i = 0; i < groups.size(); i++)
-    {
-        wxTreeItemId groupid = tree->AppendItem(tree->GetRootItem(),
-            groups[i].GetName().c_str(), 2,2,new invItemData(-1));
-        
-        vector<YardInvType> items;
-        try {
-            items = wxGetApp().DB().InventoryGetInGroup(groups[i].GetId());
-        }
-        catch (YardDBException& e)            
-        {
-            wxLogDebug(wxT("Error (item load): %s, %s"),e.what(), e.GetSQL().c_str());
-            return;
-        }
-        for (int k = 0; k < items.size(); k++)
-        {
-            //wxLogDebug(wxT("Adding item %s, %d"), items[k].GetType().c_str(), items[k].GetKey());
-            int img = items[k].GetGroupId() %  4;
-            tree->AppendItem(groupid, items[k].GetName().c_str(), img, img,
-                new invItemData(items[k].GetKey()));
-        }
-    }
-    #endif
-}
-
-void YardSaleScreen::OnChange(wxTreeEvent& event)
-{/*
-    invItemData * data = static_cast<invItemData *>(m_tree->GetItemData(event.GetItem()));
-
-    if (!data)
-        return;
-    
-    if (data->GetID() == -1)
-    {
-        if (m_tree->IsExpanded(event.GetItem()))
-            m_tree->Collapse(event.GetItem());
-        else
-            m_tree->Expand(event.GetItem());
-        return;
-    }
-    
-    YardInvType temp;
-    try {
-        temp = wxGetApp().DB().InventoryGet(data->GetID());
-    }
-    catch (YardDBException& e)
-    {
-        wxLogDebug(wxT("Error (item not loaded): %s, %s"),e.what(), e.GetSQL().c_str());
-        return;
-    }
-    
-    //wxLogDebug(string(temp).c_str());
-    
-    m_items.push_back(temp);
- 
-    m_list->InsertItem(0, temp.GetName().c_str(), 0);
-    m_list->SetItemData(0, temp.GetKey());
-    m_list->SetItem(0, 1, "1");
-    m_list->SetItem(0, 2, temp.GetRetailPriceS().c_str());
-    
-    // calc total
-    double total = 0;
-    for (int i = 0; i < m_items.size(); i++)
-    {
-        total += m_items[i].GetRetailPrice();
-    }
-    
-    m_list->SetItem(m_list->GetItemCount() - 1, 2, XMLNode::ToStr(total, 2).c_str());
-   */
+    co->Destroy();
 }
 
 YardSaleScreen::~YardSaleScreen()

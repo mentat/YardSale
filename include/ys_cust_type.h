@@ -19,6 +19,7 @@
 #ifndef YS_CUSTOMER_TYPE_H
 #define YS_CUSTOMER_TYPE_H
 
+#include "ys_date.h"
 #include "xmlnode.h"
 #include <vector>
 #include <string>
@@ -35,6 +36,8 @@ class YardCustType: public XMLNode
       
     YardCustType() { setName("Customer_Table"); }
     YardCustType(const string& xml): XMLNode(xml, Str) {}
+        
+    static const char * GetUnique() { return "CUST_Account_Number"; }
     
     /* Getters */
     
@@ -83,6 +86,13 @@ class YardCustType: public XMLNode
     /// Get Customer Photo
     string GetPicLocal() const
         { return child("CUST_Photo").data(); }
+    YardDate GetSince() const
+        { return YardDate(child("CUST_Since_Date")); }
+        
+    string GetHashS() const
+        { return child("CUST_HASH").data(); }
+    long GetHash() const
+        { return ToLong(GetHashS()); }
       
     /* setters */
   
@@ -126,6 +136,14 @@ class YardCustType: public XMLNode
         { child("CUST_Signature").setData(str); }
     void SetPicture(const string& str)
         { child("CUST_Photo").setData(str); }
+        
+    void SetSince(YardDate& date)
+        {   date.setName("CUST_Since_Date");
+            child("CUST_Since_Date") = date;
+        }
+        
+    void SetHash(long hash)
+        { child("CUST_HASH").setData(ToStr(hash)); }
     /**
      * Returns string representation of the datatype.
      * @param delim The string to delimit items in database

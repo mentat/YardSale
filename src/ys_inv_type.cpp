@@ -21,6 +21,7 @@ string YardInvType::ToString(const string& delim, bool quotes) const {
     char q = '\'';
     stringstream output;
     output << GetKey() << delim 
+        << q << GetName() << q << delim
         << q << GetSKU() << q << delim 
         << q << GetBarCode() << q << delim 
         << q << GetDescription() << q << delim 

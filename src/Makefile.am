@@ -1,10 +1,7 @@
 ## the hell with autocon
-INCLUDES = $(INCLUDES)  -I../include
 SUBDIRS = extra res tests
 
 BUILDID = `cat build.id`
-
-#CXXFLAGS = $(WX_CXXFLAGS) 
 
 all:
 	perl build.pl
@@ -49,9 +46,11 @@ yardsale_SOURCES = \
 	ys_group.cpp\
 	ys_customer.cpp\
 	ys_reports.cpp\
-	ys_about_gl.cpp
+	ys_about_gl.cpp\
+	ys_checkout.cpp
 
 
+INCLUDES = -I../include
 yardsale_LDFLAGS =
 
 yardsale_LDADD =  \

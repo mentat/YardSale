@@ -19,14 +19,14 @@
 #ifndef YS_SHIPPING_TYPE_H
 #define YS_SHIPPING_TYPE_H
 
-#include "ys_dbtype.h"
+#include "xmlnode.h"
+#include "ys_build.h"
 #include <vector>
 #include <string>
 
 using namespace std;
 
 class YardDatabase;
-class otl_stream;
 
 /**
  * The YardSale Shipping Type is a OO representation of the datebase
@@ -36,65 +36,57 @@ class otl_stream;
  * @ingroup database 
  * @see YardShipType
  * @author Michael Swigon	
- * @version \$Revision: 1.3 $$
- * @see YardDBType
+ * @version \$Revision: 1.4 $$
+ * @see XMLNode
  */
 
-class YardShipType: public YardDBType
+class YardShipType: public XMLNode
 {
  public:
    
     friend class YardDatabase;
 
-	  
-    YardShipType() {}
+    YardShipType(const string& xml): XMLNode(xml, Str) {}    
+    YardShipType(): XMLNode() { setName("Shipping_Table"); }
     
-    /**
-     * Copy constructor
-     */
-    YardShipType(const YardShipType& obj);
-    
-    YardShipType& operator=(const YardShipType& obj);
-
+    const char * GetUnique() const { return "SHP_Type"; }
 	/* gettors */
 
 	/// Get shipping type
-    string GetShipType() const { return m_shipType; }
+    string GetShipType() const 
+    { return child("SHP_Type").data(); }
 	/// Get carrier id
-	int GetCarrierID() const { return m_carrierID; }
+    string GetCarrierIdS() const
+    { return child("SHP_REF_CRR_ID").data(); }
+	long GetCarrierId() const 
+    { return ToLong(GetCarrierIdS()); }
 	/// Get shipping cost
-	float GetCost() const { return m_cost; }
+    string GetCostS() const
+    { return child("SHP_Cost").data(); }
+	double GetCost() const 
+    { return ToDouble(GetCostS()); }
 	/// Get enabled flag
-	int GetEnabled() const { return m_enabled; }
+	bool GetEnabled() const 
+    { return (GetEnabledS() == "0") ? false : true; }
+    string GetEnabledS() const 
+    { return child("SHP_Enabled").data(); }
 
 	/* settors */
 
 	/// Set the shipping type
-	void SetShipType(const string& str) { m_shipType = str; }
+	void SetShipType(const string& str) 
+    { child("SHP_Type").setData(str); }
 	/// Set the carrier id
-	void SetCarrierID(const int num) { m_carrierID = num; }
+	void SetCarrierID(long num) 
+    { child("SHP_REF_CRR_ID").setData(ToStr(num)); }
 	/// Set the shipping cost
-	void SetCost(const float num) { m_cost = num; }
+	void SetCost(double num) 
+    { child("SHP_Cost").setData(ToStr(num, YS_DEFAULT_MONEY_PRECISION)); }
 	/// Set enabled flag
-	void SetEnabled(const int flag) { m_enabled = flag; }
+	void SetEnabled(bool flag) 
+    { (flag) ? child("SHP_Enabled").setData("1") : child("SHP_Enabled").setData("0"); }
 
-
-	/**
-     * Returns string representation of the datatype.
-     * @param delim The string to delimit items in database
-     * @return A string representation of the object
-     */
     virtual string ToString(const string& delim = ",") const;
-    
-    virtual void FillFromStream(otl_stream * stream);
-   
- private:
-    
-    /* These variables directly correspond with the database */
-    string m_shipType;
-    int m_carrierID;
-	float m_cost;
-	int m_enabled;
 
 };
 

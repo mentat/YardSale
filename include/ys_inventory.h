@@ -39,7 +39,7 @@ class wxTreeEvent;
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.20 $$
+ * @version \$Revision: 1.21 $$
  */
 class YardInventory: public wxDialog{
  public:
@@ -77,6 +77,11 @@ class YardInventory: public wxDialog{
      */
     void OnSelect(wxListEvent & event);
     
+    void OnEditVendor(wxCommandEvent& event);
+    void OnEditDepts(wxCommandEvent& event);
+    void OnEditGroups(wxCommandEvent& event);
+    void OnEditTax(wxCommandEvent& event);
+    
     void OnChange(wxTreeEvent& event);
     
  private:
@@ -102,21 +107,15 @@ class YardInventory: public wxDialog{
     wxTextCtrl * m_det_desc;
     wxTextCtrl * m_det_barcode;
     wxComboBox * m_det_dept;
-    wxBitmapButton * m_dep_dept_edit;
     wxComboBox * m_dep_group;
-    wxBitmapButton * m_dep_group_edit;
     wxStaticBitmap * m_dep_image;
     wxComboBox * m_dep_vendor;
-    wxBitmapButton * m_dep_vendor_edit;
     
     // pricing
     wxTextCtrl * m_price_retail;
     wxTextCtrl * m_price_wholesale;
     wxListCtrl * m_price_bulk;
-    wxButton * m_price_bulk_add;
-    wxButton * m_price_bulk_rm;
     wxComboBox * m_price_tax;
-    wxBitmapButton * m_price_tax_edit;
     
     wxTextCtrl * m_ship_weight;
     wxTextCtrl * m_ship_date_rec;

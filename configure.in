@@ -89,6 +89,12 @@ CXXFLAGS="$WX_CXXFLAGS"
 dnl normal linking mode is fully dynamic
 GUI_LIBS="$WX_LIBS"
 
+AC_ARG_WITH(optimize,
+	[  --with-optimize         Build YardSale optimized.], [
+	echo "Building optimized..."
+	CXXFLAGS="$CXXFLAGS -O3"
+	CFLAGS="$CFLAGS -O3"])
+
 AC_ARG_WITH(static,
 	[  --with-static           Build YardSale static.], [
 	echo "Building YardSale statically..."

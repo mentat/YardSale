@@ -1,4 +1,3 @@
-
 #ifndef SKUNK_NEW_EMPLOY_H
 #define SKUNK_NEW_EMPLOY_H
 #include <string>
