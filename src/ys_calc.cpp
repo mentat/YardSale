@@ -131,23 +131,29 @@ void YardCalc::OnNumber(wxCommandEvent & event)
     wxChar ch;
 	wxString m_tempstring;
 	CalcInstance m_tempstackinstance;
-#if 0
-	switch (event.GetId()) {
-        case (XRCID("ID_CALC_1")): ch = '1'; break;
-        case (XRCID("ID_CALC_2")): ch = '2'; break;
-        case (XRCID("ID_CALC_3")): ch = '3'; break;
-        case (XRCID("ID_CALC_4")): ch = '4'; break;
-        case (XRCID("ID_CALC_5")): ch = '5'; break;
-        case (XRCID("ID_CALC_6")): ch = '6'; break;
-        case (XRCID("ID_CALC_7")): ch = '7'; break;
-        case (XRCID("ID_CALC_8")): ch = '8'; break;
-        case (XRCID("ID_CALC_9")): ch = '9'; break;
-        case (XRCID("ID_CALC_0")): ch = '0'; break;
-        case (XRCID("ID_CALC_DOT")): ch = '.'; break;
-   
-   	default: wxLogError(wxT("Should not see me")); return;
-    }
-#endif   
+
+    if (event.GetId() == XRCID("ID_CALC_1"))
+        ch = '1';
+     if (event.GetId() == XRCID("ID_CALC_2"))
+        ch = '2';
+      if (event.GetId() == XRCID("ID_CALC_3"))
+        ch = '3';
+       if (event.GetId() == XRCID("ID_CALC_4"))
+        ch = '4';
+        if (event.GetId() == XRCID("ID_CALC_5"))
+        ch = '5';
+         if (event.GetId() == XRCID("ID_CALC_6"))
+        ch = '6';
+         if (event.GetId() == XRCID("ID_CALC_7"))
+        ch = '7'; 
+         if (event.GetId() == XRCID("ID_CALC_8"))
+        ch = '8'; 
+         if (event.GetId() == XRCID("ID_CALC_9"))
+        ch = '9'; 
+         if (event.GetId() == XRCID("ID_CALC_0"))
+        ch = '0'; 
+         if (event.GetId() == XRCID("ID_CALC_DOT"))
+        ch = '.';  
     //check to see if we need to clear the screen
     //aka, we just previously hit an operator
    // if (!m_calcstack.top().m_isNumber)
@@ -213,6 +219,12 @@ void YardCalc::EvaluateStack(){
 
 void YardCalc::ClearScreen(){
     m_screen->SetValue("");
+}
+
+//need to have this function actually push onto the stack?
+void YardCalc::SetCalcContents(double contents){
+    m_screen->SetValue(DoubleToString(contents));
+    //do more stuff here
 }
 
 wxString YardCalc::DoubleToString(double num){
