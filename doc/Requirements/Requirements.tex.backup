@@ -1,4 +1,4 @@
-\documentclass{book}
+ls\documentclass{book}
 
 
 %opening
@@ -91,14 +91,32 @@ YardSale has three different levels of user interactivity. There are Managers, S
 
 \subsubsection{Sales Associate Functionality}
 
+Sales associates are likely going to be the primary users of the YardSale system. However they will have a limited set of functionality when they login. Their privileges will be limited to basic customer management and transaction processing. They have no real need for full inventory capabilities nor do they need the ability to manage or browse employee information.
+
+When a sales associate logs into YardSale they will see the following options:
+
+\begin{itemize}
+\item Transaction Processing
+\item Customer Management
+\end{itemize}
 
 \subsubsection{Manager Functionality}
 
 The managers primary function in YardSale is to make sure that all of the inventory items, customers, and employees are correctly maintained. They are also the only primary user on the system allowed to run reporting functions.
 
-When a manager logs in to YardSale they will be
+When a manager logs in to YardSale they will have a full set of functionality available to them from the main screen inclusive of the following:
+
+\begin{itemize}
+\item Inventory Management
+\item Transaction Processing
+\item Customer Management
+\item Employee Management
+\item Reporting
+\end{itemize}
 
 \subsubsection{Administrative Functionality}
+
+\section{Non Functional Requirements}
 
 \section{External Dependencies and Interfaces}
 

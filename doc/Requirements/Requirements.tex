@@ -1,6 +1,8 @@
 \documentclass{book}
 
 
+\usepackage{graphics}
+
 %opening
 \title{}
 \author{}
@@ -91,6 +93,14 @@ YardSale has three different levels of user interactivity. There are Managers, S
 
 \subsubsection{Sales Associate Functionality}
 
+Sales associates are likely going to be the primary users of the YardSale system. However they will have a limited set of functionality when they login. Their privileges will be limited to basic customer management and transaction processing. They have no real need for full inventory capabilities nor do they need the ability to manage or browse employee information.
+
+When a sales associate logs into YardSale they will see the following options:
+
+\begin{itemize}
+\item Transaction Processing
+\item Customer Management
+\end{itemize}
 
 \subsubsection{Manager Functionality}
 
@@ -100,10 +110,19 @@ When a manager logs in to YardSale they will have a full set of functionality av
 
 \begin{itemize}
 \item Inventory Management
-\item
-\end{itemize} 
+\item Transaction Processing
+\item Customer Management
+\item Employee Management
+\item Reporting
+\end{itemize}
 
 \subsubsection{Administrative Functionality}
+
+The administrative user is basically a built in manager user. This user will have full rights to the system and the password will be able to unlock other accounts in the system that are locked due to loss of password. The administrative user will likely never be used in day to day use of YardSale, however it is provided as a safety to always allow the access of encrypted data in case of total loss of management capability.
+
+\section{Non Functional Requirements}
+
+The main non functional requirements for YardSale are its ability to run on any Operating System or Architecture.
 
 \section{External Dependencies and Interfaces}
 
@@ -123,6 +142,7 @@ When a manager logs in to YardSale they will have a full set of functionality av
 
 \subsection{Team Member Roles and Responsibilities}
 
+\include{ASLS_Organization.pdf}
 
 \chapter*{Design}
 
