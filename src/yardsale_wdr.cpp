@@ -953,7 +953,7 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
     wxFlexGridSizer *item2 = new wxFlexGridSizer( 10, 0, 0 );
 
     wxButton *item3 = new wxButton( parent, ID_KBD_1, wxT("1"), wxDefaultPosition, wxSize(32,32), 0 );
-    item3->SetFont( wxFont( 30, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item3->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item3, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item4 = new wxButton( parent, ID_KBD_2, wxT("2"), wxDefaultPosition, wxSize(32,32), 0 );
