@@ -24,7 +24,7 @@
  * graphical buttons for accessing the inventory, employees, sales,
  * etc.
  * @author Jesse Lovelace
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 class YardMain: public wxFrame {
     public:
@@ -35,7 +35,8 @@ class YardMain: public wxFrame {
     YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER|wxFRAME_NO_TASKBAR);
+               long style = wxRESIZE_BORDER|wxFRAME_NO_TASKBAR, 
+               const wxString& name = wxT("YardMain"));
         
     virtual ~YardMain();
     

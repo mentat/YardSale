@@ -21,6 +21,12 @@
 
 #ifndef YS_CALC_H
 #define YS_CALC_H
+
+#include <stack>
+#include "wx/panel.h"
+
+class wxTextCtrl;
+
 /**
 *	The calculator dialog. It is a generic on-screen calculator the user employs to enter prices.
 *		This calculator uses a stack-based method of storing numbers and operators. The basic way this works is:
@@ -32,8 +38,6 @@
 * @author Jay Johnston
 *
 */
-#include <stack>
-
 class YardCalc: public wxPanel {
  public:
      

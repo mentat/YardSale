@@ -34,7 +34,7 @@ class YardEmployee: public wxFrame
     YardEmployee(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER);
+               long style = wxRESIZE_BORDER, const wxString& name = wxT("YardEmployee"));
     
     virtual ~YardEmployee();
 

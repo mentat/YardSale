@@ -25,8 +25,8 @@ END_EVENT_TABLE()
 DECLARE_APP(YardSale)
 
 YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
-                   const wxPoint& pos, const wxSize& size, long style)
-:wxFrame(parent, id, title, pos, size, style), m_max(false) {
+                   const wxPoint& pos, const wxSize& size, long style, const wxString& name)
+:wxFrame(parent, id, title, pos, size, style, name), m_max(false) {
     
     m_inventory = 0;
     SetMenuBar(MainBar());

@@ -26,7 +26,7 @@ class wxListCtrl;
 /**
  * The inventory screen.
  * @author Jesse Lovelace
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 class YardInventory: public wxFrame{
  public:
@@ -37,7 +37,8 @@ class YardInventory: public wxFrame{
     YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER|wxTAB_TRAVERSAL);
+               long style = wxRESIZE_BORDER|wxTAB_TRAVERSAL,
+               const wxString& name = wxT("YardInventory"));
     
     /// Destructor
     virtual ~YardInventory();

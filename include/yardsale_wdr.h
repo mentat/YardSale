@@ -52,95 +52,102 @@ wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE
 #define ID_INV_ITEMNAME 10015
 #define ID_INV_PRICE 10016
 #define ID_INV_DESC 10017
-#define ID_INV_WHOLESALE 10018
-#define ID_INV_NEW 10019
-#define ID_INV_SEARCH 10020
-#define ID_LINE 10021
-#define ID_INV_LIST 10022
+#define ID_INV_OVERSIZE 10018
+#define ID_INV_FRIEGHT 10019
+#define ID_INV_WHOLESALE 10020
+#define ID_INV_NEW 10021
+#define ID_INV_SEARCH 10022
+#define ID_INV_CLEAR 10023
+#define ID_LINE 10024
+#define ID_INV_SAVE 10025
+#define ID_INV_CANCEL 10026
+#define ID_INV_CLEAR_RESULTS 10027
+#define ID_INV_LIST 10028
+#define ID_PANEL 10029
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_MAIN_LOGO 10023
-#define ID_PANEL 10024
+#define ID_MAIN_LOGO 10030
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_BUTTON 10025
-#define ID_SALE_DONE 10026
-#define ID_SALE_REMOVE 10027
-#define ID_SALE_CANCEL 10028
-#define ID_SALE_BACK 10029
-#define ID_SALE_CALC 10030
-#define ID_SALE_TRANS 10031
+#define ID_BUTTON 10031
+#define ID_SALE_DONE 10032
+#define ID_SALE_REMOVE 10033
+#define ID_SALE_CANCEL 10034
+#define ID_SALE_BACK 10035
+#define ID_SALE_CALC 10036
+#define ID_SALE_TRANS 10037
 wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_CALC_SCREEN 10032
-#define ID_CALC_1 10033
-#define ID_CALC_2 10034
-#define ID_CALC_3 10035
-#define ID_CALC_PLUS 10036
-#define ID_CALC_4 10037
-#define ID_CALC_5 10038
-#define ID_CALC_6 10039
-#define ID_CALC_MINUS 10040
-#define ID_CALC_7 10041
-#define ID_CALC_8 10042
-#define ID_CALC_9 10043
-#define ID_CALC_EQUALS 10044
-#define ID_CALC_CLEAR 10045
-#define ID_CALC_0 10046
-#define ID_CALC_DOT 10047
+#define ID_CALC_SCREEN 10038
+#define ID_CALC_1 10039
+#define ID_CALC_2 10040
+#define ID_CALC_3 10041
+#define ID_CALC_PLUS 10042
+#define ID_CALC_4 10043
+#define ID_CALC_5 10044
+#define ID_CALC_6 10045
+#define ID_CALC_MINUS 10046
+#define ID_CALC_7 10047
+#define ID_CALC_8 10048
+#define ID_CALC_9 10049
+#define ID_CALC_EQUALS 10050
+#define ID_CALC_CLEAR 10051
+#define ID_CALC_0 10052
+#define ID_CALC_DOT 10053
 wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_EMPLOY_TREE 10048
-#define ID_EMPLOY_PICTURE 10049
-#define ID_EMPLOY_HIRE 10050
-#define ID_EMPLOY_POSITION 10051
-#define ID_EMPLOY_FIRST 10052
-#define ID_EMPLOY_ID 10053
-#define ID_EMPLOY_MIDDLE 10054
-#define ID_EMPLOY_TAX_ID 10055
-#define ID_EMPLOY_LAST 10056
-#define ID_EMPLOY_PHONE 10057
-#define ID_EMPLOY_ADDRESS 10058
+#define ID_EMPLOY_TREE 10054
+#define ID_EMPLOY_PICTURE 10055
+#define ID_EMPLOY_HIRE 10056
+#define ID_EMPLOY_POSITION 10057
+#define ID_EMPLOY_FIRST 10058
+#define ID_EMPLOY_ID 10059
+#define ID_EMPLOY_MIDDLE 10060
+#define ID_EMPLOY_TAX_ID 10061
+#define ID_EMPLOY_LAST 10062
+#define ID_EMPLOY_PHONE 10063
+#define ID_EMPLOY_ADDRESS 10064
 wxSizer *Employee( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_DEBUG_LOG 10059
-#define ID_DEBUG_SQL 10060
-#define ID_DEBUG_DB_CONNECT 10061
-#define ID_DEBUG_DB_DISC 10062
-#define ID_DEBUG_USER 10063
-#define ID_DEBUG_DSN 10064
-#define ID_DEBUG_PASS 10065
+#define ID_DEBUG_LOG 10065
+#define ID_DEBUG_SQL 10066
+#define ID_DEBUG_DB_CONNECT 10067
+#define ID_DEBUG_DB_DISC 10068
+#define ID_DEBUG_USER 10069
+#define ID_DEBUG_DSN 10070
+#define ID_DEBUG_PASS 10071
 wxSizer *DebugScreen( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_FOOTER_CALC 10066
-#define ID_FOOTER_KEY 10067
-#define ID_FOOTER_TIME 10068
-#define ID_FOOTER_UNDO 10069
+#define ID_FOOTER_BACK 10072
+#define ID_FOOTER_CALC 10073
+#define ID_FOOTER_KEY 10074
+#define ID_FOOTER_TIME 10075
+#define ID_FOOTER_UNDO 10076
 wxSizer *InfoFooter( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_NOTEBOOK 10070
-#define ID_CONFIG_SAVE 10071
-#define ID_CONFIG_CANCEL 10072
+#define ID_NOTEBOOK 10077
+#define ID_CONFIG_SAVE 10078
+#define ID_CONFIG_CANCEL 10079
 wxSizer *Config( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_CONFIG_DB_USER 10073
-#define ID_CONFIG_DB_PWORD 10074
-#define ID_CONFIG_DB_TYPE 10075
-#define ID_CONFIG_DB_DRIVER 10076
-#define ID_CONFIG_DB_BROWSE 10077
-#define ID_CONFIG_DB_DSN 10078
-#define ID_CONFIG_DB_SERVER 10079
-#define ID_CONFIG_DB_PORT 10080
+#define ID_CONFIG_DB_USER 10080
+#define ID_CONFIG_DB_PWORD 10081
+#define ID_CONFIG_DB_TYPE 10082
+#define ID_CONFIG_DB_DRIVER 10083
+#define ID_CONFIG_DB_BROWSE 10084
+#define ID_CONFIG_DB_DSN 10085
+#define ID_CONFIG_DB_SERVER 10086
+#define ID_CONFIG_DB_PORT 10087
 wxSizer *ConfigDB( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions
 
-#define ID_MENU 10081
-#define ID_MAIN_MENU_CONFIG 10082
+#define ID_MENU 10088
+#define ID_MAIN_MENU_CONFIG 10089
 wxMenuBar *MainBar();
 
-#define ID_CONFIG_DELETE 10083
-#define ID_CONFIG_EXIT 10084
+#define ID_CONFIG_DELETE 10090
+#define ID_CONFIG_EXIT 10091
 wxMenuBar *ConfigBar();
 
 // Declare toolbar functions

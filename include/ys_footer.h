@@ -19,6 +19,8 @@ class YardFooter: public wxPanel {
  
     void OnCalc(wxCommandEvent& event);
     void OnKeyboard(wxCommandEvent & event);
+    void OnBack(wxCommandEvent& event);
+    void OnUndo(wxCommandEvent& event);
  
  private:
      

@@ -90,7 +90,7 @@ void YardLog::DoLog(wxLogLevel level, const wxChar *szString, time_t t)
     string_type = wxT("Status");
     break;
   case wxLOG_Debug:
-    image = 2;
+    image = 1;
     string_type = wxT("Debug");
     break;
   case wxLOG_Trace:
@@ -106,7 +106,7 @@ void YardLog::DoLog(wxLogLevel level, const wxChar *szString, time_t t)
     string_type = wxT("Console");
     break;
   case wxLOG_DB:
-    image = 2;
+    image = 3;
     string_type = wxT("Database");
     break;
   case wxLOG_SQL: 
