@@ -35,24 +35,29 @@
 \contentsline {subsection}{\numberline {2.1.1}Customer Management}{12}
 \contentsline {subsection}{\numberline {2.1.2}Inventory Management}{13}
 \contentsline {subsection}{\numberline {2.1.3}Transaction Handling}{14}
-\contentsline {subsection}{\numberline {2.1.4}Employee Management}{16}
-\contentsline {subsubsection}{Security}{17}
-\contentsline {section}{\numberline {2.2}YardSale Client Application Design}{19}
-\contentsline {chapter}{\numberline {3}Implementation}{22}
-\contentsline {section}{\numberline {3.1}Database Level Implementation}{22}
-\contentsline {section}{\numberline {3.2}Application Level Implementation}{22}
-\contentsline {subsection}{\numberline {3.2.1}YardCalc}{22}
-\contentsline {subsection}{\numberline {3.2.2}YardDatabase}{22}
-\contentsline {subsection}{\numberline {3.2.3}YardDBType}{22}
-\contentsline {subsubsection}{YardEmployeeType}{22}
-\contentsline {subsubsection}{YardInvType}{22}
-\contentsline {subsection}{\numberline {3.2.4}YardEmployee}{22}
-\contentsline {subsection}{\numberline {3.2.5}YardInventory}{22}
-\contentsline {subsection}{\numberline {3.2.6}YardException}{22}
-\contentsline {subsection}{\numberline {3.2.7}YardLog}{22}
-\contentsline {subsection}{\numberline {3.2.8}YardLogin}{22}
-\contentsline {subsection}{\numberline {3.2.9}YardMain}{22}
-\contentsline {subsection}{\numberline {3.2.10}YardSale}{22}
-\contentsline {subsection}{\numberline {3.2.11}YardSaleScreen}{22}
-\contentsline {subsection}{\numberline {3.2.12}YardSplash}{22}
-\contentsline {chapter}{\numberline {4}Test Plan}{23}
+\contentsline {subsection}{\numberline {2.1.4}Employee Management}{15}
+\contentsline {subsubsection}{Security}{15}
+\contentsline {section}{\numberline {2.2}YardSale Client Application Design}{17}
+\contentsline {chapter}{\numberline {3}Implementation}{20}
+\contentsline {section}{\numberline {3.1}Database Level Implementation}{20}
+\contentsline {section}{\numberline {3.2}Application Level Implementation}{20}
+\contentsline {subsection}{\numberline {3.2.1}YardCalc}{20}
+\contentsline {subsection}{\numberline {3.2.2}YardDatabase}{20}
+\contentsline {subsection}{\numberline {3.2.3}YardDBType}{20}
+\contentsline {subsubsection}{YardEmployeeType}{20}
+\contentsline {subsubsection}{YardInvType}{20}
+\contentsline {subsection}{\numberline {3.2.4}YardEmployee}{20}
+\contentsline {subsection}{\numberline {3.2.5}YardInventory}{20}
+\contentsline {subsection}{\numberline {3.2.6}YardException}{20}
+\contentsline {subsection}{\numberline {3.2.7}YardLog}{20}
+\contentsline {subsection}{\numberline {3.2.8}YardLogin}{20}
+\contentsline {subsection}{\numberline {3.2.9}YardMain}{20}
+\contentsline {subsection}{\numberline {3.2.10}YardSale}{20}
+\contentsline {subsection}{\numberline {3.2.11}YardSaleScreen}{20}
+\contentsline {subsection}{\numberline {3.2.12}YardSplash}{20}
+\contentsline {chapter}{\numberline {4}Test Plan}{21}
+\contentsline {section}{\numberline {4.1}Passive Testing}{21}
+\contentsline {section}{\numberline {4.2}Active Testing}{21}
+\contentsline {subsection}{\numberline {4.2.1}Testing Mains}{21}
+\contentsline {subsection}{\numberline {4.2.2}Warm-Body Testing}{21}
+\contentsline {subsection}{\numberline {4.2.3}Verbose Program Information}{21}
