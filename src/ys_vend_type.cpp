@@ -33,6 +33,38 @@ using namespace std;
 
 int main()
 {
+    YardVendType test1;
+    
+    test1.SetName("ACME");
+    VERIFY(test1.GetName(), string("ACME"));    
+
+    test1.SetAddress("29 Lynwood");
+    VERIFY(test1.GetAddress(), string("29 Lynwood"));
+    
+    test1.SetCity("A-Town");
+    VERIFY(test1.GetCity(), string("A-Town"));
+    
+    test1.SetState("NC"); 
+    VERIFY(test1.GetState(), string("NC"));
+    
+    test1.SetZip("27777");
+    VERIFY(test1.GetZip(), string("27777"));
+    
+    test1.SetPhone("919-999-8888");
+    VERIFY(test1.GetPhone(), string("919-999-8888"));
+    
+    test1.SetSalesRep("Bob");
+    VERIFY(test1.GetSalesRep(), string("Bob"));
+
+    test1.SetSpecialty("Pics");
+    VERIFY(test1.GetSpecialty(), string("Pics"));
+    
+    test1.SetEmail("acme@hotmail.com");
+    VERIFY(test1.GetEmail(), string("acme@hotmail.com"));
+    
+    test1.SetHomePage("http://yardsale.sf.net");
+    VERIFY(test1.GetHomePage(), string("http://yardsale.sf.net"));    
+    
     return failure;
 }
 

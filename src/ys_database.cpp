@@ -609,6 +609,7 @@ int TaxTest(YardDatabase * db)
 int VendorTest(YardDatabase * db)
 {
     YardVendType test1;
+    test1.
     
     long key = 0;
     VERIFY_NO_THROW(key = db->VendorAdd(test1));

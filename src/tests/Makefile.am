@@ -1,9 +1,9 @@
 INCLUDES = -I../../include
 CXXFLAGS = -g $(WX_CXXFLAGS) -ansi 
 
-EXTRA_PROGRAMS = test_emp test_db test_inv test_cust test_trans test_carr test_grp
+EXTRA_PROGRAMS = test_emp test_db test_inv test_cust test_trans test_carr test_grp test_vend
 
-TESTS = test_db test_inv test_emp test_cust test_trans test_carr test_grp
+TESTS = test_db test_inv test_emp test_cust test_trans test_carr test_grp test_vend
 
 test_db_SOURCES = ../ys_database.cpp ../ys_inv_type.cpp ../ys_log.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp \
 	../ys_date.cpp ../ys_employee_type.cpp
@@ -30,7 +30,11 @@ test_carr_SOURCES = ../ys_carrier_type.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpa
 test_carr_LDADD = -lodbc -lexpat $(WX_LIBS)
 test_carr_CXXFLAGS = -DYS_TEST_CARR_TYPE
 
-test_grp_SOURCES = ../ys_group.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp ../ys_date.cpp
+test_grp_SOURCES = ../ys_group.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp
 test_grp_LDADD = -lodbc -lexpat $(WX_LIBS)
 test_grp_CXXFLAGS = -DYS_TEST_GROUP_TYPE
+
+test_vend_SOURCES = ../ys_vend_type.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp 
+test_vend_LDADD = -lodbc -lexpat $(WX_LIBS)
+test_vend_CXXFLAGS = -DYS_TEST_VEND_TYPE
 

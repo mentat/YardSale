@@ -133,7 +133,7 @@ class YardDatabase {
     
     /*-----------Customers----------------*/
 
-    int CustomerAdd(const YardCustType& newCust);
+    long CustomerAdd(const YardCustType& newCust);
     vector<YardCustType> CustomerGetAll();
     vector<YardCustType> CustomerSearch(const YardCustType& criteria);
     void CustomerDisable(long key);

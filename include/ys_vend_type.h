@@ -35,7 +35,7 @@ class YardDatabase;
  * @ingroup database 
  * @see YardVendType
  * @author Michael Swigon	
- * @version \$Revision: 1.2 $$
+ * @version \$Revision: 1.3 $$
  * @see XMLNode
  */
 
@@ -58,7 +58,7 @@ class YardVendType: public XMLNode
         { return child("VND_Name").data(); }
     /// Return vector of vendor address
     string GetAddress() const 
-        { return child("VND_Address"); }
+        { return child("VND_Address").data(); }
 	/// Get vendor city
     string GetCity() const 
         { return child("VND_City").data(); }
@@ -90,8 +90,8 @@ class YardVendType: public XMLNode
 	void SetName(const string& str) 
         { child("VND_Name").setData(str); }
     /// Set the vendor 
-    void SetAddress(const vector<string>& addr) 
-        { /*m_vendAddress = addr;*/ }
+    void SetAddress(const string& add) 
+        { child("VND_Address").setData(add); }
 	/// Set the vendor city
 	void SetCity(const string& str) 
         { child("VND_City").setData(str); }
