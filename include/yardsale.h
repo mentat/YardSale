@@ -47,7 +47,7 @@
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 class YardSale: public wxApp {
     public:
@@ -59,6 +59,11 @@ class YardSale: public wxApp {
     virtual bool OnInit();
 };
 
+/**
+ * Loads a bitmap from a disk file.
+ * @todo Find some better way to do this
+ * @param id The ID associated with a bitmap
+ */
 wxBitmap * GetBitmap(int id);
         
 
