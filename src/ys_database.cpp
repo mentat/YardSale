@@ -69,7 +69,7 @@ bool YardDatabase::connect(){
     } catch(otl_exception &e) {
         
         //throw YardDBException((char *)e.msg, (char*)e.stm_text);
-        throw YardDBException("Cannot connect to DB, I dont know why.")
+        throw YardDBException("Cannot connect to DB, I dont know why.");
         return false;
     }
     return true;
