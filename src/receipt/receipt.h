@@ -16,11 +16,14 @@ class Receipt
 		vector <string> colist;
 		ofstream *tm;
 	public:
-		Receipt();
+		Receipt(const string& port = "/dev/ttyS2");
+        
+        ~Receipt() { delete tm; }
+        
 		void reset();
 		void addTlist(vector <RTransType> tlist);
-		void additem(string item, string price);
-		void totdata(string total, string ttx, string taxtotal);
+		void additem(const string& item, const string& price);
+		void totdata(const string& total, const string& ttx, const string& taxtotal);
 		void print();
 		void printheader();
 		void test();
@@ -33,4 +36,3 @@ class Receipt
 		void EP_jcenter();
 		void EP_jright();
 };
-

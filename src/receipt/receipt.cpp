@@ -2,17 +2,16 @@
 #include "receipt.h"
 using namespace std;
 
-Receipt::Receipt()
+Receipt::Receipt(const string& port): outport(port)
 {
-	outport = "/dev/ttyS2";
 	tm = new ofstream(outport.c_str(), ios::out );
 	//*tm << EP_cutpaper;
-	this->EP_initialize();
+	EP_initialize();
 	//this->EP_jcenter();
 	header = "AS Logic\n Selling you free shit\n since right about now.";
 	//*tm << header << endl;
 	//this->EP_jleft();
-	this->printheader();
+	printheader();
 	//*tm << EP_initialize << header << EP_jleft;
 }
 
@@ -22,8 +21,8 @@ Receipt::Receipt()
  */
 void Receipt::reset(){
 	colist.clear();
-	this->EP_initialize();
-	this->printheader();
+	EP_initialize();
+	printheader();
 }
 
 /*
@@ -32,7 +31,7 @@ void Receipt::reset(){
  */
 void Receipt::addTlist(vector <RTransType> tlist){
 	for (int ii = 0; ii < tlist.size(); ii++)
-		this->additem(tlist[ii].item, tlist[ii].price);
+		additem(tlist[ii].item, tlist[ii].price);
 }
 
 /*
@@ -41,7 +40,7 @@ void Receipt::addTlist(vector <RTransType> tlist){
  * 40 columns (42 actually).  There is probably a better way
  * to do this.
  */
-void Receipt::additem(string item, string price){
+void Receipt::additem(const string& item, const string& price){
 	string nitem = item.substr(0, 31);
 	if (item.length() < 33) {
 		for (int ii = 0; ii < 32 - item.length(); ii++) {
@@ -55,7 +54,7 @@ void Receipt::additem(string item, string price){
 /*
  * U R St00pid if you don't know what this does.
  */
-void Receipt::totdata(string total, string ttx, string taxtotal){
+void Receipt::totdata(const string& total, const string& ttx, const string& taxtotal){
 	tot = total;
 	tax = ttx;
 	tottax = taxtotal;
@@ -76,8 +75,8 @@ void Receipt::print(){
 	*tm << "TOTAL:           $" << tottax << endl;
 //	this->EP_initialize();
 //	*tm << "\n\n";
-	this->printheader();
-	this->EP_cutpaper();
+	printheader();
+	EP_cutpaper();
 	*tm << endl;
 	//this->EP_pboth();
 }
@@ -87,9 +86,9 @@ void Receipt::print(){
  * returns the printing to left justification.
  */
 void Receipt::printheader(){
-	this->EP_jcenter();
+	EP_jcenter();
 	*tm << endl << endl << header << endl;
-	this->EP_jleft();
+	EP_jleft();
 }
 
 /*
