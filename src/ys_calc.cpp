@@ -53,7 +53,7 @@ void YardCalc::PushBlankNumber()
     CalcInstance m_tempstackitem;
 
 	m_tempstackitem.m_isNumber = true;
-	m_tempstackitem.m_type.m_number = 0;
+	m_tempstackitem.m_type.m_number = "";
 	m_calcstack.push(m_tempstackitem);
 
 }
@@ -113,22 +113,22 @@ void YardCalc::OnNumber(wxCommandEvent & event)
         
     
    	//if the screen has '0' on it, replace it with the digit typed 
-	if (m_calcstack.top().m_type.m_number == 0 && m_calcstack.size() == 1){
-		m_tempstring = (ch);
-		m_calcstack.top().m_type.m_number = StringToDouble(m_tempstring);
+	if (m_calcstack.top().m_type.m_number.CompareTo("0") == 0 && m_calcstack.size() == 1){
+		m_tempstring = ch;
+		m_calcstack.top().m_type.m_number = m_tempstring;
 	}
 	else{
 		//TODO:bombs here, because if we  just push back onto the stack with value '123.' it will barf
 		//going to have to code in a special case here
         //maybe i can push '.0'? that will probably work
 		if (ch == '.'){
-			if (! DoubleToString(m_calcstack.top().m_type.m_number).Contains(".") ){
-				m_calcstack.top().m_type.m_number = StringToDouble(DoubleToString(m_calcstack.top().m_type.m_number) + ch + ".0");
+			if (! m_calcstack.top().m_type.m_number.Contains(".") ){
+				m_calcstack.top().m_type.m_number.Append(ch);
 			}
 		}
 		else
 		//if we get here, we entered a number
-		m_calcstack.top().m_type.m_number = StringToDouble(DoubleToString(m_calcstack.top().m_type.m_number) + ch);
+		m_calcstack.top().m_type.m_number.Append(ch);
 	}
 
 	RefreshScreen();
@@ -156,9 +156,10 @@ void YardCalc::EvaluateStack(){
     
     switch (op.m_type.m_op) {
         case (Addition): 
-            arg1.m_type.m_number += arg2.m_type.m_number; break;
+            arg1.m_type.m_number = DoubleToString(StringToDouble(arg1.m_type.m_number) + StringToDouble(arg2.m_type.m_number)); break;
         case (Subtraction):
-            arg1.m_type.m_number -= arg2.m_type.m_number; break;
+            arg1.m_type.m_number = DoubleToString(StringToDouble(arg1.m_type.m_number) - StringToDouble(arg2.m_type.m_number)); break;
+
     }
   
     //now push back the result

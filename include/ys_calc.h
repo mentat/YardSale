@@ -119,11 +119,11 @@ class YardCalc: public wxPanel {
     /**
      * A union of either type operator or a numbers
      * these are the two possible types we push to the stack
-    */
-	union CalcType
+     */
+	struct CalcType
 	{
 		CalcOperator m_op;
-		double m_number;
+		wxString m_number;
 	};
 
     /**
