@@ -109,7 +109,7 @@ AC_CHECK_LIB(expat,XML_ParserCreate,[
    ])])
 
 AC_CHECK_LIB(sablot,SablotGetOptions,[
-                echo "Sablot..."],
+                echo "Sablotron..."],
                 [AC_MSG_WARN([
 	   YardSale requires Sablotron to be installed on your system.
 
