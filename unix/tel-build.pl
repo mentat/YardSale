@@ -21,6 +21,10 @@ $webserver = "thementat\@shell.sf.net:/home/groups/y/ya/yardsale/htdocs";
 # clean the dir
 system("make -C /home/cvs/YardSale distclean");
 
+# clean docs
+system("rm -f /home/cvs/YardWeb/docs/*.*");
+system("rm -f /home/cvs/YardWeb/latex/*.*");
+
 # connect to localhost
 $telnet = new Net::Telnet(Timeout => 3000, 
 		Host => "$server");
@@ -39,6 +43,11 @@ $doxy = $telnet->cmd("doxygen ys_docs.cfg");
 print "$doxy\n";
 
 $telnet->close;
+
+# upload docs
+
+system("scp -r $webdir/docs $webserver");
+system("scp -f $webdir/latex $webserver");
 
 # make the source
 
