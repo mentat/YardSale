@@ -1,8 +1,9 @@
 DROP TABLE IF EXISTS Employee_Table;
 
 CREATE TABLE Employee_Table(
-	EMP_Social_Security_Number		varchar(13) NOT NULL,
-	EMP_ID_Number				INT NOT NULL,
+	EMP_ID_Number				INT NOT NULL AUTO_INCREMENT,
+	EMP_Social_Security_Number		usigned long INT NOT NULL
+	#varchar(13) NOT NULL,
 	EMP_First_Name				varchar(25),
 	EMP_Middle_Name				varchar(25),
 	EMP_Last_Name				varchar(50),
@@ -14,8 +15,8 @@ CREATE TABLE Employee_Table(
 	EMP_Signature				TEXT,
 	EMP_REF_ACL_Type			varchar(30),
 	EMP_Enabled				INT,
-	Primary Key (EMP_Social_Security_Number),
-	UNIQUE INDEX(EMP_ID_Number),
+	Primary Key (EMP_ID_Number),
+	UNIQUE INDEX(EMP_Social_Security_Number),
 	INDEX acl_type (EMP_REF_ACL_Type),
 	#INDEX acct_number (EMP_REF_CUST_Account_Number),
 	FOREIGN KEY (EMP_REF_ACL_Type) REFERENCES ACL_Table(ACL_Type),
