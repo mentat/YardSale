@@ -49,7 +49,7 @@ wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE
 
 #define ID_BUTTON 10013
 #define ID_LINE 10014
-#define ID_LISTCTRL 10015
+#define ID_INV_LIST 10015
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 #define ID_MAIN_LOGO 10016

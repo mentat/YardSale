@@ -33,7 +33,7 @@ class YardDatabase;
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
  * @author Jesse Lovelace
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @see YardDBType
  */
 
@@ -57,6 +57,7 @@ class YardInvType: public YardDBType
     
     YardInvType& operator=(const YardInvType& obj);
     
+    long int GetSKU() const { return m_skuNumber; }
     string GetBarCode() const { return m_barCode; }
     string GetDescription() const { return m_itemDescription; }
     string GetDepartment() const { return m_itemDepartment; }
