@@ -918,8 +918,8 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
 {
     wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
 
-    wxTextCtrl *item1 = new wxTextCtrl( parent, ID_KBD_SCREEN, wxT(""), wxDefaultPosition, wxSize(190,40), 0 );
-    item1->SetFont( wxFont( 8, wxROMAN, wxNORMAL, wxNORMAL ) );
+    wxTextCtrl *item1 = new wxTextCtrl( parent, ID_KBD_SCREEN, wxT(""), wxDefaultPosition, wxSize(190,40), wxTE_READONLY );
+    item1->SetFont( wxFont( 24, wxROMAN, wxNORMAL, wxNORMAL ) );
     item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxFlexGridSizer *item2 = new wxFlexGridSizer( 10, 0, 0 );
