@@ -9,11 +9,15 @@ YardKeybrdDlg::YardKeybrdDlg(wxWindow* parent, wxWindowID id, const wxString& ti
                long style)
 :wxDialog(parent, id, title, pos, size, style)
 {
-    wxPanel * panel = new YardKeybrd(this);
-    wxSizer * sizer = panel->GetSizer();
+    m_panel = new YardKeybrd(this);
+    wxSizer * sizer = m_panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
  
     Centre();
 
+}
+
+wxString YardKeybrdDlg::GetKeyboardContents(){
+       return m_panel->GetKeyboardContents();
 }

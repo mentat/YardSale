@@ -48,6 +48,10 @@ YardKeybrd::~YardKeybrd(){
     
 }
 
+wxString YardKeybrd::GetKeyboardContents(){
+    return screencontents;
+}
+
 
 void YardKeybrd::OnButtonDelete(wxCommandEvent & event){
     DeleteChar();

@@ -1,12 +1,14 @@
 #ifndef YS_KEYBRD_DHG_H
 #define YS_KEYBRD_DHG_H
 
-
 #include "wx/dialog.h"
+
+class YardKeybrd;
+    
 /**
  * This is the on-screen keyboard dialog for YardSale
  * @author Jay Johnston
- * @version \$Revision: 1.3 $$
+ * @version \$Revision: 1.4 $$
  */ 
 class YardKeybrdDlg: public wxDialog {
  public:
@@ -18,9 +20,10 @@ class YardKeybrdDlg: public wxDialog {
                const wxSize& size = wxDefaultSize,
                long style = wxDEFAULT_DIALOG_STYLE);
     
-    
+    wxString GetKeyboardContents();
+ 
     private:
-        
+        YardKeybrd * m_panel;
 };
 
 #endif

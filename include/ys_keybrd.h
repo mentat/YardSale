@@ -41,6 +41,9 @@ class YardKeybrd: public wxPanel {
     
     /// Destructor
     virtual ~YardKeybrd();
+ 
+    ///Getter
+    wxString GetKeyboardContents();
     
  private:
    	

@@ -144,6 +144,10 @@ void YardCalc::OnNumber(wxCommandEvent & event)
 	RefreshScreen();
 }
 
+double YardCalc::GetCalcContents(){
+    return StringToDouble(m_calcstack.top().m_type.m_number);
+}
+
 //here we evaluate an expression based upon:
 //		what is on the screen
 //		what is in the memory

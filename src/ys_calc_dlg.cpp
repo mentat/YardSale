@@ -9,10 +9,14 @@ YardCalcDlg::YardCalcDlg(wxWindow* parent, wxWindowID id, const wxString& title,
                long style)
 :wxDialog(parent, id, title, pos, size, style)
 {
-    wxPanel * panel = new YardCalc(this);
-    wxSizer * sizer = panel->GetSizer();
+    m_panel = new YardCalc(this);
+    wxSizer * sizer = m_panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
  
     Centre();
+}
+
+double YardCalcDlg::GetCalcContents(){
+        return m_panel->GetCalcContents();
 }

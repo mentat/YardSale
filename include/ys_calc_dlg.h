@@ -3,10 +3,13 @@
 
 
 #include "wx/dialog.h"
+
+class YardCalc;
+    
 /**
  * This is the on-screen calculator dialog for YardSale
  * @author Jesse Lovelace
- * @version \$Revision: 1.5 $$
+ * @version \$Revision: 1.6 $$
  */ 
 class YardCalcDlg: public wxDialog {
  public:
@@ -18,8 +21,9 @@ class YardCalcDlg: public wxDialog {
                const wxSize& size = wxDefaultSize,
                long style = wxDEFAULT_DIALOG_STYLE);
     
-    
+    double GetCalcContents();
     private:
+            YardCalc * m_panel;
         
 };
 

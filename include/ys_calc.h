@@ -50,6 +50,8 @@ class YardCalc: public wxPanel {
         long style = wxTAB_TRAVERSAL, 
         const wxString& name = "YardCalc");
     
+    double GetCalcContents();
+ 
     /// Destructor
     virtual ~YardCalc();
     
