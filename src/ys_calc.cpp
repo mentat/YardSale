@@ -169,7 +169,6 @@ void YardCalc::EvaluateStack(){
             arg1.m_type.m_number = DoubleToString(StringToDouble(arg1.m_type.m_number) + StringToDouble(arg2.m_type.m_number)); break;
         case (Subtraction):
             arg1.m_type.m_number = DoubleToString(StringToDouble(arg1.m_type.m_number) - StringToDouble(arg2.m_type.m_number)); break;
-
     }
   
     //now push back the result

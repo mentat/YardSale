@@ -13,7 +13,8 @@ using namespace std;
 
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardKeybrd, wxPanel)
-    EVT_BUTTON(-1, YardKeybrd::OnKey)
+    EVT_BUTTON(-1, YardKeybrd::OnButton)
+    EVT_CHAR(YardKeybrd::OnChar)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
@@ -26,6 +27,7 @@ YardKeybrd::YardKeybrd(wxWindow* parent, wxWindowID id,
     wxSizer * sizer = Keyboard(this, false, true);
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
+    screencontents = wxString("");
     
     //initialize a way to get to the screen
     m_screen = (wxTextCtrl *)FindWindow(ID_KBD_SCREEN);
@@ -39,12 +41,23 @@ YardKeybrd::~YardKeybrd()
 {
     
 }
-  
-//recieve input and keep adding it to
-//the current number, each time refreshing the screen
 
-void YardKeybrd::OnKey(wxCommandEvent & event)
-{
+void YardKeybrd::OnChar(wxCommandEvent & event){
+ 
+    
+    
+}
+
+void YardKeybrd::AddString(wxString string){
+    screencontents += string;
+	m_screen->SetValue(screencontents + string);
+}
+
+void YardKeybrd::OnButton(wxCommandEvent & event)
+{   
+    wxButton * temp = (wxButton *)FindWindow(event.GetId());
+    
+    AddString(temp->GetLabel());
 }
 
 void YardKeybrd::ClearScreen(){

@@ -46,13 +46,17 @@ class YardKeybrd: public wxPanel {
    	
     DECLARE_EVENT_TABLE()
 	
-	void OnKey(wxCommandEvent & event);
+	void OnButton(wxCommandEvent & event);
+ 
+    void OnChar(wxCommandEvent & event);
+    void AddString(wxString string);
     
 	void RefreshScreen();
     
     void ClearScreen();
 	
     wxTextCtrl * m_screen;
+    wxString screencontents;
 };
 
 #endif
