@@ -3,8 +3,11 @@
 
 #include "ys_inv_type.h"
 #include <wx/string.h>
+#include <vector>
 
-class YardDBConfig{}
+using namespace std;
+
+class YardDBConfig;
 
 /**
  * This is the main database backend which does all translation from

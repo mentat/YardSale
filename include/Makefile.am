@@ -12,6 +12,9 @@ yardsale_include_DATA = \
 	ys_sale.h\
 	ys_calc.h\
 	ys_employee.h\
-	ys_log.h
+	ys_log.h\
+	ys_inv_type.h\
+	ys_dbtype.h\
+	ys_database.h
 
 EXTRA_DIST = $(yardsale_include_DATA)

@@ -21,7 +21,8 @@ yardsale_SOURCES = \
 	ys_sale.cpp\
 	ys_calc.cpp\
 	ys_employee.cpp\
-	ys_log.cpp
+	ys_log.cpp\
+	ys_inv_type.cpp
 
 
 yardsale_LDFLAGS = 
