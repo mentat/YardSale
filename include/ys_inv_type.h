@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version \$Revision: 1.15 $$
+ * @version \$Revision: 1.16 $$
  * @see YardDBType
  */
 
@@ -145,7 +145,7 @@ class YardInvType: public YardDBType
      */
     virtual string ToString(const string& delim = "\n") const;
     
-    void FillFromStream(otl_stream * stream);
+    virtual void FillFromStream(otl_stream * stream);
    
  private:
     

@@ -21,6 +21,7 @@
 
 #include <string>
 using namespace std;
+class otl_stream;
 
 /**
  * Abstract base class for datebase objects in YardSale.
@@ -29,7 +30,7 @@ using namespace std;
  *
  * @see YardInvType
  * @see YardEmployeeType
- * @version \$Revision: 1.8 $$
+ * @version \$Revision: 1.9 $$
  * @ingroup database
  * @author Jesse Lovelace
  */
@@ -49,6 +50,8 @@ class YardDBType{
      **/
     virtual string ToString(const string& delim = "\n") const = 0;
   
+        
+    virtual void FillFromStream(otl_stream * stream) = 0;
     /** Virtual destructor */
     virtual ~YardDBType() {}
     

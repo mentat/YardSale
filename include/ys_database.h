@@ -132,10 +132,21 @@ class YardDatabase {
     
  private:
      
-    vector<YardInvType> FillFromStream(otl_stream * stream);
- 
-    //template<class T>
-    //vector<T> FillFromStream(otl_stream * stream);
+    template<class T>
+    vector<T> FillFromStream(otl_stream * stream) {
+        vector<T> list;
+        
+        while (!stream->eof()){
+            T temp;
+        
+            temp.FillFromStream(stream); 
+            
+            list.push_back(temp);
+        }
+        
+        return list;
+    }
+        
  
     otl_connect * m_db;
     string m_dsn;

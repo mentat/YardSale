@@ -1,5 +1,18 @@
 #include <sstream>
+
+#define OTL_ODBC_MYSQL
+#define OTL_STL
+
+#ifndef _WIN32
+#define OTL_ODBC_UNIX
+#else
+#define OTL_ODBC
+#endif
+
+
+#include "otlv4.h"
 #include "ys_inv_type.h"
+#include "ys_exception.h"
 
 using namespace std;
 
@@ -37,6 +50,53 @@ string YardInvType::ToString(const string& delim) const {
     
     return output.str();
         
+}
+
+void YardInvType::FillFromStream(otl_stream * stream)
+{  
+    if (!stream)
+        return;
+    /// maybe throw here
+    
+    char oversized, freight;
+    otl_datetime lastRec;
+    
+    YardInvType temp;
+        
+    try {
+        *stream 
+            >> m_skuNumber 
+            >> m_barCode 
+            >> m_itemDescription
+            >> m_itemDepartment 
+            >> m_quantityOnHand
+            >> m_quantityOnOrder
+            >> m_reorderLevel
+            >> m_reorderQuantity
+            >> m_itemType >> m_taxType
+            >> m_vendorId
+            >> m_retailPrice
+            >> m_wholesalePrice
+            >> m_bulkPrice
+            >> lastRec
+            >> m_itemWeight
+            >> oversized
+            >> freight
+            >> m_comment;
+            
+        if (oversized == 'F')
+            m_oversized = false;
+        else 
+            m_oversized = true;
+            
+        if (freight == 'F')
+            m_mustShipFreight = false;
+        else
+            m_mustShipFreight = true;
+            
+    } catch (otl_exception &e) {
+        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
+    }
 }
     
 YardInvType& YardInvType::operator=(const YardInvType& obj) {

@@ -108,7 +108,7 @@ bool YardDatabase::disconnect()
     }
     return true;
 }
-
+#if 0
 vector<YardInvType> YardDatabase::FillFromStream(otl_stream * stream){
     
     vector<YardInvType> invVec;
@@ -160,7 +160,7 @@ vector<YardInvType> YardDatabase::FillFromStream(otl_stream * stream){
     
     return invVec;
 }
-
+#endif
 vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
    
     if (!m_db)
@@ -179,7 +179,7 @@ vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
         
-    return FillFromStream(dbStream.get());
+    return FillFromStream<YardInvType>(dbStream.get());
 }
 
 vector<YardInvType> YardDatabase::InvGet() throw (YardDBException){
@@ -203,7 +203,7 @@ vector<YardInvType> YardDatabase::InvGet() throw (YardDBException){
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
         
-    return FillFromStream(dbStream.get());
+    return FillFromStream<YardInvType>(dbStream.get());
 }
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_DB))
