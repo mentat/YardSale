@@ -10,6 +10,7 @@ bool YardSale::OnInit()
     wxDialog * startup = new YardSplash(NULL, -1, "YardSale");
     
     startup->ShowModal();
+    startup->Destroy();
     
     wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     frame->Show(true);

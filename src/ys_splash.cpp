@@ -71,7 +71,6 @@ void YardSplash::OnTimer(wxTimerEvent& event) {
     if (m_progress >= m_limit) {
         m_timer->Stop();
         EndModal(0);
-        Destroy();
     }
     
     wxMemoryDC fun;
