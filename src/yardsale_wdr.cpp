@@ -1134,19 +1134,23 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
 
     item0->Add( item34, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxFlexGridSizer *item46 = new wxFlexGridSizer( 3, 0, 0 );
+    wxFlexGridSizer *item46 = new wxFlexGridSizer( 7, 0, 0 );
 
-    wxButton *item47 = new wxButton( parent, ID_KBD_CLEAR, wxT("clear"), wxDefaultPosition, wxSize(50,32), 0 );
+    wxButton *item47 = new wxButton( parent, ID_KBD_DELETE, wxT("backspace"), wxDefaultPosition, wxSize(92,32), 0 );
     item47->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item46->Add( item47, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item48 = new wxButton( parent, ID_KBD_SPACE, wxT("space"), wxDefaultPosition, wxSize(95,32), 0 );
+    wxButton *item48 = new wxButton( parent, ID_KBD_CLEAR, wxT("clear"), wxDefaultPosition, wxSize(50,32), 0 );
     item48->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item46->Add( item48, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item49 = new wxButton( parent, ID_KBD_DONE, wxT("done"), wxDefaultPosition, wxSize(50,32), 0 );
+    wxButton *item49 = new wxButton( parent, ID_KBD_SPACE, wxT("space"), wxDefaultPosition, wxSize(95,32), 0 );
     item49->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item46->Add( item49, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxButton *item50 = new wxButton( parent, ID_KBD_DONE, wxT("done"), wxDefaultPosition, wxSize(50,32), 0 );
+    item50->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item46->Add( item50, 0, wxALIGN_CENTER|wxALL, 5 );
 
     item0->Add( item46, 0, wxALIGN_CENTER|wxALL, 5 );
 
