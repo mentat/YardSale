@@ -139,6 +139,10 @@ wxSizer *ConfigDB( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE
 #define ID_MAIN_MENU_CONFIG 10082
 wxMenuBar *MainBar();
 
+#define ID_CONFIG_DELETE 10083
+#define ID_CONFIG_EXIT 10084
+wxMenuBar *ConfigBar();
+
 // Declare toolbar functions
 
 // Declare bitmap functions

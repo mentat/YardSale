@@ -81,7 +81,7 @@ YardMain::~YardMain()
 void YardMain::OnOptions(wxCommandEvent& event){
     
     YardConfig * conf = new YardConfig(this, -1, wxT("YardSale Configuration"));
-    conf->Show();
+   
 }
 
 void YardMain::OnLogout(wxCommandEvent& event){

@@ -12,6 +12,8 @@ IMPLEMENT_APP(YardSale)
 
 bool YardSale::OnInit()
 {
+    SetVendorName(_T("ASLS"));
+    SetAppName(_T("YardSale"));
     m_db = 0;
     
     m_db = new YardDatabase();

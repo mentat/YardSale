@@ -15,6 +15,8 @@ class YardConfig: public wxFrame {
  
     void OnCancel(wxCommandEvent& event);
     void OnSave(wxCommandEvent& event);
+    void OnExit(wxCommandEvent& event);
+    void OnDeleteConfig(wxCommandEvent& event);
  
  private:
      DECLARE_EVENT_TABLE()

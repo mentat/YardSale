@@ -807,7 +807,20 @@ wxMenuBar *MainBar()
     
     wxMenu* item1 = new wxMenu;
     item1->Append( ID_MAIN_MENU_CONFIG, wxT("&Options\tAlt-o"), wxT("Edit program options") );
-    item0->Append( item1, wxT("File") );
+    item0->Append( item1, wxT("&File") );
+    
+    return item0;
+}
+
+wxMenuBar *ConfigBar()
+{
+    wxMenuBar *item0 = new wxMenuBar;
+    
+    wxMenu* item1 = new wxMenu;
+    item1->Append( ID_CONFIG_DELETE, wxT("Delete Configuration"), wxT("Delete's the configuration from the system") );
+    item1->AppendSeparator();
+    item1->Append( ID_CONFIG_EXIT, wxT("Exit"), wxT("Exit the configuration screen") );
+    item0->Append( item1, wxT("&File") );
     
     return item0;
 }

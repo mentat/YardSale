@@ -24,7 +24,7 @@ YardFooter::YardFooter(wxWindow* parent, wxWindowID id,
      const wxString& name)
 :wxPanel(parent, id, pos, size, style, name)
 {
-    
+    // get bitmaps from loader
     new wxBitmapButton(this, ID_FOOTER_CALC, 
         wxGetApp().Images().GetBitmap(YardBitmaps::FOOT_CALC));
     new wxBitmapButton(this, ID_FOOTER_KEY, 
