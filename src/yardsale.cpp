@@ -16,13 +16,15 @@ bool YardSale::OnInit()
     wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     
     // end loading
-    startup->Destroy();
+    
     if (login->ShowModal() == 1)
     {
         frame->Destroy();
         login->Destroy();
+        startup->Destroy();
         return false;
     }        
+    startup->Destroy();
     login->Destroy();
     
     frame->Show(true);
