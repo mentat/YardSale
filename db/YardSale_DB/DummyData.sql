@@ -166,9 +166,9 @@ SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type =
 
 #BEGIN TRANSACTION STUFF
 
-INSERT INTO Transaction_Log_Table VALUES(1234,'1',2001, 0.20, 10000, 5, '' );
-INSERT INTO Transaction_Log_Table VALUES(1234,'2',2001, 0.99, 10000, 10, '' );
-INSERT INTO Transaction_Log_Table VALUES(1234,'3',2001, 3.50, 10000, 1, '' );
+INSERT INTO Transaction_Log_Table VALUES(1234,'1',2001, 0.20, 10000, 5, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(1234,'2',2001, 0.99, 10000, 10, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(1234,'3',2001, 3.50, 10000, 1, '' ,now());
 
 
 #THIS QUERY RETURNS A LOT OF INFORMATION

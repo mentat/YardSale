@@ -8,6 +8,7 @@ CREATE TABLE Transaction_Log_Table(
 	TRANS_ID				INT NOT NULL,
 	TRANS_Quantity				INT,
 	TRANS_Comment				TEXT,
+	TRANS_Time				DATETIME,
 	Primary Key(TRANS_REF_EMP_ID_Number, TRANS_REF_INV_Item_ID, TRANS_REF_CUST_Account_Number, TRANS_Sale_Price, TRANS_ID, TRANS_Quantity),
 	INDEX trans_id (TRANS_ID),
 	INDEX emp_id (TRANS_REF_EMP_ID_Number),
