@@ -32,7 +32,7 @@ class wxCheckBox;
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.15 $$
+ * @version \$Revision: 1.16 $$
  */
 class YardInventory: public wxFrame{
  public:
@@ -72,6 +72,8 @@ class YardInventory: public wxFrame{
     
  private:
      
+    void LoadFromDB();
+     
     /// Set all component pointers
     void SetPointers();
  
@@ -81,6 +83,7 @@ class YardInventory: public wxFrame{
     DECLARE_EVENT_TABLE()
  
     wxTextCtrl * m_sku;
+    wxTextCtrl * m_barcode;
     wxTextCtrl * m_name;
     wxTextCtrl * m_department;
     wxTextCtrl * m_type;

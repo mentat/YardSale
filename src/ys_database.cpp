@@ -169,6 +169,7 @@ vector<YardInvType> YardDatabase::FillFromStream(otl_stream * stream){
     return invVec;
 }
 #endif
+
 vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
    
     if (!m_db)

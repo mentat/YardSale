@@ -91,7 +91,8 @@ module.include.files=\
 	ys_config.h\
 	ys_keybrd_dlg.h\
 	ys_keybrd.h\
-	ys_trans_type.h
+	ys_trans_type.h\
+	ys_util.h
 
 module.source.name=src
 module.source.type=

@@ -32,8 +32,10 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
     
+    // center the screen
     Centre();
     
+    // set the window components 
     SetPointers();
     
     m_list->InsertColumn(0, wxT("SKU"));
@@ -44,29 +46,8 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     m_list->InsertColumn(5, wxT("Retail"));
     m_list->InsertColumn(6, wxT("Wholesale"));
     
-    
-    // Getting initial list of items
-    if (wxGetApp().DB().IsConnected())
-    {
-        wxLogDebug(wxT("Connected"));
-        
-        try {
-            m_objects = wxGetApp().DB().InvGet();
-        }
-        catch (YardDBException &e)
-        {
-            wxLogDB(e.GetWhat().c_str());
-            
-            wxLogDB(e.GetVarInfo().c_str());
-            wxLogSQL(e.GetSQL().c_str());
-            return;
-        }
-        // showing list to screen
-        PopulateList();
-    }
-    else
-        wxLogError(wxT("Not Connected"));
-    
+    LoadFromDB();
+    PopulateList();
     
 }
 
@@ -77,6 +58,8 @@ YardInventory::~YardInventory()
 
 void YardInventory::PopulateList()
 {
+    m_list->DeleteAllItems();
+    
     wxLogDebug(wxT("Populating list"));
     for (int i = 0; i < m_objects.size(); i++)
     {       
@@ -101,7 +84,7 @@ void YardInventory::PopulateList()
 void YardInventory::SetPointers()
 {
     m_list = static_cast<wxListCtrl *>(FindWindow(ID_INV_LIST));
-    
+    m_barcode = static_cast<wxTextCtrl *>(FindWindow(ID_INV_BARCODE));
     m_sku = static_cast<wxTextCtrl *>(FindWindow(ID_INV_SKU));
     m_name = static_cast<wxTextCtrl *>(FindWindow(ID_INV_ITEMNAME));
     m_department = static_cast<wxTextCtrl *>(FindWindow(ID_INV_DEPARTMENT));
@@ -121,23 +104,7 @@ void YardInventory::SetPointers()
     m_reOrder = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_REORDER_LEVEL));
     
     m_tax = static_cast<wxChoice *>(FindWindow(ID_INV_TAX_TYPE));
-    wxASSERT(m_list);
-    wxASSERT(m_sku);
-    wxASSERT(m_name);
-    wxASSERT(m_department);
-    wxASSERT(m_type);
-    wxASSERT(m_price);
-    wxASSERT(m_wholesale);
-    wxASSERT(m_weight);
-    wxASSERT(m_vendor);
-    wxASSERT(m_barCode);
-    wxASSERT(m_desc);
-    wxASSERT(m_freight);
-    wxASSERT(m_oversized);
-    wxASSERT(m_onHand);
-    wxASSERT(m_onOrder);
-    wxASSERT(m_reOrder);
-    wxASSERT(m_tax);
+
 }
 
 void YardInventory::OnExitButton(wxCommandEvent & event)
@@ -146,8 +113,70 @@ void YardInventory::OnExitButton(wxCommandEvent & event)
 }
 
 void YardInventory::OnNew(wxCommandEvent & event) {
+    wxLogDebug(wxT("OnNew"));
+    
+    YardInvType temp;
+    temp.SetSKU(m_sku->GetValue().c_str());
+    temp.SetBarCode(m_barcode->GetValue().c_str());
+    temp.SetDescription(m_desc->GetValue().c_str()); 
+    temp.SetDepartment(m_department->GetValue().c_str());
+    temp.SetQuantOnHand(m_onHand->GetValue());
+    temp.SetQuantOnOrder(m_onOrder->GetValue());
+    temp.SetReorderLevel(m_reOrder->GetValue());
+   
+    temp.SetItemType(m_type->GetValue().c_str());
+    double doubleTemp;
+    wxString doubleTxt = m_weight->GetValue();
+    if (!doubleTxt.ToDouble(&doubleTemp))
+        doubleTemp = -1.0;
+    
+    temp.SetItemWeightLbs((float)doubleTemp);
+    temp.SetTaxType(1);
+    temp.SetVendorId(1);
+    
+    doubleTxt = m_price->GetValue();
+    if (!doubleTxt.ToDouble(&doubleTemp))
+        doubleTemp = -1.0;
+    
+    temp.SetRetailPrice((float)doubleTemp);
+    temp.SetWholesalePrice((float)doubleTemp);
+    
+    try {
+        wxGetApp().DB().AddInventoryItem(temp);
+    }
+    catch (YardDBException &e)
+    {
+        wxLogError(e.what());
+    }
     
 }
+
+void YardInventory::LoadFromDB() {
+    
+     // Getting initial list of items
+    if (wxGetApp().DB().IsConnected())
+    {
+        wxLogDebug(wxT("Connected"));
+        
+        try {
+            m_objects = wxGetApp().DB().InvGet();
+        }
+        catch (YardDBException &e)
+        {
+            wxLogDB(e.GetWhat().c_str());
+            
+            wxLogDB(e.GetVarInfo().c_str());
+            wxLogSQL(e.GetSQL().c_str());
+            return;
+        }
+        // showing list to screen
+       
+    }
+    else
+        wxLogError(wxT("Not Connected"));
+    
+}
+
 
 void YardInventory::OnSearch(wxCommandEvent & event){
 

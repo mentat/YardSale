@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version \$Revision: 1.19 $$
+ * @version \$Revision: 1.20 $$
  * @see YardDBType
  */
 
@@ -54,7 +54,7 @@ class YardInvType: public YardDBType
         float percent;
     };
   
-    YardInvType():m_key(-1) {}
+    YardInvType();
     
     /**
      * Copy constructor
@@ -105,6 +105,7 @@ class YardInvType: public YardDBType
     ///  a value set by the DB
     void SetKey(int key);
     /// Set the bar code
+    void SetSKU(const string& sku);
     void SetBarCode(const string& str);
     /// Set item description
     void SetDescription(const string& str) { m_itemDescription = str; }

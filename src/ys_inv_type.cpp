@@ -14,6 +14,8 @@
 #include "ys_inv_type.h"
 #include "ys_exception.h"
 
+#include "wx/log.h"
+
 using namespace std;
 
 void YardInvType::SetItemType(const string& str) {
@@ -29,6 +31,10 @@ void YardInvType::SetBarCode(const string& str) {
     m_barCode = str;
 }
    
+YardInvType::YardInvType() {
+    
+}
+
 YardInvType::YardInvType(const YardInvType& obj) {
     
     *this = obj;
@@ -46,22 +52,23 @@ void YardInvType::SetKey(int key) {
 
 string YardInvType::ToString(const string& delim) const {
     
+    char q = '\'';
     stringstream output;
-    output << m_key << delim << '\''
-        << m_skuNumber << '\'' << delim 
-        << '\'' << m_barCode << '\'' << delim 
-        << '\'' << m_itemDescription << '\'' << delim 
-        << '\'' << m_itemDepartment << '\'' << delim 
+    output << q << q << delim 
+        << q << m_skuNumber << q << delim 
+        << q << m_barCode << q << delim 
+        << q << m_itemDescription << q << delim 
+        << q << m_itemDepartment << q << delim 
         << m_quantityOnHand << delim 
         << m_quantityOnOrder << delim 
         << m_reorderLevel << delim 
         << m_reorderQuantity << delim 
-        << '\'' << m_itemType << '\'' << delim 
+        << q << m_itemType << q << delim 
         << m_taxType << delim
         << m_vendorId << delim 
         << m_retailPrice << delim 
         << m_wholesalePrice << delim 
-        << m_bulkPrice << delim;
+        << q << m_bulkPrice << q << delim;
     
     if (m_key == -1)
         output << "now()" << delim;
@@ -82,10 +89,17 @@ string YardInvType::ToString(const string& delim) const {
         output << "'F'";
     output << delim;
     
-    output << '\'' << m_comment << '\'';
+    output << q << m_comment << q;
+    
+    wxLogDebug(output.str().c_str());
      
     return output.str();
         
+}
+
+void YardInvType::SetSKU(const string& sku) {
+    m_skuNumber = sku;
+    
 }
 
 void YardInvType::FillFromStream(otl_stream * stream)
