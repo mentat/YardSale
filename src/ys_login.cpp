@@ -39,6 +39,7 @@ YardLogin::~YardLogin()
 void YardLogin::OnExitButton(wxCommandEvent & event)
 {
     wxLogDebug(wxT("OnExitButton"));
+    EndModal(1);
     
 }
 

@@ -17,7 +17,11 @@ bool YardSale::OnInit()
     
     // end loading
     startup->Destroy();
-    login->ShowModal();
+    if (login->ShowModal() == 1)
+    {
+        login->Destroy();
+        return true;
+    }        
     login->Destroy();
     
     frame->Show(true);

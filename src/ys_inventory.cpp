@@ -14,6 +14,8 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     wxSizer * sizer = Inventory(panel, false, true);
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
+    
+    Centre();
    
 }
 
