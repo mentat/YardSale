@@ -1,0 +1,337 @@
+[1 1]
+ADD
+AFTER
+AGAINST
+ALL
+ALTER
+ANALYZE
+AND
+AS
+ASC
+AUTO_INCREMENT
+BEFORE
+BETWEEN
+BINARY
+BINLOG
+BOTH
+BY
+CASCADE
+CASE
+CHANGE
+CHARACTER
+CHECK
+COLUMN
+CONSTRAINT
+CREATE
+CROSS
+DATABASE
+DATABASES
+DAY_HOUR
+DAY_MINUTE
+DAY_SECOND
+DEFAULT
+DELAYED
+DELETE
+DESC
+DISTINCTROW
+DISTINCT
+DROP
+ELSE
+ENCLOSED
+ESCAPED
+EVENTS
+EXISTS
+EXPLAIN
+FIELDS
+FOR
+FOREIGN
+FROM
+FULL
+FULLTEXT
+GRANT
+GROUP
+HAVING
+HIGH_PRIORITY
+HOUR_MINUTE
+HOUR_SECOND
+IF
+IGNORE
+IN
+INDEX
+INFILE
+INNER
+INSERT
+INSERT_ID
+INTERVAL
+INTO
+IS
+JOIN
+KEY
+KEYS
+KILL
+LEADING
+LEFT
+LIKE
+LIMIT
+LINES
+LOAD
+LOCK
+LONG
+LOW_PRIORITY
+MASTER_LOG_SEQ
+MASTER_SERVER_ID
+MINUTE_SECOND
+MODIFY
+NATURAL
+NOT
+NULL
+ON
+OPTIMIZE
+OPTION
+OPTIONALLY
+OR
+ORDER
+OUTER
+OUTFILE
+PARTIAL
+PRECISION
+PRIMARY
+PRIVILEGES
+PROCEDURE
+PURGE
+READ
+REFERENCES
+RENAME
+REPAIR
+REPLACE
+REQUIRE
+RESTRICT
+RETURNS
+REVOKE
+RIGHT
+RLIKE
+REGEXP
+SELECT
+SHOW
+SONAME
+STRAIGHT_JOIN
+TABLE
+TABLES
+TERMINATED
+THEN
+TO
+TRAILING
+TRUNCATE
+UNION
+UNIQUE
+UNLOCK
+UNSIGNED
+UPDATE
+USAGE
+USE
+USING
+VALUES
+VARYING
+WHEN
+WHERE
+WITH
+WRITE
+YEAR_MONTH
+ZEROFILL
+STATUS
+VARIABLES
+PROCESSLIST
+FLUSH
+LOGS
+HOSTS
+
+[9 2]
+tinyint
+bit
+bool
+smallint
+mediumint
+int
+integer
+bigint
+real
+double
+float
+decimal
+numeric
+char
+varchar
+date
+time
+year
+timestamp
+datetime
+tinyblob
+blob
+mediumblob
+longblob
+tinytext
+text
+mediumtext
+longtext
+enum
+set
+
+[4 4]
+ascii - str
+ord - str
+conv - N,from_base,to_base
+bin - N
+oct - N
+hex - N_or_S
+char - N,...
+concat - str1,str2,...
+concat_ws - separator, str1, str2,...
+length - str
+octet_length - str
+char_length - str
+character_length - str
+bit_length - str
+locate - substr,str[,pos]
+position - substr IN str
+instr - str,substr
+lpad - str,len,padstr
+rpad - str,len,padstr
+left - str,len
+right - str,len
+substring - str,pos[,len]
+mid - str,pos,len
+substring_index - str,delim,count
+ltrim - str
+rtrim - str
+trim - [[BOTH | LEADING | TRAILING] [remstr] FROM] str
+soundex - str
+space - N
+replace - str,from_str,to_str
+repeat - str,count
+reverse - str
+insert - str,pos,len,newstr
+elt - N,str1,str2,str3,...
+field - str,str1,str2,str3,...
+find_in_set - str,strlist
+make_set - bits,str1,str2,...
+export_set - bits,on,off,[separator,[number_of_bits]]
+lcase - str
+lower - str
+ucase - str
+upper - str
+load_file - file_name
+quote - str
+strcmp - expr1,expr2
+match - col1,col2,...
+
+[3 4]
+abs - X
+sign - X
+mod - N,M
+floor - X
+ceiling - X
+round - X[,D]
+exp - X
+ln - X
+log - B[,X]
+log2 - X
+log10 - X
+pow - X,Y
+power - X,Y
+sqrt - X
+pi
+cos - X
+sin - X
+tan - X
+acos - X
+asin - X
+atan - X[,Y]
+atan2 - X,Y
+cot - X
+rand - [N]
+least - X,Y,...
+greatest - X,Y,...
+degrees - X
+radians - X
+truncate - X,D
+
+[2 4]
+dayofweek - date
+weekday - date
+dayofmonth - date
+dayofyear - date
+month - date
+dayname - date
+monthname - date
+quarter - date
+week - date[,first]
+year - date
+yearweek - date[,first]
+hour - time
+minute - time
+second - time
+period_add - P,N
+period_diff - P1,P2
+date_add - date,INTERVAL expr type
+date_sub - date,INTERVAL expr type
+adddate - date,INTERVAL expr type
+subdate - date,INTERVAL expr type
+extract - type FROM date
+to_days - date
+from_days - N
+date_format - date,format
+time_format - time,format
+curdate
+current_date
+curtime
+current_time
+now
+sysdate
+current_timestamp
+unix_timestamp
+from_unixtime - unix_timestamp,format
+sec_to_time - seconds
+time_to_sec - time
+
+
+[6 4]
+database
+user
+system_user
+session_user
+password - str
+encrypt - str[,salt]
+encode - str,pass_str
+decode - crypt_str,pass_str
+md5 - string
+sha1 - string
+sha - string
+aes_encrypt - string,key_string
+aes_decrypt - string,key_string
+des_encrypt - string_to_encrypt [,(key_number | key_string)]
+des_decrypt - string_to_decrypt [,key_string]
+last_insert_id - [expr]
+format - X,D
+version
+connection_id
+get_lock - str,timeout
+release_lock - str
+is_free_lock - str
+benchmark - count,expr
+inet_ntoa - expr
+inet_aton - expr
+master_pos_wait - log_name,log_pos
+found_rows
+
+
+[5 4]
+COUNT - DISTINCT expr,[expr]
+AVG - expr
+MIN - expr
+MAX - expr
+SUM - expr
+STD - expr
+STDDEV - expr
+BIT_OR - expr
+BIT_AND - expr
