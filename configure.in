@@ -79,12 +79,9 @@ if test "$wxOK" != 1; then
    ])
 fi
 
-
-
-
-CPPFLAGS="$WX_CPPFLAGS"
-CFLAGS="$WX_CFLAGS"
-CXXFLAGS="$WX_CXXFLAGS"
+CPPFLAGS="$CPPFLAGS $WX_CPPFLAGS"
+CFLAGS="$CFLAGS $WX_CFLAGS"
+CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS"
 
 dnl normal linking mode is fully dynamic
 
@@ -98,7 +95,8 @@ AC_ARG_WITH(static,
 	[  --with-static           Build YardSale static.], [
 	echo "Building YardSale statically..."
 	GUI_LIBS="$WX_LIBS_STATIC"
-	CXXFLAGS="$CXXFLAGS -DYS_STATIC_BUILD"])
+	CXXFLAGS="$CXXFLAGS -DYS_STATIC_BUILD"], [
+	GUI_LIBS="$WX_LIBS"])
 
 dnl ------------- Check for other libs ----------------
 AC_CHECK_LIB(expat,XML_ParserCreate,[
@@ -158,8 +156,6 @@ AC_ARG_WITH(debug,
 
 CXXFLAGS="$CXXFLAGS -DYS_OS=\\\"$OSTYPE\\\""
 GUI_LIBS="-lsablot -lodbc -lexpat $GUI_LIBS"
-
-
 
 AC_ARG_WITH(glabout,
 	[  --with-glabout           Build gratuitous gl about.], [
