@@ -41,6 +41,8 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     m_list->InsertColumn(2, wxT("Description"));
     m_list->InsertColumn(3, wxT("Department"));
     m_list->InsertColumn(4, wxT("On Hand"));
+    m_list->InsertColumn(5, wxT("Retail"));
+    m_list->InsertColumn(6, wxT("Wholesale"));
     
     
     // Getting initial list of items
@@ -79,9 +81,12 @@ void YardInventory::PopulateList()
     for (int i = 0; i < m_objects.size(); i++)
     {       
         m_list->InsertItem(0, strIToA(m_objects[i].GetSKU()).c_str());
-        m_list->SetItem(0,1,m_objects[i].GetBarCode().c_str());
-        m_list->SetItem(0,2,m_objects[i].GetDescription().c_str());
-        m_list->SetItem(0,3,m_objects[i].GetDepartment().c_str());
+        m_list->SetItem(0,1, m_objects[i].GetBarCode().c_str());
+        m_list->SetItem(0,2, m_objects[i].GetDescription().c_str());
+        m_list->SetItem(0,3, m_objects[i].GetDepartment().c_str());
+        m_list->SetItem(0,4, strIToA(m_objects[i].GetQuantOnHand()).c_str());
+        m_list->SetItem(0,5, toMoney(m_objects[i].GetRetailPrice()).c_str());
+        m_list->SetItem(0,6, toMoney(m_objects[i].GetWholesalePrice()).c_str());
     }
     
     m_list->SetColumnWidth( 0, wxLIST_AUTOSIZE );
@@ -89,7 +94,8 @@ void YardInventory::PopulateList()
     m_list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 3, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 4, wxLIST_AUTOSIZE );
-    
+    m_list->SetColumnWidth( 5, wxLIST_AUTOSIZE );
+    m_list->SetColumnWidth( 6, wxLIST_AUTOSIZE );
 }
 
 void YardInventory::SetPointers()

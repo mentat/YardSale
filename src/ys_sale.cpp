@@ -37,15 +37,12 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     listCtrl->InsertColumn(1, wxT("Price"));
     
     // Test
-    listCtrl->InsertItem(0, "Hot Linux ass", 0);
+    #if 0
+    listCtrl->InsertItem(0, "Fruit", 0);
     listCtrl->SetItem(0,1,"$9.69");
     listCtrl->SetColumnWidth(0, wxLIST_AUTOSIZE);
+    #endif
     
-    
-   // listCtrl->InsertItem(0,0);
-   // listCtrl->InsertItem(0,1);
-   // listCtrl->InsertItem(0,2);
-   
 }
 
 YardSaleScreen::~YardSaleScreen()
