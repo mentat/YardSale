@@ -1382,7 +1382,7 @@
         progress bar.\\
         {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.22}
 
-\chapter{Test Plan}
+\chapter{Preliminary Test Plan}
 The YardSale system is tested constantly throughout the
 development process.  These tests are administered through two
 different methods: passive (automatic) testing, and active (user)
@@ -1399,7 +1399,8 @@ testing.
     \section{Active Testing}
     There are several methods which are utilized by our
     development team to manually test the YardSale system
-    throughout the development process.
+    throughout the development process
+        \subsection{.
         \subsection{Testing Mains}
         Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
         each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.
@@ -1409,7 +1410,7 @@ testing.
         Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any
         bugs they find through our bug tracking system.  We also have weekly usability conferences where we discuss the merits of a particular interface.
 
-        \subsection{Verbose Program Information}
+        \subsection{Program Flow Tracking}
         YardSale is designed to report back a large amount of valuable debug information to the developer and to keep the non-technical user
         informed about the status of the program.  YardSale uses exceptions to ensure that single functions cannot violate the integrity of the system
         on a global level.  In addition, all database interfaces have special logging information that reports the exact status of all database calls; this
