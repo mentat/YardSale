@@ -2,7 +2,7 @@
 
 INCLUDES =  -I../include
 
-CXXFLAGS = $(WX_CXXFLAGS) -ansi -g
+CXXFLAGS = $(WX_CXXFLAGS)  -g
 #yardsale_CXXFLAGS =\
 #	 $(WX_CXXFLAGS) \
 #     -ansi \
