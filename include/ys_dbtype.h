@@ -29,6 +29,7 @@ using namespace std;
  *
  * @see YardInvType
  * @see YardEmployeeType
+ * @version \$Revision: 1.8 $$
  * @ingroup database
  * @author Jesse Lovelace
  */
