@@ -6,6 +6,8 @@
 #include "ys_database.h"
 
 #define OTL_ODBC_MYSQL
+//#define OTL_EXPLICIT_NAMESPACES
+
 #ifndef _WIN32
 #define OTL_ODBC_UNIX
 #else
@@ -15,6 +17,7 @@
 #include <otlv4.h>
 
 using namespace std;
+//using namespace odbc;
 
 YardDatabase::YardDatabase(const string& name, const string& pass, const string& dsn) {
     m_db = 0;
@@ -29,6 +32,17 @@ YardDatabase::~YardDatabase()
 {
     delete m_db;
   
+}
+
+bool YardDatabase::IsConnected() const 
+{
+    if (!m_db)
+        return false;
+    
+    if (m_db->connected != 0)
+        return true;
+    return false;
+    
 }
 
 bool YardDatabase::Init(const string& name, const string& pass, const string& dsn)
@@ -69,7 +83,7 @@ bool YardDatabase::connect(){
     
     } catch(otl_exception &e) {
         
-        throw YardDBException("Cannot connect to DB, I dont know why.");
+        throw YardDBException((char *)e.msg);
         return false;
     }
     return true;

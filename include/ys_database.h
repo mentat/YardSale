@@ -91,6 +91,9 @@ class YardDatabase {
     int GetStatus() const;
      
 
+
+    bool IsConnected() const;
+
     /*------------Inventory-------------*/
     
     /**
