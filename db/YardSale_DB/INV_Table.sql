@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS Inventory_Table;
 
 CREATE TABLE Inventory_Table(
 	INV_Item_ID			INT AUTO_INCREMENT,
+	INV_Name			varchar(30),
 	INV_SKU_Number			varchar(10),
 	INV_Bar_Code_Number		varchar(30),
 	INV_Item_Description		TEXT,
