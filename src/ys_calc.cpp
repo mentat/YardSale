@@ -33,14 +33,22 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
    	
 	PushBlankNumber();
     
+    CalcInstance m_tempstackitem;
+
+	m_tempstackitem.m_isNumber = false;
+	m_tempstackitem.m_type.m_op = Addition;
+	m_calcstack.push(m_tempstackitem);
+    
+    PushBlankNumber();
+    
+    //so now the stack should have a number pushed onto it, and an operator
 	RefreshScreen();
 }
 
 void YardCalc::PushBlankNumber()
 {
     CalcInstance m_tempstackitem;
-	
-	//To init, first push, '0', then '+'	
+
 	m_tempstackitem.m_isNumber = true;
 	m_tempstackitem.m_type.m_number = 0;
 	m_calcstack.push(m_tempstackitem);
@@ -109,6 +117,31 @@ void YardCalc::OnNumber(wxCommandEvent & event)
 //		what is in the memory
 //		the operator (indicated by the state)
 void YardCalc::EvaluateStack(){
+    CalcInstance arg2 = m_calcstack.top();
+    m_calcstack.pop();
+    CalcInstance op = m_calcstack.top();
+    m_calcstack.pop();
+    CalcInstance arg1 = m_calcstack.top();
+    m_calcstack.pop();
+    
+    switch (op.m_type.m_op) {
+        case (Addition): 
+            arg1.m_type.m_number += arg2.m_type.m_number; break;
+        case (Subtraction):
+            arg1.m_type.m_number += arg2.m_type.m_number; break;
+    }
+    
+    //push a zero
+    PushBlankNumber();
+    
+    //push a +0 operation
+    op.m_type.m_op = Addition;
+    m_calcstack.push(op);
+    
+    //now push back the result
+    m_calcstack.push(arg1);
+    
+    RefreshScreen();
 }
 
 void YardCalc::ClearScreen(){
