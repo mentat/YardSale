@@ -35,4 +35,5 @@ class Receipt
 		void EP_jleft();
 		void EP_jcenter();
 		void EP_jright();
+		void EP_dkd();
 };

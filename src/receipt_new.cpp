@@ -5,14 +5,20 @@ using namespace std;
 Receipt::Receipt(const string& port): outport(port)
 {
 	tm = new ofstream(outport.c_str(), ios::out );
-	//*tm << EP_cutpaper;
-	EP_initialize();
-	//this->EP_jcenter();
 	header = "AS Logic\n Selling you free shit\n since right about now.";
-	//*tm << header << endl;
-	//this->EP_jleft();
-	printheader();
-	//*tm << EP_initialize << header << EP_jleft;
+	
+	ptype = YSPESCPOS;
+	if ( ptype == YSPSTAR ) {
+		pcodes = new ysSRPCodes(*tm, header);
+	} else if ( ptype == YSPESCPOS ) {
+		pcodes = new ysEPRPCodes(*tm, header);
+	} else {
+		pcodes = new ysGenRPCodes(*tm, header);
+	}
+	
+	//EP_initialize();
+	pcodes.initialize();
+	pcodes.printheader();
 }
 
 /*
@@ -21,8 +27,8 @@ Receipt::Receipt(const string& port): outport(port)
  */
 void Receipt::reset(){
 	colist.clear();
-	EP_initialize();
-	printheader();
+	pcodes.initialize();
+	pcodes.printheader();
 }
 
 /*
@@ -54,7 +60,8 @@ void Receipt::additem(const string& item, const string& price){
 /*
  * U R St00pid if you don't know what this does.
  */
-void Receipt::totdata(const string& total, const string& ttx, const string& taxtotal){
+void Receipt::totdata(const string& total, const string& ttx,
+		const string& taxtotal){
 	tot = total;
 	tax = ttx;
 	tottax = taxtotal;
@@ -75,8 +82,10 @@ void Receipt::print(){
 	*tm << "TOTAL:           $" << tottax << endl;
 //	this->EP_initialize();
 //	*tm << "\n\n";
-	printheader();
-	EP_cutpaper();
+	//printheader();
+	//EP_cutpaper();
+	//pcodes.cutpaper();
+	pcodes.finishreceipt();
 	*tm << endl;
 	//this->EP_pboth();
 }
@@ -85,11 +94,12 @@ void Receipt::print(){
  * centers the printing, prints the header string, and 
  * returns the printing to left justification.
  */
-void Receipt::printheader(){
+/* void Receipt::printheader(){
 	EP_jcenter();
 	*tm << endl << endl << header << endl;
 	EP_jleft();
-}
+} 
+*/
 
 /*
  * ???
@@ -104,7 +114,7 @@ void Receipt::test() {
  * easiest way I know of right now to predefine strings that
  * contain the NULL byte.  Hah.
  */
-
+/*
 void Receipt::EP_initialize(){
 	*tm << '\x1b' << '\x40';
 }
@@ -129,15 +139,87 @@ void Receipt::EP_jcenter(){
 void Receipt::EP_jright(){
 	*tm << '\x1b' << '\x61' << '\x02';
 }
-void Receipt::EP_dkd(){ //kicks out cash drizzawer
-	*tm << '\x1b' << 'p' << '\x00' << '\x64' << '\x64'
+*/
 
-//int main(){
-//	Receipt rr;
-//	rr.additem("poop", "0.50");
-//	rr.totdata("0.50", "0.4", "0.54");
-//	rr.print();
-////	rr.test();
-//	return 0;
-//}
-//
+ysReceiptPrinterCodes::ysReceiptPrinterCodes(){
+}
+
+ysReceiptPrinterCodes::ysReceiptPrinterCodes(ofstream &printer, 
+		const int &ptype, const string& header){
+	this->ptype = ptype;
+	this->printer = printer;
+	this->header = header;
+}
+
+void ysReceiptPrinterCodes::justleft(){
+}
+
+void ysReceiptPrinterCodes::justcenter(){
+}
+
+void ysReceiptPrinterCodes::justright(){
+}
+
+void ysReceiptPrinterCodes::prnpole(){
+}
+
+void ysReceiptPrinterCodes::prnpaper(){
+}
+
+void ysReceiptPrinterCodes::prnboth(){
+}
+
+void ysReceiptPrinterCodes::cutpaper(){
+}
+
+void ysReceiptPrinterCodes::initialize(){
+}
+
+void ysReceiptPrinterCodes::printheader(){
+	this->justcenter();
+	printer << endl << endl << header << endl;
+	this->justleft();
+}
+
+void ysReceiptPrinterCodes::finishreceipt(){
+	this->printheader();
+	this->cutpaper();
+}
+
+void ysEPRPCodes::justleft(){
+	*printer << '\x1b' << '\x61' << '\x00';
+}
+
+void ysEPRPCodes::justcenter(){
+	*printer << '\x1b' << '\x61' << '\x01';
+}
+
+void ysEPRPCodes::justright(){
+	*printer << '\x1b' << '\x61' << '\x02';
+}
+
+void ysEPRPCodes::prnpole(){
+	*printer << '\x1b' << '\x3d' << '\x02';
+}
+
+void ysEPRPCodes::prnpaper(){
+	*printer << '\x1b' << '\x3d' << '\x01';
+}
+
+void ysEPRPCodes::prnboth(){
+	*printer << '\x1b' << '\x3d' << '\x03';
+}
+
+void ysEPRPCodes::cutpaper(){
+	*printer << '\x1d' << '\x56' << '\x01' << endl;
+}
+
+void ysEPRPCodes::initialize(){
+	*printer << '\x1b' << '\x40';
+}
+
+void ysEPRPCodes::printheader(){
+}
+
+void ysEPRPCodes::finishreceipt(){
+}
