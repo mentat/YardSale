@@ -1,3 +1,7 @@
+#include <wx/string.h>
+#include <wx/db.h>
+#include <wx/dbtable.h>
+
 #include "ys_database.h"
 
 YardDatabase::YardDatabase(const wxString& dsn, const wxString& name, const wxString& pass) {
@@ -8,12 +12,21 @@ YardDatabase::YardDatabase(const wxString& dsn, const wxString& name, const wxSt
 }
   
 YardDatabase::YardDatabase() {
+    m_inv = 0;
+    m_connectInfo = 0;
 }
+
+YardDatabase::~YardDatabase() 
+{
+    delete m_inv;
+    delete m_connectInfo;
+}
+
 
 bool YardDatabase::connect(){
     if(!m_connectInfo || !m_connectInfo->GetHenv()){
 //	cerr << "You messed up, G." << endl;
-	return false;
+        return false;
     }
     m_db = wxDbGetConnection(m_connectInfo);
 
@@ -58,11 +71,14 @@ bool YardDatabase::connect(){
 
 vector<YardInvType> YardDatabase::InvSearchKeyword(const unsigned long &sku) {
     wxString sqlQuery;
-    // vector<YardInvType> m_invVec;
+    vector<YardInvType> m_invVec; // john - had to put this in to compile
     sqlQuery.Printf("SELECT * FROM `Inventory_Table` WHERE INV_SKU_NUMBER = '%d'", sku);
-    if(!m_table->QueryBySqlStmt(sqlQuery)) return m_invVec;
+    
+    if (!m_table->QueryBySqlStmt(sqlQuery)) 
+        return m_invVec;
+    
     while (m_table->GetNext()) {
-	m_invVec.push_back(*m_inv);
+        m_invVec.push_back(*m_inv);
     }
     return m_invVec;
 }
@@ -70,27 +86,34 @@ vector<YardInvType> YardDatabase::InvSearchKeyword(const unsigned long &sku) {
 vector<YardInvType> YardDatabase::InvGet(unsigned int num, unsigned int offset){
     
     unsigned long numRows = 0;
-
+    vector<YardInvType> m_invVec; // john - had to put this in to compile
     m_invVec.clear();
     wxString sqlQuery;
     sqlQuery.Printf("SELECT * FROM `Inventory_Table`");
-    if(!m_table->QueryBySqlStmt(sqlQuery)) return m_invVec;
+    
+    if(!m_table->QueryBySqlStmt(sqlQuery)) 
+        return m_invVec;
     /* There is no GetNumRows, only GetRowNum, so I have to
        GetLast();, then GetRowNum().  BRILLIANT!
     */
     m_table->GetLast();
     numRows = m_table->GetRowNum();
-    if(numRows < num || numRows < num+offset) return m_invVec;
+    
+    if(numRows < num || numRows < num+offset) 
+        return m_invVec;
+    
     m_table->GetFirst();
     if(offset > 0) {
-	for(int ii = 1; ii <= offset; ii++){
-	    m_table->GetNext();
-	}
+        for(int ii = 1; ii <= offset; ii++){
+            m_table->GetNext();
+        }
     }
+    
     for(int ii = 1; ii < num; ii++){
-	m_invVec.push_back(*m_inv);
-	m_table->GetNext();
+        m_invVec.push_back(*m_inv);
+        m_table->GetNext();
     }
+    
     m_invVec.push_back(*m_inv);
     return m_invVec;
 }
