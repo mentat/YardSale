@@ -6,7 +6,7 @@
 /**
  * This is the on-screen keyboard dialog for YardSale
  * @author Jay Johnston
- * @version \$Revision: 1.2 $$
+ * @version \$Revision: 1.3 $$
  */ 
 class YardKeybrdDlg: public wxDialog {
  public:
@@ -16,7 +16,7 @@ class YardKeybrdDlg: public wxDialog {
     YardKeybrdDlg(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxSTAY_ON_TOP | wxRESIZE_BORDER);
+               long style = wxDEFAULT_DIALOG_STYLE);
     
     
     private:

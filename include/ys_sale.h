@@ -25,7 +25,7 @@
  * From the transaction screen you can access the payment screen.
  * 
  * @author Jesse Lovelace
- * @version \$Revision: 1.7 $$
+ * @version \$Revision: 1.8 $$
  */
 class YardSaleScreen: public wxFrame{
     /// This constructor cannot be used
@@ -36,7 +36,7 @@ class YardSaleScreen: public wxFrame{
     YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER|wxTAB_TRAVERSAL,
+               long style = wxDEFAULT_FRAME_STYLE,
                const wxString& name = wxT("YardSaleScreen"));
     /// Destructor
     virtual ~YardSaleScreen();

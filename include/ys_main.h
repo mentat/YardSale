@@ -27,7 +27,7 @@
  * important utilities.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.11 $$
+ * @version \$Revision: 1.12 $$
  */
 class YardMain: public wxFrame {
     public:
@@ -38,7 +38,7 @@ class YardMain: public wxFrame {
     YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER|wxFRAME_NO_TASKBAR, 
+               long style = wxDEFAULT_FRAME_STYLE, 
                const wxString& name = wxT("YardMain"));
         
     virtual ~YardMain();

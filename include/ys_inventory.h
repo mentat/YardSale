@@ -32,7 +32,7 @@ class wxCheckBox;
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.14 $$
+ * @version \$Revision: 1.15 $$
  */
 class YardInventory: public wxFrame{
  public:
@@ -43,7 +43,7 @@ class YardInventory: public wxFrame{
     YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER|wxTAB_TRAVERSAL,
+               long style = wxDEFAULT_FRAME_STYLE,
                const wxString& name = wxT("YardInventory"));
     
     /// Destructor
