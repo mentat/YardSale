@@ -1,5 +1,6 @@
 #include <string>
 #include <sstream>
+#include <memory>
 
 #include "ys_exception.h"
 #include "ys_database.h"
@@ -67,6 +68,8 @@ bool YardDatabase::connect(){
     
     } catch(otl_exception &e) {
         
+        //throw YardDBException((char *)e.msg, (char*)e.stm_text);
+        throw YardDBException("Cannot connect to DB, I dont know why.")
         return false;
     }
     return true;
@@ -81,6 +84,8 @@ bool YardDatabase::disconnect()
         m_db->logoff();
     }
     catch( otl_exception &e) {
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
         return false;
     }
     return true;
@@ -89,31 +94,48 @@ bool YardDatabase::disconnect()
 vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
    
     if (!m_db)
-        throw YardException("DB not initialized.");
+        throw YardDBException("DB not initialized.");
     
     vector<YardInvType> invVec;
         
     stringstream sql;
     sql << "SELECT INV_SKU_Number, INV_Item_Type, "
-	"INV_Item_Description, INV_Bar_Code_Number, "
-	"INV_Retail_Price, INV_Wholesale_Price "
+        "INV_Item_Description, INV_Bar_Code_Number, "
+        "INV_Retail_Price, INV_Wholesale_Price "
         "FROM Inventory_Table WHERE INV_SKU_Number = '" << sku << "'";
     
-    otl_stream dbStream(50, sql.str().c_str(), *m_db);
+    auto_ptr<otl_stream> dbStream;
+
+    try {
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
     
-    while (!dbStream.eof()){
+    } catch (otl_exception &e) {
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    while (!dbStream->eof()){
         otl_long_string longDesc;
-	char itemType[20+1];
-	itemType[0]='\0';
-	char barCode[30+1];
-	barCode[0]='\0';
+        
+        char itemType[20+1];	
+        itemType[0]='\0';
+            
+        char barCode[30+1];
+        barCode[0]='\0';
+            
         YardInvType temp;
-        dbStream >> temp.m_skuNumber >> itemType >> longDesc \
-		 >> barCode >> temp.m_retailPrice \
-		 >> temp.m_wholesalePrice;
+        
+        try {
+            *dbStream >> temp.m_skuNumber >> itemType >> longDesc 
+                 >> barCode >> temp.m_retailPrice 
+                 >> temp.m_wholesalePrice;
+        } catch (otl_exception &e) {
+            throw YardDBException((char *)e.msg, (char*)e.stm_text);
+        }
+        
         temp.m_itemDescription = (char*)longDesc.v;
-	temp.m_barCode = barCode;
-	temp.m_itemType = itemType;
+        temp.m_barCode = barCode;
+        temp.m_itemType = itemType;
         invVec.push_back(temp);
     }
         
@@ -123,9 +145,8 @@ vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
 vector<YardInvType> YardDatabase::InvGet(unsigned int num, unsigned int offset){
     
     if (!m_db)
-        throw YardException("DB not initialized.");
+        throw YardDBException("DB not initialized.");
     
-
     vector<YardInvType> m_invVec; 
    
     return m_invVec;

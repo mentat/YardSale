@@ -4,6 +4,7 @@
 
 #include "yardsale.h"
 #include "ys_log.h"
+#include "ys_exception.h"
 #include "ys_database.h"
 #include "ys_debug.h"
 
@@ -35,24 +36,33 @@ void YardDebugScreen::OnConnect(wxCommandEvent & event) {
     wxString dsn = ((wxTextCtrl *)FindWindow(ID_DEBUG_DSN))->GetValue();
     wxString user = ((wxTextCtrl *)FindWindow(ID_DEBUG_USER))->GetValue();
     wxString pass = ((wxTextCtrl *)FindWindow(ID_DEBUG_PASS))->GetValue();
-    if (!wxGetApp().DB().Init(dsn.c_str(), user.c_str(), pass.c_str()))
+    
+    try {
+        wxGetApp().DB().Init(dsn.c_str(), user.c_str(), pass.c_str());
+    } catch (YardDBException &e)
     {
-        wxLogDB(wxT("Cannot init DB"));
-        return;
-    }
-
-    if (!wxGetApp().DB().connect())
-    {
-        wxLogDB(wxT("Cannot connect DB"));
+        ((wxTextCtrl *)FindWindow(ID_DEBUG_SQL))->SetValue(e.GetSQL().c_str());
+        wxLogDB(e.GetWhat().c_str());
     }
     
-    
+    try { 
+        wxGetApp().DB().connect();
+    } catch (YardDBException &e)
+    {
+        ((wxTextCtrl *)FindWindow(ID_DEBUG_SQL))->SetValue(e.GetSQL().c_str());
+        wxLogDB(e.GetWhat().c_str());
+    }
     
 }
 
 void YardDebugScreen::OnDisc(wxCommandEvent & event) {
   
-    if (!wxGetApp().DB().disconnect())
-        wxLogDB(wxT("Cannot disconnect from DB"));    
+    try {
+        wxGetApp().DB().disconnect();
+    } catch (YardDBException &e)
+    {
+        ((wxTextCtrl *)FindWindow(ID_DEBUG_SQL))->SetValue(e.GetSQL().c_str());
+        wxLogDB(e.GetWhat().c_str());
+    }        
     
 }

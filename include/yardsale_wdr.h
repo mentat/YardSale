@@ -96,17 +96,18 @@ wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRU
 wxSizer *Employee( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 #define ID_DEBUG_LOG 10051
-#define ID_DEBUG_DB_CONNECT 10052
-#define ID_DEBUG_DB_DISC 10053
-#define ID_DEBUG_USER 10054
-#define ID_DEBUG_DSN 10055
-#define ID_DEBUG_PASS 10056
+#define ID_DEBUG_SQL 10052
+#define ID_DEBUG_DB_CONNECT 10053
+#define ID_DEBUG_DB_DISC 10054
+#define ID_DEBUG_USER 10055
+#define ID_DEBUG_DSN 10056
+#define ID_DEBUG_PASS 10057
 wxSizer *DebugScreen( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_FOOTER_CALC 10057
-#define ID_FOOTER_KEY 10058
-#define ID_FOOTER_TIME 10059
-#define ID_FOOTER_UNDO 10060
+#define ID_FOOTER_CALC 10058
+#define ID_FOOTER_KEY 10059
+#define ID_FOOTER_TIME 10060
+#define ID_FOOTER_UNDO 10061
 wxSizer *InfoFooter( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions

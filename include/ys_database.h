@@ -28,7 +28,8 @@ using namespace std;
 // Forward declarations for speed -jll
 class YardDBConfig;
 class otl_connect;
-    
+class otl_stream;
+
 /**
  * @defgroup database Database Related Documentation
  */
@@ -71,10 +72,16 @@ class YardDatabase {
     /** 
      * This connects to the database with the options specified
      * above.  Dumbass.
-     * @return True if connection was successful, @sa GetStatus    
+     * @return True if connection was successful, @sa GetStatus
+     * @throws YardDBException
      */
     bool connect();
     
+    /**
+     * Disconnects from the DB
+     * @return False if not connected to DB in the first place
+     * @throws YardDBException
+     */
     bool disconnect();
      
     /**
@@ -110,7 +117,7 @@ class YardDatabase {
     string m_dsn;
     string m_name;
     string m_pass;
-    otl_stream m_invGetStream;
+    otl_stream * m_invGetStream;
      
 };
 

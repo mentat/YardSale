@@ -48,6 +48,15 @@ class YardDBException: public YardException {
  public:
         
     YardDBException(const string& err):YardException(err) {}
+    YardDBException(const string& err, const string& sql):
+        YardException(err), m_sql(sql) {}
+    
+    virtual ~YardDBException() throw() {}
+    
+    string GetSQL() const { return m_sql; }
+    
+ private:
+    string m_sql;
 };
 /**
  * @ingroup database
