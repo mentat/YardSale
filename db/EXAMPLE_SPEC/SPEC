@@ -1,0 +1,53 @@
+Using the sql script included in this directory create a frontend to add users 
+to the database. The main focus is to find the easiest method of interfacing 
+with the database as possible. A good thing to do would be to make functions
+for the following operations to allow the best code reusability.
+
+-Open A Database connection
+	Accept a database connection url as the argument
+	Accept a db username and password
+	Return true if we get one 
+	Return false if we don't
+
+-Execute a query
+	Accept a query string as an argument
+	Execute the query, return the resultset  (In JDBC this is already
+	  written, C++ may  have  a similar function)
+
+-Close db Connection
+	Accept a db connection url or object
+	Return true if successful  
+	Return false if not
+
+The GUI should take the following input 
+	-Social Security Number (11 Chars Max)
+	-First Name
+	-Middle Name
+	-Last Name
+	-Phone number
+	-House Number
+	-Street Name
+	-City
+	-State
+	-Zip
+
+	All values  for the database that are of type varchar() have a limit 
+	placed on size. If you look at the .sql script you can find them.
+
+Another good section would be a database browser using a listview. Basically 
+executing the included SELECT statement, storing the resultset and printing 
+it to the listview would be some highly reusable code as well.
+
+A nice feature would also be to select a member of the list view and populate 
+the above fields in the other gui with them. 
+
+Do not feel the need to "UPDATE" users. That code is only slightly different
+and would likely be a waste of time to debug for now.
+
+Please check all working code into this directory. If you have questions about
+the table structure or any Database related things respond to  
+
+yardsale-devel@lists.sourceforge.net
+
+Thanks.
+Adam
