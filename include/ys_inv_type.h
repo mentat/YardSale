@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version \$Revision: 1.18 $$
+ * @version \$Revision: 1.19 $$
  * @see YardDBType
  */
 
@@ -63,6 +63,8 @@ class YardInvType: public YardDBType
     
     YardInvType& operator=(const YardInvType& obj);
     
+    int GetKey() const { return m_key; }
+        
     /// Get SKU
     string GetSKU() const { return m_skuNumber; }
     /// Get barcode
@@ -99,7 +101,9 @@ class YardInvType: public YardDBType
     bool MustShipFreight() const { return m_mustShipFreight; }
   
     /* settors */
-  
+    /// @throws YardDBIntegrityException if you try to overwrite
+    ///  a value set by the DB
+    void SetKey(int key);
     /// Set the bar code
     void SetBarCode(const string& str);
     /// Set item description

@@ -35,6 +35,15 @@ YardInvType::YardInvType(const YardInvType& obj) {
     
 }
 
+void YardInvType::SetKey(int key) {
+    
+    if (m_key == -1)
+        m_key = key;
+    else
+        throw YardDBIntegrityException("YardInvType::SetKey: You may not"
+            " overwrite this value or DB integrity will be violated.");
+}
+
 string YardInvType::ToString(const string& delim) const {
     
     stringstream output;
