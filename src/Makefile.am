@@ -9,9 +9,9 @@ INCLUDES = \
 	 -I../include
 
 yardsale_CXXFLAGS =\
+	 -DDEBUG_LEVEL_0\
 	-ansi\
 	 -Wall\
-	 -O3\
 	 -g
 
 bin_PROGRAMS = yardsale

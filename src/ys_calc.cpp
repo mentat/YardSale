@@ -1,7 +1,7 @@
+#include <sstream>
+
 #include "yardsale_wdr.h"
 #include "ys_calc.h"
-
-#include <sstream>
 
 using namespace std;
 

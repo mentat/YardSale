@@ -26,6 +26,7 @@ bool YardSale::OnInit()
     }        
     
     SetTopWindow(frame);
+    
     login->Destroy();
     
     frame->Show(true);
