@@ -4,7 +4,7 @@ using namespace::std;
 #include <iostream>
 
 int main() {
-    wxString dsn = "YardSaleRemote";
+    wxString dsn = "YardSale";
     wxString user = "pwizard";
     wxString password = "temp";
     YardDatabase db = YardDatabase(dsn, user, password);
