@@ -2,19 +2,29 @@
 #define YS_INVENTORY_TYPE_H
 
 #include "ys_dbtype.h"
+#include <vector>
+#include <string>
+
+using namespace::std;
 
 /**
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
  * @author Jesse Lovelace
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @see YardDBType
  */
 
 class YardInvType: public YardDBType
 {
-    public:
-        
+ public:
+      
+    struct BulkPricing 
+    {
+	unsigned long quantity;
+	float percent;
+    };
+  
     YardInvType();
     
     /**
@@ -44,27 +54,28 @@ class YardInvType: public YardDBType
     bool IsOverSized() const;
     bool MustShipFreight() const;
   
-    private:
+ private:
         
-    long int m_autoIncrement;
-    char[30] m_barCode;
-    string m_description;
-    char[30] m_department;
+    long int m_skuNumber;
+    char m_barCode[30+1];
+    string m_itemDescription;
+    char m_itemDepartment[30+1];
     unsigned long m_quantityOnHand;
     unsigned long m_quantityOnOrder;
     unsigned long m_reorderLevel;
-    char[20] m_itemType;
+    unsigned long m_reorderQuantity;
+    char m_itemType[30+1];
     float m_itemWeight;
     float m_taxType;
     long int m_vendorId;
     float m_retailPrice;
     float m_wholesalePrice;
     
-    struct BulkPricing 
-    {
-        unsigned long quantity;
-        float percent;
-    };
+    /*   struct BulkPricing  */
+    /*     { */
+    /*         unsigned long quantity; */
+    /*         float percent; */
+    /*     }; */
     vector<BulkPricing> m_bulkPricing;
     
     DateTime m_dateLastReceived;

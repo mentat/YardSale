@@ -1,7 +1,8 @@
 #ifndef YS_DATABASE_H
-#define YS_DATABSE_H
+#define YS_DATABASE_H
 
 #include "ys_inv_type.h"
+#include <wx/string.h>
 
 class YardDBConfig{}
 
@@ -13,10 +14,14 @@ class YardDBConfig{}
 class YardDatabase {
     public:
         
-    YardDatabase(const string& name, const string& pass);
+    YardDatabase(const wxString& dsn, const wxString& name, const wxString& pass);
     //YardDatabase(const YardDBConfig& config);  
     YardDatabase();
     
+    /* This connects to the database with the options specified
+       above.  Dumbass. */
+    bool connect();
+
     /*------------Inventory-------------*/
     
     /**
@@ -26,7 +31,7 @@ class YardDatabase {
      * @param keyword A text string to search for.
      * @return A std::vector of YardInvType objects
      */
-    vector<YardInvType> InvSearchKeyword(const string& keyword);
+    vector<YardInvType> InvSearchKeyword(const unsigned long &sku);
     
     /**
      * Get a batch of inventory items.
@@ -35,8 +40,11 @@ class YardDatabase {
      * @return A std::vector of YardInvType objects
      */
     vector<YardInvType> InvGet(unsigned int num, unsigned int offset);
-    
-    
+ private:
+    wxDb * m_db;
+    wxDbTable * m_table;
+    wxDbConnectInf * m_connectInfo;
+    Ya
 };
 
 
