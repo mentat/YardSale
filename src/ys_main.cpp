@@ -7,7 +7,6 @@
 BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(ID_MAIN_LOGOUT, YardMain::OnLogout)
     EVT_BUTTON(ID_MAIN_INVENTORY, YardMain::OnInventory)
-    EVT_BUTTON(ID_MAIN_MAX, YardMain::OnMax)
 END_EVENT_TABLE()
 
 
@@ -33,9 +32,7 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     
     m_enlarge = new wxBitmap("images/ys_enlarge_64x64.png");
     m_shrink = new wxBitmap("images/ys_shrink_64x64.png");
-    
-    m_maxButt = new wxBitmapButton(panel, ID_MAIN_MAX, *m_enlarge, wxDefaultPosition);
-    
+
     new wxStaticBitmap(panel, ID_MAIN_LOGO, logo, wxDefaultPosition);
      
     new wxBitmapButton(panel, ID_MAIN_INVENTORY, inventory, wxDefaultPosition);
@@ -64,18 +61,8 @@ void YardMain::OnLogout(wxCommandEvent& event){
     Destroy();
 }
 
-void YardMain::OnMax(wxCommandEvent& event){
-    
-    if (m_max) {
-        m_maxButt->SetBitmapLabel(*m_enlarge);
-        ShowFullScreen(false);
-        m_max = false;
-    }
-    else {
-        m_maxButt->SetBitmapLabel(*m_shrink);
-        ShowFullScreen(true);
-        m_max=true;
-    }
+void YardMain::OnMax(wxCommandEvent& event){    
+
 }
 
 void YardMain::OnInventory(wxCommandEvent& event){
