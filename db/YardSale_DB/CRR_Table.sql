@@ -5,5 +5,6 @@ CREATE TABLE Carrier_Table(
 	CRR_Name			varchar(50),
 	CRR_Pickup_Location		TEXT,
 	CRR_Phone_Number		varchar(20),
-	Primary Key (CRR_ID)
+	Primary Key (CRR_ID),
+	UNIQUE(CRR_Name)
 )type=InnoDB
