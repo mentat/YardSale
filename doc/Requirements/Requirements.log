@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.12.24)  3 MAR 2004 07:19
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.11.7)  4 MAR 2004 23:32
 **Requirements.tex
 (./Requirements.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
 LaTeX2e <2001/06/01>
@@ -106,13 +106,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 2.
-)
+ [1
+
+])
 \tf@toc=\write4
 \openout4 = `Requirements.toc'.
 
- [1
 
-]
+[2]
 Chapter 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 53--58
@@ -125,7 +126,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 60.
- [2
+ [3
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 100--106
@@ -137,404 +138,521 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--106
 
  []
 
-[3] [4] [5] <yardsale_modules.png, id=44, 451.6875pt x 191.71625pt>
+[4] [5] [6]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.322     \includegraphics
+                          {yardsale_modules.png}\\
+? 
+<yardsale_modules.png, id=48, 451.6875pt x 191.71625pt>
 File: yardsale_modules.png Graphic file (type png)
 
-<use yardsale_modules.png> [6]
-<organization.png, id=49, 451.6875pt x 222.8325pt>
+<use yardsale_modules.png>
+Underfull \hbox (badness 10000) in paragraph at lines 322--324
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--324
+
+ []
+
+[7] <organization.png, id=52, 451.6875pt x 222.8325pt>
 File: organization.png Graphic file (type png)
  <use organization.png>
-[7 <./yardsale_modules.png>] [8 <./organization.png>]
+[8 <./yardsale_modules.png>] [9 <./organization.png>]
 Chapter 2.
-[9
+[10
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 403--407
+Underfull \hbox (badness 10000) in paragraph at lines 412--416
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--407
+Underfull \hbox (badness 10000) in paragraph at lines 412--416
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--407
+Underfull \hbox (badness 10000) in paragraph at lines 412--416
 
  []
 
-[10] <Tables/CustomerTable.png, id=62, 180.675pt x 164.615pt>
+[11] <Tables/CustomerTable.png, id=65, 180.675pt x 164.615pt>
 File: Tables/CustomerTable.png Graphic file (type png)
 
 <use Tables/CustomerTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
+Underfull \hbox (badness 10000) in paragraph at lines 425--436
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
+Underfull \hbox (badness 10000) in paragraph at lines 425--436
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
+Underfull \hbox (badness 10000) in paragraph at lines 425--436
 
  []
 
-[11 <./Tables/CustomerTable.png>]
-<Tables/InventoryTable.png, id=66, 351.3125pt x 304.13625pt>
+[12 <./Tables/CustomerTable.png>]
+<Tables/InventoryTable.png, id=70, 351.3125pt x 304.13625pt>
 File: Tables/InventoryTable.png Graphic file (type png)
 
 <use Tables/InventoryTable.png>
-<Tables/TaxTable.png, id=67, 150.5625pt x 77.28876pt>
+<Tables/TaxTable.png, id=71, 150.5625pt x 77.28876pt>
 File: Tables/TaxTable.png Graphic file (type png)
 
 <use Tables/TaxTable.png>
-<Tables/VendorTable.png, id=68, 200.75pt x 194.7275pt>
+<Tables/VendorTable.png, id=72, 200.75pt x 194.7275pt>
 File: Tables/VendorTable.png Graphic file (type png)
 
 <use Tables/VendorTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--501
+Underfull \hbox (badness 10000) in paragraph at lines 453--510
 
  []
 
-[12 <./Tables/InventoryTable.png>]
-<Tables/TransactionLogTable.png, id=73, 401.5pt x 151.56625pt>
+[13 <./Tables/InventoryTable.png>]
+<Tables/TransactionLogTable.png, id=76, 401.5pt x 151.56625pt>
 File: Tables/TransactionLogTable.png Graphic file (type png)
 
 <use Tables/TransactionLogTable.png>
-<Tables/PackageTable.png, id=74, 401.5pt x 171.64125pt>
+<Tables/PackageTable.png, id=77, 401.5pt x 171.64125pt>
 File: Tables/PackageTable.png Graphic file (type png)
 
 <use Tables/PackageTable.png>
-<Tables/CarrierTable.png, id=75, 159.59625pt x 96.36pt>
+<Tables/CarrierTable.png, id=78, 159.59625pt x 96.36pt>
 File: Tables/CarrierTable.png Graphic file (type png)
 
 <use Tables/CarrierTable.png>
-<Tables/ShippingTable.png, id=76, 401.5pt x 130.4875pt>
+<Tables/ShippingTable.png, id=79, 401.5pt x 130.4875pt>
 File: Tables/ShippingTable.png Graphic file (type png)
 
 <use Tables/ShippingTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--559
+Underfull \hbox (badness 10000) in paragraph at lines 513--568
 
  []
 
-[13 <./Tables/TaxTable.png> <./Tables/VendorTable.png>] [14 <./Tables/Transacti
+[14 <./Tables/TaxTable.png> <./Tables/VendorTable.png>] [15 <./Tables/Transacti
 onLogTable.png> <./Tables/PackageTable.png>]
-<Tables/EmployeeTable.png, id=83, 401.5pt x 183.68625pt>
+<Tables/EmployeeTable.png, id=86, 401.5pt x 183.68625pt>
 File: Tables/EmployeeTable.png Graphic file (type png)
 
 <use Tables/EmployeeTable.png>
-<Tables/LoginTable.png, id=84, 199.74625pt x 78.2925pt>
+<Tables/LoginTable.png, id=87, 199.74625pt x 78.2925pt>
 File: Tables/LoginTable.png Graphic file (type png)
 
 <use Tables/LoginTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--596
+Underfull \hbox (badness 10000) in paragraph at lines 570--605
 
  []
 
-[15 <./Tables/CarrierTable.png> <./Tables/ShippingTable.png>]
-<Tables/ACL.png, id=88, 125.46875pt x 64.24pt>
+[16 <./Tables/CarrierTable.png> <./Tables/ShippingTable.png>]
+<Tables/ACL.png, id=91, 125.46875pt x 64.24pt>
 File: Tables/ACL.png Graphic file (type png)
  <use Tables/ACL.png>
-<Tables/KeyTable.png, id=89, 301.125pt x 62.2325pt>
+<Tables/KeyTable.png, id=92, 301.125pt x 62.2325pt>
 File: Tables/KeyTable.png Graphic file (type png)
  <use Tables/KeyTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--625
+Underfull \hbox (badness 10000) in paragraph at lines 608--634
 
  []
 
-[16 <./Tables/EmployeeTable.png> <./Tables/LoginTable.png>] [17 <./Tables/ACL.p
-ng> <./Tables/KeyTable.png>] [18]
+[17 <./Tables/EmployeeTable.png> <./Tables/LoginTable.png>] [18 <./Tables/ACL.p
+ng> <./Tables/KeyTable.png>]
+<ys_main_screener.png, id=100, 266.56967pt x 316.55455pt>
+File: ys_main_screener.png Graphic file (type png)
+
+<use ys_main_screener.png>
+<ys_sales_screener.png, id=101, 266.56967pt x 209.04546pt>
+File: ys_sales_screener.png Graphic file (type png)
+
+<use ys_sales_screener.png>
+<ys_inv_screener.png, id=102, 266.56967pt x 260.4109pt>
+File: ys_inv_screener.png Graphic file (type png)
+
+<use ys_inv_screener.png>
+<ys_employee_screener.png, id=103, 266.56967pt x 229.95pt>
+File: ys_employee_screener.png Graphic file (type png)
+
+<use ys_employee_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--667
+
+ []
+
+[19 <./ys_main_screener.png>] [20 <./ys_sales_screener.png> <./ys_inv_screener.
+png>] [21 <./ys_employee_screener.png>]
 Chapter 3.
-[19
+[22
 
 ]
 Chapter 4.
-[20
+[23
 
 ] (./Requirements.aux) ) 
 Here is how much of TeX's memory you used:
- 1111 strings out of 95437
- 13924 string characters out of 1190232
+ 1131 strings out of 95437
+ 14420 string characters out of 1190233
  62935 words of memory out of 1000001
- 4130 multiletter control sequences out of 10000+50000
+ 4146 multiletter control sequences out of 10000+50000
  9767 words of font info for 34 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 1000
  25i,6n,43p,210b,247s stack positions out of 1500i,500n,5000p,200000b,5000s
- 105 PDF objects out of 300000
+ 118 PDF objects out of 300000
  0 named destinations out of 131072
- 70 words of extra memory for PDF output out of 65536
+ 90 words of extra memory for PDF output out of 65536
 {/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/
 texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
 cmsl10.pfb>{/usr/share/texmf/dvips/tetex/bbad153f.enc}</usr/share/texmf/fonts/t
@@ -542,4 +660,4 @@ ype1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb><
 /usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type
 1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr
 /share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb>
-Output written on Requirements.pdf (21 pages, 240936 bytes).
+Output written on Requirements.pdf (24 pages, 422917 bytes).
