@@ -4,6 +4,7 @@ source CUST_Table.sql;
 source VND_Table.sql;
 source TAX_Table.sql;
 source EMP_Table.sql;
+source INV_Group_Table.sql; 
 source INV_Table.sql;
 source KEY_Table.sql;
 source SHP_Table.sql;
