@@ -3,6 +3,13 @@
 
 #include "wx/frame.h"
 
+/**
+ * This class manages configuration settings which are 
+ * platform independant and therefore use dot files in Linux
+ * and registry in Win32.
+ *
+ * @author Jesse Lovelace
+ */
 class YardConfig: public wxFrame {
  public:
 

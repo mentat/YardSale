@@ -20,11 +20,20 @@
 #define YS_BITMAPS_H
 
 class wxBitmap;
-    
+
+/**
+ * The bitmaps class handles all loading of bitmap resources except
+ * small XPMs in the logging system.  All bitmaps are loaded into 
+ * memory in a linear fasion.
+ *
+ * @author Jesse Lovelace
+ * @version \$ Revision: $$
+ */ 
 class YardBitmaps
 {
  public:
-     
+   
+    /// Each picture resource is enumated for accessing  
     enum { 
         MAIN_LOGO = 1,
         MAIN_INV = 12,

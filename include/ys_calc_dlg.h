@@ -1,4 +1,4 @@
-#ifndef YS_CALC_DLG_H
+\#ifndef YS_CALC_DLG_H
 #define YS_CALC_DLG_H
 
 
@@ -6,7 +6,7 @@
 /**
  * This is the on-screen calculator dialog for YardSale
  * @author Jesse Lovelace
- * @version $Revision: 1.2 $
+ * @version \$Revision: 1.3 $$
  */ 
 class YardCalcDlg: public wxDialog {
  public:
