@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  2 MAR 2004 07:33
+This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  2 MAR 2004 19:04
 entering extended mode
 **Requirements.tex
 (Requirements.tex{pdftex.cfg}
@@ -129,17 +129,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--103
 [3] [4] [5] <organization.png, id=44, 451.6875pt x 187.70125pt>
 File: organization.png Graphic file (type png)
 
-<use organization.png> [6 <organization.png>]
+<use organization.png> [6 <organization.png>] [7]
 Chapter 2.
-[7
-
-]
-Chapter 3.
 [8
 
 ]
-Chapter 4.
+Chapter 3.
 [9
+
+]
+Chapter 4.
+[10
 
 ] (Requirements.aux) ) 
 Here is how much of TeX's memory you used:
@@ -150,9 +150,9 @@ Here is how much of TeX's memory you used:
  9767 words of font info for 34 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 607
  25i,6n,19p,207b,191s stack positions out of 1500i,500n,5000p,200000b,32768s
- 57 PDF objects out of 65536
+ 60 PDF objects out of 65536
  0 named destinations out of 20000
  6 words of extra memory for PDF output out of 65536
 <cmr7.pfb><cmsl10.pfb><cmsy10.pfb><cmr10.pfb><cmbx10.pfb>
 <cmr12.pfb><cmr17.pfb><cmbx12.pfb>
-Output written on Requirements.pdf (10 pages, 122535 bytes).
+Output written on Requirements.pdf (11 pages, 125015 bytes).

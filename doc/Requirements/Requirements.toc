@@ -27,7 +27,7 @@
 \contentsline {section}{\numberline {1.6}Preliminary Project Task Plan}{6}
 \contentsline {subsection}{\numberline {1.6.1}Milestones}{6}
 \contentsline {subsection}{\numberline {1.6.2}Team Member Roles and Responsibilities}{6}
-\contentsline {chapter}{\numberline {2}Design}{7}
-\contentsline {chapter}{\numberline {3}Implementation}{8}
-\contentsline {subsection}{\numberline {3.0.3}Class Documentation}{8}
-\contentsline {chapter}{\numberline {4}Test Plan}{9}
+\contentsline {chapter}{\numberline {2}Design}{8}
+\contentsline {chapter}{\numberline {3}Implementation}{9}
+\contentsline {subsection}{\numberline {3.0.3}Class Documentation}{9}
+\contentsline {chapter}{\numberline {4}Test Plan}{10}
