@@ -118,7 +118,26 @@ wxSizer *DebugScreen( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = T
 #define ID_FOOTER_UNDO 10069
 wxSizer *InfoFooter( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
+#define ID_NOTEBOOK 10070
+#define ID_CONFIG_SAVE 10071
+#define ID_CONFIG_CANCEL 10072
+wxSizer *Config( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
+#define ID_CONFIG_DB_USER 10073
+#define ID_CONFIG_DB_PWORD 10074
+#define ID_CONFIG_DB_TYPE 10075
+#define ID_CONFIG_DB_DRIVER 10076
+#define ID_CONFIG_DB_BROWSE 10077
+#define ID_CONFIG_DB_DSN 10078
+#define ID_CONFIG_DB_SERVER 10079
+#define ID_CONFIG_DB_PORT 10080
+wxSizer *ConfigDB( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
 // Declare menubar functions
+
+#define ID_MENU 10081
+#define ID_MAIN_MENU_CONFIG 10082
+wxMenuBar *MainBar();
 
 // Declare toolbar functions
 

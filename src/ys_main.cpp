@@ -10,6 +10,7 @@
 #include "ys_inventory.h"
 #include "ys_sale.h"
 #include "ys_employee.h"
+#include "ys_config.h"
 #include "ys_log.h"
 
 
@@ -18,6 +19,7 @@ BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(ID_MAIN_INVENTORY, YardMain::OnInventory)
     EVT_BUTTON(ID_MAIN_SALES, YardMain::OnSale)
     EVT_BUTTON(ID_MAIN_EMPLOYEE, YardMain::OnEmployee)
+    EVT_MENU(ID_MAIN_MENU_CONFIG, YardMain::OnOptions)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
@@ -27,7 +29,7 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
 :wxFrame(parent, id, title, pos, size, style), m_max(false) {
     
     m_inventory = 0;
-    
+    SetMenuBar(MainBar());
     wxPanel * panel = new wxPanel(this);
     
     //panel->SetBackgroundColour(wxColor("BLUE VIOLET"));
@@ -74,6 +76,12 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
 
 YardMain::~YardMain()
 {
+}
+
+void YardMain::OnOptions(wxCommandEvent& event){
+    
+    YardConfig * conf = new YardConfig(this, -1, wxT("YardSale Configuration"));
+    conf->Show();
 }
 
 void YardMain::OnLogout(wxCommandEvent& event){

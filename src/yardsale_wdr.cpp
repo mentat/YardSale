@@ -690,7 +690,127 @@ wxSizer *InfoFooter( wxWindow *parent, bool call_fit, bool set_sizer )
     return item0;
 }
 
+wxSizer *Config( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
+    item0->AddGrowableCol( 0 );
+    item0->AddGrowableRow( 0 );
+
+    wxNotebook *item2 = new wxNotebook( parent, ID_NOTEBOOK, wxDefaultPosition, wxSize(200,160), wxNB_LEFT );
+    wxNotebookSizer *item1 = new wxNotebookSizer( item2 );
+
+    wxPanel *item3 = new wxPanel( item2, -1 );
+    ConfigDB( item3, FALSE );
+    item2->AddPage( item3, wxT("Database") );
+
+    item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxFlexGridSizer *item4 = new wxFlexGridSizer( 2, 0, 0 );
+
+    wxButton *item5 = new wxButton( parent, ID_CONFIG_SAVE, wxT("Save"), wxDefaultPosition, wxDefaultSize, 0 );
+    item4->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxButton *item6 = new wxButton( parent, ID_CONFIG_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+    item4->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    item0->Add( item4, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
+wxSizer *ConfigDB( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 2, 0, 0 );
+
+    wxStaticText *item1 = new wxStaticText( parent, ID_TEXT, wxT("Username"), wxDefaultPosition, wxDefaultSize, 0 );
+    item0->Add( item1, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item2 = new wxTextCtrl( parent, ID_CONFIG_DB_USER, wxT(""), wxDefaultPosition, wxSize(130,-1), 0 );
+    item0->Add( item2, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item3 = new wxStaticText( parent, ID_TEXT, wxT("Password"), wxDefaultPosition, wxDefaultSize, 0 );
+    item0->Add( item3, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item4 = new wxTextCtrl( parent, ID_CONFIG_DB_PWORD, wxT(""), wxDefaultPosition, wxSize(80,-1), wxTE_PASSWORD );
+    item0->Add( item4, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item0->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxString strs5[] = 
+    {
+        wxT("ODBC (MySQL)")
+    };
+    wxRadioBox *item5 = new wxRadioBox( parent, ID_CONFIG_DB_TYPE, wxT("Database"), wxDefaultPosition, wxDefaultSize, 1, strs5, 1, wxRA_SPECIFY_COLS );
+    item0->Add( item5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, wxT("Driver"), wxDefaultPosition, wxDefaultSize, 0 );
+    item0->Add( item6, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxFlexGridSizer *item7 = new wxFlexGridSizer( 3, 0, 0 );
+
+    wxTextCtrl *item8 = new wxTextCtrl( parent, ID_CONFIG_DB_DRIVER, wxT(""), wxDefaultPosition, wxSize(110,-1), 0 );
+    item7->Add( item8, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxButton *item9 = new wxButton( parent, ID_CONFIG_DB_BROWSE, wxT("Browse"), wxDefaultPosition, wxDefaultSize, 0 );
+    item7->Add( item9, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    item0->Add( item7, 0, wxALIGN_CENTER_VERTICAL, 5 );
+
+    wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, wxT("Datasource"), wxDefaultPosition, wxDefaultSize, 0 );
+    item0->Add( item10, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item11 = new wxTextCtrl( parent, ID_CONFIG_DB_DSN, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item0->Add( item11, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item12 = new wxStaticText( parent, ID_TEXT, wxT("Server"), wxDefaultPosition, wxDefaultSize, 0 );
+    item0->Add( item12, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item13 = new wxTextCtrl( parent, ID_CONFIG_DB_SERVER, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item0->Add( item13, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item14 = new wxStaticText( parent, ID_TEXT, wxT("Port"), wxDefaultPosition, wxDefaultSize, 0 );
+    item0->Add( item14, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxSpinCtrl *item15 = new wxSpinCtrl( parent, ID_CONFIG_DB_PORT, wxT("0"), wxDefaultPosition, wxSize(100,-1), wxSP_WRAP, 1, 64000, 0 );
+    item0->Add( item15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
 // Implement menubar functions
+
+wxMenuBar *MainBar()
+{
+    wxMenuBar *item0 = new wxMenuBar;
+    
+    wxMenu* item1 = new wxMenu;
+    item1->Append( ID_MAIN_MENU_CONFIG, wxT("&Options\tAlt-o"), wxT("Edit program options") );
+    item0->Append( item1, wxT("File") );
+    
+    return item0;
+}
 
 // Implement toolbar functions
 

@@ -106,6 +106,7 @@ void YardInventory::OnSelect(wxListEvent & event){
         return;
     }
     
+    // get window pointers
     wxTextCtrl * sku = (wxTextCtrl *)FindWindow(ID_INV_SKU);
     wxTextCtrl * barcode = (wxTextCtrl *)FindWindow(ID_INV_BARCODE);
     wxTextCtrl * name = (wxTextCtrl *)FindWindow(ID_INV_ITEMNAME);
@@ -120,9 +121,9 @@ void YardInventory::OnSelect(wxListEvent & event){
     barcode->SetValue(m_objects[index].GetBarCode().c_str());
     name->SetValue(m_objects[index].GetItemType().c_str());
     
-    stringstream pricestr;
+    stringstream pricestr; // set precision to ??.??
     pricestr.precision(2);
-    
+    // format with sstream
     pricestr << showpoint << m_objects[index].GetRetailPrice();
     price->SetValue(pricestr.str().c_str());
     
