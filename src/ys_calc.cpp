@@ -101,7 +101,7 @@ void YardCalc::OnNumber(wxCommandEvent & event)
 //		what is on the screen
 //		what is in the memory
 //		the operator (indicated by the state)
-void YardCalc::Evaluate(){
+void YardCalc::Evaluate(bool wasEquals){
 
 	m_tempnumber = 0;
 	m_screen->GetValue().ToLong(&m_tempnumber);
@@ -122,6 +122,9 @@ void YardCalc::Evaluate(){
     num << m_savednumber;
     m_screen->SetValue(num.str().c_str());
 
+	if (wasEquals){
+		m_operand = "=";
+	}
 }
 
 void YardCalc::OnPlus(wxCommandEvent & event)
@@ -138,7 +141,7 @@ void YardCalc::OnPlus(wxCommandEvent & event)
 	}else{
 		//set the operand value	
 		m_operand = "+";
-		Evaluate();
+		Evaluate(false);
 	}
 }
 
@@ -156,5 +159,5 @@ void YardCalc::OnAllClear(wxCommandEvent & event){
 
 void YardCalc::OnEqual(wxCommandEvent & event)
 {
-	Evaluate();
+	Evaluate(true);
 }
