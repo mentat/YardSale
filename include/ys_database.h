@@ -107,7 +107,7 @@ class YardDatabase {
     wxDb * m_db;
     wxDbTable * m_table;
     wxDbConnectInf * m_connectInfo;
-    YardInvType * m_inv;
+    YardInvType m_inv;
 };
 
 #endif
