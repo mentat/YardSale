@@ -11,3 +11,16 @@ cvs update -C
 
 
 If you have a problem email jesse
+
+-From john (jwlamb@ncsu.edu):
+
+In order for the wxDb classes to work, you need to have wxWindows
+installed and compiled with odbc support, a la 
+	./configure --with-odbc --prefix=/usr
+(You may also want to add --with-gl, since opengl kicks ass.)  Also,
+you need to have the "unixODBC" and "MyODBC" packages installed.
+In order to access a specific DB, you have to configure a ~/.odbc.ini
+or /etc/odbc.ini such as the one outlined in
+http://www.wxwindows.org/manuals/2.4.2/wx497.htm#wxodbcconfiguringyoursystem
+
+That ought to do it for now.
