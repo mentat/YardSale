@@ -47,8 +47,8 @@ void YardInvType::SetKey(int key) {
 string YardInvType::ToString(const string& delim) const {
     
     stringstream output;
-    output 
-        << '\'' << m_skuNumber << '\'' << delim 
+    output << m_key << delim << '\''
+        << m_skuNumber << '\'' << delim 
         << '\'' << m_barCode << '\'' << delim 
         << '\'' << m_itemDescription << '\'' << delim 
         << '\'' << m_itemDepartment << '\'' << delim 
@@ -62,6 +62,7 @@ string YardInvType::ToString(const string& delim) const {
         << m_retailPrice << delim 
         << m_wholesalePrice << delim 
         << m_bulkPrice << delim;
+    
     if (m_key == -1)
         output << "now()" << delim;
     else
@@ -100,7 +101,7 @@ void YardInvType::FillFromStream(otl_stream * stream)
     m_key = 1;
     try {
         *stream
-           //  >> m_key
+            >> m_key
             >> m_skuNumber 
             >> m_barCode 
             >> m_itemDescription
@@ -119,17 +120,7 @@ void YardInvType::FillFromStream(otl_stream * stream)
             >> oversized
             >> freight
             >> m_comment;
-        /*
-        int year;
-    int month;
-    int day;
-    int hour;
-    int minute;
-    int second;
-    unsigned long fraction;
-    int frac_precision;
-        */
-        
+ 
         m_dateLastReceived.year = lastrec.year;
         m_dateLastReceived.month = lastrec.month;
         m_dateLastReceived.day = lastrec.day;
