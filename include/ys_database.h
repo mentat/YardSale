@@ -35,6 +35,7 @@ using namespace std;
 #include "ys_package_type.h"
 #include "ys_shipping_type.h"
 #include "ys_carrier_type.h"
+#include "ys_tax_type.h"
     
 class otl_connect;
 class otl_stream;

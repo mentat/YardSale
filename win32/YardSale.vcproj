@@ -191,6 +191,9 @@
 				RelativePath="..\src\ys_splash.cpp">
 			</File>
 			<File
+				RelativePath="..\src\ys_tax_type.cpp">
+			</File>
+			<File
 				RelativePath="..\src\ys_trans_type.cpp">
 			</File>
 			<File
@@ -284,6 +287,9 @@
 			</File>
 			<File
 				RelativePath="..\include\ys_splash.h">
+			</File>
+			<File
+				RelativePath="..\include\ys_tax_type.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_test.h">
