@@ -957,39 +957,39 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
     item2->Add( item3, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item4 = new wxButton( parent, ID_KBD_2, wxT("2"), wxDefaultPosition, wxSize(32,32), 0 );
-    item4->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item4->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item4, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item5 = new wxButton( parent, ID_KBD_3, wxT("3"), wxDefaultPosition, wxSize(32,32), 0 );
-    item5->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item5->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item6 = new wxButton( parent, ID_KBD_4, wxT("4"), wxDefaultPosition, wxSize(32,32), 0 );
-    item6->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item6->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item7 = new wxButton( parent, ID_KBD_5, wxT("5"), wxDefaultPosition, wxSize(32,32), 0 );
-    item7->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item7->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item7, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item8 = new wxButton( parent, ID_KBD_6, wxT("6"), wxDefaultPosition, wxSize(32,32), 0 );
-    item8->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item8->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item8, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item9 = new wxButton( parent, ID_KBD_7, wxT("7"), wxDefaultPosition, wxSize(32,32), 0 );
-    item9->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item9->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item9, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item10 = new wxButton( parent, ID_KBD_8, wxT("8"), wxDefaultPosition, wxSize(32,32), 0 );
-    item10->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item10->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item10, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item11 = new wxButton( parent, ID_KBD_9, wxT("9"), wxDefaultPosition, wxSize(32,32), 0 );
-    item11->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item11->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item11, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item12 = new wxButton( parent, ID_KBD_0, wxT("0"), wxDefaultPosition, wxSize(32,32), 0 );
-    item12->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item12->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item12, 0, wxALIGN_CENTER|wxALL, 5 );
 
     item0->Add( item2, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -997,43 +997,43 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
     wxFlexGridSizer *item13 = new wxFlexGridSizer( 10, 0, 0 );
 
     wxButton *item14 = new wxButton( parent, ID_KBD_Q, wxT("q"), wxDefaultPosition, wxSize(32,32), 0 );
-    item14->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item14->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item14, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item15 = new wxButton( parent, ID_KBD_W, wxT("w"), wxDefaultPosition, wxSize(32,32), 0 );
-    item15->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item15->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item15, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item16 = new wxButton( parent, ID_KBD_E, wxT("e"), wxDefaultPosition, wxSize(32,32), 0 );
-    item16->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item16->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item16, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item17 = new wxButton( parent, ID_KBD_R, wxT("r"), wxDefaultPosition, wxSize(32,32), 0 );
-    item17->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item17->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item17, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item18 = new wxButton( parent, ID_KBD_T, wxT("t"), wxDefaultPosition, wxSize(32,32), 0 );
-    item18->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item18->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item18, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item19 = new wxButton( parent, ID_KBD_Y, wxT("y"), wxDefaultPosition, wxSize(32,32), 0 );
-    item19->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item19->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item19, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item20 = new wxButton( parent, ID_KBD_U, wxT("u"), wxDefaultPosition, wxSize(32,32), 0 );
-    item20->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item20->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item20, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item21 = new wxButton( parent, ID_KBD_I, wxT("i"), wxDefaultPosition, wxSize(32,32), 0 );
-    item21->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item21->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item21, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item22 = new wxButton( parent, ID_KBD_O, wxT("o"), wxDefaultPosition, wxSize(32,32), 0 );
-    item22->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item22->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item22, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item23 = new wxButton( parent, ID_KBD_P, wxT("p"), wxDefaultPosition, wxSize(32,32), 0 );
-    item23->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item23->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item13->Add( item23, 0, wxALIGN_CENTER|wxALL, 5 );
 
     item0->Add( item13, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -1041,39 +1041,39 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
     wxFlexGridSizer *item24 = new wxFlexGridSizer( 10, 0, 0 );
 
     wxButton *item25 = new wxButton( parent, ID_KBD_A, wxT("a"), wxDefaultPosition, wxSize(32,32), 0 );
-    item25->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item25->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item25, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item26 = new wxButton( parent, ID_KBD_S, wxT("s"), wxDefaultPosition, wxSize(32,32), 0 );
-    item26->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item26->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item26, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item27 = new wxButton( parent, ID_KBD_D, wxT("d"), wxDefaultPosition, wxSize(32,32), 0 );
-    item27->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item27->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item27, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item28 = new wxButton( parent, ID_KBD_F, wxT("f"), wxDefaultPosition, wxSize(32,32), 0 );
-    item28->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item28->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item28, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item29 = new wxButton( parent, ID_KBD_G, wxT("g"), wxDefaultPosition, wxSize(32,32), 0 );
-    item29->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item29->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item29, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item30 = new wxButton( parent, ID_KBD_H, wxT("h"), wxDefaultPosition, wxSize(32,32), 0 );
-    item30->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item30->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item30, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item31 = new wxButton( parent, ID_KBD_J, wxT("j"), wxDefaultPosition, wxSize(32,32), 0 );
-    item31->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item31->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item31, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item32 = new wxButton( parent, ID_KBD_K, wxT("k"), wxDefaultPosition, wxSize(32,32), 0 );
-    item32->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item32->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item32, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item33 = new wxButton( parent, ID_KBD_L, wxT("l"), wxDefaultPosition, wxSize(32,32), 0 );
-    item33->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item33->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item24->Add( item33, 0, wxALIGN_CENTER|wxALL, 5 );
 
     item0->Add( item24, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -1081,58 +1081,66 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
     wxFlexGridSizer *item34 = new wxFlexGridSizer( 7, 0, 0 );
 
     wxButton *item35 = new wxButton( parent, ID_KBD_CAPS, wxT("shift"), wxDefaultPosition, wxSize(52,32), 0 );
-    item35->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item35->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item34->Add( item35, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxFlexGridSizer *item36 = new wxFlexGridSizer( 7, 0, 0 );
 
     wxButton *item37 = new wxButton( parent, ID_KBD_Z, wxT("z"), wxDefaultPosition, wxSize(32,32), 0 );
-    item37->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item37->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item36->Add( item37, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item38 = new wxButton( parent, ID_KBD_X, wxT("x"), wxDefaultPosition, wxSize(32,32), 0 );
-    item38->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item38->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item36->Add( item38, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item39 = new wxButton( parent, ID_KBD_C, wxT("c"), wxDefaultPosition, wxSize(32,32), 0 );
-    item39->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item39->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item36->Add( item39, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item40 = new wxButton( parent, ID_KBD_V, wxT("v"), wxDefaultPosition, wxSize(32,32), 0 );
-    item40->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item40->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item36->Add( item40, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item41 = new wxButton( parent, ID_KBD_B, wxT("b"), wxDefaultPosition, wxSize(32,32), 0 );
-    item41->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item41->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item36->Add( item41, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item42 = new wxButton( parent, ID_KBD_N, wxT("n"), wxDefaultPosition, wxSize(32,32), 0 );
-    item42->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item42->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item36->Add( item42, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item43 = new wxButton( parent, ID_KBD_M, wxT("m"), wxDefaultPosition, wxSize(32,32), 0 );
-    item43->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item43->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item36->Add( item43, 0, wxALIGN_CENTER|wxALL, 5 );
 
     item34->Add( item36, 0, wxALIGN_CENTER|wxALL, 5 );
 
+    wxButton *item44 = new wxButton( parent, ID_KBD_COMMA, wxT(","), wxDefaultPosition, wxSize(35,32), 0 );
+    item44->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item34->Add( item44, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxButton *item45 = new wxButton( parent, ID_KBD_PERIOD, wxT("."), wxDefaultPosition, wxSize(35,32), 0 );
+    item45->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item34->Add( item45, 0, wxALIGN_CENTER|wxALL, 5 );
+
     item0->Add( item34, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxFlexGridSizer *item44 = new wxFlexGridSizer( 3, 0, 0 );
+    wxFlexGridSizer *item46 = new wxFlexGridSizer( 3, 0, 0 );
 
-    wxButton *item45 = new wxButton( parent, ID_KBD_CLEAR, wxT("clear"), wxDefaultPosition, wxSize(50,32), 0 );
-    item45->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item44->Add( item45, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item47 = new wxButton( parent, ID_KBD_CLEAR, wxT("clear"), wxDefaultPosition, wxSize(50,32), 0 );
+    item47->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item46->Add( item47, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item46 = new wxButton( parent, ID_KBD_SPACE, wxT("space"), wxDefaultPosition, wxSize(95,32), 0 );
-    item46->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item44->Add( item46, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item48 = new wxButton( parent, ID_KBD_SPACE, wxT("space"), wxDefaultPosition, wxSize(95,32), 0 );
+    item48->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item46->Add( item48, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item47 = new wxButton( parent, ID_KBD_DONE, wxT("done"), wxDefaultPosition, wxSize(50,32), 0 );
-    item47->SetFont( wxFont( 42, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item44->Add( item47, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item49 = new wxButton( parent, ID_KBD_DONE, wxT("done"), wxDefaultPosition, wxSize(50,32), 0 );
+    item49->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item46->Add( item49, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    item0->Add( item44, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item46, 0, wxALIGN_CENTER|wxALL, 5 );
 
     if (set_sizer)
     {
