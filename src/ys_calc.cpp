@@ -1,6 +1,7 @@
 #include <sstream>
 #include <stack>
 
+#include "iostream.h"
 #include "yardsale_wdr.h"
 #include "ys_calc.h"
 
@@ -43,6 +44,8 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
     
     //so now the stack should have a number pushed onto it, and an operator
 	RefreshScreen();
+    
+    //DumpStack();
 }
 
 void YardCalc::PushBlankNumber()
@@ -54,6 +57,25 @@ void YardCalc::PushBlankNumber()
 	m_calcstack.push(m_tempstackitem);
 
 }
+
+void YardCalc::DumpStack()
+{
+    std::stack<CalcInstance> m_calcstack2;
+    m_calcstack2 = m_calcstack;
+    
+    while (!m_calcstack2.empty()){
+        if (m_calcstack2.top().m_isNumber){
+            cout << "STACK: number->" << m_calcstack2.top().m_type.m_number << "\n";
+        }else
+            cout << "STACK: operator->" << "\n";
+        
+        m_calcstack2.pop();
+    }
+                cout << "\n\n";
+
+    
+}
+
 YardCalc::~YardCalc()
 {
     
@@ -119,6 +141,14 @@ void YardCalc::OnNumber(wxCommandEvent & event)
 void YardCalc::EvaluateStack(){
     CalcInstance arg2 = m_calcstack.top();
     m_calcstack.pop();
+
+    //In the case that there is only one item on the stack, the stack is 
+    //considered to be evaluated, so just leave it alone and return
+    if (m_calcstack.empty()){
+        m_calcstack.push(arg2);
+        return;
+    }        
+
     CalcInstance op = m_calcstack.top();
     m_calcstack.pop();
     CalcInstance arg1 = m_calcstack.top();
@@ -128,25 +158,20 @@ void YardCalc::EvaluateStack(){
         case (Addition): 
             arg1.m_type.m_number += arg2.m_type.m_number; break;
         case (Subtraction):
-            arg1.m_type.m_number += arg2.m_type.m_number; break;
+            arg1.m_type.m_number -= arg2.m_type.m_number; break;
     }
-    
-    //push a zero
-    PushBlankNumber();
-    
-    //push a +0 operation
-    op.m_type.m_op = Addition;
-    m_calcstack.push(op);
-    
+  
     //now push back the result
     m_calcstack.push(arg1);
     
     RefreshScreen();
+    //DumpStack();
 }
 
 void YardCalc::ClearScreen(){
     m_screen->SetValue("");
 }
+
 wxString YardCalc::DoubleToString(double num){
 	
 	stringstream numbah;
@@ -187,6 +212,7 @@ void YardCalc::OnOperator(wxCommandEvent & event){
 	m_calcstack.push(m_tempinstance);
     //now push a blank number, to be replaced by the real one
     PushBlankNumber();
+        
 }
 
 void YardCalc::OnClear(wxCommandEvent & event){
