@@ -1,4 +1,5 @@
 #include <sstream>
+#include <stack>
 
 #include "yardsale_wdr.h"
 #include "ys_calc.h"
@@ -7,11 +8,11 @@ using namespace std;
 
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardCalc, wxPanel)
-    EVT_BUTTON(ID_CALC_PLUS, YardCalc::OnPlus)
-    EVT_BUTTON(ID_CALC_MINUS, YardCalc::OnMinus)
-    EVT_BUTTON(ID_CALC_EQUALS, YardCalc::OnEqual)
     EVT_BUTTON(ID_CALC_CLEAR, YardCalc::OnClear)
-    EVT_BUTTON(ID_CALC_DOT, YardCalc::OnNumber)
+	EVT_BUTTON(ID_CALC_DOT, YardCalc::OnNumber)
+	EVT_BUTTON(ID_CALC_PLUS, YardCalc::OnOperator)
+	EVT_BUTTON(ID_CALC_MINUS, YardCalc::OnOperator)
+	EVT_BUTTON(ID_CALC_EQUALS, YardCalc::OnOperator)
     EVT_BUTTON(-1, YardCalc::OnNumber)
 END_EVENT_TABLE()
 
@@ -20,14 +21,6 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
         long style, const wxString& name)
         :wxPanel(parent, id, pos, size, style, name)
 {
-	//the last number on the screen, before the new one entered
-	m_savednumber = 0;
-	m_tempnumber = 0;
-
-	//keeps track of the current state of the machine
-   	m_state = wxString("#");	
-	m_operand = wxString("=");
-
     wxSizer * sizer = NumberPad(this, false, true);
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
@@ -37,21 +30,35 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
     
     //make sure that the pointer is active
     wxASSERT(m_screen);
+   	
+	PushBlankNumber();
     
-    //initialize the screen
-    stringstream num;
-    num << m_savednumber;
-    m_screen->SetValue(num.str().c_str());
+	RefreshScreen();
 }
 
+void YardCalc::PushBlankNumber()
+{
+    CalcInstance m_tempstackitem;
+	
+	//To init, first push, '0', then '+'	
+	m_tempstackitem.m_isNumber = true;
+	m_tempstackitem.m_type.m_number = 0;
+	m_calcstack.push(m_tempstackitem);
+
+}
 YardCalc::~YardCalc()
 {
     
 }
-    
+  
+//recieve input and keep adding it to
+//the current number, each time refreshing the screen
+
 void YardCalc::OnNumber(wxCommandEvent & event)
 {
     wxChar ch;
+	wxString m_tempstring;
+	CalcInstance m_tempstackinstance;
 
 	switch (event.GetId()) {
         case (ID_CALC_1): ch = '1'; break;
@@ -69,115 +76,92 @@ void YardCalc::OnNumber(wxCommandEvent & event)
    	default: wxLogError(wxT("Should not see me")); return;
     }
    
+    //check to see if we need to clear the screen
+    //aka, we just previously hit an operator
+   // if (!m_calcstack.top().m_isNumber)
+    //    ClearScreen();
+        
+    
    	//if the screen has '0' on it, replace it with the digit typed 
-	if (m_screen->GetValue() == wxT("0"))
-        m_screen->SetValue(ch);
-    else
-	
-	if (ch == '.'){
-		if (! m_screen->GetValue().Contains(".") )	
-			m_screen->SetValue(m_screen->GetValue() + ch);
-	}else
-		//if we get here, we entered a number
-	
-		//test to see if we are still entering a number
-		//or if we just got done entering a different state
-		//in which case we need to save the old number and clear the screen
-		if (m_state.CompareTo("#") == 0){
-			m_screen->SetValue(m_screen->GetValue() + ch);
-		}else{
-			//save the old number
-			m_screen->GetValue().ToLong(&m_savednumber);
-			//clear the screen	
-			m_screen->SetValue(ch);
-			
-			//set the state to # -- NOTE this is killing my addition state
-			m_state = "#";
+	if (m_calcstack.top().m_type.m_number == 0 && m_calcstack.size() == 1){
+		m_tempstring = (ch);
+		m_calcstack.top().m_type.m_number = StringToDouble(m_tempstring);
+	}
+	else{
+		//TODO:bombs here, because if we  just push back onto the stack with value '123.' it will barf
+		//going to have to code in a special case here
+        //maybe i can push '.0'? that will probably work
+		if (ch == '.'){
+			if (! DoubleToString(m_calcstack.top().m_type.m_number).Contains(".") ){
+				m_calcstack.top().m_type.m_number = StringToDouble(DoubleToString(m_calcstack.top().m_type.m_number) + ch + ".0");
+			}
 		}
-		
+		else
+		//if we get here, we entered a number
+		m_calcstack.top().m_type.m_number = StringToDouble(DoubleToString(m_calcstack.top().m_type.m_number) + ch);
+	}
+
+	RefreshScreen();
 }
 
 //here we evaluate an expression based upon:
 //		what is on the screen
 //		what is in the memory
 //		the operator (indicated by the state)
-void YardCalc::Evaluate(bool wasEquals){
+void YardCalc::EvaluateStack(){
+}
 
-	m_tempnumber = 0;
-	m_screen->GetValue().ToLong(&m_tempnumber);
+void YardCalc::ClearScreen(){
+    m_screen->SetValue("");
+}
+wxString YardCalc::DoubleToString(double num){
 	
-	//addition
-	if (m_operand.CompareTo("+") == 0){
-		m_savednumber += m_tempnumber;		
-	}
-
-	//subtraction
-	if (m_operand.CompareTo("-") == 0){
-		m_savednumber -= m_tempnumber;		
-	}
-
-	//division
-
-	//multiplication
-
-	//now refresh
-    stringstream num;
-    num << m_savednumber;
-    m_screen->SetValue(num.str().c_str());
-
-	if (wasEquals){
-		m_operand = "=";
-	}
-}
-void YardCalc::OnMinus(wxCommandEvent & event){
-
-	//now we're not in a number state
-	m_state = "!"; 
-
-	//if the last operand was an equals, 
-	//we need to not evaluate anything, but set the mode and clear
-	//the screen but not evaluate
-	if (m_operand.CompareTo("=") == 0){
-		m_screen->GetValue().ToLong(&m_savednumber);
-		m_operand = "-";
-	}else{
-		//set the operand value	
-		m_operand = "-";
-		Evaluate(false);
-	}
+	stringstream numbah;
+	numbah << num;
+	return wxString(numbah.str().c_str());
+	
 }
 
-void YardCalc::OnPlus(wxCommandEvent & event)
-{
-	//now we're not in a number state
-	m_state = "!"; 
+double YardCalc::StringToDouble(wxString str){
+	double  tempvalue;
+	str.ToDouble(&tempvalue);
+	return tempvalue;
+}
 
-	//if the last operand was an equals, 
-	//we need to not evaluate anything, but set the mode and clear
-	//the screen but not evaluate
-	if (m_operand.CompareTo("=") == 0){
-		m_screen->GetValue().ToLong(&m_savednumber);
-		m_operand = "+";
-	}else{
-		//set the operand value	
-		m_operand = "+";
-		Evaluate(false);
-	}
+/**
+* Put whatever number is on top of the stack onto the calculator's screen
+*/
+void YardCalc::RefreshScreen(){
+	stringstream num;
+	num << m_calcstack.top().m_type.m_number;
+	m_screen->SetValue(num.str().c_str());
+}
+
+void YardCalc::OnOperator(wxCommandEvent & event){
+	
+	CalcInstance m_tempinstance;
+	m_tempinstance.m_isNumber = false;
+	
+	switch (event.GetId()) {
+        case (ID_CALC_PLUS): m_tempinstance.m_type.m_op = Addition; break;
+        case (ID_CALC_MINUS): m_tempinstance.m_type.m_op = Subtraction; break;
+        case (ID_CALC_EQUALS): EvaluateStack(); return;
+        }
+     
+    //first, evaluate the old stack        
+    EvaluateStack();
+    //next, push on my operator
+	m_calcstack.push(m_tempinstance);
+    //now push a blank number, to be replaced by the real one
+    PushBlankNumber();
 }
 
 void YardCalc::OnClear(wxCommandEvent & event){
-	
-	m_savednumber = 0;
-	m_screen->SetValue("0");
-	m_state = "#";
-	m_operand = "=";
-}
+	while (!m_calcstack.empty()){
+		m_calcstack.pop();
+	}
+		
+	PushBlankNumber();
 
-void YardCalc::OnAllClear(wxCommandEvent & event){
-	m_screen->SetValue("0");
-}
-
-void YardCalc::OnEqual(wxCommandEvent & event)
-{
-	Evaluate(true);
+	RefreshScreen();
 }
