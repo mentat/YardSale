@@ -62,6 +62,8 @@ bool YardDatabase::connect(){
     loginString << "UID=" << m_name << ";PWD=" << m_pass 
         << ";DSN=" << m_dsn;
     
+    wxLogDB(loginString.str().c_str());
+    
     try {
         
         m_db->rlogon(loginString.str().c_str()); // connect to ODBC
@@ -78,7 +80,10 @@ bool YardDatabase::connect(){
 bool YardDatabase::disconnect()
 {
     if (!m_db)
+    {   
+        wxLogError(wxT("DB not allocated in disconnect()"));
         return false;
+    }
     
     try {
         m_db->logoff();
@@ -169,39 +174,59 @@ int main(int argc, char ** argv)
 
     if (argc == 4) {
         testDB.Init(argv[3], argv[1], argv[2]);
-        VERIFY(testDB.connect(), true);
-        
+        try {
+            VERIFY(testDB.connect(), true);
+        } catch (YardDBException &e)
+        {
+            cout << e.GetWhat() << endl;
+        }
         vector<YardInvType> invObj;
 
         /* Search for an SKU that probably doesn't exist,
 	   test to see if the shit bombs when we try to print */
-        invObj = testDB.InvSearchSKU(99999);
-	if (invObj.size()){
-	    numItems = invObj.size();
-	    for (int ii = 0; ii < numItems; ii++){
-/* NO!  BAD John!  Baaad. */
-// 		wxDbLog("%s, %s, %s, %f, %f.\n",invObj[ii].GetItemType(), 
-// 			invObj[ii].GetDescription(), invObj[ii].GetBarCode(), 
-// 			invObj[ii].GetRetailPrice(), invObj[ii].GetWholesalePrice());
-
-		cout << " " << invObj[ii].GetItemType() \
-		     << " " << invObj[ii].GetDescription() << " " \
-		     << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
-		     << " " << invObj[ii].GetWholesalePrice() << endl;
-	    }
-	}
+        try {
+            invObj = testDB.InvSearchSKU(99999);
+        }
+        catch (YardDBException &e)
+        {
+            cout << e.GetWhat() << endl;
+            return 1;
+        }
+        
+        if (invObj.size()){
+            numItems = invObj.size();
+            
+            for (int ii = 0; ii < numItems; ii++){
+    /* NO!  BAD John!  Baaad. */
+    // 		wxDbLog("%s, %s, %s, %f, %f.\n",invObj[ii].GetItemType(), 
+    // 			invObj[ii].GetDescription(), invObj[ii].GetBarCode(), 
+    // 			invObj[ii].GetRetailPrice(), invObj[ii].GetWholesalePrice());
+    
+            cout << " " << invObj[ii].GetItemType() \
+                 << " " << invObj[ii].GetDescription() << " " \
+                 << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
+                 << " " << invObj[ii].GetWholesalePrice() << endl;
+            }
+        }
         
         /* Search for an SKU that we know exists, and see if that prints. */
-        invObj = testDB.InvSearchSKU(10000);
-	if (invObj.size()){
-	    numItems = invObj.size();
-	    for (int ii = 0; ii < numItems; ii++){
-		cout << " " << invObj[ii].GetItemType() \
-		     << " " << invObj[ii].GetDescription() << " " \
-		     << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
-		     << " " << invObj[ii].GetWholesalePrice() << endl;
-	    }
-	}
+        try {
+            invObj = testDB.InvSearchSKU(10000);
+        }
+        catch (YardDBException &e) {
+            cout << e.GetWhat() << endl;
+            return 1;
+        }
+        
+        if (invObj.size()){
+            numItems = invObj.size();
+            for (int ii = 0; ii < numItems; ii++){
+            cout << " " << invObj[ii].GetItemType() \
+                 << " " << invObj[ii].GetDescription() << " " \
+                 << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
+                 << " " << invObj[ii].GetWholesalePrice() << endl;
+            }
+        }
     }
 }
     

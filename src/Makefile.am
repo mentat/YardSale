@@ -38,15 +38,15 @@ yardsale_LDFLAGS =
 yardsale_LDADD =  \
 	$(WX_LIBS) -lodbc
 
-test_db_SOURCES = ys_database.cpp ys_inv_type.cpp                                                                                
-test_db_LDADD = -lodbc
+test_db_SOURCES = ys_database.cpp ys_inv_type.cpp ys_log.cpp
+test_db_LDADD = $(WX_LIBS) -lodbc
 test_db_CXXFLAGS = $(WX_CXXFLAGS) -g -ansi -Wall -DYS_TEST_DB
 
-test_inv_SOURCES = ys_inv_type.cpp
-test_inv_LDADD =
+test_inv_SOURCES = ys_inv_type.cpp ys_log.cpp
+test_inv_LDADD = $(WX_LIBS)
 test_inv_CXXFLAGS = $(WX_CXXFLAGS) -g -ansi -Wall -DYS_TEST_INV_TYPE
 
-test_bitmap_SOURCES = ys_bitmaps.cpp
+test_bitmap_SOURCES = ys_bitmaps.cpp ys_log.cpp
 test_bitmap_LDADD = $(WX_LIBS)
 test_bitmap_CXXFLAGS = $(WX_CXXFLAGS) -g -ansi -Wall -DYS_TEST_BITMAPS
 

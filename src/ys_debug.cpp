@@ -8,6 +8,9 @@
 #include "ys_database.h"
 #include "ys_debug.h"
 
+#include <string>
+using namespace std;
+
 BEGIN_EVENT_TABLE(YardDebugScreen, wxFrame)
     EVT_BUTTON(ID_DEBUG_DB_CONNECT, YardDebugScreen::OnConnect)
     EVT_BUTTON(ID_DEBUG_DB_DISC, YardDebugScreen::OnDisc)
@@ -32,10 +35,15 @@ YardDebugScreen::~YardDebugScreen()
 
 void YardDebugScreen::OnConnect(wxCommandEvent & event) {
     
+    wxString f("FUCKME");
+    string fs = f.c_str();
+    wxLogMessage(fs.c_str());
     
     wxString dsn = ((wxTextCtrl *)FindWindow(ID_DEBUG_DSN))->GetValue();
     wxString user = ((wxTextCtrl *)FindWindow(ID_DEBUG_USER))->GetValue();
     wxString pass = ((wxTextCtrl *)FindWindow(ID_DEBUG_PASS))->GetValue();
+
+    wxLogMessage("Info: %s, %s, %s", dsn.c_str(), user.c_str(), pass.c_str());
     
     try {
         wxGetApp().DB().Init(dsn.c_str(), user.c_str(), pass.c_str());
