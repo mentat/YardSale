@@ -121,7 +121,7 @@ class YardDatabase {
     int AddInventoryItem(const YardInvType& item);
     
     /*-----------Customers----------------*/
-#if 0
+
     int AddCustomer(const YardCustType& newCust);
     vector<YardCustType> CustomerGetList();
     vector<YardCustType> CustomerSearch(const YardCustType& criteria);
@@ -130,10 +130,53 @@ class YardDatabase {
     
     /// Check for key in cust so will not try to edit non-existant customer
     void EditCustomer(const YardCustType& cust);
-#endif
+
     /*----------Employee-------------------*/
     
+    int AddEmployee(const YardEmployeeType& employ);
+    void DisableCustomer(int key);
+    YardEmployeeType GetEmployee(int key) const;
+    void EditEmployee(const YardEmployeeType& employ);
     
+    vector<YardEmployeeType> GetEmployees() const;
+    
+    /*----------Vendors--------------------*/
+    
+    vector<YardVendType> GetVendors() const;
+    YardVendType GetVendor(int key) const;
+    
+    int AddVendor(const YardVendType& vendor);
+    
+    /*--------Carrier-------------------*/
+    
+    vector<YardCarrierType> GetCarriers() const;
+    YardCarrierType GetCarrier(int key) const;
+    
+    int AddCarrier(const YardCarrierType& carrier);
+    
+    vector<YardShipType> GetShippingTypes(int carrierId) const;
+    
+    void AddShippingType(int carrierId, const YardShipType& shiptype);
+    
+    void DisableShippingType(int carrierId, int shipId);
+    
+    /*---------Transaction----------------*/
+    
+    /// throws something if not work
+    void InsertTransaction(const vector<YardTransType>& transaction);
+    
+    vector<YardTransType> GetTransaction(int transactionId) const;
+    
+    // return transaction id(s)
+    vector<int> SearchTransactions(int employeeId, int custId, int inventoryItem) const;
+    
+    /*--------Tax Types-----------------*/
+    
+    vector<YardTaxType> GetTaxTypes() const;
+    
+    int AddTaxType(const YardTaxType& taxtype);
+    
+    void UpdateTaxType(const YardTaxType& taxtype);
     
  private:
      
