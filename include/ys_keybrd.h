@@ -54,9 +54,9 @@ class YardKeybrd: public wxPanel {
     void OnButtonClear(wxCommandEvent & event);
     void OnButtonDone(wxCommandEvent & event);
  
-    void OnChar(wxCommandEvent & event);
+    void OnChar(wxKeyEvent & event);
     void AddString(wxString string);
-    
+    void DeleteChar();
 	void RefreshScreen();
     
     void ClearScreen();

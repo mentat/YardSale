@@ -48,8 +48,7 @@ YardKeybrd::~YardKeybrd(){
 
 
 void YardKeybrd::OnButtonDelete(wxCommandEvent & event){
-    if (screencontents.Length() > 1)
-       screencontents = screencontents.Mid(0, screencontents.Length()-1);
+    DeleteChar();
     RefreshScreen();
 }
 
@@ -72,12 +71,27 @@ void YardKeybrd::OnButtonDone(wxCommandEvent & event){
    /*Close the window and return screencontents*/
 }
 
-void YardKeybrd::OnChar(wxCommandEvent & event){
+void YardKeybrd::OnChar(wxKeyEvent & event){
+
+        if (event.GetKeyCode() == 8){
+               DeleteChar();
+        }else{
+            screencontents.Append(event.GetKeyCode());
+        }
+       RefreshScreen();
 }
 
 void YardKeybrd::AddString(wxString string){
     screencontents.Append(string);
 	RefreshScreen();
+}
+
+void YardKeybrd::DeleteChar(){
+    if (screencontents.Length() > 1)
+       screencontents = screencontents.Mid(0, screencontents.Length()-1);
+    else
+        screencontents = wxString("");
+    RefreshScreen();
 }
 
 void YardKeybrd::OnButton(wxCommandEvent & event)
