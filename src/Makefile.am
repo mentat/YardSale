@@ -3,12 +3,8 @@ INCLUDES =  -I../include
 
 CXXFLAGS = $(WX_CXXFLAGS)  -g
 
-
-#yardsale_CXXFLAGS =\
-#	 $(WX_CXXFLAGS) \
-#     -ansi \
-#	 -Wall \
-#	 -g
+rez: yardsale
+	$(REZFLAGS) yardsale
 
 bin_PROGRAMS = yardsale
 EXTRA_PROGRAMS = test_db test_inv test_bitmap

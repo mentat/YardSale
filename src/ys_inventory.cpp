@@ -42,45 +42,53 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     m_list->InsertColumn(3, wxT("Department"));
     m_list->InsertColumn(4, wxT("On Hand"));
     
+    
+    // Getting initial list of items
     if (wxGetApp().DB().IsConnected())
     {
         wxLogDebug(wxT("Connected"));
-       // vector<YardInvType> temp;
         
         try {
-            m_objects = wxGetApp().DB().InvSearchSKU(10000);
+            m_objects = wxGetApp().DB().InvGet();
         }
         catch (YardDBException &e)
         {
             wxLogDB(e.GetWhat().c_str());
+            
+            wxLogDB(e.GetVarInfo().c_str());
+            wxLogSQL(e.GetSQL().c_str());
             return;
         }
-        
-        for (int i = 0; i < m_objects.size(); i++)
-        {
-            wxLogDebug(wxT("In loop"));
-            stringstream numconv;
-            numconv << m_objects[i].GetSKU();
-            m_list->InsertItem(0, numconv.str().c_str());
-            numconv.clear();
-            m_list->SetItem(0,1,m_objects[i].GetBarCode().c_str());
-            m_list->SetItem(0,2,m_objects[i].GetDescription().c_str());
-            m_list->SetItem(0,3,m_objects[i].GetDepartment().c_str());
-        }
+        // showing list to screen
+        PopulateList();
     }
     else
         wxLogDebug(wxT("Not Connected"));
+    
+    
+}
+
+YardInventory::~YardInventory()
+{
+    
+}
+
+void YardInventory::PopulateList()
+{
+    wxLogDebug(wxT("Populating list"));
+    for (int i = 0; i < m_objects.size(); i++)
+    {       
+        m_list->InsertItem(0, strIToA(m_objects[i].GetSKU()).c_str());
+        m_list->SetItem(0,1,m_objects[i].GetBarCode().c_str());
+        m_list->SetItem(0,2,m_objects[i].GetDescription().c_str());
+        m_list->SetItem(0,3,m_objects[i].GetDepartment().c_str());
+    }
     
     m_list->SetColumnWidth( 0, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 1, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 3, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 4, wxLIST_AUTOSIZE );
-    
-}
-
-YardInventory::~YardInventory()
-{
     
 }
 

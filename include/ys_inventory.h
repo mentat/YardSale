@@ -30,7 +30,7 @@ class wxCheckBox;
 /**
  * The inventory screen.
  * @author Jesse Lovelace
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 class YardInventory: public wxFrame{
  public:
@@ -59,7 +59,11 @@ class YardInventory: public wxFrame{
     
  private:
      
+    /// Set all component pointers
     void SetPointers();
+ 
+    /// Refresh list from vector data
+    void PopulateList();
  
     DECLARE_EVENT_TABLE()
  

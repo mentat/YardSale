@@ -3,7 +3,7 @@
 
 AC_PREREQ(2.57)
 AC_INIT(include/yardsale.h)
-AM_INIT_AUTOMAKE(yardsale, 0.01a)
+AM_INIT_AUTOMAKE(yardsale, cvs)
 
 dnl Most of this file is jacked straight from Mahogany, thanks!
 dnl OSTYPE may be set by the user to override the default which is just uname

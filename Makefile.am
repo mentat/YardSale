@@ -15,6 +15,8 @@ yardsaledoc_DATA = \
 
 EXTRA_DIST = $(yardsaledoc_DATA)
 
+doxy:
+	doxygen ys_docs.cfg
 
 
 # Copy all the spec files. Of cource, only one is actually used.
