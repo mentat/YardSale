@@ -126,8 +126,14 @@ class YardDatabase {
      * @throws YardException if database not initialized
      */
     vector<YardInvType> InventoryGetAll() const;
+    /// Returns all the inventory items in a group.
+    /// @param groupid The group key. @see YardGroup
     vector<YardInvType> InventoryGetInGroup(long groupid) const;
+    /// Get a specific inventory item referenced by the master key.
+    /// @param key The inventory item key. @see YardInvType
     YardInvType InventoryGet(long key) const;
+    /// Update an inventory item in the database.
+    /// @param inv The new data to update.
     void InventoryUpdate(const YardInvType& inv);
     
     /**
@@ -137,10 +143,17 @@ class YardDatabase {
     
     /*-----------Customers----------------*/
 
+    /// Add a customer to the database @see YardCustType
     long CustomerAdd(const YardCustType& newCust);
+    /// Get a vector of all the custmers in the database
     vector<YardCustType> CustomerGetAll();
+    
+    /// Search for customers via customer mask
+    /// @param criteria The customer mask to search on
     vector<YardCustType> CustomerSearch(const YardCustType& criteria);
+    /// Disable a custmer by key
     void CustomerDisable(long key);
+    /// Get a specific custmer by key.
     YardCustType CustomerGet(long key);
     
     /// Check for key in cust so will not try to edit non-existant customer
@@ -148,15 +161,21 @@ class YardDatabase {
 
     /*----------Employee-------------------*/
     
+    /// Add an employee to the database. @see YardEmployeeType
+    /// @returns The key/id of the newly added employee.
     long EmployeeAdd(const YardEmployeeType& employ);
+    /// Disable an employee by key.
     void EmployeeDisable(long key);
+    /// Get employee by key.
     YardEmployeeType EmployeeGet(long key) const;
+    /// Update an employee with the given data.
     void EmployeeUpdate(const YardEmployeeType& employ);
-    
+    /// Returns a vector of all employees in the database.
     vector<YardEmployeeType> EmployeeGetAll() const;
     
     /*----------Vendors--------------------*/
     
+    /// Gets all the vendors in the database.
     vector<YardVendType> VendorGetAll() const;
     YardVendType VendorGet(long key) const;
     
@@ -164,6 +183,7 @@ class YardDatabase {
     
     /*--------Carrier-------------------*/
     
+    /// Gets all the carriers in the database.
     vector<YardCarrierType> CarrierGetAll() const;
     YardCarrierType CarrierGet(long key) const;
     long CarrierAdd(const YardCarrierType& carrier);
@@ -173,15 +193,18 @@ class YardDatabase {
     
     /*---------Transaction----------------*/
     
-    /// throws something if not work
+    /// Add a transaction to the database.
+    /// @todo Get rolling.
     void TransactionAdd(const vector<YardTransType>& transaction);
     vector<YardTransType> TransactionGet(long transactionId) const;
     
-    // return transaction id(s)
+    /// Return transaction id(s)
+    /// @todo Do.
     vector<long> TransactionSearch(int employeeId, int custId, int inventoryItem) const;
     
     /*--------Tax Types-----------------*/
     
+    /// Returns all of the tax types in the database. @see YardTaxType
     vector<YardTaxType> TaxTypeGetAll() const;
     long TaxTypeAdd(const YardTaxType& taxtype);
     void TaxTypeUpdate(const YardTaxType& taxtype);
@@ -190,18 +213,23 @@ class YardDatabase {
     
     /*-------Group Type----------------*/
     
+    /// Returns all of the groups in the database. @see YardGroup
     vector<YardGroup> GroupGetAll() const;
     YardGroup GroupGet(long key) const;
     long GroupAdd(const YardGroup& group);
         
         
     /*---------ACLs--------------------*/
+    /// Returns all of the ACLs in the database.
+    /// @todo Do.
     map<string,string> ACLGetAll() const;
     void ACLAdd(const string& name, const string& desc);
     string ACLGet(const string& name); 
 
 
     /*-----------Reports--------------*/
+    
+    /// Generates an XML document based on the given select statement.
     string ReportXML(const string& sql, long& count) const;
     
     
@@ -219,6 +247,7 @@ class YardDatabase {
     
  private:
 
+    /// Get XML from DB and create a vector of the nodes.
     template<typename T>
     vector<T> XMLFromStream(otl_stream * stream, const string& table) const {
         vector<T> list;
@@ -231,6 +260,7 @@ class YardDatabase {
         return list;
     }     
 
+    /// Get a single XML node from the database stream.
     template<typename T>
     T XMLFromStreamSingle(otl_stream * stream, const string& table) const {
         T temp(ToXML(stream, table));

@@ -1,5 +1,5 @@
 /*
-    $Id: xmlnode.h,v 1.5 2004/05/10 02:05:25 thementat Exp $
+    $Id: xmlnode.h,v 1.6 2004/05/10 02:25:33 thementat Exp $
  
     XMLNode - A XML DOM tree
     
@@ -160,6 +160,11 @@ public:
     */
     explicit XMLNode(const string& id, Resource res = Str);
     
+    /**
+    * Construct an XMLNode.
+    * @param name The name of the node.
+    * @param data The data contained in the node.
+    */
     XMLNode(const string& name, const string& data);
     
     /**
@@ -170,11 +175,13 @@ public:
 
     virtual ~XMLNode();
 
-    /// a virtual function to return a 'name'
+    /// A virtual function to return a 'name'
     virtual const string& name() const { return m_xmlData->m_name; }
     
+    /// This returns the "type" of the node and is used for RTTI
     virtual const string type() const { return "xml"; }
 
+    /// Returns the data for this node (not the children).
     const string &data() const { return m_xmlData->m_data; }
    
     /* 
@@ -206,8 +213,12 @@ public:
     /// Return how many children of a specified name there is in the node
     unsigned int numChildren(const string &name) const;
 
-    /// Return all children
-   // vector<XMLNode> children();
+    /**
+    * Paramatrized function to return all the children
+    * as a vector of type T.
+    * This function is mostly useful for child classes
+    * that do not want to do casting.
+    */
    template<typename T>
     vector<T> XMLNode::children() 
     { 
@@ -222,6 +233,7 @@ public:
     /// Return all children (read only)
     vector<XMLNode> const_children() const;
     
+    /// Returns the internal map data structure.
     NodeMap& getMap() const { return m_xmlData->m_children; }
     
     /// Return a single child
@@ -230,8 +242,10 @@ public:
     /// @note If this child does not exist it will be added to the tree
     XMLNode& child(const string &name, unsigned int index=0);
     
-    // return all children of name
-    //vector<XMLNode> children(const string& name);
+    /**
+    * Returns a vector of type T of the children of this node.
+    * @param name The name of the children to return.
+    */
     template <typename T>
     vector<T> children(const string& name)
     {
@@ -319,14 +333,28 @@ public:
 
     friend class XMLParser;
         
+    /// Converts a string to a long integer.
     /// @throws RangeOverflow If type cannot contain representation
     static long ToLong(const string& str);
+    /// Converts a string to an integer.
     /// @throws RangeOverflow If type cannot contain representation
     static int ToInt(const string& str);
+    /// Converts a string to a double.
     /// @throws RangeOverflow If type cannot contain representation
     static double ToDouble(const string& str);
-        
+    
+    /**
+     * A helper function to convert a long integer to a string.
+     * @param numeric The long integer to convert.
+     * @return A string representation of the number.
+     */    
     static string ToStr(long numeric);
+    /** 
+     * A helper function to convert a double precision floating point
+     * to a string.
+     * @param floating The double floating point number to convert.
+     * @param precision The number of decimal places to convert.
+     */
     static string ToStr(double floating, unsigned int precision);
     
 protected:

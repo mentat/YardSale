@@ -12,6 +12,12 @@ class RTransType{
 		string price;
 };
 
+/**
+ This class is the abstraction layer for the
+ receipt printers.
+
+ @author John Lamb
+*/
 class Receipt
 {
 	private:
@@ -31,6 +37,7 @@ class Receipt
 		void totdata(const string& total, const string& ttx, const string& taxtotal);
 		void change(const string& type, const string& tender, const string& change);
         void print();
+        /// Printer header
 		void printheader();
 		void test();
 		void EP_initialize();
