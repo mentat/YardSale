@@ -25,10 +25,9 @@ class YardBitmaps;
 
 /**	\mainpage YardSale
  * <h1>Reference Manual</h1>
- * <p>Yardsale is an open source point of sale program. 
- * The program execution of YardSale goes as follows:
- * Splash (load windows, db in backgorund)->Login->Main
- * From the Main screen you can select: </p>
+ *
+ * Yardsale is an open source point of sale program. 
+ * From the Main screen you can select: 
  * <ul>
  * <li>Employee Managment @sa YardEmployee
  * <li>Sales @sa YardSaleScreen
@@ -37,9 +36,8 @@ class YardBitmaps;
  * <li>Customer Managment
  * <li>Logout
  * </ul>
- * <p>
+ * 
  *
- * Main Web Page: <a href="http://yardsale.sf.net">YardSale</a> 
  * @author Jesse Lovelace - jllovela at ncsu dot edu
  * @author Adam Parrish - waparris at ncsu dot edu
  * @author Mike Swigon - mrswigon at ncsu dot edu
@@ -50,7 +48,7 @@ class YardBitmaps;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 class YardSale: public wxApp {
  public:
@@ -61,6 +59,8 @@ class YardSale: public wxApp {
      */
     virtual bool OnInit();
  
+    /// Run before the program exists, returns program return value
+    /// @return Non-zero if program error
     int OnExit();
  
     /**
@@ -70,6 +70,8 @@ class YardSale: public wxApp {
      */
     YardDatabase& DB();
  
+    /// Returns a reference to the YardBitmaps object which contains 
+    /// the images loaded by the loader.
     YardBitmaps& Images();
  
  private:

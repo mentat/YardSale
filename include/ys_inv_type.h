@@ -33,7 +33,7 @@ class YardDatabase;
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
  * @author Jesse Lovelace
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @see YardDBType
  */
 
@@ -42,6 +42,9 @@ class YardInvType: public YardDBType
  public:
    
     friend class YardDatabase;
+    
+    /// This struct associates a quantity with a percentage for
+    /// bulk pricing.
     struct BulkPricing 
     {
         unsigned long quantity;

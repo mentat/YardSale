@@ -32,7 +32,7 @@ using namespace std;
  * This is a datatype to represent an Employee record.
  * See Database Tables.
  * @author Jesse Lovelace
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @see YardDBType
  */
 class YardEmployeeType: public YardDBType {
@@ -47,6 +47,8 @@ class YardEmployeeType: public YardDBType {
     
     /// Assignment operator overload
     YardEmployeeType& operator=(const YardEmployeeType & copy);
+        
+    virtual string ToString(const string& delim="\n") const;
         
     //----------------Getors--------------------
     
