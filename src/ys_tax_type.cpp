@@ -1,65 +1,19 @@
 #include <sstream>
-
-#define OTL_ODBC_MYSQL
-#define OTL_STL
-
-#ifndef _WIN32
-#define OTL_ODBC_UNIX
-#else
-#define OTL_ODBC
-#endif
-
-
-#include "otlv4.h"
-
 #include "ys_tax_type.h"
-#include "ys_util.h"
-#include "ys_exception.h"
 
 using namespace std;
    
-YardTaxType::YardTaxType(const YardTaxType& obj) {
-    
-    *this = obj;
-    
-}
-
-string YardTaxType::ToString(const string& delim) const {
+string YardTaxType::ToString(const string& delim, bool quote) const {
     
     stringstream output;
-    output << strIToA(m_taxID) << delim << m_taxName << delim 
-        << strFToA(m_percent);
-    return output.str();
-        
+    char q = '\'';
+    output 
+        << GetIdS() << delim
+        << q << GetName() << q << delim 
+        << GetPercentS();
+    
+    return output.str();    
 }
-
-void YardTaxType::FillFromStream(otl_stream * stream)
-{  
-    
-    
-    if (!stream)
-        return;
-    
-    YardTaxType temp;
-    
-    
-    try {
-        *stream 
-          >> m_taxID
-          >> m_taxName
-          >> m_percent;    
-    } catch (otl_exception &e) {
-        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-    }
-}
-    
-YardTaxType& YardTaxType::operator=(const YardTaxType& obj) {
-    
-    m_taxID = obj.m_taxID;
-    m_taxName = obj.m_taxName;
-    m_percent = obj.m_percent;
-    return *this;
-} 
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_TRANS_TYPE))
 #include <iostream>

@@ -211,8 +211,7 @@ long YardDatabase::CarrierAdd(const YardCarrierType& carrier)
     try { // since its a new call might throw bad_alloc, but that is unlikely
         dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
     
-    } catch (otl_exception &e) { // so just get otl exceptions
-        
+    } catch (otl_exception &e) { // so just get otl exceptions    
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
     
@@ -306,9 +305,10 @@ int YardDatabase::CustomerAdd(const YardCustType& newCust)
 
 		throw YardDBException((char *)e.msg, (char *)e.stm_text);
 	}
-
-	return 0;
+    return 0;
 }
+
+long TaxTypeAdd(const YardTaxType& taxtype);
 
 string YardDatabase::tab(int level)
 {

@@ -27,14 +27,14 @@ int main()
 
     YardCarrierType test1;
     
-    test1.SetCarrierName("BigMike");
-    VERIFY(test1.GetCarrierName(), string("BigMike"));
+    test1.SetName("BigMike");
+    VERIFY(test1.GetName(), string("BigMike"));
     
     test1.SetPickupLoc("Foxxxy Lady");
     VERIFY(test1.GetPickupLoc(), string("Foxxxy Lady"));
     
-    test1.SetPhoneNum("999 123 4567");
-    VERIFY(test1.GetPhoneNum(), string("999 123 4567"))
+    test1.SetPhone("999 123 4567");
+    VERIFY(test1.GetPhone(), string("999 123 4567"))
  
 #if 0 
     vector<XMLNode> v = test1.children();
@@ -48,28 +48,27 @@ int main()
 #endif
     YardCarrierType test2(test1);
     
-    VERIFY(test2.GetCarrierName(), test1.GetCarrierName());
+    VERIFY(test2.GetName(), test1.GetName());
     
     YardCarrierType test3;
     
     test3 = test2;
     
     VERIFY(test3.GetPickupLoc(), test2.GetPickupLoc());
-    VERIFY(test3.GetPhoneNum(), test2.GetPhoneNum());
-
-
+    VERIFY(test3.GetPhone(), test2.GetPhone());
+    
     vector<YardCarrierType> anArray;
     
     anArray.push_back(test1);
     anArray.push_back(test2);
     anArray.push_back(test3);
     
-    VERIFY(anArray[1].GetPhoneNum(), anArray[2].GetPhoneNum());
+    VERIFY(anArray[1].GetPhone(), anArray[2].GetPhone());
     
     vector<YardCarrierType> copyArray;
     copyArray = anArray;
     
-    VERIFY(anArray[0].GetPhoneNum(), copyArray[0].GetPhoneNum());
+    VERIFY(anArray[0].GetPhone(), copyArray[0].GetPhone());
       
     return failure;
 
