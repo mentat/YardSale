@@ -20,6 +20,7 @@
 #define YS_DATABASE_H
 
 #include "ys_inv_type.h"
+#include "ys_exception.h"
 #include <vector>
 #include <string>
 
@@ -107,12 +108,10 @@ class YardDatabase {
     
     /**
      * Get a batch of inventory items.
-     * @param num The number of items to get.
-     * @param offset The item index to start at.
      * @return A std::vector of YardInvType objects
      * @throws YardException if database not initialized
      */
-    vector<YardInvType> InvGet(unsigned int num, unsigned int offset);
+    vector<YardInvType> InvGet() throw (YardDBException);
     
  private:
      

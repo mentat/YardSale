@@ -47,16 +47,16 @@ class YardException : public exception
 class YardDBException: public YardException {
  public:
         
-    YardDBException(const string& err):YardException(err) {}
-    YardDBException(const string& err, const string& sql):
-        YardException(err), m_sql(sql) {}
+    YardDBException(const string& err, const string& sql="", const string& vars="")
+        :YardException(err), m_sql(sql), m_vars(vars) {}
     
     virtual ~YardDBException() throw() {}
     
     string GetSQL() const { return m_sql; }
-    
+    string GetVarInfo() const { return m_vars; }
  private:
     string m_sql;
+    string m_vars;
 };
 /**
  * @ingroup database

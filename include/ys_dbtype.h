@@ -19,6 +19,9 @@
 #ifndef YS_DB_TYPE_H
 #define YS_DB_TYPE_H
 
+#include <string>
+using namespace std;
+
 /**
  * @ingroup database
  *
@@ -33,6 +36,9 @@ class YardDBType{
         
     /** Empty copy constructor */
     YardDBType(const YardDBType& obj) {}
+        
+    /** To string **/
+    virtual string ToString(const string& delim = "\n") const = 0;
   
     /** Virtual destructor */
     virtual ~YardDBType() {}

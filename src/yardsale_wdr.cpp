@@ -258,7 +258,7 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
 
     item22->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxCheckBox *item27 = new wxCheckBox( parent, ID_INV_FRIEGHT, wxT("Freight Only"), wxDefaultPosition, wxDefaultSize, 0 );
+    wxCheckBox *item27 = new wxCheckBox( parent, ID_INV_FREIGHT, wxT("Freight Only"), wxDefaultPosition, wxDefaultSize, 0 );
     item22->Add( item27, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     item22->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );

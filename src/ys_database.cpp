@@ -7,7 +7,7 @@
 #include "ys_database.h"
 
 #define OTL_ODBC_MYSQL
-//#define OTL_EXPLICIT_NAMESPACES
+#define OTL_STL
 
 #ifndef _WIN32
 #define OTL_ODBC_UNIX
@@ -114,27 +114,82 @@ vector<YardInvType> YardDatabase::FillFromStream(otl_stream * stream){
     vector<YardInvType> invVec;
     
     while (!stream->eof()){
-        otl_long_string longDesc;
+       // otl_long_string longDesc;
+       // otl_long_string bulkPrice;
+       // otl_long_string comment;
+        //char itemType[20+1];	
+        //itemType[0]='\0';
+            
+        //char barCode[30+1];
+        //barCode[0]='\0';
         
-        char itemType[20+1];	
-        itemType[0]='\0';
-            
-        char barCode[30+1];
-        barCode[0]='\0';
-            
+       // char department[30+1];
+        char oversized, freight;
+        otl_datetime lastRec;
+    
         YardInvType temp;
         
+        /*        
+        	INV_SKU_Number			INT	NOT NULL,
+	INV_Bar_Code_Number		varchar(30),
+	INV_Item_Description		TEXT,
+	INV_Item_Department		varchar(30),
+	INV_Quantity_On_Hand		INT,
+	INV_Quantity_On_Order		INT,
+	INV_Reorder_Level		INT,
+	INV_Reorder_Quantity		INT,
+	INV_Item_Type			varchar(20),
+	INV_REF_TAX_Tax_Type            INT NOT NULL,
+	INV_REF_VND_Vendor_ID           INT NOT NULL,	
+	INV_Retail_Price		DECIMAL(7,2),
+	INV_Wholesale_Price		DECIMAL(7,2),
+	INV_Bulk_Price			TEXT,
+	INV_Date_Last_Received		DATETIME,
+	INV_Weight_Pounds		FLOAT,
+	INV_Oversized_Flag		enum('T','F'),
+	INV_Ship_By_Freight		enum('T','F'),
+	INV_Comment			TEXT,
+
+        */
+        
         try {
-            *stream >> temp.m_skuNumber >> itemType >> longDesc 
-                 >> barCode >> temp.m_retailPrice 
-                 >> temp.m_wholesalePrice;
+            *stream 
+                >> temp.m_skuNumber 
+                >> temp.m_barCode 
+                >> temp.m_itemDescription
+                >> temp.m_itemDepartment 
+                >> temp.m_quantityOnHand
+                >> temp.m_quantityOnOrder
+                >> temp.m_reorderLevel
+                >> temp.m_reorderQuantity
+                >> temp.m_itemType >> temp.m_taxType
+                >> temp.m_vendorId
+                >> temp.m_retailPrice
+                >> temp.m_wholesalePrice
+                >> temp.m_bulkPrice
+                >> lastRec
+                >> temp.m_itemWeight
+                >> oversized
+                >> freight
+                >> temp.m_comment;
+            
+            if (oversized == 'F')
+                temp.m_oversized = false;
+            else 
+                temp.m_oversized = true;
+            
+            if (freight == 'F')
+                temp.m_mustShipFreight = false;
+            else
+                temp.m_mustShipFreight = true;
+            
         } catch (otl_exception &e) {
-            throw YardDBException((char *)e.msg, (char*)e.stm_text);
+            throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
         }
         
-        temp.m_itemDescription = (char*)longDesc.v;
-        temp.m_barCode = barCode;
-        temp.m_itemType = itemType;
+        //temp.m_itemDescription = (char*)longDesc.v;
+        //temp.m_barCode = barCode;
+        //temp.m_itemType = itemType;
         invVec.push_back(temp);
     }
     
@@ -147,10 +202,7 @@ vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
         throw YardDBException("DB not initialized.");
     
     stringstream sql;
-    sql << "SELECT INV_SKU_Number, INV_Item_Type, "
-        "INV_Item_Description, INV_Bar_Code_Number, "
-        "INV_Retail_Price, INV_Wholesale_Price "
-        "FROM Inventory_Table WHERE INV_SKU_Number = '" << sku << "'";
+    sql << "SELECT * FROM Inventory_Table WHERE INV_SKU_Number = '" << sku << "'";
     
     auto_ptr<otl_stream> dbStream;
 
@@ -165,23 +217,23 @@ vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
     return FillFromStream(dbStream.get());
 }
 
-vector<YardInvType> YardDatabase::InvGet(unsigned int num, unsigned int offset){
+vector<YardInvType> YardDatabase::InvGet() throw (YardDBException){
     
     if (!m_db)
         throw YardDBException("DB not initialized.");
     
     //THIS FUNCTION IS NOT DONE
-    throw YardDBException("This function is not implementated");
+    //throw YardDBException("This function is not implementated");
     
     stringstream sql;
-    sql << "SELECT * FROM Inventory_Table WHERE INV_SKU_Number = '" << num << "'";
+    sql << "SELECT * FROM Inventory_Table";
     
     auto_ptr<otl_stream> dbStream;
 
-    try {
+    try { // since its a new call might throw bad_alloc, but that is unlikely
         dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
     
-    } catch (otl_exception &e) {
+    } catch (otl_exception &e) { // so just get otl exceptions
         
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
@@ -202,8 +254,7 @@ int main(int argc, char ** argv)
     // argv[1] = name, [2] = pass, [3] = dsn
 
     YardDatabase testDB;
-    int numItems = 0;
-
+   
     if (argc == 4) {
         
         cout << "Name: " << argv[1] << " Pass: " << argv[2] << " DSN: "
@@ -233,41 +284,37 @@ int main(int argc, char ** argv)
             cout << e.GetWhat() << endl;
             return 1;
         }
-        
-        if (invObj.size()){
-            numItems = invObj.size();
-            
-            for (int ii = 0; ii < numItems; ii++){
-    
-    /* NO!  BAD John!  Baaad. */
-    // 		wxDbLog("%s, %s, %s, %f, %f.\n",invObj[ii].GetItemType(), 
-    // 			invObj[ii].GetDescription(), invObj[ii].GetBarCode(), 
-    // 			invObj[ii].GetRetailPrice(), invObj[ii].GetWholesalePrice());
-    
-            cout << " " << invObj[ii].GetItemType() \
-                 << " " << invObj[ii].GetDescription() << " " \
-                 << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
-                 << " " << invObj[ii].GetWholesalePrice() << endl;
-            }
+                      
+        for (unsigned int ii = 0; ii < invObj.size(); ii++){
+            cout << "----------" << invObj[ii].ToString() << "----------" << endl;
         }
+
         
         /* Search for an SKU that we know exists, and see if that prints. */
         try {
             invObj = testDB.InvSearchSKU(10000);
         }
         catch (YardDBException &e) {
-            cout << e.GetWhat() << endl;
+            cout << e.GetWhat() << endl << e.GetSQL() 
+                << endl << e.GetVarInfo() << endl;
             return 1;
         }
+          
+        for (unsigned int ii = 0; ii < invObj.size(); ii++){
+            cout << "-------" << invObj[ii].ToString() << "-------" << endl;
+        }
         
-        if (invObj.size()){
-            numItems = invObj.size();
-            for (int ii = 0; ii < numItems; ii++){
-            cout << " " << invObj[ii].GetItemType() \
-                 << " " << invObj[ii].GetDescription() << " " \
-                 << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
-                 << " " << invObj[ii].GetWholesalePrice() << endl;
-            }
+        try {
+            invObj = testDB.InvGet();
+        }
+        catch (YardDBException &e) {
+            cout << e.GetWhat() << endl << e.GetSQL() 
+                << endl << e.GetVarInfo() << endl;
+            return 1;
+        }
+          
+        for (unsigned int ii = 0; ii < invObj.size(); ii++){
+            cout << "-------" << invObj[ii].ToString() << "-------" << endl;
         }
     }
 }

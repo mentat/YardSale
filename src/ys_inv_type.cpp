@@ -1,4 +1,7 @@
+#include <sstream>
 #include "ys_inv_type.h"
+
+using namespace std;
 
 void YardInvType::SetItemType(const string& str) {
     m_itemType = str;
@@ -17,6 +20,23 @@ YardInvType::YardInvType(const YardInvType& obj) {
     
     *this = obj;
     
+}
+
+string YardInvType::ToString(const string& delim) const {
+    
+    stringstream output;
+    output << m_skuNumber << delim << m_barCode << delim << m_itemDescription 
+        << delim << m_itemDepartment << delim << m_quantityOnHand 
+        << delim << m_quantityOnOrder << delim << m_reorderLevel 
+        << delim << m_reorderQuantity << delim << m_itemType
+        << delim << m_itemWeight << delim << m_taxType
+        << delim << m_vendorId << delim << m_retailPrice
+        << delim << m_wholesalePrice << delim << m_bulkPrice 
+        << delim << m_comment << delim << m_oversized
+        << delim << m_mustShipFreight;
+    
+    return output.str();
+        
 }
     
 YardInvType& YardInvType::operator=(const YardInvType& obj) {
@@ -42,8 +62,9 @@ YardInvType& YardInvType::operator=(const YardInvType& obj) {
     /*         float percent; */
     /*     }; */
     m_bulkPricing = obj.m_bulkPricing;
-    
+    m_bulkPrice = obj.m_bulkPrice;
     m_dateLastReceived = obj.m_dateLastReceived;
+    m_comment = obj.m_comment;
     
     m_oversized = obj.m_oversized;
     m_mustShipFreight = obj.m_mustShipFreight;
@@ -70,7 +91,7 @@ int main()
    
     test1.SetItemType("Widget");
     test1.SetItemWeightLbs(1000.45);
-    test1.SetTaxType(0.06);
+    test1.SetTaxType(0);
     test1.SetVentorId(12345);
     test1.SetRetailPrice(34.23);
     test1.SetWholesalePrice(1000.12);

@@ -5,6 +5,7 @@
 
 #include "yardsale.h"
 #include "ys_log.h"
+#include "ys_util.h"
 #include "ys_database.h"
 #include "ys_exception.h"
 #include "ys_inventory.h"
@@ -33,7 +34,7 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     
     Centre();
     
-    m_list = (wxListCtrl *)FindWindow(ID_INV_LIST);
+    SetPointers();
     
     m_list->InsertColumn(0, wxT("SKU"));
     m_list->InsertColumn(1, wxT("BarCode"));
@@ -83,6 +84,48 @@ YardInventory::~YardInventory()
     
 }
 
+void YardInventory::SetPointers()
+{
+    m_list = static_cast<wxListCtrl *>(FindWindow(ID_INV_LIST));
+    
+    m_sku = static_cast<wxTextCtrl *>(FindWindow(ID_INV_SKU));
+    m_name = static_cast<wxTextCtrl *>(FindWindow(ID_INV_ITEMNAME));
+    m_department = static_cast<wxTextCtrl *>(FindWindow(ID_INV_DEPARTMENT));
+    m_type = static_cast<wxTextCtrl *>(FindWindow(ID_INV_TYPE));
+    m_price = static_cast<wxTextCtrl *>(FindWindow(ID_INV_PRICE));
+    m_wholesale = static_cast<wxTextCtrl *>(FindWindow(ID_INV_WHOLESALE));
+    m_weight = static_cast<wxTextCtrl *>(FindWindow(ID_INV_WEIGHT));
+    m_vendor = static_cast<wxTextCtrl *>(FindWindow(ID_INV_VENDOR));
+    m_barCode = static_cast<wxTextCtrl *>(FindWindow(ID_INV_BARCODE));
+    m_desc = static_cast<wxTextCtrl *>(FindWindow(ID_INV_DESC));
+ 
+    m_freight = static_cast<wxCheckBox *>(FindWindow(ID_INV_FREIGHT));
+    m_oversized = static_cast<wxCheckBox *>(FindWindow(ID_INV_OVERSIZE));
+ 
+    m_onHand = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_ONHAND));
+    m_onOrder = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_ONORDER));
+    m_reOrder = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_REORDER_LEVEL));
+    
+    m_tax = static_cast<wxChoice *>(FindWindow(ID_INV_TAX_TYPE));
+    wxASSERT(m_list);
+    wxASSERT(m_sku);
+    wxASSERT(m_name);
+    wxASSERT(m_department);
+    wxASSERT(m_type);
+    wxASSERT(m_price);
+    wxASSERT(m_wholesale);
+    wxASSERT(m_weight);
+    wxASSERT(m_vendor);
+    wxASSERT(m_barCode);
+    wxASSERT(m_desc);
+    wxASSERT(m_freight);
+    wxASSERT(m_oversized);
+    wxASSERT(m_onHand);
+    wxASSERT(m_onOrder);
+    wxASSERT(m_reOrder);
+    wxASSERT(m_tax);
+}
+
 void YardInventory::OnExitButton(wxCommandEvent & event)
 {
 
@@ -106,32 +149,15 @@ void YardInventory::OnSelect(wxListEvent & event){
         return;
     }
     
-    // get window pointers
-    wxTextCtrl * sku = (wxTextCtrl *)FindWindow(ID_INV_SKU);
-    wxTextCtrl * barcode = (wxTextCtrl *)FindWindow(ID_INV_BARCODE);
-    wxTextCtrl * name = (wxTextCtrl *)FindWindow(ID_INV_ITEMNAME);
-    wxTextCtrl * price = (wxTextCtrl *)FindWindow(ID_INV_PRICE);
-    wxTextCtrl * desc = (wxTextCtrl *)FindWindow(ID_INV_DESC);
-    wxTextCtrl * wholesale = (wxTextCtrl *)FindWindow(ID_INV_WHOLESALE);
+    m_sku->SetValue(strIToA(m_objects[index].GetSKU()).c_str());
+    m_barCode->SetValue(m_objects[index].GetBarCode().c_str());
+    m_name->SetValue(m_objects[index].GetItemType().c_str());
+    m_department->SetValue(m_objects[index].GetDepartment().c_str());
+    m_type->SetValue(m_objects[index].GetItemType().c_str());
     
-    stringstream numstr;
-    numstr << m_objects[index].GetSKU();
+    m_price->SetValue(toMoney(m_objects[index].GetRetailPrice()).c_str());
+    m_wholesale->SetValue(toMoney(m_objects[index].GetWholesalePrice()).c_str());
+    m_weight->SetValue(strFToA(m_objects[index].GetItemWeightLbs()).c_str());
+    m_desc->SetValue(m_objects[index].GetDescription().c_str());
     
-    sku->SetValue(numstr.str().c_str());
-    barcode->SetValue(m_objects[index].GetBarCode().c_str());
-    name->SetValue(m_objects[index].GetItemType().c_str());
-    
-    stringstream pricestr; // set precision to ??.??
-    pricestr.precision(2);
-    // format with sstream
-    pricestr << showpoint << m_objects[index].GetRetailPrice();
-    price->SetValue(pricestr.str().c_str());
-    
-    desc->SetValue(m_objects[index].GetDescription().c_str());
-    
-    stringstream wspricestr;
-    wspricestr.precision(2);
-    
-    wspricestr << showpoint << m_objects[index].GetWholesalePrice();
-    wholesale->SetValue(wspricestr.str().c_str());
 }

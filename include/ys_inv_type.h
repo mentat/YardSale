@@ -33,7 +33,7 @@ class YardDatabase;
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
  * @author Jesse Lovelace
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @see YardDBType
  */
 
@@ -69,7 +69,7 @@ class YardInvType: public YardDBType
     string GetItemType() const { return m_itemType; }
 
     float GetItemWeightLbs() const { return m_itemWeight; } 
-    float GetTaxType() const { return m_taxType; }
+    int GetTaxType() const { return m_taxType; }
     long int GetVendorId() const { return m_vendorId; }
     float GetRetailPrice() const { return m_retailPrice; }
     float GetWholesalePrice() const { return m_wholesalePrice; }
@@ -90,7 +90,7 @@ class YardInvType: public YardDBType
    
    void SetItemType(const string& str);
    void SetItemWeightLbs(float num) { m_itemWeight = num; }
-   void SetTaxType(float num) { m_taxType = num; }
+   void SetTaxType(int num) { m_taxType = num; }
    void SetVentorId(long int num) { m_vendorId = num; }
    void SetRetailPrice(float num) { m_retailPrice = num; }
    void SetWholesalePrice(float num) { m_wholesalePrice = num; }
@@ -103,23 +103,27 @@ class YardInvType: public YardDBType
    void SetOverSized(bool cond) { m_oversized = cond; }
    void SetShipFreight(bool cond) { m_mustShipFreight = cond; }
    
+   virtual string ToString(const string& delim = "\n") const;
+   
  private:
         
     long int m_skuNumber;
     string m_barCode;
     string m_itemDescription;
     string m_itemDepartment;
-    unsigned long m_quantityOnHand;
-    unsigned long m_quantityOnOrder;
-    unsigned long m_reorderLevel;
-    unsigned long m_reorderQuantity;
+    long int m_quantityOnHand;
+    long int m_quantityOnOrder;
+    long int m_reorderLevel;
+    long int m_reorderQuantity;
     string m_itemType;
 
     float m_itemWeight;
-    float m_taxType;
+    long int m_taxType;
     long int m_vendorId;
     float m_retailPrice;
     float m_wholesalePrice;
+ 
+    string m_bulkPrice;
     
     /*   struct BulkPricing  */
     /*     { */
@@ -129,9 +133,34 @@ class YardInvType: public YardDBType
     vector<BulkPricing> m_bulkPricing;
     
     DateTime m_dateLastReceived;
+    string m_comment;
     
     bool m_oversized;
     bool m_mustShipFreight;
+    
+    
+          /*        
+        	INV_SKU_Number			INT	NOT NULL,
+	INV_Bar_Code_Number		varchar(30),
+	INV_Item_Description		TEXT,
+	INV_Item_Department		varchar(30),
+	INV_Quantity_On_Hand		INT,
+	INV_Quantity_On_Order		INT,
+	INV_Reorder_Level		INT,
+	INV_Reorder_Quantity		INT,
+	INV_Item_Type			varchar(20),
+	INV_REF_TAX_Tax_Type            INT NOT NULL,
+	INV_REF_VND_Vendor_ID           INT NOT NULL,	
+	INV_Retail_Price		DECIMAL(7,2),
+	INV_Wholesale_Price		DECIMAL(7,2),
+	INV_Bulk_Price			TEXT,
+	INV_Date_Last_Received		DATETIME,
+	INV_Weight_Pounds		FLOAT,
+	INV_Oversized_Flag		enum('T','F'),
+	INV_Ship_By_Freight		enum('T','F'),
+	INV_Comment			TEXT,
+
+        */
     
 };
 

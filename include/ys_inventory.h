@@ -22,11 +22,15 @@
 #include "wx/frame.h"
 #include "ys_inv_type.h"
 class wxListCtrl;
+class wxTextCtrl;
+class wxChoice;
+class wxSpinCtrl;
+class wxCheckBox;    
 
 /**
  * The inventory screen.
  * @author Jesse Lovelace
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 class YardInventory: public wxFrame{
  public:
@@ -54,7 +58,30 @@ class YardInventory: public wxFrame{
     void OnSelect(wxListEvent & event);
     
  private:
+     
+    void SetPointers();
+ 
     DECLARE_EVENT_TABLE()
+ 
+    wxTextCtrl * m_sku;
+    wxTextCtrl * m_name;
+    wxTextCtrl * m_department;
+    wxTextCtrl * m_type;
+    wxTextCtrl * m_price;
+    wxTextCtrl * m_wholesale;
+    wxTextCtrl * m_weight;
+    wxTextCtrl * m_vendor;
+    wxTextCtrl * m_barCode;
+    wxTextCtrl * m_desc;
+ 
+    wxCheckBox * m_freight;
+    wxCheckBox * m_oversized;
+ 
+    wxSpinCtrl * m_onHand;
+    wxSpinCtrl * m_onOrder;
+    wxSpinCtrl * m_reOrder;
+    wxChoice * m_tax;
+ 
     wxListCtrl * m_list;
     vector<YardInvType> m_objects;
 };

@@ -21,6 +21,7 @@ yardsale_include_DATA = \
 	ys_debug.h\
 	ys_config.h\
 	ys_footer.h\
-	ys_calc_dlg.h
+	ys_calc_dlg.h\
+	ys_util.h
 
 EXTRA_DIST = $(yardsale_include_DATA)
