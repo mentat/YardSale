@@ -144,7 +144,7 @@ int main(int argc, char ** argv)
     // argv[1] = name, [2] = pass, [3] = dsn
 
     YardDatabase testDB;
-    int numItems = 0;    
+    int numItems = 0;
 
     if (argc == 4) {
         testDB.Init(argv[3], argv[1], argv[2]);
