@@ -115,6 +115,11 @@ class YardDatabase {
      */
     vector<YardInvType> InvGet() throw (YardDBException);
     
+    /**
+     * Add an item to the inventory.
+     */
+    int AddInventoryItem(const YardInvType& item);
+    
     /*-----------Customers----------------*/
 #if 0
     int AddCustomer(const YardCustType& newCust);

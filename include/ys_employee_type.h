@@ -33,7 +33,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @see YardDBType
  */
 class YardEmployeeType: public YardDBType {
@@ -108,6 +108,10 @@ class YardEmployeeType: public YardDBType {
     void SetSig(const string& loc);
     /// Set job title
     void SetTitle(const string& title);
+    
+    /// temp to fix compile
+    
+    virtual void FillFromStream(otl_stream * stream) {}
 
  private:
     

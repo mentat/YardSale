@@ -187,9 +187,6 @@ vector<YardInvType> YardDatabase::InvGet() throw (YardDBException){
     if (!m_db)
         throw YardDBException("DB not initialized.");
     
-    //THIS FUNCTION IS NOT DONE
-    //throw YardDBException("This function is not implementated");
-    
     stringstream sql;
     sql << "SELECT * FROM Inventory_Table";
     
@@ -205,6 +202,16 @@ vector<YardInvType> YardDatabase::InvGet() throw (YardDBException){
         
     return FillFromStream<YardInvType>(dbStream.get());
 }
+
+int YardDatabase::AddInventoryItem(const YardInvType& item)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    
+    
+}
+    
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_DB))
 
