@@ -18,6 +18,8 @@ yardsaledoc_DATA = \
 
 EXTRA_DIST = $(yardsaledoc_DATA)
 
+
+
 # Copy all the spec files. Of cource, only one is actually used.
 dist-hook:
 	for specfile in *.spec; do \

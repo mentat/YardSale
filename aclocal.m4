@@ -11,6 +11,8 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
+AC_DEFUN([AM_GNU_GETTEXT_VERSION], [])
+
 # Do all the work for Automake.                            -*- Autoconf -*-
 
 # This macro actually does too much some checks are only needed if

@@ -20,7 +20,7 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     wxImage::AddHandler(new wxPNGHandler);
     
     //panel->SetBackgroundColour(wxColor("BLUE VIOLET"));
-    
+    /// @todo Make these compiled into the binary.
     wxBitmap logo("images/ys_320x93.png", wxBITMAP_TYPE_PNG);
     
     wxBitmap inventory("images/ys_inventory_128x128.png", wxBITMAP_TYPE_PNG); 
