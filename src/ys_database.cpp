@@ -26,6 +26,13 @@ YardDatabase::~YardDatabase()
     delete m_table;
 }
 
+int YardDatabase::GetStatus() const {
+    
+    if (m_db)
+        return m_db->DB_STATUS;
+    return -1;
+}
+
 
 bool YardDatabase::connect(){
     
