@@ -1,6 +1,6 @@
 /*
     YardSale - The Open Point of Sale
-    Copyright (C) 2004  Jesse Lovelace <jllovela@ncsu.edu>
+    Copyright (C) 2004 - Jesse Lovelace <jllovela@ncsu.edu>
  
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 /**
  * Eye-candy splash screen
  * @author Jesse Lovelace
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 class YardSplash: public wxDialog {
     public:

@@ -3,21 +3,24 @@
 #include "ys_splash.h"
 #include "ys_main.h"
 #include "ys_login.h"
+#include "ys_exception.h"
+#include "ys_database.h"
 #include "yardsale_wdr.h"
 
 IMPLEMENT_APP(YardSale)
 
 bool YardSale::OnInit()
 {
+    m_db = 0;
     wxImage::AddHandler(new wxPNGHandler);
-//    wxDialog * startup = new YardSplash(NULL, -1, "YardSale");
+    //wxDialog * startup = new YardSplash(NULL, -1, "YardSale");
     
- //   startup->ShowModal();
+    //startup->ShowModal();
     // load here!
-  //  wxDialog * login = new YardLogin(NULL, -1, "YardSale");
+    //wxDialog * login = new YardLogin(NULL, -1, "YardSale");
     wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     
-   // SetTopWindow(login);
+    // SetTopWindow(login);
     // end loading
     /*startup->Destroy();
     if (login->ShowModal() == 1)
@@ -35,6 +38,14 @@ bool YardSale::OnInit()
     
     return true;
     
+}
+
+YardDatabase& YardSale::DB() {
+    
+    if (!m_db)
+        throw YardException("Database not allocated.");
+    
+    return *m_db;
 }
 
 wxBitmap * GetBitmap(int id)

@@ -1,6 +1,6 @@
 /*
     YardSale - The Open Point of Sale
-    Copyright (C) 2004  Jesse Lovelace <jllovela@ncsu.edu>
+    Copyright (C) 2004 - Jesse Lovelace <jllovela@ncsu.edu>
  
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,6 +19,8 @@
 #ifndef YARDSALE_H
 #define YARDSALE_H
 #include "wx/app.h"
+
+class YardDatabase;
 
 /**	\mainpage YardSale
  * <h1>Reference Manual</h1>
@@ -47,16 +49,27 @@
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 class YardSale: public wxApp {
-    public:
+ public:
         
     /**
      * This is the function were top level windows are created
      * @return True if application initialized ok
      */
     virtual bool OnInit();
+ 
+    /**
+     * Returns a reference to the database object.
+     * @throws Exception if pointer error.
+     * @returns Reference to YardDatabase object.
+     */
+    YardDatabase& DB();
+    
+ private:
+ 
+     YardDatabase * m_db;
 };
 
 /**
@@ -66,5 +79,4 @@ class YardSale: public wxApp {
  */
 wxBitmap * GetBitmap(int id);
         
-
 #endif
