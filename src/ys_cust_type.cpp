@@ -34,21 +34,58 @@ using namespace std;
 
 int main()
 {
+
     YardCustType test1;
     
-    test1.SetAccountNumber(12345);
-    test1.SetCustFirstName("Doh");
-    test1.SetCustMiddleName("Nuts");
-    test1.SetCustLastName("AreGood");
-    //test1.SetCustAddress("<ADDRESS><1>Somewhere</1><2>Else</2></ADDRESS>");
-    test1.SetCustPhoneNumber("919.222.3333");
-    test1.SetCustCity("SouthPark");
-    test1.SetCustZip("80120");
-    test1.SetCustCreditCardNumber("0000222230304444");
-    test1.SetCustCreditCardExpiration("12/04");
-    test1.SetCustCreditCardName("Doh Nuts AreGood");
+    test1.SetAccountNumber(1234567);
+    VERIFY(test1.GetAccountNumber(), 1234567);
     
+    test1.SetFirstName("Ralph");
+    VERIFY(test1.GetFirstName(), string("Ralph"));
     
+    test1.SetMiddleName("Francis");
+    VERIFY(test1.GetMiddleName(), string("Francis"))
+    
+    test1.SetLastName("Wiggum");
+    VERIFY(test1.GetLastName(), string("Wiggum"));
+    
+    test1.SetAddress("4201 Evergreen Terrace");
+    VERIFY(test1.GetAddress(), string("4201 Evergreen Terrace"));
+    
+    test1.SetPhoneNumber("999 999 9999");
+    VERIFY(test1.GetPhone(), string("999 999 9999"));
+   
+    test1.SetCity("Sanford");
+    VERIFY(test1.GetCity(), string("Sanford"));
+    
+    test1.SetZip("28146");
+    VERIFY(test1.GetZip(), string("28146"));
+    
+    test1.SetCreditCardNumber("1111 2222 3333 4444");
+    VERIFY(test1.GetCreditCardNumber(), string("1111 2222 3333 4444"));
+    
+    test1.SetCreditCardExpiration("04 07");
+    VERIFY(test1.GetCreditCardExpiration(), string("04 07"));
+    
+    test1.SetCreditCardName("Big Daddy Mike");
+    VERIFY(test1.GetCreditCardName(), string("Big Daddy Mike"));
+   
+    test1.SetSignature("i don't understand");
+    VERIFY(test1.GetSignaturePath(), string("i don't understand"));
+
+    test1.SetPhoto("what??");
+    VERIFY(test1.GetPhoto(), string("what??"))
+ 
+#if 0 
+    vector<XMLNode> v = test1.children();
+   
+    for (int i = 0; i < v.size(); i++)
+    {
+        cout << v[i].name() << endl;
+    }
+    
+    cout << string(test1) << endl;
+#endif
     YardCustType test2(test1);
     
     VERIFY(test2.GetAccountNumber(), test1.GetAccountNumber());
@@ -56,8 +93,9 @@ int main()
     YardCustType test3;
     
     test3 = test2;
-    VERIFY(test3.GetAccountNumber(), test2.GetAccountNumber());
-    VERIFY(test2.GetCustomerPhone(), test1.GetCustomerPhone());
+    
+    VERIFY(test3.GetFirstName(), test2.GetFirstName());
+    VERIFY(test3.GetLastName(), test2.GetLastName());
 
 
     vector<YardCustType> anArray;
@@ -66,13 +104,13 @@ int main()
     anArray.push_back(test2);
     anArray.push_back(test3);
     
-    VERIFY(anArray[1].GetAccountNumber(), anArray[2].GetAccountNumber());
+    VERIFY(anArray[1].GetAddress(), anArray[2].GetAddress());
     
     vector<YardCustType> copyArray;
     copyArray = anArray;
     
-    VERIFY(anArray[0].GetAccountNumber(), copyArray[0].GetAccountNumber());
-    
+    VERIFY(anArray[0].GetPhone(), copyArray[0].GetPhone());
+      
     return failure;
 }
 
