@@ -1,3 +1,6 @@
+#ifndef RECEIPT_H
+#define RECEIPT_H
+
 #include <vector>
 #include <fstream>
 #include <string>
@@ -12,19 +15,22 @@ class RTransType{
 class Receipt
 {
 	private:
-		string outport, tot, tax, tottax, header;
+		string m_type, outport, tot, tax, tottax, header, m_change, m_tender;
 		vector <string> colist;
 		ofstream *tm;
 	public:
-		Receipt(const string& port = "/dev/ttyS2");
-        
+		Receipt(const string& port);
+        Receipt();
+        void Init(const string& port);
+        void Clear() { colist.clear(); }
         ~Receipt() { delete tm; }
         
 		void reset();
 		void addTlist(vector <RTransType> tlist);
 		void additem(const string& item, const string& price);
 		void totdata(const string& total, const string& ttx, const string& taxtotal);
-		void print();
+		void change(const string& type, const string& tender, const string& change);
+        void print();
 		void printheader();
 		void test();
 		void EP_initialize();
@@ -37,3 +43,4 @@ class Receipt
 		void EP_jright();
 		void EP_dkd();
 };
+#endif

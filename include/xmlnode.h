@@ -1,5 +1,5 @@
 /*
-    $Id: xmlnode.h,v 1.3 2004/04/26 01:20:53 thementat Exp $
+    $Id: xmlnode.h,v 1.4 2004/05/10 01:46:56 thementat Exp $
  
     XMLNode - A XML DOM tree
     
@@ -232,7 +232,7 @@ public:
     // return all children of name
     //vector<XMLNode> children(const string& name);
     template <typename T>
-    vector<T> XMLNode::children(const string& name)
+    vector<T> children(const string& name)
     {
         vector<T> ret;
         pair<NodeMap::iterator, NodeMap::iterator> p(m_xmlData->m_children.equal_range(name));

@@ -8,11 +8,32 @@ Receipt::Receipt(const string& port): outport(port)
 	//*tm << EP_cutpaper;
 	EP_initialize();
 	//this->EP_jcenter();
-	header = "AS Logic\n Selling you free shit\n since right about now.";
+	header = "AS Logic Systems\n Thank you for your business!";
 	//*tm << header << endl;
 	//this->EP_jleft();
 	printheader();
 	//*tm << EP_initialize << header << EP_jleft;
+}
+
+Receipt::Receipt()
+{
+    tm = 0;
+}
+
+void Receipt::Init(const string& port)
+{
+    if (tm) 
+        return; // if already initialized, dont do it again
+    if (port == "")
+        return;
+    
+    tm = new ofstream(port.c_str(), ios::out);
+    EP_initialize();
+	//this->EP_jcenter();
+	header = "AS Logic Systems\n Thank you for your business!";
+	//*tm << header << endl;
+	//this->EP_jleft();
+	printheader();  
 }
 
 /*
@@ -20,6 +41,7 @@ Receipt::Receipt(const string& port): outport(port)
  * YardSale" feeling, any time of the day you want it.
  */
 void Receipt::reset(){
+    if (!tm) return;
 	colist.clear();
 	EP_initialize();
 	printheader();
@@ -30,7 +52,7 @@ void Receipt::reset(){
  * objects.  WHOOPEE!
  */
 void Receipt::addTlist(vector <RTransType> tlist){
-	for (int ii = 0; ii < tlist.size(); ii++)
+    for (int ii = 0; ii < tlist.size(); ii++)
 		additem(tlist[ii].item, tlist[ii].price);
 }
 
@@ -60,6 +82,14 @@ void Receipt::totdata(const string& total, const string& ttx, const string& taxt
 	tottax = taxtotal;
 }
 
+void Receipt::change(const string& type, const string& tender, const string& change)
+{
+    m_type = type;
+    m_tender = tender;
+    m_change = change;
+    
+}
+
 /*
  * This iterates through the checkout list and prints the data
  * in it, along with the subtotal, tax, and total for the current
@@ -68,11 +98,18 @@ void Receipt::totdata(const string& total, const string& ttx, const string& taxt
  * paper!)
  */
 void Receipt::print(){
+    if (!tm) return;
 	for(int ii = 0; ii < colist.size(); ii++)
 		*tm << colist[ii] << endl;
-	*tm << "SUBTOTAL:        $" << tot << endl;
-	*tm << "TAX:             $" << tax << endl;
-	*tm << "TOTAL:           $" << tottax << endl;
+	*tm << "SUBTOTAL:          $" << tot << endl;
+	*tm << "TAX:               $" << tax << endl;
+	*tm << "TOTAL:             $" << tottax << endl << endl;
+    if (m_type != "")
+    {
+        *tm << m_type << "               $" << m_tender << endl;
+        *tm << "CHANGE:             $" << m_change << endl;
+    }
+    
 //	this->EP_initialize();
 //	*tm << "\n\n";
 	printheader();
@@ -86,6 +123,7 @@ void Receipt::print(){
  * returns the printing to left justification.
  */
 void Receipt::printheader(){
+    if (!tm) return;
 	EP_jcenter();
 	*tm << endl << endl << header << endl;
 	EP_jleft();
@@ -95,6 +133,7 @@ void Receipt::printheader(){
  * ???
  */
 void Receipt::test() {
+    if (!tm) return;
 	char test[] = { 0x00, 0x00, 0x61 };
 	*tm << test << "\n\n\n\n\n";
 }
@@ -106,32 +145,41 @@ void Receipt::test() {
  */
 
 void Receipt::EP_initialize(){
+    if (!tm) return;
 	*tm << '\x1b' << '\x40';
 }
 void Receipt::EP_cutpaper(){
+    if (!tm) return;
 	*tm << '\x1d' << '\x56' << '\x01' << endl;
 }
 void Receipt::EP_ppole(){
+    if (!tm) return;
 	*tm << '\x1b' << '\x3d' << '\x02';
 }
 void Receipt::EP_pprinter(){
+    if (!tm) return;
 	*tm << '\x1b' << '\x3d' << '\x01';
 }
 void Receipt::EP_pboth(){
+    if (!tm) return;
 	*tm << '\x1b' << '\x3d' << '\x03';
 }
 void Receipt::EP_jleft(){
+    if (!tm) return;
 	*tm << '\x1b' << '\x61' << '\x00';
 }
 void Receipt::EP_jcenter(){
+    if (!tm) return;
 	*tm << '\x1b' << '\x61' << '\x01';
 }
 void Receipt::EP_jright(){
+    if (!tm) return;
 	*tm << '\x1b' << '\x61' << '\x02';
 }
 void Receipt::EP_dkd(){ //kicks out cash drizzawer
-	*tm << '\x1b' << 'p' << '\x00' << '\x64' << '\x64'
-
+	if (!tm) return;
+    *tm << '\x1b' << 'p' << '\x00' << '\x64' << '\x64';
+}
 //int main(){
 //	Receipt rr;
 //	rr.additem("poop", "0.50");

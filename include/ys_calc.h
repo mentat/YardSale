@@ -60,7 +60,7 @@ class YardCalc: public wxPanel {
     
     double GetCalcContents();
     ///sets the calculator screen contents
-        void SetCalcContents(double contents);
+    void SetCalcContents(double contents);
  
     /// Destructor
     virtual ~YardCalc();

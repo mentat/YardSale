@@ -86,8 +86,8 @@ class YardCustType: public XMLNode
     /// Get Customer Photo
     string GetPicLocal() const
         { return child("CUST_Photo").data(); }
-    YardDate GetSince() const
-        { return YardDate(child("CUST_Since_Date")); }
+    string GetSince() const
+        { return child("CUST_Since_Date").data(); }
         
     string GetHashS() const
         { return child("CUST_HASH").data(); }
@@ -138,9 +138,7 @@ class YardCustType: public XMLNode
         { child("CUST_Photo").setData(str); }
         
     void SetSince(YardDate& date)
-        {   date.setName("CUST_Since_Date");
-            child("CUST_Since_Date") = date;
-        }
+        {   child("CUST_Since_Date").setData(date.ToString());  }
         
     void SetHash(long hash)
         { child("CUST_HASH").setData(ToStr(hash)); }

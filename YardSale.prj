@@ -109,7 +109,10 @@ module.include.files=\
 	ys_date.h\
 	ys_about_gl.h\
 	ys_full_trans.h\
-	ys_reports.h
+	ys_reports.h\
+	ys_checkout.h\
+	ys_new_item.h\
+	ys_new_cust.h
 
 module.source.name=src
 module.source.type=
@@ -148,7 +151,8 @@ module.source.files=\
 	ys_customer.cpp\
 	ys_calc_dlg.cpp\
 	ys_about_gl.cpp\
-	ys_reports.cpp
+	ys_reports.cpp\
+	ys_checkout.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

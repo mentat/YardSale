@@ -27,6 +27,9 @@ class YardConfig: public wxDialog {
     void OnChange(wxCommandEvent& event);
     void OnDeleteConfig(wxCommandEvent& event);
  
+    static wxString GetDSN();
+    static wxString GetPrinterPort();
+ 
     enum { ODBC = 0, ODBC_MYSQL };
  
  private:

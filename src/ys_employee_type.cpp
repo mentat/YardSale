@@ -24,7 +24,7 @@ string YardEmployeeType::ToString(const string& delim, bool quotes) const {
         << q << GetSigLocal() << q << delim
         << q << GetACL() << q << delim
         << "1" << delim
-        << q << GetSince().ToString() << q;
+        << q << GetSince() << q;
     
     return strm.str();
 }

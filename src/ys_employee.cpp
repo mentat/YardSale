@@ -33,22 +33,26 @@ BEGIN_EVENT_TABLE(YardEmployee, wxDialog)
     EVT_TREE_SEL_CHANGED(XRCID("ID_EMPLOY_TREE"), YardEmployee::OnChange)
     EVT_BUTTON(XRCID("ID_EMPLOY_NEW"), YardEmployee::OnNew)
     EVT_BUTTON(XRCID("ID_EMPLOY_EXIT"), YardEmployee::OnClose)
+    EVT_TEXT(-1, YardEmployee::OnModify)
+    EVT_BUTTON(XRCID("ID_EMPLOY_SAVE"), YardEmployee::OnSave)
 END_EVENT_TABLE()
 
 YardEmployee::YardEmployee(wxWindow* parent, wxWindowID id, 
     const wxString& title, const wxPoint& pos,
     const wxSize& size, long style, const wxString& name)
-:wxDialog(parent, id, title, pos, size, style, name) {
+:wxDialog(parent, id, title, pos, size, style, name), m_loading(true) {
     wxBusyCursor busy();
     wxXmlResource::Get()->Load("res/employee.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Employee");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
-    SetSize(sizer->GetMinSize());  
+    SetSize(wxSize(600,400));
     Centre();
+    
+    #if 0
     if (wxGetApp().Full())
         ShowFullScreen(true);
-    
+    #endif
     m_pic = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_EMPLOY_PICTURE")));
     m_sig = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_EMPLOY_SIG")));
     m_tree = static_cast<wxTreeCtrl *>(FindWindow(XRCID("ID_EMPLOY_TREE")));
@@ -60,18 +64,23 @@ YardEmployee::YardEmployee(wxWindow* parent, wxWindowID id,
     m_taxid = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_EMPLOY_TAX_ID")));
     m_phone = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_EMPLOY_PHONE")));
     m_position = static_cast<wxStaticText *>(FindWindow(XRCID("ID_EMPLOY_POSITION")));
+    m_save = static_cast<wxButton *>(FindWindow(XRCID("ID_EMPLOY_SAVE")));
+    m_hire = static_cast<wxStaticText *>(FindWindow(XRCID("ID_EMPLOY_HIRE")));
     
+    m_save->Show(false);
     m_id->Enable(false);
+    m_taxid->Enable(false);
     
     CreateImageList(m_tree);
     LoadTreeItems(m_tree);
     //ID_EMPLOY_PICTURE
+    m_loading = false;
     
 }
 
 void YardEmployee::LoadTreeItems(wxTreeCtrl * tree)
 {
-    tree->SetWindowStyleFlag(wxTR_NO_LINES | wxTR_HIDE_ROOT | wxTR_FULL_ROW_HIGHLIGHT);
+    //tree->SetWindowStyleFlag(wxTR_NO_LINES | wxTR_HIDE_ROOT | wxTR_FULL_ROW_HIGHLIGHT);
     tree->AddRoot(wxT("Root"));
     tree->SetIndent(10);
 	tree->SetSpacing(3);
@@ -109,6 +118,36 @@ YardEmployee::~YardEmployee()
 
 }
 
+void YardEmployee::OnSave(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnSave")); 
+       
+    m_emp.SetFirstName(m_first->GetValue().c_str());
+    m_emp.SetMiddleName(m_middle->GetValue().c_str());
+    m_emp.SetLastName(m_last->GetValue().c_str());
+    m_emp.SetAddress(m_address->GetValue().c_str());
+    m_emp.SetPhone(m_phone->GetValue().c_str());
+    
+    try {
+        //wxGetApp().DB().EmployeeUpdate(m_emp);
+    }
+    catch (YardDBException& e)
+    {
+        wxMessageBox(wxT("Could not save information."), 
+            wxT("Save Error"), wxOK, this);
+        return;
+    }
+
+    m_save->Show(false);
+}
+
+void YardEmployee::OnModify(wxCommandEvent& event)
+{
+    //wxLogDebug(wxT("OnModify"));
+    m_save->Show(true);
+    
+}
+
 void YardEmployee::CreateImageList(wxTreeCtrl * tree)
 {
  	// Make an image list containing small icons
@@ -128,6 +167,7 @@ void YardEmployee::CreateImageList(wxTreeCtrl * tree)
 
 void YardEmployee::OnChange(wxTreeEvent& event)
 {
+    m_loading = true;
     empItemData * data = static_cast<empItemData *>(m_tree->GetItemData(event.GetItem()));
 
     if (!data)
@@ -162,7 +202,7 @@ void YardEmployee::OnChange(wxTreeEvent& event)
             wxLogDebug(wxT("Bad image data (sig)."));
     }
     else
-        m_sig->SetBitmap(wxImage("res/empty_200x50.png"));
+        m_sig->SetBitmap(wxNullBitmap);
     
     m_first->SetValue(m_emp.GetFirst().c_str());
     m_middle->SetValue(m_emp.GetMiddle().c_str());
@@ -174,6 +214,9 @@ void YardEmployee::OnChange(wxTreeEvent& event)
     wxString pos;
     pos.Printf(wxT("Title: %s"), m_emp.GetACL().c_str());
     m_position->SetLabel(pos);
+    pos.Printf(wxT("Hire date: %s"), m_emp.GetSince().c_str());
+    m_hire->SetLabel(pos);
+    m_loading = false;
 }
 
 void YardEmployee::OnNew(wxCommandEvent& event)
@@ -197,7 +240,9 @@ void YardEmployee::OnNew(wxCommandEvent& event)
         wxLogDebug(wxT("Wizard completed OK"));
         
         YardEmployeeType temp = wizard->GetEmployee();
-        
+        /// @todo Make this changable my manager
+        YardDate now(wxDateTime::Now());
+        temp.SetSince(now);
         try {
             wxGetApp().DB().EmployeeAdd(temp);
         }

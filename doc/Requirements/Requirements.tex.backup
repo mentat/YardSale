@@ -22,6 +22,8 @@
 \topmargin 0.0in
 \textheight 8.5in
 
+%\renewcommand{\figurename}{ }
+
 \begin{document}
 
 \begin{titlepage}
@@ -39,7 +41,7 @@
         Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts\\}
         \vspace*{0.5cm}
 
-        {April 7, 2004}
+        {May 10, 2004}
     \end{center}
 \end{titlepage}
 
@@ -57,7 +59,7 @@
         operations.
 
         The power of an open source system such as YardSale is the
-        open way in which it is designed.  A user of the YardSale system
+        way in which it is designed.  A user of the YardSale system
         can take off the shelf computer hardware (in many cases older hardware
         will perform just as well) and create a point of sale with minimal
         configuration.  In addition, supporting new hardware is trivial since
@@ -73,7 +75,7 @@
         market will target small, locally owned retail
         stores.  This type of market will allow for extensive on-site
         research, as many of these businesses should be willing to work
-        with us to improve on the functionality of their existing POS
+        with us to improve the functionality of their existing POS
         system.  In addition, because A.S. Logic has decided to take the
         open source route, the software itself will be freely available to
         all who wish to use it, the only expense that will come into play
@@ -346,7 +348,7 @@
                     transactions shall be available to a search function;
                     transactions displayed based on specified criteria.
                     \item {\bf Associate Values with a
-                    Transaction:} externally referenced values;
+                    Transaction:} externally referenced values,
                     such as employee ID, SKU, and customer
                     account numbers, shall be able to be
                     referenced and saved with each transaction.
@@ -370,7 +372,7 @@
                 \item Must associate proper tax type/information
                 with each item of a transaction.
                 \item Completion of a transaction shall create new
-                Transaction Data to be stored by the system;
+                Transaction Data to be stored by the system,
                 including the following external data:
                 \begin{itemize}
                     \item {\bf Customer Information:} Transactions
@@ -379,7 +381,7 @@
                     \item {\bf Employee Information:} Transactions
                     shall be linked with an associated employee stored
                     in the system.
-                    \item {\bf Inventory Information:} all information
+                    \item {\bf Inventory Information:} Includes all information
                     pertaining to the inventory items altered during
                     the transaction (either added or removed).
                 \end{itemize}
@@ -399,7 +401,7 @@
             \begin{itemize}
                 \item {\bf Hourly Reporting for Employees:} this
                 report will provide an exact output of total hours
-                each employee was logged into the system.
+                each employee logged to the system.
                 \item {\bf Total Transactions by Time Period:} this report will
                 provide an output of all transaction information
                 stored during the specified time period.
@@ -525,25 +527,25 @@
             \end{itemize}
 
     \section{External Dependencies and Interfaces}
-	    \subsection{Host Operating System}
-	        The YardSale system requires the use of a host operating system
-		to run the YardSale software.  The constraints on this operating
-		system are minimal and nearly all currently used operating systems
-		are supported by YardSale.  YardSale shall be designed to function
-		properly with the minimal system requirements of the host
-		operating system.
+        \subsection{Host Operating System}
+            The YardSale system requires the use of a host operating system
+        to run the YardSale software.  The constraints on this operating
+        system are minimal and nearly all currently used operating systems
+        are supported by YardSale.  YardSale shall be designed to function
+        properly with the minimal system requirements of the host
+        operating system.
 
-	    \subsection{Input Processing Device}
-		In addition to the devices defined by the System Constraints
-		({\sl see SYSTEM CONSTRAINTS sec 1.4.1}), some additional input
-		devices are required for entering information into the system.
-		Examples of such devices are a keyboard or mouse.
+        \subsection{Input Processing Device}
+        In addition to the devices defined by the System Constraints
+        ({\sl see SYSTEM CONSTRAINTS sec 1.4.1}), some additional input
+        devices are required for entering information into the system.
+        Examples of such devices are a keyboard or mouse.
 
-	    \subsection{Output Processing Device}
-		In addition to the devices defined by the System Constraints
-		({\sl see SYSTEM CONSTRAINTS sec 1.4.1}), some additional output	
-		devices are required for retrieving information from the system.
-		Examples of such devices are a monitor and printer.
+        \subsection{Output Processing Device}
+        In addition to the devices defined by the System Constraints
+        ({\sl see SYSTEM CONSTRAINTS sec 1.4.1}), some additional output
+        devices are required for retrieving information from the system.
+        Examples of such devices are a monitor and printer.
 
     \section{Preliminary Design}
 
@@ -607,7 +609,7 @@
                 Database module to display information sent from the
                 database.\\
 
-%        \newpage
+        \newpage
 
 
         \subsection{System Architecture}
@@ -615,8 +617,10 @@
             The figure shown below outlines the class dependencies and hierarchy of
             the modules described in section 1.5.1.\\
 
-            \includegraphics{yardsale_modules.png}\\
-            %\caption{System Architecture Flow Chart}
+            \begin{center}
+                \includegraphics{yardsale_modules.png}
+                \figurename{ 1.1: System Architecture Flow Chart}
+            \end{center}
 
     \section{Preliminary Project Task Plan}
         %Scope and Size of Project Paragraph
@@ -642,16 +646,23 @@
                 Posters and Pies event.
             \end{description}
 
+\newpage
+
         \subsection{Team Member Roles and Responsibilities}
             The following figure displays a graphical hierarchy of the team's
             roles:\\
 
-            \includegraphics{organization.png}
-            \\The team roles are defined as follows:
+            \begin{center}
+                \includegraphics{organization.png}
+                \figurename{ 1.2: Hierarchy of Team Roles and
+                Responsibilites}
+            \end{center}
+
+            \noindent The team roles are defined as follows:
 
             \begin{description}
 
-                \item[Jesse Lovelace] As the CEO of A.S. Logic Systems,
+                \item[Jesse Lovelace:] As the CEO of A.S. Logic Systems,
                 Jesse is in charge of all aspects of the project.  Though
                 he works very closely with both VPs, Jesse is the ultimate
                 decision maker for the team.  In addition to his roles as
@@ -659,7 +670,7 @@
                 implementation of the User Interface and all security
                 aspects.
 
-                \item[Adam Parrish] Adam is the Vice President in charge
+                \item[Adam Parrish:] Adam is the Vice President in charge
                 of Development at A.S Logic Systems.  He works closely
                 with both the CEO and VP of Marketing to see that
                 YardSale's implementation is both correct and timely.  In
@@ -668,7 +679,7 @@
                 functioning properly and creating the SQL scripts for
                 populating and querying the database.
 
-                \item[Mike Swigon] Mike is the Vice President of
+                \item[Mike Swigon:] Mike is the Vice President of
                 Marketing at A.S. Logic Systems.  He works closely with
                 both Adam and Jesse to both design the entire system and
                 to insure that its implementation is correct.  In addition
@@ -676,19 +687,19 @@
                 setup and creation of SQL scripts for populating and
                 querying the database.
 
-                \item[John Lamb] John's responsibilities fall primarily in
+                \item[John Lamb:] John's responsibilities fall primarily in
                 interfacing with the database.  He works closely with Jesse
                 to develop a UI that can correctly and securely
                 communicate information to and from the database; also
                 implementing the SQL statements developed by Mike and
                 Adam.
 
-                \item[Jay Johnston] Jay's responsibilities fall primarily
+                \item[Jay Johnston:] Jay's responsibilities fall primarily
                 in creation of the UI and networking the system during
                 setup.  He works closely with Jesse to develop modules
                 for required functionality of the interface.
 
-                \item[Cameron Watts] Cameron's responsibilities fall
+                \item[Cameron Watts:] Cameron's responsibilities fall
                 primarily on marketing and system research.  He works
                 closely with the design group to ensure YardSale's
                 functionality is top-of-the-line and user friendly.
@@ -696,18 +707,17 @@
 
 \chapter{Design}
 
-    The following sections are related to the design of YardSale
-    in regards to the database level design as well as the client
-    application level design. A database was chosen to store the
+    The following sections describe the database level design and the client
+    application level design of YardSale. A database was chosen to store the
     data for the application since we require persistent data
     storage. A database also is a robust method for storage, and
     easily queried as opposed to flat text files or binary file
-    storage methods. There are also built in user access rights
+    storage methods. There are also built-in user access rights
     which will aid in security for YardSale.
 
     Our Chosen Relational Database Management System for development is
-    MySQL 4 although since all of our queries are based on the
-    SQL standard it should be easy to allow the use of any
+    MySQL 4.  Since all of our queries are based on the
+    SQL standard, however, it should be easy to allow the use of any
     SQL Compliant RDBMS. For Application to Database connectivity
     we plan to use OTL in conjuction with ODBC. OTL is a set of C++
     libraries which provide a higher level SQL layer between the
@@ -726,34 +736,34 @@
     mind. The goal was, as it is in any database, to seperate unrelated
     data and key similar items together with table relations. The global
     database model is seen in the diagram on the following page. Although
-    it is not necessarily easy to read the table relations can be seen, and
-    table specifics like field values, indexes, and foreign and primary keys
-    can be seen in the following table diagrams.
+    the following diagram has been reduced in size to the point of
+    making it impossible to read, the table relations can be seen,
+    as well as table specifics like field values, indexes, and foreign and primary keys.
 
     \newpage
 
     {\bf YardSale Global Database Diagram}\\
     \\
     \\
-    \includegraphics{Database_Layout_REDUCED.png}
-
-%    \includegraphics[scale=1]{Database_Layout_REDUCED.png}
-
+    \begin{center}
+%        \includegraphics{Database_Layout_REDUCED.png}\\
+        \figurename{ 2.1: Global Database Structure}
+    \end{center}
 
     The database is broken down into the following sections in the above color coded
     diagram. Each color corresponds to a section in the latter portion of the Database
-    Design section.
+    Design section.\\
 
     \begin{description}
-	\item[Customer Management]{Red}
-	\item[Inventory Management]{Green}
-	\item[POS Transaction Handling]{White}
-	\item[Shipping Management]{Blue}
-	\item[Employee Management]{Purple}
+    \item[Customer Management]{Red}
+    \item[Inventory Management]{Green}
+    \item[POS Transaction Handling]{White}
+    \item[Shipping Management]{Blue}
+    \item[Employee Management]{Purple}
     \end{description}
 
     The following is a legend that describes the database layout diagram. Each number corresponds
-    to a numbered table in the diagram. Each table lists it's key as well.
+    to a numbered table in the diagram. The keys associated with each table are listed as well.\\
 
     \begin{enumerate}
         \item{Customer Table}
@@ -810,33 +820,36 @@
 
         \subsection{Customer Management}
 
-        Since customer management is basically a simple task it is maintained in only
-        one table. There is no real need to have their data stored accross many
+        Since customer management is a simple task it is maintained in only
+        one table. There is no real need to have this data stored across many
         different tables since all of the information is just personal
         data.\\
 
-        {\bf Customer Table}\\
+        {\bf Customer Table}
         \\
-        \\
-        \includegraphics{Tables/CustomerTable.png}\\
-        \\
+        \begin{center}
+%            \includegraphics{Tables/CustomerTable.png}\\
+            \figurename{ 2.2: Database Customer Table (UML)}
+        \end{center}
+
         The above UML diagram shows the layout of the customer table. The object of this
         table is to manage customer personal information for later reference in
-        transactions. By allowing this associativity YardSale will later be able to
-        formulate reports on how much each of its customers spend for example. It also
-        provides a rather in depth directory of all of a business's clients for use
-        in any form they see fit.
+        transactions. By allowing this association YardSale will later be able to
+        formulate reports on how much each of its customers spend, for example. It also
+        provides an in-depth directory listing of all of a business's clients, for use
+        in any form the company may see fit.
 
         The data stored begins with the customer account number which is just an
         arbitrarily assigned number that is managed by the database management
         system. It is also the primary key for the table and is therefore unique.
-        First, Middle, and Last names are all stored in seperate fields of their own,
-        as is the Address information. Credit information can also be stored about users
-        but is optional, and is also planned to be stored in the field as an encrypted
-        string of data so that underprivileged users can not access it. Two interesting
+        First, Middle, and Last names are all stored in separate fields of their own,
+        as is the Address information. Credit information can also be stored about
+        users,
+        but is optional; it is also stored in the field as an encrypted
+        string of data so that underprivileged users cannot access it. Two interesting
         features about this table is the ability to store a link to a photograph and
-        signature for each customer. That way it will aid in positively identifying a
-        customer when they are checking out with check or credit.
+        signature for each customer. This will aid in positively identifying a
+        customer when he or she is buying items with a check or credit card.
 
 
         \newpage
@@ -849,36 +862,38 @@
         Vendor Table. The tax table is basically a storage area for different tax types, and
         the Vendor Table is a storage table for Vendor information or Inventory Supplier
         information.\\
+
+        {\bf Inventory Table}
         \\
-        {\bf Inventory Table}\\
-        \\
-        \\
-        \includegraphics{Tables/InventoryTable.png}\\
-        \\
-        \\
-        This table being the main Inventory storage structure contains all information needed
+        \begin{center}
+%            \includegraphics{Tables/InventoryTable.png}\\
+            \figurename{ 2.3: Database Inventory Table (UML)}
+        \end{center}
+
+        This table is the main Inventory storage that structure contains all information needed
         about any inventory item. The record primary key is the SKU number which is a user
         defined number or character string. These are often used in small businesses to
         internally key their inventory. Manufacturers will often have a bar code associated
-        with each item the produce as well so their is a field available for that as well.
-        Each item can be briefly described, and associated with a department for further
+        with each item they produce, so their is a field available for that as well.
+        Each item can be briefly described and associated with a department for further
         subcatagorizing. The number of any particular item is maintained as well as how many
         of the item are on order. There is a field for storing the number at which an item should
-        be reordered, and also how many to reorder at that time. There are varying description
+        be reordered and also how many to reorder at that time. There are varying description
         fields such as item type and weight as well. Three pricing fields are supplied. The
         first two are statically maintained as retail and wholesale price. The third price
         type varies on the number of items being purchased. This field is maintained in XML
         format so that as many different pricing levels as are needed can be defined. When an
-        item is received it updates the field corresponding to last received. Some items are
-        oddly shaped or are overly heavy, either of these two options could cause the oversized
-        flag to be set, and if the oversized flag is set a ship by freight option would also be
+        item is received it updates the field corresponding to the same item's last shipment. Some items are
+        oddly shaped or are excessively heavy; both of these two options could cause the oversized
+        flag to be set, and if the oversized flag is set, a ship by freight option would also be
         set, but they are mutually exclusive and the ship by freight can be set without the
         oversized flag being set.\\
         \\
         {\bf Tax Table}\\
         \\
         \\
-        \includegraphics{Tables/TaxTable.png}\\
+%        \includegraphics{Tables/TaxTable.png}\\
+        \figurename{ 2.4: Database Tax Table (UML)}
         \\
         \\
         The tax table is just a support table for the inventory items. It is referenced by ID
@@ -890,7 +905,8 @@
         {\bf Vendor Table}\\
         \\
         \\
-        \includegraphics{Tables/VendorTable.png}\\
+%        \includegraphics{Tables/VendorTable.png}\\
+        \figurename{ 2.5: Database Vendor Table (UML)}
         \\
         \\
         The Vendor Table is used also as a supporting table for the inventory. This information
@@ -901,18 +917,21 @@
         with a sales representative's name. There are optional fields for company specialty, email
         address, and homepage as well.
 
+
+    \newpage
         \subsection{Transaction Handling}
 
         Transaction Handling is a process that has data spanning two tables with two more supporting
-        tables. Transaction handling is split into two sections. The first section being the actual
-        day to day transaction, and then the added functionality of packaging the items sold during
+        tables. Transaction handling is split into two sections. The first section is the actual
+        day to day transaction, and the second is the added functionality of packaging the items sold during
         the transaction.\\
         \\
         \\
         {\bf Transaction Table}\\
         \\
         \\
-        \includegraphics{Tables/TransactionLogTable.png}\\
+%        \includegraphics{Tables/TransactionLogTable.png}\\
+        \figurename{ 2.6: Database Transaction Log Table (UML)}
         \\
         \\
         The Transaction Log Table is used to store information that links Customers, Employees, and
@@ -923,14 +942,15 @@
         \\
         \\
 
-	\newpage
+    \newpage
 
-	\subsection{Shipping and Package Management}
+    \subsection{Shipping and Package Management}
 
         {\bf Package Table}\\
         \\
         \\
-        \includegraphics{Tables/PackageTable.png}\\
+%        \includegraphics{Tables/PackageTable.png}\\
+        \figurename{ 2.7: Database Package Table (UML)}
         \\
         \\
         The Package Table is used to store information about a package. There is a link to a transaction ID
@@ -944,7 +964,8 @@
         {\bf Carrier Table}\\
         \\
         \\
-        \includegraphics{Tables/CarrierTable.png}\\
+%        \includegraphics{Tables/CarrierTable.png}\\
+        \figurename{ 2.8: Database Carrier Table (UML)}
         \\
         \\
         The Carrier table is a support table for the Package table. It provides information about the different
@@ -957,11 +978,12 @@
         \\
         The Shipping Table is also a support table for the Package Table. This table is a list of all of the
         different methods of shipping available associated with the Carrier Table. Since each Carrier can
-        have multiple shipping methods they can all be easily added and deleted if they ever change via
+        have multiple shipping methods, they can all be easily added and deleted if they ever change via
         this table. The table just contains the name for the type of shipping, the carrier, and how much
         it costs.\\
         \\
-        \includegraphics{Tables/ShippingTable.png}\\
+%        \includegraphics{Tables/ShippingTable.png}\\
+        \figurename{ 2.9: Database Shipping Table (UML)}
         \\
         \subsection{Employee Management}
 
@@ -969,12 +991,13 @@
         spans two tables, the Employee Table for employee information, and the Login Table which
         keeps track of the hours an employee works between logging in and out of the clients. The
         other section is the security aspect of the program as it relates to employees. It also spans
-        two tables; the ACL Table and the Key Table.\\
+        two tables: the ACL Table and the Key Table.\\
         \\
         {\bf Employee Table}\\
         \\
         \\
-        \includegraphics{Tables/EmployeeTable.png}
+%        \includegraphics{Tables/EmployeeTable.png}
+        \figurename{ 2.10: Database Employee Table (UML)}
         \\
         \\
         The Employee Table keeps track of all pertinent information about employees that would
@@ -984,21 +1007,22 @@
         Security Number as a key. This also allows data such as the Social Security number to be
         encrypted to alleviate underprivileged users from seeing it. Each employee also has a
         field for a picture link and signature link to help with positive identification. The other
-        field in this table is the password field which is used to store a users password to allow
-        a user to login, and which is also used to decrypt the keys from the key table. Each user
+        field in this table is the password field which is used to store a user's password to allow
+        a user to login and which is also used to decrypt the keys from the key table. Each user
         is also associated with a ACL entry in the ACL Table.\\
         \\
         {\bf Login Table}\\
         \\
         \\
-        \includegraphics{Tables/LoginTable.png}\\
+ %       \includegraphics{Tables/LoginTable.png}\\
+        \figurename{ 2.11: Database Login Table (UML)}
         \\
         \\
         The Login Table tracks the amount of time an employee has been logged in based on when
         they logged into their first client to when they logout of their last client. The structure
         is very simple. It references an employee ID and has a Count field. When the count is greater
-        than zero the user is logged in and upon first entry a value will be inserted into the
-        Log In Time field. When the value of Count reaches zero again a value will be inserted into
+        than zero, the user is logged in and upon first entry a value will be inserted into the
+        Log In Time field. When the value of Count reaches zero again, a value will be inserted into
         the Log Out Time field.
 
         \subsection{Security}
@@ -1006,25 +1030,27 @@
         {\bf Access Control List Table}\\
         \\
         \\
-        \includegraphics{Tables/ACL.png}\\
+%        \includegraphics{Tables/ACL.png}\\
+        \figurename{ 2.12: Database Access Control Table (UML)}
         \\
         \\
-        The ACL table which is short for Access Control List Table manages which user types have access
-        to different levels of program use. All this table contains is a Name of a user type and a description
-        of their functionality. Currently we foresee only four user types and will likely not have an
+        The ACL table which, is short for Access Control List Table, manages which user types have access
+        to different levels of program use. This table contains the Name of a user type and a description
+        of its functionality. Currently we foresee only four user types and will likely not have an
         interface to manage this table.\\
         \\
         \\
         {\bf Key Table}\\
         \\
         \\
-        \includegraphics{Tables/KeyTable.png}\\
+%        \includegraphics{Tables/KeyTable.png}\\
+        \figurename{ 2.13: Database Key Table (UML)}
         \\
         \\
         The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
         entry in this table will reference a valid user in the Employee Table and the text field will
         contain encrypted data that the user's password was used to encrypt. When the password is used
-        to decrypt this data the user can obtain the keys used to encrypt global database data. A few
+        to decrypt this data, the user can obtain the keys used to encrypt global database data. A few
         example fields that are going to be stored as encrypted data are Credit Card Numbers and Expiration
         Date pairs as well as Social Security Numbers. This will add a level of database security that
         will prevent or deter malicious users from stealing valuable information from the database.\\
@@ -1041,6 +1067,7 @@
     button.\\
     \subsection{Main Menu}
     \includegraphics{ys_main_screener.png}\\
+    \figurename{ 2.14: YardSale Main Menu Screen}\\
 
     The Main Menu is designed to allow users to quickly
     access any part of the YardSale client.  Buttons are available
@@ -1052,8 +1079,9 @@
 
     \subsection{Sales Screen}
     \includegraphics{ys_sales_screener.png}\\
+    \figurename{ 2.15: YardSale Sale Transaction Screen}\\
 
-    The Sales Screen is designed to provide much information and functionality, in
+    The Sale Transaction Screen is designed to provide much information and functionality, in
     an easy-access and user-friendly manner.  It displays
     information about the current customer, which may be edited to
     make any corrections or updates.  Below this is an inventory item
@@ -1070,25 +1098,27 @@
 
     \subsection{Inventory Screen}
     \includegraphics{ys_inv_screener.png}\\
+    \figurename{ 2.16: YardSale Inventory Management Screen}\\
 
-    The Inventory Screen can display information pertaining to all
+    The Inventory Management Screen can display information pertaining to all
     inventory items currently stored in the database.  There are
     fields available for every possible value of an
     inventory item, which may be edited and saved.  In addition to these
     characteristics, the Inventory Screen has many other functions which it can perform.
     It can be used to add items to the inventory by filling in the
-    appropriate fields and clicking the 'New Item' button.  The
+    appropriate fields and clicking the `New Item' button.  The
     Search function is used by entering the desired information
-    into the appropriate fields and clicking the 'Search' button.
+    into the appropriate fields and clicking the `Search' button.
     This will cause all inventory items present in the database
     that satisfy the criteria to be displayed in the window at the
-    bottom of the screen.  For error checking purposes, a 'Save'
-    and a 'Cancel' button are used when exiting this screen.  This
-    screen should only be available to manager-access-level users
+    bottom of the screen.  For error checking purposes, a `Save'
+    and a `Cancel' button are used when exiting this screen.  This
+    screen is only available to manager-access-level users
     and higher.\\
 
     \subsection{Employee Management Screen}
     \includegraphics{ys_employee_screener.png}\\
+    \figurename{ 2.17: YardSale Employee Management Screen}\\
 
     The Employee Management Screen is designed to store and
     display information pertaining to all employees currently in the
@@ -1096,13 +1126,15 @@
     of an employee item in the database.  Information is displayed
     by entering the desired employee's ID number and pressing
     enter.  This screen should be carefully guarded, as sensitive
-    information is displayed.  It should only be available to
+    information is displayed.  It is only available to
     manager-access-level users and higher.\\
 
     \newpage
 
     \subsection{On-screen Calculator}
     \includegraphics{ys_calc_screener.png}\\
+    \figurename{ 2.18: YardSale On-Screen Calculator}\\
+
 
     The On-Screen Calculator is designed to provide the user with
     an easy-access, user-friendly calculator and number pad.  It
@@ -1420,39 +1452,208 @@
         progress bar.\\
         {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.22}
 
-\chapter{Preliminary Test Plan}
+\chapter{Test Plan}
+
+    \section {Testing Methods}
+
+
 The YardSale system is tested constantly throughout the
 development process.  These tests are administered through two
 different methods: passive (automatic) testing, and active (user)
 testing.
 
-    \section{Passive Testing}
+    \subsection{Passive Testing}
 
-    The passive testing of YardSale is accomplished by our auto build system.  The auto build system pulls the latest source
-    code from the repository and compiles it with the most strict settings.  If the code fails the system reports the error
-    on our website.  The auto build system will also compile the code on six other architechures including Amd64, Sparc, Mac OSX,
-    Linux, and Microsoft Windows.  The extensive compilation of the source code ensures that no platform dependant source code
-    violates the portability of the project.
+    The passive testing of YardSale was accomplished by our auto build system.  The auto build system pulled the latest source
+    code from the repository and compiled it with the most strict settings.  If the code failed the system reported the error
+    on our website.  The auto build system also compiled the code on six other architechures including Amd64, Sparc, Mac OSX,
+    Linux, and Microsoft Windows.  The extensive compilation of the source code ensured that no platform dependant source code
+    violated the portability of the project.
 
-    \section{Active Testing}
+    \subsection{Active Testing}
     There are several methods which are utilized by our
     development team to manually test the YardSale system
     throughout the development process.
-        \subsection{Component Testing}
-	Each component that utilizes the database is tested by creating "dummy" data which is loaded directly into the database backend.  The each database interface screen is tested by logging into YardSale client and assuring that each dataset is loaded correctly.  Inserts into the database are verified through a third-party database interface tool.
-        \subsection{Testing Mains}
+        \subsubsection{Component Testing}
+    Each component that utilizes the database is tested by creating ``dummy" data which is loaded directly into the database backend.  Then each database interface screen is tested by logging into YardSale client and assuring that each dataset is loaded correctly.  Inserts into the database are verified through a third-party database interface tool.
+        \subsubsection{Testing Mains}
         Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
-        each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.  These tests verify that all components are able to store, copy, and construct data.  The mains also run simple database interface tests to verify that all of the database tables can re returned correctly.
-        If any of these tests fail the system will report the exact location of the failure by the use of function macros.
+        each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.  These tests verify that all components are able to store, copy, and construct data.  The mains also run simple database interface tests to verify that all of the database tables are returned correctly.
+        If any of these tests fail, the system will report the exact location of the failure by the use of function macros.
 
-        \subsection{Warm-Body Testing}
+        \subsubsection{Usability Testing}
         Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any
         bugs they find through our bug tracking system.  We also have weekly usability conferences where we discuss the merits of a particular interface.
 
-        \subsection{Program Flow Tracking}
+        \subsubsection{Program Flow Tracking}
         YardSale is designed to report back a large amount of valuable debug information to the developer and to keep the non-technical user
         informed about the status of the program.  YardSale uses exceptions to ensure that single functions cannot violate the integrity of the system
         on a global level.  In addition, all database interfaces have special logging information that reports the exact status of all database calls; this
         allows the developers to get instant access to valuable SQL and connection results.
+
+    \subsection{Functional Requirements Testing}
+    \begin{itemize}
+            \item {Point of Sale Related Data Testing}
+
+        Testing of the functional requirements for YardSale is done via a hybrid system of active and
+        passive methods.
+
+    \begin{itemize}
+                \item {\textbf{Inventory Data}}
+
+        Inventory data is represented by the class YardInvType.  This class contains a testing main that
+        verifies that all attributes of an inventory item (such as description, price, and quantity which are
+        implemented as member variables) can be assigned, copied, and modified.  If any of these checks
+        fail, the build system will report an error.
+
+                \begin{itemize}
+                    \item {\textbf{Add a product to the inventory}}
+
+            The YardDatabase class contains a testing main which connects to a ``dummy" testing database.
+            If the connection succeeds, the method tries to add a YardInvType to the database.  The result of this
+            attempt is reported by the build system.
+
+                    \item {\textbf{Edit an existing inventory item}}
+
+            The YardDatabase class contains a testing main which connects to a ``dummy" testing database.
+            If the connection succeeds, the method to tries modify an inventory item that has been successfully
+            added by the previous testing function.  This is accomplished by (successfully) retrieving an item from the
+            database, modifying that retrieved YardInvType and then sending that modified object to the database
+            for modification.  The result of this attempt is reported by the build system.
+
+                    \item {\textbf{Search for an inventory item by various criteria}}
+
+            The YardDatabase class contains a testing main which connects to a ``dummy" testing database.
+            Once successfully connected the method, it will search for pre-loaded items by SKU number and description.
+            If these results are incorrect, the build system will report an error.
+
+                    \item {\textbf{Remove an inventory item}}
+
+            The YardDatabase testing main will add a test item to the database and then try to ``delete" that item.
+            After the ``delete" command is sent, the method will try to retrieve that deleted item. If this retrieve works
+            then the method will fail and report this to the build system.
+
+        \item {\textbf{Add an inventory item to a transaction}}
+
+        The YardTransType is the class representation of a YardSale transaction.  The testing main of the
+        YardTransType creates a temporary transaction object and tries to add, remove, and modify items
+        in the transaction.  If any of these operations fail, the build system will report an error.
+
+                \end{itemize}
+                \item{\textbf{Customer Data}}
+
+        The object representation of a customer is the YardCustType.  This type contains a testing main which
+        creates a YardCustType object and tests to see that the object can be copied, assigned, and modified.
+        Each of these operations are verified independently by the method and any errors are reported to the build
+        system.
+
+                \begin{itemize}
+                    \item{\textbf{Add and remove customers}}
+
+            The YardDatabase testing main tries to add a YardCustType to the the database and then removes that
+            type from the database.  If these operations succeed the method will pass.
+
+                    \item{\textbf{Search for customers by various criteria}}
+
+        The YardDatabase class contains a testing main which connects to a ``dummy" testing database.
+         Once successfully connected, the method will search for pre-loaded items by name and date.
+            If these results are incorrect the build system will report an error.
+
+                    \item{\textbf{Edit customer information}}
+
+            The YardDatabase class contains a testing main which connects to a ``dummy" testing database.
+            If the connection succeeds, the method tries to modify a customer that has been successfully
+            added by the previous testing function.  This is accomplished by (successfully) retrieving an customer from the
+            database, modifying that retrieved YardCustType and then sending that modified object to the database
+            for modification.  The result of this attempt is reported by the build system.
+
+          \item{\textbf{Associate a customer with a transaction}}
+
+          The YardTransType is the class representation of a YardSale transaction.  The testing main of the
+        YardTransType creates a temporary transaction object and tries to add, remove, and modify a customer
+        for the transaction.  If any of these operations fail, the build system will report an error.
+
+                \end{itemize}
+                \item {\textbf{Employee Data}}
+
+            Employees are represented by the YardEmployeeType.  The testing main of the YardEmployeeType class
+            tests that a test object is creatable, assignable, modifiable, and copyable.
+
+                \begin{itemize}
+                    \item{\textbf{Add and remove employees}}
+
+                The YardDatabase class tries to add and remove temporary YardEmployeeType objects and reports
+            the success or failure of these attempts.
+
+                    \item{\textbf{Associate an access level with each employee}}
+
+            The YardEmployeeType testing main assigns an access level with a temporary object of type
+            YardEmplyeeType and then tests to verify that the access level is assignable, copyable, and
+            modifyable.
+
+                    \item{\textbf{Associate an employee with a transaction}}
+
+                The YardTransType testing main tests to verify that a YardEmployeeType can be added to the
+            transaction object and reports the success or failure to the build system.
+
+                    \item{\textbf{Associate Login information with each employee}}
+
+            The login information for an employee is stored in the database backend in a platform dependant way
+            and is verified by the database control program (such as MySQL CC).
+                \end{itemize}
+                \item{\textbf{Transaction Data}}
+
+            Transaction data is stored by the database and therefore is tested in the YardDatabase testing main.
+                \begin{itemize}
+                    \item{\textbf{Add new transaction information}}
+
+                The YardDatabase testing main verifies that a YardTransaction can be added to the database by
+            creating a temporary object of type YardTransaction and adding that transaction to the database.  The
+            method then tries to retrieve the just-added transaction and will fail if the transaction cannot be returned.
+
+                    \item{\textbf{Search for transactions by various criteria}}
+
+            The YardDatabase testing main loads various transaction data into the database and then tests to
+            ensure that those items can be returned by searching by transaction ID, date, customer, and employee.
+
+                    \item{Associate values with a transaction}
+
+                The testing main of the YardTransType verifies that information such as inventory items, a customer, and            an employee can be added to the database.
+                \end{itemize}
+            \end{itemize}
+            \item{\textbf{Provide Detailed Reporting}}
+
+            Reporting is verified by inspection after a report is generated by the database.  A control set of data will be
+        used to ensure that the reporting subroutine returns the correct data.
+          \item{\textbf{Allow for User Login with Differing Access Levels}}
+
+            Each access level is tested by creating testing accounts at the Administrator, Manager, and Associate
+        level.  Each user will then be used to log into the database.  If the user logs in successfully, the program will
+        be manually tested to ensure that Associates cannot modify information such as other employee records and
+        inventory items.
+    \end{itemize}
+
+    \section {Results}
+    \subsection{ Passive Testing }
+    The end result of our passive testing system was to mold our code into an optimal
+    subset of ANSI C++.  We focused on two main compilers for our testing: GCC 3.x
+    (which is the GNU Compiler Collection which we used to compile on Linux, FreeBSD,
+    and Solaris) and Visual C++ .NET 2003 (on Microsoft Windows platforms).
+
+    The main problems we encountered with passive testing where that different compilers
+    gave different errors for the same code.  For instance, GCC 3.x will allow a
+    function that returns a value to not explicitly say 'return variable' in the code
+    if the correct variable type is defined in the top of the function (GCC assumes this
+    variable will be returned); on the other hand, VC++ .NET gives an explicit error here.
+    In all honesty, the VC++ behaviour was more helpful in our testing.
+
+    Another instance of the compilers disagreeing is in VC++ .NET's template compliance.
+    In VC++ .NET, the entire function body of a member template function must be defined
+    in the class header.  This behavior is sometimes counter-productive and makes
+    headers larger then they should be in some cases.
+
+    \subsection { Active Testing }
+    Our active testing methods were essencial to our project's success.salva
+
 
 \end{document}

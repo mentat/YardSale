@@ -44,7 +44,8 @@ class YardReports: public wxDialog
     
  private:
      
-    void GenerateGraph(const string& xml, const string& labels, const string& data);
+    void GenerateGraph(const string& xml, const string& labels, 
+        const string& data);
      
     string ProcessXSLT(const string& xml, const string& xsl);
     DECLARE_EVENT_TABLE()

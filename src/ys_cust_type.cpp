@@ -21,8 +21,8 @@ string YardCustType::ToString(const string& delim, bool quotes) const {
         << q << GetCreditCardName() << q << delim
         << q << GetSigLocal() << q << delim
         << q << GetPicLocal() << q << delim
-        << q << GetSince().ToString() << q << delim
-        << GetHashS();
+        << q << GetSince() << q << delim
+        << GetHash(); // so it will return 0 for null
     return output.str();
         
 }

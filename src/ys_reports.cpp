@@ -253,7 +253,7 @@ void YardReports::OnReportEmpSales(wxCommandEvent& event)
 void YardReports::OnReportHourlyRev(wxCommandEvent& event)
 {
 
-   YardDate to(m_to->GetDate());
+    YardDate to(m_to->GetDate());
     YardDate from(m_from->GetDate());
     
     stringstream sql;
@@ -307,8 +307,7 @@ void YardReports::OnReportHourlyRev(wxCommandEvent& event)
     prev->SetPage(html.c_str());
     prev->ShowModal();
     prev->Destroy();    
-    
-    
+ 
 }    
     
 string YardReports::ProcessXSLT(const string& xml_str, const string& xsl_file)
@@ -346,20 +345,14 @@ string YardReports::ProcessXSLT(const string& xml_str, const string& xsl_file)
     return ret;
 }
 
-void YardReports::GenerateGraph(const string& xml, const string& labelname, const string& data)
+void YardReports::GenerateGraph(const string& xml, const string& labelname, 
+    const string& data)
 {
 #ifdef YS_CHART
     wxLogDebug(wxT("Creating chart..."));
     XMLNode node(xml, XMLNode::Str);
     
     unsigned int numlabels = node.numChildren("record");
-   // unsigned int numdata = node.numChildren(data);
-    
-   // if (numlabels != numdata)
-  //  {
-   //     wxLogDebug(wxT("Data mismatch, can't continue."));
-  //      return;
-   // }
     
     wxLogDebug(wxT("%d labels."), numlabels);
     
@@ -372,36 +365,12 @@ void YardReports::GenerateGraph(const string& xml, const string& labelname, cons
         labels[i][node.child("record", i).child(labelname).data().length()]='\0';
         
         fl_data[i] = XMLNode::ToDouble(node.child("record", i).child(data).data());
-        
+       
         wxLogDebug(wxT("Label: %s, Data: %f"), labels[i], fl_data[i]);
     }
 
-    
-    /* labels */
-    /*
-	char		*lbl[] = { "CPQ\n(DEC)",
-						   "HP",
-						   "SCO",
-						   "IBM",
-						   "SGI",
-						   "SUN\nSPARC",
-						   "other" }; */
-	/* values to chart */
-/*	float		 p[] = { 12.5,
-						 20.1,
-						 2.0,
-						 22.0,
-						 5.0,
-						 18.0,
-						 13.0 };*/
 
 	FILE		*fp = fopen( "res/report.png", "wb" );
-
-	/* set which slices to explode, and by how much */
-	/*int				expl[] = { 0, 0, 0, 0, 0, 20, 0 };*/
-
-	/* set missing slices */
-	//unsigned char	missing[] = { FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE };
 
 	/* colors */
 	unsigned long	clr[] = { 0xFF4040L, 0x80FF80L, 0x8080FFL, 0xFF80FFL, 0xFFFF80L, 0x80FFFFL, 0x0080FFL };

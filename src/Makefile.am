@@ -64,7 +64,7 @@ binary: yardsale
 	cp res/*.xsl yardsale-$(BUILDID)/res
 	cp res/*.png yardsale-$(BUILDID)/res
 	cp res/*.xrc yardsale-$(BUILDID)/res
-	cp res/flower.jpg yardsale-$(BUILDID)/res
+	cp res/*.jpg yardsale-$(BUILDID)/res
 	strip yardsale-$(BUILDID)/yardsale
 	tar zcf yardsale-0.$(BUILDID).tar.gz yardsale-$(BUILDID)
 	rm -rf yardsale-$(BUILDID)

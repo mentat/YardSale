@@ -25,6 +25,7 @@
         <td><xsl:value-of select="sum(root/record/PROFIT)"/></td>
     </tr>
     </table>
+<center><img src="res/report.png"/></center>
   </body>
   </html>
 </xsl:template>

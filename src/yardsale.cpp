@@ -24,11 +24,17 @@ bool YardSale::OnInit()
     m_db = new YardDatabase();
     
     wxImage::AddHandler(new wxPNGHandler);
-    wxImage::AddHandler(new wxJPEGHandler);     
+    wxImage::Adok idHandler(new wxJPEGHandler);     
     wxFileSystem::AddHandler(new wxZipFSHandler);
     wxXmlResource::Get()->InitAllHandlers();
 
-    return ShowLogin();
+    if (!ShowLogin())
+    {
+        delete m_db;
+        delete wxConfigBase::Set((wxConfigBase *) NULL);
+        return false;
+    }
+    return true;
 }
 
 bool YardSale::ShowLogin(wxWindow * old)

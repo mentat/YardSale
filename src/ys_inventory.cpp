@@ -57,10 +57,9 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
+    SetSize(wxSize(600,400));
+    Centre();  
 
-    Centre();
-    if (wxGetApp().Full())
-        ShowFullScreen(true);
    
     // set the window components 
     

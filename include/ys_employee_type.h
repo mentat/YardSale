@@ -35,7 +35,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @see XMLNode
  */
 class YardEmployeeType: public XMLNode {
@@ -112,8 +112,8 @@ class YardEmployeeType: public XMLNode {
     int GetEnabled() const 
         { return ToInt(child("EMP_Enabled").data()); }
         
-    YardDate GetSince() const
-        { return YardDate(child("EMP_Employee_Since")); }
+    string GetSince() const
+        { return child("EMP_Employee_Since").data(); }
     
     //-----------------Settors-------------------
     /// @note You cannot set the employee ID, it is set by the DB
@@ -162,9 +162,7 @@ class YardEmployeeType: public XMLNode {
         { (yes) ? child("EMP_Enabled").setData("1") : child("EMP_Enabled").setData("0"); }
  
     void SetSince(YardDate& date)
-        {   date.setName("EMP_Employee_Since");
-            child("EMP_Employee_Since") = date;
-        }
+        {  child("EMP_Employee_Since").setData(date.ToString()); }
 };
 
 #endif

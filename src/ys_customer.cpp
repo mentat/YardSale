@@ -33,21 +33,23 @@ BEGIN_EVENT_TABLE(YardCustomer, wxDialog)
     EVT_TREE_SEL_CHANGED(XRCID("ID_CUST_TREE"), YardCustomer::OnChange)
     EVT_BUTTON(XRCID("ID_CUST_NEW"), YardCustomer::OnNew)
     EVT_BUTTON(XRCID("ID_CUST_EXIT"), YardCustomer::OnExit)
+   // EVT_CLOSE(YardCustomer::OnClose)
+    EVT_TEXT(-1, YardCustomer::OnModify)
+    EVT_BUTTON(XRCID("ID_CUST_SAVE"), YardCustomer::OnSave)
 END_EVENT_TABLE()
 
 YardCustomer::YardCustomer(wxWindow* parent, wxWindowID id, 
     const wxString& title, const wxPoint& pos,
     const wxSize& size, long style, const wxString& name)
-:wxDialog(parent, id, title, pos, size, style, name) {
+:wxDialog(parent, id, title, pos, size, style, name), m_loading(true) {
     wxBusyCursor busy();
     wxXmlResource::Get()->Load("res/customer.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Customer");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
-    SetSize(sizer->GetMinSize());  
-    Centre();
-    if (wxGetApp().Full())
-        ShowFullScreen(true);
+    SetSize(wxSize(600,400));
+    Centre();  
+    
     
     m_pic = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_CUST_PICTURE")));
     m_sig = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_CUST_SIG")));
@@ -61,16 +63,18 @@ YardCustomer::YardCustomer(wxWindow* parent, wxWindowID id,
     m_ccExp = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CUST_CC_EXP")));
     m_phone = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CUST_PHONE")));
     m_custSince = static_cast<wxStaticText *>(FindWindow(XRCID("ID_CUST_SINCE")));
+    m_save = static_cast<wxButton *>(FindWindow(XRCID("ID_CUST_SAVE")));
     
     CreateImageList(m_tree);
     LoadTreeItems(m_tree);
     //ID_CUST_PICTURE
+    m_loading = false;
     
 }
 
 void YardCustomer::LoadTreeItems(wxTreeCtrl * tree)
 {
-    tree->SetWindowStyleFlag(wxTR_NO_LINES | wxTR_HIDE_ROOT | wxTR_FULL_ROW_HIGHLIGHT);
+    //tree->SetWindowStyleFlag(wxTR_NO_LINES | wxTR_HIDE_ROOT | wxTR_FULL_ROW_HIGHLIGHT);
     tree->AddRoot(wxT("Root"));
     tree->SetIndent(10);
 	tree->SetSpacing(3);
@@ -93,6 +97,47 @@ void YardCustomer::LoadTreeItems(wxTreeCtrl * tree)
             new custItemData(customers[i].GetAccountNumber()));
     }
     
+}
+
+void YardCustomer::OnModify(wxCommandEvent& event)
+{
+ 
+    if (!m_loading) 
+    {        
+        wxLogDebug(wxT("OnModify"));
+        m_save->Show(true);
+    }
+}
+
+void YardCustomer::OnSave(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnSave")); 
+       
+    m_cust.SetFirstName(m_first->GetValue().c_str());
+    m_cust.SetMiddleName(m_middle->GetValue().c_str());
+    m_cust.SetLastName(m_last->GetValue().c_str());
+    m_cust.SetAddress(m_address->GetValue().c_str());
+    m_cust.SetPhone(m_phone->GetValue().c_str());
+    
+    try {
+        //wxGetApp().DB().CustomerUpdate(m_cust);
+    }
+    catch (YardDBException& e)
+    {
+        wxMessageBox(wxT("Could not save information."), 
+            wxT("Save Error"), wxOK, this);
+        return;
+    }
+
+    m_save->Show(false);
+    
+}
+
+void YardCustomer::OnClose(wxCloseEvent& event)
+{ 
+    if (event.CanVeto()) // if this isnt a forced close, load login
+        GetParent()->Show();
+    Destroy();
 }
 
 void YardCustomer::OnExit(wxCommandEvent& event)
@@ -126,6 +171,7 @@ void YardCustomer::CreateImageList(wxTreeCtrl * tree)
 
 void YardCustomer::OnChange(wxTreeEvent& event)
 {
+    m_loading = true;
     custItemData * data = static_cast<custItemData *>(m_tree->GetItemData(event.GetItem()));
 
     if (!data)
@@ -149,7 +195,7 @@ void YardCustomer::OnChange(wxTreeEvent& event)
             wxLogDebug(wxT("Bad image data (pic)."));
     }
     else
-        m_pic->SetBitmap(wxImage("res/ys_employee_128x128.png"));
+        m_pic->SetBitmap(wxImage("res/personal.png"));
     
     if (m_cust.GetSigLocal() != "")
     {
@@ -160,7 +206,7 @@ void YardCustomer::OnChange(wxTreeEvent& event)
             wxLogDebug(wxT("Bad image data (sig)."));
     }
     else
-        m_sig->SetBitmap(wxImage("res/empty_200x50.png"));
+        m_sig->SetBitmap(wxNullBitmap);
     
     m_first->SetValue(m_cust.GetFirstName().c_str());
     m_middle->SetValue(m_cust.GetMiddleName().c_str());
@@ -171,8 +217,10 @@ void YardCustomer::OnChange(wxTreeEvent& event)
     m_ccExp->SetValue(m_cust.GetCreditCardExpiration().c_str());
     m_phone->SetValue(m_cust.GetPhone().c_str());
     wxString pos;
-    pos.Printf(wxT("Customer Since: %s"), "FIXME");
+    pos.Printf(wxT("Customer Since: %s"), m_cust.GetSince().c_str());
     m_custSince->SetLabel(pos);
+    
+    m_loading = false;
 }
 
 void YardCustomer::OnNew(wxCommandEvent& event)
@@ -198,7 +246,8 @@ void YardCustomer::OnNew(wxCommandEvent& event)
         wxLogDebug(wxT("Wizard completed OK"));
         
         YardCustType temp = wizard->GetCustomer();
-        
+        YardDate now(wxDateTime::Now());
+        temp.SetSince(now);
         try {
             wxGetApp().DB().CustomerAdd(temp);
         }

@@ -119,6 +119,8 @@ class YardDatabase {
      */
     vector<YardInvType> InventorySearchSKU(const string& sku);
     
+    YardInvType InventoryBarcode(const string& barcode) const;
+    
     /**
      * Get a batch of inventory items.
      * @return A std::vector of YardInvType objects

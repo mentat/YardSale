@@ -26,6 +26,7 @@ class wxStaticBitmap;
 class wxTreeCtrl;
 class wxTextCtrl;
 class wxStaticText;
+class wxButton;
 /**
  * YardEmployee is the employee managment screen for YardSale.
  * Depending on access level, users may insert/modify employee 
@@ -41,13 +42,15 @@ class YardEmployee: public wxDialog
     YardEmployee(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxDEFAULT_FRAME_STYLE, const wxString& name = wxT("YardEmployee"));
+               long style = wxRESIZE_BORDER, const wxString& name = wxT("YardEmployee"));
     
     virtual ~YardEmployee();
  
     void OnChange(wxTreeEvent& event);
     void OnNew(wxCommandEvent& event);
     void OnClose(wxCommandEvent& event);
+    void OnModify(wxCommandEvent& event);
+    void OnSave(wxCommandEvent& event);
  
  private:
     DECLARE_EVENT_TABLE()
@@ -65,7 +68,9 @@ class YardEmployee: public wxDialog
     wxTextCtrl * m_taxid;
     wxTextCtrl * m_phone;
     wxStaticText * m_position;
- 
+    wxStaticText * m_hire;
+    wxButton * m_save;
+    bool m_loading;
     YardEmployeeType m_emp;
 };
 

@@ -8,6 +8,7 @@
 
 #include "yardsale.h"
 #include "ys_calc.h"
+#include "xmlnode.h"
 
 using namespace std;
 
@@ -229,7 +230,8 @@ void YardCalc::ClearScreen(){
 
 //need to have this function actually push onto the stack?
 void YardCalc::SetCalcContents(double contents){
-    m_screen->SetValue(DoubleToString(contents));
+    //m_screen->SetValue(DoubleToString(contents));
+    m_screen->SetValue(XMLNode::ToStr(contents, 2).c_str());
     //do more stuff here
 }
 

@@ -42,7 +42,7 @@ class wxStaticText;
  * From the transaction screen you can access the payment screen.
  * 
  * @author Jesse Lovelace
- * @version \$Revision: 1.12 $$
+ * @version \$Revision: 1.13 $$
  */
 class YardSaleScreen: public wxDialog{
  public:
@@ -64,8 +64,12 @@ class YardSaleScreen: public wxDialog{
     void OnRemove(wxCommandEvent& event);
     void OnCheckout(wxCommandEvent& event);
     void OnItem(wxCommandEvent& event);
+    void OnIdle(wxIdleEvent& event);
+    void OnHidden(wxCommandEvent & event);
  
     private:
+        
+    void AddItem(const YardInvType& item);
         
     // maps window ids to keys
     hash_map<long, long> m_lookup;
@@ -80,6 +84,7 @@ class YardSaleScreen: public wxDialog{
     wxStaticText * m_subTotal;
     wxStaticText * m_tax;
     wxStaticText * m_total;
+    wxTextCtrl * m_barcode;
     
     double m_sub, m_taxTotal, m_totalPrice;
 

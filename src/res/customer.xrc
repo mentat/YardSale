@@ -23,7 +23,7 @@
                     <border>5</border>
                     <object class="wxTreeCtrl" name="ID_CUST_TREE">
                         <size>120,160</size>
-                        <style>wxTR_HAS_BUTTONS|wxTR_LINES_AT_ROOT|wxSUNKEN_BORDER</style>
+                        <style>wxTR_HAS_BUTTONS|wxTR_NO_LINES | wxTR_HIDE_ROOT|wxSUNKEN_BORDER</style>
                     </object>
                 </object>
                 <object class="sizeritem">
@@ -245,10 +245,26 @@
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxALIGN_CENTER|wxALL</flag>
+                    <flag>wxALIGN_CENTER</flag>
                     <border>5</border>
-                    <object class="wxButton" name="ID_CUST_NEW">
-                        <label>New Customer</label>
+                    <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="ID_CUST_SAVE">
+                                <size>-1,40</size>
+                                <bg>#FF00FF</bg>
+                                <label>Save</label>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="ID_CUST_NEW">
+                                <label>New Customer</label>
+                            </object>
+                        </object>
                     </object>
                 </object>
             </object>

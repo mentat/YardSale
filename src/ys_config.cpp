@@ -68,6 +68,7 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
         pConfig->Write(wxT("/DB/DSN"), wxT(""));
         pConfig->Write(wxT("/DB/Server"), wxT(""));
         pConfig->Write(wxT("/DB/Port"), (long)0);
+        pConfig->Write(wxT("/HW/PrinterPort"), wxT(""));
     }
     
     wxButton * save = static_cast<wxButton *>(FindWindow(XRCID("ID_CONFIG_SAVE")));
@@ -78,6 +79,8 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
     wxTextCtrl * dsn = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CONFIG_DB_DSN")));
     wxTextCtrl * server = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CONFIG_DB_SERVER")));
     wxSpinCtrl * port = static_cast<wxSpinCtrl *>(FindWindow(XRCID("ID_CONFIG_DB_PORT")));
+    wxTextCtrl * printerport = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CONFIG_PRINTER_PORT")));
+    
 
 #ifdef __WXDEBUG__    
     user->SetValue(pConfig->Read(wxT("/DB/User"), wxString()));
@@ -94,6 +97,7 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
     server->SetValue(pConfig->Read(wxT("/DB/Server"), wxString()));
     wxLogDebug(wxT("Port is: %d"), (int)pConfig->Read(wxT("/DB/Port"), 0l));
     port->SetValue((int)pConfig->Read(wxT("/DB/Port"), 0l));
+    printerport->SetValue(pConfig->Read(wxT("/HW/PrinterPort"), wxString()));
      
     wxButton * cancel = (wxButton *)FindWindow(XRCID("ID_CONFIG_CANCEL"));
     cancel->SetLabel("Close");
@@ -107,6 +111,45 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
  
 YardConfig::~YardConfig()
 {}
+    
+wxString YardConfig::GetDSN()
+{
+    wxConfigBase *pConfig = wxConfigBase::Get();
+    if (!pConfig)
+    {
+        wxLogDebug(wxT("No Config pointer"));
+        return wxString();
+    }
+    
+	if (!pConfig->HasGroup(wxT("DB")))
+    {
+        wxLogDebug(wxT("No DB group"));
+        return wxString();
+        
+    }        
+            
+    return pConfig->Read(wxT("/DB/DSN"), wxString());
+}
+
+wxString YardConfig::GetPrinterPort()
+{
+     wxConfigBase *pConfig = wxConfigBase::Get();
+    if (!pConfig)
+    {
+        wxLogDebug(wxT("No Config pointer"));
+        return wxString();
+    }
+    
+	if (!pConfig->HasGroup(wxT("DB")))
+    {
+        wxLogDebug(wxT("No DB group"));
+        return wxString();
+        
+    }        
+            
+    return pConfig->Read(wxT("/HW/PrinterPort"), wxString());
+    
+}
 
 void YardConfig::OnBrowse(wxCommandEvent& event) {
  
@@ -141,7 +184,8 @@ void YardConfig::OnSave(wxCommandEvent& event)
     wxTextCtrl * dsn = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CONFIG_DB_DSN")));
     wxTextCtrl * server = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CONFIG_DB_SERVER")));
     wxSpinCtrl * port = static_cast<wxSpinCtrl *>(FindWindow(XRCID("ID_CONFIG_DB_PORT")));
-
+    wxTextCtrl * printerport = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_CONFIG_PRINTER_PORT")));
+  
 #ifdef __WXDEBUG__
     pConfig->Write(wxT("/DB/User"), user->GetValue());
     pConfig->Write(wxT("/DB/Pass"), pass->GetValue());
@@ -152,6 +196,7 @@ void YardConfig::OnSave(wxCommandEvent& event)
     pConfig->Write(wxT("/DB/DSN"), dsn->GetValue());
     pConfig->Write(wxT("/DB/Server"), server->GetValue());
     pConfig->Write(wxT("/DB/Port"), (long) port->GetValue());
+    pConfig->Write(wxT("/HW/PrinterPort"), printerport->GetValue());
 
         
     wxButton * save = (wxButton *)FindWindow(XRCID("ID_CONFIG_SAVE"));

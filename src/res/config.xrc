@@ -157,6 +157,20 @@
                                     <value>0</value>
                                 </object>
                             </object>
+							<object class="sizeritem">
+                                <flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxStaticText" name="ID_TEXT">
+                                    <label>Printer Port</label>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxTextCtrl" name="ID_CONFIG_PRINTER_PORT">
+                                    <size>100,-1</size>
+                                </object>
+                            </object>
                         </object>
                     </object>
                 </object>

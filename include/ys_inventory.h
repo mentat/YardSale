@@ -39,7 +39,7 @@ class wxTreeEvent;
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.21 $$
+ * @version \$Revision: 1.22 $$
  */
 class YardInventory: public wxDialog{
  public:
@@ -50,7 +50,7 @@ class YardInventory: public wxDialog{
     YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxDEFAULT_FRAME_STYLE,
+               long style = wxRESIZE_BORDER,
                const wxString& name = wxT("YardInventory"));
     
     /// Destructor

@@ -8,6 +8,7 @@
 #include "wx/log.h"
 #include "wx/stattext.h"
 #include "wx/notebook.h"
+#include "wx/textctrl.h"
 #include "wx/button.h"
 
 #include "yardsale.h"
@@ -18,15 +19,20 @@
 #include "ys_database.h"
 #include "ys_checkout.h"
 
-#define SALE_BUTTON_HEIGHT  40
-#define START_BUTTON_ID      14333
+#define SALE_BUTTON_HEIGHT      40
+#define START_BUTTON_ID         14333
+#define HIDDEN_BUTTON           14200
+
 using namespace std;
 
+
 BEGIN_EVENT_TABLE(YardSaleScreen, wxDialog)
+    EVT_BUTTON(HIDDEN_BUTTON, YardSaleScreen::OnHidden)
     EVT_BUTTON(XRCID("ID_SALES_EXIT"), YardSaleScreen::OnExitButton)
     EVT_BUTTON(XRCID("ID_SALES_REMOVE"), YardSaleScreen::OnRemove)
     EVT_BUTTON(XRCID("ID_SALES_CHECKOUT"), YardSaleScreen::OnCheckout)
     EVT_BUTTON(-1, YardSaleScreen::OnItem)
+    EVT_IDLE(YardSaleScreen::OnIdle)
     //EVT_TREE_ITEM_ACTIVATED(XRCID("ID_SALE_TREE"), YardSaleScreen::OnChange)
 END_EVENT_TABLE()
 
@@ -55,10 +61,11 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Checkout");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
-    SetSize(sizer->GetMinSize());   
+    SetSize(wxSize(600,400));
     Centre();
-    if (wxGetApp().Full())
-        ShowFullScreen(true);
+    
+    wxButton * hidden = new wxButton(panel, HIDDEN_BUTTON, "", wxDefaultPosition, wxSize(1,1));
+    hidden->SetDefault();
     
     m_list = static_cast<wxListCtrl *>(FindWindow(XRCID("ID_SALES_TRANS")));
     m_book = static_cast<wxNotebook *>(FindWindow(XRCID("ID_SALES_GROUPS")));
@@ -66,6 +73,7 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     m_subTotal = static_cast<wxStaticText *>(FindWindow(XRCID("ID_SALES_SUB")));
     m_tax = static_cast<wxStaticText *>(FindWindow(XRCID("ID_SALES_TAX")));
     m_total = static_cast<wxStaticText *>(FindWindow(XRCID("ID_SALES_TOTAL")));
+    m_barcode = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_SALES_BARCODE")));
     
     wxListItem itemCol;
     itemCol.m_mask = wxLIST_MASK_TEXT | wxLIST_MASK_IMAGE;
@@ -100,26 +108,32 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     
 }
 
-void YardSaleScreen::OnItem(wxCommandEvent& event)
+void YardSaleScreen::OnIdle(wxIdleEvent& event)
+{   
+    m_barcode->SetFocus();
+}
+
+void YardSaleScreen::OnHidden(wxCommandEvent & event)
 {
-    
-    long id = event.GetId();
-    if (id < START_BUTTON_ID)
-    {
-        wxLogDebug(wxT("Bad event ID"));
-        return;
-    }
+    wxLogMessage(m_barcode->GetValue().c_str());
     
     YardInvType temp;
     try {
-        temp = wxGetApp().DB().InventoryGet(m_lookup[id]);
+        temp = wxGetApp().DB().InventoryBarcode(m_barcode->GetValue().c_str());
     }
     catch (YardDBException& e)
     {
         wxLogDebug(wxT("Error (item not loaded): %s, %s"),e.what(), e.GetSQL().c_str());
         return;
     }
-      
+
+    AddItem(temp);
+    m_barcode->SetValue("");
+    
+}
+
+void YardSaleScreen::AddItem(const YardInvType& temp)
+{
     m_items.push_back(temp);
  
     m_list->InsertItem(0, temp.GetName().c_str(), 0);
@@ -146,6 +160,31 @@ void YardSaleScreen::OnItem(wxCommandEvent& event)
     m_subTotal->SetLabel(XMLNode::ToStr(m_sub, 2).c_str());
     m_tax->SetLabel(XMLNode::ToStr(m_taxTotal, 2).c_str()); 
     m_total->SetLabel(XMLNode::ToStr(m_sub + m_taxTotal, 2).c_str()); 
+
+}
+
+void YardSaleScreen::OnItem(wxCommandEvent& event)
+{
+    
+    long id = event.GetId();
+    wxLogDebug(wxT("ID: %d"), id);
+    if (id < START_BUTTON_ID)
+    {
+        wxLogDebug(wxT("Bad event ID"));
+        return;
+    }
+    
+    YardInvType temp;
+    try {
+        temp = wxGetApp().DB().InventoryGet(m_lookup[id]);
+    }
+    catch (YardDBException& e)
+    {
+        wxLogDebug(wxT("Error (item not loaded): %s, %s"),e.what(), e.GetSQL().c_str());
+        return;
+    }
+      
+    AddItem(temp);
     
 }
 
@@ -196,14 +235,12 @@ void YardSaleScreen::BuildNotebook(wxNotebook * nb)
         panel->SetSizer(sizer);
         nb->AddPage(panel, groups[i].GetName().c_str());
     }
-    
-    
+       
 }
 
 void YardSaleScreen::OnRemove(wxCommandEvent& event)
 {
-    wxLogDebug(wxT("OnRemove"));
-    
+    wxLogDebug(wxT("OnRemove"));   
 }
 
 void YardSaleScreen::OnCheckout(wxCommandEvent& event)
@@ -215,7 +252,7 @@ void YardSaleScreen::OnCheckout(wxCommandEvent& event)
     if (co->ShowModal() == 0)
     {
         co->Destroy();
-        Close();
+        EndModal(0);
     }
     co->Destroy();
 }

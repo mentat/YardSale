@@ -75,7 +75,7 @@ class YardNewEmployee1: public wxWizardPageSimple
         else
         {
             wxMessageBox("The Tax ID must only contain numbers and dashes.", "TAX ID",
-                            wxOK, this);
+                            wxOK, GetParent());
             return false;
         }
         return true;
@@ -157,7 +157,7 @@ class YardNewEmployee3: public wxWizardPageSimple
     void OnSig(wxCommandEvent& event)
     {
         m_sigloc = wxFileSelector(wxT("Select a signature file"), "", "",
-            ".jpg", "*.jpg", wxFILE_MUST_EXIST, this);
+            ".jpg", "*.jpg", wxFILE_MUST_EXIST, GetParent());
         
         wxImage sig(m_sigloc, wxBITMAP_TYPE_JPEG);
         if (sig.Ok())
@@ -175,7 +175,7 @@ class YardNewEmployee3: public wxWizardPageSimple
     void OnPic(wxCommandEvent& event)
     {
         m_picloc = wxFileSelector(wxT("Select a picture file"), "", "",
-            ".jpg", "*.jpg", wxFILE_MUST_EXIST, this);
+            ".jpg", "*.jpg", wxFILE_MUST_EXIST, GetParent());
         
         wxImage pic(m_picloc, wxBITMAP_TYPE_JPEG);
         if (pic.Ok())

@@ -26,6 +26,7 @@ class wxStaticBitmap;
 class wxTreeCtrl;
 class wxTextCtrl;
 class wxStaticText;
+class wxButton;
 /**
  * YardCustomer is the customer managment screen for YardSale.
  * Depending on access level, users may insert/modify employee 
@@ -41,13 +42,16 @@ class YardCustomer: public wxDialog
     YardCustomer(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxDEFAULT_FRAME_STYLE, const wxString& name = wxT("YardCustomer"));
+               long style = wxRESIZE_BORDER, const wxString& name = wxT("YardCustomer"));
     
     virtual ~YardCustomer();
  
     void OnChange(wxTreeEvent& event);
     void OnNew(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
+    void OnClose(wxCloseEvent& event);
+    void OnModify(wxCommandEvent& event);
+    void OnSave(wxCommandEvent& event);
  
  private:
     DECLARE_EVENT_TABLE()
@@ -66,7 +70,9 @@ class YardCustomer: public wxDialog
     wxTextCtrl * m_ccName;
     wxTextCtrl * m_phone;
     wxStaticText * m_custSince;
+    wxButton * m_save;
  
+    bool m_loading;
     YardCustType m_cust;
 };
 

@@ -14,6 +14,7 @@
 #include "ys_vend_type.h"
 #include "ys_trans_type.h"
 #include "ys_package_type.h"
+#include "ys_date.h"
 
 #define OTL_ODBC_MYSQL
 #define OTL_STL
@@ -346,6 +347,33 @@ vector<YardInvType> YardDatabase::InventoryGetInGroup(long groupid) const
     return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
 }
 
+
+YardInvType YardDatabase::InventoryBarcode(const string& barcode) const
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Inventory_Table where INV_Bar_Code_Number = '"
+        << barcode << "';";
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    ///@todo Why do I have to do this crap?
+    if (dbStream->eof())
+        throw YardDBException("Stream was empty.");
+        
+    return XMLFromStreamSingle<YardInvType>(dbStream.get(), "Inventory_Table");   
+}
+
 YardEmployeeType YardDatabase::EmployeeGet(long key) const
 {
     if (!m_db)
@@ -406,7 +434,11 @@ string YardDatabase::ReportXML(const string& sql, long& count) const
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
     
-    string result(ToXML(dbStream.get(), "record")); 
+    string result;
+    while (!dbStream->eof())
+    {
+        result += string(ToXML(dbStream.get(), "record"));
+    }        
     count = dbStream->get_rpc();
     
     return result;    
@@ -904,6 +936,7 @@ string YardDatabase::ToXML(otl_stream * stream, const string& record) const
                 xml << " type=\"xs:dateTime\">";
                 otl_datetime i;
                 *stream >> i;
+                stringstream s;
                 xml << i;
                 }
                 break;

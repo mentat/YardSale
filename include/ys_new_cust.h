@@ -126,7 +126,7 @@ class YardNewCustomer4: public wxWizardPageSimple
  public:
     YardNewCustomer4(YardNewCustomer *parent) : wxWizardPageSimple(parent), m_parent(parent)
     {
-        wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "NewCust3");
+        wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "NewCust4");
         m_min = panel->GetSizer()->CalcMin();
         m_pic = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_CUST_PIC")));
         m_sig = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_CUST_SIG")));
