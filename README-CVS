@@ -1,0 +1,5 @@
+Run ./autogen.sh to configure the project and then:
+make
+the binary will be in src/
+
+If you have a problem email jesse
