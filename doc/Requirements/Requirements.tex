@@ -1399,12 +1399,13 @@ testing.
     \section{Active Testing}
     There are several methods which are utilized by our
     development team to manually test the YardSale system
-    throughout the development process
-        \subsection{.
+    throughout the development process.
+        \subsection{Component Testing}
+	Each component that utilizes the database is tested by creating "dummy" data which is loaded directly into the database backend.  The each database interface screen is tested by logging into YardSale client and assuring that each dataset is loaded correctly.  Inserts into the database are verified through a third-party database interface tool.
         \subsection{Testing Mains}
         Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
-        each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.
-        If any of these tests fail the system will report the exact location of the failure.
+        each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.  These tests verify that all components are able to store, copy, and construct data.  The mains also run simple database interface tests to verify that all of the database tables can re returned correctly.
+        If any of these tests fail the system will report the exact location of the failure by the use of function macros.
 
         \subsection{Warm-Body Testing}
         Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any

@@ -716,60 +716,62 @@
     {\bf YardSale Global Database Diagram}\\
     \\
     \\
-    %	\includegraphics{Database_Layout_REDUCED.png}
+    %   \includegraphics{Database_Layout_REDUCED.png}
 
-    \includegraphics[scale=1]{Database_Layout_REDUCED.png}
+%    \includegraphics[scale=1]{Database_Layout_REDUCED.png}
 
-	\begin{enumerate}
-		\item{Customer Table}
-		\begin{itemize}
-			\item{Primary Key: Customer Account Number}
-		\end{itemize}
-		\item{Inventory Table}
-		\begin{itemize}
-			\item{Primary Key: Inventory SKU Number}
-		\end{itemize}
-		\item{Tax Table}
-		\begin{itemize}
-			\item{Primary Key: Tax ID}
-		\end{itemize}
-		\item{Transaction Log Table}
-		\begin{itemize}
-			\item{Primary Key: Key composed of all referenced keys}
-		\end{itemize}
-		\item{Vendor Table}
-		\begin{itemize}
-			\item{Primary Key: Vendor ID}
-		\end{itemize}
-		\item{Employee Table}
-		\begin{itemize}
-			\item{Primary Key: Employee Social Security Number}
-		\end{itemize}
-		\item{Package Table}
-		\begin{itemize}
-			\item{Primary Key: Package ID Number}
-		\end{itemize}
-		\item{Login Table}
-		\begin{itemize}
-			\item{Primary Key: Key composed of all referenced keys}
-		\end{itemize}
-		\item{ACL Table}
-		\begin{itemize}
-			\item{Primary Key: ACL Type}
-		\end{itemize}
-		\item{Carrier Table}
-		\begin{itemize}
-			\item{Primary Key: Carrier ID}
-		\end{itemize}
-		\item{Shipping Table}
-		\begin{itemize}
-			\item{Primary Key: Key composed of all referenced keys}
-		\end{itemize}
-		\item{Key Table}
-		\begin{itemize}
-			\item{Primary Key: Key ID}
-		\end{itemize}
-	\end{enumerate}
+
+
+    \begin{enumerate}
+        \item{Customer Table}
+        \begin{itemize}
+            \item{Primary Key: Customer Account Number}
+        \end{itemize}
+        \item{Inventory Table}
+        \begin{itemize}
+            \item{Primary Key: Inventory SKU Number}
+        \end{itemize}
+        \item{Tax Table}
+        \begin{itemize}
+            \item{Primary Key: Tax ID}
+        \end{itemize}
+        \item{Transaction Log Table}
+        \begin{itemize}
+            \item{Primary Key: Key composed of all referenced keys}
+        \end{itemize}
+        \item{Vendor Table}
+        \begin{itemize}
+            \item{Primary Key: Vendor ID}
+        \end{itemize}
+        \item{Employee Table}
+        \begin{itemize}
+            \item{Primary Key: Employee Social Security Number}
+        \end{itemize}
+        \item{Package Table}
+        \begin{itemize}
+            \item{Primary Key: Package ID Number}
+        \end{itemize}
+        \item{Login Table}
+        \begin{itemize}
+            \item{Primary Key: Key composed of all referenced keys}
+        \end{itemize}
+        \item{ACL Table}
+        \begin{itemize}
+            \item{Primary Key: ACL Type}
+        \end{itemize}
+        \item{Carrier Table}
+        \begin{itemize}
+            \item{Primary Key: Carrier ID}
+        \end{itemize}
+        \item{Shipping Table}
+        \begin{itemize}
+            \item{Primary Key: Key composed of all referenced keys}
+        \end{itemize}
+        \item{Key Table}
+        \begin{itemize}
+            \item{Primary Key: Key ID}
+        \end{itemize}
+    \end{enumerate}
 
     \newpage
 
@@ -777,12 +779,13 @@
 
         Since customer management is basically a simple task it is maintained in only
         one table. There is no real need to have their data stored accross many
-        different tables since all of the information is just personal data.
+        different tables since all of the information is just personal
+        data.\\
 
         {\bf Customer Table}\\
         \\
         \\
-        \includegraphics{Tables/CustomerTable.png}\\
+%        \includegraphics{Tables/CustomerTable.png}\\
         \\
         The above UML diagram shows the layout of the customer table. The object of this
         table is to manage customer personal information for later reference in
@@ -817,7 +820,7 @@
         {\bf Inventory Table}\\
         \\
         \\
-        \includegraphics{Tables/InventoryTable.png}\\
+%        \includegraphics{Tables/InventoryTable.png}\\
         \\
         \\
         This table being the main Inventory storage structure contains all information needed
@@ -842,7 +845,7 @@
         {\bf Tax Table}\\
         \\
         \\
-        \includegraphics{Tables/TaxTable.png}\\
+%        \includegraphics{Tables/TaxTable.png}\\
         \\
         \\
         The tax table is just a support table for the inventory items. It is referenced by ID
@@ -854,7 +857,7 @@
         {\bf Vendor Table}\\
         \\
         \\
-        \includegraphics{Tables/VendorTable.png}\\
+%        \includegraphics{Tables/VendorTable.png}\\
         \\
         \\
         The Vendor Table is used also as a supporting table for the inventory. This information
@@ -876,7 +879,7 @@
         {\bf Transaction Table}\\
         \\
         \\
-        \includegraphics{Tables/TransactionLogTable.png}\\
+%        \includegraphics{Tables/TransactionLogTable.png}\\
         \\
         \\
         The Transaction Log Table is used to store information that links Customers, Employees, and
@@ -889,7 +892,7 @@
         {\bf Package Table}\\
         \\
         \\
-        \includegraphics{Tables/PackageTable.png}\\
+%        \includegraphics{Tables/PackageTable.png}\\
         \\
         \\
         The Package Table is used to store information about a package. There is a link to a transaction ID
@@ -903,7 +906,7 @@
         {\bf Carrier Table}\\
         \\
         \\
-        \includegraphics{Tables/CarrierTable.png}\\
+%        \includegraphics{Tables/CarrierTable.png}\\
         \\
         \\
         The Carrier table is a support table for the Package table. It provides information about the different
@@ -920,7 +923,7 @@
         this table. The table just contains the name for the type of shipping, the carrier, and how much
         it costs.\\
         \\
-        \includegraphics{Tables/ShippingTable.png}\\
+%        \includegraphics{Tables/ShippingTable.png}\\
         \\
         \subsection{Employee Management}
 
@@ -933,7 +936,7 @@
         {\bf Employee Table}\\
         \\
         \\
-        \includegraphics{Tables/EmployeeTable.png}
+%        \includegraphics{Tables/EmployeeTable.png}
         \\
         \\
         The Employee Table keeps track of all pertinent information about employees that would
@@ -950,7 +953,7 @@
         {\bf Login Table}\\
         \\
         \\
-        \includegraphics{Tables/LoginTable.png}\\
+%        \includegraphics{Tables/LoginTable.png}\\
         \\
         \\
         The Login Table tracks the amount of time an employee has been logged in based on when
@@ -965,7 +968,7 @@
         {\bf Access Control List Table}\\
         \\
         \\
-        \includegraphics{Tables/ACL.png}\\
+%        \includegraphics{Tables/ACL.png}\\
         \\
         \\
         The ACL table which is short for Access Control List Table manages which user types have access
@@ -977,7 +980,7 @@
         {\bf Key Table}\\
         \\
         \\
-        \includegraphics{Tables/KeyTable.png}\\
+%        \includegraphics{Tables/KeyTable.png}\\
         \\
         \\
         The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
@@ -1379,7 +1382,7 @@
         progress bar.\\
         {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.22}
 
-\chapter{Test Plan}
+\chapter{Preliminary Test Plan}
 The YardSale system is tested constantly throughout the
 development process.  These tests are administered through two
 different methods: passive (automatic) testing, and active (user)
@@ -1396,7 +1399,8 @@ testing.
     \section{Active Testing}
     There are several methods which are utilized by our
     development team to manually test the YardSale system
-    throughout the development process.
+    throughout the development process
+        \subsection{.
         \subsection{Testing Mains}
         Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
         each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.
@@ -1406,7 +1410,7 @@ testing.
         Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any
         bugs they find through our bug tracking system.  We also have weekly usability conferences where we discuss the merits of a particular interface.
 
-        \subsection{Verbose Program Information}
+        \subsection{Program Flow Tracking}
         YardSale is designed to report back a large amount of valuable debug information to the developer and to keep the non-technical user
         informed about the status of the program.  YardSale uses exceptions to ensure that single functions cannot violate the integrity of the system
         on a global level.  In addition, all database interfaces have special logging information that reports the exact status of all database calls; this
