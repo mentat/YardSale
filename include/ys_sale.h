@@ -23,6 +23,7 @@
  * This is the main sale screen.  It contains the current transaction
  * information. 
  * @author Jesse Lovelace
+ * @version $Revision: 1.3 $
  */
 class YardSaleScreen: public wxFrame{
     public:

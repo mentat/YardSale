@@ -23,6 +23,8 @@
  * YardMain is the main menu screen for YardSale, it displays
  * graphical buttons for accessing the inventory, employees, sales,
  * etc.
+ * @author Jesse Lovelace
+ * @version $Revision: 1.5 $
  */
 class YardMain: public wxFrame {
     public:

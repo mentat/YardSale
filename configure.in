@@ -3,46 +3,91 @@
 
 AC_PREREQ(2.57)
 AC_INIT(include/yardsale.h)
-AM_INIT_AUTOMAKE(yardsale, 0.1)
+AM_INIT_AUTOMAKE(yardsale, 0.01a)
+
+dnl Most of this file is jacked straight from Mahogany, thanks!
+dnl OSTYPE may be set by the user to override the default which is just uname
+if test "x$OSTYPE" = "x"; then
+        OSTYPE=`uname`
+fi
+
+case "$OSTYPE" in
+    darwin* | Darwin*)
+	USE_MAC=1
+	MAKE_USE_MAC="USE_MAC=yes"
+	USE_MINGW=0
+	MAKE_USE_MINGW=""
+	USE_RESOURCES=0
+	MAKE_USE_RESOURCES=""
+	;;
+    cygwin* | CYGWIN*)
+	USE_MAC=0
+	MAKE_USE_MAC=""
+	USE_MINGW=0
+	MAKE_USE_MINGW=""
+	USE_RESOURCES=1
+	MAKE_USE_RESOURCES="USE_RESOURCES=yes"
+	;;
+    mingw* | MINGW*)
+	USE_MAC=0
+	MAKE_USE_MAC=""
+	USE_MINGW=1
+	MAKE_USE_MINGW="USE_MINGW=yes"
+	USE_RESOURCES=1
+	MAKE_USE_RESOURCES="USE_RESOURCES=yes"
+	;;
+    *)
+	USE_MAC=0
+	MAKE_USE_MAC=""
+	USE_MINGW=0
+	MAKE_USE_MINGW=""
+	USE_RESOURCES=0
+	MAKE_USE_RESOURCES=""
+	;;
+esac
+AC_SUBST(MAKE_USE_MAC)
+AC_SUBST(MAKE_USE_MINGW)
+AC_SUBST(MAKE_USE_RESOURCES)
 
 # Checks for programs.
-AC_PROG_CC
-AC_PROG_GCC_TRADITIONAL
-AC_LANG([C++])
 AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_PROG_INSTALL
 
+dnl --------------------------------------------------------------------------
+dnl check for (wx)gtk libraries
+dnl --------------------------------------------------------------------------
 
-AM_OPTIONS_WXCONFIG
-AM_PATH_WXCONFIG(2.3.2, wxWin=1)
-        if test "$wxWin" != 1; then
-        AC_MSG_ERROR([
-                wxWindows must be installed on your system.
+dnl check for wxWindows installation¤
+AM_PATH_WXCONFIG(2.4.2,wxOK=1)
 
-                Please check that wx-config is in path, the directory
-                where wxWindows libraries are installed (returned by
-                'wx-config --libs' or 'wx-config --static --libs' command)
-                is in LD_LIBRARY_PATH or equivalent variable and
-                wxWindows version is 2.3.2 or above.
-                ])
-        else
-               dnl Quick hack until wx-config does it
-               ac_save_LIBS=$LIBS
-               ac_save_CXXFLAGS=$CXXFLAGS
-               LIBS=$WX_LIBS
-               CXXFLAGS=$WX_CXXFLAGS
-               AC_LANG_SAVE
-               AC_LANG_CPLUSPLUS
-               AC_TRY_LINK([#include <wx/wx.h>],
-               [wxString test=""],
-               ,[WX_LIBS=$WX_LIBS_STATIC])
-               AC_LANG_RESTORE
-               LIBS=$ac_save_LIBS
-               CXXFLAGS=$ac_save_CXXFLAGS
-        fi
-        
-dnl AM_GNU_GETTEXT
+if test "$wxOK" != 1; then
+   AC_MSG_ERROR([
+	   YardSale requires wxWindows to be installed on your system
+	   but wx-config script couldn't be found.
+
+	   Please check that wx-config is in PATH, the directory
+	   where wxWindows libraries are installed (returned by
+	   'wx-config --libs' command) is in LD_LIBRARY_PATH or
+	   equivalent variable and wxWindows version is 2.5.1 or above.
+   ])
+fi
+
+CPPFLAGS="$WX_CPPFLAGS"
+CFLAGS="$WX_CFLAGS"
+CXXFLAGS="$WX_CXXFLAGS"
+
+dnl normal linking mode is fully dynamic
+GUI_LIBS="$WX_LIBS"
+AC_SUBST(GUI_LIBS)
+
+dnl Mac-specific post-link step
+if test "$USE_MAC" = 1; then
+    AC_PATH_PROG(SETFILE, SetFile, true, [$PATH:/Developer/Tools])
+
+    REZFLAGS=`$WX_CONFIG_WITH_ARGS --rezflags`
+    AC_SUBST(REZFLAGS)
+fi
 
 AC_CONFIG_FILES([Makefile
                  include/Makefile

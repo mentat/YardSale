@@ -1,17 +1,11 @@
-## Process this file with automake to produce Makefile.in
+## the hell with autoconf
 
-## Created by Anjuta - will be overwritten
-## If you don't want it to overwrite it,
-## 	Please disable it in the Anjuta project configuration
-
-INCLUDES = \
-	$(WX_CXXFLAGS)\
-	 -I../include
+INCLUDES =  -I../include
 
 yardsale_CXXFLAGS =\
-	 -DDEBUG_LEVEL_0\
-	-ansi\
-	 -Wall\
+	 $(WX_CXXFLAGS) \
+     -ansi \
+	 -Wall \
 	 -g
 
 bin_PROGRAMS = yardsale
@@ -30,4 +24,3 @@ yardsale_LDFLAGS =
 
 yardsale_LDADD =  \
 	$(WX_LIBS)
-

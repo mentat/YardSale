@@ -19,11 +19,22 @@
 #ifndef YARDSALE_H
 #define YARDSALE_H
 
-#include "wx/wx.h"
+/**	\mainpage YardSale
+ * <strong>Reference Manual</strong>
+ *
+ * <a href=\"http://yardsale.sf.net\">YardSale</a> 
+ * @author Jesse Lovelace
+ */
 
+/**
+ * This is the main application object.
+ * @author Jesse Lovelace
+ * @version $Revision: 1.3 $
+ */
 class YardSale: public wxApp {
     public:
-        virtual bool OnInit();
+        
+    virtual bool OnInit();
 };
         
 

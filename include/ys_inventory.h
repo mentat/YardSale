@@ -24,7 +24,7 @@
 /**
  * The inventory screen.
  * @author Jesse Lovelace
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 class YardInventory: public wxFrame{
     public:
@@ -36,6 +36,10 @@ class YardInventory: public wxFrame{
         
     virtual ~YardInventory();
     
+    /**
+     * Exit button handler.
+     * @param event The event being passed in.
+     */
     void OnExitButton(wxCommandEvent & event);
     
     private:

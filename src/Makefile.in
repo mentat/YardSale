@@ -65,12 +65,17 @@ OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 AMTAR = @AMTAR@
 AWK = @AWK@
-CC = @CC@
 CXX = @CXX@
 CXXCPP = @CXXCPP@
 DEPDIR = @DEPDIR@
+GUI_LIBS = @GUI_LIBS@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+MAKE_USE_MAC = @MAKE_USE_MAC@
+MAKE_USE_MINGW = @MAKE_USE_MINGW@
+MAKE_USE_RESOURCES = @MAKE_USE_RESOURCES@
 PACKAGE = @PACKAGE@
+REZFLAGS = @REZFLAGS@
+SETFILE = @SETFILE@
 STRIP = @STRIP@
 VERSION = @VERSION@
 WX_CFLAGS = @WX_CFLAGS@
@@ -86,15 +91,12 @@ am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 
-INCLUDES = \
-	$(WX_CXXFLAGS)\
-	 -I../include
-
+INCLUDES = -I../include
 
 yardsale_CXXFLAGS = \
-	 -DDEBUG_LEVEL_0\
-	-ansi\
-	 -Wall\
+	 $(WX_CXXFLAGS) \
+     -ansi \
+	 -Wall \
 	 -g
 
 

@@ -21,6 +21,11 @@
 
 #include "wx/wx.h"
 
+/**
+ * Eye-candy splash screen
+ * @author Jesse Lovelace
+ * @version $Revision: 1.5 $
+ */
 class YardSplash: public wxDialog {
     public:
         

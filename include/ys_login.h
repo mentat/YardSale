@@ -22,6 +22,7 @@
 /**
  * This is the customized login screen for YardSale
  * @author Jesse Lovelace
+ * @version $Revision: 1.3 $
  */
 class YardLogin: public wxDialog {
     public:
@@ -32,6 +33,10 @@ class YardLogin: public wxDialog {
         
     virtual ~YardLogin();  
     
+    /**
+     * Exit button handler.
+     * @param event The event being passed in.
+     */
     void OnExitButton(wxCommandEvent & event);
     void OnLogin(wxCommandEvent & event);
     
