@@ -4,7 +4,6 @@
 
 #include "ys_exception.h"
 #include "ys_database.h"
-#include "ys_log.h"
 
 #define OTL_ODBC_MYSQL
 #ifndef _WIN32
@@ -80,7 +79,7 @@ bool YardDatabase::disconnect()
 {
     if (!m_db)
     {   
-        wxLogError(wxT("DB not allocated in disconnect()"));
+//        wxLogError(wxT("DB not allocated in disconnect()"));
         return false;
     }
     
@@ -173,13 +172,20 @@ int main(int argc, char ** argv)
 
     if (argc == 4) {
         
+        cout << "Name: " << argv[1] << " Pass: " << argv[2] << " DSN: "
+            << argv[3] << endl;
+        
         testDB.Init(argv[1], argv[2], argv[3]);
         
         try {
             testDB.connect();
-        } catch (YardDBException &e) {
+        } 
+        catch (YardDBException &e) 
+        {
             cout << e.GetWhat() << endl;
+            return 1;
         }
+        
         vector<YardInvType> invObj;
 
         /* Search for an SKU that probably doesn't exist,
