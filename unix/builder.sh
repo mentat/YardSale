@@ -8,29 +8,37 @@ doxy=1
 
 cd /home/cvs/YardSale
 if [ "$?" -ne "0" ]; then
-	echo "fuck sh"
-	CHDIR=0	
+	echo "Fail CD"
+	CHDIR=0
+	exit 1	
 fi
 
 make distclean
 if [ "$?" -ne "0" ]; then
 	dist=0
+	echo "Fail distclean"
 fi
 
 cvs update -dC
 if [ "$?" -ne "0" ]; then
 	update=0
+	echo "Fail cvs update"
+	exit 1
 fi
 
 /home/cvs/YardSale/autogen.sh
 
 make 2>/tmp/make.out
 if [ "$?" -ne "0" ]; then
-	echo "bhas"
+	echo "Make failed"
 	maker=0
+	exit 1
 fi
 
-#doxygen ys_docs.cfg
+doxygen ys_docs.cfg
 if [ "$?" -ne "0" ]; then
 	doxy=0
+	echo "Doxy failed"
 fi
+
+exit 0
