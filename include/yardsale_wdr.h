@@ -58,7 +58,7 @@ wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE
 #define ID_INV_TAX_TYPE 10021
 #define ID_INV_BARCODE 10022
 #define ID_INV_DESC 10023
-#define ID_INV_FRIEGHT 10024
+#define ID_INV_FREIGHT 10024
 #define ID_INV_OVERSIZE 10025
 #define ID_INV_ONHAND 10026
 #define ID_INV_ONORDER 10027
