@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2004.1.5)  4 MAR 2004 02:05
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.12.24)  3 MAR 2004 07:19
 **Requirements.tex
 (./Requirements.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
 LaTeX2e <2001/06/01>
@@ -46,6 +46,9 @@ File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
+)
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
+\headwidth=\dimen105
 ) (./Requirements.aux)
 \openout1 = `Requirements.aux'.
 
@@ -68,18 +71,18 @@ loading : Context Support Macros / Missing
 \protectiondepth=\count89
 \scratchcounter=\count90
 \scratchtoks=\toks15
-\scratchdimen=\dimen105
+\scratchdimen=\dimen106
 \scratchskip=\skip43
 \scratchmuskip=\muskip10
 \scratchbox=\box26
 \scratchread=\read1
 \scratchwrite=\write3
-\zeropoint=\dimen106
+\zeropoint=\dimen107
 \minusone=\count91
-\thousandpoint=\dimen107
+\thousandpoint=\dimen108
 \emptytoks=\toks16
 \nextbox=\box27
-\nextdepth=\dimen108
+\nextdepth=\dimen109
 \everyline=\toks17
 \!!counta=\count92
 \!!countb=\count93
@@ -145,10 +148,7 @@ File: organization.png Graphic file (type png)
 Chapter 2.
 [9
 
-] <Database_Layout.png, id=59, 401.5pt x 350.30875pt>
-File: Database_Layout.png Graphic file (type png)
-
-<use Database_Layout.png>
+]
 Underfull \hbox (badness 10000) in paragraph at lines 403--407
 
  []
@@ -158,8 +158,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--407
 
  []
 
-[10 <./Database_Layout.png>]
-<Tables/CustomerTable.png, id=63, 180.675pt x 164.615pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--407
+
+ []
+
+[10] <Tables/CustomerTable.png, id=62, 180.675pt x 164.615pt>
 File: Tables/CustomerTable.png Graphic file (type png)
 
 <use Tables/CustomerTable.png>
@@ -178,15 +182,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 416--427
  []
 
 [11 <./Tables/CustomerTable.png>]
-<Tables/InventoryTable.png, id=67, 351.3125pt x 304.13625pt>
+<Tables/InventoryTable.png, id=66, 351.3125pt x 304.13625pt>
 File: Tables/InventoryTable.png Graphic file (type png)
 
 <use Tables/InventoryTable.png>
-<Tables/TaxTable.png, id=68, 150.5625pt x 77.28876pt>
+<Tables/TaxTable.png, id=67, 150.5625pt x 77.28876pt>
 File: Tables/TaxTable.png Graphic file (type png)
 
 <use Tables/TaxTable.png>
-<Tables/VendorTable.png, id=69, 200.75pt x 194.7275pt>
+<Tables/VendorTable.png, id=68, 200.75pt x 194.7275pt>
 File: Tables/VendorTable.png Graphic file (type png)
 
 <use Tables/VendorTable.png>
@@ -265,19 +269,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 444--501
  []
 
 [12 <./Tables/InventoryTable.png>]
-<Tables/TransactionLogTable.png, id=74, 401.5pt x 151.56625pt>
+<Tables/TransactionLogTable.png, id=73, 401.5pt x 151.56625pt>
 File: Tables/TransactionLogTable.png Graphic file (type png)
 
 <use Tables/TransactionLogTable.png>
-<Tables/PackageTable.png, id=75, 401.5pt x 171.64125pt>
+<Tables/PackageTable.png, id=74, 401.5pt x 171.64125pt>
 File: Tables/PackageTable.png Graphic file (type png)
 
 <use Tables/PackageTable.png>
-<Tables/CarrierTable.png, id=76, 159.59625pt x 96.36pt>
+<Tables/CarrierTable.png, id=75, 159.59625pt x 96.36pt>
 File: Tables/CarrierTable.png Graphic file (type png)
 
 <use Tables/CarrierTable.png>
-<Tables/ShippingTable.png, id=77, 401.5pt x 130.4875pt>
+<Tables/ShippingTable.png, id=76, 401.5pt x 130.4875pt>
 File: Tables/ShippingTable.png Graphic file (type png)
 
 <use Tables/ShippingTable.png>
@@ -392,11 +396,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 504--559
 
 [13 <./Tables/TaxTable.png> <./Tables/VendorTable.png>] [14 <./Tables/Transacti
 onLogTable.png> <./Tables/PackageTable.png>]
-<Tables/EmployeeTable.png, id=84, 401.5pt x 183.68625pt>
+<Tables/EmployeeTable.png, id=83, 401.5pt x 183.68625pt>
 File: Tables/EmployeeTable.png Graphic file (type png)
 
 <use Tables/EmployeeTable.png>
-<Tables/LoginTable.png, id=85, 199.74625pt x 78.2925pt>
+<Tables/LoginTable.png, id=84, 199.74625pt x 78.2925pt>
 File: Tables/LoginTable.png Graphic file (type png)
 
 <use Tables/LoginTable.png>
@@ -444,12 +448,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 561--596
 
  []
 
-[15 <./Tables/CarrierTable.png> <./Tables/ShippingTable.png>] [16 <./Tables/Emp
-loyeeTable.png> <./Tables/LoginTable.png>]
-<Tables/ACL.png, id=92, 125.46875pt x 64.24pt>
+[15 <./Tables/CarrierTable.png> <./Tables/ShippingTable.png>]
+<Tables/ACL.png, id=88, 125.46875pt x 64.24pt>
 File: Tables/ACL.png Graphic file (type png)
  <use Tables/ACL.png>
-<Tables/KeyTable.png, id=93, 301.125pt x 62.2325pt>
+<Tables/KeyTable.png, id=89, 301.125pt x 62.2325pt>
 File: Tables/KeyTable.png Graphic file (type png)
  <use Tables/KeyTable.png>
 Underfull \hbox (badness 10000) in paragraph at lines 599--625
@@ -511,7 +514,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 599--625
 
  []
 
-[17 <./Tables/ACL.png> <./Tables/KeyTable.png>] [18]
+[16 <./Tables/EmployeeTable.png> <./Tables/LoginTable.png>] [17 <./Tables/ACL.p
+ng> <./Tables/KeyTable.png>] [18]
 Chapter 3.
 [19
 
@@ -521,16 +525,16 @@ Chapter 4.
 
 ] (./Requirements.aux) ) 
 Here is how much of TeX's memory you used:
- 1017 strings out of 95437
- 13054 string characters out of 1190234
- 61407 words of memory out of 1000001
- 4039 multiletter control sequences out of 10000+50000
+ 1111 strings out of 95437
+ 13924 string characters out of 1190232
+ 62935 words of memory out of 1000001
+ 4130 multiletter control sequences out of 10000+50000
  9767 words of font info for 34 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 1000
- 25i,6n,19p,207b,243s stack positions out of 1500i,500n,5000p,200000b,5000s
- 106 PDF objects out of 300000
+ 25i,6n,43p,210b,247s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 105 PDF objects out of 300000
  0 named destinations out of 131072
- 75 words of extra memory for PDF output out of 65536
+ 70 words of extra memory for PDF output out of 65536
 {/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/
 texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
 cmsl10.pfb>{/usr/share/texmf/dvips/tetex/bbad153f.enc}</usr/share/texmf/fonts/t
@@ -538,4 +542,4 @@ ype1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb><
 /usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type
 1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr
 /share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb>
-Output written on Requirements.pdf (21 pages, 254306 bytes).
+Output written on Requirements.pdf (21 pages, 240936 bytes).

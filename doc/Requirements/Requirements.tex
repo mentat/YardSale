@@ -1,7 +1,7 @@
 \documentclass{report}
 
 \usepackage{graphicx}
-
+\usepackage{fancyhdr}
 %left margin gutter
 \oddsidemargin 0.0in
 %right margin gutter
@@ -274,45 +274,54 @@ functionality can not be added.
 
     \subsection{Major Modules}
 
-        \subsubsection{YardDatabase}
-        The YardDatabase module works as the translator between
+        \subsubsection{Database}
+        The Database module works as the translator between
         the user interface and the database.  It converts calls
         made by the GUI into SQL queries to be sent to the
         database.  When the query results are returned from the
-        database, YardDatabase converts these items to a
-        YardDBType (discussed in next section) to be read by the
-        GUI.
-        \subsubsection{YardDBType}
-        The YardDBType module is the superclass for all information that
+        database,the Database converts these items to a
+        Database Type (discussed in next section) to be read by the
+        GUI. OTL Libraries will be used in conjunction with ODBC to
+	provide database connectivity with the user interface. OTL is
+	a cross platform library for ODBC.
+        \subsubsection{Database Types}
+        The Database Types module is the superclass for all information that
         may be sent to the GUI from the database.  It contains
         function calls for each of the following types:
         \begin{list}{}
-            \item{{\bf YardInvType:} contains variables for all
+            \item{{\bf Inventory Type:} contains variables for all
             possible inventory management items stored in the
             database.  Coordinates with the Inventory Management
             view in the GUI, which is also used by Transactions.}
-            \item{{\bf YardCustomerType:} contains variables for
+            \item{{\bf Customer Type:} contains variables for
             all possible customer management items stored in the database.
             Coordinates with the Customer view in the GUI,
             which is also used by Transactions.}
-            \item{{\bf YardEmployeeType} contains variables for
+            \item{{\bf Employee Type} contains variables for
             all possible employee management items stored in the
             database.  Coordinates with the Employee Management
             view in the GUI.}
-            \item{{\bf YardTransaction} contains variables for all
+            \item{{\bf Yard Transaction} contains variables for all
             possible transaction items stored in the database.
             Coordinates with the Transaction view in the GUI.}
         \end{list}{}
-        \subsubsection{GUI wxWidges}
-        The wxWidges module defines all interfaces used by the
+        \subsubsection{GUI wxWindows}
+        The GUI wxWindows module defines all interfaces used by the
         GUI.  It contains functions derived from the wxWindows
         libraries for C++.  It also interacts with the
-        YardDatabase module to display information sent from the
+        Database module to display information sent from the
         database.
 
 
     \subsection{System Architecture}
-    \includegraphics{yardsale_modules.png}
+
+    Figure XXX (shown  below) outlines the class dependencies and hierarchy of
+    the modules described in section 1.5.1.
+
+    \\
+    \includegraphics{yardsale_modules.png}\\
+    \\
+
 
 \section{Preliminary Project Task Plan}
     %Scope and Size of Project Paragraph
@@ -400,10 +409,10 @@ functionality can not be added.
 
 	\newpage
 
-	\bf{YardSale Global Database Diagram}\\
+	{\bf YardSale Global Database Diagram}\\
 	\\
 	\\
-	\includegraphics{Database_Layout.png}
+%	\includegraphics{Database_Layout.png}
 
 	\newpage
 
@@ -413,7 +422,7 @@ functionality can not be added.
 	one table. There is no real need to have their data stored accross many
 	different tables since all of the information is just personal data.
 
-	\bf{Customer Table}\\
+	{\bf Customer Table}\\
 	\\
 	\\
 	\includegraphics{Tables/CustomerTable.png}\\
@@ -448,7 +457,7 @@ functionality can not be added.
 	the Vendor Table is a storage table for Vendor information or Inventory Supplier
 	information.\\
 	\\
-	\bf{Inventory Table}\\
+	{\bf Inventory Table}\\
 	\\
 	\\
 	\includegraphics{Tables/InventoryTable.png}\\
@@ -473,7 +482,7 @@ functionality can not be added.
 	set, but they are mutually exclusive and the ship by freight can be set without the
 	oversized flag being set.\\
 	\\
-	\bf{Tax Table}\\
+	{\bf Tax Table}\\
 	\\
 	\\
 	\includegraphics{Tables/TaxTable.png}\\
@@ -485,7 +494,7 @@ functionality can not be added.
 	is a Tax Name and a percentage for taxing items. The ID field is managed internally by the
 	database management system and is also the primary key for the table.\\
 	\\
-	\bf{Vendor Table}\\
+	{\bf Vendor Table}\\
 	\\
 	\\
 	\includegraphics{Tables/VendorTable.png}\\
@@ -507,7 +516,7 @@ functionality can not be added.
 	the transaction.\\
 	\\
 	\\
-	\bf{Transaction Table}\\
+	{\bf Transaction Table}\\
 	\\
 	\\
 	\includegraphics{Tables/TransactionLogTable.png}\\
@@ -520,7 +529,7 @@ functionality can not be added.
 	an equivalent ID belongs to the same transaction.
 	\\
 	\\
-	\bf{Package Table}\\
+	{\bf Package Table}\\
 	\\
 	\\
 	\includegraphics{Tables/PackageTable.png}\\
@@ -534,7 +543,7 @@ functionality can not be added.
 	A tracking number field is provided for when the tracking number is issued by the Carrier.
 	\\
 	\\
-	\bf{Carrier Table}\\
+	{\bf Carrier Table}\\
 	\\
 	\\
 	\includegraphics{Tables/CarrierTable.png}\\
@@ -545,7 +554,7 @@ functionality can not be added.
 	There is a phone number, pickup location and an ID associated with each entry.
 	\\
 	\\
-	\bf{Shipping Table}\\
+	{\bf Shipping Table}\\
 	\\
 	\\
 	The Shipping Table is also a support table for the Package Table. This table is a list of all of the
@@ -564,7 +573,7 @@ functionality can not be added.
 	other section is the security aspect of the program as it relates to employees. It also spans
 	two tables; the ACL Table and the Key Table.\\
 	\\
-	\bf{Employee Table}\\
+	{\bf Employee Table}\\
 	\\
 	\\
 	\includegraphics{Tables/EmployeeTable.png}
@@ -581,7 +590,7 @@ functionality can not be added.
 	a user to login, and which is also used to decrypt the keys from the key table. Each user
 	is also associated with a ACL entry in the ACL Table.\\
 	\\
-	\bf{Login Table}\\
+	{\bf Login Table}\\
 	\\
 	\\
 	\includegraphics{Tables/LoginTable.png}\\
@@ -596,7 +605,7 @@ functionality can not be added.
 	
 	\subsubsection{Security}
 
-	\bf{Access Control List Table}\\
+	{\bf Access Control List Table}\\
 	\\
 	\\
 	\includegraphics{Tables/ACL.png}\\
@@ -608,7 +617,7 @@ functionality can not be added.
 	interface to manage this table.\\
 	\\
 	\\
-	\bf{Key Table}\\
+	{\bf Key Table}\\
 	\\
 	\\
 	\includegraphics{Tables/KeyTable.png}\\
@@ -624,27 +633,60 @@ functionality can not be added.
 	\\
 
 	\newpage
-	
+
 	\section{YardSale Client Application Design}
+
+
 
 \chapter{Implementation}
 
-	\subsection{Class Documentation}
+	\section{Database Level Implementation}
 
-Please note the following section was auto-generated. We are
-working on tweaking this output a little, but currently it is
-sectioned wrong.
+	\section{Application Level Implementation}
 
-%\include{Imp/classYardDatabase}
-%\include{Imp/classYardDBType}
-%\include{Imp/classYardEmployee}
-%\include{Imp/classYardInventory}
-%\include{Imp/classYardInvType}
-%\include{Imp/classYardLogin}
-%\include{Imp/classYardMain}
-%\include{Imp/classYardSale}
-%\include{Imp/classYardSaleScreen}
-%\include{Imp/classYardSplash}
+	\subsection{YardCalc}
+	%see page 14 7.2
+
+	\subsection{YardDatabase}
+	%see page 16
+
+	\subsection{YardDBType}
+	%see page 22
+
+	\subsubsection{YardEmployeeType}
+	%see page 25 7.9
+
+	\subsubsection{YardInvType}
+	%see page 33 7.12
+
+	%7.13 Bulk pricing XML
+
+	\subsection{YardEmployee}
+	%see page 24 7.8
+
+	\subsection{YardInventory}
+	%see page 30 7.11
+
+	\subsection{YardException}
+	%see page 29 7.10
+
+	\subsection{YardLog}
+	%see page 39 7.14
+
+	\subsection{YardLogin}
+	%see page 40 7.15
+
+	\subsection{YardMain}
+	%see page 42 7.16
+
+	\subsection{YardSale}
+	%see page 45 7.17
+
+	\subsection{YardSaleScreen}
+	%see page 48 7.18
+
+	\subsection{YardSplash}
+	%see page 49 7.19
 
 \chapter{Test Plan}
 
