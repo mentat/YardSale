@@ -23,7 +23,6 @@ cvs update -dC
 if [ "$?" -ne "0" ]; then
 	update=0
 	echo "Fail cvs update"
-	exit 1
 fi
 
 /home/cvs/YardSale/autogen.sh
