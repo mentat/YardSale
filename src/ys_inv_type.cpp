@@ -1,15 +1,15 @@
 #include "ys_inv_type.h"
 
-void YardInvType::SetItemType(const wxString& str) {
+void YardInvType::SetItemType(const string& str) {
     m_itemType = str;
     
 }
 
-void YardInvType::SetDepartment(const wxString& str) {
+void YardInvType::SetDepartment(const string& str) {
     m_itemDepartment = str;
 }
         
-void YardInvType::SetBarCode(const wxString& str) {
+void YardInvType::SetBarCode(const string& str) {
     m_barCode = str;
 }
    

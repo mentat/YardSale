@@ -20,8 +20,8 @@
 #define YS_INVENTORY_TYPE_H
 
 #include "ys_dbtype.h"
-#include "wx/string.h"
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -33,7 +33,7 @@ class YardDatabase;
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
  * @author Jesse Lovelace
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @see YardDBType
  */
 
@@ -57,15 +57,15 @@ class YardInvType: public YardDBType
     
     YardInvType& operator=(const YardInvType& obj);
     
-    wxString GetBarCode() const { return m_barCode; }
-    wxString GetDescription() const { return m_itemDescription; }
-    wxString GetDepartment() const { return m_itemDepartment; }
+    string GetBarCode() const { return m_barCode; }
+    string GetDescription() const { return m_itemDescription; }
+    string GetDepartment() const { return m_itemDepartment; }
     
     unsigned long GetQuantOnHand() const { return m_quantityOnHand; }
     unsigned long GetQuantOnOrder() const { return m_quantityOnOrder; }
     unsigned long GetReorderLevel() const { return m_reorderLevel; }
     
-    wxString GetItemType() const { return m_itemType; }
+    string GetItemType() const { return m_itemType; }
     float GetItemWeightLbs() const { return m_itemWeight; } 
     float GetTaxType() const { return m_taxType; }
     long int GetVendorId() const { return m_vendorId; }
@@ -79,14 +79,14 @@ class YardInvType: public YardDBType
   
   /* settors */
   
-   void SetBarCode(const wxString& str);
-   void SetDescription(const wxString& str) { m_itemDescription = str; }
-   void SetDepartment(const wxString& str);
+   void SetBarCode(const string& str);
+   void SetDescription(const string& str) { m_itemDescription = str; }
+   void SetDepartment(const string& str);
    void SetQuantOnHand(unsigned long num) { m_quantityOnHand = num; }
    void SetQuantOnOrder(unsigned long num) { m_quantityOnOrder = num; }
    void SetReorderLevel(unsigned long num) { m_reorderLevel = num; }
    
-   void SetItemType(const wxString& str);
+   void SetItemType(const string& str);
    void SetItemWeightLbs(float num) { m_itemWeight = num; }
    void SetTaxType(float num) { m_taxType = num; }
    void SetVentorId(long int num) { m_vendorId = num; }
@@ -104,14 +104,14 @@ class YardInvType: public YardDBType
  private:
         
     long int m_skuNumber;
-    wxString m_barCode;
-    wxString m_itemDescription;
-    wxString m_itemDepartment;
+    string m_barCode;
+    string m_itemDescription;
+    string m_itemDepartment;
     unsigned long m_quantityOnHand;
     unsigned long m_quantityOnOrder;
     unsigned long m_reorderLevel;
     unsigned long m_reorderQuantity;
-    wxString m_itemType;
+    string m_itemType;
     float m_itemWeight;
     float m_taxType;
     long int m_vendorId;

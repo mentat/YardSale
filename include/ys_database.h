@@ -26,10 +26,6 @@ using namespace std;
 
 // Forward declarations for speed -jll
 class YardDBConfig;
-class wxDb;
-class wxDbTable;
-class wxDbConnectInf;
-
 
 /**
  * @defgroup database Database Related Documentation
@@ -104,9 +100,6 @@ class YardDatabase {
     vector<YardInvType> InvGet(unsigned int num, unsigned int offset);
     
  private:
-    wxDb * m_db;
-    wxDbTable * m_table;
-    wxDbConnectInf * m_connectInfo;
     YardInvType m_inv;
 };
 
