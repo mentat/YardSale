@@ -28,12 +28,13 @@ using namespace std;
 class YardDatabase;
 
 /**
- * @ingroup database
- *
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
+ *
+ * @include INV_Table.sql
+ * @ingroup database 
  * @author Jesse Lovelace
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @see YardDBType
  */
 
@@ -60,56 +61,91 @@ class YardInvType: public YardDBType
     
     YardInvType& operator=(const YardInvType& obj);
     
+    /// Get SKU
     long int GetSKU() const { return m_skuNumber; }
+    /// Get barcode
     string GetBarCode() const { return m_barCode; }
+    /// Get item description
     string GetDescription() const { return m_itemDescription; }
+    /// Get department
     string GetDepartment() const { return m_itemDepartment; }
-    
+    /// Get quantity on hand
     unsigned long GetQuantOnHand() const { return m_quantityOnHand; }
+    /// Get quantity on order
     unsigned long GetQuantOnOrder() const { return m_quantityOnOrder; }
+    /// Get reorder level
     unsigned long GetReorderLevel() const { return m_reorderLevel; }
-    
+    /// Get item type
     string GetItemType() const { return m_itemType; }
-
+    /// Get weight in pounds
     float GetItemWeightLbs() const { return m_itemWeight; } 
+    /// Get index of tax type, see tax table in DB
     int GetTaxType() const { return m_taxType; }
+    /// Get vendor ID, see vendor table in DB
     long int GetVendorId() const { return m_vendorId; }
+    /// Get retail price
     float GetRetailPrice() const { return m_retailPrice; }
+    /// Get wholesale price
     float GetWholesalePrice() const { return m_wholesalePrice; }
-    
+    /// Return vector of bulk pricings
     vector<BulkPricing> GetBulkPricing() const { return m_bulkPricing; }
-    
+    /// Return oversized status of item
+    /// @return True if item is oversized
     bool IsOverSized() const { return m_oversized; }
+    /// Return if item must be shipped by freight
+    /// @return True if item must be shipped by freight
     bool MustShipFreight() const { return m_mustShipFreight; }
   
-  /* settors */
+    /* settors */
   
-   void SetBarCode(const string& str);
-   void SetDescription(const string& str) { m_itemDescription = str; }
-   void SetDepartment(const string& str);
-   void SetQuantOnHand(unsigned long num) { m_quantityOnHand = num; }
-   void SetQuantOnOrder(unsigned long num) { m_quantityOnOrder = num; }
-   void SetReorderLevel(unsigned long num) { m_reorderLevel = num; }
+    /// Set the bar code
+    void SetBarCode(const string& str);
+    /// Set item description
+    void SetDescription(const string& str) { m_itemDescription = str; }
+    /// Set department
+    void SetDepartment(const string& str);
+    /// Set quantity on hand
+    void SetQuantOnHand(unsigned long num) { m_quantityOnHand = num; }
+    /// Set quantity on order
+    void SetQuantOnOrder(unsigned long num) { m_quantityOnOrder = num; }
+    /// Set reorder level
+    void SetReorderLevel(unsigned long num) { m_reorderLevel = num; }
    
-   void SetItemType(const string& str);
-   void SetItemWeightLbs(float num) { m_itemWeight = num; }
-   void SetTaxType(int num) { m_taxType = num; }
-   void SetVentorId(long int num) { m_vendorId = num; }
-   void SetRetailPrice(float num) { m_retailPrice = num; }
-   void SetWholesalePrice(float num) { m_wholesalePrice = num; }
+    /// Set general item type
+    void SetItemType(const string& str);
+    /// Set weight in pounds
+    void SetItemWeightLbs(float num) { m_itemWeight = num; }
+    /// Set tax type
+    void SetTaxType(int num) { m_taxType = num; }
+    /// Set vendor ID
+    void SetVendorId(long int num) { m_vendorId = num; }
+    /// Set retail price
+    void SetRetailPrice(float num) { m_retailPrice = num; }
+    /// Set wholesale price
+    void SetWholesalePrice(float num) { m_wholesalePrice = num; }
    
-   /* bulk pricing addition... */
+    /* bulk pricing addition... */
    
-   bool AddBulkPrice(const BulkPricing& price);
-   bool RemoveBulkPrice(unsigned int level);
+    /// Add a bulk type to the object
+    bool AddBulkPrice(const BulkPricing& price);
+    /// Remove a bulk price from vector
+    bool RemoveBulkPrice(unsigned int level);
    
-   void SetOverSized(bool cond) { m_oversized = cond; }
-   void SetShipFreight(bool cond) { m_mustShipFreight = cond; }
+    /// Set oversized flag
+    void SetOverSized(bool cond) { m_oversized = cond; }
+    /// Set ship by freight flag
+    void SetShipFreight(bool cond) { m_mustShipFreight = cond; }
    
-   virtual string ToString(const string& delim = "\n") const;
+    /**
+     * Returns string representation of the datatype.
+     * @param delim The string to delimit items in database
+     * @return A string representation of the object
+     */
+    virtual string ToString(const string& delim = "\n") const;
    
  private:
-        
+    
+    /* These variables directly correspond with the database */
     long int m_skuNumber;
     string m_barCode;
     string m_itemDescription;
@@ -127,12 +163,6 @@ class YardInvType: public YardDBType
     float m_wholesalePrice;
  
     string m_bulkPrice;
-    
-    /*   struct BulkPricing  */
-    /*     { */
-    /*         unsigned long quantity; */
-    /*         float percent; */
-    /*     }; */
     vector<BulkPricing> m_bulkPricing;
     
     DateTime m_dateLastReceived;
@@ -142,8 +172,8 @@ class YardInvType: public YardDBType
     bool m_mustShipFreight;
     
     
-          /*        
-        	INV_SKU_Number			INT	NOT NULL,
+    /* Database       
+    INV_SKU_Number			INT	NOT NULL,
 	INV_Bar_Code_Number		varchar(30),
 	INV_Item_Description		TEXT,
 	INV_Item_Department		varchar(30),
@@ -163,7 +193,7 @@ class YardInvType: public YardDBType
 	INV_Ship_By_Freight		enum('T','F'),
 	INV_Comment			TEXT,
 
-        */
+    */
     
 };
 

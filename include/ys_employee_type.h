@@ -27,12 +27,13 @@ class YardDatabase;
 using namespace std;
 
 /**
- * @ingroup database
- *
  * This is a datatype to represent an Employee record.
  * See Database Tables.
+ *
+ * @include EMP_Table.sql
+ * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @see YardDBType
  */
 class YardEmployeeType: public YardDBType {
