@@ -21,14 +21,12 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
         long style, const wxString& name)
         :wxPanel(parent, id, pos, size, style, name)
 {
-    m_number = 0;
-
 	//the last number on the screen, before the new one entered
 	m_savednumber = 0;
 
-	//are we in an add loop?
-    m_inAdd = false;
-    
+	//keeps track of the current state of the machine
+   	m_state = wxString("#");	
+
     wxSizer * sizer = NumberPad(this, false, true);
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
@@ -41,7 +39,7 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
     
     //initialize the screen
     stringstream num;
-    num << m_number;
+    num << m_savednumber;
     m_screen->SetValue(num.str().c_str());
 }
 
@@ -70,43 +68,59 @@ void YardCalc::OnNumber(wxCommandEvent & event)
    	default: wxLogError(wxT("Should not see me")); return;
     }
    
-    if (m_screen->GetValue() == wxT("0"))
+   	//if the screen has '0' on it, replace it with the digit typed 
+	if (m_screen->GetValue() == wxT("0"))
         m_screen->SetValue(ch);
     else
-    	// set the value of the screen to origional concatonated with new char
-
-	// if the current char is a ., we only want to add it to the screen
-	// if there is not already one there
-	// but if it isnt a dot dont worry about it and add it to the screen
+	
 	if (ch == '.'){
 		if (! m_screen->GetValue().Contains(".") )	
 			m_screen->SetValue(m_screen->GetValue() + ch);
 	}else
+		//if we get here, we entered a number
+	
+		//test to see if we are still entering a number
+		//or if we just got done entering a different state
+		//in which case we need to save the old number and clear the screen
+		if (m_state.CompareTo("#") == 0){
+			m_screen->SetValue(m_screen->GetValue() + ch);
+		}else{
+			//save the old number
+			m_screen->GetValue().ToLong(&m_savednumber);
+			//clear the screen	
+			m_screen->SetValue(ch);
+			//set the state to #
+			m_state = "#";
+
+		}
+		
 		//now clear the screen if we are wanting to enter a new number
-		if (!m_readyfornewnumber)
+		/*if (!m_readyfornewnumber)
 			m_screen->SetValue(m_screen->GetValue() + ch);
 		else{
 			m_screen->GetValue().ToLong(&m_savednumber);
 			m_screen->SetValue(ch);
 			m_readyfornewnumber = true;
 		}
+		*/
 }
 
 void YardCalc::OnPlus(wxCommandEvent & event)
 {
-    
-    long int tmp = 0;
+   	m_state = "+"; 
+
+    /*long int tmp = 0;
 
 	//indicate that when the next number is pressed that 
 	//we need to clear the screen and read in a new number
-	m_readyfornewnumber = true;
+	//m_readyfornewnumber = true;
     
     // try to convert
     if (!m_screen->GetValue().ToLong(&m_savednumber)) {
     	//error    
         wxLogDebug(wxT("Error in conversion"));
         m_screen->SetValue(wxT("Error in conversion"));
-        m_inAdd = false;
+        //m_inAdd = false;
         return;
     }
    
@@ -117,12 +131,13 @@ void YardCalc::OnPlus(wxCommandEvent & event)
         m_number = m_savednumber;
 		m_inAdd = true;
 	}
-        
+    */    
 }
 
 void YardCalc::OnClear(wxCommandEvent & event){
 	
 	m_screen->SetValue("0");
+	m_state = "#";
 }
 
 void YardCalc::OnAllClear(wxCommandEvent & event){
@@ -136,7 +151,7 @@ void YardCalc::OnDot(wxCommandEvent & event){
 
 void YardCalc::OnEqual(wxCommandEvent & event)
 {
-    long int tmp = 0;
+    /*long int tmp = 0;
    	
     if (m_screen->GetValue().ToLong(&tmp))
         m_number += tmp;
@@ -156,4 +171,5 @@ void YardCalc::OnEqual(wxCommandEvent & event)
        
 	   	m_inAdd = false;
     }
+	*/
 }
