@@ -1,6 +1,7 @@
 /*
     YardSale - The Open Point of Sale
     Copyright (C) 2004  Jesse Lovelace <jllovela@ncsu.edu>
+    Copyright (C) 2004  Jay Johnston <jkjohnst@ncsu.edu>
  
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +35,7 @@
 #include <stack>
 
 class YardCalc: public wxPanel {
-    public:
+ public:
      
     /**
      * The constructor for the class, nothing special
@@ -45,9 +46,10 @@ class YardCalc: public wxPanel {
         long style = wxTAB_TRAVERSAL, 
         const wxString& name = "YardCalc");
     
+    /// Destructor
     virtual ~YardCalc();
     
-    private:
+ private:
    	
     DECLARE_EVENT_TABLE()
 	

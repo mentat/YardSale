@@ -24,16 +24,20 @@
 /**
  * The inventory screen.
  * @author Jesse Lovelace
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 class YardInventory: public wxFrame{
     public:
-        
+    
+    /** 
+     * Constructs an Inventory screen
+     */    
     YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
                long style = wxRESIZE_BORDER);
-        
+    
+    /// Destructor
     virtual ~YardInventory();
     
     /**

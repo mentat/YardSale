@@ -11,6 +11,9 @@ enum
 };
 
 // Yes! Fuck you MI haters.
+/**
+ * Logging Wiget, based on a wxListCtrl
+ */
 class YardLog: public wxListCtrl , public wxLog
 {
 public:
@@ -19,7 +22,7 @@ public:
         const wxValidator& validator = wxDefaultValidator, 
         const wxString& name = "YardLog");
     
-    ~YardLog();
+    virtual ~YardLog();
 
 protected:
 

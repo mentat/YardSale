@@ -19,13 +19,20 @@ class wxDbConnectInf;
 
 /**
  * @ingroup datebase
+ *
  * This is the main database backend which does all translation from
  * OO calls to SQL/ODBC.
  * @sa YardInvType 
  */
 class YardDatabase {
     public:
-        
+    
+    /** 
+     * Constructor
+     * @param dsn ?
+     * @param name Name of the database
+     * @param pass Password for DB
+     */
     YardDatabase(const wxString& dsn, const wxString& name, const wxString& pass);
     //YardDatabase(const YardDBConfig& config);  
     
@@ -34,6 +41,7 @@ class YardDatabase {
      */
     YardDatabase();
     
+    /** Destructor **/
     ~YardDatabase();
     
     /** 

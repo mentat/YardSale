@@ -22,15 +22,19 @@
 /**
  * This is the customized login screen for YardSale
  * @author Jesse Lovelace
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 class YardLogin: public wxDialog {
-    public:
+ public:
+    /**
+     * Constructs a Login window
+     */
     YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
                long style = wxSTAY_ON_TOP | wxRESIZE_BORDER);
-        
+    
+    /// Destructor    
     virtual ~YardLogin();  
     
     /**
