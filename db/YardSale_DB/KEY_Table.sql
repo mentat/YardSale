@@ -1,7 +1,10 @@
 DROP TABLE IF EXISTS Key_Table;
 
 CREATE TABLE Key_Table(
-	KEY_REF_EMP_ID_Number		INT REFERENCES Employee_Table.EMP_ID_Number,
+	KEY_ID				INT AUTO_INCREMENT,
+	KEY_REF_EMP_ID_Number		INT,
 	KEY_Keys			TEXT,
-	Primary Key ( KEY_REF_EMP_ID_Number )
+	PRIMARY KEY ( KEY_ID ),
+	INDEX ( KEY_REF_EMP_ID_Number ),
+	FOREIGN KEY (KEY_REF_EMP_ID_Number) REFERENCES Employee_Table( EMP_ID_Number )
 )type=InnoDB
