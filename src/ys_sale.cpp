@@ -6,6 +6,7 @@
 #include "wx/treectrl.h"
 #include "wx/sizer.h"
 #include "wx/log.h"
+#include "wx/stattext.h"
 
 #include "yardsale.h"
 #include "ys_exception.h"
@@ -23,7 +24,7 @@ using namespace std;
 
 BEGIN_EVENT_TABLE(YardSaleScreen, wxDialog)
     //EVT_BUTTON(ID_SALE_BACK, YardSaleScreen::OnExitButton)
-    EVT_TREE_SEL_CHANGED(XRCID("ID_SALE_TREE"), YardSaleScreen::OnChange)
+    EVT_TREE_ITEM_ACTIVATED(XRCID("ID_SALE_TREE"), YardSaleScreen::OnChange)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
@@ -54,12 +55,30 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     Centre();
     
     m_list = static_cast<wxListCtrl *>(FindWindow(XRCID("ID_SALE_TRANS")));
-    m_list->InsertColumn(0, wxT("Count"));
-    m_list->InsertColumn(1, wxT("Description"));
-    m_list->InsertColumn(2, wxT("Price"));
-    m_list->SetColumnWidth(0, wxLIST_AUTOSIZE);
-    m_list->SetColumnWidth(1, wxLIST_AUTOSIZE);
-    m_list->SetColumnWidth(2, wxLIST_AUTOSIZE);
+    
+    wxListItem itemCol;
+    itemCol.m_mask = wxLIST_MASK_TEXT | wxLIST_MASK_IMAGE;
+    itemCol.m_text = _T("Item");
+    itemCol.m_image = -1;
+    m_list->InsertColumn(0, itemCol);
+    itemCol.m_text = _T("#");
+    m_list->InsertColumn(1, itemCol);
+    itemCol.m_text = _T("Price");
+    m_list->InsertColumn(2, itemCol);   
+    
+    m_list->InsertItem(0, "      Total:", -1);
+    m_list->SetItemData(0, 0);
+    m_list->SetItem(0, 1, "  ");
+    m_list->SetItem(0, 2, "   $0.00");
+    
+    wxListItem item2;
+    item2.m_itemId = 0;
+    item2.SetTextColour(*wxRED);
+    m_list->SetItem(item2);
+    
+    m_list->SetColumnWidth( 0, wxLIST_AUTOSIZE );
+    m_list->SetColumnWidth( 1, wxLIST_AUTOSIZE );
+    m_list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
     
     m_tree = static_cast<wxTreeCtrl *>(FindWindow(XRCID("ID_SALE_TREE")));
     
@@ -86,7 +105,7 @@ void YardSaleScreen::CreateImageList(wxTreeCtrl * tree)
     }
 
     tree->AssignImageList(images);
-    m_list->SetImageList(images,wxIMAGE_LIST_NORMAL); // the list wont delete them
+    m_list->SetImageList(images,wxIMAGE_LIST_SMALL); // the list wont delete them
 }
 
 void YardSaleScreen::LoadTreeItems(wxTreeCtrl * tree)
@@ -124,6 +143,7 @@ void YardSaleScreen::LoadTreeItems(wxTreeCtrl * tree)
         }
         for (int k = 0; k < items.size(); k++)
         {
+            //wxLogDebug(wxT("Adding item %s, %d"), items[k].GetType().c_str(), items[k].GetKey());
             int img = items[k].GetGroupId() %  4;
             tree->AppendItem(groupid, items[k].GetName().c_str(), img, img,
                 new invItemData(items[k].GetKey()));
@@ -138,6 +158,15 @@ void YardSaleScreen::OnChange(wxTreeEvent& event)
     if (!data)
         return;
     
+    if (data->GetID() == -1)
+    {
+        if (m_tree->IsExpanded(event.GetItem()))
+            m_tree->Collapse(event.GetItem());
+        else
+            m_tree->Expand(event.GetItem());
+        return;
+    }
+    
     YardInvType temp;
     try {
         temp = wxGetApp().DB().InventoryGet(data->GetID());
@@ -148,11 +177,24 @@ void YardSaleScreen::OnChange(wxTreeEvent& event)
         return;
     }
     
+    //wxLogDebug(string(temp).c_str());
+    
     m_items.push_back(temp);
-    m_list->InsertItem(0, temp.GetName().c_str(), temp.GetGroupId() % 4);
-     
+ 
+    m_list->InsertItem(0, temp.GetName().c_str(), 0);
+    m_list->SetItemData(0, temp.GetKey());
+    m_list->SetItem(0, 1, "1");
+    m_list->SetItem(0, 2, temp.GetRetailPriceS().c_str());
     
+    // calc total
+    double total = 0;
+    for (int i = 0; i < m_items.size(); i++)
+    {
+        total += m_items[i].GetRetailPrice();
+    }
     
+    m_list->SetItem(m_list->GetItemCount() - 1, 2, XMLNode::ToStr(total, 2).c_str());
+   
 }
 
 YardSaleScreen::~YardSaleScreen()

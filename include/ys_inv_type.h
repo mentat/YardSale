@@ -38,7 +38,7 @@ class YardDatabase;
  * @ingroup database 
  * @see XMLNode
  * @author Jesse Lovelace
- * @version \$Revision: 1.24 $$
+ * @version \$Revision: 1.25 $$
  */
 
 class YardInvType: public XMLNode
@@ -59,7 +59,7 @@ class YardInvType: public XMLNode
     YardInvType(const string& xml): XMLNode(xml, XMLNode::Str) {}
     
     string GetKeyS() const 
-        { return child("INV_Item_ID"); }
+        { return child("INV_Item_ID").data(); }
     long GetKey() const 
         { return ToLong(GetKeyS()); }
         

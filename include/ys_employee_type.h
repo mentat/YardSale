@@ -34,7 +34,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @see XMLNode
  */
 class YardEmployeeType: public XMLNode {
@@ -89,7 +89,9 @@ class YardEmployeeType: public XMLNode {
     /// Return phone number
     string GetPhone() const 
         { return child("EMP_Phone_Number").data(); }
-    
+    string GetACL() const
+        { return child("EMP_REF_ACL_Type").data(); }
+        
     /// Returns location of employee picture on datacenter
     /// @todo Define what a datacenter is
     string GetPicLocal() const 
@@ -139,6 +141,8 @@ class YardEmployeeType: public XMLNode {
     /// Set sig location
     void SetSig(const string& loc)
         { child("EMP_Signature").setData(loc); }
+    void SetACL(const string& acl)
+        { child("EMP_REF_ACL_Type").setData(acl); }
     /// Set job title
     //void SetTitle(const string& title);
     /// Set Enabled

@@ -106,7 +106,9 @@ module.include.files=\
 	ys_package_type.h\
 	ys_shipping_type.h\
 	ys_tax_type.h\
-	ys_vend_type.h
+	ys_vend_type.h\
+	ys_group.h\
+	ys_new_employ.h
 
 module.source.name=src
 module.source.type=
@@ -134,7 +136,15 @@ module.source.files=\
 	ys_trans_type.cpp\
 	wrapexpat.cpp\
 	xml.cpp\
-	xmlnode.cpp
+	xmlnode.cpp\
+	ys_carrier_type.cpp\
+	ys_cust_type.cpp\
+	ys_package_type.cpp\
+	ys_shipping_type.cpp\
+	ys_tax_type.cpp\
+	ys_vend_type.cpp\
+	ys_date.cpp\
+	ys_group.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

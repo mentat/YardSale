@@ -21,6 +21,7 @@
 
 #include "ys_exception.h"
 #include <vector>
+#include <map>
 #include <string>
 
 using namespace std;
@@ -191,6 +192,12 @@ class YardDatabase {
     vector<YardGroup> GroupGetAll() const;
     YardGroup GroupGet(long key) const;
     long GroupAdd(const YardGroup& group);
+        
+        
+    /*---------ACLs--------------------*/
+    map<string,string> ACLGetAll() const;
+    void ACLAdd(const string& name, const string& desc);
+    string ACLGet(const string& name);    
         
     /* helpers */
     static string tab(int level);

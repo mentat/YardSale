@@ -4,6 +4,7 @@
 #include "wx/treectrl.h"
 #include "wx/sizer.h"
 #include "wx/log.h"
+#include "wx/stattext.h"
 
 #include "ys_bitmaps.h"
 #include "ys_employee.h"
@@ -56,6 +57,7 @@ YardEmployee::YardEmployee(wxWindow* parent, wxWindowID id,
     m_id = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_EMPLOY_ID")));
     m_taxid = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_EMPLOY_TAX_ID")));
     m_phone = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_EMPLOY_PHONE")));
+    m_position = static_cast<wxStaticText *>(FindWindow(XRCID("ID_EMPLOY_POSITION")));
     
     m_id->Enable(false);
     
@@ -160,6 +162,9 @@ void YardEmployee::OnChange(wxTreeEvent& event)
     m_id->SetValue(m_emp.GetIdS().c_str());
     m_taxid->SetValue(m_emp.GetTaxIdS().c_str());
     m_phone->SetValue(m_emp.GetPhone().c_str());
+    wxString pos;
+    pos.Printf(wxT("Title: %s"), m_emp.GetACL().c_str());
+    m_position->SetLabel(pos);
 }
 
 void YardEmployee::OnNew(wxCommandEvent& event)

@@ -155,6 +155,90 @@ vector<YardEmployeeType> YardDatabase::EmployeeGetAll() const{
     return XMLFromStream<YardEmployeeType>(dbStream.get(), "Employee_Table");
 }
 
+
+map<string,string> YardDatabase::ACLGetAll() const
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM ACL_Table";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(5, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    map<string, string> acls;
+    
+    try {
+        string name, desc;
+        while(!dbStream->eof())
+        {    
+            *dbStream >> name >> desc;
+            acls[name] = desc;
+        }
+    }catch (otl_exception& e) {
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return acls;
+    
+}
+void YardDatabase::ACLAdd(const string& name, const string& desc)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "INSERT INTO ACL_Table values('" << name << "','" 
+        << desc << "');";
+    
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+}
+
+string YardDatabase::ACLGet(const string& name)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT ACL_Description FROM ACL_Table where ACL_Type = '"
+        << name << "';";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(5, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    string desc;
+    try {
+        *dbStream >> desc;
+        
+    }catch (otl_exception& e) {
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return desc;
+}
+
 vector<YardInvType> YardDatabase::InventoryGetAll() const{
     
     if (!m_db)

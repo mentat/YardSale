@@ -21,7 +21,7 @@ string YardEmployeeType::ToString(const string& delim, bool quotes) const {
         << q << GetZip() << q << delim
         << q << GetPicLocal() << q << delim
         << q << GetSigLocal() << q << delim
-        << q << "Clerk" << q << delim
+        << q << GetACL() << q << delim
         << "1,0" ;
     
     return strm.str();
