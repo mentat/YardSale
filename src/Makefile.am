@@ -4,7 +4,7 @@ SUBDIRS = extra res tests
 
 BUILDID = `cat build.id`
 
-CXXFLAGS = $(WX_CXXFLAGS) -g
+CXXFLAGS = $(WX_CXXFLAGS) 
 
 all:
 	perl build.pl
@@ -30,7 +30,6 @@ yardsale_SOURCES = \
 	ys_log.cpp\
 	ys_inv_type.cpp\
 	ys_database.cpp\
-	ys_bitmaps.cpp\
 	ys_debug.cpp\
 	ys_config.cpp\
 	ys_footer.cpp\
@@ -42,18 +41,21 @@ yardsale_SOURCES = \
 	ys_tax_type.cpp\
 	ys_build.cpp\
 	ys_vend_type.cpp\
+	ys_carrier_type.cpp\
 	wrapexpat.cpp\
 	xml.cpp\
 	xmlnode.cpp\
 	ys_date.cpp\
 	ys_group.cpp\
 	ys_customer.cpp\
-	ys_reports.cpp
+	ys_reports.cpp\
+	ys_about_gl.cpp
+
 
 yardsale_LDFLAGS =
 
 yardsale_LDADD =  \
-	extra/xrc/libxrc.a -lodbc -lsablot -lexpat $(WX_LIBS_STATIC)
+	extra/xrc/libxrc.a $(GUI_LIBS)
     
 binary: yardsale
 	mkdir yardsale-$(BUILDID)

@@ -260,6 +260,70 @@ vector<YardInvType> YardDatabase::InventoryGetAll() const{
     return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
 }
 
+vector<YardCarrierType> YardDatabase::CarrierGetAll() const{
+    
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Carrier_Table";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStream<YardCarrierType>(dbStream.get(), "Carrier_Table");
+}
+
+vector<YardVendType> YardDatabase::VendorGetAll() const{
+    
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Vendor_Table";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStream<YardVendType>(dbStream.get(), "Vendor_Table");
+}
+
+
+vector<YardTaxType> YardDatabase::TaxTypeGetAll() const{
+    
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Tax_Table";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStream<YardTaxType>(dbStream.get(), "Tax_Table");
+}
+
 vector<YardInvType> YardDatabase::InventoryGetInGroup(long groupid) const
 {
     if (!m_db)

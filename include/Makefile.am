@@ -4,7 +4,6 @@ yardsale_includedir = $(pkgincludedir)
 
 yardsale_include_DATA = \
 	yardsale.h\
-	yardsale_wdr.h\
 	ys_splash.h\
 	ys_main.h\
 	ys_inventory.h\
@@ -18,7 +17,6 @@ yardsale_include_DATA = \
 	ys_dbtype.h\
 	ys_database.h\
 	ys_exception.h\
-	ys_bitmaps.h\
 	ys_debug.h\
 	ys_config.h\
 	ys_footer.h\

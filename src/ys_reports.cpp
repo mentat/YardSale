@@ -10,7 +10,16 @@
 #include "ys_database.h"
 #include "ys_date.h"
 #include "ys_reports.h"
+#include "xmlnode.h"
 #include "sablot.h"
+
+// testing: gdc
+#ifdef YS_CHART
+extern "C" {
+#include "extra/gdc/gdc.h"
+#include "extra/gdc/gdcpie.h"
+}
+#endif
 
 DECLARE_APP(YardSale)
 
@@ -50,12 +59,11 @@ class YardHTML: public wxDialog
     
 };
 
-
-
 BEGIN_EVENT_TABLE(YardReports, wxDialog)
     EVT_BUTTON(XRCID("ID_REPORT_EMP_HOURS"), YardReports::OnReportEmpHours)
     EVT_BUTTON(XRCID("ID_REPORT_EMP_SALES"), YardReports::OnReportEmpSales)
     EVT_BUTTON(XRCID("ID_REPORT_HOURLY_REV"), YardReports::OnReportHourlyRev)
+    EVT_BUTTON(XRCID("ID_REPORT_LEAVE"), YardReports::OnLeave)
 END_EVENT_TABLE()
 
 YardReports::YardReports(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -168,6 +176,8 @@ void YardReports::OnReportEmpSales(wxCommandEvent& event)
     
     xml += "\n</root>\n";
     
+    GenerateGraph(xml,"Last_Name", "PROFIT"); 
+    
     string html = ProcessXSLT(xml, "res/report_employee_sales.xsl");
     
     YardHTML * prev = new YardHTML(this, -1, wxT("Report Preview"));
@@ -226,6 +236,8 @@ void YardReports::OnReportHourlyRev(wxCommandEvent& event)
     
     xml += "\n</root>\n";
     
+    GenerateGraph(xml,"HOUR", "PROFIT"); 
+    
     string html = ProcessXSLT(xml, "res/report_hourly_profit.xsl");
     
     YardHTML * prev = new YardHTML(this, -1, wxT("Report Preview"));
@@ -269,4 +281,116 @@ string YardReports::ProcessXSLT(const string& xml_str, const string& xsl_file)
     }
     
     return ret;
+}
+
+void YardReports::GenerateGraph(const string& xml, const string& labelname, const string& data)
+{
+#ifdef YS_CHART
+    wxLogDebug(wxT("Creating chart..."));
+    XMLNode node(xml, XMLNode::Str);
+    
+    unsigned int numlabels = node.numChildren("record");
+   // unsigned int numdata = node.numChildren(data);
+    
+   // if (numlabels != numdata)
+  //  {
+   //     wxLogDebug(wxT("Data mismatch, can't continue."));
+  //      return;
+   // }
+    
+    wxLogDebug(wxT("%d labels."), numlabels);
+    
+    char ** labels = new char*[numlabels];
+    float * fl_data = new float[numlabels];
+    for (int i = 0; i < numlabels; i++)
+    {
+        labels[i] = new char[node.child("record", i).child(labelname).data().length() + 1];
+        strcpy(labels[i], node.child("record", i).child(labelname).data().c_str());
+        labels[i][node.child("record", i).child(labelname).data().length()]='\0';
+        
+        fl_data[i] = XMLNode::ToDouble(node.child("record", i).child(data).data());
+        
+        wxLogDebug(wxT("Label: %s, Data: %f"), labels[i], fl_data[i]);
+    }
+
+    
+    /* labels */
+    /*
+	char		*lbl[] = { "CPQ\n(DEC)",
+						   "HP",
+						   "SCO",
+						   "IBM",
+						   "SGI",
+						   "SUN\nSPARC",
+						   "other" }; */
+	/* values to chart */
+/*	float		 p[] = { 12.5,
+						 20.1,
+						 2.0,
+						 22.0,
+						 5.0,
+						 18.0,
+						 13.0 };*/
+
+	FILE		*fp = fopen( "res/report.png", "wb" );
+
+	/* set which slices to explode, and by how much */
+	/*int				expl[] = { 0, 0, 0, 0, 0, 20, 0 };*/
+
+	/* set missing slices */
+	//unsigned char	missing[] = { FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE };
+
+	/* colors */
+	unsigned long	clr[] = { 0xFF4040L, 0x80FF80L, 0x8080FFL, 0xFF80FFL, 0xFFFF80L, 0x80FFFFL, 0x0080FFL };
+
+	/* set options  */
+	/* a lot of options are set here for illustration */
+	/* none need be - see gdcpie.h for defaults */
+	GDCPIE_title = "YardSale Report"; 
+	GDCPIE_label_line = TRUE;
+	GDCPIE_label_dist = 15;				/* dist. labels to slice edge */
+										/* can be negative */
+	GDCPIE_LineColor = 0x000000L;
+	GDCPIE_label_size = GDC_SMALL;
+	GDCPIE_3d_depth  = 25;
+	GDCPIE_3d_angle  = 180;				/* 0 - 359 */
+	GDCPIE_perspective = 70;				/* 0 - 99 */
+	//GDCPIE_explode   = expl;			/* default: NULL - no explosion */
+	GDCPIE_Color     = clr;
+	GDCPIE_BGColor   = 0xFFFFFFL;
+/*	GDCPIE_EdgeColor = 0x000000L;		   default is GDCPIE_NOCOLOR */ 
+										/* for no edging */
+	//GDCPIE_missing   = missing;			/* default: NULL - none missing */
+
+										/* add percentage to slice label */
+										/* below the slice label */
+	GDCPIE_percent_labels = GDCPIE_PCT_BELOW;
+	GDC_image_type     = GDC_PNG;
+	/* call the lib */
+	GDC_out_pie( 300,			/* width */
+				 200,			/* height */
+				 fp,			/* open file pointer */
+				 GDC_3DPIE,		/* or GDC_2DPIE */
+				 numlabels,				/* number of slices */
+				 labels,			/* can be NULL */
+				 fl_data );			/* data array */
+
+	fclose( fp );
+    
+    
+    // fuckme  i hate char arrays
+    for (int i = 0; i < numlabels; i++)
+        delete [] labels[i];
+    
+    delete [] labels;
+    delete [] fl_data;
+
+#endif
+    
+}
+
+ void YardReports::OnLeave(wxCommandEvent& event)
+{
+    EndModal(0);
+    
 }

@@ -15,6 +15,8 @@ string YardCarrierType::ToString(const string& delim, bool quotes) const {
  
 }
 
+YardCarrierType::~YardCarrierType() {}
+
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_CARR_TYPE))
 #include <iostream>
 #include <vector>

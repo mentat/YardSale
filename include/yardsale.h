@@ -21,7 +21,6 @@
 #include "wx/app.h"
 
 class YardDatabase;
-class YardBitmaps;
 
 /**	\mainpage YardSale
  * <h1>Design and Reference Manual</h1>
@@ -61,7 +60,7 @@ class YardBitmaps;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version \$Revision: 1.15 $$
+ * @version \$Revision: 1.16 $$
  */
 class YardSale: public wxApp {
  public:
@@ -83,10 +82,6 @@ class YardSale: public wxApp {
      */
     YardDatabase& DB();
  
-    /// Returns a reference to the YardBitmaps object which contains 
-    /// the images loaded by the loader.
-    YardBitmaps& Images();
- 
     wxString GetUser() const { return m_user; }
  
  private:
@@ -94,7 +89,6 @@ class YardSale: public wxApp {
      void LoadConfig();
      wxString m_user;
      wxString m_pass;
-     YardBitmaps * m_bitmaps;
      YardDatabase * m_db;
 };
 

@@ -7,7 +7,6 @@
 #include "extra/xrc/xmlres.h"
 
 #include "yardsale.h"
-#include "ys_bitmaps.h"
 #include "ys_calc.h"
 
 using namespace std;

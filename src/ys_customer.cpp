@@ -6,7 +6,6 @@
 #include "wx/log.h"
 #include "wx/stattext.h"
 
-#include "ys_bitmaps.h"
 #include "ys_customer.h"
 #include "ys_exception.h"
 #include "ys_database.h"

@@ -25,8 +25,12 @@ class wxListCtrl;
 class wxTextCtrl;
 class wxChoice;
 class wxSpinCtrl;
-class wxCheckBox;    
+class wxCheckBox;   
+class wxComboBox;    
 class wxListEvent;
+class wxButton;
+class wxBitmapButton;
+class wxStaticBitmap;
 class wxTreeCtrl;
 class wxTreeEvent;
 
@@ -35,7 +39,7 @@ class wxTreeEvent;
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.19 $$
+ * @version \$Revision: 1.20 $$
  */
 class YardInventory: public wxDialog{
  public:
@@ -93,29 +97,38 @@ class YardInventory: public wxDialog{
     DECLARE_EVENT_TABLE()
  
     wxTreeCtrl * m_tree;
- 
-    wxTextCtrl * m_sku;
-    wxTextCtrl * m_barcode;
-    wxTextCtrl * m_name;
-    wxTextCtrl * m_department;
-    wxTextCtrl * m_type;
-    wxTextCtrl * m_price;
-    wxTextCtrl * m_wholesale;
-    wxTextCtrl * m_weight;
-    wxTextCtrl * m_vendor;
-    wxTextCtrl * m_barCode;
-    wxTextCtrl * m_desc;
- 
-    wxCheckBox * m_freight;
-    wxCheckBox * m_oversized;
- 
-    wxSpinCtrl * m_onHand;
-    wxSpinCtrl * m_onOrder;
-    wxSpinCtrl * m_reOrder;
-    wxChoice * m_tax;
- 
-    wxListCtrl * m_list;
-    vector<YardInvType> m_objects;
+    wxTextCtrl * m_det_sku;
+    wxTextCtrl * m_det_name;
+    wxTextCtrl * m_det_desc;
+    wxTextCtrl * m_det_barcode;
+    wxComboBox * m_det_dept;
+    wxBitmapButton * m_dep_dept_edit;
+    wxComboBox * m_dep_group;
+    wxBitmapButton * m_dep_group_edit;
+    wxStaticBitmap * m_dep_image;
+    wxComboBox * m_dep_vendor;
+    wxBitmapButton * m_dep_vendor_edit;
+    
+    // pricing
+    wxTextCtrl * m_price_retail;
+    wxTextCtrl * m_price_wholesale;
+    wxListCtrl * m_price_bulk;
+    wxButton * m_price_bulk_add;
+    wxButton * m_price_bulk_rm;
+    wxComboBox * m_price_tax;
+    wxBitmapButton * m_price_tax_edit;
+    
+    wxTextCtrl * m_ship_weight;
+    wxTextCtrl * m_ship_date_rec;
+    wxCheckBox * m_ship_oversized;
+    wxCheckBox * m_ship_freight;
+    
+    wxSpinCtrl * m_stock_onhand;
+    wxSpinCtrl * m_stock_onorder;
+    wxSpinCtrl * m_stock_reorder_lvl;
+    wxSpinCtrl * m_stock_reorder_quant;
+    
+    //vector<YardInvType> m_objects;
 };
 
 #endif

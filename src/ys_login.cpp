@@ -9,12 +9,11 @@
 
 #include "yardsale.h"
 #include "ys_build.h"
-#include "ys_bitmaps.h"
 #include "ys_login.h"
 #include "ys_config.h"
 
 #define LOGO_OFFSET_FROM_BOTTOM 30
-#define LOGO_OFFSET_FROM_LEFT 100
+#define LOGO_OFFSET_FROM_LEFT 10
 
 BEGIN_EVENT_TABLE(YardLogin, wxDialog)
     EVT_BUTTON(XRCID("ID_LOGIN_LOGIN"), YardLogin::OnLogin)
@@ -35,11 +34,11 @@ YardLogin::YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
         wxStaticBitmap* bitmap = static_cast<wxStaticBitmap*>(FindWindow(XRCID("ID_LOGIN_LOGO")));
         wxBitmap logo = bitmap->GetBitmap();
         wxMemoryDC fun;
-        fun.SetFont(wxFont(20, wxSWISS, wxNORMAL, wxBOLD) );
         wxString txt;
         fun.SelectObject(logo);
         fun.SetTextForeground(*wxWHITE);
-        txt.Printf(wxT("YardSale: %.3f \"%s\""), GetVersion(), YS_CODENAME);
+        txt.Printf(wxT("YardSale: %.3f \"%s\" (%s, %s)"), 
+            GetVersion(), YS_CODENAME, YS_OS, YS_BUILD_MODE);
         fun.DrawText(txt, LOGO_OFFSET_FROM_LEFT,logo.GetHeight() - LOGO_OFFSET_FROM_BOTTOM);
     }
     

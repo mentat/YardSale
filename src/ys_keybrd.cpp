@@ -5,7 +5,6 @@
 #include "wx/app.h"
 #include "wx/wx.h"
 #include "yardsale.h"
-#include "ys_bitmaps.h"
 #include "extra/xrc/xmlres.h"
 #include "ys_keybrd.h"
 

@@ -234,6 +234,13 @@
                         <label>New Employee</label>
                     </object>
                 </object>
+                <object class="sizeritem">
+                    <flag>wxALIGN_RIGHT|wxALL</flag>
+                    <border>5</border>
+                    <object class="wxBitmapButton" name="ID_EMPLOY_EXIT">
+                        <bitmap>back_64x64.png</bitmap>
+                    </object>
+                </object>
             </object>
         </object>
     </object>

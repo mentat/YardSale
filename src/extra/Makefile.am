@@ -1,1 +1,1 @@
-SUBDIRS = xrc
+SUBDIRS = xrc gdc

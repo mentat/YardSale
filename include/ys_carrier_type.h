@@ -36,7 +36,7 @@ class YardDatabase;
  * @ingroup database 
  * @see YardCarrierType
  * @author Michael Swigon	
- * @version \$Revision: 1.3 $$
+ * @version \$Revision: 1.4 $$
  * @see XMLNode
  */
 
@@ -49,6 +49,8 @@ class YardCarrierType: public XMLNode
     YardCarrierType() { setName("Carrier_Table"); }
         
     YardCarrierType(const string& xml):XMLNode(xml, XMLNode::Str) {}
+        
+    ~YardCarrierType();
     
 	/* gettors */
 

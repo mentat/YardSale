@@ -1,6 +1,6 @@
 // --*-c++-*--
 /*
-    $Id: xmlnode.cpp,v 1.3 2004/04/19 01:45:46 thementat Exp $
+    $Id: xmlnode.cpp,v 1.4 2004/04/24 18:16:59 thementat Exp $
  
     GNU Messenger - The secure instant messenger
     Copyright (C) 2001-2002  Henrik Abelsson <henrik@abelsson.com>
@@ -202,7 +202,7 @@ long XMLNode::intProperty(const string &name) const
     else
         return ToLong(it->second.c_str());
 }
-
+#if 0
 vector<XMLNode> XMLNode::children(const string& name)
 {
     vector<XMLNode> ret;
@@ -213,8 +213,9 @@ vector<XMLNode> XMLNode::children(const string& name)
     
     return ret;   
 }
-
+#endif
 /// Return all children
+#if 0
 vector<XMLNode> XMLNode::children() 
 { 
     vector<XMLNode> ret;
@@ -224,6 +225,8 @@ vector<XMLNode> XMLNode::children()
     
     return ret;
 }
+#endif
+
 
 /// Return all children (read only)
 /// @todo This makes no sence with the reference counted XMLNode!!!!!!!!!111

@@ -48,6 +48,7 @@ esac
 AC_SUBST(MAKE_USE_MAC)
 AC_SUBST(MAKE_USE_MINGW)
 AC_SUBST(MAKE_USE_RESOURCES)
+AC_SUBST(OSTYPE)
 
 # Checks for programs.
 AC_PROG_RANLIB
@@ -75,13 +76,55 @@ if test "$wxOK" != 1; then
    ])
 fi
 
+
+
+
 CPPFLAGS="$WX_CPPFLAGS"
 CFLAGS="$WX_CFLAGS"
 CXXFLAGS="$WX_CXXFLAGS"
 
 dnl normal linking mode is fully dynamic
 GUI_LIBS="$WX_LIBS"
-AC_SUBST(GUI_LIBS)
+
+AC_ARG_WITH(static,
+	[  --with-static           Build YardSale static.], [
+	echo "Building YardSale statically..."
+	GUI_LIBS="$WX_LIBS_STATIC"
+	CXXFLAGS="$CXXFLAGS -DYS_STATIC_BUILD"])
+
+dnl ------------- Check for other libs ----------------
+AC_CHECK_LIB(expat,XML_ParserCreate,[
+                GUI_LIBS="-lexpat $GUI_LIBS"],
+                [AC_MSG_ERROR([
+	   YardSale requires expat to be installed on your system.
+   ])])
+
+dnl AC_CHECK_LIB(sablot,SablotGetOptions,[
+dnl                GUI_LIBS="-lsablot $GUI_LIBS"],
+dnl                [AC_MSG_ERROR([
+dnl	   YardSale requires Sablotron to be installed on your system.
+dnl   ])])
+GUI_LIBS="-lsablot $GUI_LIBS"
+   
+AC_CHECK_LIB(odbc,SQLConnect,[
+                GUI_LIBS="-lodbc $GUI_LIBS"],
+                [AC_MSG_ERROR([
+	   YardSale requires ODBC to be installed on your system.
+   ])])
+ 
+dnl ---------------- Hack, need charts here to put libgdc.a first on line 
+   AC_ARG_WITH(charts,
+        [  --with-charts           Build in charts (requires libgd)], [
+        echo "Building chart support..."
+        AC_CHECK_LIB(gd,gdImageLine,[
+                AC_CHECK_LIB(freetype, FT_Init_FreeType,[
+                    CFLAGS="$CFLAGS -DHAVE_LIBFREETYPE"
+                    CXXFLAGS="$CXXFLAGS -DHAVE_LIBFREETYPE"
+                    GUI_LIBS="-lfreetype $GUI_LIBS"])        
+                ])
+                CXXFLAGS="$CXXFLAGS -DYS_CHART "
+                GUI_LIBS="extra/gdc/libys_gdc.a -lgd $GUI_LIBS"])
+        
 
 dnl Mac-specific post-link step
 if test "$USE_MAC" = 1; then
@@ -91,13 +134,31 @@ if test "$USE_MAC" = 1; then
     AC_SUBST(REZFLAGS)
 fi
 
+AC_ARG_WITH(debug,
+	[  --with-debug             Build with Debug information.], [
+	echo "Building debug information..."
+	CXXFLAGS="$CXXFLAGS -g -DYS_DEBUG_BUILD -DYS_OS=\\\"$OSTYPE\\\""
+    CFLAGS="$CFLAGS -g"])
+
+AC_ARG_WITH(glabout,
+	[  --with-glabout           Build gratuitous gl about.], [
+	echo "Building GL about..."
+	AC_CHECK_LIB(GL,InitGL,[ 
+		CXXFLAGS="$CXXFLAGS -DYS_OGL_ABOUT "
+		GL_LIBS=`$WX_CONFIG_WITH_ARGS --gl-libs`
+		GUI_LIBS="$GUI_LIBS $GL_LIBS "])
+])
+
+
+AC_SUBST(GUI_LIBS)
+
 AC_CONFIG_FILES([Makefile
                  include/Makefile
                  src/Makefile
                  src/extra/Makefile
                  src/extra/xrc/Makefile
 		 src/extra/wxrc/Makefile
-		 src/extra/wxrcedit/Makefile
+		 src/extra/gdc/Makefile
 		 src/res/Makefile
 		 src/tests/Makefile
 		 ])

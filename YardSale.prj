@@ -69,7 +69,6 @@ module.include.name=include
 module.include.type=
 module.include.files=\
 	yardsale.h\
-	yardsale_wdr.h\
 	ys_splash.h\
 	ys_main.h\
 	ys_inventory.h\
@@ -83,7 +82,6 @@ module.include.files=\
 	ys_inv_type.h\
 	ys_exception.h\
 	ys_test.h\
-	ys_bitmaps.h\
 	otlv4.h\
 	ys_debug.h\
 	ys_employee_type.h\
@@ -93,11 +91,9 @@ module.include.files=\
 	ys_keybrd.h\
 	ys_trans_type.h\
 	ys_util.h\
-	otl_xml.h\
 	ys_build.h\
 	ys_build_id.h\
 	ys_footer.h\
-	variant.h\
 	wrapexpat.h\
 	xml.h\
 	xmlnode.h\
@@ -110,7 +106,10 @@ module.include.files=\
 	ys_group.h\
 	ys_new_employ.h\
 	ys_customer.h\
-	ys_date.h
+	ys_date.h\
+	ys_about_gl.h\
+	ys_full_trans.h\
+	ys_reports.h
 
 module.source.name=src
 module.source.type=
@@ -147,7 +146,9 @@ module.source.files=\
 	ys_date.cpp\
 	ys_group.cpp\
 	ys_customer.cpp\
-	ys_calc_dlg.cpp
+	ys_calc_dlg.cpp\
+	ys_about_gl.cpp\
+	ys_reports.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

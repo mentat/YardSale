@@ -1,84 +1,24 @@
 #include <sstream>
 
-#define OTL_ODBC_MYSQL
-#define OTL_STL
-
-#ifndef _WIN32
-#define OTL_ODBC_UNIX
-#else
-#define OTL_ODBC
-#endif
-
-
-#include "otlv4.h"
-
 #include "ys_trans_type.h"
 #include "ys_util.h"
 #include "ys_exception.h"
 
 using namespace std;
-   
-YardTransType::YardTransType(const YardTransType& obj) {
-    
-    *this = obj;
-    
-}
 
-float YardTransType::SubTotal(const vector<YardTransType> transVect){
-	float subTotal = 0;
-        for(unsigned int i = 0 ;  i< transVect.size(); i++){
-                subTotal += transVect[i].GetItemSalePrice() * transVect[i].GetQuantity();            
-        }
-        return subTotal;
-} 
-
-string YardTransType::ToString(const string& delim) const {
+string YardTransType::ToString(const string& delim, bool quotes) const {
     
     stringstream output;
-    output << strIToA(m_transKey) << delim << strIToA(m_empKey) << delim 
-        << strIToA(m_invKey) << delim << strIToA(m_custKey) << delim
-        << strFToA(m_salePrice) << delim <<  strIToA(m_transID) << delim 
-        << strIToA(m_quantity) << delim << m_comment;
+    char q='\'';
+     
+    output  << delim 
+        << delim <<  delim
+        << delim << delim 
+        << delim;
+    
     return output.str();
         
 }
-
-void YardTransType::FillFromStream(otl_stream * stream)
-{  
-    
-    
-    if (!stream)
-        return;
-    
-    YardTransType temp;
-    
-    
-    try {
-        *stream 
-          >> m_transKey
-          >> m_empKey
-          >> m_invKey
-          >> m_custKey 
-          >> m_salePrice 
-          >> m_transID
-          >> m_quantity
-          >> m_comment;    
-    } catch (otl_exception &e) {
-        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-    }
-}
-    
-YardTransType& YardTransType::operator=(const YardTransType& obj) {
-    
-    m_transKey = obj.m_transKey;
-    m_empKey = obj.m_empKey;
-    m_invKey = obj.m_invKey;
-    m_custKey = obj.m_custKey;
-    m_salePrice = obj.m_salePrice;
-    m_transID = obj.m_transID;
-    m_quantity  = obj.m_quantity;
-    return *this;
-} 
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_TRANS_TYPE))
 #include <iostream>

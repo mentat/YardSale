@@ -7,7 +7,6 @@
 #include "wx/stattext.h"
 
 #include "ys_footer.h"
-#include "ys_bitmaps.h"
 #include "ys_calc_dlg.h"
 #include "ys_keybrd_dlg.h"
 

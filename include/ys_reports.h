@@ -22,8 +22,11 @@ class YardReports: public wxDialog
     void OnReportEmpHours(wxCommandEvent& event);
     void OnReportEmpSales(wxCommandEvent& event);
     void OnReportHourlyRev(wxCommandEvent& event);
+    void OnLeave(wxCommandEvent& event);
     
  private:
+     
+    void GenerateGraph(const string& xml, const string& labels, const string& data);
      
     string ProcessXSLT(const string& xml, const string& xsl);
     DECLARE_EVENT_TABLE()

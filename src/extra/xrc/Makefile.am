@@ -1,6 +1,6 @@
 INCLUDES =  -I.
 
-CXXFLAGS = $(WX_CXXFLAGS)  -g
+## CXXFLAGS = $(WX_CXXFLAGS)  -g
 
 noinst_LIBRARIES = libxrc.a
 

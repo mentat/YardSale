@@ -23,6 +23,8 @@
 #include "ys_inv_type.h"
 #include "ys_cust_type.h"
 #include "ys_employee_type.h"
+#include "ys_date.h"
+#include "ys_build.h"
 #include <vector>
 #include <string>
 
@@ -38,29 +40,42 @@ class YardTransType: public XMLNode
     YardTransType() { setName("Transaction_Log_Table"); }
     YardTransType(const string& xml): XMLNode(xml, XMLNode::Str) {}
     
+    void SetCustomer(long id)
+        { child("TRANS_REF_CUST_Account_Number").setData(ToStr(id)); }
+    void SetEmployee(long id)
+        { child("TRANS_REF_EMP_ID_Number").setData(ToStr(id)); }
+    void SetItem(long id)
+        { child("TRANS_REF_INV_Item_ID").setData(ToStr(id)); }
+    void SetQuantity(long num)
+        { child("TRANS_Quantity").setData(ToStr(num)); }   
+    void SetSalePrice(double price)
+        { child("TRANS_Sale_Price").setData(ToStr(price,YS_DEFAULT_MONEY_PRECISION)); } 
+    void SetTime(YardDate& time)
+        { 
+            time.setName("TRANS_Time");
+            addChild(time);
+        }
+        
     /* Getters */
+    string GetSalePriceS() const
+        { return child("TRANS_Sale_Price").data(); }
+    double GetSalePrice() const
+        { return ToDouble(GetSalePriceS()); }  
+        
     string GetEmployeeIdS() const 
         { return child("TRANS_REF_EMP_ID_Number").data(); }
-    
     long GetEmployeeId() const
         { return ToLong(GetEmployeeIdS()); }
-        
-    vector<long> GetItemsId() const
-    {
-        vector<long> ret;
-        for (NodeMap::const_iterator it = m_xmlData->m_children.begin();
-             it != m_xmlData->m_children.end(); it++)
-            ret.push_back(YardInvType(it->second).GetKey());
-        return ret;
-    }
-        
-    vector<YardInvType> GetItems() const
-    {   // oh the sexiness of templates!
-        return child("items").children<YardInvType>("Inventory_Table");
-    }
-    
-    unsigned int CountItems() const
-        { return child("items").numChildren("Inventory_Table"); }
+
+    string GetItemS() const
+        { return child("TRANS_REF_INV_Item_ID").data(); }
+    long GetItem() const
+        { return ToLong(GetItemS()); } 
+
+    string GetQuantityS() const
+        { return child("TRANS_Quantity").data(); }
+    long GetQuantity() const
+        { return ToLong(GetQuantityS()); }        
     
     string GetCustomerIdS() const
         { return child("TRANS_REF_CUST_Account_Number").data(); }
@@ -70,36 +85,19 @@ class YardTransType: public XMLNode
     string GetIdS() const
         { return child("TRANS_ID").data(); }
     long GetId() const
-        { return ToLong(GetIdS()); }
-        
-    string GetQuantityS(long index) const
-        { return child("items").child("Inventory_Table", index).child("Count").data(); }
-    long GetQuantity(long index) const
-        { return ToLong(GetQuantityS(index)); }
-
-    string GetComment(long index) const
-        { return child("items").child("Inventory_Table", index).child("Comment").data(); }
-        
-    string GetSalePrice(long index) const
-        { return YardInvType(child("items").child("Inventory_Table", index)).GetRetailPriceS(); }
-        
-    string GetTime(long index) const
-        { return child("items").child("Inventory_Table", index).child("Time").data(); }
+        { return ToLong(GetIdS()); }   
         
     string GetOldTransRefS() const
-        { return child("TRANS_REF_TRANS_Old_Trans").data(); }
-        
+        { return child("TRANS_REF_TRANS_Old_Trans").data(); }   
     long GetOldTransRef() const
         { return ToLong(GetOldTransRefS()); }
         
-    /* member functions */
-    double SubTotal(const vector<YardTransType> transVect);
-    
-    map<string, float> GetTaxes() const
-        {
-            map<string, float> tax;
-            return tax;
-        }
+    string GetComment() const
+        { return child("TRANS_Comment").data(); }
+        
+    YardDate GetTime() const
+        { return YardDate(child("TRANS_Time")); }
+        
         
     /**
      * Returns string representation of the datatype.

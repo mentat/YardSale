@@ -11,7 +11,7 @@
         <vgap>0</vgap>
         <hgap>0</hgap>
         <object class="sizeritem">
-            <flag>wxALIGN_CENTER|wxALL</flag>
+            <flag>wxTOP|wxALL</flag>
             <border>5</border>
             <object class="wxFlexGridSizer">
                 <cols>1</cols>
@@ -85,6 +85,13 @@ hour in a give date range.</label>
                                 <label>Generate</label>
                             </object>
                         </object>
+                    </object>
+                </object>
+                <object class="sizeritem">
+                    <flag>wxLEFT</flag>
+                    <border>5</border>
+                    <object class="wxBitmapButton" name="ID_REPORT_LEAVE">
+                        <bitmap>back_64x64.png</bitmap>
                     </object>
                 </object>
             </object>

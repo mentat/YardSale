@@ -6,7 +6,6 @@
 #include "wx/log.h"
 #include "wx/stattext.h"
 
-#include "ys_bitmaps.h"
 #include "ys_employee.h"
 #include "ys_exception.h"
 #include "ys_database.h"
@@ -33,6 +32,7 @@ class empItemData: public wxTreeItemData
 BEGIN_EVENT_TABLE(YardEmployee, wxDialog)
     EVT_TREE_SEL_CHANGED(XRCID("ID_EMPLOY_TREE"), YardEmployee::OnChange)
     EVT_BUTTON(XRCID("ID_EMPLOY_NEW"), YardEmployee::OnNew)
+    EVT_BUTTON(XRCID("ID_EMPLOY_EXIT"), YardEmployee::OnClose)
 END_EVENT_TABLE()
 
 YardEmployee::YardEmployee(wxWindow* parent, wxWindowID id, 
@@ -91,6 +91,13 @@ void YardEmployee::LoadTreeItems(wxTreeCtrl * tree)
             employees[i].GetFirstLast().c_str(), 0,0,
             new empItemData(employees[i].GetId()));
     }
+    
+}
+
+void YardEmployee::OnClose(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnClose"));
+    EndModal(0);
     
 }
     

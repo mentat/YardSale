@@ -9,7 +9,6 @@
 #include "ys_login.h"
 #include "ys_exception.h"
 #include "ys_database.h"
-#include "ys_bitmaps.h"
 #include "ys_log.h"
 #include "ys_config.h"
 
@@ -27,8 +26,6 @@ bool YardSale::OnInit()
     wxImage::AddHandler(new wxJPEGHandler);     
     wxFileSystem::AddHandler(new wxZipFSHandler);
     wxXmlResource::Get()->InitAllHandlers();
-    
-    //wxXmlResource::Get()->Load("res/resource.xrs");
 
     YardLogin * login = new YardLogin(NULL, -1, "YardSale");
     if (login->ShowModal() == 1)
@@ -112,7 +109,6 @@ void YardSale::LoadConfig()
 int YardSale::OnExit() {
     delete wxConfigBase::Set((wxConfigBase *) NULL);
     delete m_db;
-    delete m_bitmaps;
 	return 0;
 }
 
@@ -122,12 +118,4 @@ YardDatabase& YardSale::DB() {
         throw YardException("Database not allocated.");
     
     return *m_db;
-}
-
-YardBitmaps& YardSale::Images() {
-    
-    if (!m_bitmaps)
-        throw YardException("Bitmap manager not allocated.");
-    
-    return *m_bitmaps;
 }

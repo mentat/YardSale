@@ -154,9 +154,12 @@
                                 <object class="sizeritem">
                                     <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                                     <border>5</border>
-                                    <object class="wxTextCtrl" name="ID_INV_VENDOR">
+                                    <object class="wxComboBox" name="ID_INV_VENDOR">
                                         <size>80,-1</size>
-                                        <value></value>
+                                        <style>wxCB_DROPDOWN|wxCB_READONLY</style>
+                                        <content>
+                                            <item>Joe</item>
+                                        </content>
                                     </object>
                                 </object>
                                 <object class="sizeritem">
@@ -169,11 +172,12 @@
                                 <object class="sizeritem">
                                     <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
                                     <border>5</border>
-                                    <object class="wxChoice" name="ID_INV_TAX_TYPE">
+                                    <object class="wxComboBox" name="ID_INV_TAX_TYPE">
                                         <size>100,-1</size>
                                         <content>
-                                            <item>ChoiceItem</item>
+                                            <item>AcME</item>
                                         </content>
+                                    <style>wxCB_DROPDOWN|wxCB_READONLY</style>
                                     </object>
                                 </object>
                             </object>
