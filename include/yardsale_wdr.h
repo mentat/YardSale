@@ -179,7 +179,7 @@ wxSizer *ConfigLog( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRU
 #define ID_KBD_J 10122
 #define ID_KBD_K 10123
 #define ID_KBD_L 10124
-#define ID_KBD_CAPS 10125
+#define ID_KBD_SHIFT 10125
 #define ID_KBD_Z 10126
 #define ID_KBD_X 10127
 #define ID_KBD_C 10128

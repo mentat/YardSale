@@ -1088,7 +1088,7 @@ wxSizer *Keyboard( wxWindow *parent, bool call_fit, bool set_sizer )
 
     wxFlexGridSizer *item34 = new wxFlexGridSizer( 7, 0, 0 );
 
-    wxButton *item35 = new wxButton( parent, ID_KBD_CAPS, wxT("shift"), wxDefaultPosition, wxSize(52,32), 0 );
+    wxButton *item35 = new wxButton( parent, ID_KBD_SHIFT, wxT("shift"), wxDefaultPosition, wxSize(52,32), 0 );
     item35->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
     item34->Add( item35, 0, wxALIGN_CENTER|wxALL, 5 );
 
