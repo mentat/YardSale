@@ -36,14 +36,18 @@
  * </ul>
  * <p>
  *
- * <a href="http://yardsale.sf.net">YardSale</a> 
+ * Main Web Page: <a href="http://yardsale.sf.net">YardSale</a> 
  * @author Jesse Lovelace
+ * @author Adam Parrish
+ * @author Mike Swigon
+ * @author Jay Jonston
+ * @author John Lamb
  */
 
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 class YardSale: public wxApp {
     public:
