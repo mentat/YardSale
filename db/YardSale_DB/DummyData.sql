@@ -87,7 +87,7 @@ SELECT * FROM Vendor_Table;
 #BEGIN INVENTORY STUFF
 
 INSERT INTO Inventory_Table
-values('10000','1011011010101','Canned Smushed Tomatoes',
+values('','10000','1011011010101','Canned Smushed Tomatoes',
 'Food',50,200,35,200,'Can food',1,1,0.80,0.20,
 '<bulk><amount>10</amount><discount>10</discount></bulk>',
 now(),0.004,'F','F','');
@@ -99,7 +99,7 @@ values('','10100','10101101011010101','Hamburger Meat',
 now(),1.000,'F','F','');
 
 INSERT INTO Inventory_Table
-values('10110','1001101011010101','50 Gallon Trash Can',
+values('','10110','1001101011010101','50 Gallon Trash Can',
 'Houseware',13,0,2,20,'Home',2,2,8.99,3.50,
 '',now(),1.000,'F','F','');
 
@@ -137,19 +137,19 @@ INSERT INTO ACL_Table VALUES('Warehouse','Powerful Peon');
 
 INSERT INTO Employee_Table VALUES('222334545',1234,'Bilbo','','Baggins',
 	'<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Manager');
+	'No Phone','The Shire','23456','','','Manager',1);
 
 INSERT INTO Employee_Table VALUES('245334545',1235,'Frodo','','Baggins',
         '<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Clerk');
+	'No Phone','The Shire','23456','','','Clerk',1);
 
 INSERT INTO Employee_Table VALUES('221334545',1236,'Smeagle','','',
         '<ADDRESS><1>Lake Placid</1><2></2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Warehouse');
+	'No Phone','The Shire','23456','','','Warehouse',1);
 
 INSERT INTO Employee_Table VALUES('999999999',0,'G','O','D',
         '<ADDRESS><1></1><2></2></ADDRESS>',
-	'','','','','','Administrator');
+	'','','','','','Administrator',1);
 		
 SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type = ACL_Table.ACL_Type;
 
@@ -157,9 +157,9 @@ SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type =
 
 #BEGIN TRANSACTION STUFF
 
-INSERT INTO Transaction_Log_Table VALUES(1234,'10000',2001, 0.20, 10000, 5, '' );
-INSERT INTO Transaction_Log_Table VALUES(1234,'10100',2001, 0.99, 10000, 10, '' );
-INSERT INTO Transaction_Log_Table VALUES(1234,'10110',2001, 3.50, 10000, 1, '' );
+INSERT INTO Transaction_Log_Table VALUES(1234,'1',2001, 0.20, 10000, 5, '' );
+INSERT INTO Transaction_Log_Table VALUES(1234,'2',2001, 0.99, 10000, 10, '' );
+INSERT INTO Transaction_Log_Table VALUES(1234,'3',2001, 3.50, 10000, 1, '' );
 
 
 #THIS QUERY RETURNS A LOT OF INFORMATION
@@ -170,7 +170,7 @@ FROM 	Transaction_Log_Table JOIN Employee_Table
 ON	Transaction_Log_Table.TRANS_REF_EMP_ID_Number = Employee_Table.EMP_ID_Number,
 	Inventory_Table, Customer_Table
 WHERE 
-	Transaction_Log_Table.TRANS_REF_INV_SKU_Number = Inventory_Table.INV_SKU_Number AND
+	Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID AND
 	Transaction_Log_Table.TRANS_REF_CUST_Account_Number = Customer_Table.CUST_Account_Number AND
 	Transaction_Log_Table.TRANS_ID = 10000;
 

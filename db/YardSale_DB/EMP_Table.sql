@@ -13,7 +13,7 @@ CREATE TABLE Employee_Table(
 	EMP_Picture				TEXT,
 	EMP_Signature				TEXT,
 	EMP_REF_ACL_Type			varchar(30),
-	#EMP_REF_CUST_Account_Number		INT,
+	EMP_Enabled				INT,
 	Primary Key (EMP_Social_Security_Number),
 	UNIQUE INDEX(EMP_ID_Number),
 	INDEX acl_type (EMP_REF_ACL_Type),

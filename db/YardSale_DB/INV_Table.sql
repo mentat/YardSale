@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS Inventory_Table;
 
 CREATE TABLE Inventory_Table(
+	INV_Item_ID			INT AUTO_INCREMENT,
 	INV_SKU_Number			varchar(10),
 	INV_Bar_Code_Number		varchar(30),
 	INV_Item_Description		TEXT,
@@ -20,7 +21,7 @@ CREATE TABLE Inventory_Table(
 	INV_Oversized_Flag		enum('T','F'),
 	INV_Ship_By_Freight		enum('T','F'),
 	INV_Comment			TEXT,
-	Primary Key (INV_SKU_Number),
+	Primary Key (INV_Item_ID),
 	UNIQUE INDEX (INV_Bar_Code_Number),
 	INDEX tax_id (INV_REF_TAX_Tax_Type),
 	INDEX vnd_id (INV_REF_VND_Vendor_ID),
