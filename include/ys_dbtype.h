@@ -23,9 +23,13 @@
 using namespace std;
 
 /**
- * @ingroup database
- *
  * Abstract base class for datebase objects in YardSale.
+ * All DB types are assignable and contain a ToString method
+ * to format the type to text.
+ *
+ * @see YardInvType
+ * @see YardEmployeeType
+ * @ingroup database
  * @author Jesse Lovelace
  */
 class YardDBType{
