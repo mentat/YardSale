@@ -6,7 +6,7 @@
 /**
  * This is the on-screen calculator dialog for YardSale
  * @author Jesse Lovelace
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */ 
 class YardCalcDlg: public wxDialog {
  public:
@@ -16,7 +16,7 @@ class YardCalcDlg: public wxDialog {
     YardCalcDlg(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxSTAY_ON_TOP | wxTHICK_FRAME);
+               long style = wxSTAY_ON_TOP | wxRESIZE_BORDER);
     
     
     private:
