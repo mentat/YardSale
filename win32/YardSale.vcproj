@@ -172,6 +172,9 @@
 			<File
 				RelativePath="..\src\ys_splash.cpp">
 			</File>
+			<File
+				RelativePath="..\src\ys_vend_type.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -248,6 +251,9 @@
 			</File>
 			<File
 				RelativePath="..\include\ys_util.h">
+			</File>
+			<File
+				RelativePath="..\include\ys_vend_type.h">
 			</File>
 		</Filter>
 		<Filter

@@ -85,6 +85,7 @@ int YardSale::OnExit() {
     delete wxConfigBase::Set((wxConfigBase *) NULL);
     delete m_db;
     delete m_bitmaps;
+	return 0;
 }
 
 YardDatabase& YardSale::DB() {

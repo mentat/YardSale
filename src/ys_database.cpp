@@ -9,7 +9,7 @@
 #define OTL_ODBC_MYSQL
 #define OTL_STL
 
-#ifndef _WIN32
+#ifndef WIN32
 #define OTL_ODBC_UNIX
 #else
 #define OTL_ODBC
