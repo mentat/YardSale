@@ -91,7 +91,6 @@ class YardDatabase {
     int GetStatus() const;
      
 
-
     bool IsConnected() const;
 
     /*------------Inventory-------------*/
@@ -116,6 +115,9 @@ class YardDatabase {
     vector<YardInvType> InvGet(unsigned int num, unsigned int offset);
     
  private:
+     
+    vector<YardInvType> FillFromStream(otl_stream * stream);
+ 
     otl_connect * m_db;
     string m_dsn;
     string m_name;

@@ -212,7 +212,7 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
     wxTextCtrl *item14 = new wxTextCtrl( parent, ID_INV_WHOLESALE, wxT(""), wxDefaultPosition, wxSize(160,-1), 0 );
     item13->Add( item14, 0, wxGROW|wxALL, 5 );
 
-    wxBoxSizer *item15 = new wxBoxSizer( wxHORIZONTAL );
+    wxFlexGridSizer *item15 = new wxFlexGridSizer( 2, 0, 0 );
 
     wxButton *item16 = new wxButton( parent, ID_INV_NEW, wxT("New"), wxDefaultPosition, wxDefaultSize, 0 );
     item15->Add( item16, 0, wxALIGN_CENTER|wxALL, 5 );

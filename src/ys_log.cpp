@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "ys_log.h"
+#include "yardsale_wdr.h"
 
 #include "wx/log.h"
 #include "wx/image.h"
@@ -108,6 +109,15 @@ void YardLog::DoLog(wxLogLevel level, const wxChar *szString, time_t t)
     image = 2;
     string_type = wxT("Database");
     break;
+  case wxLOG_SQL: 
+    { 
+        image = 2;
+        wxTextCtrl * sql = static_cast<wxTextCtrl *>(FindWindow(ID_DEBUG_SQL));
+        if (sql)
+            sql->SetValue(szString);
+        string_type = wxT("SQL"); 
+    }
+    break;
   default:
     string_type = wxT("Unknown");
     image = 2;
@@ -127,7 +137,7 @@ void wxLogCon(const wxChar* sxFormat,  ...)
     va_list argptr;
     va_start(argptr, sxFormat);
     wxLogGeneric(wxLOG_CONSOLE, sxFormat, argptr);
-    cout << sxFormat << endl;
+   // cout << sxFormat << endl;
     va_end(argptr);
     
 }
@@ -137,6 +147,16 @@ void wxLogDB(const wxChar* sxFormat,  ...)
     va_list argptr;
     va_start(argptr, sxFormat);
     wxLogGeneric(wxLOG_DB, sxFormat, argptr);
+   // cout << sxFormat << endl;
+    va_end(argptr);
+    
+}
+
+void wxLogSQL(const wxChar* sxFormat, ...)
+{
+    va_list argptr;
+    va_start(argptr, sxFormat);
+    wxLogGeneric(wxLOG_SQL, sxFormat, argptr);
    // cout << sxFormat << endl;
     va_end(argptr);
     

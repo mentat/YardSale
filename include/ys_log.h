@@ -25,8 +25,9 @@
 
 enum
 {
-    wxLOG_CONSOLE = 101,
-    wxLOG_DB = 105
+    wxLOG_CONSOLE = 12000,
+    wxLOG_DB,
+    wxLOG_SQL
 };
 
 // Yes! Fuck you MI haters.
@@ -51,5 +52,6 @@ protected:
 
 DECLARE_LOG_FUNCTION(DB);
 DECLARE_LOG_FUNCTION(Con);
+DECLARE_LOG_FUNCTION(SQL);
 
 #endif
