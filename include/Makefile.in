@@ -97,7 +97,7 @@ yardsale_include_DATA = \
 
 EXTRA_DIST = $(yardsale_include_DATA)
 subdir = include
-mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+mkinstalldirs = $(SHELL) $(top_srcdir)/../mkinstalldirs
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
 DATA = $(yardsale_include_DATA)

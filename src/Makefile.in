@@ -112,7 +112,7 @@ yardsale_LDADD = \
 	$(WX_LIBS)
 
 subdir = src
-mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+mkinstalldirs = $(SHELL) $(top_srcdir)/../mkinstalldirs
 CONFIG_CLEAN_FILES =
 bin_PROGRAMS = yardsale$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
@@ -128,7 +128,7 @@ DEFAULT_INCLUDES =  -I. -I$(srcdir)
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
-depcomp = $(SHELL) $(top_srcdir)/depcomp
+depcomp = $(SHELL) $(top_srcdir)/../depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/yardsale-yardsale.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-yardsale_wdr.Po \
