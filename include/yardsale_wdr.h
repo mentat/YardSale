@@ -99,54 +99,98 @@ wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 #define ID_CALC_CLEAR 10056
 #define ID_CALC_0 10057
 #define ID_CALC_DOT 10058
+#define ID_CALC_DONE 10059
 wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_EMPLOY_TREE 10059
-#define ID_EMPLOY_PICTURE 10060
-#define ID_EMPLOY_HIRE 10061
-#define ID_EMPLOY_POSITION 10062
-#define ID_EMPLOY_FIRST 10063
-#define ID_EMPLOY_ID 10064
-#define ID_EMPLOY_MIDDLE 10065
-#define ID_EMPLOY_TAX_ID 10066
-#define ID_EMPLOY_LAST 10067
-#define ID_EMPLOY_PHONE 10068
-#define ID_EMPLOY_ADDRESS 10069
+#define ID_EMPLOY_TREE 10060
+#define ID_EMPLOY_PICTURE 10061
+#define ID_EMPLOY_HIRE 10062
+#define ID_EMPLOY_POSITION 10063
+#define ID_EMPLOY_FIRST 10064
+#define ID_EMPLOY_ID 10065
+#define ID_EMPLOY_MIDDLE 10066
+#define ID_EMPLOY_TAX_ID 10067
+#define ID_EMPLOY_LAST 10068
+#define ID_EMPLOY_PHONE 10069
+#define ID_EMPLOY_ADDRESS 10070
 wxSizer *Employee( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_DEBUG_LOG 10070
-#define ID_DEBUG_SQL 10071
-#define ID_DEBUG_DB_CONNECT 10072
-#define ID_DEBUG_DB_DISC 10073
-#define ID_DEBUG_USER 10074
-#define ID_DEBUG_DSN 10075
-#define ID_DEBUG_PASS 10076
+#define ID_DEBUG_LOG 10071
+#define ID_DEBUG_SQL 10072
+#define ID_DEBUG_DB_CONNECT 10073
+#define ID_DEBUG_DB_DISC 10074
+#define ID_DEBUG_USER 10075
+#define ID_DEBUG_DSN 10076
+#define ID_DEBUG_PASS 10077
 wxSizer *DebugScreen( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_FOOTER_BACK 10077
-#define ID_FOOTER_CALC 10078
-#define ID_FOOTER_KEY 10079
-#define ID_FOOTER_TIME 10080
-#define ID_FOOTER_UNDO 10081
+#define ID_FOOTER_BACK 10078
+#define ID_FOOTER_CALC 10079
+#define ID_FOOTER_KEY 10080
+#define ID_FOOTER_TIME 10081
+#define ID_FOOTER_UNDO 10082
 wxSizer *InfoFooter( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_NOTEBOOK 10082
-#define ID_CONFIG_SAVE 10083
-#define ID_CONFIG_CANCEL 10084
+#define ID_NOTEBOOK 10083
+#define ID_CONFIG_SAVE 10084
+#define ID_CONFIG_CANCEL 10085
 wxSizer *Config( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_CONFIG_DB_USER 10085
-#define ID_CONFIG_DB_PWORD 10086
-#define ID_CONFIG_DB_TYPE 10087
-#define ID_CONFIG_DB_DRIVER 10088
-#define ID_CONFIG_DB_BROWSE 10089
-#define ID_CONFIG_DB_DSN 10090
-#define ID_CONFIG_DB_SERVER 10091
-#define ID_CONFIG_DB_PORT 10092
+#define ID_CONFIG_DB_USER 10086
+#define ID_CONFIG_DB_PWORD 10087
+#define ID_CONFIG_DB_TYPE 10088
+#define ID_CONFIG_DB_DRIVER 10089
+#define ID_CONFIG_DB_BROWSE 10090
+#define ID_CONFIG_DB_DSN 10091
+#define ID_CONFIG_DB_SERVER 10092
+#define ID_CONFIG_DB_PORT 10093
 wxSizer *ConfigDB( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_LISTCTRL 10093
+#define ID_LISTCTRL 10094
 wxSizer *ConfigLog( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
+#define ID_KBD_SCREEN 10095
+#define ID_KBD_1 10096
+#define ID_KBD_2 10097
+#define ID_KBD_3 10098
+#define ID_KBD_4 10099
+#define ID_KBD_5 10100
+#define ID_KBD_6 10101
+#define ID_KBD_7 10102
+#define ID_KBD_8 10103
+#define ID_KBD_9 10104
+#define ID_KBD_0 10105
+#define ID_KBD_Q 10106
+#define ID_KBD_W 10107
+#define ID_KBD_E 10108
+#define ID_KBD_R 10109
+#define ID_KBD_T 10110
+#define ID_KBD_Y 10111
+#define ID_KBD_U 10112
+#define ID_KBD_I 10113
+#define ID_KBD_O 10114
+#define ID_KBD_P 10115
+#define ID_KBD_A 10116
+#define ID_KBD_S 10117
+#define ID_KBD_D 10118
+#define ID_KBD_F 10119
+#define ID_KBD_G 10120
+#define ID_KBD_H 10121
+#define ID_KBD_J 10122
+#define ID_KBD_K 10123
+#define ID_KBD_L 10124
+#define ID_KBD_CAPS 10125
+#define ID_KBD_Z 10126
+#define ID_KBD_X 10127
+#define ID_KBD_C 10128
+#define ID_KBD_V 10129
+#define ID_KBD_B 10130
+#define ID_KBD_N 10131
+#define ID_KBD_M 10132
+#define ID_KBD_CLEAR 10133
+#define ID_KBD_SPACE 10134
+#define ID_KBD_DONE 10135
+wxSizer *Keyboard( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions
 
