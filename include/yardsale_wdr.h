@@ -75,124 +75,120 @@ wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 #define ID_MAIN_LOGO 10038
+#define ID_MAIN_CONFIG 10039
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_BUTTON 10039
-#define ID_TREECTRL 10040
-#define ID_SALE_TRANS 10041
-#define ID_SALE_TRASH 10042
+#define ID_BUTTON 10040
+#define ID_TREECTRL 10041
+#define ID_SALE_TRANS 10042
+#define ID_SALE_TRASH 10043
 wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_CALC_SCREEN 10043
-#define ID_CALC_1 10044
-#define ID_CALC_2 10045
-#define ID_CALC_3 10046
-#define ID_CALC_PLUS 10047
-#define ID_CALC_4 10048
-#define ID_CALC_5 10049
-#define ID_CALC_6 10050
-#define ID_CALC_MINUS 10051
-#define ID_CALC_7 10052
-#define ID_CALC_8 10053
-#define ID_CALC_9 10054
-#define ID_CALC_EQUALS 10055
-#define ID_CALC_CLEAR 10056
-#define ID_CALC_0 10057
-#define ID_CALC_DOT 10058
-#define ID_CALC_DONE 10059
+#define ID_CALC_SCREEN 10044
+#define ID_CALC_1 10045
+#define ID_CALC_2 10046
+#define ID_CALC_3 10047
+#define ID_CALC_PLUS 10048
+#define ID_CALC_4 10049
+#define ID_CALC_5 10050
+#define ID_CALC_6 10051
+#define ID_CALC_MINUS 10052
+#define ID_CALC_7 10053
+#define ID_CALC_8 10054
+#define ID_CALC_9 10055
+#define ID_CALC_EQUALS 10056
+#define ID_CALC_CLEAR 10057
+#define ID_CALC_0 10058
+#define ID_CALC_DOT 10059
+#define ID_CALC_DONE 10060
 wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_EMPLOY_TREE 10060
-#define ID_EMPLOY_PICTURE 10061
-#define ID_EMPLOY_HIRE 10062
-#define ID_EMPLOY_POSITION 10063
-#define ID_EMPLOY_FIRST 10064
-#define ID_EMPLOY_ID 10065
-#define ID_EMPLOY_MIDDLE 10066
-#define ID_EMPLOY_TAX_ID 10067
-#define ID_EMPLOY_LAST 10068
-#define ID_EMPLOY_PHONE 10069
-#define ID_EMPLOY_ADDRESS 10070
+#define ID_EMPLOY_TREE 10061
+#define ID_EMPLOY_PICTURE 10062
+#define ID_EMPLOY_HIRE 10063
+#define ID_EMPLOY_POSITION 10064
+#define ID_EMPLOY_FIRST 10065
+#define ID_EMPLOY_ID 10066
+#define ID_EMPLOY_MIDDLE 10067
+#define ID_EMPLOY_TAX_ID 10068
+#define ID_EMPLOY_LAST 10069
+#define ID_EMPLOY_PHONE 10070
+#define ID_EMPLOY_ADDRESS 10071
 wxSizer *Employee( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_DEBUG_LOG 10071
-#define ID_DEBUG_SQL 10072
-#define ID_DEBUG_DB_CONNECT 10073
-#define ID_DEBUG_DB_DISC 10074
-#define ID_DEBUG_USER 10075
-#define ID_DEBUG_DSN 10076
-#define ID_DEBUG_PASS 10077
+#define ID_DEBUG_LOG 10072
+#define ID_DEBUG_SQL 10073
 wxSizer *DebugScreen( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_FOOTER_BACK 10078
-#define ID_FOOTER_CALC 10079
-#define ID_FOOTER_KEY 10080
-#define ID_FOOTER_TIME 10081
-#define ID_FOOTER_UNDO 10082
+#define ID_FOOTER_BACK 10074
+#define ID_FOOTER_CALC 10075
+#define ID_FOOTER_KEY 10076
+#define ID_FOOTER_TIME 10077
+#define ID_FOOTER_UNDO 10078
 wxSizer *InfoFooter( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_NOTEBOOK 10083
-#define ID_CONFIG_SAVE 10084
-#define ID_CONFIG_CANCEL 10085
+#define ID_NOTEBOOK 10079
+#define ID_CONFIG_SAVE 10080
+#define ID_CONFIG_CANCEL 10081
 wxSizer *Config( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_CONFIG_DB_USER 10086
-#define ID_CONFIG_DB_PWORD 10087
-#define ID_CONFIG_DB_TYPE 10088
-#define ID_CONFIG_DB_DRIVER 10089
-#define ID_CONFIG_DB_BROWSE 10090
-#define ID_CONFIG_DB_DSN 10091
-#define ID_CONFIG_DB_SERVER 10092
-#define ID_CONFIG_DB_PORT 10093
+#define ID_CONFIG_DB_USER 10082
+#define ID_CONFIG_DB_PWORD 10083
+#define ID_CONFIG_DB_TYPE 10084
+#define ID_CONFIG_DB_DRIVER 10085
+#define ID_CONFIG_DB_BROWSE 10086
+#define ID_CONFIG_DB_DSN 10087
+#define ID_CONFIG_DB_SERVER 10088
+#define ID_CONFIG_DB_PORT 10089
 wxSizer *ConfigDB( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_LISTCTRL 10094
+#define ID_LISTCTRL 10090
 wxSizer *ConfigLog( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_KBD_SCREEN 10095
-#define ID_KBD_1 10096
-#define ID_KBD_2 10097
-#define ID_KBD_3 10098
-#define ID_KBD_4 10099
-#define ID_KBD_5 10100
-#define ID_KBD_6 10101
-#define ID_KBD_7 10102
-#define ID_KBD_8 10103
-#define ID_KBD_9 10104
-#define ID_KBD_0 10105
-#define ID_KBD_Q 10106
-#define ID_KBD_W 10107
-#define ID_KBD_E 10108
-#define ID_KBD_R 10109
-#define ID_KBD_T 10110
-#define ID_KBD_Y 10111
-#define ID_KBD_U 10112
-#define ID_KBD_I 10113
-#define ID_KBD_O 10114
-#define ID_KBD_P 10115
-#define ID_KBD_A 10116
-#define ID_KBD_S 10117
-#define ID_KBD_D 10118
-#define ID_KBD_F 10119
-#define ID_KBD_G 10120
-#define ID_KBD_H 10121
-#define ID_KBD_J 10122
-#define ID_KBD_K 10123
-#define ID_KBD_L 10124
-#define ID_KBD_SHIFT 10125
-#define ID_KBD_Z 10126
-#define ID_KBD_X 10127
-#define ID_KBD_C 10128
-#define ID_KBD_V 10129
-#define ID_KBD_B 10130
-#define ID_KBD_N 10131
-#define ID_KBD_M 10132
-#define ID_KBD_COMMA 10133
-#define ID_KBD_PERIOD 10134
-#define ID_KBD_DELETE 10135
-#define ID_KBD_CLEAR 10136
-#define ID_KBD_SPACE 10137
-#define ID_KBD_DONE 10138
+#define ID_KBD_SCREEN 10091
+#define ID_KBD_1 10092
+#define ID_KBD_2 10093
+#define ID_KBD_3 10094
+#define ID_KBD_4 10095
+#define ID_KBD_5 10096
+#define ID_KBD_6 10097
+#define ID_KBD_7 10098
+#define ID_KBD_8 10099
+#define ID_KBD_9 10100
+#define ID_KBD_0 10101
+#define ID_KBD_Q 10102
+#define ID_KBD_W 10103
+#define ID_KBD_E 10104
+#define ID_KBD_R 10105
+#define ID_KBD_T 10106
+#define ID_KBD_Y 10107
+#define ID_KBD_U 10108
+#define ID_KBD_I 10109
+#define ID_KBD_O 10110
+#define ID_KBD_P 10111
+#define ID_KBD_A 10112
+#define ID_KBD_S 10113
+#define ID_KBD_D 10114
+#define ID_KBD_F 10115
+#define ID_KBD_G 10116
+#define ID_KBD_H 10117
+#define ID_KBD_J 10118
+#define ID_KBD_K 10119
+#define ID_KBD_L 10120
+#define ID_KBD_SHIFT 10121
+#define ID_KBD_Z 10122
+#define ID_KBD_X 10123
+#define ID_KBD_C 10124
+#define ID_KBD_V 10125
+#define ID_KBD_B 10126
+#define ID_KBD_N 10127
+#define ID_KBD_M 10128
+#define ID_KBD_COMMA 10129
+#define ID_KBD_PERIOD 10130
+#define ID_KBD_DELETE 10131
+#define ID_KBD_CLEAR 10132
+#define ID_KBD_SPACE 10133
+#define ID_KBD_DONE 10134
 wxSizer *Keyboard( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions

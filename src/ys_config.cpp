@@ -4,7 +4,7 @@
 #include "yardsale_wdr.h"
 
 
-BEGIN_EVENT_TABLE(YardConfig, wxFrame)
+BEGIN_EVENT_TABLE(YardConfig, wxDialog)
     EVT_BUTTON(ID_CONFIG_SAVE, YardConfig::OnSave)
     EVT_BUTTON(ID_CONFIG_CANCEL, YardConfig::OnCancel)
     EVT_BUTTON(ID_CONFIG_DB_BROWSE, YardConfig::OnBrowse)
@@ -18,10 +18,9 @@ END_EVENT_TABLE()
 YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos, const wxSize& size, long style)
 
-:wxFrame(parent, id, title, pos, size, style)
-{    
+:wxDialog(parent, id, title, pos, size, style)
+{        
     m_construct = true;
-   // SetMenuBar(ConfigBar());
     wxPanel * panel = new wxPanel(this);
     
     wxSizer * sizer = Config(panel, false, true);
@@ -108,7 +107,7 @@ void YardConfig::OnBrowse(wxCommandEvent& event) {
 void YardConfig::OnCancel(wxCommandEvent& event)
 {
     wxLogDebug(wxT("OnCancel"));
-    Close();
+    EndModal(0);
 }
 
 void YardConfig::OnSave(wxCommandEvent& event)
@@ -155,9 +154,6 @@ void YardConfig::OnSave(wxCommandEvent& event)
 
 void YardConfig::OnExit(wxCommandEvent& event)
 {
-    
-        
-    
 }
 
 

@@ -12,8 +12,8 @@
 using namespace std;
 
 BEGIN_EVENT_TABLE(YardDebugScreen, wxFrame)
-    EVT_BUTTON(ID_DEBUG_DB_CONNECT, YardDebugScreen::OnConnect)
-    EVT_BUTTON(ID_DEBUG_DB_DISC, YardDebugScreen::OnDisc)
+  //  EVT_BUTTON(ID_DEBUG_DB_CONNECT, YardDebugScreen::OnConnect)
+  //  EVT_BUTTON(ID_DEBUG_DB_DISC, YardDebugScreen::OnDisc)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
@@ -34,10 +34,10 @@ YardDebugScreen::~YardDebugScreen()
 }
 
 void YardDebugScreen::OnConnect(wxCommandEvent & event) {
-        
-    wxString dsn = ((wxTextCtrl *)FindWindow(ID_DEBUG_DSN))->GetValue();
-    wxString user = ((wxTextCtrl *)FindWindow(ID_DEBUG_USER))->GetValue();
-    wxString pass = ((wxTextCtrl *)FindWindow(ID_DEBUG_PASS))->GetValue();
+#if 0        
+   // wxString dsn = ((wxTextCtrl *)FindWindow(ID_DEBUG_DSN))->GetValue();
+   // wxString user = ((wxTextCtrl *)FindWindow(ID_DEBUG_USER))->GetValue();
+   // wxString pass = ((wxTextCtrl *)FindWindow(ID_DEBUG_PASS))->GetValue();
 
     //wxLogDebug("Info: %s, %s, %s", dsn.c_str(), user.c_str(), pass.c_str());
     
@@ -58,7 +58,7 @@ void YardDebugScreen::OnConnect(wxCommandEvent & event) {
         return;
     }
     wxLogDB(wxT("Connected to %s"), dsn.c_str());
-    
+    #endif
 }
 
 void YardDebugScreen::OnDisc(wxCommandEvent & event) {

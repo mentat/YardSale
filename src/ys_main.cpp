@@ -19,6 +19,7 @@ BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(ID_MAIN_INVENTORY, YardMain::OnInventory)
     EVT_BUTTON(ID_MAIN_SALES, YardMain::OnSale)
     EVT_BUTTON(ID_MAIN_EMPLOYEE, YardMain::OnEmployee)
+    EVT_BUTTON(ID_MAIN_CONFIG, YardMain::OnOptions)
     //EVT_MENU(ID_MAIN_MENU_CONFIG, YardMain::OnOptions)
 END_EVENT_TABLE()
 
@@ -32,23 +33,8 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     //SetMenuBar(MainBar());
     wxPanel * panel = new wxPanel(this);
     
-    //panel->SetBackgroundColour(wxColor("BLUE VIOLET"));
-    /// @todo Make these compiled into the binary.
-    /*wxBitmap logo("images/ys_320x93.png", wxBITMAP_TYPE_PNG);
-    
-    wxBitmap inventory("images/ys_inventory_128x128.png", wxBITMAP_TYPE_PNG); 
-    wxBitmap customer("images/ys_customer_128x128.png", wxBITMAP_TYPE_PNG);
-    wxBitmap employee("images/ys_employee_128x128.png", wxBITMAP_TYPE_PNG);
-    wxBitmap sales("images/ys_sale_128x128.png", wxBITMAP_TYPE_PNG);
-    wxBitmap reports("images/ys_reports_128x128.png", wxBITMAP_TYPE_PNG);
-    wxBitmap logout("images/ys_logout_128x128.png", wxBITMAP_TYPE_PNG);
-    
-    m_enlarge = new wxBitmap("images/ys_enlarge_64x64.png");
-    m_shrink = new wxBitmap("images/ys_shrink_64x64.png");*/
-
     new wxStaticBitmap(panel, ID_MAIN_LOGO,
         wxGetApp().Images().GetBitmap(YardBitmaps::MAIN_LOGO), wxDefaultPosition);
-     
     new wxBitmapButton(panel, ID_MAIN_INVENTORY, 
         wxGetApp().Images().GetBitmap(YardBitmaps::MAIN_INV), wxDefaultPosition);
     new wxBitmapButton(panel, ID_MAIN_CUSTOMER, 

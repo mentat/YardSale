@@ -8,6 +8,8 @@
 #include "ys_exception.h"
 #include "ys_database.h"
 #include "ys_bitmaps.h"
+#include "ys_log.h"
+#include "ys_config.h"
 #include "yardsale_wdr.h"
 
 IMPLEMENT_APP(YardSale)
@@ -62,6 +64,59 @@ bool YardSale::OnInit()
     }
     
 #endif
+    
+    wxConfigBase *pConfig = wxConfigBase::Get();
+
+    bool tryLogin = true;
+  
+    if (!pConfig)
+    {
+        wxLogError(wxT("No Config pointer"));
+        tryLogin = false;
+    } 
+    else
+        if (!pConfig->HasGroup(wxT("DB")))
+        {
+            tryLogin = false;
+            wxLogDebug(wxT("No DB group in config."));
+            int answer = wxMessageBox("No configuration exists on this computer,"
+                " would you like to create one?", "Create Config",
+                                wxYES_NO);
+            if (answer == wxNO)
+            {
+                wxLogDebug(wxT("Answer was no."));
+            }
+            else
+            {
+                YardConfig * conf = new YardConfig(NULL, -1, wxT("YardSale Configuration"));
+                conf->ShowModal();
+                conf->Destroy();
+                tryLogin = true;
+            }
+        }
+        else wxLogDebug(wxT("Config found, reading..."));
+
+    if (tryLogin) {
+        wxLogDebug(wxT("Trying to login..."));
+        
+        wxString user = pConfig->Read(wxT("/DB/User"), wxString());
+        wxString pass = pConfig->Read(wxT("/DB/Pass"), wxString());
+        wxString dsn = pConfig->Read(wxT("/DB/DSN"), wxString());
+    
+        try {
+            DB().Init(user.c_str(), pass.c_str(), dsn.c_str());
+        } catch (YardDBException &e) {
+            wxLogDebug(e.GetWhat().c_str());
+        }
+        
+        try { 
+            DB().connect();
+            wxLogDebug(wxT("Connected to %s"), dsn.c_str());
+        } catch (YardDBException &e) {
+            wxLogDebug(e.GetWhat().c_str());
+        }
+        
+    }
 
     
     wxFrame * frame = 0;

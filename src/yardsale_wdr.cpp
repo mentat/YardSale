@@ -359,36 +359,37 @@ wxSizer *Main( wxWindow *parent, bool call_fit, bool set_sizer )
     wxASSERT( item2 );
     item1->Add( item2, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    item1->Add( 320, 20, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item3 = new wxButton( parent, ID_MAIN_CONFIG, wxT("Config"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item3, 0, wxALIGN_CENTER|wxLEFT|wxRIGHT, 105 );
 
-    wxWindow *item3 = parent->FindWindow( ID_MAIN_INVENTORY );
-    wxASSERT( item3 );
-    item1->Add( item3, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
-
-    wxWindow *item4 = parent->FindWindow( ID_MAIN_SALES );
+    wxWindow *item4 = parent->FindWindow( ID_MAIN_INVENTORY );
     wxASSERT( item4 );
-    item1->Add( item4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
+    item1->Add( item4, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
-    wxWindow *item5 = parent->FindWindow( ID_MAIN_CUSTOMER );
+    wxWindow *item5 = parent->FindWindow( ID_MAIN_SALES );
     wxASSERT( item5 );
-    item1->Add( item5, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
+    item1->Add( item5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
-    wxWindow *item6 = parent->FindWindow( ID_MAIN_REPORTS );
+    wxWindow *item6 = parent->FindWindow( ID_MAIN_CUSTOMER );
     wxASSERT( item6 );
-    item1->Add( item6, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
+    item1->Add( item6, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
-    wxWindow *item7 = parent->FindWindow( ID_MAIN_EMPLOYEE );
+    wxWindow *item7 = parent->FindWindow( ID_MAIN_REPORTS );
     wxASSERT( item7 );
-    item1->Add( item7, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
+    item1->Add( item7, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
-    wxWindow *item8 = parent->FindWindow( ID_MAIN_LOGOUT );
+    wxWindow *item8 = parent->FindWindow( ID_MAIN_EMPLOYEE );
     wxASSERT( item8 );
-    item1->Add( item8, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
+    item1->Add( item8, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
+
+    wxWindow *item9 = parent->FindWindow( ID_MAIN_LOGOUT );
+    wxASSERT( item9 );
+    item1->Add( item9, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
     item0->Add( item1, 0, wxGROW|wxALL, 5 );
 
-    YardFooter *item9 = new YardFooter( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
-    item0->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+    YardFooter *item10 = new YardFooter( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
+    item0->Add( item10, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
 
     if (set_sizer)
     {
@@ -710,48 +711,11 @@ wxSizer *DebugScreen( wxWindow *parent, bool call_fit, bool set_sizer )
     item0->AddGrowableRow( 0 );
     item0->AddGrowableRow( 1 );
 
-    YardLog *item1 = new YardLog( parent, ID_DEBUG_LOG, wxDefaultPosition, wxSize(160,120), wxLC_REPORT|wxSUNKEN_BORDER );
+    YardLog *item1 = new YardLog( parent, ID_DEBUG_LOG, wxDefaultPosition, wxSize(290,160), wxLC_REPORT|wxSUNKEN_BORDER );
     item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item2 = new wxTextCtrl( parent, ID_DEBUG_SQL, wxT(""), wxDefaultPosition, wxSize(80,40), wxTE_MULTILINE|wxTE_READONLY );
+    wxTextCtrl *item2 = new wxTextCtrl( parent, ID_DEBUG_SQL, wxT(""), wxDefaultPosition, wxSize(80,70), wxTE_MULTILINE|wxTE_READONLY );
     item0->Add( item2, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    wxFlexGridSizer *item3 = new wxFlexGridSizer( 4, 0, 0 );
-
-    wxFlexGridSizer *item4 = new wxFlexGridSizer( 2, 0, 0 );
-
-    wxButton *item5 = new wxButton( parent, ID_DEBUG_DB_CONNECT, wxT("Connect to DB"), wxDefaultPosition, wxDefaultSize, 0 );
-    item5->SetDefault();
-    item4->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
-
-    wxButton *item6 = new wxButton( parent, ID_DEBUG_DB_DISC, wxT("Disconnect"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
-
-    item3->Add( item4, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
-
-    wxFlexGridSizer *item7 = new wxFlexGridSizer( 2, 0, 0 );
-
-    wxStaticText *item8 = new wxStaticText( parent, ID_TEXT, wxT("User"), wxDefaultPosition, wxDefaultSize, 0 );
-    item7->Add( item8, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    wxTextCtrl *item9 = new wxTextCtrl( parent, ID_DEBUG_USER, wxT(""), wxDefaultPosition, wxSize(120,-1), 0 );
-    item7->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, wxT("DSN"), wxDefaultPosition, wxDefaultSize, 0 );
-    item7->Add( item10, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    wxTextCtrl *item11 = new wxTextCtrl( parent, ID_DEBUG_DSN, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
-    item7->Add( item11, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    wxStaticText *item12 = new wxStaticText( parent, ID_TEXT, wxT("Password"), wxDefaultPosition, wxDefaultSize, 0 );
-    item7->Add( item12, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    wxTextCtrl *item13 = new wxTextCtrl( parent, ID_DEBUG_PASS, wxT(""), wxDefaultPosition, wxSize(80,-1), wxTE_PASSWORD );
-    item7->Add( item13, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    item3->Add( item7, 0, wxALIGN_CENTER|wxALL, 5 );
-
-    item0->Add( item3, 0, wxALIGN_CENTER|wxALL, 5 );
 
     if (set_sizer)
     {

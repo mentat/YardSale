@@ -10,13 +10,13 @@
  *
  * @author Jesse Lovelace
  */
-class YardConfig: public wxFrame {
+class YardConfig: public wxDialog {
  public:
 
     YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER|wxTAB_TRAVERSAL);
+               long style = wxDEFAULT_DIALOG_STYLE);
  
     virtual ~YardConfig();
  
