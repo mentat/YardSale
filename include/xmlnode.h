@@ -1,5 +1,5 @@
 /*
-    $Id: xmlnode.h,v 1.4 2004/05/10 01:46:56 thementat Exp $
+    $Id: xmlnode.h,v 1.5 2004/05/10 02:05:25 thementat Exp $
  
     XMLNode - A XML DOM tree
     
@@ -94,7 +94,7 @@ class XMLException: public XMLNODE_EXCEPTION_BASE {
   * Classes using XML as the internal structure
   */
     
-/** @ingroup xml
+/** 
  * An XML Tag represented as a single class.
  *
  * This is a parsed xml tag. It stores all properties and all nested nodes and
@@ -118,6 +118,7 @@ class XMLException: public XMLNODE_EXCEPTION_BASE {
  *
  * @author Henrik Abelsson
  * @author Jesse Lovelace
+ * @ingroup xml
  */
 class XMLNode
 {

@@ -47,13 +47,12 @@ class otl_stream;
  */
 
 /**
- * @ingroup datebase
- *
  * This is the main database backend which does all translation from
  * OO calls to SQL/ODBC.
  * @sa YardInvType 
  * @author Jesse Lovelace
  * @version \$ Revision: $$
+ * @ingroup datebase
  */
 class YardDatabase {
     public:
