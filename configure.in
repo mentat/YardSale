@@ -154,8 +154,10 @@ fi
 AC_ARG_WITH(debug,
 	[  --with-debug             Build with Debug information.], [
 	echo "Building debug information..."
-	CXXFLAGS="$CXXFLAGS -g -DYS_DEBUG_BUILD -DYS_OS=\\\"$OSTYPE\\\""
+	CXXFLAGS="$CXXFLAGS -g -DYS_DEBUG_BUILD"
     CFLAGS="$CFLAGS -g"])
+
+CXXFLAGS="$CXXFLAGS -DYS_OS=\\\"$OSTYPE\\\""
 
 AC_ARG_WITH(glabout,
 	[  --with-glabout           Build gratuitous gl about.], [
