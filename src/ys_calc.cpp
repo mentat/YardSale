@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardCalc, wxPanel)
     EVT_BUTTON(ID_CALC_PLUS, YardCalc::OnPlus)
@@ -23,9 +22,11 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
 {
 	//the last number on the screen, before the new one entered
 	m_savednumber = 0;
+	m_tempnumber = 0;
 
 	//keeps track of the current state of the machine
    	m_state = wxString("#");	
+	m_operand = wxString("=");
 
     wxSizer * sizer = NumberPad(this, false, true);
     sizer->SetSizeHints(this);
@@ -89,87 +90,71 @@ void YardCalc::OnNumber(wxCommandEvent & event)
 			m_screen->GetValue().ToLong(&m_savednumber);
 			//clear the screen	
 			m_screen->SetValue(ch);
-			//set the state to #
+			
+			//set the state to # -- NOTE this is killing my addition state
 			m_state = "#";
-
 		}
 		
-		//now clear the screen if we are wanting to enter a new number
-		/*if (!m_readyfornewnumber)
-			m_screen->SetValue(m_screen->GetValue() + ch);
-		else{
-			m_screen->GetValue().ToLong(&m_savednumber);
-			m_screen->SetValue(ch);
-			m_readyfornewnumber = true;
-		}
-		*/
+}
+
+//here we evaluate an expression based upon:
+//		what is on the screen
+//		what is in the memory
+//		the operator (indicated by the state)
+void YardCalc::Evaluate(){
+
+	m_tempnumber = 0;
+	m_screen->GetValue().ToLong(&m_tempnumber);
+	
+	//addition
+	if (m_operand.CompareTo("+") == 0){
+		m_savednumber += m_tempnumber;		
+	}
+
+	//subtraction
+
+	//division
+
+	//multiplication
+
+	//now refresh
+    stringstream num;
+    num << m_savednumber;
+    m_screen->SetValue(num.str().c_str());
+
 }
 
 void YardCalc::OnPlus(wxCommandEvent & event)
 {
-   	m_state = "+"; 
+	//now we're not in a number state
+	m_state = "!"; 
 
-    /*long int tmp = 0;
-
-	//indicate that when the next number is pressed that 
-	//we need to clear the screen and read in a new number
-	//m_readyfornewnumber = true;
-    
-    // try to convert
-    if (!m_screen->GetValue().ToLong(&m_savednumber)) {
-    	//error    
-        wxLogDebug(wxT("Error in conversion"));
-        m_screen->SetValue(wxT("Error in conversion"));
-        //m_inAdd = false;
-        return;
-    }
-   
-   	//converted the screen contents successfully
-    if (m_inAdd)
-        m_number += m_savednumber;
-    else{
-        m_number = m_savednumber;
-		m_inAdd = true;
+	//if the last operand was an equals, 
+	//we need to not evaluate anything, but set the mode and clear
+	//the screen but not evaluate
+	if (m_operand.CompareTo("=") == 0){
+		m_screen->GetValue().ToLong(&m_savednumber);
+		m_operand = "+";
+	}else{
+		//set the operand value	
+		m_operand = "+";
+		Evaluate();
 	}
-    */    
 }
 
 void YardCalc::OnClear(wxCommandEvent & event){
 	
+	m_savednumber = 0;
 	m_screen->SetValue("0");
 	m_state = "#";
+	m_operand = "=";
 }
 
 void YardCalc::OnAllClear(wxCommandEvent & event){
 	m_screen->SetValue("0");
 }
 
-//may not need this
-void YardCalc::OnDot(wxCommandEvent & event){
-
-}
-
 void YardCalc::OnEqual(wxCommandEvent & event)
 {
-    /*long int tmp = 0;
-   	
-    if (m_screen->GetValue().ToLong(&tmp))
-        m_number += tmp;
-    else {
-        m_screen->SetValue(wxT("Error in conversion"));
-        m_inAdd = false;
-        return;
-    }
-    
-    if (m_inAdd) {
-        m_number += tmp;
-
-		//write back to the screen
-		stringstream num;
-        num << m_number;
-        m_screen->SetValue(num.str().c_str());
-       
-	   	m_inAdd = false;
-    }
-	*/
+	Evaluate();
 }
