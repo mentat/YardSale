@@ -1,82 +1,30 @@
 #include <sstream>
 
-#define OTL_ODBC_MYSQL
-#define OTL_STL
-
-#ifndef _WIN32
-#define OTL_ODBC_UNIX
-#else
-#define OTL_ODBC
-#endif
-
-
-#include "otlv4.h"
-
 #include "ys_cust_type.h"
-#include "ys_util.h"
-#include "ys_exception.h"
 
 using namespace std;
    
-YardCustType::YardCustType(const YardCustType& obj) {
-    
-    *this = obj;
-    
-}
-
-string YardCustType::ToString(const string& delim) const {
+string YardCustType::ToString(const string& delim, bool quotes) const {
     
     stringstream output;
-    output << m_accountNumber << delim << m_custFirstName << delim 
-        << m_custMiddleName << delim << m_custLastName << delim
-        << m_custPhone << delim <<  m_custZip << delim 
-        << m_custCCNumber << delim << m_custCCExpiration << delim
-        << m_custCCName;
+    char q = '\'';
+    output << GetAccountNumber() << delim 
+        << q << GetFirstName() << q << delim 
+        << q << GetMiddleName() << q << delim 
+        << q << GetLastName() << q << delim 
+        << q << GetAddress() << q << delim
+        << q << GetPhone() << q << delim 
+        << q << GetCity() << q << delim 
+        << q << GetZip() << q << delim
+        << q << GetCreditCardNumber() << q << delim
+        << q << GetCreditCardExpiration() << q << delim
+        << q << GetCreditCardName() << q << delim
+        << q << GetSignaturePath() << q << delim
+        << q << GetPhoto() << q;
     return output.str();
         
 }
-
-void YardCustType::FillFromStream(otl_stream * stream)
-{  
     
-    
-    if (!stream)
-        return;
-    
-    YardCustType temp;
-    
-    
-    try {
-        *stream 
-          >> m_custFirstName
-          >> m_custMiddleName
-          >> m_custLastName
-          >> m_custPhone 
-          >> m_custZip 
-          >> m_custCCNumber
-          >> m_custCCExpiration
-          >> m_custCCName;    
-    } catch (otl_exception &e) {
-        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-    }
-}
-    
-YardCustType& YardCustType::operator=(const YardCustType& obj) {
-    
-    m_accountNumber = obj.m_accountNumber;
-    m_custFirstName = obj.m_custFirstName;
-    m_custMiddleName = obj.m_custMiddleName;
-    m_custLastName = obj.m_custLastName;
-    m_custAddress = obj.m_custAddress;
-    m_custPhone = obj.m_custPhone;
-    m_custCity = obj.m_custCity;
-    m_custZip = obj.m_custZip;
-    m_custCCNumber = obj.m_custCCNumber;
-    m_custCCExpiration = obj.m_custCCNumber;
-    m_custCCName = obj.m_custCCName;
-    return *this;
-}
-
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_CUST_TYPE))
 #include <iostream>
 #include <vector>

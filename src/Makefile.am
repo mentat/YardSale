@@ -1,16 +1,16 @@
 ## the hell with autocon
 INCLUDES =  -I../include
-#SUBDIRS = wxrc
+SUBDIRS = extra res tests
 
 CXXFLAGS = $(WX_CXXFLAGS)  -g
+
+all:
+	perl build.pl
 
 rez: yardsale
 	$(REZFLAGS) yardsale
 
 bin_PROGRAMS = yardsale
-EXTRA_PROGRAMS = test_emp test_db test_inv test_bitmap test_cust test_trans   
-
-TESTS = test_db test_inv test_emp test_bitmap test_cust test_trans
 
 yardsale_SOURCES = \
 	yardsale.cpp\
@@ -35,34 +35,14 @@ yardsale_SOURCES = \
     	ys_cust_type.cpp\
 	ys_keybrd_dlg.cpp\
 	ys_trans_type.cpp\
-	ys_tax_type.cpp
+	ys_tax_type.cpp\
+	ys_build.cpp\
+	wrapexpat.cpp\
+	xml.cpp\
+	xmlnode.cpp\
+	ys_date.cpp
 
-yardsale_LDFLAGS = 
+yardsale_LDFLAGS = -Lextra/xrc
 
 yardsale_LDADD =  \
-	$(WX_LIBS) -lodbc
-
-test_db_SOURCES = ys_database.cpp ys_inv_type.cpp ys_log.cpp
-test_db_LDADD =  -lodbc $(WX_LIBS)
-test_db_CXXFLAGS =  $(WX_CXXFLAGS) -g -ansi -Wall -DYS_TEST_DB
-
-test_inv_SOURCES = ys_inv_type.cpp 
-test_inv_LDADD = -lodbc
-test_inv_CXXFLAGS =  -g -ansi -Wall -DYS_TEST_INV_TYPE
-
-test_bitmap_SOURCES = ys_bitmaps.cpp ys_log.cpp
-test_bitmap_LDADD = $(WX_LIBS)
-test_bitmap_CXXFLAGS = $(WX_CXXFLAGS) -g -ansi -Wall -DYS_TEST_BITMAPS
-
-test_emp_SOURCES = ys_employee_type.cpp
-test_emp_LDADD = -lodbc
-test_emp_CXXFLAGS = -g -ansi -Wall -DYS_TEST_EMPLOYEE_TYPE
-
-test_cust_SOURCES = ys_cust_type.cpp
-test_cust_LDADD = -lodbc
-test_cust_CXXFLAGS = -g -ansi -Wall -DYS_TEST_CUST_TYPE
-
-test_trans_SOURCES = ys_trans_type.cpp
-test_trans_LDADD = -lodbc
-test_trans_CXXFLAGS = -g -ansi -Wall -DYS_TEST_TRANS_TYPE
-
+	$(WX_LIBS) -lodbc -lxrc

@@ -5,100 +5,24 @@
 
 using namespace std;
 
-// Copy constructor - always deep copy
-YardEmployeeType::YardEmployeeType(const YardEmployeeType& copy)
-{
-    *this = copy;
-    
-}
-    
-// Assignment operator overload
-YardEmployeeType& YardEmployeeType::operator=(const YardEmployeeType & copy)
-{
-    m_id = copy.m_id; // employee id number
-     
-    m_taxId = copy.m_taxId; // social in many cases
-    m_firstName = copy.m_firstName; //first name
-    m_middleName = copy.m_middleName; //middle name
-    m_lastName = copy.m_lastName; //last name
-    m_address = copy.m_address; 
-    m_city = copy.m_city;
-    m_zip = copy.m_zip;
-    m_state = copy.m_state;
-    m_phone = copy.m_phone;
-    m_picture = copy.m_picture;
-    m_signature = copy.m_signature;
-    m_title = copy.m_title;
-    return *this;
-}
-
-string YardEmployeeType::ToString(const string& delim) const {
+string YardEmployeeType::ToString(const string& delim, bool quotes) const {
     stringstream strm;
+    char q = '\'';
+    
     strm 
-        << m_id << delim 
-        << m_taxId << delim
-        << m_firstName << delim
-        << m_middleName << delim
-        << m_lastName << delim
-        << m_address << delim
-        << m_city << delim
-        << m_zip << delim
-        << m_state << delim
-        << m_phone << delim
-        << m_picture << delim
-        << m_signature << delim
-        << m_title;
+        << child("EMP_ID_Number").data() << delim 
+        << child("EMP_Social_Security_Number").data() << delim
+        << q << child("EMP_First_Name").data() << q << delim
+        << q << child("EMP_Middle_Name").data() << q << delim
+        << q << child("EMP_Last_Name").data() << q << delim
+        << q << child("EMP_Address").data() << q << delim
+        << q << child("EMP_Phone_Number").data() << q << delim
+        << q << child("EMP_City").data() << q << delim
+        << q << child("EMP_Zip").data() << q << delim
+        << q << child("EMP_Picture").data() << q << delim
+        << q << child("EMP_Signature").data() << q;
     
     return strm.str();
-}
-
-
-void YardEmployeeType::SetTaxId(const string& id) {
-    m_taxId = id;
-}
-
-void YardEmployeeType::SetFirstName(const string& name) {
-    m_firstName = name;
-}
-
-void YardEmployeeType::SetMiddleName(const string& name) {
-    m_middleName = name;
-}
-
-void YardEmployeeType::SetLastName(const string& name) {
-    m_lastName = name;
-}
-
-void YardEmployeeType::SetAddress(const string& add) {
-    m_address = add;
-}
-
-void YardEmployeeType::SetCity(const string& city) {
-    m_city = city;
-}
-
-void YardEmployeeType::SetState(const string& state) {
-    m_state = state;
-}
-
-void YardEmployeeType::SetZip(const string& zip) {
-    m_zip = zip;
-}
-    
-void YardEmployeeType::SetPhone(const string& phone) {
-    m_phone = phone;
-}
-
-void YardEmployeeType::SetPicture(const string& loc) {
-    m_picture = loc;
-}
-
-void YardEmployeeType::SetSig(const string& loc) {
-    m_signature = loc;
-}
-    
-void YardEmployeeType::SetTitle(const string& title) {
-    m_title = title;
 }
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_EMPLOYEE_TYPE))

@@ -123,21 +123,6 @@ string ToXML(otl_stream * stream)
         
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #if 0
 template <class T> 
 string ToString(otl_stream * stream,T& v) 

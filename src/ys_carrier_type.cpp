@@ -1,68 +1,18 @@
 #include <sstream>
-
-#define OTL_ODBC_MYSQL
-#define OTL_STL
-
-#ifndef _WIN32
-#define OTL_ODBC_UNIX
-#else
-#define OTL_ODBC
-#endif
-
-
-#include "otlv4.h"
 #include "ys_carrier_type.h"
-#include "ys_exception.h"
 
 using namespace std;
 
-YardCarrierType::YardCarrierType(const YardCarrierType& obj) {
+string YardCarrierType::ToString(const string& delim, bool quotes) const {
     
-    *this = obj;
-    
-}
-
-string YardCarrierType::ToString(const string& delim) const {
-    
-    stringstream output;
-    output << m_carrierID << delim << m_carrierName   
-        << delim << m_pickupLoc << delim << m_phoneNum;
-    
-    return output.str();
-        
-}
-
-void YardCarrierType::FillFromStream(otl_stream * stream)
-{  
-    if (!stream)
-        return;
-    /// maybe throw here
-    
-    //char oversized, freight;
-    otl_datetime lastRec;
-    
-    YardCarrierType temp;
-        
-    try {
-        *stream 
-            >> m_carrierID 
-            >> m_carrierName
-            >> m_pickupLoc
-            >> m_phoneNum;
-            
-    } catch (otl_exception &e) {
-        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-    }
-}
-
-YardCarrierType& YardCarrierType::operator=(const YardCarrierType& obj) {
-    
-    m_carrierID = obj.m_carrierID;
-    m_carrierName = obj.m_carrierName;
-    m_pickupLoc = obj.m_pickupLoc;
-    m_phoneNum = obj.m_phoneNum;
-    
-    return *this;
+    stringstream ret;
+    char q = '\'';
+    ret << child("CRR_ID").data() << delim
+        << q << child("CRR_Name").data() << q << delim
+        << q << child("CRR_Pickup_Location").data() << q << delim
+        << q << child("CRR_Phone_Number").data() << q;
+    return ret.str();
+ 
 }
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_CARRIER_TYPE))

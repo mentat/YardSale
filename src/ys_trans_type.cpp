@@ -87,6 +87,10 @@ YardTransType& YardTransType::operator=(const YardTransType& obj) {
 
 using namespace std;
 
+/*
+    Methods need to add an inventory type and a customer to the trans.
+*/
+
 int main()
 {
     vector<YardTransType> currentTransaction;

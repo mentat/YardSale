@@ -1,60 +1,11 @@
 #include <sstream>
 
-#define OTL_ODBC_MYSQL
-#define OTL_STL
-
-#ifndef _WIN32
-#define OTL_ODBC_UNIX
-#else
-#define OTL_ODBC
-#endif
-
-
-#include "otlv4.h"
 #include "ys_inv_type.h"
-#include "ys_exception.h"
-
 #include "wx/log.h"
 
 using namespace std;
 
-void YardInvType::SetItemType(const string& str) {
-    m_itemType = str;
-    
-}
-
-void YardInvType::SetDepartment(const string& str) {
-    m_itemDepartment = str;
-}
-        
-void YardInvType::SetBarCode(const string& str) {
-    m_barCode = str;
-}
-   
-YardInvType::YardInvType() {
-    m_key = -1;
-    /* These variables directly correspond with the database */
-    m_quantityOnHand = 0;
-    m_quantityOnOrder = 0;
-    m_reorderLevel = 0;
-    m_reorderQuantity = 0;
-    
-    m_itemWeight = 0.0;
-    m_taxType = 1;
-    m_vendorId = 1;
-    m_retailPrice = 0.00;
-    m_wholesalePrice = 0.00;
- 
-    m_oversized = false;
-    m_mustShipFreight = false;
-}
-
-YardInvType::YardInvType(const YardInvType& obj) {
-    
-    *this = obj;
-    
-}
-
+#if 0
 void YardInvType::SetKey(int key) {
     
     if (m_key == -1)
@@ -63,147 +14,41 @@ void YardInvType::SetKey(int key) {
         throw YardDBIntegrityException("YardInvType::SetKey: You may not"
             " overwrite this value or DB integrity will be violated.");
 }
+#endif
 
-string YardInvType::ToString(const string& delim) const {
+string YardInvType::ToString(const string& delim, bool quotes) const {
     
     char q = '\'';
     stringstream output;
-    output << q << q << delim 
-        << q << m_skuNumber << q << delim 
-        << q << m_barCode << q << delim 
-        << q << m_itemDescription << q << delim 
-        << q << m_itemDepartment << q << delim 
-        << m_quantityOnHand << delim 
-        << m_quantityOnOrder << delim 
-        << m_reorderLevel << delim 
-        << m_reorderQuantity << delim 
-        << q << m_itemType << q << delim 
-        << m_invGroup << delim
-		<< m_taxType << delim
-        << m_vendorId << delim 
-        << m_retailPrice << delim 
-        << m_wholesalePrice << delim 
-        << q << m_bulkPrice << q << delim;
-    
-    if (m_key == -1)
+    output << GetKey() << delim 
+        << q << GetSKU() << q << delim 
+        << q << GetBarCode() << q << delim 
+        << q << GetDescription() << q << delim 
+        << q << GetDepartment() << q << delim 
+        << GetQuantOnHandS() << delim 
+        << GetQuantOnOrderS() << delim 
+        << GetReorderLevelS() << delim 
+        << GetReorderQuantityS() << delim 
+        << q << GetType() << q << delim 
+        << GetGroupIdS() << delim
+        << GetTaxTypeS() << delim
+        << GetVendorIdS() << delim
+        << GetRetailPriceS() << delim
+        << GetWholesalePriceS() << delim
+        << q << GetBulkPricing() << q << delim;    
+	if (GetDateLastReceived().GetYear() == 0)
         output << "now()" << delim;
     else
-        output << m_dateLastReceived.ToString() << delim;
-        
-    output << m_itemWeight << delim;
-    
-    if (m_oversized)
-        output << "'T'";
-    else
-        output << "'F'";
-    output << delim;
-    
-    if (m_mustShipFreight)
-        output << "'T'";
-    else
-        output << "'F'";
-    output << delim;
-    
-    output << q << m_comment << q;
-    
+        output << q << GetDateLastReceived().ToString() << q << delim;
+    output << GetWeightLbsS() << delim
+        << q << IsOverSizedS() << delim
+        << q << MustShipFreightS() << delim
+        << q << GetComment() << q;
+  
     wxLogDebug(output.str().c_str());
      
     return output.str();
         
-}
-
-void YardInvType::SetSKU(const string& sku) {
-    m_skuNumber = sku;
-    
-}
-
-void YardInvType::FillFromStream(otl_stream * stream)
-{  
-    if (!stream)
-        return;
-    /// maybe throw here
-    
-    char oversized, freight;
-    otl_datetime lastrec;
-    
-    YardInvType temp;
-    m_key = 1;
-    try {
-        *stream
-            >> m_key
-            >> m_skuNumber 
-            >> m_barCode 
-            >> m_itemDescription
-            >> m_itemDepartment 
-            >> m_quantityOnHand
-            >> m_quantityOnOrder
-            >> m_reorderLevel
-            >> m_reorderQuantity
-            >> m_itemType 
-			>> m_invGroup
-			>> m_taxType
-            >> m_vendorId
-            >> m_retailPrice
-            >> m_wholesalePrice
-            >> m_bulkPrice
-            >> lastrec
-            >> m_itemWeight
-            >> oversized
-            >> freight
-            >> m_comment;
- 
-        m_dateLastReceived.year = lastrec.year;
-        m_dateLastReceived.month = lastrec.month;
-        m_dateLastReceived.day = lastrec.day;
-        m_dateLastReceived.hour = lastrec.hour;
-        m_dateLastReceived.minute = lastrec.minute;
-        m_dateLastReceived.second = lastrec.second;
-        m_dateLastReceived.fraction = lastrec.fraction;
-        m_dateLastReceived.frac_precision = lastrec.frac_precision;
-            
-        if (oversized == 'F')
-            m_oversized = false;
-        else 
-            m_oversized = true;
-            
-        if (freight == 'F')
-            m_mustShipFreight = false;
-        else
-            m_mustShipFreight = true;
-            
-    } catch (otl_exception &e) {
-        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-    }
-}
-    
-YardInvType& YardInvType::operator=(const YardInvType& obj) {
-    
-    m_key = obj.m_key;
-    m_skuNumber = obj.m_skuNumber;
-    m_barCode = obj.m_barCode;
-    m_itemDescription = obj.m_itemDescription;
-    m_itemDepartment = obj.m_itemDepartment;
-    m_quantityOnHand = obj.m_quantityOnHand;
-    m_quantityOnOrder = obj.m_quantityOnOrder;
-    m_reorderLevel = obj.m_reorderLevel;
-    m_reorderQuantity = obj.m_reorderQuantity;
-    m_itemType = obj.m_itemType;
-	m_invGroup = obj.m_invGroup;
-    m_itemWeight = obj.m_itemWeight;
-    m_taxType = obj.m_taxType;
-    m_vendorId = obj.m_vendorId;
-    m_retailPrice = obj.m_retailPrice;
-    m_wholesalePrice = obj.m_wholesalePrice;
-    
-    m_bulkPricing = obj.m_bulkPricing;
-    m_bulkPrice = obj.m_bulkPrice;
-    m_dateLastReceived = obj.m_dateLastReceived;
-    m_comment = obj.m_comment;
-    
-    m_oversized = obj.m_oversized;
-    m_mustShipFreight = obj.m_mustShipFreight;
-
-    return *this;
 }
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_INV_TYPE))
@@ -216,26 +61,70 @@ using namespace std;
 int main()
 {
     YardInvType test1;
+    
     test1.SetBarCode("QWERTY");
+    VERIFY(test1.GetBarCode(), string("QWERTY"));
+    
     test1.SetDescription("A very nice object");
+    VERIFY(test1.GetDescription(), string("A very nice object"));
+    
     test1.SetDepartment("Sales");
+    VERIFY(test1.GetDepartment(), string("Sales"))
+    
     test1.SetQuantOnHand(69);
+    VERIFY(test1.GetQuantOnHand(), 69);
+    
     test1.SetQuantOnOrder(96);
+    VERIFY(test1.GetQuantOnOrder(), 96);
+    
     test1.SetReorderLevel(30);
+    VERIFY(test1.GetReorderLevel(), 30);
    
-    test1.SetItemType("Widget");
-    test1.SetItemWeightLbs(1000.45);
+    test1.SetType("Widget");
+    VERIFY(test1.GetType(), string("Widget"));
+    
+    test1.SetWeightLbs(1000.45);
+    VERIFY_FLOAT(test1.GetWeightLbs(), 1000.45);
+    
     test1.SetTaxType(0);
-//    test1.SetVentorId(12345);
+    VERIFY(test1.GetTaxType(), 0);
+    
     test1.SetRetailPrice(34.23);
+    VERIFY_FLOAT(test1.GetRetailPrice(), 34.23);
+    
     test1.SetWholesalePrice(1000.12);
+    VERIFY_FLOAT(test1.GetWholesalePrice(), 1000.12);
    
-    //test1.AddBulkPrice();
-    //test1.RemoveBulkPrice(unsigned int level);
+    test1.AddBulkPrice(100, 0.12);
+    VERIFY_FLOAT(test1.GetBulkPrice(100), 0.12);
+    //cout << test1.child("INV_Bulk_Price").child("100").data() << endl;
+    //cout << test1.GetBulkPrice(100) << endl;
+    
+    test1.AddBulkPrice(200, 0.23);
+    VERIFY_FLOAT(test1.GetBulkPrice(200), 0.23);
+    // should overwrite
+    test1.AddBulkPrice(100, 0.50);
+    VERIFY_FLOAT(test1.GetBulkPrice(100), 0.50);
+    
+    test1.RemoveBulkPrice(100);
+    VERIFY_FLOAT(test1.GetBulkPrice(100), 0.0);
    
     test1.SetOverSized(true);
-    test1.SetShipFreight(false);
+    VERIFY(test1.IsOverSized(), true);
     
+    test1.SetShipFreight(false);
+    VERIFY(test1.MustShipFreight(), false);
+ 
+#if 0 
+    vector<XMLNode> v = test1.children();
+   
+    for (int i = 0; i < v.size(); i++)
+    {
+        cout << v[i].name() << endl;
+    }
+    
+    cout << string(test1) << endl;
+#endif
     YardInvType test2(test1);
     
     VERIFY(test2.GetBarCode(), test1.GetBarCode());
@@ -260,9 +149,7 @@ int main()
     copyArray = anArray;
     
     VERIFY(anArray[0].GetBarCode(), copyArray[0].GetBarCode());
-    
-    cout << test3.ToString();
-    
+      
     return failure;
 }
 

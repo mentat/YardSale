@@ -67,9 +67,9 @@ void YardInventory::PopulateList()
         m_list->SetItem(0,1, m_objects[i].GetBarCode().c_str());
         m_list->SetItem(0,2, m_objects[i].GetDescription().c_str());
         m_list->SetItem(0,3, m_objects[i].GetDepartment().c_str());
-        m_list->SetItem(0,4, strIToA(m_objects[i].GetQuantOnHand()).c_str());
-        m_list->SetItem(0,5, toMoney(m_objects[i].GetRetailPrice()).c_str());
-        m_list->SetItem(0,6, toMoney(m_objects[i].GetWholesalePrice()).c_str());
+        m_list->SetItem(0,4, m_objects[i].GetQuantOnHandS().c_str());
+        m_list->SetItem(0,5, m_objects[i].GetRetailPriceS().c_str());
+        m_list->SetItem(0,6, m_objects[i].GetWholesalePriceS().c_str());
     }
     
     m_list->SetColumnWidth( 0, wxLIST_AUTOSIZE );
@@ -95,14 +95,11 @@ void YardInventory::SetPointers()
     m_vendor = static_cast<wxTextCtrl *>(FindWindow(ID_INV_VENDOR));
     m_barCode = static_cast<wxTextCtrl *>(FindWindow(ID_INV_BARCODE));
     m_desc = static_cast<wxTextCtrl *>(FindWindow(ID_INV_DESC));
- 
     m_freight = static_cast<wxCheckBox *>(FindWindow(ID_INV_FREIGHT));
     m_oversized = static_cast<wxCheckBox *>(FindWindow(ID_INV_OVERSIZE));
- 
     m_onHand = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_ONHAND));
     m_onOrder = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_ONORDER));
     m_reOrder = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_REORDER_LEVEL));
-    
     m_tax = static_cast<wxChoice *>(FindWindow(ID_INV_TAX_TYPE));
 
 }
@@ -124,21 +121,21 @@ void YardInventory::OnNew(wxCommandEvent & event) {
     temp.SetQuantOnOrder(m_onOrder->GetValue());
     temp.SetReorderLevel(m_reOrder->GetValue());
    
-    temp.SetItemType(m_type->GetValue().c_str());
+    temp.SetType(m_type->GetValue().c_str());
     double doubleTemp;
     wxString doubleTxt = m_weight->GetValue();
     
     if (!doubleTxt.ToDouble(&doubleTemp))
-        doubleTemp = -1.0;
+        doubleTemp = 0.0;
     
-    temp.SetItemWeightLbs((float)doubleTemp);
+    temp.SetWeightLbs(doubleTemp);
     
     doubleTxt = m_price->GetValue();
     if (!doubleTxt.ToDouble(&doubleTemp))
-        doubleTemp = -1.0;
+        doubleTemp = 0.0;
     
-    temp.SetRetailPrice((float)doubleTemp);
-    temp.SetWholesalePrice((float)doubleTemp);
+    temp.SetRetailPrice(doubleTemp);
+    temp.SetWholesalePrice(doubleTemp);
     
     try {
         wxGetApp().DB().AddInventoryItem(temp);
@@ -194,13 +191,13 @@ void YardInventory::OnSelect(wxListEvent & event){
     
     m_sku->SetValue(m_objects[index].GetSKU().c_str());
     m_barCode->SetValue(m_objects[index].GetBarCode().c_str());
-    m_name->SetValue(m_objects[index].GetItemType().c_str());
+    m_name->SetValue(m_objects[index].GetType().c_str());
     m_department->SetValue(m_objects[index].GetDepartment().c_str());
-    m_type->SetValue(m_objects[index].GetItemType().c_str());
+    m_type->SetValue(m_objects[index].GetType().c_str());
     
-    m_price->SetValue(toMoney(m_objects[index].GetRetailPrice()).c_str());
-    m_wholesale->SetValue(toMoney(m_objects[index].GetWholesalePrice()).c_str());
-    m_weight->SetValue(strFToA(m_objects[index].GetItemWeightLbs()).c_str());
+    m_price->SetValue(m_objects[index].GetRetailPriceS().c_str());
+    m_wholesale->SetValue(m_objects[index].GetWholesalePriceS().c_str());
+    m_weight->SetValue(m_objects[index].GetWeightLbsS().c_str());
     m_desc->SetValue(m_objects[index].GetDescription().c_str());
     
 }

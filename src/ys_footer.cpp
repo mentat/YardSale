@@ -1,26 +1,25 @@
+#include "extra/xrc/xmlres.h"
+
+#include "wx/log.h"
 #include "wx/panel.h"
 #include "wx/bmpbuttn.h"
-#include "wx/app.h"
 #include "wx/datetime.h"
 #include "wx/timer.h"
+#include "wx/stattext.h"
 
 #include "ys_footer.h"
 #include "ys_bitmaps.h"
-#include "yardsale.h"
-#include "yardsale_wdr.h"
 #include "ys_calc_dlg.h"
 #include "ys_keybrd_dlg.h"
 
 enum { FOOTER_TIMER_ID = 9999 };
 
-DECLARE_APP(YardSale)
-
 BEGIN_EVENT_TABLE(YardFooter, wxPanel)
     EVT_TIMER(FOOTER_TIMER_ID, YardFooter::OnTimer)
-    EVT_BUTTON(ID_FOOTER_BACK, YardFooter::OnBack)
-    EVT_BUTTON(ID_FOOTER_CALC, YardFooter::OnCalc)
-    EVT_BUTTON(ID_FOOTER_KEY, YardFooter::OnKeyboard)
-    EVT_BUTTON(ID_FOOTER_UNDO, YardFooter::OnUndo)
+    EVT_BUTTON(XRCID("ID_FOOTER_BACK"), YardFooter::OnBack)
+    EVT_BUTTON(XRCID("ID_FOOTER_CALC"), YardFooter::OnCalc)
+    EVT_BUTTON(XRCID("ID_FOOTER_KEY"), YardFooter::OnKeyboard)
+    EVT_BUTTON(XRCID("ID_FOOTER_UNDO"), YardFooter::OnUndo)
 END_EVENT_TABLE()
 
 YardFooter::YardFooter(wxWindow* parent, wxWindowID id, 
@@ -30,20 +29,9 @@ YardFooter::YardFooter(wxWindow* parent, wxWindowID id,
      const wxString& name)
 :wxPanel(parent, id, pos, size, style, name)
 {
-    // get bitmaps from loader
-    new wxBitmapButton(this, ID_FOOTER_BACK,
-        wxGetApp().Images().GetBitmap(YardBitmaps::SALE_BACK));
-    new wxBitmapButton(this, ID_FOOTER_CALC, 
-        wxGetApp().Images().GetBitmap(YardBitmaps::FOOT_CALC));
-    new wxBitmapButton(this, ID_FOOTER_KEY, 
-        wxGetApp().Images().GetBitmap(YardBitmaps::FOOT_KEY));
-    new wxBitmapButton(this, ID_FOOTER_UNDO, 
-        wxGetApp().Images().GetBitmap(YardBitmaps::FOOT_UNDO));
-    wxSizer * sizer = InfoFooter(this, false, true);
-    
-    sizer->SetSizeHints(this);
-    //sizer->GetMinSize());
-    
+    wxXmlResource::Get()->Load("res/footer.xrc");
+    wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Footer");
+
     // see if parent is main frame if so, hide back button
     wxWindow * parentWin = GetParent()->GetParent();
     
@@ -51,13 +39,13 @@ YardFooter::YardFooter(wxWindow* parent, wxWindowID id,
     if (parentWin->GetName() == wxT("YardMain"))
     {
         wxLogDebug(wxT("Name checks"));
-        wxButton * back = static_cast<wxButton *>(FindWindow(ID_FOOTER_BACK));
+        wxButton * back = static_cast<wxButton *>(FindWindow(XRCID("ID_FOOTER_BACK")));
         wxASSERT(back);
         back->Show(false);
     }
     
     m_timer = new wxTimer(this, FOOTER_TIMER_ID);
-    m_timeTxt = (wxStaticText *)FindWindow(ID_FOOTER_TIME);
+    m_timeTxt = (wxStaticText *)FindWindow(XRCID("ID_FOOTER_TIME"));
     
     wxDateTime now = wxDateTime::Now();
     

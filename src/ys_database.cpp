@@ -83,13 +83,9 @@ bool YardDatabase::connect(){
     stringstream loginString;
     loginString << "UID=" << m_name << ";PWD=" << m_pass 
         << ";DSN=" << m_dsn;
-    
-    //wxLogDB(loginString.str().c_str());
-    
-    try {
         
-        m_db->rlogon(loginString.str().c_str()); // connect to ODBC
-    
+    try {     
+        m_db->rlogon(loginString.str().c_str()); // connect to ODBC 
     } catch(otl_exception &e) {
         
         try{ m_db->logoff(); } catch(otl_connect&){}
@@ -118,61 +114,8 @@ bool YardDatabase::disconnect()
     }
     return true;
 }
-#if 0
-vector<YardInvType> YardDatabase::FillFromStream(otl_stream * stream){
-    
-    vector<YardInvType> invVec;
-    
-    while (!stream->eof()){
-        
-        char oversized, freight;
-        otl_datetime lastRec;
-    
-        YardInvType temp;
-        
-        try {
-            *stream 
-                >> temp.m_skuNumber 
-                >> temp.m_barCode 
-                >> temp.m_itemDescription
-                >> temp.m_itemDepartment 
-                >> temp.m_quantityOnHand
-                >> temp.m_quantityOnOrder
-                >> temp.m_reorderLevel
-                >> temp.m_reorderQuantity
-                >> temp.m_itemType >> temp.m_taxType
-                >> temp.m_vendorId
-                >> temp.m_retailPrice
-                >> temp.m_wholesalePrice
-                >> temp.m_bulkPrice
-                >> lastRec
-                >> temp.m_itemWeight
-                >> oversized
-                >> freight
-                >> temp.m_comment;
-            
-            if (oversized == 'F')
-                temp.m_oversized = false;
-            else 
-                temp.m_oversized = true;
-            
-            if (freight == 'F')
-                temp.m_mustShipFreight = false;
-            else
-                temp.m_mustShipFreight = true;
-            
-        } catch (otl_exception &e) {
-            throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-        }
-        
-        invVec.push_back(temp);
-    }
-    
-    return invVec;
-}
-#endif
 
-vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
+vector<YardInvType> YardDatabase::InventorySearchSKU(unsigned long sku) {
    
     if (!m_db)
         throw YardDBException("DB not initialized.");
@@ -190,10 +133,28 @@ vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
         
-    return FillFromStream<YardInvType>(dbStream.get());
+    return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
 }
 
-vector<YardInvType> YardDatabase::InvGet() throw (YardDBException){
+vector<YardEmployeeType> YardDatabase::EmployeeGetAll() const{
+    
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Employee_Table";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+    } catch (otl_exception &e) { // so just get otl exceptions
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return XMLFromStream<YardEmployeeType>(dbStream.get(), "Employee_Table");
+}
+
+vector<YardInvType> YardDatabase::InventoryGetAll(){
     
     if (!m_db)
         throw YardDBException("DB not initialized.");
@@ -211,10 +172,10 @@ vector<YardInvType> YardDatabase::InvGet() throw (YardDBException){
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
         
-    return FillFromStream<YardInvType>(dbStream.get());
+    return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
 }
 
-int YardDatabase::AddInventoryItem(const YardInvType& item)
+long YardDatabase::InventoryAdd(const YardInvType& item)
 {
     if (!m_db)
         throw YardDBException("DB not initialized.");
@@ -225,17 +186,41 @@ int YardDatabase::AddInventoryItem(const YardInvType& item)
     auto_ptr<otl_stream> dbStream;
 
     try { // since its a new call might throw bad_alloc, but that is unlikely
-        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
     
     } catch (otl_exception &e) { // so just get otl exceptions
         
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
     
-    return 0;
+    // This function also does a select to return the key
+    
+    stringstream select;
+    select << "SELECT INV_Item_ID from Inventory_Table where INV_Bar_Code_Number = '"
+        << item.GetBarCode() << "';";
+    
+    auto_ptr<otl_stream> db;
+    
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        db.reset( new otl_stream(1, select.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    long int key = 0;
+    
+    try {
+        *db >> key;
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return key;
 }
 
-int YardDatabase::AddCustomer(const YardCustType& newCust)
+int YardDatabase::CustomerAdd(const YardCustType& newCust)
 {
 	if (!m_db)
 		throw YardDBException("DB not Initialized.");
@@ -245,14 +230,138 @@ int YardDatabase::AddCustomer(const YardCustType& newCust)
 
 	auto_ptr<otl_stream> dbStream;
 
-	try { // Who knows?
-		dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+	try {
+		dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
 	} catch (otl_exception &e) {
 
 		throw YardDBException((char *)e.msg, (char *)e.stm_text);
 	}
 
 	return 0;
+}
+
+string YardDatabase::tab(int level)
+{
+    string ret;
+    for (int i = 0; i < level; i++)
+        ret += "    ";
+    return ret;
+}
+
+string YardDatabase::escape(const string& esc){
+    string ret;
+    // This is to try and cut down on internal buffer resizing
+    ret.reserve(esc.length());
+    for (unsigned int i = 0; i < esc.length(); i++)
+    {
+        switch (esc[i]) {
+            case ('<'): ret += "&lt;"; break;
+            case ('>'): ret += "&gt;"; break;
+            case ('&'): ret += "&amp;"; break;
+            case ('\''): ret += "&apos;"; break;
+            case ('"'): ret += "&quot;"; break;
+            default: ret += esc[i]; break;
+        }
+
+    }
+    return ret;
+}
+
+string YardDatabase::ToXML(otl_stream * stream, const string& record) const
+{
+    
+    if (!stream)
+        return "";
+    stringstream xml;    
+    int length = 0;
+    otl_column_desc* desc = stream->describe_select(length);
+
+    xml << tab(0) << "<" << record << ">" << endl;
+    /// @todo This is most likely faster with a string that I don't recreate in the loop
+    for(int i = 0; i < length; i++)
+    {
+        xml << tab(1) << "<" << desc[i].name << ">";
+        
+        switch(desc[i].otl_var_dbtype) {
+            case(otl_var_varchar_long): {
+                string i;
+                *stream >> i;
+                xml << escape(i);}
+                break;
+            case(otl_var_int):{
+                int i;
+                *stream >> i;
+                xml << i;}
+                break;
+             case(otl_var_char):{
+                string i;
+                *stream >> i;
+                xml << escape(i);}
+                break;
+            case(otl_var_db2date): 
+            case(otl_var_db2time): 
+            case(otl_var_ltz_timestamp): 
+            case(otl_var_timestamp): 
+            case(otl_var_tz_timestamp): {
+                otl_datetime i;
+                *stream >> i;
+                xml << i;
+                }
+                break;
+            case(otl_var_float):{
+                float i;
+                *stream >> i;
+                xml << i;}
+                break;
+            case(otl_var_double): {
+                double i;
+                *stream >> i;
+                xml << i;}
+                break;
+            case(otl_var_long_int): {
+                long int i;
+                *stream >> i;
+                xml << i;}
+                break;
+            case(otl_var_short):{
+                short i;
+                *stream >> i;
+                xml << i;}
+                break;
+            case(otl_var_unsigned_int): {
+                unsigned int i;
+                *stream >> i;
+                xml << i;}
+                break;
+            #ifdef OTL_BIGINT
+            case(otl_var_bigint): {
+                long long i;
+                *stream >> i;
+                xml << i; }
+                break;
+            #endif
+            
+            case(otl_var_clob): {
+                string i;
+                *stream >> i;
+                xml << escape(i); }
+                break;
+            #if 0
+            case(otl_var_blob): {
+                otl_lob_stream i;
+                *stream >> i;
+                xml << i;}
+                break;
+            #endif
+            default: cerr << "Throw a fucking exception" << endl;
+                break;
+        }
+        xml << "</" << desc[i].name << ">" << endl;
+
+    }
+    
+    xml << tab(0) << "</" << record << ">" << endl;
+    return xml.str();
 }
     
 
@@ -264,74 +373,135 @@ int YardDatabase::AddCustomer(const YardCustType& newCust)
 
 using namespace std;
 
-int main(int argc, char ** argv)
-{
-    // argv[1] = name, [2] = pass, [3] = dsn
+#define TEST_DB "localhost"
+#define TEST_DSN "YardSaleTest"
+#define TEST_USER "test"
+#define TEST_PASS "test"
 
+/*
+Tests needed:
+    Add, remove, modify each type.
+
+*/
+
+int InventoryTest(YardDatabase * db)
+{
+    // Setup inventory
+    YardInvType test1;
+    
+    test1.SetBarCode("QWERTY");
+    test1.SetDescription("A very nice object");
+    test1.SetDepartment("Sales");
+    test1.SetQuantOnHand(69);
+    test1.SetQuantOnOrder(96);
+    test1.SetReorderLevel(30);
+    test1.SetType("Widget");
+    test1.SetWeightLbs(1000.45);
+    test1.SetTaxType(0);
+    test1.SetRetailPrice(34.23);
+    test1.SetWholesalePrice(1000.12);
+    test1.AddBulkPrice(100, 0.12);
+    test1.AddBulkPrice(200, 0.23);
+    test1.RemoveBulkPrice(100);
+    test1.SetOverSized(true);
+    test1.SetShipFreight(false);
+    
+    // try insert
+    long key = 0;
+    VERIFY_NO_THROW( key = db->InventoryAdd(test1) );
+    if (key == 0) return 1;
+        
+    // try retrieve
+    YardInvType test2;
+    VERIFY_NO_THROW( test2 = db->InventoryGet(key) );
+    
+    
+    
+#if 0    
+    vector<YardInvType> invObj;
+
+    /* Search for an SKU that probably doesn't exist,
+   test to see if the shit bombs when we try to print */
+    
+    try {
+        invObj = testDB.InvSearchSKU(99999);
+    }
+    catch (YardDBException &e)
+    {
+        cout << e.GetWhat() << endl;
+        return 1;
+    }
+                  
+    for (unsigned int ii = 0; ii < invObj.size(); ii++){
+        cout << "----------" << invObj[ii].ToString() << "----------" << endl;
+    }
+
+    
+    /* Search for an SKU that we know exists, and see if that prints. */
+    try {
+        invObj = testDB.InvSearchSKU(10000);
+    }
+    catch (YardDBException &e) {
+        cout << e.GetWhat() << endl << e.GetSQL() 
+            << endl << e.GetVarInfo() << endl;
+        return 1;
+    }
+      
+    for (unsigned int ii = 0; ii < invObj.size(); ii++){
+        cout << "-------" << invObj[ii].ToString() << "-------" << endl;
+    }
+    
+    try {
+        invObj = testDB.InvGet();
+    }
+    catch (YardDBException &e) {
+        cout << e.GetWhat() << endl << e.GetSQL() 
+            << endl << e.GetVarInfo() << endl;
+        return 1;
+    }
+      
+    for (unsigned int ii = 0; ii < invObj.size(); ii++){
+        cout << "-------" << invObj[ii].ToString() << "-------" << endl;
+    }
+#endif
+}
+
+/// argv[1]: username, argv[2]: pass, argv[3]: dsn
+int main(int argc, char** argv)
+{
     YardDatabase testDB;
    
     if (argc == 4) {
-        
-        cout << "Name: " << argv[1] << " Pass: " << argv[2] << " DSN: "
-            << argv[3] << endl;
-        
         testDB.Init(argv[1], argv[2], argv[3]);
-        
-        try {
-            testDB.connect();
-        } 
-        catch (YardDBException &e) 
-        {
-            cout << e.GetWhat() << endl;
-            return 1;
-        }
-        
-        vector<YardInvType> invObj;
-
-        /* Search for an SKU that probably doesn't exist,
-	   test to see if the shit bombs when we try to print */
-        
-        try {
-            invObj = testDB.InvSearchSKU(99999);
-        }
-        catch (YardDBException &e)
-        {
-            cout << e.GetWhat() << endl;
-            return 1;
-        }
-                      
-        for (unsigned int ii = 0; ii < invObj.size(); ii++){
-            cout << "----------" << invObj[ii].ToString() << "----------" << endl;
-        }
-
-        
-        /* Search for an SKU that we know exists, and see if that prints. */
-        try {
-            invObj = testDB.InvSearchSKU(10000);
-        }
-        catch (YardDBException &e) {
-            cout << e.GetWhat() << endl << e.GetSQL() 
-                << endl << e.GetVarInfo() << endl;
-            return 1;
-        }
-          
-        for (unsigned int ii = 0; ii < invObj.size(); ii++){
-            cout << "-------" << invObj[ii].ToString() << "-------" << endl;
-        }
-        
-        try {
-            invObj = testDB.InvGet();
-        }
-        catch (YardDBException &e) {
-            cout << e.GetWhat() << endl << e.GetSQL() 
-                << endl << e.GetVarInfo() << endl;
-            return 1;
-        }
-          
-        for (unsigned int ii = 0; ii < invObj.size(); ii++){
-            cout << "-------" << invObj[ii].ToString() << "-------" << endl;
-        }
     }
+    else
+    {
+        testDB.Init(TEST_USER, TEST_PASS, TEST_DSN);
+    }
+        
+    try {
+        testDB.connect();
+    } 
+    catch (YardDBException &e) 
+    {
+        if (argc == 4) // command line usage
+        {
+            cout << "Error: " << e.GetWhat() << endl
+                 << "Command line usage: test_db username pass dsn" << endl;
+            return 1;
+        }
+        cout << "!!!Could not connect to the database, \n"
+            << "the database connection based \n"
+            << "tests will not be run (" << e.GetWhat() "). \n"
+            << "I you have not setup the testing main for your \n"
+            << "testing database, please do so!!!" << endl;
+        return 1;
+    }
+
+    InventoryTest(&testDB);
+    
+    return failure;
 }
+
     
 #endif
