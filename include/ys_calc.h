@@ -71,6 +71,11 @@ class YardCalc: public wxPanel {
     DECLARE_DYNAMIC_CLASS(YardCalc)
 	
  
+    /**
+    * Runs when the user presses the '00' button. This implies that 
+    * he/she wants to multiply the number by .01.
+    * @param wxCommandEvent & event - reference to the button pushed
+    */
     void OnDoubleZero(wxCommandEvent & event);
  
     /**
@@ -81,7 +86,6 @@ class YardCalc: public wxPanel {
 	 * 
 	 * The blank number will be replaced when the next number is pressed
 	 * in the OnNumber function
-	 * @todo JAY get multiplication and division working
      * @param wxCommandEvent & event - reference to the button pushed
      */
 	void OnOperator(wxCommandEvent & event); 
