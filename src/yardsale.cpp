@@ -14,6 +14,8 @@ bool YardSale::OnInit()
 {
     m_db = 0;
     
+    m_db = new YardDatabase();
+    
     wxImage::AddHandler(new wxPNGHandler);    
     
     m_bitmaps = new YardBitmaps();
