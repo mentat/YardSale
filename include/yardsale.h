@@ -27,27 +27,27 @@
  * Splash (load windows, db in backgorund)->Login->Main
  * From the Main screen you can select: </p>
  * <ul>
- * <li>Employee Managment @see YardEmployee
- * <li>Sales
- * <li>Inventory Managment
- * <li>Reports
+ * <li>Employee Managment @sa YardEmployee
+ * <li>Sales @sa YardSaleScreen
+ * <li>Inventory Managment @sa YardInventory
+ * <li>Reports 
  * <li>Customer Managment
  * <li>Logout
  * </ul>
  * <p>
  *
  * Main Web Page: <a href="http://yardsale.sf.net">YardSale</a> 
- * @author Jesse Lovelace
- * @author Adam Parrish
- * @author Mike Swigon
- * @author Jay Jonston
- * @author John Lamb
+ * @author Jesse Lovelace - jllovela at ncsu dot edu
+ * @author Adam Parrish - waparris at ncsu dot edu
+ * @author Mike Swigon - mrswigon at ncsu dot edu
+ * @author Jay Johnston - jkjohnst at ncsu dot edu
+ * @author John Lamb - jwlamb at ncsu dot edu
  */
 
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 class YardSale: public wxApp {
     public:
