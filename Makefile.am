@@ -3,7 +3,7 @@
 ## If you don't want it to overwrite it,
 ## 	Please disable it in the Anjuta project configuration
 
-SUBDIRS = include src
+SUBDIRS = intl po include src
 
 yardsaledocdir = ${prefix}/doc/YardSale
 yardsaledoc_DATA = \
@@ -17,8 +17,6 @@ yardsaledoc_DATA = \
 	ABOUT-NLS
 
 EXTRA_DIST = $(yardsaledoc_DATA)
-
-
 
 # Copy all the spec files. Of cource, only one is actually used.
 dist-hook:

@@ -1,9 +1,12 @@
-#include "wx/wx.h"
-#include "ys_main.h"
 #include "yardsale_wdr.h"
+
+#include "ys_main.h"
+#include "ys_inventory.h"
+
 
 BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(ID_MAIN_LOGOUT, YardMain::OnLogout)
+    EVT_BUTTON(ID_MAIN_INVENTORY, YardMain::OnInventory)
     EVT_BUTTON(ID_MAIN_MAX, YardMain::OnMax)
 END_EVENT_TABLE()
 
@@ -11,6 +14,8 @@ END_EVENT_TABLE()
 YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
                    const wxPoint& pos, const wxSize& size, long style)
 :wxFrame(parent, id, title, pos, size, style), m_max(false) {
+    
+    m_inventory = 0;
     
     wxPanel * panel = new wxPanel(this);
     wxImage::AddHandler(new wxPNGHandler);
@@ -31,14 +36,14 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     
     m_maxButt = new wxBitmapButton(panel, ID_MAIN_MAX, *m_enlarge, wxDefaultPosition);
     
-    (void *)new wxStaticBitmap(panel, ID_MAIN_LOGO, logo, wxDefaultPosition);
+    new wxStaticBitmap(panel, ID_MAIN_LOGO, logo, wxDefaultPosition);
      
-    (void *)new wxBitmapButton(panel, ID_MAIN_INVENTORY, inventory, wxDefaultPosition);
-    (void *)new wxBitmapButton(panel, ID_MAIN_CUSTOMER, customer, wxDefaultPosition);
-    (void *)new wxBitmapButton(panel, ID_MAIN_EMPLOYEE, employee, wxDefaultPosition);
-    (void *)new wxBitmapButton(panel, ID_MAIN_SALES, sales, wxDefaultPosition);
-    (void *)new wxBitmapButton(panel, ID_MAIN_REPORTS, reports, wxDefaultPosition);
-    (void *)new wxBitmapButton(panel, ID_MAIN_LOGOUT, logout, wxDefaultPosition);
+    new wxBitmapButton(panel, ID_MAIN_INVENTORY, inventory, wxDefaultPosition);
+    new wxBitmapButton(panel, ID_MAIN_CUSTOMER, customer, wxDefaultPosition);
+    new wxBitmapButton(panel, ID_MAIN_EMPLOYEE, employee, wxDefaultPosition);
+    new wxBitmapButton(panel, ID_MAIN_SALES, sales, wxDefaultPosition);
+    new wxBitmapButton(panel, ID_MAIN_REPORTS, reports, wxDefaultPosition);
+    new wxBitmapButton(panel, ID_MAIN_LOGOUT, logout, wxDefaultPosition);
 
     
     wxSizer * sizer = Main(panel, false, true);
@@ -71,4 +76,10 @@ void YardMain::OnMax(wxCommandEvent& event){
         ShowFullScreen(true);
         m_max=true;
     }
+}
+
+void YardMain::OnInventory(wxCommandEvent& event){
+    
+    wxFrame * inventory = new YardInventory(this, -1, wxT("Inventory"));
+    inventory->Show();
 }

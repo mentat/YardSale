@@ -71,7 +71,8 @@ module.include.files=\
 	yardsale.h\
 	yardsale_wdr.h\
 	ys_splash.h\
-	ys_main.h
+	ys_main.h\
+	ys_inventory.h
 
 module.source.name=src
 module.source.type=
@@ -79,7 +80,8 @@ module.source.files=\
 	yardsale.cpp\
 	yardsale_wdr.cpp\
 	ys_splash.cpp\
-	ys_main.cpp
+	ys_main.cpp\
+	ys_inventory.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

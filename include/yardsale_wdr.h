@@ -45,12 +45,13 @@ wxSizer *Login( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 #define ID_MAIN_LOGOUT 10010
 wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_LINE 10011
-#define ID_GRID 10012
+#define ID_BUTTON 10011
+#define ID_LINE 10012
+#define ID_LISTCTRL 10013
+#define ID_INVENTORY_EXIT 10014
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_MAIN_LOGO 10013
-#define ID_MAIN_MAX 10014
+#define ID_MAIN_LOGO 10015
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions
@@ -58,6 +59,8 @@ wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 // Declare toolbar functions
 
 // Declare bitmap functions
+
+wxBitmap YardBitmaps( size_t index );
 
 #endif
 
