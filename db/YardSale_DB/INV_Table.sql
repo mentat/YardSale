@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS Inventory_Table;
 
 CREATE TABLE Inventory_Table(
-	INV_SKU_Number			INT	NOT NULL,
+	INV_SKU_Number			varchar(10),
 	INV_Bar_Code_Number		varchar(30),
 	INV_Item_Description		TEXT,
 	INV_Item_Department		varchar(30),
