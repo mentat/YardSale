@@ -3,21 +3,22 @@
 #include <iostream>
 
 #include "wx/app.h"
+#include "wx/wx.h"
+#include "extra/xrc/xmlres.h"
 
 #include "yardsale.h"
 #include "ys_bitmaps.h"
-#include "yardsale_wdr.h"
 #include "ys_calc.h"
 
 using namespace std;
 
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardCalc, wxPanel)
-    EVT_BUTTON(ID_CALC_CLEAR, YardCalc::OnClear)
-	EVT_BUTTON(ID_CALC_DOT, YardCalc::OnNumber)
-	EVT_BUTTON(ID_CALC_PLUS, YardCalc::OnOperator)
-	EVT_BUTTON(ID_CALC_MINUS, YardCalc::OnOperator)
-	EVT_BUTTON(ID_CALC_EQUALS, YardCalc::OnOperator)
+    EVT_BUTTON(XRCID("ID_CALC_CLEAR"), YardCalc::OnClear)
+	EVT_BUTTON(XRCID("ID_CALC_DOT"), YardCalc::OnNumber)
+	EVT_BUTTON(XRCID("ID_CALC_PLUS"), YardCalc::OnOperator)
+	EVT_BUTTON(XRCID("ID_CALC_MINUS"), YardCalc::OnOperator)
+	EVT_BUTTON(XRCID("ID_CALC_EQUALS"), YardCalc::OnOperator)
     EVT_BUTTON(-1, YardCalc::OnNumber)
 END_EVENT_TABLE()
 
@@ -28,19 +29,15 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
         long style, const wxString& name)
         :wxPanel(parent, id, pos, size, style, name)
 {
-    wxBitmapButton * plus = new wxBitmapButton(this, ID_CALC_PLUS, 
-        wxGetApp().Images().GetBitmap(YardBitmaps::CALC_PLUS));
-    wxBitmapButton * minus = new wxBitmapButton(this, ID_CALC_MINUS, 
-        wxGetApp().Images().GetBitmap(YardBitmaps::CALC_MINUS));
-    wxBitmapButton * equals = new wxBitmapButton(this, ID_CALC_EQUALS, 
-        wxGetApp().Images().GetBitmap(YardBitmaps::CALC_EQUALS));
     
-    wxSizer * sizer = NumberPad(this, false, true);
+    wxXmlResource::Get()->Load("res/number_pad.xrc");
+    wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "NumberPad");
+    wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
-    
+        
     //initialize a way to get to the screen
-    m_screen = (wxTextCtrl *)FindWindow(ID_CALC_SCREEN);
+    m_screen = (wxTextCtrl *)FindWindow(XRCID("ID_CALC_SCREEN"));
     
     //make sure that the pointer is active
     wxASSERT(m_screen);
@@ -102,23 +99,23 @@ void YardCalc::OnNumber(wxCommandEvent & event)
     wxChar ch;
 	wxString m_tempstring;
 	CalcInstance m_tempstackinstance;
-
+#if 0
 	switch (event.GetId()) {
-        case (ID_CALC_1): ch = '1'; break;
-        case (ID_CALC_2): ch = '2'; break;
-        case (ID_CALC_3): ch = '3'; break;
-        case (ID_CALC_4): ch = '4'; break;
-        case (ID_CALC_5): ch = '5'; break;
-        case (ID_CALC_6): ch = '6'; break;
-        case (ID_CALC_7): ch = '7'; break;
-        case (ID_CALC_8): ch = '8'; break;
-        case (ID_CALC_9): ch = '9'; break;
-        case (ID_CALC_0): ch = '0'; break;
-        case (ID_CALC_DOT): ch = '.'; break;
+        case (XRCID("ID_CALC_1")): ch = '1'; break;
+        case (XRCID("ID_CALC_2")): ch = '2'; break;
+        case (XRCID("ID_CALC_3")): ch = '3'; break;
+        case (XRCID("ID_CALC_4")): ch = '4'; break;
+        case (XRCID("ID_CALC_5")): ch = '5'; break;
+        case (XRCID("ID_CALC_6")): ch = '6'; break;
+        case (XRCID("ID_CALC_7")): ch = '7'; break;
+        case (XRCID("ID_CALC_8")): ch = '8'; break;
+        case (XRCID("ID_CALC_9")): ch = '9'; break;
+        case (XRCID("ID_CALC_0")): ch = '0'; break;
+        case (XRCID("ID_CALC_DOT")): ch = '.'; break;
    
    	default: wxLogError(wxT("Should not see me")); return;
     }
-   
+#endif   
     //check to see if we need to clear the screen
     //aka, we just previously hit an operator
    // if (!m_calcstack.top().m_isNumber)
@@ -213,13 +210,13 @@ void YardCalc::OnOperator(wxCommandEvent & event){
 	
 	CalcInstance m_tempinstance;
 	m_tempinstance.m_isNumber = false;
-	
+#if 0
 	switch (event.GetId()) {
-        case (ID_CALC_PLUS): m_tempinstance.m_type.m_op = Addition; break;
-        case (ID_CALC_MINUS): m_tempinstance.m_type.m_op = Subtraction; break;
-        case (ID_CALC_EQUALS): EvaluateStack(); return;
+        case (XRCID("ID_CALC_PLUS")): m_tempinstance.m_type.m_op = Addition; break;
+        case (XRCID("ID_CALC_MINUS")): m_tempinstance.m_type.m_op = Subtraction; break;
+        case (XRCID("ID_CALC_EQUALS")): EvaluateStack(); return;
         }
-     
+#endif
     //first, evaluate the old stack        
     EvaluateStack();
     //next, push on my operator

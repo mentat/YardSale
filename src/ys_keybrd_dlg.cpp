@@ -1,4 +1,6 @@
+#include "wx/wx.h"
 #include "wx/sizer.h"
+#include "extra/xrc/xmlres.h"
 
 #include "ys_keybrd.h"
 #include "ys_keybrd_dlg.h"

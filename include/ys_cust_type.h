@@ -47,6 +47,8 @@ class YardCustType: public XMLNode
     /// Get Customer Middle Name
     string GetMiddleName() const
         { return child("CUST_Middle_Name").data(); }
+    string GetFirstLast() const
+        { return GetFirstName() + string(" ") + GetLastName(); }
     /// Get Customer Last Name
     string GetLastName() const 
         { return child("CUST_Last_Name").data(); }
@@ -61,6 +63,8 @@ class YardCustType: public XMLNode
     /// Get Customer City
     string GetCity() const
         { return child("CUST_City").data(); }
+    string GetState() 
+        { return child("CUST_State").data(); }
     /// Get Customer ZIP 
     string GetZip() const
         { return child("CUST_Zip").data(); }
@@ -74,10 +78,10 @@ class YardCustType: public XMLNode
     string GetCreditCardName() const
         { return child("CUST_Name_On_CC").data(); }
     /// Get Customer Signature 
-    string GetSignaturePath() const
+    string GetSigLocal() const
         { return child("CUST_Signature").data(); }
     /// Get Customer Photo
-    string GetPhoto() const
+    string GetPicLocal() const
         { return child("CUST_Photo").data(); }
       
     /* setters */
@@ -99,11 +103,13 @@ class YardCustType: public XMLNode
     void SetAddress(const string& addr) 
         { child("CUST_Address").setData(addr); }
     /// Set the Customer Phone numbers
-    void SetPhoneNumber(const string& str) 
+    void SetPhone(const string& str) 
         { child("CUST_Phone").setData(str); }
     /// Set the Customer City 
     void SetCity(const string& str) 
         { child("CUST_City").setData(str); }
+    void SetState(const string& str) 
+        { child("CUST_State").setData(str); }
     /// Set the Customer Zip
     void SetZip(const string& str) 
         { child("CUST_Zip").setData(str); }
@@ -118,7 +124,7 @@ class YardCustType: public XMLNode
         { child("CUST_Name_On_CC").setData(str); }
     void SetSignature(const string& str)
         { child("CUST_Signature").setData(str); }
-    void SetPhoto(const string& str)
+    void SetPicture(const string& str)
         { child("CUST_Photo").setData(str); }
     /**
      * Returns string representation of the datatype.

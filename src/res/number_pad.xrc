@@ -144,29 +144,33 @@
                         <object class="sizeritem">
                             <flag>wxALIGN_CENTER|wxALL</flag>
                             <border>5</border>
-                            <object class="unknown" name="ID_CALC_PLUS">
+                            <object class="wxBitmapButton" name="ID_CALC_PLUS">
                             <size>64,64</size>
+                            <bitmap>plus_64x64.png</bitmap>
                             </object>
                         </object>
                         <object class="sizeritem">
                             <flag>wxALIGN_CENTER|wxALL</flag>
                             <border>5</border>
-                            <object class="unknown" name="ID_CALC_MINUS">
+                            <object class="wxBitmapButton" name="ID_CALC_MINUS">
                             <size>64,64</size>
+                            <bitmap>minus_64x64.png</bitmap>
                             </object>
                         </object>
                         <object class="sizeritem">
                             <flag>wxALIGN_CENTER|wxALL</flag>
                             <border>5</border>
-                            <object class="unknown" name="ID_CALC_MULTIPLY">
+                            <object class="wxBitmapButton" name="ID_CALC_MULTIPLY">
                             <size>64,64</size>
+                            <bitmap>multiply_64x64.png</bitmap>
                             </object>
                         </object>
                         <object class="sizeritem">
                             <flag>wxALIGN_CENTER|wxALL</flag>
                             <border>5</border>
-                            <object class="unknown" name="ID_CALC_DIVIDE">
+                            <object class="wxBitmapButton" name="ID_CALC_DIVIDE">
                             <size>64,64</size>
+                            <bitmap>divide_64x64.png</bitmap>
                             </object>
                         </object>
                     </object>
@@ -174,15 +178,17 @@
                 <object class="sizeritem">
                     <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>5</border>
-                    <object class="unknown" name="ID_CALC_PLUS">
+                    <object class="wxStaticBitmap" name="ID_CALC_PLUS">
                     <size>64,64</size>
+                    <bitmap>plus_64x64.png</bitmap>
                     </object>
                 </object>
                 <object class="sizeritem">
                     <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>5</border>
-                    <object class="unknown" name="ID_CALC_EQUALS">
+                    <object class=wxStaticBitmap" name="ID_CALC_EQUALS">
                     <size>64,64</size>
+                    <bitmap>equals_64x64.png</bitmap>
                     </object>
                 </object>
             </object>

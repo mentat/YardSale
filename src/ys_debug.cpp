@@ -1,6 +1,5 @@
-#include "yardsale_wdr.h"
 #include "wx/app.h"
-#include "wx/frame.h"
+#include "wx/wx.h"
 
 #include "yardsale.h"
 #include "ys_log.h"
@@ -22,9 +21,22 @@ YardDebugScreen::YardDebugScreen(wxWindow* parent, wxWindowID id, const wxString
     const wxPoint& pos, const wxSize& size, long style)
     :wxFrame(parent, id, title, pos, size, style)
 {
-    wxSizer * sizer = DebugScreen(this, false, true);
-    sizer->SetSizeHints(this);
-    SetSize(sizer->GetMinSize());
+    wxPanel * panel = new wxPanel(this);
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
+    item0->AddGrowableCol( 0 );
+    item0->AddGrowableRow( 0 );
+    item0->AddGrowableRow( 1 );
+
+    YardLog *item1 = new YardLog( panel, -1, wxDefaultPosition, wxSize(290,160), wxLC_REPORT|wxSUNKEN_BORDER );
+    item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item2 = new wxTextCtrl( panel, ID_DEBUG_SQL, wxT(""), wxDefaultPosition, wxSize(80,70), wxTE_MULTILINE|wxTE_READONLY );
+    item0->Add( item2, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );   
+    panel->SetAutoLayout( TRUE );
+    panel->SetSizer( item0 );
+
+    item0->SetSizeHints(this);
+    SetSize(item0->GetMinSize());
     
 }
 

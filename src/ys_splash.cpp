@@ -3,7 +3,6 @@
 #include "wx/statbmp.h"
 
 #include "yardsale.h"
-#include "yardsale_wdr.h"
 #include "ys_splash.h"
 
 enum {
@@ -18,7 +17,7 @@ END_EVENT_TABLE()
 YardSplash::YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
                    const wxPoint& pos, const wxSize& size, long style)
 :wxDialog(parent, id, title, pos, size, style) {
-    
+   #if 0 
     wxPanel * panel = new wxPanel(this);
     
     m_logo = new wxBitmap("images/logo.png", wxBITMAP_TYPE_PNG);
@@ -50,7 +49,7 @@ YardSplash::YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
     
     m_timer = new wxTimer(this, ID_SPLASH_TIMER);
     m_timer->Start(20);
-    
+    #endif
 }
 
 YardSplash::~YardSplash() {

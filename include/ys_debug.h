@@ -42,6 +42,7 @@ class YardDebugScreen: public wxFrame {
     /// Event called when user tries to disconnect to the database.
     void OnDisc(wxCommandEvent& event);
     
+    enum { ID_DEBUG_SQL = 15000 };
  private:
         
     DECLARE_EVENT_TABLE()

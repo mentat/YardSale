@@ -46,13 +46,18 @@ public:
         const wxSize& size = wxDefaultSize, long style = wxLC_LIST, 
         const wxValidator& validator = wxDefaultValidator, 
         const wxString& name = "YardLog");
+    YardLog():wxListCtrl() {}
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, 
+        const wxSize& size = wxDefaultSize, long style = wxLC_LIST, 
+        const wxValidator& validator = wxDefaultValidator, 
+        const wxString& name = "YardLog");
     
     virtual ~YardLog();
 
 protected:
 
     virtual void DoLog(wxLogLevel level, const wxChar *szString, time_t t);
-
+    DECLARE_DYNAMIC_CLASS(YardLog)
 };
 
 DECLARE_LOG_FUNCTION(DB);

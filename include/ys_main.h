@@ -29,7 +29,7 @@
  * important utilities.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.14 $$
+ * @version \$Revision: 1.15 $$
  */
 class YardMain: public wxFrame {
     public:
@@ -56,6 +56,8 @@ class YardMain: public wxFrame {
     void OnSale(wxCommandEvent & event);
     /// Employee button handler
     void OnEmployee(wxCommandEvent& event);
+    void OnCustomer(wxCommandEvent& event);
+    void OnReports(wxCommandEvent& event);
     /// Edit program options
     void OnOptions(wxCommandEvent& event);
     

@@ -19,8 +19,8 @@ string YardCustType::ToString(const string& delim, bool quotes) const {
         << q << GetCreditCardNumber() << q << delim
         << q << GetCreditCardExpiration() << q << delim
         << q << GetCreditCardName() << q << delim
-        << q << GetSignaturePath() << q << delim
-        << q << GetPhoto() << q;
+        << q << GetSigLocal() << q << delim
+        << q << GetPicLocal() << q;
     return output.str();
         
 }

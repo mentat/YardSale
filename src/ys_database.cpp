@@ -323,9 +323,29 @@ YardVendType YardDatabase::VendorGet(long key) const
         throw YardDBException((char *)e.msg, (char*)e.stm_text);
     }
         
-    return XMLFromStreamSingle<YardVendType>(dbStream.get(), "Vendor_Table");
+    return XMLFromStreamSingle<YardVendType>(dbStream.get(), "Vendor_Table");   
+}
 
+string YardDatabase::ReportXML(const string& sql, long& count) const
+{    
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
     
+    wxLogDebug(sql.c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(40, sql.c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    string result(ToXML(dbStream.get(), "record")); 
+    count = dbStream->get_rpc();
+    
+    return result;    
 }
 
 YardInvType YardDatabase::InventoryGet(long key) const
@@ -641,6 +661,47 @@ long YardDatabase::CustomerAdd(const YardCustType& newCust)
 		throw YardDBException((char *)e.msg, (char *)e.stm_text);
 	}
     return 0;
+}
+
+vector<YardCustType> YardDatabase::CustomerGetAll()
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Customer_Table";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+    } catch (otl_exception &e) { // so just get otl exceptions
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return XMLFromStream<YardCustType>(dbStream.get(), "Customer_Table");   
+    
+}
+
+YardCustType YardDatabase::CustomerGet(long key)
+{
+   if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Customer_Table where CUST_Account_Number = "
+        << key << ";";
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStreamSingle<YardCustType>(dbStream.get(), "Customer_Table");  
 }
 
 long YardDatabase::TaxTypeAdd(const YardTaxType& taxtype)

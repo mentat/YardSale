@@ -31,7 +31,7 @@ YardDate& YardDate::operator=(const otl_datetime& time)
 YardDate& YardDate::operator=(const wxDateTime& time)
 {
     SetYear(time.GetYear());
-	SetMonth(time.GetMonth());
+	SetMonth(time.GetMonth() + 1); // wxDateTime month is 0 based enum
 	SetDay(time.GetDay());
 	SetHour(time.GetHour());
 	SetMinute(time.GetMinute());

@@ -14,7 +14,6 @@ bin_PROGRAMS = yardsale
 
 yardsale_SOURCES = \
 	yardsale.cpp\
-	yardsale_wdr.cpp\
 	ys_splash.cpp\
 	ys_main.cpp\
 	ys_inventory.cpp\
@@ -42,9 +41,11 @@ yardsale_SOURCES = \
 	xml.cpp\
 	xmlnode.cpp\
 	ys_date.cpp\
-	ys_group.cpp
+	ys_group.cpp\
+	ys_customer.cpp\
+	ys_reports.cpp
 
 yardsale_LDFLAGS = -Lextra/xrc
 
 yardsale_LDADD =  \
-	$(WX_LIBS) -lodbc -lxrc
+	$(WX_LIBS) -lodbc -lxrc -lsablot

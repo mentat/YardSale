@@ -140,7 +140,7 @@ class YardDatabase {
     vector<YardCustType> CustomerGetAll();
     vector<YardCustType> CustomerSearch(const YardCustType& criteria);
     void CustomerDisable(long key);
-    YardCustType CustomerGet(int key);
+    YardCustType CustomerGet(long key);
     
     /// Check for key in cust so will not try to edit non-existant customer
     void CustomerUpdate(const YardCustType& cust);
@@ -197,7 +197,11 @@ class YardDatabase {
     /*---------ACLs--------------------*/
     map<string,string> ACLGetAll() const;
     void ACLAdd(const string& name, const string& desc);
-    string ACLGet(const string& name);    
+    string ACLGet(const string& name); 
+
+
+    /*-----------Reports--------------*/
+    string ReportXML(const string& sql, long& count) const;
         
     /* helpers */
     static string tab(int level);

@@ -39,7 +39,7 @@ YardLogin::YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
         wxString txt;
         fun.SelectObject(logo);
         fun.SetTextForeground(*wxWHITE);
-        txt.Printf(wxT("YardSale: %.2f \"%s\""), GetVersion(), YS_CODENAME);
+        txt.Printf(wxT("YardSale: %.3f \"%s\""), GetVersion(), YS_CODENAME);
         fun.DrawText(txt, LOGO_OFFSET_FROM_LEFT,logo.GetHeight() - LOGO_OFFSET_FROM_BOTTOM);
     }
     

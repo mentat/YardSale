@@ -3,21 +3,21 @@
 #include <iostream>
 
 #include "wx/app.h"
-
+#include "wx/wx.h"
 #include "yardsale.h"
 #include "ys_bitmaps.h"
-#include "yardsale_wdr.h"
+#include "extra/xrc/xmlres.h"
 #include "ys_keybrd.h"
 
 using namespace std;
 
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardKeybrd, wxPanel)
-    EVT_BUTTON(ID_KBD_CLEAR, YardKeybrd::OnButtonClear)
-    EVT_BUTTON(ID_KBD_SHIFT, YardKeybrd::OnButtonShift)
-    EVT_BUTTON(ID_KBD_DELETE, YardKeybrd::OnButtonDelete)
-    EVT_BUTTON(ID_KBD_SPACE, YardKeybrd::OnButtonSpace)
-    EVT_BUTTON(ID_KBD_DONE, YardKeybrd::OnButtonDone)
+    EVT_BUTTON(XRCID("ID_KBD_CLEAR"), YardKeybrd::OnButtonClear)
+    EVT_BUTTON(XRCID("ID_KBD_SHIFT"), YardKeybrd::OnButtonShift)
+    EVT_BUTTON(XRCID("ID_KBD_DELETE"), YardKeybrd::OnButtonDelete)
+    EVT_BUTTON(XRCID("ID_KBD_SPACE"), YardKeybrd::OnButtonSpace)
+    EVT_BUTTON(XRCID("ID_KBD_DONE"), YardKeybrd::OnButtonDone)
     EVT_BUTTON(-1, YardKeybrd::OnButton)
     EVT_CHAR(YardKeybrd::OnChar)
 END_EVENT_TABLE()
@@ -29,15 +29,20 @@ YardKeybrd::YardKeybrd(wxWindow* parent, wxWindowID id,
         long style, const wxString& name)
         :wxPanel(parent, id, pos, size, style, name)
 {
-    wxSizer * sizer = Keyboard(this, false, true);
+
+    wxXmlResource::Get()->Load("res/keyboard.xrc");
+    wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Keyboard");
+    wxSizer * sizer = panel->GetSizer();
+    
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
+    
     screencontents = wxString("");
     shift_down = FALSE;
     
     
     //initialize a way to get to the screen
-    m_screen = (wxTextCtrl *)FindWindow(ID_KBD_SCREEN);
+    m_screen = (wxTextCtrl *)FindWindow(XRCID("ID_KBD_SCREEN"));
     
     //make sure that the pointer is active
     wxASSERT(m_screen);
