@@ -80,9 +80,9 @@ using namespace std;
 int main()
 {
     YardPackageType test1;
-    test1.SetTransID("121212");
-    test1.SetCustAcctNum("232323");
-    test1.SetCarrierID("343434");
+    test1.SetTransID(121212);
+    test1.SetCustAcctNum(232323);
+    test1.SetCarrierID(343434);
     test1.SetTrackNum("fff454545");
     test1.SetShippingType("overnight");
 
