@@ -47,7 +47,8 @@ yardsale_SOURCES = \
 	ys_customer.cpp\
 	ys_reports.cpp\
 	ys_about_gl.cpp\
-	ys_checkout.cpp
+	ys_checkout.cpp\
+	receipt.cpp
 
 
 INCLUDES = -I../include

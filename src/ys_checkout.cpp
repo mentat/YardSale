@@ -9,6 +9,8 @@
 #include "ys_database.h"
 #include "ys_calc.h"
 
+#include "receipt.h"
+
 BEGIN_EVENT_TABLE(YardCheckout, wxDialog)
     EVT_BUTTON(XRCID("ID_CO_BACK"), YardCheckout::OnBack)
     EVT_BUTTON(XRCID("ID_CO_PRINT"), YardCheckout::OnPrint)
@@ -19,14 +21,14 @@ DECLARE_APP(YardSale)
 
 YardCheckout::YardCheckout(wxWindow* parent, wxWindowID id, const wxString& title,
                    const wxPoint& pos, const wxSize& size, long style, const wxString& name)
-:wxDialog(parent, id, title, pos, size, style, name) {
+:wxDialog(parent, id, title, pos, size, style, name), m_ref(0) {
     
     wxXmlResource::Get()->Load("res/checkout_wdr.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "CashOut");
     
-    YardCalc * calc = new YardCalc(panel, -1);
+    m_calc = new YardCalc(panel, -1);
     wxXmlResource::Get()->AttachUnknownControl(wxT("ID_CO_NUM_PAD"),
-                                                calc);
+                                                m_calc);
     
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
@@ -39,6 +41,14 @@ YardCheckout::~YardCheckout()
 {
 }
 
+void YardCheckout::SetCost(double subTotal, double tax, double total)
+{
+    m_subTotal = subTotal;
+    m_tax = tax;
+    m_total = total;   
+    
+}
+
 void YardCheckout::OnBack(wxCommandEvent& event)
 {
     wxLogDebug(wxT("OnBack"));
@@ -48,6 +58,19 @@ void YardCheckout::OnBack(wxCommandEvent& event)
 void YardCheckout::OnPrint(wxCommandEvent& event)
 {
     wxLogDebug(wxT("OnPrint"));
+    
+    if (!m_ref)
+    {
+        wxLogDebug(wxT("No reference."));
+        return;
+    }
+    
+    Receipt rec("/dev/ttyS0");
+    
+    for (unsigned int i = 0; i < m_ref->size(); i++)
+    {
+        rec.additem((*m_ref)[i].GetName(), (*m_ref)[i].GetRetailPriceS());
+    }
     
 }
 
