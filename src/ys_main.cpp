@@ -1,7 +1,6 @@
 #include "extra/xrc/xmlres.h"
 #include "wx/sizer.h"
 
-
 #include "ys_debug.h"
 #include "ys_bitmaps.h"
 #include "ys_footer.h"
@@ -65,20 +64,23 @@ void YardMain::OnMax(wxCommandEvent& event){
 void YardMain::OnInventory(wxCommandEvent& event){
     
     wxLogDebug(wxT("OnInventory"));
-    wxFrame * inventory = new YardInventory(this, -1, wxT("Inventory"));
-    inventory->Show();
+    YardInventory * inventory = new YardInventory(this, -1, wxT("Inventory"));
+    inventory->ShowModal();
+    inventory->Destroy();
 }
 
 void YardMain::OnSale(wxCommandEvent & event) {
     
     wxLogDebug(wxT("OnSale"));
-    wxFrame * sales = new YardSaleScreen(this, -1, wxT("Sales"));
-    sales->Show();
+    YardSaleScreen * sales = new YardSaleScreen(this, -1, wxT("Sales"));
+    sales->ShowModal();
+    sales->Destroy();
 }
 
 void YardMain::OnEmployee(wxCommandEvent & event) {
     
     wxLogDebug(wxT("OnEmployee"));
-    wxFrame * employ = new YardEmployee(this, -1, wxT("Employee"));
-    employ->Show();
+    YardEmployee * employ = new YardEmployee(this, -1, wxT("Employee"));
+    employ->ShowModal();
+    employ->Destroy();
 }

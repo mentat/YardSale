@@ -32,14 +32,14 @@ int success = 0;
 #define TOLERANCE 0.0000001
 #define VERIFY_FLOAT(a, b) { \
      if ( (abs(a - b) <= TOLERANCE ) ) \
-     { cout << "Passed..." << endl; success++; } \
+     { cout << "Passed..." << __LINE__ << endl; success++; } \
      else \
      { cout << "Failed at " << __FILE__ << ":" << __LINE__ << endl; failure++; } \
 }
      
 #define VERIFY(a,b) { \
     if ((a)==(b)) \
-        { cout << "Passed..." << endl; success++; } \
+        { cout << "Passed..." << __LINE__ << endl; success++; } \
     else \
         { cout << "Failed at " << __FILE__ << ":" << __LINE__ << endl; failure++; } \
 }
@@ -53,7 +53,7 @@ int success = 0;
             cout << e.what() << endl; \
         } \
         if (didThrow)   \
-        { cout << "Passed.." << endl; success++; } \
+        { cout << "Passed..." << __LINE__ << endl; success++; } \
     else \
         { cout << "Failed at " << __FILE__ << ":" << __LINE__ << endl; failure++; } \
 }
@@ -66,7 +66,7 @@ int success = 0;
             cout << e.what() << endl; \
         } \
         if (!didThrow)   \
-        { cout << "Passed.." << endl; success++; } \
+        { cout << "Passed..." << __LINE__ << endl; success++; } \
     else \
         { cout << "Failed at " << __FILE__ << ":" << __LINE__ << endl; failure++; } \
 }

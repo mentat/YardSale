@@ -116,7 +116,7 @@ class YardDatabase {
      * @return A std::vector of YardInvType objects
      * @throws YardException if databae not initialized
      */
-    vector<YardInvType> InventorySearchSKU(unsigned long sku);
+    vector<YardInvType> InventorySearchSKU(const string& sku);
     
     /**
      * Get a batch of inventory items.
@@ -124,6 +124,7 @@ class YardDatabase {
      * @throws YardException if database not initialized
      */
     vector<YardInvType> InventoryGetAll() const;
+    vector<YardInvType> InventoryGetInGroup(long groupid) const;
     YardInvType InventoryGet(long key) const;
     void InventoryUpdate(const YardInvType& inv);
     

@@ -10,17 +10,19 @@ string YardEmployeeType::ToString(const string& delim, bool quotes) const {
     char q = '\'';
     
     strm 
-        << child("EMP_ID_Number").data() << delim 
-        << child("EMP_Social_Security_Number").data() << delim
-        << q << child("EMP_First_Name").data() << q << delim
-        << q << child("EMP_Middle_Name").data() << q << delim
-        << q << child("EMP_Last_Name").data() << q << delim
-        << q << child("EMP_Address").data() << q << delim
-        << q << child("EMP_Phone_Number").data() << q << delim
-        << q << child("EMP_City").data() << q << delim
-        << q << child("EMP_Zip").data() << q << delim
-        << q << child("EMP_Picture").data() << q << delim
-        << q << child("EMP_Signature").data() << q;
+        << GetId() << delim 
+        << GetTaxId() << delim
+        << q << GetFirst() << q << delim
+        << q << GetMiddle() << q << delim
+        << q << GetLast() << q << delim
+        << q << GetAddress() << q << delim
+        << q << GetPhone() << q << delim
+        << q << GetCity() << q << delim
+        << q << GetZip() << q << delim
+        << q << GetPicLocal() << q << delim
+        << q << GetSigLocal() << q << delim
+        << q << "Clerk" << q << delim
+        << "1,0" ;
     
     return strm.str();
 }

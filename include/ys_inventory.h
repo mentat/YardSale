@@ -19,7 +19,7 @@
 #ifndef YS_INVENTORY_H
 #define YS_INVENTORY_H
 
-#include "wx/frame.h"
+#include "wx/dialog.h"
 #include "ys_inv_type.h"
 class wxListCtrl;
 class wxTextCtrl;
@@ -33,9 +33,9 @@ class wxListEvent;
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.17 $$
+ * @version \$Revision: 1.18 $$
  */
-class YardInventory: public wxFrame{
+class YardInventory: public wxDialog{
  public:
     
     /** 

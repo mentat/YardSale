@@ -38,7 +38,7 @@ class YardDatabase;
  * @ingroup database 
  * @see XMLNode
  * @author Jesse Lovelace
- * @version \$Revision: 1.23 $$
+ * @version \$Revision: 1.24 $$
  */
 
 class YardInvType: public XMLNode
@@ -66,6 +66,8 @@ class YardInvType: public XMLNode
     /// Get SKU
     string GetSKU() const 
         { return child("INV_SKU_Number").data(); }
+    string GetName() const
+        { return child("INV_Name").data(); }
     /// Get barcode
     string GetBarCode() const 
         { return child("INV_Bar_Code_Number").data(); }
@@ -170,6 +172,8 @@ class YardInvType: public XMLNode
     /// Set the bar code
     void SetSKU(const string& sku)
         { child("INV_SKU_Number").setData(sku); }
+    void SetName(const string& str)
+        { child("INV_Name").setData(str); }
     void SetBarCode(const string& str)
         { child("INV_Bar_Code_Number").setData(str); }
     /// Set item description

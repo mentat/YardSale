@@ -116,7 +116,7 @@ bool YardDatabase::disconnect()
     return true;
 }
 
-vector<YardInvType> YardDatabase::InventorySearchSKU(unsigned long sku) {
+vector<YardInvType> YardDatabase::InventorySearchSKU(const string& sku) {
    
     if (!m_db)
         throw YardDBException("DB not initialized.");
@@ -174,6 +174,50 @@ vector<YardInvType> YardDatabase::InventoryGetAll() const{
     }
         
     return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
+}
+
+vector<YardInvType> YardDatabase::InventoryGetInGroup(long groupid) const
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Inventory_Table where INV_REF_INVGRP_Group_ID = "
+        << groupid << ";";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
+}
+
+YardEmployeeType YardDatabase::EmployeeGet(long key) const
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Employee_Table where EMP_ID_Number = "
+        << key << ";";
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStreamSingle<YardEmployeeType>(dbStream.get(), "Employee_Table");   
 }
 
 YardVendType YardDatabase::VendorGet(long key) const
@@ -267,6 +311,53 @@ long YardDatabase::CarrierAdd(const YardCarrierType& carrier)
     return key;
     
 }
+
+long YardDatabase::EmployeeAdd(const YardEmployeeType& emp)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "INSERT INTO Employee_Table values(" << emp.ToString() << ");";
+    
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    // This function also does a select to return the key
+    
+    stringstream select;
+    select << "SELECT EMP_ID_Number from Employee_Table where EMP_Social_Security_Number = "
+        << emp.GetTaxId() << ";";
+    
+    auto_ptr<otl_stream> db;
+    
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        db.reset( new otl_stream(1, select.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    long int key = 0;
+    
+    try {
+        *db >> key;
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return key;
+}
+
 
 long YardDatabase::InventoryAdd(const YardInvType& item)
 {
@@ -767,61 +858,22 @@ int InventoryTest(YardDatabase * db)
     // try insert
     long key = 0;
     VERIFY_NO_THROW( key = db->InventoryAdd(test1) );
-    if (key == 0) return 1;
+    //if (key == 0) return 1;
         
     // try retrieve
     YardInvType test2;
     VERIFY_NO_THROW( test2 = db->InventoryGet(key) );
-    
-    return  0;
-    
-#if 0    
+       
     vector<YardInvType> invObj;
 
     /* Search for an SKU that probably doesn't exist,
    test to see if the shit bombs when we try to print */
     
-    try {
-        invObj = testDB.InvSearchSKU(99999);
-    }
-    catch (YardDBException &e)
-    {
-        cout << e.GetWhat() << endl;
-        return 1;
-    }
-                  
-    for (unsigned int ii = 0; ii < invObj.size(); ii++){
-        cout << "----------" << invObj[ii].ToString() << "----------" << endl;
-    }
+    VERIFY_NO_THROW(invObj = db->InventorySearchSKU("BFG-5000"));
+    VERIFY(invObj.size(), 1);
+    
+    return 0;    
 
-    
-    /* Search for an SKU that we know exists, and see if that prints. */
-    try {
-        invObj = testDB.InvSearchSKU(10000);
-    }
-    catch (YardDBException &e) {
-        cout << e.GetWhat() << endl << e.GetSQL() 
-            << endl << e.GetVarInfo() << endl;
-        return 1;
-    }
-      
-    for (unsigned int ii = 0; ii < invObj.size(); ii++){
-        cout << "-------" << invObj[ii].ToString() << "-------" << endl;
-    }
-    
-    try {
-        invObj = testDB.InvGet();
-    }
-    catch (YardDBException &e) {
-        cout << e.GetWhat() << endl << e.GetSQL() 
-            << endl << e.GetVarInfo() << endl;
-        return 1;
-    }
-      
-    for (unsigned int ii = 0; ii < invObj.size(); ii++){
-        cout << "-------" << invObj[ii].ToString() << "-------" << endl;
-    }
-#endif
 }
 
 /// argv[1]: username, argv[2]: pass, argv[3]: dsn

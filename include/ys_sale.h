@@ -19,18 +19,24 @@
 #ifndef YS_SALE_H
 #define YS_SALE_H
 
+#include <vector>
+#include "wx/treebase.h"
+#include "wx/dialog.h"
+
+#include "ys_inv_type.h"
+
+class wxListCtrl;
+class wxTreeCtrl;
 /**
  * This is the main sale screen.  It contains the current transaction
  * information and an interface to add new items to the transaction.  
  * From the transaction screen you can access the payment screen.
  * 
  * @author Jesse Lovelace
- * @version \$Revision: 1.8 $$
+ * @version \$Revision: 1.9 $$
  */
-class YardSaleScreen: public wxFrame{
-    /// This constructor cannot be used
-    YardSaleScreen();
-    public:
+class YardSaleScreen: public wxDialog{
+ public:
     
     /// This is the constructor you will most commonly use.
     YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -45,9 +51,16 @@ class YardSaleScreen: public wxFrame{
      * Exit button event handler
      */
     void OnExitButton(wxCommandEvent & event);
+    void OnChange(wxTreeEvent& event);
     
     private:
-        
+    wxTreeCtrl * m_tree;
+    wxListCtrl * m_list;
+    void LoadTreeItems(wxTreeCtrl * tree);
+    void CreateImageList(wxTreeCtrl * tree);
+    
+    std::vector<YardInvType> m_items;    
+    
     DECLARE_EVENT_TABLE()
         
 };

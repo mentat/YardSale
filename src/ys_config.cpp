@@ -47,7 +47,7 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
     }
     
     if (!pConfig->HasGroup(wxT("DB")))
-    {
+    {/*
         wxLogDebug(wxT("No DB group in config."));
         int answer = wxMessageBox("No configuration exists on this computer,"
             " would you like to create one?", "Create Config",
@@ -58,7 +58,7 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
             //pConfig->DeleteAll();
             Destroy();
             return;
-        }
+        }*/
 #ifdef __WXDEBUG__
         pConfig->Write(wxT("/DB/User"), wxT(""));
         pConfig->Write(wxT("/DB/Pass"), wxT(""));
@@ -95,6 +95,9 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
     server->SetValue(pConfig->Read(wxT("/DB/Server"), wxString()));
     wxLogDebug(wxT("Port is: %d"), (int)pConfig->Read(wxT("/DB/Port"), 0l));
     port->SetValue((int)pConfig->Read(wxT("/DB/Port"), 0l));
+     
+    wxButton * cancel = (wxButton *)FindWindow(XRCID("ID_CONFIG_CANCEL"));
+    cancel->SetLabel("Close");
         
     save->Disable();
     m_saved = true;
@@ -153,6 +156,9 @@ void YardConfig::OnSave(wxCommandEvent& event)
 
         
     wxButton * save = (wxButton *)FindWindow(XRCID("ID_CONFIG_SAVE"));
+    wxButton * cancel = (wxButton *)FindWindow(XRCID("ID_CONFIG_CANCEL"));
+    cancel->SetLabel("Close");
+    
     save->Disable();
     m_saved = true;
 }
@@ -172,6 +178,9 @@ void YardConfig::OnChange(wxCommandEvent& event)
         wxLogDebug(wxT("Something changed"));
             
         wxButton * save = (wxButton *)FindWindow(XRCID("ID_CONFIG_SAVE"));
+        wxButton * cancel = (wxButton *)FindWindow(XRCID("ID_CONFIG_CANCEL"));
+        cancel->SetLabel("Cancel");
+    
         save->Enable();
         m_saved = false;
     }

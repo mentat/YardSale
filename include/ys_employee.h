@@ -19,8 +19,12 @@
 #ifndef YS_EMPLOYEE_H
 #define YS_EMPLOYEE_H
 
+#include "ys_employee_type.h"
 #include "wx/statbmp.h"
-
+#include "wx/treebase.h"
+class wxStaticBitmap;
+class wxTreeCtrl;
+class wxTextCtrl;
 /**
  * YardEmployee is the employee managment screen for YardSale.
  * Depending on access level, users may insert/modify employee 
@@ -29,9 +33,9 @@
  * @see YardEmployeeType
  * @author Jesse Lovelace
  */
-class YardEmployee: public wxFrame
+class YardEmployee: public wxDialog
 {
-    public:
+ public:
         
     YardEmployee(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
@@ -39,11 +43,27 @@ class YardEmployee: public wxFrame
                long style = wxDEFAULT_FRAME_STYLE, const wxString& name = wxT("YardEmployee"));
     
     virtual ~YardEmployee();
-
-    private:
-        
-   // DECLARE_EVENT_TABLE()
-
+ 
+    void OnChange(wxTreeEvent& event);
+    void OnNew(wxCommandEvent& event);
+ 
+ private:
+    DECLARE_EVENT_TABLE()
+    void LoadTreeItems(wxTreeCtrl * tree);
+    void CreateImageList(wxTreeCtrl * tree);
+ 
+    wxStaticBitmap * m_pic;
+    wxStaticBitmap * m_sig;
+    wxTreeCtrl * m_tree;
+    wxTextCtrl * m_first;
+    wxTextCtrl * m_middle;
+    wxTextCtrl * m_last;
+    wxTextCtrl * m_address;
+    wxTextCtrl * m_id;
+    wxTextCtrl * m_taxid;
+    wxTextCtrl * m_phone;
+ 
+    YardEmployeeType m_emp;
 };
 
 #endif

@@ -34,7 +34,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @see XMLNode
  */
 class YardEmployeeType: public XMLNode {
@@ -52,11 +52,15 @@ class YardEmployeeType: public XMLNode {
     //----------------Getors--------------------
     
     /// Return DB ID for employee
-    unsigned long GetId() const 
-        { return (unsigned long)ToLong(child("EMP_ID_Number").data()); }
+    string GetIdS() const
+        { return child("EMP_ID_Number").data(); }
+    long GetId() const 
+        { return ToLong(GetIdS()); }
     /// Return Tax ID, usually SS
-    string GetTaxId() const 
+    string GetTaxIdS() const
         { return child("EMP_Social_Security_Number").data(); }
+    long GetTaxId() const 
+        { return ToLong(GetTaxIdS()); }
     /// Return first name
     string GetFirst() const 
         { return child("EMP_First_Name").data(); }
@@ -64,8 +68,12 @@ class YardEmployeeType: public XMLNode {
     string GetMiddle() const 
         { return child("EMP_Middle_Name").data(); }
     /// Return last name
+    /// @todo Standardize this Last/LastName naming scheme
     string GetLast() const 
         { return child("EMP_Last_Name").data(); }
+    /// Get both first and last
+    string GetFirstLast() const
+        { return GetFirst() + string(" ") + GetLast(); }
     /// Return address
     string GetAddress() const 
         { return child("EMP_Address").data(); }
@@ -80,7 +88,7 @@ class YardEmployeeType: public XMLNode {
         { return child("EMP_Zip").data(); }
     /// Return phone number
     string GetPhone() const 
-        { return child("EMP_Phone_Number"); }
+        { return child("EMP_Phone_Number").data(); }
     
     /// Returns location of employee picture on datacenter
     /// @todo Define what a datacenter is
@@ -89,7 +97,7 @@ class YardEmployeeType: public XMLNode {
     
     /// Returns the location of the employee signature file
     string GetSigLocal() const 
-        { return child("EMP_Picture").data(); }
+        { return child("EMP_Signature").data(); }
     
     /// Check enabled
     int GetEnabled() const 
@@ -99,8 +107,8 @@ class YardEmployeeType: public XMLNode {
     /// @note You cannot set the employee ID, it is set by the DB
     /// @todo Maybe have all these return boolean which says if the set
     ///  violates size limitations.
-    void SetTaxId(const string& id)
-        { child("EMP_Social_Security_Number").setData(id); }
+    void SetTaxId(long id)
+        { child("EMP_Social_Security_Number").setData(ToStr(id)); }
     /// Set first name
     void SetFirstName(const string& name)
         { child("EMP_First_Name").setData(name); }

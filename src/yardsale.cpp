@@ -23,7 +23,8 @@ bool YardSale::OnInit()
     m_db = 0;
     m_db = new YardDatabase();
     
-    wxImage::AddHandler(new wxPNGHandler);       
+    wxImage::AddHandler(new wxPNGHandler);
+    wxImage::AddHandler(new wxJPEGHandler);     
     wxFileSystem::AddHandler(new wxZipFSHandler);
     wxXmlResource::Get()->InitAllHandlers();
     

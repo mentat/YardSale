@@ -140,7 +140,7 @@
                                 <object class="sizeritem">
                                     <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                                     <border>5</border>
-                                    <object class="wxTreeCtrl" name="ID_TREECTRL">
+                                    <object class="wxTreeCtrl" name="ID_SALE_TREE">
                                         <size>350,160</size>
                                         <style>wxTR_HAS_BUTTONS|wxTR_LINES_AT_ROOT|wxSUNKEN_BORDER</style>
                                     </object>
@@ -176,7 +176,8 @@
                                 <object class="sizeritem">
                                     <flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                                     <border>5</border>
-                                    <object class="unknown" name="ID_SALE_TRASH">
+                                    <object class="wxBitmapButton" name="ID_SALE_TRASH">
+                                    <bitmap>trashcan_90x90.png</bitmap>
                                     <size>90,90</size>
                                     </object>
                                 </object>
@@ -184,13 +185,6 @@
                         </object>
                     </object>
                 </object>
-            </object>
-        </object>
-        <object class="sizeritem">
-            <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
-            <border>5</border>
-            <object class="wxPanel" subclass="YardFooter" name="ID_PANEL">
-                <size>200,90</size>
             </object>
         </object>
     </object>

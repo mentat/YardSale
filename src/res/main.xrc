@@ -87,13 +87,6 @@
                 </object>
             </object>
         </object>
-        <object class="sizeritem">
-            <flag>wxGROW|wxALIGN_CENTER_VERTICAL</flag>
-            <border>5</border>
-            <object class="wxPanel" subclass="YardFooter" name="ID_MAIN_FOOTER">
-                <size>200,90</size>
-            </object>
-        </object>
     </object>
 </object>
 

@@ -22,17 +22,24 @@ BEGIN_EVENT_TABLE(YardFooter, wxPanel)
     EVT_BUTTON(XRCID("ID_FOOTER_UNDO"), YardFooter::OnUndo)
 END_EVENT_TABLE()
 
-YardFooter::YardFooter(wxWindow* parent, wxWindowID id, 
-     const wxPoint& pos, 
-     const wxSize& size, 
-     long style, 
-     const wxString& name)
-:wxPanel(parent, id, pos, size, style, name)
+IMPLEMENT_DYNAMIC_CLASS(YardFooter, wxPanel)
+
+YardFooter::YardFooter():wxPanel(),m_timer(0)
 {
-    wxXmlResource::Get()->Load("res/footer.xrc");
+}
+
+bool YardFooter::Create(wxWindow* parent, wxWindowID id, 
+     const wxPoint& pos, const wxSize& size, long style, const wxString& name)
+{
+    if ( !wxPanel::Create(parent, id, pos, size, style, name) )
+        return false;
+    
+    wxLogDebug(wxT("YardFooter::Create"));
+    wxXmlResource::Get()->Load("res/info-footer.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Footer");
 
     // see if parent is main frame if so, hide back button
+
     wxWindow * parentWin = GetParent()->GetParent();
     
     wxASSERT(parentWin);
@@ -49,15 +56,23 @@ YardFooter::YardFooter(wxWindow* parent, wxWindowID id,
     
     wxDateTime now = wxDateTime::Now();
     
-    m_timeTxt->SetLabel(now.FormatISOTime());
-   
-    //m_timer->Start(1000);
-    
+    m_timeTxt->SetLabel(now.FormatISOTime());  
+    return true;
+}
+
+YardFooter::YardFooter(wxWindow* parent, wxWindowID id, 
+     const wxPoint& pos, 
+     const wxSize& size, 
+     long style, 
+     const wxString& name)
+{
+    Create(parent, id, pos, size, style, name);
 }
 
 YardFooter::~YardFooter()
 {
-    m_timer->Stop();
+    if (m_timer)
+        m_timer->Stop();
     delete m_timer;
 }
  

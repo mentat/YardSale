@@ -1,4 +1,9 @@
 #include "wx/app.h"
+#include "wx/textctrl.h"
+#include "wx/spinctrl.h"
+#include "wx/sizer.h"
+#include "wx/choice.h"
+#include "wx/checkbox.h"
 
 #include <sstream>
 #include <vector>
@@ -10,31 +15,31 @@
 #include "ys_exception.h"
 #include "ys_inventory.h"
 #include "ys_inv_type.h"
-#include "yardsale_wdr.h"
+
+#include "extra/xrc/xmlres.h"
 
 using namespace std;
 
-BEGIN_EVENT_TABLE(YardInventory, wxFrame)
-    EVT_BUTTON(ID_INV_NEW, YardInventory::OnNew)
-    EVT_BUTTON(ID_INV_SEARCH, YardInventory::OnSearch)
-    EVT_LIST_ITEM_SELECTED(ID_INV_LIST, YardInventory::OnSelect)
+BEGIN_EVENT_TABLE(YardInventory, wxDialog)
+    EVT_BUTTON(XRCID("ID_INV_NEW"), YardInventory::OnNew)
+    EVT_BUTTON(XRCID("ID_INV_SEARCH"), YardInventory::OnSearch)
+    EVT_LIST_ITEM_SELECTED(XRCID("ID_INV_LIST"), YardInventory::OnSelect)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
 
 YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                    const wxPoint& pos, const wxSize& size, long style, const wxString& name)
-:wxFrame(parent, id, title, pos, size, style, name) {
+:wxDialog(parent, id, title, pos, size, style, name) {
      
-    wxPanel * panel = new wxPanel(this);
-    
-    wxSizer * sizer = Inventory(panel, false, true);
+    wxXmlResource::Get()->Load("res/inventory.xrc");
+    wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Inventory");
+    wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
-    
-    // center the screen
+
     Centre();
-    
+   
     // set the window components 
     SetPointers();
     
@@ -83,29 +88,31 @@ void YardInventory::PopulateList()
 
 void YardInventory::SetPointers()
 {
-    m_list = static_cast<wxListCtrl *>(FindWindow(ID_INV_LIST));
-    m_barcode = static_cast<wxTextCtrl *>(FindWindow(ID_INV_BARCODE));
-    m_sku = static_cast<wxTextCtrl *>(FindWindow(ID_INV_SKU));
-    m_name = static_cast<wxTextCtrl *>(FindWindow(ID_INV_ITEMNAME));
-    m_department = static_cast<wxTextCtrl *>(FindWindow(ID_INV_DEPARTMENT));
-    m_type = static_cast<wxTextCtrl *>(FindWindow(ID_INV_TYPE));
-    m_price = static_cast<wxTextCtrl *>(FindWindow(ID_INV_PRICE));
-    m_wholesale = static_cast<wxTextCtrl *>(FindWindow(ID_INV_WHOLESALE));
-    m_weight = static_cast<wxTextCtrl *>(FindWindow(ID_INV_WEIGHT));
-    m_vendor = static_cast<wxTextCtrl *>(FindWindow(ID_INV_VENDOR));
-    m_barCode = static_cast<wxTextCtrl *>(FindWindow(ID_INV_BARCODE));
-    m_desc = static_cast<wxTextCtrl *>(FindWindow(ID_INV_DESC));
-    m_freight = static_cast<wxCheckBox *>(FindWindow(ID_INV_FREIGHT));
-    m_oversized = static_cast<wxCheckBox *>(FindWindow(ID_INV_OVERSIZE));
-    m_onHand = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_ONHAND));
-    m_onOrder = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_ONORDER));
-    m_reOrder = static_cast<wxSpinCtrl *>(FindWindow(ID_INV_REORDER_LEVEL));
-    m_tax = static_cast<wxChoice *>(FindWindow(ID_INV_TAX_TYPE));
+    m_list = static_cast<wxListCtrl *>(FindWindow(XRCID("ID_INV_LIST")));
+    m_barcode = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_BARCODE")));
+    m_sku = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_SKU")));
+    m_name = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_ITEMNAME")));
+    m_department = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_DEPARTMENT")));
+    m_type = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_TYPE")));
+    m_price = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_PRICE")));
+    m_wholesale = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_WHOLESALE")));
+    m_weight = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_WEIGHT")));
+    m_vendor = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_VENDOR")));
+    m_barCode = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_BARCODE")));
+    m_desc = static_cast<wxTextCtrl *>(FindWindow(XRCID("ID_INV_DESC")));
+    m_freight = static_cast<wxCheckBox *>(FindWindow(XRCID("ID_INV_FREIGHT")));
+    m_oversized = static_cast<wxCheckBox *>(FindWindow(XRCID("ID_INV_OVERSIZE")));
+    m_onHand = static_cast<wxSpinCtrl *>(FindWindow(XRCID("ID_INV_ONHAND")));
+    m_onOrder = static_cast<wxSpinCtrl *>(FindWindow(XRCID("ID_INV_ONORDER")));
+    m_reOrder = static_cast<wxSpinCtrl *>(FindWindow(XRCID("ID_INV_REORDER_LEVEL")));
+    m_tax = static_cast<wxChoice *>(FindWindow(XRCID("ID_INV_TAX_TYPE")));
 
 }
 
 void YardInventory::OnExitButton(wxCommandEvent & event)
 {
+    wxLogDebug("OnExit");
+    EndModal(0);
 
 }
 
