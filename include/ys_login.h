@@ -25,7 +25,7 @@
  * allow the user to rapidly select her/his username.
  *
  * @author Jesse Lovelace
- * @version $Revision: 1.6 $
+ * @version \$Revision: 1.7 $$
  */
 class YardLogin: public wxDialog {
  public:

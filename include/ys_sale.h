@@ -25,7 +25,7 @@
  * From the transaction screen you can access the payment screen.
  * 
  * @author Jesse Lovelace
- * @version $Revision: 1.6 $
+ * @version \$Revision: 1.7 $$
  */
 class YardSaleScreen: public wxFrame{
     /// This constructor cannot be used

@@ -35,7 +35,7 @@ class YardDatabase;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version $Revision: 1.13 $
+ * @version \$Revision: 1.14 $$
  * @see YardDBType
  */
 

@@ -41,6 +41,8 @@ class otl_stream;
  * This is the main database backend which does all translation from
  * OO calls to SQL/ODBC.
  * @sa YardInvType 
+ * @author Jesse Lovelace
+ * @version \$ Revision: $$
  */
 class YardDatabase {
     public:

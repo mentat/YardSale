@@ -5,6 +5,14 @@
 #include "wx/timer.h"
 class wxStaticText;
 
+/**
+ * The footer is a easy-access panel to launch the on-screen calc
+ * and keyboard.  The footer also shows current time and has
+ * the ability to undo operations.
+ *
+ * @author Jesse Lovelace
+ * @version \$ Revision: $$
+ */
 class YardFooter: public wxPanel {
  public:
     YardFooter(wxWindow* parent, wxWindowID id = -1, 

@@ -41,7 +41,7 @@ class YardException : public exception
 };
 
 /**
- * A Database execption
+ * A Database exception
  * @author Jesse Lovelace
  */
 class YardDBException: public YardException {

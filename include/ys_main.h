@@ -27,7 +27,7 @@
  * important utilities.
  *
  * @author Jesse Lovelace
- * @version $Revision: 1.10 $
+ * @version \$Revision: 1.11 $$
  */
 class YardMain: public wxFrame {
     public:
