@@ -10,10 +10,12 @@ using namespace std;
 class YardDatabase;
 
 /**
+ * @ingroup database
+ *
  * The YardSale Inventory Type is a OO representation of the datebase
  * inventory table.
  * @author Jesse Lovelace
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @see YardDBType
  */
 

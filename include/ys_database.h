@@ -14,6 +14,11 @@ class wxDbConnectInf;
 
 
 /**
+ * @defgroup database Database Related Documentation
+ */
+
+/**
+ * @ingroup datebase
  * This is the main database backend which does all translation from
  * OO calls to SQL/ODBC.
  * @sa YardInvType 
@@ -31,9 +36,19 @@ class YardDatabase {
     
     ~YardDatabase();
     
-    /* This connects to the database with the options specified
-       above.  Dumbass. */
+    /** 
+     * This connects to the database with the options specified
+     * above.  Dumbass.
+     * @return True if connection was successful, @sa GetStatus    
+     */
     bool connect();
+     
+    /**
+     * Get Database Status reported by ODBC 
+     * @return An integer corresponding with the error code
+     */     
+    int GetStatus() const;
+     
 
     /*------------Inventory-------------*/
     

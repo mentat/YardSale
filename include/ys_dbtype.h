@@ -2,6 +2,8 @@
 #define YS_DB_TYPE_H
 
 /**
+ * @ingorup database
+ *
  * Abstract base class for datebase objects in YardSale
  * @author Jesse Lovelace
  */
