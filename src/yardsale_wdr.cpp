@@ -428,9 +428,8 @@ wxSizer *NumberPad( wxWindow *parent, bool call_fit, bool set_sizer )
     item5->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item6 = new wxButton( parent, ID_CALC_CLEAR, wxT("C"), wxDefaultPosition, wxSize(50,64), 0 );
-    item6->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxBitmapButton *item6 = new wxBitmapButton( parent, ID_CALC_PLUS, YardBitmaps( 7 ), wxDefaultPosition, wxDefaultSize );
+    item2->Add( item6, 0, wxALIGN_CENTER, 5 );
 
     wxButton *item7 = new wxButton( parent, ID_CALC_4, wxT("4"), wxDefaultPosition, wxSize(64,64), 0 );
     item7->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
@@ -444,9 +443,8 @@ wxSizer *NumberPad( wxWindow *parent, bool call_fit, bool set_sizer )
     item9->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item9, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item10 = new wxButton( parent, ID_CALC_AC, wxT("AC"), wxDefaultPosition, wxSize(50,64), 0 );
-    item10->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item10, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxBitmapButton *item10 = new wxBitmapButton( parent, ID_CALC_MINUS, YardBitmaps( 0 ), wxDefaultPosition, wxDefaultSize );
+    item2->Add( item10, 0, wxALIGN_CENTER, 5 );
 
     wxButton *item11 = new wxButton( parent, ID_CALC_7, wxT("7"), wxDefaultPosition, wxSize(64,64), 0 );
     item11->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
@@ -460,19 +458,20 @@ wxSizer *NumberPad( wxWindow *parent, bool call_fit, bool set_sizer )
     item13->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item13, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item14 = new wxButton( parent, ID_CALC_DOT, wxT("."), wxDefaultPosition, wxSize(50,64), 0 );
-    item14->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item14, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxBitmapButton *item14 = new wxBitmapButton( parent, ID_CALC_EQUALS, YardBitmaps( 8 ), wxDefaultPosition, wxDefaultSize );
+    item2->Add( item14, 0, wxALIGN_CENTER, 5 );
 
-    wxBitmapButton *item15 = new wxBitmapButton( parent, ID_CALC_PLUS, YardBitmaps( 7 ), wxDefaultPosition, wxDefaultSize );
-    item2->Add( item15, 0, wxALIGN_CENTER, 5 );
+    wxButton *item15 = new wxButton( parent, ID_CALC_CLEAR, wxT("C"), wxDefaultPosition, wxSize(50,64), 0 );
+    item15->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item2->Add( item15, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item16 = new wxButton( parent, ID_CALC_0, wxT("0"), wxDefaultPosition, wxSize(64,64), 0 );
     item16->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
     item2->Add( item16, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
-    wxBitmapButton *item17 = new wxBitmapButton( parent, ID_CALC_EQUALS, YardBitmaps( 8 ), wxDefaultPosition, wxDefaultSize );
-    item2->Add( item17, 0, wxALIGN_CENTER, 5 );
+    wxButton *item17 = new wxButton( parent, ID_CALC_DOT, wxT("."), wxDefaultPosition, wxSize(50,64), 0 );
+    item17->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item2->Add( item17, 0, wxALIGN_CENTER|wxALL, 5 );
 
     item0->Add( item2, 0, wxALIGN_CENTER|wxLEFT|wxRIGHT|wxBOTTOM, 5 );
 

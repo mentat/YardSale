@@ -47,47 +47,39 @@ wxSizer *Login( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 #define ID_MAIN_LOGOUT 10012
 wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_INV_SKU 10013
-#define ID_INV_BARCODE 10014
-#define ID_INV_ITEMNAME 10015
-#define ID_INV_PRICE 10016
-#define ID_INV_DESC 10017
-#define ID_INV_WHOLESALE 10018
-#define ID_INV_BUTTON_NEW 10019
-#define ID_INV_BUTTON_SEARCH 10020
-#define ID_LINE 10021
-#define ID_INV_LISTCTRL 10022
-#define ID_INVENTORY_EXIT 10023
+#define ID_BUTTON 10013
+#define ID_LINE 10014
+#define ID_LISTCTRL 10015
+#define ID_INVENTORY_EXIT 10016
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_MAIN_LOGO 10024
+#define ID_MAIN_LOGO 10017
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_BUTTON 10025
-#define ID_SALE_DONE 10026
-#define ID_SALE_REMOVE 10027
-#define ID_SALE_CANCEL 10028
-#define ID_SALE_BACK 10029
-#define ID_SALE_CALC 10030
-#define ID_SALE_TRANS 10031
+#define ID_SALE_DONE 10018
+#define ID_SALE_REMOVE 10019
+#define ID_SALE_CANCEL 10020
+#define ID_SALE_BACK 10021
+#define ID_SALE_CALC 10022
+#define ID_SALE_TRANS 10023
 wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_CALC_SCREEN 10032
-#define ID_CALC_1 10033
-#define ID_CALC_2 10034
-#define ID_CALC_3 10035
-#define ID_CALC_PLUS 10036
-#define ID_CALC_4 10037
-#define ID_CALC_5 10038
-#define ID_CALC_6 10039
-#define ID_CALC_MINUS 10040
-#define ID_CALC_7 10041
-#define ID_CALC_8 10042
-#define ID_CALC_9 10043
-#define ID_CALC_EQUALS 10044
-#define ID_CALC_CLEAR 10045
-#define ID_CALC_0 10046
-#define ID_CALC_DOT 10047
+#define ID_CALC_SCREEN 10024
+#define ID_CALC_1 10025
+#define ID_CALC_2 10026
+#define ID_CALC_3 10027
+#define ID_CALC_PLUS 10028
+#define ID_CALC_4 10029
+#define ID_CALC_5 10030
+#define ID_CALC_6 10031
+#define ID_CALC_MINUS 10032
+#define ID_CALC_7 10033
+#define ID_CALC_8 10034
+#define ID_CALC_9 10035
+#define ID_CALC_EQUALS 10036
+#define ID_CALC_CLEAR 10037
+#define ID_CALC_0 10038
+#define ID_CALC_DOT 10039
 wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions
