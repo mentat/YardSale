@@ -39,7 +39,7 @@ void YardDebugScreen::OnConnect(wxCommandEvent & event) {
     wxString user = ((wxTextCtrl *)FindWindow(ID_DEBUG_USER))->GetValue();
     wxString pass = ((wxTextCtrl *)FindWindow(ID_DEBUG_PASS))->GetValue();
 
-    //wxLogMessage("Info: %s, %s, %s", dsn.c_str(), user.c_str(), pass.c_str());
+    //wxLogDebug("Info: %s, %s, %s", dsn.c_str(), user.c_str(), pass.c_str());
     
     try {
         wxGetApp().DB().Init(user.c_str(), pass.c_str(), dsn.c_str());
@@ -55,7 +55,9 @@ void YardDebugScreen::OnConnect(wxCommandEvent & event) {
     {
        // ((wxTextCtrl *)FindWindow(ID_DEBUG_SQL))->SetValue(e.GetSQL().c_str());
         wxLogDB(e.GetWhat().c_str());
+        return;
     }
+    wxLogDebug(wxT("Connected to %s"), dsn.c_str());
     
 }
 
@@ -67,6 +69,8 @@ void YardDebugScreen::OnDisc(wxCommandEvent & event) {
     {
         ((wxTextCtrl *)FindWindow(ID_DEBUG_SQL))->SetValue(e.GetSQL().c_str());
         wxLogDB(e.GetWhat().c_str());
+        return;
     }        
+    wxLogDebug(wxT("Disconnected"));
     
 }

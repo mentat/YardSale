@@ -68,7 +68,7 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     
     YardDebugScreen * debug = new YardDebugScreen(this, -1, "Debug");
     debug->Show();
-    wxLogMessage("BITACH");
+    wxLogDebug(wxT("Main loaded..."));
 }
 
 YardMain::~YardMain()
@@ -77,27 +77,32 @@ YardMain::~YardMain()
 
 void YardMain::OnLogout(wxCommandEvent& event){
     
+    wxLogDebug(wxT("OnLogout"));
     Destroy();
 }
 
 void YardMain::OnMax(wxCommandEvent& event){    
 
+    wxLogDebug(wxT("OnMax"));
 }
 
 void YardMain::OnInventory(wxCommandEvent& event){
     
+    wxLogDebug(wxT("OnInventory"));
     wxFrame * inventory = new YardInventory(this, -1, wxT("Inventory"));
     inventory->Show();
 }
 
 void YardMain::OnSale(wxCommandEvent & event) {
     
+    wxLogDebug(wxT("OnSale"));
     wxFrame * sales = new YardSaleScreen(this, -1, wxT("Sales"));
     sales->Show();
 }
 
 void YardMain::OnEmployee(wxCommandEvent & event) {
     
+    wxLogDebug(wxT("OnEmployee"));
     wxFrame * employ = new YardEmployee(this, -1, wxT("Employee"));
     employ->Show();
 }

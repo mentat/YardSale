@@ -26,7 +26,7 @@
 enum
 {
     wxLOG_CONSOLE = 101,
-    wxLOG_DB
+    wxLOG_DB = 105
 };
 
 // Yes! Fuck you MI haters.

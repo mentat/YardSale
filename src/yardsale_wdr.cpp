@@ -610,6 +610,7 @@ wxSizer *DebugScreen( wxWindow *parent, bool call_fit, bool set_sizer )
     wxFlexGridSizer *item3 = new wxFlexGridSizer( 4, 0, 0 );
 
     wxButton *item4 = new wxButton( parent, ID_DEBUG_DB_CONNECT, wxT("Connect to DB"), wxDefaultPosition, wxDefaultSize, 0 );
+    item4->SetDefault();
     item3->Add( item4, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item5 = new wxButton( parent, ID_DEBUG_DB_DISC, wxT("Disconnect"), wxDefaultPosition, wxDefaultSize, 0 );

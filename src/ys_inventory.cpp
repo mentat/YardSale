@@ -37,7 +37,7 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     
     if (wxGetApp().DB().IsConnected())
     {
-        wxLogMessage(wxT("Connected"));
+        wxLogDebug(wxT("Connected"));
         vector<YardInvType> temp;
         
         try {
@@ -51,7 +51,7 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
         
         for (int i = 0; i < temp.size(); i++)
         {
-            wxLogMessage(wxT("In loop"));
+            wxLogDebug(wxT("In loop"));
             stringstream numconv;
             numconv << temp[i].GetSKU();
             list->InsertItem(0, numconv.str().c_str());
@@ -62,8 +62,14 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
         }
     }
     else
-        wxLogMessage(wxT("Not Connected"));
-   
+        wxLogDebug(wxT("Not Connected"));
+    
+    list->SetColumnWidth( 0, wxLIST_AUTOSIZE );
+    list->SetColumnWidth( 1, wxLIST_AUTOSIZE );
+    list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
+    list->SetColumnWidth( 3, wxLIST_AUTOSIZE );
+    list->SetColumnWidth( 4, wxLIST_AUTOSIZE );
+    
 }
 
 YardInventory::~YardInventory()
