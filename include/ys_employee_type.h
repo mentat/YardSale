@@ -33,7 +33,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @see YardDBType
  */
 class YardEmployeeType: public YardDBType {
@@ -81,6 +81,9 @@ class YardEmployeeType: public YardDBType {
     /// Returns the location of the employee signature file
     string GetSigLocal() const { return m_signature; }
     
+    /// Check enabled
+    int GetEnabled() const { return m_enabled; }
+    
     //-----------------Settors-------------------
     /// @note You cannot set the employee ID, it is set by the DB
     /// @todo Maybe have all these return boolean which says if the set
@@ -108,6 +111,10 @@ class YardEmployeeType: public YardDBType {
     void SetSig(const string& loc);
     /// Set job title
     void SetTitle(const string& title);
+    /// Set Enabled
+    void SetEnabled(){ m_enabled = 1;}
+    /// Set Disabled
+    void SetDisabled(){ m_enabled = 0;}
     
     /// @todo temp to fix compile
     
@@ -126,12 +133,15 @@ class YardEmployeeType: public YardDBType {
     string m_zip;
     string m_state;
     string m_phone;
+    
  
     string m_picture;
     string m_signature;
 
     string m_title; // for grouping
-    
+ 
+    int m_enabled;//whether or not an employee is active 
+ 
 };
 
 #endif
