@@ -1,5 +1,9 @@
 # Connection: rau
 # Host: rau.ece.ncsu.edu
+# Saved: 2004-02-21 20:39:37
+# 
+# Connection: rau
+# Host: rau.ece.ncsu.edu
 # Saved: 2004-02-19 15:12:56
 # 
 # Connection: rau
@@ -63,4 +67,60 @@ values(10110,'1001101011010101','50 Gallon Trash Can',
 'Houseware',13,0,2,20,'Home','2','2',8.99,3.50,
 '',now(),1.000,'F','F');
 
+# Show all things in the inventory table, without their actual tax
+# information
 SELECT *  FROM Inventory_Table;
+
+#END INVENTORY STUFF
+
+#BEGIN TAX STUFF
+INSERT INTO Tax_Table
+values(1,'Food Tax', 0.02);
+
+INSERT INTO Tax_Table
+values(2,'Sales Tax',0.06);
+
+#Show all the different tax types
+SELECT * FROM Tax_Table;
+
+#Show all inventory items associated with their Tax Types
+#This is probably the most useful query
+SELECT * FROM Inventory_Table JOIN Tax_Table 
+ON Inventory_Table.INV_REF_TAX_TAX_Type=Tax_Table.TAX_ID;
+
+#END TAX RELATED STUFF
+
+#BEGIN VENDOR  STUFF
+
+INSERT INTO Vendor_Table
+VALUES('','Canned Food Distributing Warehouse',
+'Warehouse St.','Raleigh','NC','27667','919.233.7865',
+'Joe Blow','Canned Food','joe_blow@cfdw.com','www.cfdw.com');
+
+INSERT INTO Vendor_Table
+VALUES('','Plastic Storage Container Biz',
+'Waterfront Port BLVD','Wimington','NC','27666','919.765.3456',
+'Jackie Nackie','Plastic Storage Containers','j_nackie@psc.biz','');
+
+INSERT INTO Vendor_Table
+VALUES('','Fayetteville St. Butcher Market',
+'203 Fayetteville St','Raleigh','NC','27603','919.233.4455',
+'Butch','Meat','','');
+
+SELECT * FROM Vendor_Table;
+
+#
+# This query returns a set of all tax and vendor data 
+# associated with any particular Inventory Item.
+#
+# This is also a more useful query than the  plain
+# ole select query
+#
+SELECT * FROM 
+Inventory_Table JOIN Tax_Table 
+ON 
+Inventory_Table.INV_REF_TAX_TAX_Type=Tax_Table.TAX_ID, Vendor_Table
+WHERE 
+Inventory_Table.INV_REF_VND_Vendor_ID=Vendor_Table.VND_ID;
+
+#END VENDOR TABLE STUFF
