@@ -1,0 +1,15 @@
+Guys,
+
+Please make sure to use the MySQL server on Rau whenever possible
+especially when testing these new add functions.
+
+I just realized that on a normal Gentoo install of MySQL the 
+default table type is MyISAM not InnoDB. This will allow
+broken references to occur and never throw an error. I worked
+hard to setup InnoDB on rau to alleviate this and local installs
+of MySQL will cause broken referential integrity constraints
+unless you deliberately used InnoDB compile options on the 
+install.
+
+Cheers,
+Adam
