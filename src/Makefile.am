@@ -34,7 +34,8 @@ yardsale_SOURCES = \
 	ys_employee_type.cpp\
     	ys_cust_type.cpp\
 	ys_keybrd_dlg.cpp\
-	ys_trans_type.cpp
+	ys_trans_type.cpp\
+	ys_tax_type.cpp
 
 yardsale_LDFLAGS = 
 
