@@ -4,7 +4,7 @@
 #include "wx/frame.h"
 
 class YardDebugScreen: public wxFrame {
-    public:
+ public:
         
     YardDebugScreen(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
@@ -12,6 +12,13 @@ class YardDebugScreen: public wxFrame {
                long style = wxRESIZE_BORDER|wxFRAME_NO_TASKBAR);
         
     virtual ~YardDebugScreen();
+    
+    void OnConnect(wxCommandEvent& event);
+    void OnDisc(wxCommandEvent& event);
+    
+ private:
+        
+    DECLARE_EVENT_TABLE()
     
 };
 

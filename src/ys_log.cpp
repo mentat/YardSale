@@ -113,8 +113,8 @@ void YardLog::DoLog(wxLogLevel level, const wxChar *szString, time_t t)
   InsertItem(0, string_type, image);
   SetItem(0,1,szString);
 
-  SetColumnWidth(0, wxLIST_AUTOSIZE);
-  SetColumnWidth(1, wxLIST_AUTOSIZE);
+  //SetColumnWidth(0, wxLIST_AUTOSIZE);
+  //SetColumnWidth(1, wxLIST_AUTOSIZE);
 
 }
 

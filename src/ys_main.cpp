@@ -3,12 +3,14 @@
 #include "yardsale_wdr.h"
 
 
+#include "ys_debug.h"
 #include "ys_bitmaps.h"
 #include "yardsale.h"
 #include "ys_main.h"
 #include "ys_inventory.h"
 #include "ys_sale.h"
 #include "ys_employee.h"
+#include "ys_log.h"
 
 
 BEGIN_EVENT_TABLE(YardMain, wxFrame)
@@ -62,8 +64,11 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     wxSizer * sizer = Main(panel, false, true);
     //sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
-    //Centre();
- 
+    Centre();
+    
+    YardDebugScreen * debug = new YardDebugScreen(this, -1, "Debug");
+    debug->Show();
+    wxLogMessage("BITACH");
 }
 
 YardMain::~YardMain()
