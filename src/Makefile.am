@@ -52,7 +52,7 @@ yardsale_SOURCES = \
 
 
 INCLUDES = -I../include
-yardsale_LDFLAGS =
+yardsale_LDFLAGS = -L/usr/local/lib
 
 yardsale_LDADD =  \
 	extra/xrc/libxrc.a $(GUI_LIBS)
