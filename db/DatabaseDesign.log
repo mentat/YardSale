@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.12.24)  9 FEB 2004 20:13
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.12.24)  10 FEB 2004 18:24
 **DatabaseDesign.tex
 (./DatabaseDesign.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
 LaTeX2e <2001/06/01>
@@ -78,27 +78,26 @@ loading : Context Support Macros / PDF
 \nofMPsegments=\count94
 \nofMParguments=\count95
 \everyMPtoPDFconversion=\toks17
-)
+) <diagrams/Database_Layout.pdf, id=1, 1757.56625pt x 1603.9925pt>
+File: diagrams/Database_Layout.pdf Graphic file (type pdf)
 
-! LaTeX Error: Unknown graphics extension: .latex.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ...ludegraphics{diagrams/DatabaseLayout.latex}
+<use diagrams/Database_Layout.pdf>
+! Dimension too large.
+\Gscale@box ...#2\ht \z@ \else \ht \tw@ #2\ht \z@ 
+                                                  \dp \tw@ #2\dp \z@ \fi \if...
+l.7 ...ludegraphics{diagrams/Database_Layout.pdf}}
                                                   
 ? x
  
 Here is how much of TeX's memory you used:
- 775 strings out of 95437
- 9164 string characters out of 1190232
+ 776 strings out of 95437
+ 9136 string characters out of 1190232
  54634 words of memory out of 1000001
- 3839 multiletter control sequences out of 10000+50000
+ 3842 multiletter control sequences out of 10000+50000
  3640 words of font info for 14 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 1000
- 23i,0n,17p,209b,40s stack positions out of 1500i,500n,5000p,200000b,5000s
- 0 PDF objects out of 300000
+ 23i,5n,17p,209b,86s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 1 PDF objects out of 300000
  0 named destinations out of 131072
- 0 words of extra memory for PDF output out of 65536
+ 5 words of extra memory for PDF output out of 65536
 No pages of output.
