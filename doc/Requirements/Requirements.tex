@@ -679,9 +679,26 @@
 
     The following sections are related to the design of YardSale
     in regards to the database level design as well as the client
-    application level design. The first section provides a high level
+    application level design. A database was chosen to store the
+    data for the application since we require persistent data
+    storage. A database also is a robust method for storage, and
+    easily queried as opposed to flat text files or binary file
+    storage methods. There are also built in user access rights
+    which will aid in security for YardSale.
+
+    Our Chosen Relational Database Management System for development is
+    MySQL 4 although since all of our queries are based on the
+    SQL standard it should be easy to allow the use of any
+    SQL Compliant RDBMS. For Application to Database connectivity
+    we plan to use OTL in conjuction with ODBC. OTL is a set of C++
+    libraries which provide a higher level SQL layer between the
+    actual database and the application. ODBC is used to interface
+    with the actual database on an operating system and network
+    level.
+
+    The following first section provides a high level
     explanation of the database architecture using UML diagrams. The
-    following section explains design related issues of the YardSale
+    latter section explains design related issues of the YardSale
     client program.
 
 \section{YardSale Database Design}
@@ -699,7 +716,62 @@
     {\bf YardSale Global Database Diagram}\\
     \\
     \\
-%    \includegraphics{Database_Layout.png}
+    %	\includegraphics{Database_Layout_REDUCED.png}
+
+    \includegraphics[scale=1]{Database_Layout_REDUCED.png}
+
+	
+
+	\begin{enumerate}
+		\item{Customer Table}
+		\begin{itemize}
+			\item{Primary Key: Customer Account Number}
+		\end{itemize}
+		\item{Inventory Table}
+		\begin{itemize}
+			\item{Primary Key: Inventory SKU Number}
+		\end{itemize}
+		\item{Tax Table}
+		\begin{itemize}
+			\item{Primary Key: Tax ID}
+		\end{itemize}
+		\item{Transaction Log Table}
+		\begin{itemize}
+			\item{Primary Key: Key composed of all referenced keys}
+		\end{itemize}
+		\item{Vendor Table}
+		\begin{itemize}
+			\item{Primary Key: Vendor ID}
+		\end{itemize}
+		\item{Employee Table}
+		\begin{itemize}
+			\item{Primary Key: Employee Social Security Number}
+		\end{itemize}
+		\item{Package Table}
+		\begin{itemize}
+			\item{Primary Key: Package ID Number}
+		\end{itemize}
+		\item{Login Table}
+		\begin{itemize}
+			\item{Primary Key: Key composed of all referenced keys}
+		\end{itemize}
+		\item{ACL Table}
+		\begin{itemize}
+			\item{Primary Key: ACL Type}
+		\end{itemize}
+		\item{Carrier Table}
+		\begin{itemize}
+			\item{Primary Key: Carrier ID}
+		\end{itemize}
+		\item{Shipping Table}
+		\begin{itemize}
+			\item{Primary Key: Key composed of all referenced keys}
+		\end{itemize}
+		\item{Key Table}
+		\begin{itemize}
+			\item{Primary Key: Key ID}
+		\end{itemize}
+	\end{enumerate}
 
     \newpage
 
@@ -712,7 +784,7 @@
         {\bf Customer Table}\\
         \\
         \\
-%        \includegraphics{Tables/CustomerTable.png}\\
+        \includegraphics{Tables/CustomerTable.png}\\
         \\
         The above UML diagram shows the layout of the customer table. The object of this
         table is to manage customer personal information for later reference in
@@ -747,7 +819,7 @@
         {\bf Inventory Table}\\
         \\
         \\
-%        \includegraphics{Tables/InventoryTable.png}\\
+        \includegraphics{Tables/InventoryTable.png}\\
         \\
         \\
         This table being the main Inventory storage structure contains all information needed
@@ -772,7 +844,7 @@
         {\bf Tax Table}\\
         \\
         \\
-%        \includegraphics{Tables/TaxTable.png}\\
+        \includegraphics{Tables/TaxTable.png}\\
         \\
         \\
         The tax table is just a support table for the inventory items. It is referenced by ID
@@ -784,7 +856,7 @@
         {\bf Vendor Table}\\
         \\
         \\
-%        \includegraphics{Tables/VendorTable.png}\\
+        \includegraphics{Tables/VendorTable.png}\\
         \\
         \\
         The Vendor Table is used also as a supporting table for the inventory. This information
@@ -806,7 +878,7 @@
         {\bf Transaction Table}\\
         \\
         \\
-%        \includegraphics{Tables/TransactionLogTable.png}\\
+        \includegraphics{Tables/TransactionLogTable.png}\\
         \\
         \\
         The Transaction Log Table is used to store information that links Customers, Employees, and
@@ -819,7 +891,7 @@
         {\bf Package Table}\\
         \\
         \\
-%        \includegraphics{Tables/PackageTable.png}\\
+        \includegraphics{Tables/PackageTable.png}\\
         \\
         \\
         The Package Table is used to store information about a package. There is a link to a transaction ID
@@ -833,7 +905,7 @@
         {\bf Carrier Table}\\
         \\
         \\
-%        \includegraphics{Tables/CarrierTable.png}\\
+        \includegraphics{Tables/CarrierTable.png}\\
         \\
         \\
         The Carrier table is a support table for the Package table. It provides information about the different
@@ -850,7 +922,7 @@
         this table. The table just contains the name for the type of shipping, the carrier, and how much
         it costs.\\
         \\
-%        \includegraphics{Tables/ShippingTable.png}\\
+        \includegraphics{Tables/ShippingTable.png}\\
         \\
         \subsection{Employee Management}
 
@@ -863,7 +935,7 @@
         {\bf Employee Table}\\
         \\
         \\
-%        \includegraphics{Tables/EmployeeTable.png}
+        \includegraphics{Tables/EmployeeTable.png}
         \\
         \\
         The Employee Table keeps track of all pertinent information about employees that would
@@ -880,7 +952,7 @@
         {\bf Login Table}\\
         \\
         \\
-%        \includegraphics{Tables/LoginTable.png}\\
+        \includegraphics{Tables/LoginTable.png}\\
         \\
         \\
         The Login Table tracks the amount of time an employee has been logged in based on when
@@ -895,7 +967,7 @@
         {\bf Access Control List Table}\\
         \\
         \\
-%        \includegraphics{Tables/ACL.png}\\
+        \includegraphics{Tables/ACL.png}\\
         \\
         \\
         The ACL table which is short for Access Control List Table manages which user types have access
@@ -907,7 +979,7 @@
         {\bf Key Table}\\
         \\
         \\
-%        \includegraphics{Tables/KeyTable.png}\\
+        \includegraphics{Tables/KeyTable.png}\\
         \\
         \\
         The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
