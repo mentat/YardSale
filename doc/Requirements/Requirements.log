@@ -1,13 +1,12 @@
-This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  3 MAR 2004 21:00
-entering extended mode
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2004.1.5)  4 MAR 2004 02:05
 **Requirements.tex
-(Requirements.tex{pdftex.cfg}
+(./Requirements.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
 LaTeX2e <2001/06/01>
-Babel <v3.7m> and hyphenation patterns for english, french, german, ngerman, du
-mylang, nohyphenation, loaded.
-(C:\texmf\tex\latex\base\report.cls
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/share/texmf/tex/latex/base/report.cls
 Document Class: report 2001/04/21 v1.4e Standard LaTeX document class
-(C:\texmf\tex\latex\base\size10.clo
+(/usr/share/texmf/tex/latex/base/size10.clo
 File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -22,28 +21,34 @@ File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (C:\texmf\tex\latex\graphics\graphicx.sty
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-(C:\texmf\tex\latex\graphics\keyval.sty
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(C:\texmf\tex\latex\graphics\graphics.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
 Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
- (C:\texmf\tex\latex\graphics\trig.sty
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-) (C:\texmf\tex\latex\00miktex\graphics.cfg
-File: graphics.cfg 2003/03/12 v1.1 MiKTeX 'graphics' configuration
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 80.
 
-(C:\texmf\tex\latex\graphics\pdftex.def
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
 File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
 \Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
-) (Requirements.aux)
+) (./Requirements.aux)
+\openout1 = `Requirements.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
@@ -57,7 +62,8 @@ LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 
-(C:\texmf\tex\context\base\supp-pdf.tex (C:\texmf\tex\context\base\supp-mis.tex
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
 loading : Context Support Macros / Missing
 \protectiondepth=\count89
 \scratchcounter=\count90
@@ -92,13 +98,15 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 22.
  [1
 
-{psfonts.map}] (Requirements.toc
+{/usr/share/texmf/dvips/config/pdftex.map}] (./Requirements.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 2.
 )
 \tf@toc=\write4
+\openout4 = `Requirements.toc'.
+
  [1
 
 ]
@@ -109,7 +117,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--58
  []
 
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 60.
-(C:\texmf\tex\latex\base\omscmr.fd
+(/usr/share/texmf/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -133,30 +141,401 @@ File: yardsale_modules.png Graphic file (type png)
 <organization.png, id=49, 451.6875pt x 222.8325pt>
 File: organization.png Graphic file (type png)
  <use organization.png>
-[7 <yardsale_modules.png>] [8 <organization.png>]
+[7 <./yardsale_modules.png>] [8 <./organization.png>]
 Chapter 2.
 [9
 
-]
+] <Database_Layout.png, id=59, 401.5pt x 350.30875pt>
+File: Database_Layout.png Graphic file (type png)
+
+<use Database_Layout.png>
+Underfull \hbox (badness 10000) in paragraph at lines 403--407
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--407
+
+ []
+
+[10 <./Database_Layout.png>]
+<Tables/CustomerTable.png, id=63, 180.675pt x 164.615pt>
+File: Tables/CustomerTable.png Graphic file (type png)
+
+<use Tables/CustomerTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 416--427
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--427
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--427
+
+ []
+
+[11 <./Tables/CustomerTable.png>]
+<Tables/InventoryTable.png, id=67, 351.3125pt x 304.13625pt>
+File: Tables/InventoryTable.png Graphic file (type png)
+
+<use Tables/InventoryTable.png>
+<Tables/TaxTable.png, id=68, 150.5625pt x 77.28876pt>
+File: Tables/TaxTable.png Graphic file (type png)
+
+<use Tables/TaxTable.png>
+<Tables/VendorTable.png, id=69, 200.75pt x 194.7275pt>
+File: Tables/VendorTable.png Graphic file (type png)
+
+<use Tables/VendorTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--501
+
+ []
+
+[12 <./Tables/InventoryTable.png>]
+<Tables/TransactionLogTable.png, id=74, 401.5pt x 151.56625pt>
+File: Tables/TransactionLogTable.png Graphic file (type png)
+
+<use Tables/TransactionLogTable.png>
+<Tables/PackageTable.png, id=75, 401.5pt x 171.64125pt>
+File: Tables/PackageTable.png Graphic file (type png)
+
+<use Tables/PackageTable.png>
+<Tables/CarrierTable.png, id=76, 159.59625pt x 96.36pt>
+File: Tables/CarrierTable.png Graphic file (type png)
+
+<use Tables/CarrierTable.png>
+<Tables/ShippingTable.png, id=77, 401.5pt x 130.4875pt>
+File: Tables/ShippingTable.png Graphic file (type png)
+
+<use Tables/ShippingTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--559
+
+ []
+
+[13 <./Tables/TaxTable.png> <./Tables/VendorTable.png>] [14 <./Tables/Transacti
+onLogTable.png> <./Tables/PackageTable.png>]
+<Tables/EmployeeTable.png, id=84, 401.5pt x 183.68625pt>
+File: Tables/EmployeeTable.png Graphic file (type png)
+
+<use Tables/EmployeeTable.png>
+<Tables/LoginTable.png, id=85, 199.74625pt x 78.2925pt>
+File: Tables/LoginTable.png Graphic file (type png)
+
+<use Tables/LoginTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--596
+
+ []
+
+[15 <./Tables/CarrierTable.png> <./Tables/ShippingTable.png>] [16 <./Tables/Emp
+loyeeTable.png> <./Tables/LoginTable.png>]
+<Tables/ACL.png, id=92, 125.46875pt x 64.24pt>
+File: Tables/ACL.png Graphic file (type png)
+ <use Tables/ACL.png>
+<Tables/KeyTable.png, id=93, 301.125pt x 62.2325pt>
+File: Tables/KeyTable.png Graphic file (type png)
+ <use Tables/KeyTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--625
+
+ []
+
+[17 <./Tables/ACL.png> <./Tables/KeyTable.png>] [18]
 Chapter 3.
-[10
+[19
 
 ]
 Chapter 4.
-[11
+[20
 
-] (Requirements.aux) ) 
+] (./Requirements.aux) ) 
 Here is how much of TeX's memory you used:
- 990 strings out of 95518
- 11157 string characters out of 1189726
- 59097 words of memory out of 1060600
- 4059 multiletter control sequences out of 35000
+ 1017 strings out of 95437
+ 13054 string characters out of 1190234
+ 61407 words of memory out of 1000001
+ 4039 multiletter control sequences out of 10000+50000
  9767 words of font info for 34 fonts, out of 500000 for 1000
- 14 hyphenation exceptions out of 607
- 25i,6n,19p,207b,191s stack positions out of 1500i,500n,5000p,200000b,32768s
- 64 PDF objects out of 65536
- 0 named destinations out of 20000
- 11 words of extra memory for PDF output out of 65536
-<cmr7.pfb><cmsl10.pfb><cmsy10.pfb><cmr10.pfb><cmbx10.pfb>
-<cmr12.pfb><cmr17.pfb><cmbx12.pfb>
-Output written on Requirements.pdf (12 pages, 151405 bytes).
+ 14 hyphenation exceptions out of 1000
+ 25i,6n,19p,207b,243s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 106 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 75 words of extra memory for PDF output out of 65536
+{/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/
+texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
+cmsl10.pfb>{/usr/share/texmf/dvips/tetex/bbad153f.enc}</usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb><
+/usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr
+/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb>
+Output written on Requirements.pdf (21 pages, 254306 bytes).

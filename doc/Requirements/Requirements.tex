@@ -14,7 +14,7 @@
 
 %title info
 \title{{\LARGE {\bf Interim Report\\}}YardSale\\The Open Source Point of Sale Solution}
-\author{Mike Swigon\\Adam Parrish\\Jesse Lovelace\\Jay Johnston\\John Lamb\\Cameron Watts}
+\author{Jesse Lovelace\\Adam Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts}
 \date{March 5, 2004}
 
 \begin{document}
@@ -380,11 +380,256 @@ functionality can not be added.
 
 
 \chapter{Design}
-This section is still in the works
+
+	The following sections are related to the design of YardSale
+	in regards to the database level design as well as the client
+	application level design. The first section provides a high level
+	explanation of the database architecture using UML diagrams. The
+	following section explains design related issues of the YardSale
+	client program.
+
+\section{YardSale Database Design}
+
+	The YardSale database was designed with security and efficiency in
+	mind. The goal was, as it is in any database, to seperate unrelated
+	data and key similar items together with table relations. The global
+	database model is seen in the diagram on the following page. Although
+	it is not necessarily easy to read the table relations can be seen, and
+	table specifics like field values, indexes, and foreign and primary keys
+	can be seen in the following table diagrams.
+
+	\newpage
+
+	\bf{YardSale Global Database Diagram}\\
+	\\
+	\\
+	\includegraphics{Database_Layout.png}
+
+	\newpage
+
+	\subsection{Customer Management}
+
+	Since customer management is basically a simple task it is maintained in only
+	one table. There is no real need to have their data stored accross many
+	different tables since all of the information is just personal data.
+
+	\bf{Customer Table}\\
+	\\
+	\\
+	\includegraphics{Tables/CustomerTable.png}\\
+	\\
+	The above UML diagram shows the layout of the customer table. The object of this
+	table is to manage customer personal information for later reference in
+	transactions. By allowing this associativity YardSale will later be able to
+	formulate reports on how much each of its customers spend for example. It also
+	provides a rather in depth directory of all of a business's clients for use
+	in any form they see fit.
+
+	The data stored begins with the customer account number which is just an
+	arbitrarily assigned number that is managed by the database management
+	system. It is also the primary key for the table and is therefore unique.
+	First, Middle, and Last names are all stored in seperate fields of their own,
+	as is the Address information. Credit information can also be stored about users
+	but is optional, and is also planned to be stored in the field as an encrypted
+	string of data so that underprivileged users can not access it. Two interesting
+	features about this table is the ability to store a link to a photograph and
+	signature for each customer. That way it will aid in positively identifying a
+	customer when they are checking out with check or credit.
+
+
+	\newpage
+
+	\subsection{Inventory Management}
+
+	YardSale's Inventory Management scheme spans over three tables. The main table that
+	stores actual inventory description information is the Inventory Table itself. The
+	other two tables are used to support the main table. They are the Tax table and the
+	Vendor Table. The tax table is basically a storage area for different tax types, and
+	the Vendor Table is a storage table for Vendor information or Inventory Supplier
+	information.\\
+	\\
+	\bf{Inventory Table}\\
+	\\
+	\\
+	\includegraphics{Tables/InventoryTable.png}\\
+	\\
+	\\
+	This table being the main Inventory storage structure contains all information needed
+	about any inventory item. The record primary key is the SKU number which is a user
+	defined number or character string. These are often used in small businesses to
+	internally key their inventory. Manufacturers will often have a bar code associated
+	with each item the produce as well so their is a field available for that as well.
+	Each item can be briefly described, and associated with a department for further
+	subcatagorizing. The number of any particular item is maintained as well as how many
+	of the item are on order. There is a field for storing the number at which an item should
+	be reordered, and also how many to reorder at that time. There are varying description
+	fields such as item type and weight as well. Three pricing fields are supplied. The
+	first two are statically maintained as retail and wholesale price. The third price
+	type varies on the number of items being purchased. This field is maintained in XML
+	format so that as many different pricing levels as are needed can be defined. When an
+	item is received it updates the field corresponding to last received. Some items are
+	oddly shaped or are overly heavy, either of these two options could cause the oversized
+	flag to be set, and if the oversized flag is set a ship by freight option would also be
+	set, but they are mutually exclusive and the ship by freight can be set without the
+	oversized flag being set.\\
+	\\
+	\bf{Tax Table}\\
+	\\
+	\\
+	\includegraphics{Tables/TaxTable.png}\\
+	\\
+	\\
+	The tax table is just a support table for the inventory items. It is referenced by ID
+	depending on the desired taxing an item should have. Using a table allows for user definable
+	tax types, and allows the database to be flexible to tax changes. All that the table needs
+	is a Tax Name and a percentage for taxing items. The ID field is managed internally by the
+	database management system and is also the primary key for the table.\\
+	\\
+	\bf{Vendor Table}\\
+	\\
+	\\
+	\includegraphics{Tables/VendorTable.png}\\
+	\\
+	\\
+	The Vendor Table is used also as a supporting table for the inventory. This information
+	pertains to the supplier of the items being sold. When an item reaches its reorder level
+	in the Inventory Table, the information in this table would be used to make the order to
+	resupply. The table is keyed by a unique ID that is managed by the database management
+	system. The company name, address, and pertinent contact information is maintained along
+	with a sales representative's name. There are optional fields for company specialty, email
+	address, and homepage as well.
+
+	\subsection{Transaction Handling}
+
+	Transaction Handling is a process that has data spanning two tables with two more supporting
+	tables. Transaction handling is split into two sections. The first section being the actual
+	day to day transaction, and then the added functionality of packaging the items sold during
+	the transaction.\\
+	\\
+	\\
+	\bf{Transaction Table}\\
+	\\
+	\\
+	\includegraphics{Tables/TransactionLogTable.png}\\
+	\\
+	\\
+	The Transaction Log Table is used to store information that links Customers, Employees, and
+	inventory items. Each entry in the transaction table represents an item sold during a transaction.
+	Since the key is not a single ID number it is the combination of the Customer, Employee, Item,
+	Quantity and Price, the ID can be used to represent the overall transaction. Any row that contains
+	an equivalent ID belongs to the same transaction.
+	\\
+	\\
+	\bf{Package Table}\\
+	\\
+	\\
+	\includegraphics{Tables/PackageTable.png}\\
+	\\
+	\\
+	The Package Table is used to store information about a package. There is a link to a transaction ID
+	so that items can be associated with a package. There is also a link to a customer from the package
+	table. The reason there is a link from the package table is because one customer may wish to buy
+	something for another so the customer who made the transaction will not necessarily be the same as
+	the one who will receive the package. There is also a reference to a carrier and a shipping type.
+	A tracking number field is provided for when the tracking number is issued by the Carrier.
+	\\
+	\\
+	\bf{Carrier Table}\\
+	\\
+	\\
+	\includegraphics{Tables/CarrierTable.png}\\
+	\\
+	\\
+	The Carrier table is a support table for the Package table. It provides information about the different
+	shipping services. The information maintained here is just what is necessary to get a package shipped.
+	There is a phone number, pickup location and an ID associated with each entry.
+	\\
+	\\
+	\bf{Shipping Table}\\
+	\\
+	\\
+	The Shipping Table is also a support table for the Package Table. This table is a list of all of the
+	different methods of shipping available associated with the Carrier Table. Since each Carrier can
+	have multiple shipping methods they can all be easily added and deleted if they ever change via
+	this table. The table just contains the name for the type of shipping, the carrier, and how much
+	it costs.\\
+	\\
+	\includegraphics{Tables/ShippingTable.png}\\
+	\\
+	\subsection{Employee Management}
+
+	The Employee Management section is actually two sections. There is the Employee portion which
+	spans two tables, the Employee Table for employee information, and the Login Table which
+	keeps track of the hours an employee works between logging in and out of the clients. The
+	other section is the security aspect of the program as it relates to employees. It also spans
+	two tables; the ACL Table and the Key Table.\\
+	\\
+	\bf{Employee Table}\\
+	\\
+	\\
+	\includegraphics{Tables/EmployeeTable.png}
+	\\
+	\\
+	The Employee Table keeps track of all pertinent information about employees that would
+	be needed by an employer. Basic personal information such as First, Middle, and Last name
+	as well as Contact information are maintained here. Each employee in the table has a unique
+	employee identification number associated with them to avoid having to use the Social
+	Security Number as a key. This also allows data such as the Social Security number to be
+	encrypted to alleviate underprivileged users from seeing it. Each employee also has a
+	field for a picture link and signature link to help with positive identification. The other
+	field in this table is the password field which is used to store a users password to allow
+	a user to login, and which is also used to decrypt the keys from the key table. Each user
+	is also associated with a ACL entry in the ACL Table.\\
+	\\
+	\bf{Login Table}\\
+	\\
+	\\
+	\includegraphics{Tables/LoginTable.png}\\
+	\\
+	\\
+	The Login Table tracks the amount of time an employee has been logged in based on when
+	they logged into their first client to when they logout of their last client. The structure
+	is very simple. It references an employee ID and has a Count field. When the count is greater
+	than zero the user is logged in and upon first entry a value will be inserted into the
+	Log In Time field. When the value of Count reaches zero again a value will be inserted into
+	the Log Out Time field.
+	
+	\subsubsection{Security}
+
+	\bf{Access Control List Table}\\
+	\\
+	\\
+	\includegraphics{Tables/ACL.png}\\
+	\\
+	\\
+	The ACL table which is short for Access Control List Table manages which user types have access
+	to different levels of program use. All this table contains is a Name of a user type and a description
+	of their functionality. Currently we foresee only four user types and will likely not have an
+	interface to manage this table.\\
+	\\
+	\\
+	\bf{Key Table}\\
+	\\
+	\\
+	\includegraphics{Tables/KeyTable.png}\\
+	\\
+	\\
+	The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
+	entry in this table will reference a valid user in the Employee Table and the text field will
+	contain encrypted data that the user's password was used to encrypt. When the password is used
+	to decrypt this data the user can obtain the keys used to encrypt global database data. A few
+	example fields that are going to be stored as encrypted data are Credit Card Numbers and Expiration
+	Date pairs as well as Social Security Numbers. This will add a level of database security that
+	will prevent or deter malicious users from stealing valuable information from the database.\\
+	\\
+
+	\newpage
+	
+	\section{YardSale Client Application Design}
 
 \chapter{Implementation}
 
-    \subsection{Class Documentation}
+	\subsection{Class Documentation}
 
 Please note the following section was auto-generated. We are
 working on tweaking this output a little, but currently it is
