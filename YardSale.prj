@@ -92,7 +92,8 @@ module.include.files=\
 	ys_keybrd_dlg.h\
 	ys_keybrd.h\
 	ys_trans_type.h\
-	ys_util.h
+	ys_util.h\
+	otl_xml.h
 
 module.source.name=src
 module.source.type=
@@ -115,7 +116,8 @@ module.source.files=\
 	ys_config.cpp\
 	ys_footer.cpp\
 	ys_keybrd.cpp\
-	ys_keybrd_dlg.cpp
+	ys_keybrd_dlg.cpp\
+	otl_xml.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

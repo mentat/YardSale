@@ -2,6 +2,16 @@
 
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+
+\pagestyle{fancyplain}
+
+\lhead[\fancyplain{}{\bfseries\thepage}]
+        {\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]
+        {\fancyplain{}{\bfseries\thepage}}
+\lfoot[]{\fancyplain{}{\bfseries\scriptsize YardSale: The Open
+        Source Point of Sale Solution}} \cfoot{}
+
 %left margin gutter
 \oddsidemargin 0.0in
 %right margin gutter
@@ -11,11 +21,6 @@
 \headheight 0.0in
 \topmargin 0.0in
 \textheight 8.5in
-
-%title info
-\title{YardSale\\The Open Source Point of Sale Solution}
-\author{{\bf A.S. Logic Systems Co.}\\Jesse Lovelace\\Adam Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts}
-\date{March 5, 2004}
 
 \begin{document}
 
@@ -73,19 +78,38 @@ troubleshooting, support, expansion, or customization.
 \section{Functional Requirements}
 
 This section entails all of the minimal requirements set by the AS
-Logic Systems development team for the OpenPOS hereafter referred
+Logic Systems development team for the Open Source Point of Sale, hereafter referred
 to as YardSale.\\
-\\Minimum functionality of YardSale should accomplish the
-following:
+\\YardSale should accomplish the
+following Point of Sale operations:
 
 \begin{itemize}
-    \item {Manage Inventory Data}
-    \item {Manage Customer Data}
-    \item {Manage Employee Data}
-    \item {Perform Transactions}
-    \item {Provide Logging Facilities}
-    \item {Report on Data}
-    \item {User Level Access Rights}
+    \item {Manage Inventory}
+    \begin{itemize}
+    	\item {Add a product to the inventory}
+	\item {Edit an existing inventory item}
+	\item {Remove an inventory item}
+	\item {Associate attributes such as price, quanity, and tax with an inventory item}
+	\item {Search for an inventory item by various criteria}
+	\item {Add an inventory item to a transaction (see Transaction)}
+    \end{itemize}
+    \item{Manage Customers}
+    \begin{itemize}
+    	\item{Add and remove customers}
+	\item{Edit customer information such as phone number and address}
+	\item{Associate a customer with a transaction (see Transaction)}
+    \end{itemize}
+    \item {Manage Employees}
+    \begin{itemize}
+    	\item{Add and remove employees}
+	\item{Associate a level with employees such as "manager" and "sales associate"}
+    \end{itemize}
+    \item{Perform Point of Sale Transactions}
+    \begin{itemize}
+    	\item{ Allow an "seller/employee" to sell and inventory item to a "buyer/customer"  }
+	\item{ Allow a customer to return an item to the seller }
+	\item{ Calculate the tax on an item being sold }
+    \end{itemize}
 \end{itemize}
 
 Each of these tasks is described in depth in their corresponding
@@ -332,19 +356,18 @@ functionality can not be added.
         GUI.  It contains functions derived from the wxWindows
         libraries for C++.  It also interacts with the
         Database module to display information sent from the
-        database.
+        database.\\
+
+        \newpage
 
 
     \subsection{System Architecture}
 
-    Figure XXX (shown  below) outlines the class dependencies and hierarchy of
-    the modules described in section 1.5.1.
+    The figure shown below outlines the class dependencies and hierarchy of
+    the modules described in section 1.5.1.\\
 
-
-    \includegraphics{yardsale_modules.png}
+    \includegraphics{yardsale_modules.png}\\
     %\caption{System Architecture Flow Chart}
-
-
 
 \section{Preliminary Project Task Plan}
     %Scope and Size of Project Paragraph
@@ -367,7 +390,8 @@ functionality can not be added.
     \end{description}
 
     \subsection{Team Member Roles and Responsibilities}
-
+    The following figure displays a graphical hierarchy of the team's
+    roles:\\
     \includegraphics{organization.png}
     \\The team roles are defined as follows:
 
@@ -439,553 +463,643 @@ functionality can not be added.
 
     \newpage
 
-    \subsection{Customer Management}
+        \subsection{Customer Management}
 
-    Since customer management is basically a simple task it is maintained in only
-    one table. There is no real need to have their data stored accross many
-    different tables since all of the information is just personal data.
+        Since customer management is basically a simple task it is maintained in only
+        one table. There is no real need to have their data stored accross many
+        different tables since all of the information is just personal data.
 
-    {\bf Customer Table}\\
-    \\
-    \\
-    \includegraphics{Tables/CustomerTable.png}\\
-    \\
-    The above UML diagram shows the layout of the customer table. The object of this
-    table is to manage customer personal information for later reference in
-    transactions. By allowing this associativity YardSale will later be able to
-    formulate reports on how much each of its customers spend for example. It also
-    provides a rather in depth directory of all of a business's clients for use
-    in any form they see fit.
+        {\bf Customer Table}\\
+        \\
+        \\
+        \includegraphics{Tables/CustomerTable.png}\\
+        \\
+        The above UML diagram shows the layout of the customer table. The object of this
+        table is to manage customer personal information for later reference in
+        transactions. By allowing this associativity YardSale will later be able to
+        formulate reports on how much each of its customers spend for example. It also
+        provides a rather in depth directory of all of a business's clients for use
+        in any form they see fit.
 
-    The data stored begins with the customer account number which is just an
-    arbitrarily assigned number that is managed by the database management
-    system. It is also the primary key for the table and is therefore unique.
-    First, Middle, and Last names are all stored in seperate fields of their own,
-    as is the Address information. Credit information can also be stored about users
-    but is optional, and is also planned to be stored in the field as an encrypted
-    string of data so that underprivileged users can not access it. Two interesting
-    features about this table is the ability to store a link to a photograph and
-    signature for each customer. That way it will aid in positively identifying a
-    customer when they are checking out with check or credit.
+        The data stored begins with the customer account number which is just an
+        arbitrarily assigned number that is managed by the database management
+        system. It is also the primary key for the table and is therefore unique.
+        First, Middle, and Last names are all stored in seperate fields of their own,
+        as is the Address information. Credit information can also be stored about users
+        but is optional, and is also planned to be stored in the field as an encrypted
+        string of data so that underprivileged users can not access it. Two interesting
+        features about this table is the ability to store a link to a photograph and
+        signature for each customer. That way it will aid in positively identifying a
+        customer when they are checking out with check or credit.
 
 
-    \newpage
+        \newpage
 
-    \subsection{Inventory Management}
+        \subsection{Inventory Management}
 
-    YardSale's Inventory Management scheme spans over three tables. The main table that
-    stores actual inventory description information is the Inventory Table itself. The
-    other two tables are used to support the main table. They are the Tax table and the
-    Vendor Table. The tax table is basically a storage area for different tax types, and
-    the Vendor Table is a storage table for Vendor information or Inventory Supplier
-    information.\\
-    \\
-    {\bf Inventory Table}\\
-    \\
-    \\
-    \includegraphics{Tables/InventoryTable.png}\\
-    \\
-    \\
-    This table being the main Inventory storage structure contains all information needed
-    about any inventory item. The record primary key is the SKU number which is a user
-    defined number or character string. These are often used in small businesses to
-    internally key their inventory. Manufacturers will often have a bar code associated
-    with each item the produce as well so their is a field available for that as well.
-    Each item can be briefly described, and associated with a department for further
-    subcatagorizing. The number of any particular item is maintained as well as how many
-    of the item are on order. There is a field for storing the number at which an item should
-    be reordered, and also how many to reorder at that time. There are varying description
-    fields such as item type and weight as well. Three pricing fields are supplied. The
-    first two are statically maintained as retail and wholesale price. The third price
-    type varies on the number of items being purchased. This field is maintained in XML
-    format so that as many different pricing levels as are needed can be defined. When an
-    item is received it updates the field corresponding to last received. Some items are
-    oddly shaped or are overly heavy, either of these two options could cause the oversized
-    flag to be set, and if the oversized flag is set a ship by freight option would also be
-    set, but they are mutually exclusive and the ship by freight can be set without the
-    oversized flag being set.\\
-    \\
-    {\bf Tax Table}\\
-    \\
-    \\
-    \includegraphics{Tables/TaxTable.png}\\
-    \\
-    \\
-    The tax table is just a support table for the inventory items. It is referenced by ID
-    depending on the desired taxing an item should have. Using a table allows for user definable
-    tax types, and allows the database to be flexible to tax changes. All that the table needs
-    is a Tax Name and a percentage for taxing items. The ID field is managed internally by the
-    database management system and is also the primary key for the table.\\
-    \\
-    {\bf Vendor Table}\\
-    \\
-    \\
-    \includegraphics{Tables/VendorTable.png}\\
-    \\
-    \\
-    The Vendor Table is used also as a supporting table for the inventory. This information
-    pertains to the supplier of the items being sold. When an item reaches its reorder level
-    in the Inventory Table, the information in this table would be used to make the order to
-    resupply. The table is keyed by a unique ID that is managed by the database management
-    system. The company name, address, and pertinent contact information is maintained along
-    with a sales representative's name. There are optional fields for company specialty, email
-    address, and homepage as well.
+        YardSale's Inventory Management scheme spans over three tables. The main table that
+        stores actual inventory description information is the Inventory Table itself. The
+        other two tables are used to support the main table. They are the Tax table and the
+        Vendor Table. The tax table is basically a storage area for different tax types, and
+        the Vendor Table is a storage table for Vendor information or Inventory Supplier
+        information.\\
+        \\
+        {\bf Inventory Table}\\
+        \\
+        \\
+        \includegraphics{Tables/InventoryTable.png}\\
+        \\
+        \\
+        This table being the main Inventory storage structure contains all information needed
+        about any inventory item. The record primary key is the SKU number which is a user
+        defined number or character string. These are often used in small businesses to
+        internally key their inventory. Manufacturers will often have a bar code associated
+        with each item the produce as well so their is a field available for that as well.
+        Each item can be briefly described, and associated with a department for further
+        subcatagorizing. The number of any particular item is maintained as well as how many
+        of the item are on order. There is a field for storing the number at which an item should
+        be reordered, and also how many to reorder at that time. There are varying description
+        fields such as item type and weight as well. Three pricing fields are supplied. The
+        first two are statically maintained as retail and wholesale price. The third price
+        type varies on the number of items being purchased. This field is maintained in XML
+        format so that as many different pricing levels as are needed can be defined. When an
+        item is received it updates the field corresponding to last received. Some items are
+        oddly shaped or are overly heavy, either of these two options could cause the oversized
+        flag to be set, and if the oversized flag is set a ship by freight option would also be
+        set, but they are mutually exclusive and the ship by freight can be set without the
+        oversized flag being set.\\
+        \\
+        {\bf Tax Table}\\
+        \\
+        \\
+        \includegraphics{Tables/TaxTable.png}\\
+        \\
+        \\
+        The tax table is just a support table for the inventory items. It is referenced by ID
+        depending on the desired taxing an item should have. Using a table allows for user definable
+        tax types, and allows the database to be flexible to tax changes. All that the table needs
+        is a Tax Name and a percentage for taxing items. The ID field is managed internally by the
+        database management system and is also the primary key for the table.\\
+        \\
+        {\bf Vendor Table}\\
+        \\
+        \\
+        \includegraphics{Tables/VendorTable.png}\\
+        \\
+        \\
+        The Vendor Table is used also as a supporting table for the inventory. This information
+        pertains to the supplier of the items being sold. When an item reaches its reorder level
+        in the Inventory Table, the information in this table would be used to make the order to
+        resupply. The table is keyed by a unique ID that is managed by the database management
+        system. The company name, address, and pertinent contact information is maintained along
+        with a sales representative's name. There are optional fields for company specialty, email
+        address, and homepage as well.
 
-    \subsection{Transaction Handling}
+        \subsection{Transaction Handling}
 
-    Transaction Handling is a process that has data spanning two tables with two more supporting
-    tables. Transaction handling is split into two sections. The first section being the actual
-    day to day transaction, and then the added functionality of packaging the items sold during
-    the transaction.\\
-    \\
-    \\
-    {\bf Transaction Table}\\
-    \\
-    \\
-    \includegraphics{Tables/TransactionLogTable.png}\\
-    \\
-    \\
-    The Transaction Log Table is used to store information that links Customers, Employees, and
-    inventory items. Each entry in the transaction table represents an item sold during a transaction.
-    Since the key is not a single ID number it is the combination of the Customer, Employee, Item,
-    Quantity and Price, the ID can be used to represent the overall transaction. Any row that contains
-    an equivalent ID belongs to the same transaction.
-    \\
-    \\
-    {\bf Package Table}\\
-    \\
-    \\
-    \includegraphics{Tables/PackageTable.png}\\
-    \\
-    \\
-    The Package Table is used to store information about a package. There is a link to a transaction ID
-    so that items can be associated with a package. There is also a link to a customer from the package
-    table. The reason there is a link from the package table is because one customer may wish to buy
-    something for another so the customer who made the transaction will not necessarily be the same as
-    the one who will receive the package. There is also a reference to a carrier and a shipping type.
-    A tracking number field is provided for when the tracking number is issued by the Carrier.
-    \\
-    \\
-    {\bf Carrier Table}\\
-    \\
-    \\
-    \includegraphics{Tables/CarrierTable.png}\\
-    \\
-    \\
-    The Carrier table is a support table for the Package table. It provides information about the different
-    shipping services. The information maintained here is just what is necessary to get a package shipped.
-    There is a phone number, pickup location and an ID associated with each entry.
-    \\
-    \\
-    {\bf Shipping Table}\\
-    \\
-    \\
-    The Shipping Table is also a support table for the Package Table. This table is a list of all of the
-    different methods of shipping available associated with the Carrier Table. Since each Carrier can
-    have multiple shipping methods they can all be easily added and deleted if they ever change via
-    this table. The table just contains the name for the type of shipping, the carrier, and how much
-    it costs.\\
-    \\
-    \includegraphics{Tables/ShippingTable.png}\\
-    \\
-    \subsection{Employee Management}
+        Transaction Handling is a process that has data spanning two tables with two more supporting
+        tables. Transaction handling is split into two sections. The first section being the actual
+        day to day transaction, and then the added functionality of packaging the items sold during
+        the transaction.\\
+        \\
+        \\
+        {\bf Transaction Table}\\
+        \\
+        \\
+        \includegraphics{Tables/TransactionLogTable.png}\\
+        \\
+        \\
+        The Transaction Log Table is used to store information that links Customers, Employees, and
+        inventory items. Each entry in the transaction table represents an item sold during a transaction.
+        Since the key is not a single ID number it is the combination of the Customer, Employee, Item,
+        Quantity and Price, the ID can be used to represent the overall transaction. Any row that contains
+        an equivalent ID belongs to the same transaction.
+        \\
+        \\
+        {\bf Package Table}\\
+        \\
+        \\
+        \includegraphics{Tables/PackageTable.png}\\
+        \\
+        \\
+        The Package Table is used to store information about a package. There is a link to a transaction ID
+        so that items can be associated with a package. There is also a link to a customer from the package
+        table. The reason there is a link from the package table is because one customer may wish to buy
+        something for another so the customer who made the transaction will not necessarily be the same as
+        the one who will receive the package. There is also a reference to a carrier and a shipping type.
+        A tracking number field is provided for when the tracking number is issued by the Carrier.
+        \\
+        \\
+        {\bf Carrier Table}\\
+        \\
+        \\
+        \includegraphics{Tables/CarrierTable.png}\\
+        \\
+        \\
+        The Carrier table is a support table for the Package table. It provides information about the different
+        shipping services. The information maintained here is just what is necessary to get a package shipped.
+        There is a phone number, pickup location and an ID associated with each entry.
+        \\
+        \\
+        {\bf Shipping Table}\\
+        \\
+        \\
+        The Shipping Table is also a support table for the Package Table. This table is a list of all of the
+        different methods of shipping available associated with the Carrier Table. Since each Carrier can
+        have multiple shipping methods they can all be easily added and deleted if they ever change via
+        this table. The table just contains the name for the type of shipping, the carrier, and how much
+        it costs.\\
+        \\
+        \includegraphics{Tables/ShippingTable.png}\\
+        \\
+        \subsection{Employee Management}
 
-    The Employee Management section is actually two sections. There is the Employee portion which
-    spans two tables, the Employee Table for employee information, and the Login Table which
-    keeps track of the hours an employee works between logging in and out of the clients. The
-    other section is the security aspect of the program as it relates to employees. It also spans
-    two tables; the ACL Table and the Key Table.\\
-    \\
-    {\bf Employee Table}\\
-    \\
-    \\
-    \includegraphics{Tables/EmployeeTable.png}
-    \\
-    \\
-    The Employee Table keeps track of all pertinent information about employees that would
-    be needed by an employer. Basic personal information such as First, Middle, and Last name
-    as well as Contact information are maintained here. Each employee in the table has a unique
-    employee identification number associated with them to avoid having to use the Social
-    Security Number as a key. This also allows data such as the Social Security number to be
-    encrypted to alleviate underprivileged users from seeing it. Each employee also has a
-    field for a picture link and signature link to help with positive identification. The other
-    field in this table is the password field which is used to store a users password to allow
-    a user to login, and which is also used to decrypt the keys from the key table. Each user
-    is also associated with a ACL entry in the ACL Table.\\
-    \\
-    {\bf Login Table}\\
-    \\
-    \\
-    \includegraphics{Tables/LoginTable.png}\\
-    \\
-    \\
-    The Login Table tracks the amount of time an employee has been logged in based on when
-    they logged into their first client to when they logout of their last client. The structure
-    is very simple. It references an employee ID and has a Count field. When the count is greater
-    than zero the user is logged in and upon first entry a value will be inserted into the
-    Log In Time field. When the value of Count reaches zero again a value will be inserted into
-    the Log Out Time field.
+        The Employee Management section is actually two sections. There is the Employee portion which
+        spans two tables, the Employee Table for employee information, and the Login Table which
+        keeps track of the hours an employee works between logging in and out of the clients. The
+        other section is the security aspect of the program as it relates to employees. It also spans
+        two tables; the ACL Table and the Key Table.\\
+        \\
+        {\bf Employee Table}\\
+        \\
+        \\
+        \includegraphics{Tables/EmployeeTable.png}
+        \\
+        \\
+        The Employee Table keeps track of all pertinent information about employees that would
+        be needed by an employer. Basic personal information such as First, Middle, and Last name
+        as well as Contact information are maintained here. Each employee in the table has a unique
+        employee identification number associated with them to avoid having to use the Social
+        Security Number as a key. This also allows data such as the Social Security number to be
+        encrypted to alleviate underprivileged users from seeing it. Each employee also has a
+        field for a picture link and signature link to help with positive identification. The other
+        field in this table is the password field which is used to store a users password to allow
+        a user to login, and which is also used to decrypt the keys from the key table. Each user
+        is also associated with a ACL entry in the ACL Table.\\
+        \\
+        {\bf Login Table}\\
+        \\
+        \\
+        \includegraphics{Tables/LoginTable.png}\\
+        \\
+        \\
+        The Login Table tracks the amount of time an employee has been logged in based on when
+        they logged into their first client to when they logout of their last client. The structure
+        is very simple. It references an employee ID and has a Count field. When the count is greater
+        than zero the user is logged in and upon first entry a value will be inserted into the
+        Log In Time field. When the value of Count reaches zero again a value will be inserted into
+        the Log Out Time field.
 
-    \subsubsection{Security}
+        \subsection{Security}
 
-    {\bf Access Control List Table}\\
-    \\
-    \\
-    \includegraphics{Tables/ACL.png}\\
-    \\
-    \\
-    The ACL table which is short for Access Control List Table manages which user types have access
-    to different levels of program use. All this table contains is a Name of a user type and a description
-    of their functionality. Currently we foresee only four user types and will likely not have an
-    interface to manage this table.\\
-    \\
-    \\
-    {\bf Key Table}\\
-    \\
-    \\
-    \includegraphics{Tables/KeyTable.png}\\
-    \\
-    \\
-    The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
-    entry in this table will reference a valid user in the Employee Table and the text field will
-    contain encrypted data that the user's password was used to encrypt. When the password is used
-    to decrypt this data the user can obtain the keys used to encrypt global database data. A few
-    example fields that are going to be stored as encrypted data are Credit Card Numbers and Expiration
-    Date pairs as well as Social Security Numbers. This will add a level of database security that
-    will prevent or deter malicious users from stealing valuable information from the database.\\
-    \\
+        {\bf Access Control List Table}\\
+        \\
+        \\
+        \includegraphics{Tables/ACL.png}\\
+        \\
+        \\
+        The ACL table which is short for Access Control List Table manages which user types have access
+        to different levels of program use. All this table contains is a Name of a user type and a description
+        of their functionality. Currently we foresee only four user types and will likely not have an
+        interface to manage this table.\\
+        \\
+        \\
+        {\bf Key Table}\\
+        \\
+        \\
+        \includegraphics{Tables/KeyTable.png}\\
+        \\
+        \\
+        The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
+        entry in this table will reference a valid user in the Employee Table and the text field will
+        contain encrypted data that the user's password was used to encrypt. When the password is used
+        to decrypt this data the user can obtain the keys used to encrypt global database data. A few
+        example fields that are going to be stored as encrypted data are Credit Card Numbers and Expiration
+        Date pairs as well as Social Security Numbers. This will add a level of database security that
+        will prevent or deter malicious users from stealing valuable information from the database.\\
+        \\
 
     \newpage
 
     \section{YardSale Client Application Design}
-The YardSale client is modular structure designed to be flexible enough to accomodate any style of business.\\
-{\bf Main Menu}\\
-\\
-\\
-\includegraphics{ys_main_screener.png}\\
-\\
-The main menu is designed to allow a user to quickly access any part of the YardSale client.  The buttons are
-enlarged to allow touchscreen access.\\
-\\
-{\bf Sales Screen}\\
-\\
-\\
-\includegraphics{ys_sales_screener.png}\\
-\\
-The sales screen design allows the products to branch out in a tree.  This area is the lower left area and can group
-inventory items in a logical manner.\\
-\\
-{\bf Inventory Screen}\\
-\\
-\\
-\includegraphics{ys_inv_screener.png}\\
-\\
-Inventory screen.\\
-\\
-{\bf Employee Management Screen}\\
-\\
-\\
-\includegraphics{ys_employee_screener.png}\\
-\\
-The employee management screen.\\
-\\
-{\bf On-screen Calculator}\\
-\\
-\\
-\includegraphics{ys_calc_screener.png}\\
-\\
-The on screen calculator provides quick access to a number pad.
+    The YardSale client is a modular structure designed to
+    be flexible enough to accommodate any style of business.
+    Each screen uses a bottom-oriented toolbar containing access
+    to the on-screen calculator and keyboard, as well as the
+    current time, an UNDO button, and a backwards navigation
+    button.\\
+    \subsection{Main Menu}
+    \includegraphics{ys_main_screener.png}\\
 
+    The Main Menu is designed to allow users to quickly
+    access any part of the YardSale client.  Buttons are available
+    to users depending on access level.  The screen shown above
+    displays an administrative user's access, as all options are
+    currently available. The bottom toolbar does not contain the
+    backwards navigation button, as this is the top-level screen.
+    The buttons are enlarged to support touchscreen access.\\
+
+    \subsection{Sales Screen}
+    \includegraphics{ys_sales_screener.png}\\
+
+    The Sales Screen is designed to provide much information and functionality, in
+    an easy-access and user-friendly manner.  It displays
+    information about the current customer, which may be edited to
+    make any corrections or updates.  Below this is an inventory item
+    list, which expands into a tree form to list similar
+    products.  This section may be used in the case of a barcode
+    scanner malfunction, or to give information about items similar
+    to the ones being purchased.  To the right of the screen is the
+    transaction shopping cart, which displays names and prices of
+    items currently entered into the system to be purchased during this
+    transaction.  When items are present in this list, a running
+    total (including tax) is displayed at the bottom of the list.
+    The trash can icon is used to remove unwanted items from the
+    list.\\
+
+    \subsection{Inventory Screen}
+    \includegraphics{ys_inv_screener.png}\\
+
+    The Inventory Screen can display information pertaining to all
+    inventory items currently stored in the database.  There are
+    fields available for every possible value of an
+    inventory item, which may be edited and saved.  In addition to these
+    characteristics, the Inventory Screen has many other functions which it can perform.
+    It can be used to add items to the inventory by filling in the
+    appropriate fields and clicking the 'New Item' button.  The
+    Search function is used by entering the desired information
+    into the appropriate fields and clicking the 'Search' button.
+    This will cause all inventory items present in the database
+    that satisfy the criteria to be displayed in the window at the
+    bottom of the screen.  For error checking purposes, a 'Save'
+    and a 'Cancel' button are used when exiting this screen.  This
+    screen should only be available to manager-access-level users
+    and higher.\\
+
+    \subsection{Employee Management Screen}
+    \includegraphics{ys_employee_screener.png}\\
+
+    The Employee Management Screen is designed to store and
+    display information pertaining to all employees currently in the
+    system.  There are fields available for every possible value
+    of an employee item in the database.  Information is displayed
+    by entering the desired employee's ID number and pressing
+    enter.  This screen should be carefully guarded, as sensitive
+    information is displayed.  It should only be available to
+    manager-access-level users and higher.\\
+
+    \newpage
+
+    \subsection{On-screen Calculator}
+    \includegraphics{ys_calc_screener.png}\\
+
+    The On-Screen Calculator is designed to provide the user with
+    an easy-access, user-friendly calculator and number pad.  It
+    is available to all users from each screen in the system, via the tool bar
+    at the bottom of the screen.  It provides the functionality of
+    a basic calculator (add and subtract, multiply and divide to
+    be added at a later date).  Numbers entered and the results
+    are displayed in the box at the top of the calculator.\\
 
 \chapter{Implementation}
 
     \section{Database Level Implementation}
 
 
-    \subsection{Customer Management}
-	{\tt\small
-	DROP TABLE IF EXISTS Customer\_Table;\\
-	\\
-	CREATE TABLE Customer\_Table(\\
-	\begin{list}{}
-		\item{CUST\_Account\_Number             INT AUTO\_INCREMENT NOT NULL,}
-		\item{CUST\_First\_Name                 varchar(25),}
-		\item{CUST\_Middle\_Name                varchar(25),}
-		\item{CUST\_Last\_Name                  varchar(50),}
-		\item{CUST\_Address                    TEXT,}
-		\item{CUST\_Phone                      varchar(20),}
-		\item{CUST\_City                       varchar(50),}
-		\item{CUST\_Zip                        varchar(12),}
-		\item{CUST\_Credit\_Card\_Number         varchar(20),}
-		\item{CUST\_CC\_Exp\_Date                varchar(6),}
-		\item{CUST\_Name\_On\_CC                 TEXT,}
-		\item{CUST\_Signature                  TEXT,}
-		\item{CUST\_Photo                      TEXT,}
-		\item{Primary Key(CUST\_Account\_Number)}
-	\end{list}\\
-	\\
-	)type=InnoDB
-	}
+        \subsection{Customer Management}
+        {\tt\small
+        DROP TABLE IF EXISTS Customer\_Table;\\
 
-    \subsection{Inventory Management}
+        CREATE TABLE Customer\_Table(
+        \begin{list}{}
+            \item{CUST\_Account\_Number INT AUTO\_INCREMENT NOT NULL,}
+            \item{CUST\_First\_Name varchar(25),}
+            \item{CUST\_Middle\_Name varchar(25),}
+            \item{CUST\_Last\_Name varchar(50),}
+            \item{CUST\_Address TEXT,}
+            \item{CUST\_Phone varchar(20),}
+            \item{CUST\_City varchar(50),}
+            \item{CUST\_Zip varchar(12),}
+            \item{CUST\_Credit\_Card\_Number varchar(20),}
+            \item{CUST\_CC\_Exp\_Date varchar(6),}
+            \item{CUST\_Name\_On\_CC TEXT,}
+            \item{CUST\_Signature TEXT,}
+            \item{CUST\_Photo TEXT,}
+            \item{Primary Key(CUST\_Account\_Number)}
+        \end{list}
+        )type=InnoDB\\
+        }
 
-    	{\tt
-	DROP TABLE IF EXISTS Inventory\_Table;\\
-	\\
-	CREATE TABLE Inventory\_Table(\\
-	\begin{list}{}
-		\item{INV\_SKU\_Number                  varchar(10),}
-		\item{INV\_Bar\_Code\_Number             varchar(30),}
-		\item{INV\_Item\_Description            TEXT,}
-		\item{INV\_Item\_Department             varchar(30),}
-		\item{INV\_Quantity\_On\_Hand            INT,}
-		\item{INV\_Quantity\_On\_Order           INT,}
-		\item{INV\_Reorder\_Level               INT,}
-		\item{INV\_Reorder\_Quantity            INT,}
-		\item{INV\_Item\_Type                   varchar(20),}
-		\item{INV\_REF\_TAX\_Tax\_Type            INT NOT NULL,}
-		\item{INV\_REF\_VND\_Vendor\_ID           INT NOT NULL,}
-		\item{INV\_Retail\_Price                DECIMAL(7,2),}
-		\item{INV\_Wholesale\_Price             DECIMAL(7,2),}
-		\item{INV\_Bulk\_Price                  TEXT,}
-		\item{INV\_Date\_Last\_Received          DATETIME,}
-		\item{INV\_Weight\_Pounds               FLOAT,}
-		\item{INV\_Oversized\_Flag              enum('T','F'),}
-		\item{INV\_Ship\_By\_Freight             enum('T','F'),}
-		\item{INV\_Comment                     TEXT,}
-		\item{Primary Key (INV\_SKU\_Number),}
-		\item{UNIQUE INDEX (INV\_Bar\_Code\_Number),}
-		\item{INDEX tax\_id (INV\_REF\_TAX\_Tax\_Type),}
-		\item{INDEX vnd\_id (INV\_REF\_VND\_Vendor\_ID),}
-		\item{FOREIGN KEY (INV\_REF\_TAX\_Tax\_Type)}
-		\item{REFERENCES Tax\_Table(TAX\_ID),}
-		\item{FOREIGN KEY (INV\_REF\_VND\_Vendor\_ID)}
-		\item{REFERENCES Vendor\_Table(VND\_ID)}
-	\end{list}\\
-	\\
-	) type=InnoDB
-	}
+        \subsection{Inventory Management}
+        {\tt\small
+        DROP TABLE IF EXISTS Inventory\_Table;\\
 
-	{\tt
-	DROP TABLE IF EXISTS Tax\_Table;\\
-	\\
-	CREATE TABLE Tax\_Table(
-	\begin{list}{}
-		\item{TAX\_ID          INT AUTO\_INCREMENT NOT NULL,}
-		\item{TAX\_Name        varchar(20),}
-		\item{TAX\_Percent     FLOAT,}
-		\item{Primary Key (TAX\_ID)}
-	\end{list}
-	)type=InnoDB\\
-	}
+        CREATE TABLE Inventory\_Table(
+        \begin{list}{}
+            \item{INV\_SKU\_Number                  varchar(10),}
+            \item{INV\_Bar\_Code\_Number             varchar(30),}
+            \item{INV\_Item\_Description            TEXT,}
+            \item{INV\_Item\_Department             varchar(30),}
+            \item{INV\_Quantity\_On\_Hand            INT,}
+            \item{INV\_Quantity\_On\_Order           INT,}
+            \item{INV\_Reorder\_Level               INT,}
+            \item{INV\_Reorder\_Quantity            INT,}
+            \item{INV\_Item\_Type                   varchar(20),}
+            \item{INV\_REF\_TAX\_Tax\_Type            INT NOT NULL,}
+            \item{INV\_REF\_VND\_Vendor\_ID           INT NOT NULL,}
+            \item{INV\_Retail\_Price                DECIMAL(7,2),}
+            \item{INV\_Wholesale\_Price             DECIMAL(7,2),}
+            \item{INV\_Bulk\_Price                  TEXT,}
+            \item{INV\_Date\_Last\_Received          DATETIME,}
+            \item{INV\_Weight\_Pounds               FLOAT,}
+            \item{INV\_Oversized\_Flag              enum('T','F'),}
+            \item{INV\_Ship\_By\_Freight             enum('T','F'),}
+            \item{INV\_Comment                     TEXT,}
+            \item{Primary Key (INV\_SKU\_Number),}
+            \item{UNIQUE INDEX (INV\_Bar\_Code\_Number),}
+            \item{INDEX tax\_id (INV\_REF\_TAX\_Tax\_Type),}
+            \item{INDEX vnd\_id (INV\_REF\_VND\_Vendor\_ID),}
+            \item{FOREIGN KEY (INV\_REF\_TAX\_Tax\_Type)}
+            \item{REFERENCES Tax\_Table(TAX\_ID),}
+            \item{FOREIGN KEY (INV\_REF\_VND\_Vendor\_ID)}
+            \item{REFERENCES Vendor\_Table(VND\_ID)}
+        \end{list}
+        ) type=InnoDB\\
+        }
 
+        {\tt\small
+        DROP TABLE IF EXISTS Tax\_Table;\\
 
-    \subsection{Transaction Handling}
+        CREATE TABLE Tax\_Table(
+        \begin{list}{}
+            \item{TAX\_ID          INT AUTO\_INCREMENT NOT NULL,}
+            \item{TAX\_Name        varchar(20),}
+            \item{TAX\_Percent     FLOAT,}
+            \item{Primary Key (TAX\_ID)}
+        \end{list}
+        )type=InnoDB\\
+        }
 
-    	{\tt
-	DROP TABLE IF EXISTS Transaction\_Log\_Table;\\
-	\\
-	CREATE TABLE Transaction\_Log\_Table(
-	\begin{list}{}
-		\item{TRANS\_REF\_EMP\_ID\_Number                 INT,}
-		\item{TRANS\_REF\_INV\_SKU\_Number                varchar(10),}
-		\item{TRANS\_REF\_CUST\_Account\_Number           INT,}
-		\item{TRANS\_Sale\_Price                        DECIMAL(10,2),}
-		\item{TRANS\_ID                                INT NOT NULL,}
-		\item{TRANS\_Quantity                          INT,}
-		\item{TRANS\_Comment                           TEXT,}
-		\item{Primary Key(TRANS\_REF\_EMP\_ID\_Number,}
-		\begin{list}{}
-			\item{TRANS\_REF\_INV\_SKU\_Number,}
-			\item{TRANS\_REF\_CUST\_Account\_Number,}
-			\item{TRANS\_Sale\_Price, TRANS\_ID,}
-			\item{TRANS\_Quantity),}
-		\end{list}
-		\item{INDEX trans\_id (TRANS\_ID),}
-		\item{INDEX emp\_id (TRANS\_REF\_EMP\_ID\_Number),}
-		\item{INDEX sku\_num (TRANS\_REF\_INV\_SKU\_Number),}
-		\item{INDEX cust\_acct (TRANS\_REF\_CUST\_Account\_Number),}
-		\item{FOREIGN KEY (TRANS\_REF\_EMP\_ID\_Number) REFERENCES Employee\_Table(EMP\_ID\_Number),}
-		\item{FOREIGN KEY (TRANS\_REF\_INV\_SKU\_Number) REFERENCES Inventory\_Table(INV\_SKU\_Number),}
-		\item{FOREIGN KEY (TRANS\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table(CUST\_Account\_Number)}
-	\end{list}\\
-	\\
-	)type=InnoDB
-	}
+        \subsection{Transaction Handling}
+        {\tt\small
+        DROP TABLE IF EXISTS Transaction\_Log\_Table;\\
 
-	DROP TABLE IF EXISTS Package\_Table;
+        CREATE TABLE Transaction\_Log\_Table(
+        \begin{list}{}
+            \item{TRANS\_REF\_EMP\_ID\_Number                 INT,}
+            \item{TRANS\_REF\_INV\_SKU\_Number                varchar(10),}
+            \item{TRANS\_REF\_CUST\_Account\_Number           INT,}
+            \item{TRANS\_Sale\_Price                        DECIMAL(10,2),}
+            \item{TRANS\_ID                                INT NOT NULL,}
+            \item{TRANS\_Quantity                          INT,}
+            \item{TRANS\_Comment                           TEXT,}
+            \item{Primary Key(TRANS\_REF\_EMP\_ID\_Number,}
+            \begin{list}{}
+                \item{TRANS\_REF\_INV\_SKU\_Number,}
+                \item{TRANS\_REF\_CUST\_Account\_Number,}
+                \item{TRANS\_Sale\_Price, TRANS\_ID,}
+                \item{TRANS\_Quantity),}
+            \end{list}
+            \item{INDEX trans\_id (TRANS\_ID),}
+            \item{INDEX emp\_id (TRANS\_REF\_EMP\_ID\_Number),}
+            \item{INDEX sku\_num (TRANS\_REF\_INV\_SKU\_Number),}
+            \item{INDEX cust\_acct (TRANS\_REF\_CUST\_Account\_Number),}
+            \item{FOREIGN KEY (TRANS\_REF\_EMP\_ID\_Number) REFERENCES Employee\_Table(EMP\_ID\_Number),}
+            \item{FOREIGN KEY (TRANS\_REF\_INV\_SKU\_Number) REFERENCES Inventory\_Table(INV\_SKU\_Number),}
+            \item{FOREIGN KEY (TRANS\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table(CUST\_Account\_Number)}
+        \end{list}
+        )type=InnoDB\\
+        }
 
-	CREATE TABLE Package\_Table(
-		PKG\_ID\_Number                           INT AUTO\_INCREMENT NOT NULL,
-		PKG\_REF\_TRANS\_ID                        INT,
-		PKG\_REF\_CUST\_Account\_Number             INT,
-		PKG\_REF\_CRR\_ID\_Number                   INT,
-		PKG\_Tracking\_Number                     varchar(50),
-		PKG\_REF\_SHP\_Shipping\_Type               varchar(30),
-		Primary Key(PKG\_ID\_Number),
-		INDEX trans\_id (PKG\_REF\_TRANS\_ID),
-		INDEX cust\_acct (PKG\_REF\_CUST\_Account\_Number),
-		INDEX crr\_id (PKG\_REF\_CRR\_ID\_number),
-		INDEX shp\_type (PKG\_REF\_SHP\_Shipping\_Type),
-		FOREIGN KEY (PKG\_REF\_TRANS\_ID) REFERENCES Transaction\_Log\_Table( TRANS\_ID ),
-		FOREIGN KEY (PKG\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table( CUST\_Account\_Number ),
-		FOREIGN KEY (PKG\_REF\_CRR\_ID\_Number) REFERENCES Carrier\_Table( CRR\_ID ),
-		FOREIGN KEY (PKG\_REF\_SHP\_Shipping\_Type) REFERENCES Shipping\_Table( SHP\_Type )
-	) type=InnoDB
+        {\tt\small
+        DROP TABLE IF EXISTS Package\_Table;\\
 
+        CREATE TABLE Package\_Table(
+        \begin{list}{}
+            \item{PKG\_ID\_Number                           INT AUTO\_INCREMENT NOT NULL,}
+            \item{PKG\_REF\_TRANS\_ID                        INT,}
+            \item{PKG\_REF\_CUST\_Account\_Number             INT,}
+            \item{PKG\_REF\_CRR\_ID\_Number                   INT,}
+            \item{PKG\_Tracking\_Number varchar(50),}
+            \item{PKG\_REF\_SHP\_Shipping\_Type varchar(30),}
+            \item{Primary Key(PKG\_ID\_Number),}
+            \item{INDEX trans\_id (PKG\_REF\_TRANS\_ID),}
+            \item{INDEX cust\_acct (PKG\_REF\_CUST\_Account\_Number),}
+            \item{INDEX crr\_id (PKG\_REF\_CRR\_ID\_number),}
+            \item{INDEX shp\_type (PKG\_REF\_SHP\_Shipping\_Type),}
+            \item{FOREIGN KEY (PKG\_REF\_TRANS\_ID) REFERENCES Transaction\_Log\_Table( TRANS\_ID ),}
+            \item{FOREIGN KEY (PKG\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table( CUST\_Account\_Number ),}
+            \item{FOREIGN KEY (PKG\_REF\_CRR\_ID\_Number) REFERENCES Carrier\_Table( CRR\_ID ),}
+            \item{FOREIGN KEY (PKG\_REF\_SHP\_Shipping\_Type) REFERENCES Shipping\_Table( SHP\_Type )}
+        \end{list}
+        ) type=InnoDB\\
+        }
 
-	DROP TABLE IF EXISTS Carrier\_Table;
+        {\tt\small
+        DROP TABLE IF EXISTS Carrier\_Table;\\
 
-	CREATE TABLE Carrier\_Table(
-		CRR\_ID                          INT AUTO\_INCREMENT NOT NULL,
-		CRR\_Name                        varchar(50),
-		CRR\_Pickup\_Location             TEXT,
-		CRR\_Phone\_Number                varchar(20),
-		Primary Key (CRR\_ID)
-	)type=InnoDB
+        CREATE TABLE Carrier\_Table(
+        \begin{list}{}
+            \item{CRR\_ID                          INT AUTO\_INCREMENT NOT NULL,}
+            \item{CRR\_Name                        varchar(50),}
+            \item{CRR\_Pickup\_Location             TEXT,}
+            \item{CRR\_Phone\_Number                varchar(20),}
+            \item{Primary Key (CRR\_ID)}
+        \end{list}
+        )type=InnoDB\\
+        }
 
-	DROP TABLE IF EXISTS Shipping\_Table;
+        {\tt\small
+        DROP TABLE IF EXISTS Shipping\_Table;\\
 
-	CREATE TABLE Shipping\_Table(
-		SHP\_Type                varchar(30),
-		SHP\_REF\_CRR\_ID          INT,
-		SHP\_Cost                DECIMAL(7,2),
-		Primary Key(SHP\_Type, SHP\_REF\_CRR\_ID, SHP\_Cost),
-		INDEX crr\_id (SHP\_REF\_CRR\_ID ),
-		INDEX shp\_type (SHP\_Type),
-		FOREIGN KEY (SHP\_REF\_CRR\_ID) REFERENCES Carrier\_Table( CRR\_ID )
-	)type=InnoDB
+        CREATE TABLE Shipping\_Table(
+        \begin{list}{}
+            \item{SHP\_Type                varchar(30),}
+            \item{SHP\_REF\_CRR\_ID          INT,}
+            \item{SHP\_Cost                DECIMAL(7,2),}
+            \item{Primary Key(SHP\_Type, SHP\_REF\_CRR\_ID, SHP\_Cost),}
+            \item{INDEX crr\_id (SHP\_REF\_CRR\_ID ),}
+            \item{INDEX shp\_type (SHP\_Type),}
+            \item{FOREIGN KEY (SHP\_REF\_CRR\_ID) REFERENCES Carrier\_Table( CRR\_ID )}
+        \end{list}
+        )type=InnoDB\\
+        }
 
+        \subsection{Employee Management}
+        {\tt\small
+        DROP TABLE IF EXISTS Employee\_Table;\\
 
+        CREATE TABLE Employee\_Table(
+        \begin{list}{}
+            \item{EMP\_Social\_Security\_Number             varchar(13) NOT NULL,}
+            \item{EMP\_ID\_Number                           INT NOT NULL,}
+            \item{EMP\_First\_Name                          varchar(25),}
+            \item{EMP\_Middle\_Name                         varchar(25),}
+            \item{EMP\_Last\_Name                           varchar(50),}
+            \item{EMP\_Address                              TEXT,}
+            \item{EMP\_Phone\_Number                        varchar(20),}
+            \item{EMP\_City                                 varchar(50),}
+            \item{EMP\_Zip                                  varchar(12),}
+            \item{EMP\_Picture                              TEXT,}
+            \item{EMP\_Signature                            TEXT,}
+            \item{EMP\_REF\_ACL\_Type                       varchar(30),}
+            \item{\#EMP\_REF\_CUST\_Account\_Number            INT,}
+            \item{Primary Key (EMP\_Social\_Security\_Number),}
+            \item{UNIQUE INDEX(EMP\_ID\_Number),}
+            \item{INDEX acl\_type (EMP\_REF\_ACL\_Type),}
+            \item{\#INDEX acct\_number (EMP\_REF\_CUST\_Account\_Number),}
+            \item{FOREIGN KEY (EMP\_REF\_ACL\_Type) REFERENCES ACL\_Table(ACL\_Type),}
+            \item{\#FOREIGN KEY (EMP\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table(CUST\_Account\_Number)}
+        \end{list}
+        ) type=InnoDB\\
+        }
 
-    \subsection{Employee Management}
+        {\tt\small
+        DROP TABLE IF EXISTS Key\_Table;\\
 
-	DROP TABLE IF EXISTS Employee\_Table;
+        CREATE TABLE Key\_Table(
+        \begin{list}{}
+            \item{KEY\_ID                          INT AUTO\_INCREMENT,}
+            \item{KEY\_REF\_EMP\_ID\_Number        INT,}
+            \item{KEY\_Keys                        TEXT,}
+            \item{PRIMARY KEY ( KEY\_ID ),}
+            \item{INDEX ( KEY\_REF\_EMP\_ID\_Number ),}
+            \item{FOREIGN KEY (KEY\_REF\_EMP\_ID\_Number) REFERENCES Employee\_Table( EMP\_ID\_Number )}
+        \end{list}
+        )type=InnoDB\\
+        }
 
-	CREATE TABLE Employee\_Table(
-		EMP\_Social\_Security\_Number              varchar(13) NOT NULL,
-		EMP\_ID\_Number                           INT NOT NULL,
-		EMP\_First\_Name                          varchar(25),
-		EMP\_Middle\_Name                         varchar(25),
-		EMP\_Last\_Name                           varchar(50),
-		EMP\_Address                             TEXT,
-		EMP\_Phone\_Number                        varchar(20),
-		EMP\_City                                varchar(50),
-		EMP\_Zip                                 varchar(12),
-		EMP\_Picture                             TEXT,
-		EMP\_Signature                           TEXT,
-		EMP\_REF\_ACL\_Type                        varchar(30),
-		#EMP\_REF\_CUST\_Account\_Number            INT,
-		Primary Key (EMP\_Social\_Security\_Number),
-		UNIQUE INDEX(EMP\_ID\_Number),
-		INDEX acl\_type (EMP\_REF\_ACL\_Type),
-		#INDEX acct\_number (EMP\_REF\_CUST\_Account\_Number),
-		FOREIGN KEY (EMP\_REF\_ACL\_Type) REFERENCES ACL\_Table(ACL\_Type),
-		#FOREIGN KEY (EMP\_REF\_CUST\_Account\_Number) REFERENCES Customer\_Table(CUST\_Account\_Number)
-	) type=InnoDB
+        {\tt\small
+        DROP TABLE IF EXISTS ACL\_Table;\\
 
-
-	DROP TABLE IF EXISTS Key\_Table;
-
-	CREATE TABLE Key\_Table(
-		KEY\_ID                          INT AUTO\_INCREMENT,
-		KEY\_REF\_EMP\_ID\_Number           INT,
-		KEY\_Keys                        TEXT,
-		PRIMARY KEY ( KEY\_ID ),
-		INDEX ( KEY\_REF\_EMP\_ID\_Number ),
-		FOREIGN KEY (KEY\_REF\_EMP\_ID\_Number) REFERENCES Employee\_Table( EMP\_ID\_Number )
-	)type=InnoDB
-
-
-    {\tt
-	DROP TABLE IF EXISTS ACL\_Table;\\
-	\\
-	CREATE TABLE ACL\_Table(
-	\begin{list}{}
-	\item{ACL\_Type varchar(30),}
-	\item{ACL\_Description TEXT,}
-	\item{Primary Key (ACL\_Type)}
-	\end{list}\\
-	\\
-	) type=InnoDB
-	}
-
-
-
+        CREATE TABLE ACL\_Table(
+        \begin{list}{}
+            \item{ACL\_Type varchar(30),}
+            \item{ACL\_Description TEXT,}
+            \item{Primary Key (ACL\_Type)}
+        \end{list}
+        ) type=InnoDB\\
+        }
 
     \section{Application Level Implementation}
 
-    \subsection{YardCalc}
-    %see page 14 7.2
+        \subsection{YardCalc}
+        YardCalc is a generic on-screen calculator the user employs to
+        enter prices.  This calculator uses a stack-based method of
+        storing numbers and operators.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.3}
 
-    \subsection{YardDatabase}
-    %see page 16
+        \subsection{YardDatabase}
+        YardDatabase is the main database backend which does all
+        translation from OO calls to SQL/ODBC.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.6}
 
-    \subsection{YardDBType}
-    %see page 22
+        \subsection{YardDBType}
+        YardBDType is the abstract base class for all database
+        objects.  All database types are assignable and contain a
+        ToString() method to format the DB type to text.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.8}
 
-    \subsubsection{YardEmployeeType}
-    %see page 25 7.9
+            \subsubsection{YardEmployeeType}
+            YardEmployeeType is a subclass of YardDBType, which
+            represents an employee record and contains functions for
+            all possible items.\\
+            {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.11}
 
-    \subsubsection{YardInvType}
-    %see page 33 7.12
+            \subsubsection{YardInvType}
+            YardInvType is a subclass of YardDBType, which
+            represents an employee record and contains functions for
+            all possible items.\\
+            {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.15}
+            \begin{list}{}
+                \item {\bf YardInvType::BulkPricing}\\BulkPricing is a
+                C++ structure that associates a quantity with a
+                percentage for bulk pricing.\\
+                {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.16}
+            \end{list}
 
-    %7.13 Bulk pricing XML
+        \subsection{YardEmployee}
+        YardEmployee is the employee management screen.  Depending on
+        access level, users may insert/modify employee information via
+        this screen.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.10}
 
-    \subsection{YardEmployee}
-    %see page 24 7.8
+        \subsection{YardInventory}
+        YardInventory is the inventory management screen, which allows
+        searching.  Depending on access level, users may add inventory
+        via the "New Item" button on this screen.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.14}
 
-    \subsection{YardInventory}
-    %see page 30 7.11
+        \subsection{YardException}
+        YardException is the exception class from Crypto++.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.12}
 
-    \subsection{YardException}
-    %see page 29 7.10
+        \subsection{YardLog}
+        YardLog is the logging widget, based on wxListCtrl and wxLog.
+        This widget resets the default logging system and redirects
+        all output to itself.  Different icons represent what type of
+        log message is being displayed.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.17}
 
-    \subsection{YardLog}
-    %see page 39 7.14
+        \subsection{YardLogin}
+        YardLogin is the customized login screen.  The user will be
+        asked for a username and password.  Also, a quick select icon
+        will allow the user to rapidly select his/her name.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.18}
 
-    \subsection{YardLogin}
-    %see page 40 7.15
+        \subsection{YardMain}
+        YardMain is the main menu screen, which displays graphical
+        buttons for accessing each part of the system.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.19}
 
-    \subsection{YardMain}
-    %see page 42 7.16
+        \subsection{YardSale}
+        YardSale is the main application object, which returns a
+        reference to a YardDatabase object.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.20}
 
-    \subsection{YardSale}
-    %see page 45 7.17
+        \subsection{YardSaleScreen}
+        YardSaleScreen is main sale screen, which contains the current
+        transaction information and an interface to add new items to
+        the transaction.  The payment screen can be accessed from
+        YardSaleScreen.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.21}
 
-    \subsection{YardSaleScreen}
-    %see page 48 7.18
-
-    \subsection{YardSplash}
-    %see page 49 7.19
+        \subsection{YardSplash}
+        YardSplash is an eye-candy, startup splash screen that shows a
+        progress bar.\\
+        {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.22}
 
 \chapter{Test Plan}
+The YardSale system is tested constantly throughout the
+development process.  These tests are administered through two
+different methods: passive (automatic) testing, and active (user)
+testing.
 
-The testing of YardSale can be broken into two sections, passive and active.
+    \section{Passive Testing}
 
-\section{Passive Testing}
+    The passive testing of YardSale is accomplished by our auto build system.  The auto build system pulls the latest source
+    code from the repository and compiles it with the most strict settings.  If the code fails the system reports the error
+    on our website.  The auto build system will also compile the code on six other architechures including Amd64, Sparc, Mac OSX,
+    Linux, and Microsoft Windows.  The extensive compilation of the source code ensures that no platform dependant source code
+    violates the portability of the project.
 
-The passive testing of YardSale is accomplished by our auto build system.  The auto build system pulls the latest source
-code from the repository and compiles it with the most strict settings.  If the code fails the system reports the error
-on our website.  The auto build system will also compile the code on six other architechures including Amd64, Sparc, Mac OSX,
-Linux, and Microsoft Windows.  The extensive compilation of the source code ensures that no platform dependant source code
-violates the portability of the project.
+    \section{Active Testing}
+    There are several methods which are utilized by our
+    development team to manually test the YardSale system
+    throughout the development process.
+        \subsection{Testing Mains}
+        Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
+        each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.
+        If any of these tests fail the system will report the exact location of the failure.
 
-\section{Active Testing}
+        \subsection{Warm-Body Testing}
+        Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any
+        bugs they find through our bug tracking system.  We also have weekly usability conferences where we discuss the merits of a particular interface.
 
-\subsection{Testing Mains}
-Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
-each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.
-If any of these tests fail the system will report the exact location of the failure.
-
-\subsection{Warm-Body Testing}
-Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any
-bugs they find through our bug tracking system.  We also have weekly usability conferences where we discuss the merits of a particular interface.
-
-\subsection{Verbose Program Information}
-YardSale is designed to report back a large amount of valuable debug information to the developer and to keep the non-technical user
-informed about the status of the program.  YardSale uses exceptions to ensure that single functions cannot violate the integrity of the system
-on a global level.  In addition, all database interfaces have special logging information that reports the exact status of all database calls; this
-allows the developers to get instant access to valuable SQL and connection results.
+        \subsection{Verbose Program Information}
+        YardSale is designed to report back a large amount of valuable debug information to the developer and to keep the non-technical user
+        informed about the status of the program.  YardSale uses exceptions to ensure that single functions cannot violate the integrity of the system
+        on a global level.  In addition, all database interfaces have special logging information that reports the exact status of all database calls; this
+        allows the developers to get instant access to valuable SQL and connection results.
 
 \end{document}

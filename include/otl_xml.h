@@ -6,6 +6,7 @@ The idea behind this class is to take a generic OTL stream and
 spit out some hot XML.
 
 */
+#if 0
 #include <string>
 using namespace std;
 class otl_stream;
@@ -18,7 +19,6 @@ class otl_xml {
     static string process(otl_stream * stream);
 
 };
-
-
 #endif
 
+#endif

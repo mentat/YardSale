@@ -55,17 +55,27 @@ Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts\\}
 \section{Introduction}
 
 YardSale is an open source Point of Sale system that is being
-designed by A.S Logic Systems to revolutionize the way Point of
-Sale systems are implemented in today's market.  Current
+developed by A.S Logic Systems.  Current
 implementations of Point of Sale systems are fraught with a number
-of issues; including often being extremely overpriced, difficult
+of issues including often being extremely overpriced, difficult
 to administer, dated in their functionality, and lacking necessary
-operations.  YardSale was designed to alleviate these problems and
-allow for extensibility as the market of retail sale expands in
-the future.
+operations.
 
-Being that YardSale is an open source project with little funding,
-the initial niche market will target small, locally owned retail
+The power of an open source system such as YardSale is the
+open way in which it is designed.  A user of the YardSale system
+can take off the shelf computer hardware (in many cases older hardware
+will perform just as well) and create a point of sale with minimal
+configuration.  In addition, supporting new hardware is trivial since
+the YardSale interface specification is in no way hindered by
+restrictive close-source licenses.
+
+The name "YardSale" was concieved to emphasize the
+versatility and simplicity of the system.  The parts of a
+YardSale point of sale can be older, used hardware and
+the underlying software can be completely free.
+
+Being that YardSale is an open source projectv the initial
+market will target small, locally owned retail
 stores.  This type of market will allow for extensive on-site
 research, as many of these businesses should be willing to work
 with us to improve on the functionality of their existing POS
@@ -75,22 +85,45 @@ all who wish to use it, the only expense that will come into play
 is if the company wishes to enlist our services in setup,
 troubleshooting, support, expansion, or customization.
 
+However, we believe that YardSale can be easily used by
+those who do not wish to purchase support contracts due to
+the clear documentation and well-writen interfaces.
+
 \section{Functional Requirements}
 
 This section entails all of the minimal requirements set by the AS
-Logic Systems development team for the OpenPOS hereafter referred
+Logic Systems development team for the Open Source Point of Sale, hereafter referred
 to as YardSale.\\
-\\Minimum functionality of YardSale should accomplish the
-following:
+\\YardSale should accomplish the
+following Point of Sale operations:
 
 \begin{itemize}
-    \item {Manage Inventory Data}
-    \item {Manage Customer Data}
-    \item {Manage Employee Data}
-    \item {Perform Transactions}
-    \item {Provide Logging Facilities}
-    \item {Report on Data}
-    \item {User Level Access Rights}
+    \item {Manage Inventory}
+    \begin{itemize}
+    	\item {Add a product to the inventory}
+	\item {Edit an existing inventory item}
+	\item {Remove an inventory item}
+	\item {Associate attributes such as price, quanity, and tax with an inventory item}
+	\item {Search for an inventory item by various criteria}
+	\item {Add an inventory item to a transaction (see Transaction)}
+    \end{itemize}
+    \item{Manage Customers}
+    \begin{itemize}
+    	\item{Add and remove customers}
+	\item{Edit customer information such as phone number and address}
+	\item{Associate a customer with a transaction (see Transaction)}
+    \end{itemize}
+    \item {Manage Employees}
+    \begin{itemize}
+    	\item{Add and remove employees}
+	\item{Associate a level with employees such as "manager" and "sales associate"}
+    \end{itemize}
+    \item{Perform Point of Sale Transactions}
+    \begin{itemize}
+    	\item{ Allow an "seller/employee" to sell and inventory item to a "buyer/customer"  }
+	\item{ Allow a customer to return an item to the seller }
+	\item{ Calculate the tax on an item being sold }
+    \end{itemize}
 \end{itemize}
 
 Each of these tasks is described in depth in their corresponding

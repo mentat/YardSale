@@ -92,9 +92,11 @@ bool YardDatabase::connect(){
     
     } catch(otl_exception &e) {
         
+        try{ m_db->logoff(); } catch(otl_connect&){}
         throw YardDBException((char *)e.msg);
         return false;
-    }
+    }        
+
     return true;
 }
 
