@@ -39,8 +39,12 @@ bool YardDatabase::connect(){
 	       SQL_C_CHAR, sizeof(m_inv->m_barCode), TRUE, TRUE);
     m_table->SetColDefs(2, "INV_Item_Type", DB_DATA_TYPE_VARCHAR, &(m_inv->m_itemType),
 	       SQL_C_CHAR, sizeof(m_inv->m_itemType), TRUE, TRUE);
-    /* ... *JOHN*
-       skipping stuff here for a bit.
+    /* ... *JOHN*/
+    /*
+       @todo We need to set up columns for every actual column
+       in the table if we plan on using them columns.
+    */
+    /*   skipping stuff here for a bit.
     */
     m_table->SetColDefs(3, "INV_Retail_Price", DB_DATA_TYPE_FLOAT, &(m_inv->m_retailPrice),
 	       SQL_C_FLOAT, sizeof(m_inv->m_retailPrice), TRUE, TRUE);
@@ -54,14 +58,39 @@ bool YardDatabase::connect(){
 
 vector<YardInvType> YardDatabase::InvSearchKeyword(const unsigned long &sku) {
     wxString sqlQuery;
-    vector<YardInvType> retInvVec;
+    // vector<YardInvType> m_invVec;
     sqlQuery.Printf("SELECT * FROM `Inventory_Table` WHERE INV_SKU_NUMBER = '%d'", sku);
-    if(!m_table->QueryBySqlStmt(sqlQuery)) return retInvVec;
+    if(!m_table->QueryBySqlStmt(sqlQuery)) return m_invVec;
     while (m_table->GetNext()) {
-	retInvVec.push_back(*m_inv);
+	m_invVec.push_back(*m_inv);
     }
-    return retInvVec;
+    return m_invVec;
 }
 
-vector<YardInvType> InvGet(unsigned int num, unsigned int offset){
+vector<YardInvType> YardDatabase::InvGet(unsigned int num, unsigned int offset){
+    
+    unsigned long numRows = 0;
+
+    m_invVec.clear();
+    wxString sqlQuery;
+    sqlQuery.Printf("SELECT * FROM `Inventory_Table`");
+    if(!m_table->QueryBySqlStmt(sqlQuery)) return m_invVec;
+    /* There is no GetNumRows, only GetRowNum, so I have to
+       GetLast();, then GetRowNum().  BRILLIANT!
+    */
+    m_table->GetLast();
+    numRows = m_table->GetRowNum();
+    if(numRows < num || numRows < num+offset) return m_invVec;
+    m_table->GetFirst();
+    if(offset > 0) {
+	for(int ii = 1; ii <= offset; ii++){
+	    m_table->GetNext();
+	}
+    }
+    for(int ii = 1; ii < num; ii++){
+	m_invVec.push_back(*m_inv);
+	m_table->GetNext();
+    }
+    m_invVec.push_back(*m_inv);
+    return m_invVec;
 }
