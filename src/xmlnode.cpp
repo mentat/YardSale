@@ -1,6 +1,6 @@
 // --*-c++-*--
 /*
-    $Id: xmlnode.cpp,v 1.2 2004/04/18 22:03:54 thementat Exp $
+    $Id: xmlnode.cpp,v 1.3 2004/04/19 01:45:46 thementat Exp $
  
     GNU Messenger - The secure instant messenger
     Copyright (C) 2001-2002  Henrik Abelsson <henrik@abelsson.com>
@@ -267,33 +267,37 @@ XMLNode& XMLNode::child(const string &name, unsigned int n)
 XMLNode XMLNode::child(const string& name, unsigned int n) const
 {
     LOG_DEBUG("Const child.");
-    // hash_mmap: Average is O(count(k)). 
-    //            Worst case is linear in the size of the container.
-    // multimap:  at most logarithmic
-    pair<NodeMap::const_iterator, NodeMap::const_iterator> p(m_xmlData->m_children.equal_range(name));
+    NodeMap::const_iterator it = m_xmlData->m_children.find(name);
     
-    // item not found
-    if (p.first == m_xmlData->m_children.end())
+    if (it == m_xmlData->m_children.end())
 #if (XMLNODE_THROW_NOTFOUND)
-        throw InvalidChild("Invalid child");
+    throw InvalidChild("Invalid child");
 #else
-        return XMLNode();
+    return XMLNode();
 #endif
     
     if (n == 0)
-        return (p.first)->second;
+    {
+        LOG_DEBUG("Found at n=0");
+        return it->second;
+    }
+     
+    // Logarithmic calls (lower_bound and upper_bound)
+    // if using multimap, or constant if hash_multimap
     
-    // both: at most O(count(n))
-    while( (n > 0) && (p.first != p.second) ) {
-        p.first++;
+    pair<NodeMap::const_iterator, NodeMap::const_iterator> p(m_xmlData->m_children.equal_range(name));
+    
+    while( (n > 0) && (++p.first != m_xmlData->m_children.end()) ) {
         if (--n == 0)
             return (p.first)->second;
     }
+    LOG_DEBUG("No child of that key at index");
 #if (XMLNODE_THROW_NOTFOUND)
-        throw InvalidChild("Invalid child");
+    throw InvalidChild("Invalid child");
 #else
-        return XMLNode();
+    return XMLNode();
 #endif
+    
 }
 
 XMLNode& XMLNode::setProperty(const string &name, const string &value)

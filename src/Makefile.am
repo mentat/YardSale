@@ -37,6 +37,7 @@ yardsale_SOURCES = \
 	ys_trans_type.cpp\
 	ys_tax_type.cpp\
 	ys_build.cpp\
+	ys_vend_type.cpp\
 	wrapexpat.cpp\
 	xml.cpp\
 	xmlnode.cpp\

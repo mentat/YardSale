@@ -9,7 +9,7 @@ string YardVendType::ToString(const string& delim, bool quote) const {
     stringstream output;
     char q = '\'';
     
-    output << GetIdS() << delim 
+    output << GetId() << delim 
         << q << GetName() << q << delim 
         << q << GetAddress() << q << delim 
         << q << GetCity() << q << delim 
@@ -17,6 +17,7 @@ string YardVendType::ToString(const string& delim, bool quote) const {
         << q << GetZip() << q << delim 
         << q << GetPhone() << q << delim 
         << q << GetSalesRep() << q << delim 
+        << q << GetSpecialty() << q << delim
         << q << GetEmail() << q << delim
         << q << GetHomePage() << q;
     

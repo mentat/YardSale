@@ -1,73 +1,20 @@
 #include <sstream>
 
-#define OTL_ODBC_MYSQL
-#define OTL_STL
-
-#ifndef _WIN32
-#define OTL_ODBC_UNIX
-#else
-#define OTL_ODBC
-#endif
-
-
-#include "otlv4.h"
 #include "ys_package_type.h"
-#include "ys_exception.h"
 
 using namespace std;
-
-YardPackageType::YardPackageType(const YardPackageType& obj) {
-    
-    *this = obj;
-    
-}
 
 string YardPackageType::ToString(const string& delim) const {
     
     stringstream output;
-    output << m_packageID << delim << m_transID << delim << m_custAcctNum 
+    char q = '\'';
+    output << GetId() << delim 
+        <<  << delim << m_custAcctNum 
         << delim << m_carrierID << delim << m_trackNum 
         << delim << m_shippingType;
     
     return output.str();
         
-}
-
-void YardPackageType::FillFromStream(otl_stream * stream)
-{  
-    if (!stream)
-        return;
-    /// maybe throw here
-    
-    //char oversized, freight;
-    otl_datetime lastRec;
-    
-    YardPackageType temp;
-        
-    try {
-        *stream 
-            >> m_packageID 
-            >> m_transID
-            >> m_custAcctNum
-            >> m_carrierID
-            >> m_trackNum
-            >> m_shippingType;
-            
-    } catch (otl_exception &e) {
-        throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
-    }
-}
-
-YardPackageType& YardPackageType::operator=(const YardPackageType& obj) {
-    
-    m_packageID = obj.m_packageID;
-    m_transID = obj.m_transID;
-    m_custAcctNum = obj.m_custAcctNum;
-    m_carrierID = obj.m_carrierID;
-    m_trackNum = obj.m_trackNum;
-    m_shippingType = obj.m_shippingType;
-    
-    return *this;
 }
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_PACKAGE_TYPE))

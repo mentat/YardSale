@@ -6,6 +6,7 @@
 #include "ys_exception.h"
 #include "ys_database.h"
 
+#include "ys_group.h"
 #include "ys_inv_type.h"
 #include "ys_trans_type.h"
 #include "ys_employee_type.h"
@@ -360,6 +361,94 @@ long YardDatabase::VendorAdd(const YardVendType& vendor)
 
 }
 
+vector<YardGroup> YardDatabase::GroupGetAll() const
+{        
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Inventory_Group_Table";
+    
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+    } catch (otl_exception &e) { // so just get otl exceptions
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return XMLFromStream<YardGroup>(dbStream.get(), "Inventory_Group_Table");   
+}
+
+YardGroup YardDatabase::GroupGet(long key) const
+{
+   if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Inventory_Group_Table where INVGRP_Group_ID = "
+        << key << ";";
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStreamSingle<YardGroup>(dbStream.get(), "Inventory_Group_Table");
+}
+
+long YardDatabase::GroupAdd(const YardGroup& group)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "INSERT INTO Inventory_Group_Table values(" << group.ToString() << ");";
+    
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    // This function also does a select to return the key
+    
+    stringstream select;
+    select << "SELECT INVGRP_Group_ID from Inventory_Group_Table where INVGRP_Group_Name = '"
+        << group.GetName() << "';";
+    
+    auto_ptr<otl_stream> db;
+    
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        db.reset( new otl_stream(1, select.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    long int key = 0;
+    
+    try {
+        *db >> key;
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return key;
+
+    
+}
+
 long YardDatabase::CustomerAdd(const YardCustType& newCust)
 {
 	if (!m_db)
@@ -399,7 +488,7 @@ long YardDatabase::TaxTypeAdd(const YardTaxType& taxtype)
     // This function also does a select to return the key
     
     stringstream select;
-    select << "SELECT TAX_ID from Tax_Table where INV_Name = '"
+    select << "SELECT TAX_ID from Tax_Table where TAX_Name = '"
         << taxtype.GetName() << "';";
     
     auto_ptr<otl_stream> db;
@@ -594,6 +683,7 @@ int TaxTest(YardDatabase * db)
 {
     YardTaxType test1;
     test1.SetName("Leetness Tax");
+    test1.SetPercent(0.11);
     
     long key = 0;
     VERIFY_NO_THROW(key = db->TaxTypeAdd(test1));
@@ -609,26 +699,43 @@ int TaxTest(YardDatabase * db)
 int VendorTest(YardDatabase * db)
 {
     YardVendType test1;
-    test1.
+    
+    test1.SetName("ACME");
+    test1.SetAddress("29 Lynwood");
+    test1.SetCity("A-Town");
+    test1.SetState("NC"); 
+    test1.SetZip("27777");
+    test1.SetPhone("919-999-8888");
+    test1.SetSalesRep("Bob");
+    test1.SetSpecialty("Pics");
+    test1.SetEmail("acme@hotmail.com");
+    test1.SetHomePage("http://yardsale.sf.net");
     
     long key = 0;
     VERIFY_NO_THROW(key = db->VendorAdd(test1));
     
-    YardTaxType test2;
+    YardVendType test2;
     VERIFY_NO_THROW(test2 = db->VendorGet(key));
     
     VERIFY(test1.GetName(), test2.GetName());
     
+    return 0;
 }
 
-int GroupText(YardDatabase * db)
+int GroupTest(YardDatabase * db)
 {
     YardGroup test1;
     test1.SetName("Spockets");
     
     long key = 0;
-    VERIFY_NO_THROW(key = db->VendorAdd(test1));
+    VERIFY_NO_THROW(key = db->GroupAdd(test1));
     
+    YardGroup test2;
+    VERIFY_NO_THROW(test2 = db->GroupGet(key));
+    
+    VERIFY(test1.GetName(), test2.GetName());
+    
+    return 0;
 }
 
 int InventoryTest(YardDatabase * db)
@@ -646,9 +753,9 @@ int InventoryTest(YardDatabase * db)
     test1.SetReorderQuant(1000);
     test1.SetType("Widget");
     test1.SetWeightLbs(1000.45);
-    test1.SetTaxType(0);
-    test1.SetVendorId(0);
-    test1.SetGroupId(0);
+    test1.SetTaxType(1);
+    test1.SetVendorId(1);
+    test1.SetGroupId(1);
     test1.SetRetailPrice(34.23);
     test1.SetWholesalePrice(1000.12);
     test1.AddBulkPrice(100, 0.12);
@@ -750,8 +857,8 @@ int main(int argc, char** argv)
     }
 
     TaxTest(&testDB);
-    VendorText(&testDB);
-    GroupText(&testDB);
+    VendorTest(&testDB);
+    GroupTest(&testDB);
     InventoryTest(&testDB);
     
     return failure;

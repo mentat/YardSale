@@ -8,7 +8,7 @@ string YardGroup::ToString(const string& delim, bool quote) const {
     stringstream output;
     char q = '\'';
     output 
-        << GetIdS() << delim
+        << GetId() << delim
         << q << GetName() << q;
     
     return output.str();    

@@ -19,7 +19,7 @@
 #ifndef YS_PACKAGE_TYPE_H
 #define YS_PACKAGE_TYPE_H
 
-#include "ys_dbtype.h"
+#include "xmlnode.h"
 #include <vector>
 #include <string>
 
@@ -36,11 +36,11 @@ class otl_stream;
  * @ingroup database 
  * @see YardPackageType
  * @author Michael Swigon	
- * @version \$Revision: 1.1 $$
- * @see YardDBType
+ * @version \$Revision: 1.2 $$
+ * @see XMLNode
  */
 
-class YardPackageType: public YardDBType
+class YardPackageType: public XMLNode
 {
  public:
    

@@ -26,6 +26,7 @@
 using namespace std;
 
 // Forward declarations for speed -jll
+#include "ys_group.h"
 #include "ys_inv_type.h"
 #include "ys_trans_type.h"
 #include "ys_employee_type.h"
@@ -183,6 +184,13 @@ class YardDatabase {
     void TaxTypeUpdate(const YardTaxType& taxtype);
     YardTaxType TaxTypeGet(long key) const;
     
+    
+    /*-------Group Type----------------*/
+    
+    vector<YardGroup> GroupGetAll() const;
+    YardGroup GroupGet(long key) const;
+    long GroupAdd(const YardGroup& group);
+        
     /* helpers */
     static string tab(int level);
     static string escape(const string& esc);
