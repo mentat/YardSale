@@ -5,8 +5,8 @@
 #include "wx/dialog.h"
 /**
  * This is the on-screen keyboard dialog for YardSale
- * @author Jesse Lovelace
- * @version \$Revision: 1.1 $$
+ * @author Jay Johnston
+ * @version \$Revision: 1.2 $$
  */ 
 class YardKeybrdDlg: public wxDialog {
  public:

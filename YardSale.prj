@@ -87,7 +87,10 @@ module.include.files=\
 	otlv4.h\
 	ys_debug.h\
 	ys_employee_type.h\
-	ys_calc_dlg.h
+	ys_calc_dlg.h\
+	ys_config.h\
+	ys_keybrd_dlg.h\
+	ys_keybrd.h
 
 module.source.name=src
 module.source.type=
@@ -106,7 +109,11 @@ module.source.files=\
 	ys_database.cpp\
 	ys_bitmaps.cpp\
 	ys_debug.cpp\
-	ys_employee_type.cpp
+	ys_employee_type.cpp\
+	ys_config.cpp\
+	ys_footer.cpp\
+	ys_keybrd.cpp\
+	ys_keybrd_dlg.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version \$Revision: 1.16 $$
+ * @version \$Revision: 1.17 $$
  * @see YardDBType
  */
 
@@ -54,7 +54,7 @@ class YardInvType: public YardDBType
         float percent;
     };
   
-    YardInvType() {}
+    YardInvType():m_key(-1) {}
     
     /**
      * Copy constructor
@@ -149,6 +149,7 @@ class YardInvType: public YardDBType
    
  private:
     
+    int m_key;
     /* These variables directly correspond with the database */
     string m_skuNumber;
     string m_barCode;
@@ -174,30 +175,6 @@ class YardInvType: public YardDBType
     
     bool m_oversized;
     bool m_mustShipFreight;
-    
-    
-    /* Database       
-    INV_SKU_Number			INT	NOT NULL,
-	INV_Bar_Code_Number		varchar(30),
-	INV_Item_Description		TEXT,
-	INV_Item_Department		varchar(30),
-	INV_Quantity_On_Hand		INT,
-	INV_Quantity_On_Order		INT,
-	INV_Reorder_Level		INT,
-	INV_Reorder_Quantity		INT,
-	INV_Item_Type			varchar(20),
-	INV_REF_TAX_Tax_Type            INT NOT NULL,
-	INV_REF_VND_Vendor_ID           INT NOT NULL,	
-	INV_Retail_Price		DECIMAL(7,2),
-	INV_Wholesale_Price		DECIMAL(7,2),
-	INV_Bulk_Price			TEXT,
-	INV_Date_Last_Received		DATETIME,
-	INV_Weight_Pounds		FLOAT,
-	INV_Oversized_Flag		enum('T','F'),
-	INV_Ship_By_Freight		enum('T','F'),
-	INV_Comment			TEXT,
-
-    */
     
 };
 

@@ -38,16 +38,42 @@ YardInvType::YardInvType(const YardInvType& obj) {
 string YardInvType::ToString(const string& delim) const {
     
     stringstream output;
-    output << m_skuNumber << delim << m_barCode << delim << m_itemDescription 
-        << delim << m_itemDepartment << delim << m_quantityOnHand 
-        << delim << m_quantityOnOrder << delim << m_reorderLevel 
-        << delim << m_reorderQuantity << delim << m_itemType
-        << delim << m_itemWeight << delim << m_taxType
-        << delim << m_vendorId << delim << m_retailPrice
-        << delim << m_wholesalePrice << delim << m_bulkPrice 
-        << delim << m_comment << delim << m_oversized
-        << delim << m_mustShipFreight;
+    output 
+        << '\'' << m_skuNumber << '\'' << delim 
+        << '\'' << m_barCode << '\'' << delim 
+        << '\'' << m_itemDescription << '\'' << delim 
+        << '\'' << m_itemDepartment << '\'' << delim 
+        << m_quantityOnHand << delim 
+        << m_quantityOnOrder << delim 
+        << m_reorderLevel << delim 
+        << m_reorderQuantity << delim 
+        << '\'' << m_itemType << '\'' << delim 
+        << m_taxType << delim
+        << m_vendorId << delim 
+        << m_retailPrice << delim 
+        << m_wholesalePrice << delim 
+        << m_bulkPrice << delim;
+    if (m_key == -1)
+        output << "now()" << delim;
+    else
+        output << m_dateLastReceived.ToString() << delim;
+        
+    output << m_itemWeight << delim;
     
+    if (m_oversized)
+        output << "'T'";
+    else
+        output << "'F'";
+    output << delim;
+    
+    if (m_mustShipFreight)
+        output << "'T'";
+    else
+        output << "'F'";
+    output << delim;
+    
+    output << '\'' << m_comment << '\'';
+     
     return output.str();
         
 }
@@ -186,7 +212,9 @@ int main()
     copyArray = anArray;
     
     VERIFY(anArray[0].GetBarCode(), copyArray[0].GetBarCode());
-
+    
+    cout << test3.ToString();
+    
     return failure;
 }
 

@@ -20,6 +20,7 @@
 #define YS_DB_TYPE_H
 
 #include <string>
+#include <sstream>
 using namespace std;
 class otl_stream;
 
@@ -30,7 +31,7 @@ class otl_stream;
  *
  * @see YardInvType
  * @see YardEmployeeType
- * @version \$Revision: 1.9 $$
+ * @version \$Revision: 1.10 $$
  * @ingroup database
  * @author Jesse Lovelace
  */
@@ -60,14 +61,23 @@ class YardDBType{
 /**
  * A temporary structure for holding date information
  */
-struct DateTime {
+class DateTime {
+ public:
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+    int second;
+    unsigned long fraction;
+    int frac_precision;
     
-    unsigned int year;
-    unsigned char month;
-    unsigned char day;
-    unsigned char hour;
-    unsigned char minute;
-    unsigned char second;
+    string ToString() const {
+        stringstream str;
+        str <<month<<"/"<<day<<"/"<<year<<" "<<hour<<":"<<minute<<":"<<second<<"."<<fraction;
+        return str.str();
+        
+    }
 };
 
 #endif

@@ -208,8 +208,20 @@ int YardDatabase::AddInventoryItem(const YardInvType& item)
     if (!m_db)
         throw YardDBException("DB not initialized.");
     
+    stringstream sql;
+    sql << "INSERT INTO Inventory_Table";
     
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
     
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    return 0;
 }
     
 
