@@ -7,6 +7,7 @@ CREATE TABLE Login_Table(
 	LOG_Time_Out	DATETIME,
 	LOG_Count	INT,
 	Primary Key(LOG_ID),
+	UNIQUE(LOG_REF_EMP_ID, LOG_Time_In, LOG_Time_Out, LOG_Count),
 	INDEX(LOG_REF_EMP_ID),
 	FOREIGN KEY (LOG_REF_EMP_ID) REFERENCES Employee_Table(EMP_ID_Number)
 );

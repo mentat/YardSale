@@ -16,6 +16,7 @@ CREATE TABLE Employee_Table(
 	EMP_REF_ACL_Type			varchar(30),
 	EMP_Enabled				INT,
 	Primary Key (EMP_ID_Number),
+	UNIQUE (EMP_First_Name, EMP_Middle_Name, EMP_Last_Name, EMP_Address(20)),
 	UNIQUE INDEX(EMP_Social_Security_Number),
 	INDEX acl_type (EMP_REF_ACL_Type),
 	#INDEX acct_number (EMP_REF_CUST_Account_Number),

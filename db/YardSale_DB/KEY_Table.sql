@@ -6,5 +6,6 @@ CREATE TABLE Key_Table(
 	KEY_Keys			TEXT,
 	PRIMARY KEY ( KEY_ID ),
 	INDEX ( KEY_REF_EMP_ID_Number ),
+	UNIQUE (KEY_Keys(10)),
 	FOREIGN KEY (KEY_REF_EMP_ID_Number) REFERENCES Employee_Table( EMP_ID_Number )
 )type=InnoDB
