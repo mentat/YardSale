@@ -31,7 +31,8 @@ class YardBitmaps
         TUX = 9,
         FOOT_CALC = 17,
         FOOT_KEY = 18,
-        FOOT_UNDO = 19
+        FOOT_UNDO = 19,
+        TRASH = 20
     };
         
     YardBitmaps();

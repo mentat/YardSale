@@ -7,7 +7,7 @@
 #include "ys_sale.h"
 
 BEGIN_EVENT_TABLE(YardSaleScreen, wxFrame)
-    EVT_BUTTON(ID_SALE_BACK, YardSaleScreen::OnExitButton)
+    //EVT_BUTTON(ID_SALE_BACK, YardSaleScreen::OnExitButton)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
@@ -18,14 +18,8 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     
     wxPanel * panel = new wxPanel(this);
     
-    wxBitmapButton * done = new wxBitmapButton(panel, ID_SALE_DONE,
-        wxGetApp().Images().GetBitmap(YardBitmaps::SALE_DONE));
-    wxBitmapButton * remove = new wxBitmapButton(panel, ID_SALE_REMOVE,
-        wxGetApp().Images().GetBitmap(YardBitmaps::SALE_REMOVE));
-    wxBitmapButton * cancel = new wxBitmapButton(panel, ID_SALE_CANCEL,
-        wxGetApp().Images().GetBitmap(YardBitmaps::SALE_CANCEL));
-    wxBitmapButton * back = new wxBitmapButton(panel, ID_SALE_BACK,
-        wxGetApp().Images().GetBitmap(YardBitmaps::SALE_BACK));
+    wxBitmapButton * trash = new wxBitmapButton(panel, ID_SALE_TRASH,
+        wxGetApp().Images().GetBitmap(YardBitmaps::TRASH));
     
     wxSizer * sizer = Sale(panel, false, true);
     sizer->SetSizeHints(this);

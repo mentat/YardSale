@@ -285,6 +285,8 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
 wxSizer *Main( wxWindow *parent, bool call_fit, bool set_sizer )
 {
     wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
+    item0->AddGrowableCol( 0 );
+    item0->AddGrowableRow( 0 );
 
     wxFlexGridSizer *item1 = new wxFlexGridSizer( 2, 0, 0 );
     item1->AddGrowableCol( 0 );
@@ -322,7 +324,7 @@ wxSizer *Main( wxWindow *parent, bool call_fit, bool set_sizer )
     wxASSERT( item8 );
     item1->Add( item8, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
-    item0->Add( item1, 0, wxALL, 5 );
+    item0->Add( item1, 0, wxGROW|wxALL, 5 );
 
     YardFooter *item9 = new YardFooter( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
     item0->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
@@ -343,96 +345,91 @@ wxSizer *Main( wxWindow *parent, bool call_fit, bool set_sizer )
 
 wxSizer *Sale( wxWindow *parent, bool call_fit, bool set_sizer )
 {
-    wxFlexGridSizer *item0 = new wxFlexGridSizer( 2, 0, 0 );
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
+    item0->AddGrowableCol( 0 );
     item0->AddGrowableRow( 0 );
 
-    wxFlexGridSizer *item1 = new wxFlexGridSizer( 1, 0, 0 );
+    wxFlexGridSizer *item1 = new wxFlexGridSizer( 2, 0, 0 );
+    item1->AddGrowableRow( 0 );
 
-    wxStaticBox *item3 = new wxStaticBox( parent, -1, wxT("Customer") );
-    wxStaticBoxSizer *item2 = new wxStaticBoxSizer( item3, wxVERTICAL );
+    wxFlexGridSizer *item2 = new wxFlexGridSizer( 1, 0, 0 );
+    item2->AddGrowableRow( 1 );
 
-    wxFlexGridSizer *item4 = new wxFlexGridSizer( 2, 0, 0 );
+    wxStaticBox *item4 = new wxStaticBox( parent, -1, wxT("Customer") );
+    wxStaticBoxSizer *item3 = new wxStaticBoxSizer( item4, wxVERTICAL );
 
-    wxStaticText *item5 = new wxStaticText( parent, ID_TEXT, wxT("First Name"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxFlexGridSizer *item5 = new wxFlexGridSizer( 2, 0, 0 );
 
-    wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, wxT("William"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item6, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, wxT("First Name"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item6, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item7 = new wxStaticText( parent, ID_TEXT, wxT("Middle Name"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item7, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item7 = new wxStaticText( parent, ID_TEXT, wxT("William"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item7, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item8 = new wxStaticText( parent, ID_TEXT, wxT("Joe"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item8, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item8 = new wxStaticText( parent, ID_TEXT, wxT("Middle Name"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item8, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item9 = new wxStaticText( parent, ID_TEXT, wxT("Last Name"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item9, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item9 = new wxStaticText( parent, ID_TEXT, wxT("Joe"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item9, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, wxT("Smith"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item10, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, wxT("Last Name"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item10, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item11 = new wxStaticText( parent, ID_TEXT, wxT("Address 1"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item11 = new wxStaticText( parent, ID_TEXT, wxT("Smith"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item12 = new wxStaticText( parent, ID_TEXT, wxT("256 Elderberry Lane"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item12 = new wxStaticText( parent, ID_TEXT, wxT("Address 1"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item13 = new wxStaticText( parent, ID_TEXT, wxT("Address 2"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item13 = new wxStaticText( parent, ID_TEXT, wxT("256 Elderberry Lane"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticText *item14 = new wxStaticText( parent, ID_TEXT, wxT("Apt 33"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item14 = new wxStaticText( parent, ID_TEXT, wxT("Address 2"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    item2->Add( item4, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+    wxStaticText *item15 = new wxStaticText( parent, ID_TEXT, wxT("Apt 33"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxButton *item15 = new wxButton( parent, ID_BUTTON, wxT("Edit"), wxDefaultPosition, wxDefaultSize, 0 );
-    item2->Add( item15, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item5, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    item1->Add( item2, 0, wxGROW|wxALL, 5 );
+    wxButton *item16 = new wxButton( parent, ID_BUTTON, wxT("Edit"), wxDefaultPosition, wxDefaultSize, 0 );
+    item3->Add( item16, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxFlexGridSizer *item16 = new wxFlexGridSizer( 2, 0, 0 );
-    item16->AddGrowableRow( 0 );
+    item2->Add( item3, 0, wxGROW|wxALL, 5 );
 
-    wxFlexGridSizer *item17 = new wxFlexGridSizer( 1, 0, 0 );
+    wxFlexGridSizer *item17 = new wxFlexGridSizer( 2, 0, 0 );
+    item17->AddGrowableCol( 0 );
+    item17->AddGrowableRow( 0 );
 
-    wxWindow *item18 = parent->FindWindow( ID_SALE_DONE );
-    wxASSERT( item18 );
-    item17->Add( item18, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxTreeCtrl *item18 = new wxTreeCtrl( parent, ID_TREECTRL, wxDefaultPosition, wxSize(120,160), wxTR_HAS_BUTTONS|wxTR_LINES_AT_ROOT|wxSUNKEN_BORDER );
+    item17->Add( item18, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxWindow *item19 = parent->FindWindow( ID_SALE_REMOVE );
-    wxASSERT( item19 );
-    item17->Add( item19, 0, wxALIGN_CENTER|wxALL, 5 );
+    item2->Add( item17, 0, wxGROW|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-    wxWindow *item20 = parent->FindWindow( ID_SALE_CANCEL );
-    wxASSERT( item20 );
-    item17->Add( item20, 0, wxALIGN_CENTER|wxALL, 5 );
+    item1->Add( item2, 0, wxGROW, 5 );
 
-    wxWindow *item21 = parent->FindWindow( ID_SALE_BACK );
-    wxASSERT( item21 );
-    item17->Add( item21, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxStaticBox *item20 = new wxStaticBox( parent, -1, wxT("Transaction") );
+    wxStaticBoxSizer *item19 = new wxStaticBoxSizer( item20, wxHORIZONTAL );
 
-    item16->Add( item17, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxFlexGridSizer *item21 = new wxFlexGridSizer( 1, 0, 0 );
+    item21->AddGrowableCol( 0 );
+    item21->AddGrowableRow( 0 );
 
-    YardCalc *item22 = new YardCalc( parent, ID_SALE_CALC, wxDefaultPosition, wxDefaultSize, 0 );
-    item16->Add( item22, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxListCtrl *item22 = new wxListCtrl( parent, ID_SALE_TRANS, wxDefaultPosition, wxSize(260,120), wxLC_REPORT|wxSUNKEN_BORDER );
+    item21->Add( item22, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    item1->Add( item16, 0, wxGROW|wxALIGN_CENTER_HORIZONTAL, 5 );
+    wxWindow *item23 = parent->FindWindow( ID_SALE_TRASH );
+    wxASSERT( item23 );
+    item21->Add( item23, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    item0->Add( item1, 0, wxALIGN_CENTER, 5 );
+    item19->Add( item21, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxStaticBox *item24 = new wxStaticBox( parent, -1, wxT("Transaction") );
-    wxStaticBoxSizer *item23 = new wxStaticBoxSizer( item24, wxHORIZONTAL );
+    item1->Add( item19, 0, wxGROW|wxALL, 5 );
 
-    wxFlexGridSizer *item25 = new wxFlexGridSizer( 1, 0, 0 );
-    item25->AddGrowableCol( 0 );
-    item25->AddGrowableRow( 0 );
+    item0->Add( item1, 0, wxGROW, 5 );
 
-    wxListCtrl *item26 = new wxListCtrl( parent, ID_SALE_TRANS, wxDefaultPosition, wxSize(260,120), wxLC_REPORT|wxSUNKEN_BORDER );
-    item25->Add( item26, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    item23->Add( item25, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-    item0->Add( item23, 0, wxGROW|wxALL, 5 );
+    YardFooter *item24 = new YardFooter( parent, ID_PANEL, wxDefaultPosition, wxSize(200,90), 0 );
+    item0->Add( item24, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     if (set_sizer)
     {

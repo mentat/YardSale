@@ -28,7 +28,8 @@ wxChar filenames [][TEXT_FIELD_WIDTH] = {
     "images/ys_shrink_64x64.png",
     "images/calc_80x80.png",
     "images/keyboard_80x80.png",
-    "images/reload_80x80.png"
+    "images/undo_80x80.png",
+    "images/trashcan_90x90.png"
 };
 
 YardBitmaps::YardBitmaps() {
