@@ -22,6 +22,11 @@ YardCalc::YardCalc(wxWindow* parent, wxWindowID id,
         :wxPanel(parent, id, pos, size, style, name)
 {
     m_number = 0;
+
+	//the last number on the screen, before the new one entered
+	m_savednumber = 0;
+
+	//are we in an add loop?
     m_inAdd = false;
     
     wxSizer * sizer = NumberPad(this, false, true);
@@ -64,7 +69,7 @@ void YardCalc::OnNumber(wxCommandEvent & event)
    
    	default: wxLogError(wxT("Should not see me")); return;
     }
-    
+   
     if (m_screen->GetValue() == wxT("0"))
         m_screen->SetValue(ch);
     else
@@ -77,29 +82,41 @@ void YardCalc::OnNumber(wxCommandEvent & event)
 		if (! m_screen->GetValue().Contains(".") )	
 			m_screen->SetValue(m_screen->GetValue() + ch);
 	}else
-		m_screen->SetValue(m_screen->GetValue() + ch);
+		//now clear the screen if we are wanting to enter a new number
+		if (!m_readyfornewnumber)
+			m_screen->SetValue(m_screen->GetValue() + ch);
+		else{
+			m_screen->GetValue().ToLong(&m_savednumber);
+			m_screen->SetValue(ch);
+			m_readyfornewnumber = true;
+		}
 }
 
 void YardCalc::OnPlus(wxCommandEvent & event)
 {
     
     long int tmp = 0;
+
+	//indicate that when the next number is pressed that 
+	//we need to clear the screen and read in a new number
+	m_readyfornewnumber = true;
     
     // try to convert
-    
-    if (!m_screen->GetValue().ToLong(&tmp)) {
-        
+    if (!m_screen->GetValue().ToLong(&m_savednumber)) {
+    	//error    
         wxLogDebug(wxT("Error in conversion"));
         m_screen->SetValue(wxT("Error in conversion"));
         m_inAdd = false;
-        
         return;
     }
-    
+   
+   	//converted the screen contents successfully
     if (m_inAdd)
-        m_number += tmp;
-    else
-        m_number = tmp;
+        m_number += m_savednumber;
+    else{
+        m_number = m_savednumber;
+		m_inAdd = true;
+	}
         
 }
 
@@ -109,9 +126,10 @@ void YardCalc::OnClear(wxCommandEvent & event){
 }
 
 void YardCalc::OnAllClear(wxCommandEvent & event){
-
+	m_screen->SetValue("0");
 }
 
+//may not need this
 void YardCalc::OnDot(wxCommandEvent & event){
 
 }
@@ -119,7 +137,7 @@ void YardCalc::OnDot(wxCommandEvent & event){
 void YardCalc::OnEqual(wxCommandEvent & event)
 {
     long int tmp = 0;
-    
+   	
     if (m_screen->GetValue().ToLong(&tmp))
         m_number += tmp;
     else {

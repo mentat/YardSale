@@ -42,6 +42,8 @@ class YardCalc: public wxPanel {
     DECLARE_EVENT_TABLE()
     
     long int m_number;
+	bool m_readyfornewnumber;
+    long int m_savednumber;
     bool m_inAdd;
     wxTextCtrl * m_screen;
 };
