@@ -50,7 +50,9 @@ AC_SUBST(MAKE_USE_MINGW)
 AC_SUBST(MAKE_USE_RESOURCES)
 
 # Checks for programs.
+AC_PROG_RANLIB
 AC_PROG_CXX
+AC_PROG_CC
 AC_PROG_CXXCPP
 AC_PROG_INSTALL
 
@@ -92,5 +94,11 @@ fi
 AC_CONFIG_FILES([Makefile
                  include/Makefile
                  src/Makefile
+                 src/extra/Makefile
+                 src/extra/xrc/Makefile
+		 src/extra/wxrc/Makefile
+		 src/extra/wxrcedit/Makefile
+		 src/res/Makefile
+		 src/tests/Makefile
 		 ])
 AC_OUTPUT
