@@ -3,6 +3,8 @@
 
 #include "ys_inv_type.h"
 #include <wx/string.h>
+#include <wx/db.h>
+#include <wx/dbtable.h>
 #include <vector>
 
 using namespace std;
