@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  3 MAR 2004 02:58
+This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  3 MAR 2004 21:00
 entering extended mode
 **Requirements.tex
 (Requirements.tex{pdftex.cfg}
@@ -126,33 +126,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--106
 
  []
 
-[3] [4] [5] <organization.png, id=44, 451.6875pt x 222.8325pt>
+[3] [4] [5] <yardsale_modules.png, id=44, 451.6875pt x 191.71625pt>
+File: yardsale_modules.png Graphic file (type png)
+
+<use yardsale_modules.png> [6]
+<organization.png, id=49, 451.6875pt x 222.8325pt>
 File: organization.png Graphic file (type png)
-
-<use organization.png> [6] [7 <organization.png>]
+ <use organization.png>
+[7 <yardsale_modules.png>] [8 <organization.png>]
 Chapter 2.
-[8
-
-]
-Chapter 3.
 [9
 
 ]
-Chapter 4.
+Chapter 3.
 [10
+
+]
+Chapter 4.
+[11
 
 ] (Requirements.aux) ) 
 Here is how much of TeX's memory you used:
- 984 strings out of 95518
- 11034 string characters out of 1189726
+ 990 strings out of 95518
+ 11157 string characters out of 1189726
  59097 words of memory out of 1060600
- 4055 multiletter control sequences out of 35000
+ 4059 multiletter control sequences out of 35000
  9767 words of font info for 34 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 607
  25i,6n,19p,207b,191s stack positions out of 1500i,500n,5000p,200000b,32768s
- 60 PDF objects out of 65536
+ 64 PDF objects out of 65536
  0 named destinations out of 20000
- 6 words of extra memory for PDF output out of 65536
+ 11 words of extra memory for PDF output out of 65536
 <cmr7.pfb><cmsl10.pfb><cmsy10.pfb><cmr10.pfb><cmbx10.pfb>
 <cmr12.pfb><cmr17.pfb><cmbx12.pfb>
-Output written on Requirements.pdf (11 pages, 126441 bytes).
+Output written on Requirements.pdf (12 pages, 151405 bytes).

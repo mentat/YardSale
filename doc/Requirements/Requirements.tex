@@ -274,8 +274,45 @@ functionality can not be added.
 
     \subsection{Major Modules}
 
+        \subsubsection{YardDatabase}
+        The YardDatabase module works as the translator between
+        the user interface and the database.  It converts calls
+        made by the GUI into SQL queries to be sent to the
+        database.  When the query results are returned from the
+        database, YardDatabase converts these items to a
+        YardDBType (discussed in next section) to be read by the
+        GUI.
+        \subsubsection{YardDBType}
+        The YardDBType module is the superclass for all information that
+        may be sent to the GUI from the database.  It contains
+        function calls for each of the following types:
+        \begin{list}{}
+            \item{{\bf YardInvType:} contains variables for all
+            possible inventory management items stored in the
+            database.  Coordinates with the Inventory Management
+            view in the GUI, which is also used by Transactions.}
+            \item{{\bf YardCustomerType:} contains variables for
+            all possible customer management items stored in the database.
+            Coordinates with the Customer view in the GUI,
+            which is also used by Transactions.}
+            \item{{\bf YardEmployeeType} contains variables for
+            all possible employee management items stored in the
+            database.  Coordinates with the Employee Management
+            view in the GUI.}
+            \item{{\bf YardTransaction} contains variables for all
+            possible transaction items stored in the database.
+            Coordinates with the Transaction view in the GUI.}
+        \end{list}{}
+        \subsubsection{GUI wxWidges}
+        The wxWidges module defines all interfaces used by the
+        GUI.  It contains functions derived from the wxWindows
+        libraries for C++.  It also interacts with the
+        YardDatabase module to display information sent from the
+        database.
+
+
     \subsection{System Architecture}
-    %INSERT PICTURE FLOWCHART OF APPLICATION MODULE RELATIONSHIPS
+    \includegraphics{yardsale_modules.png}
 
 \section{Preliminary Project Task Plan}
     %Scope and Size of Project Paragraph
