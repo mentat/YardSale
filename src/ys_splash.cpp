@@ -22,7 +22,7 @@ YardSplash::YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
     
     wxImage::AddHandler(new wxPNGHandler);
     //wxBitmap logo("logo.png", wxBITMAP_TYPE_PNG); 
-    m_logo = new wxBitmap("logo.png", wxBITMAP_TYPE_PNG); 
+    m_logo = new wxBitmap("images/logo.png", wxBITMAP_TYPE_PNG); 
     m_bitmap = new wxStaticBitmap(panel, ID_SPLASH_LOGO, *m_logo, wxDefaultPosition);
     
     wxSizer * sizer = Splash(panel, false, true);
