@@ -82,7 +82,10 @@ module.include.files=\
 	ys_dbtype.h\
 	ys_inv_type.h\
 	ys_exception.h\
-	ys_test.h
+	ys_test.h\
+	ys_bitmaps.h\
+	otlv4.h\
+	ys_debug.h
 
 module.source.name=src
 module.source.type=
@@ -98,7 +101,9 @@ module.source.files=\
 	ys_employee.cpp\
 	ys_log.cpp\
 	ys_inv_type.cpp\
-	ys_database.cpp
+	ys_database.cpp\
+	ys_bitmaps.cpp\
+	ys_debug.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

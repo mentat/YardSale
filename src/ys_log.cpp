@@ -104,6 +104,10 @@ void YardLog::DoLog(wxLogLevel level, const wxChar *szString, time_t t)
     image = 2;
     string_type = wxT("Console");
     break;
+  case wxLOG_DB:
+    image = 2;
+    string_type = wxT("Database");
+    break;
   default:
     string_type = wxT("Unknown");
     image = 2;
@@ -119,6 +123,16 @@ void YardLog::DoLog(wxLogLevel level, const wxChar *szString, time_t t)
 }
 
 void wxLogCon(const wxChar* sxFormat,  ...)
+{
+    va_list argptr;
+    va_start(argptr, sxFormat);
+    wxLogGeneric(wxLOG_CONSOLE, sxFormat, argptr);
+    cout << sxFormat << endl;
+    va_end(argptr);
+    
+}
+
+void wxLogDB(const wxChar* sxFormat,  ...)
 {
     va_list argptr;
     va_start(argptr, sxFormat);
