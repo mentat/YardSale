@@ -110,6 +110,7 @@ class YardDatabase {
     string m_dsn;
     string m_name;
     string m_pass;
+    otl_stream m_invGetStream;
      
 };
 
