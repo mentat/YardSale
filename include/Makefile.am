@@ -9,6 +9,7 @@ yardsale_includedir = $(pkgincludedir)
 yardsale_include_DATA = \
 	yardsale.h\
 	yardsale_wdr.h\
-	ys_splash.h
+	ys_splash.h\
+	ys_main.h
 
 EXTRA_DIST = $(yardsale_include_DATA)

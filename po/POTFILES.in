@@ -8,5 +8,6 @@
 src/yardsale.cpp
 src/yardsale_wdr.cpp
 src/ys_splash.cpp
+src/ys_main.cpp
 
 

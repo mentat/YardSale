@@ -136,7 +136,7 @@ yardsale_CXXFLAGS =  	-ansi 	 -Wall 	 -g
 
 bin_PROGRAMS = yardsale
 
-yardsale_SOURCES =  	yardsale.cpp 	yardsale_wdr.cpp 	ys_splash.cpp
+yardsale_SOURCES =  	yardsale.cpp 	yardsale_wdr.cpp 	ys_splash.cpp 	ys_main.cpp
 
 
 yardsale_LDFLAGS = 
@@ -155,7 +155,7 @@ CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 yardsale_OBJECTS =  yardsale.$(OBJEXT) yardsale_wdr.$(OBJEXT) \
-ys_splash.$(OBJEXT)
+ys_splash.$(OBJEXT) ys_main.$(OBJEXT)
 yardsale_DEPENDENCIES = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -168,7 +168,8 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP_ENV = --best
-DEP_FILES =  .deps/yardsale.P .deps/yardsale_wdr.P .deps/ys_splash.P
+DEP_FILES =  .deps/yardsale.P .deps/yardsale_wdr.P .deps/ys_main.P \
+.deps/ys_splash.P
 SOURCES = $(yardsale_SOURCES)
 OBJECTS = $(yardsale_OBJECTS)
 

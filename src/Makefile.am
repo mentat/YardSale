@@ -18,7 +18,8 @@ bin_PROGRAMS = yardsale
 yardsale_SOURCES = \
 	yardsale.cpp\
 	yardsale_wdr.cpp\
-	ys_splash.cpp
+	ys_splash.cpp\
+	ys_main.cpp
 
 yardsale_LDFLAGS = 
 

@@ -1,12 +1,13 @@
 #include "wx/wx.h"
 #include "yardsale.h"
 #include "ys_splash.h"
+#include "ys_main.h"
 
 IMPLEMENT_APP(YardSale)
 
 bool YardSale::OnInit()
 {
-    wxFrame * frame = new YardSplash(NULL, -1, "YardSale");
+    wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     frame->Show(true);
     SetTopWindow(frame);
     

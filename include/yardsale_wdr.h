@@ -31,6 +31,27 @@
 #define ID_SPLASH_LOGO 10000
 wxSizer *Splash( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
+#define ID_TEXT 10001
+#define ID_TEXTCTRL 10002
+#define ID_LOGIN_PASSWORD 10003
+#define ID_LOGIN 10004
+wxSizer *Login( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
+#define ID_MAIN_INVENTORY 10005
+#define ID_MAIN_SALES 10006
+#define ID_MAIN_CUSTOMER 10007
+#define ID_MAIN_REPORTS 10008
+#define ID_MAIN_EMPLOYEE 10009
+#define ID_MAIN_LOGOUT 10010
+wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
+#define ID_LINE 10011
+#define ID_GRID 10012
+wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
+#define ID_MAIN_LOGO 10013
+wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
 // Declare menubar functions
 
 // Declare toolbar functions

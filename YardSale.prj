@@ -70,14 +70,16 @@ module.include.type=
 module.include.files=\
 	yardsale.h\
 	yardsale_wdr.h\
-	ys_splash.h
+	ys_splash.h\
+	ys_main.h
 
 module.source.name=src
 module.source.type=
 module.source.files=\
 	yardsale.cpp\
 	yardsale_wdr.cpp\
-	ys_splash.cpp
+	ys_splash.cpp\
+	ys_main.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

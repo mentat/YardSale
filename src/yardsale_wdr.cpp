@@ -20,8 +20,6 @@
 
 // Custom source
 /*
-    $Id: yardsale_wdr.cpp,v 1.1 2004/02/05 23:19:58 thementat Exp $
- 
     YardSale - The Open Point of Sale
     Copyright (C) 2004  Jesse Lovelace <jllovela@ncsu.edu>
  
@@ -49,6 +47,215 @@ wxSizer *Splash( wxWindow *parent, bool call_fit, bool set_sizer )
     wxWindow *item1 = parent->FindWindow( ID_SPLASH_LOGO );
     wxASSERT( item1 );
     item0->Add( item1, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
+wxSizer *Login( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxBoxSizer *item0 = new wxBoxSizer( wxVERTICAL );
+
+    wxFlexGridSizer *item1 = new wxFlexGridSizer( 2, 0, 0 );
+    item1->AddGrowableCol( 1 );
+
+    wxStaticText *item2 = new wxStaticText( parent, ID_TEXT, wxT("Username:"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item2, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item3 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item1->Add( item3, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item4 = new wxStaticText( parent, ID_TEXT, wxT("Password:"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item4, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item5 = new wxTextCtrl( parent, ID_LOGIN_PASSWORD, wxT(""), wxDefaultPosition, wxSize(120,-1), wxTE_PASSWORD );
+    item1->Add( item5, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item0->Add( item1, 0, wxLEFT|wxRIGHT|wxTOP, 5 );
+
+    wxButton *item6 = new wxButton( parent, ID_LOGIN, wxT("Login"), wxDefaultPosition, wxDefaultSize, 0 );
+    item6->SetDefault();
+    item0->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
+wxSizer *MainText( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 2, 0, 0 );
+    item0->AddGrowableCol( 0 );
+    item0->AddGrowableCol( 1 );
+    item0->AddGrowableRow( 0 );
+    item0->AddGrowableRow( 1 );
+    item0->AddGrowableRow( 2 );
+    item0->AddGrowableRow( 3 );
+
+    wxButton *item1 = new wxButton( parent, ID_MAIN_INVENTORY, wxT("Inventory Management"), wxDefaultPosition, wxSize(265,35), 0 );
+    item1->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item0->Add( item1, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxButton *item2 = new wxButton( parent, ID_MAIN_SALES, wxT("Sales Cashier"), wxDefaultPosition, wxSize(265,35), 0 );
+    item2->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item0->Add( item2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxButton *item3 = new wxButton( parent, ID_MAIN_CUSTOMER, wxT("Customer Information"), wxDefaultPosition, wxSize(265,35), 0 );
+    item3->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item0->Add( item3, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxButton *item4 = new wxButton( parent, ID_MAIN_REPORTS, wxT("Reports"), wxDefaultPosition, wxSize(265,35), 0 );
+    item4->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item0->Add( item4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxButton *item5 = new wxButton( parent, ID_MAIN_EMPLOYEE, wxT("Employee Information"), wxDefaultPosition, wxSize(265,35), 0 );
+    item5->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item0->Add( item5, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxButton *item6 = new wxButton( parent, ID_MAIN_LOGOUT, wxT("Logout"), wxDefaultPosition, wxSize(265,35), 0 );
+    item6->SetFont( wxFont( 20, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item0->Add( item6, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
+wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
+    item0->AddGrowableCol( 0 );
+    item0->AddGrowableRow( 0 );
+    item0->AddGrowableRow( 2 );
+
+    wxFlexGridSizer *item1 = new wxFlexGridSizer( 4, 0, 0 );
+
+    wxStaticText *item2 = new wxStaticText( parent, ID_TEXT, wxT("SKU"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item2, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item3 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(150,-1), 0 );
+    item1->Add( item3, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxStaticText *item4 = new wxStaticText( parent, ID_TEXT, wxT("Bar Code"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item4, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item5 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(120,-1), 0 );
+    item1->Add( item5, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, wxT("Item Name"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item6, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item7 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item1->Add( item7, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item8 = new wxStaticText( parent, ID_TEXT, wxT("Price"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item8, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item9 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item1->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, wxT("Description"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item10, 0, wxALIGN_RIGHT|wxALL, 5 );
+
+    wxTextCtrl *item11 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(80,-1), wxTE_MULTILINE );
+    item1->Add( item11, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item12 = new wxStaticText( parent, ID_TEXT, wxT("Wholesale"), wxDefaultPosition, wxDefaultSize, 0 );
+    item1->Add( item12, 0, wxALIGN_RIGHT|wxALL, 5 );
+
+    wxTextCtrl *item13 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(160,-1), 0 );
+    item1->Add( item13, 0, wxALL, 5 );
+
+    item0->Add( item1, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxStaticLine *item14 = new wxStaticLine( parent, ID_LINE, wxDefaultPosition, wxSize(20,-1), wxLI_HORIZONTAL );
+    item0->Add( item14, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxGrid *item15 = new wxGrid( parent, ID_GRID, wxDefaultPosition, wxSize(480,200), wxWANTS_CHARS );
+    item15->CreateGrid( 10, 10, wxGrid::wxGridSelectCells );
+    item0->Add( item15, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
+wxSizer *Main( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 2, 0, 0 );
+
+    wxWindow *item1 = parent->FindWindow( ID_MAIN_LOGO );
+    wxASSERT( item1 );
+    item0->Add( item1, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    item0->Add( 320, 20, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxWindow *item2 = parent->FindWindow( ID_MAIN_INVENTORY );
+    wxASSERT( item2 );
+    item0->Add( item2, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxWindow *item3 = parent->FindWindow( ID_MAIN_SALES );
+    wxASSERT( item3 );
+    item0->Add( item3, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxWindow *item4 = parent->FindWindow( ID_MAIN_CUSTOMER );
+    wxASSERT( item4 );
+    item0->Add( item4, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxWindow *item5 = parent->FindWindow( ID_MAIN_REPORTS );
+    wxASSERT( item5 );
+    item0->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxWindow *item6 = parent->FindWindow( ID_MAIN_EMPLOYEE );
+    wxASSERT( item6 );
+    item0->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxWindow *item7 = parent->FindWindow( ID_MAIN_LOGOUT );
+    wxASSERT( item7 );
+    item0->Add( item7, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    item0->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxWindow *item8 = parent->FindWindow( ID_MAIN_MAX );
+    wxASSERT( item8 );
+    item0->Add( item8, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     if (set_sizer)
     {
