@@ -161,6 +161,12 @@
 				RelativePath="..\src\ys_inventory.cpp">
 			</File>
 			<File
+				RelativePath="..\src\ys_keybrd.cpp">
+			</File>
+			<File
+				RelativePath="..\src\ys_keybrd_dlg.cpp">
+			</File>
+			<File
 				RelativePath="..\src\ys_log.cpp">
 			</File>
 			<File
@@ -239,6 +245,12 @@
 			</File>
 			<File
 				RelativePath="..\include\ys_inventory.h">
+			</File>
+			<File
+				RelativePath="..\include\ys_keybrd.h">
+			</File>
+			<File
+				RelativePath="..\include\ys_keybrd_dlg.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_log.h">
