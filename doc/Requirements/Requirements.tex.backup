@@ -55,17 +55,27 @@ Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts\\}
 \section{Introduction}
 
 YardSale is an open source Point of Sale system that is being
-designed by A.S Logic Systems to revolutionize the way Point of
-Sale systems are implemented in today's market.  Current
+developed by A.S Logic Systems.  Current
 implementations of Point of Sale systems are fraught with a number
-of issues; including often being extremely overpriced, difficult
+of issues including often being extremely overpriced, difficult
 to administer, dated in their functionality, and lacking necessary
-operations.  YardSale was designed to alleviate these problems and
-allow for extensibility as the market of retail sale expands in
-the future.
+operations.
 
-Being that YardSale is an open source project with little funding,
-the initial niche market will target small, locally owned retail
+The power of an open source system such as YardSale is the
+open way in which it is designed.  A user of the YardSale system
+can take off the shelf computer hardware (in many cases older hardware
+will perform just as well) and create a point of sale with minimal
+configuration.  In addition, supporting new hardware is trivial since
+the YardSale interface specification is in no way hindered by
+restrictive close-source licenses.
+
+The name "YardSale" was concieved to emphasize the
+versatility and simplicity of the system.  The parts of a
+YardSale point of sale can be older, used hardware and
+the underlying software can be completely free.
+
+Being that YardSale is an open source project the initial
+market will target small, locally owned retail
 stores.  This type of market will allow for extensive on-site
 research, as many of these businesses should be willing to work
 with us to improve on the functionality of their existing POS
@@ -74,6 +84,10 @@ open source route, the software itself will be freely available to
 all who wish to use it, the only expense that will come into play
 is if the company wishes to enlist our services in setup,
 troubleshooting, support, expansion, or customization.
+
+However, we believe that YardSale can be easily used by
+those who do not wish to purchase support contracts due to
+the clear documentation and well-writen interfaces.
 
 \section{Functional Requirements}
 
@@ -117,37 +131,60 @@ sub sections. There is planned functionality above and beyond this
 basic featureset, although without these functions other
 functionality can not be added.
 
-    \subsection{Database Management}
-    The goal of the database management tasks are to add, modify, and
-    delete information in the database. The database backend will run
-    on a MySQL server and all relevant data will be stored in its own
-    table or set of tables. More information on the database design
-    can be found in the database design document.
+    \subsection{Information Management}
+    YardSale will store information about all aspects of program operation
+    data. The data that is stored can be broken down into four main subsections
+    \begin{itemize}
+	\item{Employee Data}
+	\item{Customer Data}
+	\item{Inventory Data}
+	\item{Sales Data}
+    \end{itemize}
+
+    \subsection{Employee Data}
+    For YardSale to properly
+
+    This is inclusive of Employee, Customer, Inventory, and Sales
+    data. Employees shall have all pertinent contact information such
+    as Name, Address, Phone Numbers, and Email address as well as an
+    Employee Number and possibly a Social Security number saved as a
+    record. Customer will have the same contact information stored as
+    well. Inventory Items will have a Name and SKU number associated
+    with every record, and other pertinent information about Items
+    such as their cost, resale value, and tax rate will also be stored.
+    Sale transactions shall be saved by referencing the primary key of
+    each employee, customer, and inventory item sold during a transaction.
+
+    %The goal of the database management tasks are to add, modify, and
+    %delete information in the database. The database backend will run
+    %on a MySQL server and all relevant data will be stored in its own
+    %table or set of tables. More information on the database design
+    %can be found in the database design document.
 
     \subsubsection{Inventory Management}
-    The inventory management system will have an interface for the
-    stock employees to enter new shipments. It will also have an
-    interface for the management employees to define new items for
-    sale. The most common use of the inventory management system will
-    be integrated into the checkout system. When customers are
-    checking out, inventory will be populated to the checkout screen
-    from the database, and then decremented on purchase from their
-    quantity in the database.
+    %The inventory management system will have an interface for the
+    %stock employees to enter new shipments. It will also have an
+    %interface for the management employees to define new items for
+    %sale. The most common use of the inventory management system will
+    %be integrated into the checkout system. When customers are
+    %checking out, inventory will be populated to the checkout screen
+    %from the database, and then decremented on purchase from their
+    %quantity in the database.
 
     \subsubsection{Customer Management}
-    The customer management system will work in a similar fashion to
-    the inventory management system. It will have only one level of
-    functionality though, the ability to define and update new
-    customer data. There will also be a small interface with the
-    database during the checkout of a customer which will allow for
-    the selection of a customer from the customer table.
+    %The customer management system will work in a similar fashion to
+    %the inventory management system. It will have only one level of
+    %functionality though, the ability to define and update new
+    %customer data. There will also be a small interface with the
+    %database during the checkout of a customer which will allow for
+    %the selection of a customer from the customer table.
 
     \subsubsection{Employee Management}
-    The employee management system here again will also function
-    similarly to the previous two in that it has hooks into the
-    database for employees. It will allow an authorized user the
-    ability to add and modify employee information as well as
-    disable employee accounts.\\
+    %The employee management system here again will also function
+    %similarly to the previous two in that it has hooks into the
+    %database for employees. It will allow an authorized user the
+    %ability to add and modify employee information as well as
+    %disable employee accounts.\\
     \\
 
     {\sl Among the more specific functionality of each of these sections
@@ -157,22 +194,9 @@ functionality can not be added.
 
     \subsection{Transactions}
 
-    Transactions in YardSale are basically a 4 step process. The first
-    step in the process is to select a customer to do business with or
-    select a cash "quick" customer. After the customer is selected
-    their basic information will be displayed on the main checkout
-    screen. The user will will then either select items from the
-    inventory from a hierarchy, scan them in with the barcode scanner,
-    or manually type in their information in lookup fields to checkout
-    a customer. A running total will be kept as well as tax
-    calculations for the sale. After all items are accounted for a
-    checkout screen will be called. This will allow the user to select
-    the customer's preferred method of payment and also provide the
-    user with the ability to calculate the correct amount of change.
 
-    All transactions will be maintained with a table in the database
-    that will link related elements of the transaction together for
-    later reporting.
+    Transactions are the key to any point of sale system.  The obvious
+
 
     \subsection{Logging}
     Many program logging features will be provided inherently due to
@@ -183,7 +207,6 @@ functionality can not be added.
         \item {Employee Time Tracking}
         \item {Transaction Logging}
         \item {Shipment Logs}
-        \item {SQL String Execution Logging}
     \end{itemize}
 
     Employee time tracking will be logged based on when the login to

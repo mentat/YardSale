@@ -1,1 +1,726 @@
-This is TeX, Version 3.14159 (preloaded format=LaTeX 2003.6.8)  4 APR 2004 17:37**&LATEX Requirements.tex(Requirements.texLaTeX2e <2001/06/01>(TeX/Inputs/LaTeX/base/report.clsDocument Class: report 2001/04/21 v1.4e Standard LaTeX document class(TeX/Inputs/LaTeX/base/size10.cloFile: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option))\c@part=\count79\c@chapter=\count80\c@section=\count81\c@subsection=\count82\c@subsubsection=\count83\c@paragraph=\count84\c@subparagraph=\count85\c@figure=\count86\c@table=\count87\abovecaptionskip=\skip41\belowcaptionskip=\skip42\bibindent=\dimen102) (TeX/Inputs/LaTeX/graphics/graphicx.styPackage: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)(TeX/Inputs/LaTeX/graphics/keyval.styPackage: keyval 1999/03/16 v1.13 key=value parser (DPC)\KV@toks@=\toks14) (TeX/Inputs/LaTeX/graphics/graphics.styPackage: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)(TeX/Inputs/LaTeX/graphics/trig.styPackage: trig 1999/03/16 v1.09 sin cos tan (DPC)) (TeX/Inputs/LaTeX/graphics/graphics.cfgFile: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive)Package graphics Info: Driver file: dvips.def on input line 80.(TeX/Inputs/LaTeX/graphics/dvips.defFile: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)))\Gin@req@height=\dimen103\Gin@req@width=\dimen104)! LaTeX Error: File `fancyhdr.sty' not found.Type X to quit or <RETURN> to proceed,or enter new name. (Default extension: sty)Enter file name: ! Undefined control sequence.<argument> \undefinedpagestyle                                l.6 \pagestyle{fancyplain}                          ? ! Undefined control sequence.l.8 \lhead          [\fancyplain{}{\bfseries\thepage}]? qOK, entering \batchmode...! LaTeX Error: Missing \begin{document}.See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.8 \lhead[           \fancyplain{}{\bfseries\thepage}]You're in trouble here.  Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.! Undefined control sequence.l.8 \lhead[\fancyplain                      {}{\bfseries\thepage}]The control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined.! Undefined control sequence.l.9         {\fancyplain                        {}{\bfseries\rightmark}}The control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined.! Undefined control sequence.l.10 \rhead           [\fancyplain{}{\bfseries\leftmark}]The control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined.! Undefined control sequence.l.10 \rhead[\fancyplain                       {}{\bfseries\leftmark}]The control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined.! Undefined control sequence.l.11         {\fancyplain                         {}{\bfseries\thepage}}The control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined.! Undefined control sequence.l.12 \lfoot           []{\fancyplain{}{\bfseries\scriptsize YardSale: The OpenThe control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined.! Undefined control sequence.l.12 \lfoot[]{\fancyplain                         {}{\bfseries\scriptsize YardSale: The OpenThe control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined.! Undefined control sequence.l.13 ...ce Point of Sale Solution}} \cfoot                                          {}The control sequence at the end of the top lineof your error message was never \def'ed. If you havemisspelled it (e.g., `\hobx'), type `I' and the correctspelling (e.g., `I\hbox'). Otherwise just continue,and I'll forget about whatever was undefined. (Requirements.aux)LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.LaTeX Font Info:    ... okay on input line 25.LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.LaTeX Font Info:    ... okay on input line 25.LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.LaTeX Font Info:    ... okay on input line 25.LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.LaTeX Font Info:    ... okay on input line 25.LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.LaTeX Font Info:    ... okay on input line 25.LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.LaTeX Font Info:    ... okay on input line 25. [1]! LaTeX Error: Cannot determine size of graphic in aslogic_smaller.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.40 \includegraphics{aslogic_smaller.png}                                          Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: aslogic_smaller.png Graphic file (type eps) <aslogic_smaller.png> [1] (Requirements.tocLaTeX Font Info:    External font `cmex10' loaded for size(Font)              <7> on input line 2.LaTeX Font Info:    External font `cmex10' loaded for size(Font)              <5> on input line 2. [1])\tf@toc=\write3 [2]Chapter 1.Underfull \hbox (badness 10000) in paragraph at lines 94--99 []LaTeX Font Info:    Try loading font information for OMS+cmr on input line 101. (TeX/Inputs/LaTeX/base/omscmr.fdFile: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions)LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101. [3]Underfull \hbox (badness 10000) in paragraph at lines 160--166 []Underfull \hbox (badness 10000) in paragraph at lines 160--166 [] [4] [5] [6] [7]Underfull \hbox (badness 10000) in paragraph at lines 369--374 [] [8]Underfull \hbox (badness 10000) in paragraph at lines 380--382 []! LaTeX Error: Cannot determine size of graphic in yardsale_modules.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.383 ...udegraphics{yardsale_modules.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: yardsale_modules.png Graphic file (type eps) <yardsale_modules.png>Underfull \hbox (badness 10000) in paragraph at lines 383--385 []! LaTeX Error: Cannot determine size of graphic in organization.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.409 ...includegraphics{organization.png}                                          Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: organization.png Graphic file (type eps) <organization.png> [9] [10]Chapter 2. [11]! LaTeX Error: Cannot determine size of graphic in Database_Layout.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.476 ...ludegraphics{Database_Layout.png}                                          Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Database_Layout.png Graphic file (type eps) <Database_Layout.png>Underfull \hbox (badness 10000) in paragraph at lines 473--477 []Underfull \hbox (badness 10000) in paragraph at lines 473--477 [] [12]! LaTeX Error: Cannot determine size of graphic in Tables/CustomerTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.489 ...raphics{Tables/CustomerTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/CustomerTable.png Graphic file (type eps) <Tables/CustomerTable.png>Underfull \hbox (badness 10000) in paragraph at lines 486--497 []Underfull \hbox (badness 10000) in paragraph at lines 486--497 []Underfull \hbox (badness 10000) in paragraph at lines 486--497 [] [13]! LaTeX Error: Cannot determine size of graphic in Tables/InventoryTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.524 ...aphics{Tables/InventoryTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/InventoryTable.png Graphic file (type eps) <Tables/InventoryTable.png>! LaTeX Error: Cannot determine size of graphic in Tables/TaxTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.549 ...ludegraphics{Tables/TaxTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/TaxTable.png Graphic file (type eps) <Tables/TaxTable.png>! LaTeX Error: Cannot determine size of graphic in Tables/VendorTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.561 ...egraphics{Tables/VendorTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/VendorTable.png Graphic file (type eps) <Tables/VendorTable.png>Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 []Underfull \hbox (badness 10000) in paragraph at lines 514--571 [] [14]! LaTeX Error: Cannot determine size of graphic in Tables/TransactionLogTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.583 ...s{Tables/TransactionLogTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/TransactionLogTable.png Graphic file (type eps) <Tables/TransactionLogTable.png>! LaTeX Error: Cannot determine size of graphic in Tables/PackageTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.596 ...graphics{Tables/PackageTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/PackageTable.png Graphic file (type eps) <Tables/PackageTable.png>! LaTeX Error: Cannot determine size of graphic in Tables/CarrierTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.610 ...graphics{Tables/CarrierTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/CarrierTable.png Graphic file (type eps) <Tables/CarrierTable.png>! LaTeX Error: Cannot determine size of graphic in Tables/ShippingTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.627 ...raphics{Tables/ShippingTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/ShippingTable.png Graphic file (type eps) <Tables/ShippingTable.png>Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 []Underfull \hbox (badness 10000) in paragraph at lines 574--629 [] [15]! LaTeX Error: Cannot determine size of graphic in Tables/EmployeeTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.640 ...raphics{Tables/EmployeeTable.png}                                          Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/EmployeeTable.png Graphic file (type eps) <Tables/EmployeeTable.png>! LaTeX Error: Cannot determine size of graphic in Tables/LoginTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.657 ...degraphics{Tables/LoginTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/LoginTable.png Graphic file (type eps) <Tables/LoginTable.png>Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 []Underfull \hbox (badness 10000) in paragraph at lines 631--666 [] [16]! LaTeX Error: Cannot determine size of graphic in Tables/ACL.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.672 ... \includegraphics{Tables/ACL.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/ACL.png Graphic file (type eps) <Tables/ACL.png>! LaTeX Error: Cannot determine size of graphic in Tables/KeyTable.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.684 ...ludegraphics{Tables/KeyTable.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: Tables/KeyTable.png Graphic file (type eps) <Tables/KeyTable.png>Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 []Underfull \hbox (badness 10000) in paragraph at lines 669--695 [] [17] [18]Underfull \hbox (badness 10000) in paragraph at lines 699--705 []! LaTeX Error: Cannot determine size of graphic in ys_main_screener.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.706 ...udegraphics{ys_main_screener.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: ys_main_screener.png Graphic file (type eps) <ys_main_screener.png>Underfull \hbox (badness 10000) in paragraph at lines 706--707 []Underfull \hbox (badness 10000) in paragraph at lines 708--715 []! LaTeX Error: Cannot determine size of graphic in ys_sales_screener.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.717 ...degraphics{ys_sales_screener.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: ys_sales_screener.png Graphic file (type eps) <ys_sales_screener.png>Underfull \hbox (badness 10000) in paragraph at lines 717--718 []Underfull \hbox (badness 10000) in paragraph at lines 719--733 []! LaTeX Error: Cannot determine size of graphic in ys_inv_screener.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.735 ...ludegraphics{ys_inv_screener.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: ys_inv_screener.png Graphic file (type eps) <ys_inv_screener.png>Underfull \hbox (badness 10000) in paragraph at lines 735--736 []Underfull \hbox (badness 10000) in paragraph at lines 737--752 [] [19]! LaTeX Error: Cannot determine size of graphic in ys_employee_screener.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.754 ...raphics{ys_employee_screener.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: ys_employee_screener.png Graphic file (type eps) <ys_employee_screener.png>Underfull \hbox (badness 10000) in paragraph at lines 754--755 []Underfull \hbox (badness 10000) in paragraph at lines 756--764 [] [20]! LaTeX Error: Cannot determine size of graphic in ys_calc_screener.png (no BoundingBox).See the LaTeX manual or LaTeX Companion for explanation.Type  H <return>  for immediate help. ...                                                                                l.768 ...udegraphics{ys_calc_screener.png}                                          \\Try typing  <return>  to proceed.If that doesn't work, type  X <return>  to quit.File: ys_calc_screener.png Graphic file (type eps) <ys_calc_screener.png>Underfull \hbox (badness 10000) in paragraph at lines 768--769 []Underfull \hbox (badness 10000) in paragraph at lines 770--777 [] [21]Chapter 3.Underfull \hbox (badness 10000) in paragraph at lines 785--786 []Underfull \hbox (badness 10000) in paragraph at lines 804--806 []Underfull \hbox (badness 10000) in paragraph at lines 809--810 [] [22]Underfull \hbox (badness 10000) in paragraph at lines 841--843 []Underfull \hbox (badness 10000) in paragraph at lines 845--846 []Underfull \hbox (badness 10000) in paragraph at lines 854--856 []Underfull \hbox (badness 10000) in paragraph at lines 859--860 [] [23]Underfull \hbox (badness 10000) in paragraph at lines 885--887 []Underfull \hbox (badness 10000) in paragraph at lines 889--890 []Underfull \hbox (badness 10000) in paragraph at lines 909--911 []Underfull \hbox (badness 10000) in paragraph at lines 913--914 []Underfull \hbox (badness 10000) in paragraph at lines 923--925 []Underfull \hbox (badness 10000) in paragraph at lines 927--928 [] [24]Underfull \hbox (badness 10000) in paragraph at lines 939--941 []Underfull \hbox (badness 10000) in paragraph at lines 944--945 []Underfull \hbox (badness 10000) in paragraph at lines 968--970 []Underfull \hbox (badness 10000) in paragraph at lines 972--973 [] [25]Underfull \hbox (badness 10000) in paragraph at lines 983--985 []Underfull \hbox (badness 10000) in paragraph at lines 987--988 []Underfull \hbox (badness 10000) in paragraph at lines 995--997 [] [26] [27]Chapter 4. [28] (Requirements.aux) ) Here is how much of TeX's memory you used: 734 strings out of 5917 7786 string characters out of 48415 56131 words of memory out of 200001 3516 multiletter control sequences out of 10000 8274 words of font info for 30 fonts, out of 80000 for 256 14 hyphenation exceptions out of 2551 25i,5n,19p,1322b,383s stack positions out of 600i,150n,200p,3000b,2000sOutput written on Requirements.dvi (30 pages, 84288 bytes).
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.12.24)  3 APR 2004 17:16
+**Requirements.tex
+(./Requirements.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/share/texmf/tex/latex/base/report.cls
+Document Class: report 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo
+File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
+\headwidth=\dimen105
+) (./Requirements.aux)
+\openout1 = `Requirements.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count89
+\scratchcounter=\count90
+\scratchtoks=\toks15
+\scratchdimen=\dimen106
+\scratchskip=\skip43
+\scratchmuskip=\muskip10
+\scratchbox=\box26
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen107
+\minusone=\count91
+\thousandpoint=\dimen108
+\emptytoks=\toks16
+\nextbox=\box27
+\nextdepth=\dimen109
+\everyline=\toks17
+\!!counta=\count92
+\!!countb=\count93
+\recursecounter=\count94
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count95
+\nofMParguments=\count96
+\everyMPtoPDFconversion=\toks18
+) <aslogic_smaller.png, id=1, 200.75pt x 202.7575pt>
+File: aslogic_smaller.png Graphic file (type png)
+ <use aslogic_smaller.png>
+[1
+
+{/usr/share/texmf/dvips/config/pdftex.map} <./aslogic_smaller.png>]
+(./Requirements.toc)
+\tf@toc=\write4
+\openout4 = `Requirements.toc'.
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 12.0pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[1
+
+]
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--99
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 101.
+
+(/usr/share/texmf/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
+ [2
+
+] [3]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 218.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 218.
+ [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 355--360
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 366--368
+
+ []
+
+<yardsale_modules.png, id=49, 451.6875pt x 191.71625pt>
+File: yardsale_modules.png Graphic file (type png)
+
+<use yardsale_modules.png>
+Underfull \hbox (badness 10000) in paragraph at lines 369--371
+
+ []
+
+<organization.png, id=50, 451.6875pt x 222.8325pt>
+File: organization.png Graphic file (type png)
+ <use organization.png>
+[7 <./yardsale_modules.png>] [8 <./organization.png>]
+Chapter 2.
+[9
+
+] <Database_Layout.png, id=60, 401.5pt x 350.30875pt>
+File: Database_Layout.png Graphic file (type png)
+
+<use Database_Layout.png>
+Underfull \hbox (badness 10000) in paragraph at lines 459--463
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 459--463
+
+ []
+
+[10 <./Database_Layout.png>]
+<Tables/CustomerTable.png, id=64, 180.675pt x 164.615pt>
+File: Tables/CustomerTable.png Graphic file (type png)
+
+<use Tables/CustomerTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 472--483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 472--483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 472--483
+
+ []
+
+[11 <./Tables/CustomerTable.png>]
+<Tables/InventoryTable.png, id=68, 351.3125pt x 304.13625pt>
+File: Tables/InventoryTable.png Graphic file (type png)
+
+<use Tables/InventoryTable.png>
+<Tables/TaxTable.png, id=69, 150.5625pt x 77.28876pt>
+File: Tables/TaxTable.png Graphic file (type png)
+
+<use Tables/TaxTable.png>
+<Tables/VendorTable.png, id=70, 200.75pt x 194.7275pt>
+File: Tables/VendorTable.png Graphic file (type png)
+
+<use Tables/VendorTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--557
+
+ []
+
+[12 <./Tables/InventoryTable.png>]
+<Tables/TransactionLogTable.png, id=75, 401.5pt x 151.56625pt>
+File: Tables/TransactionLogTable.png Graphic file (type png)
+
+<use Tables/TransactionLogTable.png>
+<Tables/PackageTable.png, id=76, 401.5pt x 171.64125pt>
+File: Tables/PackageTable.png Graphic file (type png)
+
+<use Tables/PackageTable.png>
+<Tables/CarrierTable.png, id=77, 159.59625pt x 96.36pt>
+File: Tables/CarrierTable.png Graphic file (type png)
+
+<use Tables/CarrierTable.png>
+<Tables/ShippingTable.png, id=78, 401.5pt x 130.4875pt>
+File: Tables/ShippingTable.png Graphic file (type png)
+
+<use Tables/ShippingTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--615
+
+ []
+
+[13 <./Tables/TaxTable.png> <./Tables/VendorTable.png>] [14 <./Tables/Transacti
+onLogTable.png> <./Tables/PackageTable.png>]
+<Tables/EmployeeTable.png, id=85, 401.5pt x 183.68625pt>
+File: Tables/EmployeeTable.png Graphic file (type png)
+
+<use Tables/EmployeeTable.png>
+<Tables/LoginTable.png, id=86, 199.74625pt x 78.2925pt>
+File: Tables/LoginTable.png Graphic file (type png)
+
+<use Tables/LoginTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--652
+
+ []
+
+[15 <./Tables/CarrierTable.png> <./Tables/ShippingTable.png>]
+<Tables/ACL.png, id=90, 125.46875pt x 64.24pt>
+File: Tables/ACL.png Graphic file (type png)
+ <use Tables/ACL.png>
+<Tables/KeyTable.png, id=91, 301.125pt x 62.2325pt>
+File: Tables/KeyTable.png Graphic file (type png)
+ <use Tables/KeyTable.png>
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--681
+
+ []
+
+[16 <./Tables/EmployeeTable.png> <./Tables/LoginTable.png>] [17 <./Tables/ACL.p
+ng> <./Tables/KeyTable.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 685--691
+
+ []
+
+<ys_main_screener.png, id=98, 266.56967pt x 316.55455pt>
+File: ys_main_screener.png Graphic file (type png)
+
+<use ys_main_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 694--701
+
+ []
+
+<ys_sales_screener.png, id=99, 266.56967pt x 209.04546pt>
+File: ys_sales_screener.png Graphic file (type png)
+
+<use ys_sales_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 703--704
+
+ []
+
+[18 <./ys_main_screener.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 705--719
+
+ []
+
+<ys_inv_screener.png, id=104, 266.56967pt x 260.4109pt>
+File: ys_inv_screener.png Graphic file (type png)
+
+<use ys_inv_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 721--722
+
+ []
+
+[19 <./ys_sales_screener.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 723--738
+
+ []
+
+<ys_employee_screener.png, id=108, 266.56967pt x 229.95pt>
+File: ys_employee_screener.png Graphic file (type png)
+
+<use ys_employee_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 740--741
+
+ []
+
+[20 <./ys_inv_screener.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 742--750
+
+ []
+
+[21 <./ys_employee_screener.png>]
+<ys_calc_screener.png, id=115, 191.93016pt x 242.49272pt>
+File: ys_calc_screener.png Graphic file (type png)
+
+<use ys_calc_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 754--755
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 756--763
+
+ []
+
+[22 <./ys_calc_screener.png>]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 771--772
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 790--792
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 795--796
+
+ []
+
+[23
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 827--829
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 831--832
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 840--842
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 845--846
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 871--873
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 895--897
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 899--900
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 909--911
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 913--914
+
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 925--927
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 930--931
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 954--956
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 958--959
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 969--971
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 973--974
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 981--983
+
+ []
+
+[27] [28]
+Chapter 4.
+[29
+
+] (./Requirements.aux) ) 
+Here is how much of TeX's memory you used:
+ 1137 strings out of 95437
+ 14672 string characters out of 1190232
+ 63715 words of memory out of 1000001
+ 4152 multiletter control sequences out of 10000+50000
+ 8273 words of font info for 30 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 30i,11n,43p,210b,530s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 146 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 105 words of extra memory for PDF output out of 65536
+{/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/
+texmf/fonts/type1/bluesky/cm/cmsl10.pfb>{/usr/share/texmf/dvips/tetex/09fbbfac.
+enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmtt9.pfb></usr/share/texmf/fonts/
+type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx7.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb>{/usr/share/texmf/dvips/tetex
+/bbad153f.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/t
+exmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
+cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr/share/texmf/
+fonts/type1/bluesky/cm/cmbx12.pfb>
+Output written on Requirements.pdf (30 pages, 491950 bytes).
