@@ -27,7 +27,7 @@ class YardInventory: public wxFrame{
     YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxSIMPLE_BORDER|wxFRAME_NO_TASKBAR);
+               long style = wxRESIZE_BORDER);
         
     virtual ~YardInventory();
     

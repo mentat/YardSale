@@ -19,8 +19,9 @@ bool YardSale::OnInit()
     startup->Destroy();
     if (login->ShowModal() == 1)
     {
+        frame->Destroy();
         login->Destroy();
-        return true;
+        return false;
     }        
     login->Destroy();
     

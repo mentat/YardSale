@@ -85,7 +85,7 @@ wxSizer *Login( wxWindow *parent, bool call_fit, bool set_sizer )
 
     item0->Add( item1, 0, wxGROW|wxLEFT|wxRIGHT|wxTOP, 5 );
 
-    wxListCtrl *item6 = new wxListCtrl( parent, ID_LOGIN_LIST, wxDefaultPosition, wxSize(160,70), wxLC_ICON|wxSUNKEN_BORDER );
+    wxListCtrl *item6 = new wxListCtrl( parent, ID_LOGIN_LIST, wxDefaultPosition, wxSize(160,130), wxLC_ICON|wxSUNKEN_BORDER );
     item0->Add( item6, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxGridSizer *item7 = new wxGridSizer( 2, 0, 0 );

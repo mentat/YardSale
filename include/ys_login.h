@@ -28,7 +28,7 @@ class YardLogin: public wxDialog {
     YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxSTAY_ON_TOP);
+               long style = wxSTAY_ON_TOP | wxRESIZE_BORDER);
         
     virtual ~YardLogin();  
     
