@@ -1,4 +1,6 @@
 #include "wx/wx.h"
+#include "wx/config.h"
+
 #include "yardsale.h"
 #include "ys_splash.h"
 #include "ys_main.h"
@@ -72,6 +74,7 @@ bool YardSale::OnInit()
 }
 
 int YardSale::OnExit() {
+    delete wxConfigBase::Set((wxConfigBase *) NULL);
     delete m_db;
     delete m_bitmaps;
 }

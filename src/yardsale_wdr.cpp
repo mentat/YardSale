@@ -749,9 +749,10 @@ wxSizer *ConfigDB( wxWindow *parent, bool call_fit, bool set_sizer )
 
     wxString strs5[] = 
     {
+        wxT("ODBC"), 
         wxT("ODBC (MySQL)")
     };
-    wxRadioBox *item5 = new wxRadioBox( parent, ID_CONFIG_DB_TYPE, wxT("Database"), wxDefaultPosition, wxDefaultSize, 1, strs5, 1, wxRA_SPECIFY_COLS );
+    wxRadioBox *item5 = new wxRadioBox( parent, ID_CONFIG_DB_TYPE, wxT("Database"), wxDefaultPosition, wxDefaultSize, 2, strs5, 1, wxRA_SPECIFY_COLS );
     item0->Add( item5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, wxT("Driver"), wxDefaultPosition, wxDefaultSize, 0 );
