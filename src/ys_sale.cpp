@@ -7,6 +7,7 @@
 #include "wx/sizer.h"
 #include "wx/log.h"
 #include "wx/stattext.h"
+#include "wx/notebook.h"
 
 #include "yardsale.h"
 #include "ys_exception.h"
@@ -14,17 +15,19 @@
 #include "ys_inv_type.h"
 #include "ys_sale.h"
 #include "ys_database.h"
-
+/*
 #include "images/sprocket_32x32.xpm"
 #include "images/paperclip_32x32.xpm"
 #include "images/package_32x32.xpm"
 #include "images/electronics_32x32.xpm"
-
+*/
 using namespace std;
 
 BEGIN_EVENT_TABLE(YardSaleScreen, wxDialog)
-    //EVT_BUTTON(ID_SALE_BACK, YardSaleScreen::OnExitButton)
-    EVT_TREE_ITEM_ACTIVATED(XRCID("ID_SALE_TREE"), YardSaleScreen::OnChange)
+    EVT_BUTTON(XRCID("ID_SALES_EXIT"), YardSaleScreen::OnExitButton)
+    EVT_BUTTON(XRCID("ID_SALES_REMOVE"), YardSaleScreen::OnRemove)
+    EVT_BUTTON(XRCID("ID_SALES_CHECKOUT"), YardSaleScreen::OnCheckout)
+    //EVT_TREE_ITEM_ACTIVATED(XRCID("ID_SALE_TREE"), YardSaleScreen::OnChange)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
@@ -54,7 +57,12 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     SetSize(sizer->GetMinSize());   
     Centre();
     
-    m_list = static_cast<wxListCtrl *>(FindWindow(XRCID("ID_SALE_TRANS")));
+    m_list = static_cast<wxListCtrl *>(FindWindow(XRCID("ID_SALES_TRANS")));
+    m_book = static_cast<wxNotebook *>(FindWindow(XRCID("ID_SALES_GROUPS")));
+   
+    m_subTotal = static_cast<wxStaticText *>(FindWindow(XRCID("ID_SALES_SUB")));
+    m_tax = static_cast<wxStaticText *>(FindWindow(XRCID("ID_SALES_TAX")));
+    m_total = static_cast<wxStaticText *>(FindWindow(XRCID("ID_SALES_TOTAL")));
     
     wxListItem itemCol;
     itemCol.m_mask = wxLIST_MASK_TEXT | wxLIST_MASK_IMAGE;
@@ -80,15 +88,27 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
     m_list->SetColumnWidth( 1, wxLIST_AUTOSIZE );
     m_list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
     
-    m_tree = static_cast<wxTreeCtrl *>(FindWindow(XRCID("ID_SALE_TREE")));
+    //m_tree = static_cast<wxTreeCtrl *>(FindWindow(XRCID("ID_SALE_TREE")));
     
-    CreateImageList(m_tree);
-    LoadTreeItems(m_tree);
+    //CreateImageList(m_tree);
+    //LoadTreeItems(m_tree);
     
+}
+
+void YardSaleScreen::OnRemove(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnRemove"));
+    
+}
+
+void YardSaleScreen::OnCheckout(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnCheckout"));
 }
 
 void YardSaleScreen::CreateImageList(wxTreeCtrl * tree)
 {
+    #if 0
  	// Make an image list containing small icons
     wxImageList *images = new wxImageList(32, 32, true);
 
@@ -106,10 +126,12 @@ void YardSaleScreen::CreateImageList(wxTreeCtrl * tree)
 
     tree->AssignImageList(images);
     m_list->SetImageList(images,wxIMAGE_LIST_SMALL); // the list wont delete them
+    #endif
 }
 
 void YardSaleScreen::LoadTreeItems(wxTreeCtrl * tree)
 {
+    #if 0
     tree->SetWindowStyleFlag(wxTR_NO_LINES | wxTR_HIDE_ROOT | wxTR_FULL_ROW_HIGHLIGHT);
     tree->AddRoot(wxT("Root"));
     tree->SetIndent(10);
@@ -149,10 +171,11 @@ void YardSaleScreen::LoadTreeItems(wxTreeCtrl * tree)
                 new invItemData(items[k].GetKey()));
         }
     }
+    #endif
 }
 
 void YardSaleScreen::OnChange(wxTreeEvent& event)
-{
+{/*
     invItemData * data = static_cast<invItemData *>(m_tree->GetItemData(event.GetItem()));
 
     if (!data)
@@ -194,7 +217,7 @@ void YardSaleScreen::OnChange(wxTreeEvent& event)
     }
     
     m_list->SetItem(m_list->GetItemCount() - 1, 2, XMLNode::ToStr(total, 2).c_str());
-   
+   */
 }
 
 YardSaleScreen::~YardSaleScreen()
@@ -204,5 +227,6 @@ YardSaleScreen::~YardSaleScreen()
 
 void YardSaleScreen::OnExitButton(wxCommandEvent & event)
 {
+    wxLogDebug(wxT("YardSaleScreen::OnExitButton"));
     EndModal(0);
 }

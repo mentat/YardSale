@@ -27,13 +27,15 @@
 
 class wxListCtrl;
 class wxTreeCtrl;
+class wxNotebook;
+class wxStaticText;
 /**
  * This is the main sale screen.  It contains the current transaction
  * information and an interface to add new items to the transaction.  
  * From the transaction screen you can access the payment screen.
  * 
  * @author Jesse Lovelace
- * @version \$Revision: 1.9 $$
+ * @version \$Revision: 1.10 $$
  */
 class YardSaleScreen: public wxDialog{
  public:
@@ -52,10 +54,18 @@ class YardSaleScreen: public wxDialog{
      */
     void OnExitButton(wxCommandEvent & event);
     void OnChange(wxTreeEvent& event);
-    
+    void OnRemove(wxCommandEvent& event);
+    void OnCheckout(wxCommandEvent& event);
+ 
     private:
-    wxTreeCtrl * m_tree;
+        
+    //wxTreeCtrl * m_tree;
+    wxNotebook * m_book;
     wxListCtrl * m_list;
+    
+    wxStaticText * m_subTotal;
+    wxStaticText * m_tax;
+    wxStaticText * m_total;
     void LoadTreeItems(wxTreeCtrl * tree);
     void CreateImageList(wxTreeCtrl * tree);
     

@@ -48,16 +48,18 @@ class YardException : public exception
 class YardDBException: public YardException {
  public:
         
-    YardDBException(const string& err, const string& sql="", const string& vars="")
-        :YardException(err), m_sql(sql), m_vars(vars) {}
+    YardDBException(const string& err, const string& sql="", const string& vars="", int code = 0)
+        :YardException(err), m_sql(sql), m_vars(vars), m_code(code) {}
     
     virtual ~YardDBException() throw() {}
     
-    string GetSQL() const { return m_sql; }
-    string GetVarInfo() const { return m_vars; }
+    const string& GetSQL() const { return m_sql; }
+    const string& GetVarInfo() const { return m_vars; }
+    int GetCode() const { return m_code; }
  private:
     string m_sql;
     string m_vars;
+    int m_code;
 };
 
 class YardDBIntegrityException: public YardDBException {

@@ -88,10 +88,12 @@ hour in a give date range.</label>
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxLEFT</flag>
+                    <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>5</border>
-                    <object class="wxBitmapButton" name="ID_REPORT_LEAVE">
-                        <bitmap>back_64x64.png</bitmap>
+                    <object class="wxButton" name="ID_REPORT_LEAVE">
+                        <size>-1,40</size>
+                        <bg>#00FFFF</bg>
+                        <label>Exit</label>
                     </object>
                 </object>
             </object>

@@ -47,6 +47,7 @@ class YardCustomer: public wxDialog
  
     void OnChange(wxTreeEvent& event);
     void OnNew(wxCommandEvent& event);
+    void OnExit(wxCommandEvent& event);
  
  private:
     DECLARE_EVENT_TABLE()

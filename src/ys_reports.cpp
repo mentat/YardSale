@@ -5,6 +5,7 @@
 #include "wx/app.h"
 #include "wx/calctrl.h"
 #include "wx/html/htmlwin.h"
+#include "wx/html/htmprint.h"
 
 #include "yardsale.h"
 #include "ys_database.h"
@@ -25,6 +26,9 @@ DECLARE_APP(YardSale)
 
 using namespace std;
 
+enum { ID_HTML_PAGESETUP = 13500, ID_HTML_PRINTSETUP, ID_HTML_PRINT,
+        ID_HTML_PREVIEW, ID_HTML_QUIT };
+
 class YardHTML: public wxDialog
 {
  public:
@@ -35,29 +39,83 @@ class YardHTML: public wxDialog
                const wxString& name = wxT("YardHTML"))
     :wxDialog(parent, id, title, pos, size, style, name)
     {
+        
         wxPanel * panel = new wxPanel(this);
-        m_html = new wxHtmlWindow(panel, -1, wxDefaultPosition, wxSize(400,300));
+        m_html = new wxHtmlWindow(panel, -1, wxDefaultPosition, wxSize(480,350),
+            wxSUNKEN_BORDER | wxHW_SCROLLBAR_AUTO );
+       
+        wxButton * preview = new wxButton(panel, ID_HTML_PREVIEW, "Preview", wxDefaultPosition);
+        wxButton * page_setup = new wxButton(panel, ID_HTML_PAGESETUP, "Page Setup", wxDefaultPosition);
+        wxButton * print_setup = new wxButton(panel, ID_HTML_PRINTSETUP, "Print Setup", wxDefaultPosition);
+        wxButton * print = new wxButton(panel, ID_HTML_PRINT, "Print", wxDefaultPosition);
+        wxButton * quit = new wxButton(panel, ID_HTML_QUIT, "Quit", wxDefaultPosition);
+      
+        wxBoxSizer * butts = new wxBoxSizer(wxHORIZONTAL);
+        butts->Add(preview);
+        butts->Add(page_setup);
+        butts->Add(print_setup);
+        butts->Add(print);
+        butts->Add(quit);
         
         wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
         item0->AddGrowableCol( 0 );
         item0->AddGrowableRow( 0 );
         item0->Add( m_html, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+        item0->Add( butts, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
         panel->SetAutoLayout( TRUE );
         panel->SetSizer( item0 );
         
+        m_Prn = new wxHtmlEasyPrinting(_("YardSale Report"), NULL);
+        m_Prn -> SetHeader(m_Name + wxT("(@PAGENUM@/@PAGESCNT@)<hr>"), wxPAGE_ALL);
+
         item0->SetSizeHints(this);
         SetSize(item0->GetMinSize());   
         Centre();
         
     }
+    ~YardHTML() { delete m_Prn; }
     
-    void SetPage(const wxString& html) { m_html->SetPage(html); }
+    void OnPrintSetup(wxCommandEvent& event)
+    { m_Prn -> PrinterSetup(); }
+    void OnPageSetup(wxCommandEvent& event)
+    { m_Prn -> PageSetup(); }
+    void OnPrint(wxCommandEvent& event)
+    { m_Prn -> PrintText(m_Name); }
+    void OnPreview(wxCommandEvent& event)
+    { m_Prn -> PreviewText(m_Name); }
+    void OnQuit(wxCommandEvent& event)
+    { Close(TRUE); }
+   /* void OnMenu(wxMouseEvent& event)
+    {
+        wxLogDebug(wxT("OnRight"));
+        wxMenu menuFile(wxT("Printing Menu"));
+        menuFile.Append(ID_HTML_PAGESETUP, _("Page Setup"));
+        menuFile.Append(ID_HTML_PRINTSETUP, _("Printer Setup"));
+        menuFile.Append(ID_HTML_PRINT, _("Print..."));
+        menuFile.Append(ID_HTML_PREVIEW, _("Preview..."));
+        menuFile.AppendSeparator();
+        menuFile.Append(ID_HTML_QUIT, _("&Exit"));
+        wxPoint pt = event.GetPosition();
+        PopupMenu(&menuFile, pt);
+    }*/
+    void SetPage(const wxString& html) { m_Name = html; m_html->SetPage(html); }
     
    
  private:
+    wxString m_Name; // the html to display/print
+    wxHtmlEasyPrinting *m_Prn;
     wxHtmlWindow * m_html;     
-    
+    DECLARE_EVENT_TABLE()
 };
+
+BEGIN_EVENT_TABLE(YardHTML, wxDialog)
+    EVT_BUTTON(ID_HTML_QUIT, YardHTML::OnQuit)
+    EVT_BUTTON(ID_HTML_PRINT, YardHTML::OnPrint)
+    EVT_BUTTON(ID_HTML_PREVIEW, YardHTML::OnPreview)
+    EVT_BUTTON(ID_HTML_PAGESETUP, YardHTML::OnPageSetup)
+    EVT_BUTTON(ID_HTML_PRINTSETUP, YardHTML::OnPrintSetup)
+END_EVENT_TABLE()
+
 
 BEGIN_EVENT_TABLE(YardReports, wxDialog)
     EVT_BUTTON(XRCID("ID_REPORT_EMP_HOURS"), YardReports::OnReportEmpHours)

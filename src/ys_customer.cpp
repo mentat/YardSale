@@ -32,6 +32,7 @@ class custItemData: public wxTreeItemData
 BEGIN_EVENT_TABLE(YardCustomer, wxDialog)
     EVT_TREE_SEL_CHANGED(XRCID("ID_CUST_TREE"), YardCustomer::OnChange)
     EVT_BUTTON(XRCID("ID_CUST_NEW"), YardCustomer::OnNew)
+    EVT_BUTTON(XRCID("ID_CUST_EXIT"), YardCustomer::OnExit)
 END_EVENT_TABLE()
 
 YardCustomer::YardCustomer(wxWindow* parent, wxWindowID id, 
@@ -90,6 +91,12 @@ void YardCustomer::LoadTreeItems(wxTreeCtrl * tree)
             new custItemData(customers[i].GetAccountNumber()));
     }
     
+}
+
+void YardCustomer::OnExit(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnExit"));
+    EndModal(0);
 }
     
 YardCustomer::~YardCustomer()

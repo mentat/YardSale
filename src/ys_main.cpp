@@ -1,8 +1,10 @@
 #include "extra/xrc/xmlres.h"
+#include "wx/app.h"
 #include "wx/sizer.h"
 #include "wx/accel.h"
 #include "wx/msgdlg.h"
 
+#include "yardsale.h"
 #include "ys_debug.h"
 #include "ys_footer.h"
 #include "ys_main.h"
@@ -14,6 +16,8 @@
 #include "ys_reports.h"
 #include "ys_log.h"
 #include "ys_about_gl.h"
+
+DECLARE_APP(YardSale)
 
 enum { ID_SHOW_LOG = 15000, ID_FULLSCREEN, ID_ABOUT, ID_CONFIG, ID_OGL_ABOUT };
 
@@ -31,6 +35,8 @@ BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_MENU(ID_ABOUT, YardMain::OnAbout)
     EVT_MENU(ID_CONFIG, YardMain::OnOptions)
     EVT_MENU(ID_OGL_ABOUT, YardMain::OnAboutGL)
+
+    EVT_CLOSE(YardMain::OnClose)
 END_EVENT_TABLE()
 
 YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -115,7 +121,7 @@ void YardMain::OnOptions(wxCommandEvent& event){
 void YardMain::OnLogout(wxCommandEvent& event){
     
     wxLogDebug(wxT("OnLogout"));
-    Destroy();
+    Close();
 }
 
 void YardMain::OnMax(wxCommandEvent& event){    
@@ -161,4 +167,12 @@ void YardMain::OnReports(wxCommandEvent& event)
     YardReports * rep = new YardReports(this, -1, wxT("Reporting"));
     rep->ShowModal();
     rep->Destroy();  
+}
+
+void YardMain::OnClose(wxCloseEvent& event)
+{
+    if (event.CanVeto()) // if this isnt a forced close, load login
+        wxGetApp().ShowLogin(this);
+    else
+        Destroy(); //otherwise destroy window and children    
 }
