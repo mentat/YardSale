@@ -8,9 +8,9 @@ using namespace std;
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardCalc, wxPanel)
     EVT_BUTTON(ID_CALC_PLUS, YardCalc::OnPlus)
+    EVT_BUTTON(ID_CALC_MINUS, YardCalc::OnMinus)
     EVT_BUTTON(ID_CALC_EQUALS, YardCalc::OnEqual)
     EVT_BUTTON(ID_CALC_CLEAR, YardCalc::OnClear)
-    EVT_BUTTON(ID_CALC_AC, YardCalc::OnAllClear)
     EVT_BUTTON(ID_CALC_DOT, YardCalc::OnNumber)
     EVT_BUTTON(-1, YardCalc::OnNumber)
 END_EVENT_TABLE()
@@ -112,6 +112,9 @@ void YardCalc::Evaluate(bool wasEquals){
 	}
 
 	//subtraction
+	if (m_operand.CompareTo("-") == 0){
+		m_savednumber -= m_tempnumber;		
+	}
 
 	//division
 
@@ -124,6 +127,23 @@ void YardCalc::Evaluate(bool wasEquals){
 
 	if (wasEquals){
 		m_operand = "=";
+	}
+}
+void YardCalc::OnMinus(wxCommandEvent & event){
+
+	//now we're not in a number state
+	m_state = "!"; 
+
+	//if the last operand was an equals, 
+	//we need to not evaluate anything, but set the mode and clear
+	//the screen but not evaluate
+	if (m_operand.CompareTo("=") == 0){
+		m_screen->GetValue().ToLong(&m_savednumber);
+		m_operand = "-";
+	}else{
+		//set the operand value	
+		m_operand = "-";
+		Evaluate(false);
 	}
 }
 
