@@ -1,0 +1,41 @@
+\documentclass[a4paper,10pt]{article}
+
+
+%opening
+\title{}
+\author{}
+
+\begin{document}
+
+\section{Overview}
+
+OpenPOS is an open source solution to small business point of sale and inventory tracking needs. This document entails all of the minimal requirements set by the AS Logic Systems development team for the OpenPOS hereafter referred to as YardSale.\\
+\\
+YardSale at its most minimal functionality level should accomplish the following goals:
+
+\begin{itemize}
+	\item {Manage Inventory Data}
+	\item {Manage Customer Data}
+	\item {Manage Employee Data}
+	\item {Perform Transactions}
+	\item {Provide Logging Facilities}
+	\item {Report on Data}
+\end{itemize}
+
+Each of these tasks is described in depth in their corresponding sub sections. There is planned functionality above and beyond this basic featureset, although without these functions other functionality can not be added.
+
+\section{Database Management}
+
+The goal of the database management tasks is to add, modify, and delete information in the database. The database backend will run on a MySQL server and all relevant data will be stored in its own table or set of tables. More information on the database design can be found in the database design document.
+
+The inventory management system will have an interface for the stock employees to enter new shipments. It will also have an interface for the management employees to define new items for sale. The most common use of the inventory management system will be integrated into the checkout system. When customers are checking out, inventory will be populated to the checkout screen from the database, and then decremented on purchase from their quantity in the database.
+
+\section{Transactions}
+
+\section{Logging}
+
+\section{Reporting}
+
+
+
+\end{document}
