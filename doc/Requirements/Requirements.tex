@@ -1401,13 +1401,17 @@
         progress bar.\\
         {\sl SEE YARDSALE IMPLEMENTATION MANUAL SECTION 7.22}
 
-\chapter{Preliminary Test Plan}
+\chapter{Test Plan}
+
+    \section {Testing Methods}
+
+
 The YardSale system is tested constantly throughout the
 development process.  These tests are administered through two
 different methods: passive (automatic) testing, and active (user)
 testing.
 
-    \section{Passive Testing}
+    \subsection{Passive Testing}
 
     The passive testing of YardSale is accomplished by our auto build system.  The auto build system pulls the latest source
     code from the repository and compiles it with the most strict settings.  If the code fails the system reports the error
@@ -1415,25 +1419,166 @@ testing.
     Linux, and Microsoft Windows.  The extensive compilation of the source code ensures that no platform dependant source code
     violates the portability of the project.
 
-    \section{Active Testing}
+    \subsection{Active Testing}
     There are several methods which are utilized by our
     development team to manually test the YardSale system
     throughout the development process.
-        \subsection{Component Testing}
+        \subsubsection{Component Testing}
 	Each component that utilizes the database is tested by creating "dummy" data which is loaded directly into the database backend.  The each database interface screen is tested by logging into YardSale client and assuring that each dataset is loaded correctly.  Inserts into the database are verified through a third-party database interface tool.
-        \subsection{Testing Mains}
+        \subsubsection{Testing Mains}
         Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
         each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.  These tests verify that all components are able to store, copy, and construct data.  The mains also run simple database interface tests to verify that all of the database tables can re returned correctly.
         If any of these tests fail the system will report the exact location of the failure by the use of function macros.
 
-        \subsection{Warm-Body Testing}
+        \subsubsection{Warm-Body Testing}
         Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any
         bugs they find through our bug tracking system.  We also have weekly usability conferences where we discuss the merits of a particular interface.
 
-        \subsection{Program Flow Tracking}
+        \subsubsection{Program Flow Tracking}
         YardSale is designed to report back a large amount of valuable debug information to the developer and to keep the non-technical user
         informed about the status of the program.  YardSale uses exceptions to ensure that single functions cannot violate the integrity of the system
         on a global level.  In addition, all database interfaces have special logging information that reports the exact status of all database calls; this
         allows the developers to get instant access to valuable SQL and connection results.
+
+	\subsection{Functional Requirements Testing}
+	\begin{itemize}
+            \item {Point of Sale Related Data Testing}
+
+	    Testing of the functional requirements for YardSale is done via a hybrid system of active and
+	    passive methods.
+
+	\begin{itemize}
+                \item {\textbf{Inventory Data}}
+
+		Inventory data is represented by the class YardInvType.  This class contains a testing main that
+		verifies that all attributes of an inventory item (such as description, price, and quantity which are
+		implemented as member variables) can be assigned, copied, and modified.  If any of these checks
+		fail the build system will report an error.
+
+                \begin{itemize}
+                    \item {\textbf{Add a product to the inventory}}
+
+		    The YardDatabase class contains a testing main which connects to a "dummy" testing database.
+		    If the connection succeeds, the method tries to add a YardInvType to the database.  The result of this
+		    attempt is reported by the build system.
+
+                    \item {\textbf{Edit an existing inventory item}}
+
+		    The YardDatabase class contains a testing main which connects to a "dummy" testing database.
+		    If the connection succeeds, the method tries modify an inventory item that has been successfully
+		    added by the previous testing function.  This is accomplished by (successfully) retrieving an item from the
+		    database, modifiying that retrieved YardInvType and then sending that modified object to the database
+		    for modification.  The result of this attempt is reported by the build system.
+
+                    \item {\textbf{Search for an inventory item by various criteria}}
+
+		    The YardDatabase class contains a testing main which connects to a "dummy" testing database.
+		    Once successfully connected the method will search for pre-loaded items by SKU number and description.
+		    If these results are incorrect the build system will report an error.
+
+                    \item {\textbf{Remove an inventory item}}
+
+		    The YardDatabase testing main will add a test item to the database and then try to "delete" that item.
+		    After the "delete" command is sent, the method will try to retrieve that deleted item. If these retrieve works
+		    then the method will fail and report this to the build system.
+
+		\item {\textbf{Add an inventory item to a transaction}}
+		The YardTransType is the class representation of a YardSale transaction.  The testing main of the
+		YardTransType creates a temporary transaction object and tries to add, remove, and modify items
+		in the transaction.  If any of these operations fail, the build system will report an error.
+
+                \end{itemize}
+                \item{\textbf{Customer Data}}
+
+		The object representation of a customer is the YardCustType.  This type contains a testing main which
+		creates a YardCustType object and tests to see that the object can be copied, assigned, and modified.
+		Each of these operations are verified independently by the method and any errors are reported to the build
+		system.
+
+                \begin{itemize}
+                    \item{\textbf{Add and remove customers}}
+
+		    The YardDatabase testing main tries to add a YardCustType to the the database and then removes that
+		    type from the database.  If these operations succeed the method will pass.
+
+                    \item{\textbf{Search for customers by various criteria}}
+
+		The YardDatabase class contains a testing main which connects to a "dummy" testing database.
+		 Once successfully connected the method will search for pre-loaded items by name and date.
+		    If these results are incorrect the build system will report an error.
+
+                    \item{\textbf{Edit customer information}}
+
+		    The YardDatabase class contains a testing main which connects to a "dummy" testing database.
+		    If the connection succeeds, the method tries modify a customer that has been successfully
+		    added by the previous testing function.  This is accomplished by (successfully) retrieving an customer from the
+		    database, modifiying that retrieved YardCustType and then sending that modified object to the database
+		    for modification.  The result of this attempt is reported by the build system.
+
+		  \item{\textbf{Associate a customer with a transaction}}
+
+		  The YardTransType is the class representation of a YardSale transaction.  The testing main of the
+		YardTransType creates a temporary transaction object and tries to add, remove, and modify a customer
+		for the transaction.  If any of these operations fail, the build system will report an error.
+
+                \end{itemize}
+                \item {\textbf{Employee Data}}
+
+			Employees are represented by the YardEmployeeType.  The testing main of the YardEmployeeTyle class
+			tests that a test object is creatable, assignable, modifiable, and copyable.
+
+                \begin{itemize}
+                    \item{\textbf{Add and remove employees}}
+
+		    	The YardDatabase class tries to add and remove temporary YardEmployeeType objects and reports
+			the success or failure of these attempts.
+
+                    \item{\textbf{Associate an access level with each employee}}
+
+			The YardEmployeeType testing main assigns an access level with a temporary object of type
+			YardEmplyeeType and then tests to verify that the access level is assignable, copyable, and
+			modifyable.
+
+                    \item{\textbf{Associate an employee with a transaction}}
+
+		    	The YardTransType testing main tests to verify that a YardEmployeeType can be added to the
+			transaction object and reports the success or failure to the build system.
+
+                    \item{\textbf{Associate Login information with each employee}}
+
+		    The login information for an employee is stored in the database backend in a platform dependant way
+		    and is verified by the database control program (such as MySQL CC).
+                \end{itemize}
+                \item{\textbf{Transaction Data}}
+
+			Transaction data is stored by the database and therefore is tested in the YardDatabase testing main.
+                \begin{itemize}
+                    \item{\textbf{Add new transaction information}}
+
+		    	The YardDatabase testing main verifies that a YardTransaction can be added to the database by
+			creating a temporary object of type YardTransaction and adding that transaction to the database.  The
+			method then tries to retrieve the just-added transaction and will fail if the transaction cannot be returned.
+
+                    \item{\textbf{Search for transactions by various criteria}}
+
+			The YardDatabase testing main loads various transaction data into the database and then tests to
+			ensure that those items can be returned by searching by transaction ID, date, customer, and employee.
+
+                    \item{Associate values with a transaction}
+
+		    	The testing main of the YardTransType verifies that information such as inventory items, a customer, and 			an employee can be added to the database.
+                \end{itemize}
+            \end{itemize}
+            \item{\textbf{Provide Detailed Reporting}}
+
+	    	Reporting is verified by inspection after a report is generated by the database.  A control set of data will be
+		used to ensure that the reporting subroutine returns the correct data.
+	      \item{\textbf{Allow for User Login with Differing Access Levels}}
+
+	      	Each access level is tested by creating testing accounts at the Administrator, Manager, and Associate
+		level.  Each user will then be used to log into the database.  If the user logs in successfully, the program will
+		be manually tested to ensure that Associates cannot modify information such as other employee records and
+		inventory items.
+	\end{itemize}
 
 \end{document}
