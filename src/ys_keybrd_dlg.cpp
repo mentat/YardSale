@@ -15,4 +15,5 @@ YardKeybrdDlg::YardKeybrdDlg(wxWindow* parent, wxWindowID id, const wxString& ti
     SetSize(sizer->GetMinSize());
  
     Centre();
+
 }

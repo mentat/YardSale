@@ -46,58 +46,12 @@ class YardKeybrd: public wxPanel {
    	
     DECLARE_EVENT_TABLE()
 	
-    /**
-     * Runs whenever an operator is pressed such as "+" or "-" or "="
-     * It calculates the existing stack with EvaluateStack()
-     * Then pushes its own new operator onto the stack, and 
-     * pushes a blank number on. 
-	 * 
-	 * The blank number will be replaced when the next number is pressed
-	 * in the OnNumber function
-	 * @todo JAY get multiplication and division working
-     * @param wxCommandEvent & event - reference to the button pushed
-     */
-	void OnOperator(wxCommandEvent & event); 
-    
-	/**
-	* Runs whenever the clear button is pressed. Simply clears the
-    * stack off, and pushes a dummy number 0
-    * @param wxCommandEvent & event - reference to the button pushed
-	*/
-	void OnClear(wxCommandEvent & event);
-    
-    /**
-     * Runs whenever a number is pressed. Checks the number on the top
-     * of the stack and concatonates the pressed number onto it 
-	 * 
-	 * If the top of the stack is a number and it is '0' it just goes ahead
-	 * and starts by replacing the 0.
-	 *
-	 * One tricky part of this class is that I am having to store the numbers
-	 * on the stack represented by strings instead of doubles. This is because
-	 * if the user enters a '.', it will be lost when the next number is pressed 
-	 * because each time a number or a '.' is entered it is concatonated onto the 
-	 * string representation of the number, then converted back to a double and pushed
-	 * but in the string->double conversion the '.' is lost. Therefore they are stored
-	 * on the stack as strings. So there are StringToDouble and DoubleToString functions 
-	 * used liberally throughout this function
-     * @param wxCommandEvent & event - reference to the button pushed
-     */
 	void OnKey(wxCommandEvent & event);
     
-	/**
-	* Put whatever number is on the top of the stack onto the screen
-	*/
 	void RefreshScreen();
     
-    /** 
-	* Clear the screen of the calculator
-    */
     void ClearScreen();
 	
-	/**
-	 * A pointer to the screen widget
-	 */
     wxTextCtrl * m_screen;
 };
 

@@ -23,7 +23,7 @@ YardKeybrd::YardKeybrd(wxWindow* parent, wxWindowID id,
         long style, const wxString& name)
         :wxPanel(parent, id, pos, size, style, name)
 {
-    wxSizer * sizer = NumberPad(this, false, true);
+    wxSizer * sizer = Keyboard(this, false, true);
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
     
@@ -32,7 +32,7 @@ YardKeybrd::YardKeybrd(wxWindow* parent, wxWindowID id,
     
     //make sure that the pointer is active
     wxASSERT(m_screen);
-   	
+   
 }
 
 YardKeybrd::~YardKeybrd()

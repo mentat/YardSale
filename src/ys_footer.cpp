@@ -107,8 +107,8 @@ void YardFooter::OnKeyboard(wxCommandEvent & event)
 {
     wxLogDebug(wxT("OnKeyboard"));
     YardKeybrdDlg * dlg = new YardKeybrdDlg(this, -1, wxT("Keyboard"));
-    dlg->ShowModal();
-    dlg->Destroy();
+    /*dlg->ShowModal();
+    dlg->Destroy();*/
     
 }
 
