@@ -65,8 +65,8 @@
         restrictive close-source licenses.
 
         The name "YardSale" was concieved to emphasize the
-        versatility and simplicity of the system.  The parts of a
-        YardSale point of sale can be older, used hardware and
+        versatility and simplicity of the system.  The components of a
+        YardSale system can be older, used hardware and
         the underlying software can be completely free.
 
         Being that YardSale is an open source project the initial
@@ -82,7 +82,7 @@
 
         However, we believe that YardSale can be easily used by
         those who do not wish to purchase support contracts due to
-        the clear documentation and well-writen interfaces.
+        the clear documentation and well-written interfaces.
 
     \section{Functional Requirements}
 
@@ -427,21 +427,21 @@
                 level is the lowest and most basic of the three
                 User Access Levels, as its rights are given to all
                 current employees by default.  Sales Associates
-                are given access to the following areas of the
+                shall be given access to the following areas of the
                 system:
 
                 \begin{itemize}
                     \item Customer Information Management
-                    \item Sales Transaction Processing
+                    \item Sales/Return Transaction Processing
                 \end{itemize}
 
             \subsubsection{Manager Functionality}
                 The Manager User shall be given nearly full
                 functionality to the YardSale system.  A Manager must be a
                 valid employee of the business currently running the
-                system.  This access level is given full functionality
-                of the system, to allow for maintenance of all
-                areas.  Upon login, the following options are
+                system.  This access level's functionality
+                is designed to allow for maintenance of most
+                areas of the system.  Upon login, the following options shall be
                 available to a Manager:
 
                 \begin{itemize}
@@ -464,7 +464,7 @@
                 system.  The Administrative User is a "Super User"
                 and should not be used in the day-to-day routines
                 of the YardSale system.  Upon login, the following
-                options are available to an Administrator:
+                options shall be available to an Administrator:
 
                 \begin{itemize}
                     \item Inventory Information Management
@@ -524,7 +524,26 @@
                 easily used with the TouchScreen monitor.
             \end{itemize}
 
-%    \section{External Dependencies and Interfaces}
+    \section{External Dependencies and Interfaces}
+	    \subsection{Host Operating System}
+	        The YardSale system requires the use of a host operating system
+		to run the YardSale software.  The constraints on this operating
+		system are minimal and nearly all currently used operating systems
+		are supported by YardSale.  YardSale shall be designed to function
+		properly with the minimal system requirements of the host
+		operating system.
+
+	    \subsection{Input Processing Device}
+		In addition to the devices defined by the System Constraints
+		({\sl see SYSTEM CONSTRAINTS sec 1.4.1}), some additional input
+		devices are required for entering information into the system.
+		Examples of such devices are a keyboard or mouse.
+
+	    \subsection{Output Processing Device}
+		In addition to the devices defined by the System Constraints
+		({\sl see SYSTEM CONSTRAINTS sec 1.4.1}), some additional output	
+		devices are required for retrieving information from the system.
+		Examples of such devices are a monitor and printer.
 
     \section{Preliminary Design}
 
@@ -716,11 +735,25 @@
     {\bf YardSale Global Database Diagram}\\
     \\
     \\
-    %   \includegraphics{Database_Layout_REDUCED.png}
+    \includegraphics{Database_Layout_REDUCED.png}
 
 %    \includegraphics[scale=1]{Database_Layout_REDUCED.png}
 
 
+    The database is broken down into the following sections in the above color coded
+    diagram. Each color corresponds to a section in the latter portion of the Database
+    Design section.
+
+    \begin{description}
+	\item[Customer Management]{Red}
+	\item[Inventory Management]{Green}
+	\item[POS Transaction Handling]{White}
+	\item[Shipping Management]{Blue}
+	\item[Employee Management]{Purple}
+    \end{description}
+
+    The following is a legend that describes the database layout diagram. Each number corresponds
+    to a numbered table in the diagram. Each table lists it's key as well.
 
     \begin{enumerate}
         \item{Customer Table}
@@ -785,7 +818,7 @@
         {\bf Customer Table}\\
         \\
         \\
-%        \includegraphics{Tables/CustomerTable.png}\\
+        \includegraphics{Tables/CustomerTable.png}\\
         \\
         The above UML diagram shows the layout of the customer table. The object of this
         table is to manage customer personal information for later reference in
@@ -820,7 +853,7 @@
         {\bf Inventory Table}\\
         \\
         \\
-%        \includegraphics{Tables/InventoryTable.png}\\
+        \includegraphics{Tables/InventoryTable.png}\\
         \\
         \\
         This table being the main Inventory storage structure contains all information needed
@@ -845,7 +878,7 @@
         {\bf Tax Table}\\
         \\
         \\
-%        \includegraphics{Tables/TaxTable.png}\\
+        \includegraphics{Tables/TaxTable.png}\\
         \\
         \\
         The tax table is just a support table for the inventory items. It is referenced by ID
@@ -857,7 +890,7 @@
         {\bf Vendor Table}\\
         \\
         \\
-%        \includegraphics{Tables/VendorTable.png}\\
+        \includegraphics{Tables/VendorTable.png}\\
         \\
         \\
         The Vendor Table is used also as a supporting table for the inventory. This information
@@ -879,7 +912,7 @@
         {\bf Transaction Table}\\
         \\
         \\
-%        \includegraphics{Tables/TransactionLogTable.png}\\
+        \includegraphics{Tables/TransactionLogTable.png}\\
         \\
         \\
         The Transaction Log Table is used to store information that links Customers, Employees, and
@@ -889,10 +922,15 @@
         an equivalent ID belongs to the same transaction.
         \\
         \\
+
+	\newpage
+
+	\subsection{Shipping and Package Management}
+
         {\bf Package Table}\\
         \\
         \\
-%        \includegraphics{Tables/PackageTable.png}\\
+        \includegraphics{Tables/PackageTable.png}\\
         \\
         \\
         The Package Table is used to store information about a package. There is a link to a transaction ID
@@ -906,7 +944,7 @@
         {\bf Carrier Table}\\
         \\
         \\
-%        \includegraphics{Tables/CarrierTable.png}\\
+        \includegraphics{Tables/CarrierTable.png}\\
         \\
         \\
         The Carrier table is a support table for the Package table. It provides information about the different
@@ -923,7 +961,7 @@
         this table. The table just contains the name for the type of shipping, the carrier, and how much
         it costs.\\
         \\
-%        \includegraphics{Tables/ShippingTable.png}\\
+        \includegraphics{Tables/ShippingTable.png}\\
         \\
         \subsection{Employee Management}
 
@@ -936,7 +974,7 @@
         {\bf Employee Table}\\
         \\
         \\
-%        \includegraphics{Tables/EmployeeTable.png}
+        \includegraphics{Tables/EmployeeTable.png}
         \\
         \\
         The Employee Table keeps track of all pertinent information about employees that would
@@ -953,7 +991,7 @@
         {\bf Login Table}\\
         \\
         \\
-%        \includegraphics{Tables/LoginTable.png}\\
+        \includegraphics{Tables/LoginTable.png}\\
         \\
         \\
         The Login Table tracks the amount of time an employee has been logged in based on when
@@ -968,7 +1006,7 @@
         {\bf Access Control List Table}\\
         \\
         \\
-%        \includegraphics{Tables/ACL.png}\\
+        \includegraphics{Tables/ACL.png}\\
         \\
         \\
         The ACL table which is short for Access Control List Table manages which user types have access
@@ -980,7 +1018,7 @@
         {\bf Key Table}\\
         \\
         \\
-%        \includegraphics{Tables/KeyTable.png}\\
+        \includegraphics{Tables/KeyTable.png}\\
         \\
         \\
         The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
@@ -1399,12 +1437,13 @@ testing.
     \section{Active Testing}
     There are several methods which are utilized by our
     development team to manually test the YardSale system
-    throughout the development process
-        \subsection{.
+    throughout the development process.
+        \subsection{Component Testing}
+	Each component that utilizes the database is tested by creating "dummy" data which is loaded directly into the database backend.  The each database interface screen is tested by logging into YardSale client and assuring that each dataset is loaded correctly.  Inserts into the database are verified through a third-party database interface tool.
         \subsection{Testing Mains}
         Each non-gui object in the YardSale system has an integrated main loop which allows the program to build test versions of
-        each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.
-        If any of these tests fail the system will report the exact location of the failure.
+        each of the objects.  These test objects then execute a series of tests to ensure that the object is working exactly to specification.  These tests verify that all components are able to store, copy, and construct data.  The mains also run simple database interface tests to verify that all of the database tables can re returned correctly.
+        If any of these tests fail the system will report the exact location of the failure by the use of function macros.
 
         \subsection{Warm-Body Testing}
         Each GUI screen is tested by our virtual employees for both functionality and usability.  The employees report back to the developers with any

@@ -144,19 +144,19 @@ INSERT INTO ACL_Table VALUES('Warehouse','Powerful Peon');
 
 #BEGIN EMPLOYEE TABLE STUFF
 
-INSERT INTO Employee_Table VALUES('222334545',1234,'Bilbo','','Baggins',
+INSERT INTO Employee_Table VALUES('','222334545','Bilbo','','Baggins',
 	'<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
 	'No Phone','The Shire','23456','','','Manager',1);
 
-INSERT INTO Employee_Table VALUES('245334545',1235,'Frodo','','Baggins',
+INSERT INTO Employee_Table VALUES('','245334545','Frodo','','Baggins',
         '<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
 	'No Phone','The Shire','23456','','','Clerk',1);
 
-INSERT INTO Employee_Table VALUES('221334545',1236,'Smeagle','','',
+INSERT INTO Employee_Table VALUES('','221334545','Smeagle','','',
         '<ADDRESS><1>Lake Placid</1><2></2></ADDRESS>',
 	'No Phone','The Shire','23456','','','Warehouse',1);
 
-INSERT INTO Employee_Table VALUES('999999999',0,'G','O','D',
+INSERT INTO Employee_Table VALUES('','999999999','G','O','D',
         '<ADDRESS><1></1><2></2></ADDRESS>',
 	'','','','','','Administrator',1);
 		
@@ -166,9 +166,15 @@ SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type =
 
 #BEGIN TRANSACTION STUFF
 
-INSERT INTO Transaction_Log_Table VALUES(1234,'1',2001, 0.20, 10000, 5, '' ,now());
-INSERT INTO Transaction_Log_Table VALUES(1234,'2',2001, 0.99, 10000, 10, '' ,now());
-INSERT INTO Transaction_Log_Table VALUES(1234,'3',2001, 3.50, 10000, 1, '' ,now());
+#Transaction 1
+INSERT INTO Transaction_Log_Table VALUES(1,'1',2001, 1.20, 10000, 5, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(1,'2',2001, 1.99, 10000, 10, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(1,'3',2001, 9.50, 10000, 1, '' ,now());
+
+#Transaction 2
+INSERT INTO Transaction_Log_Table VALUES(2,'1',2001, 1.20, 10001, 5, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(2,'2',2001, 1.99, 10001, 10, '' ,now());
+INSERT INTO Transaction_Log_Table VALUES(2,'3',2001, 9.50, 10001, 1, '' ,now());
 
 
 #THIS QUERY RETURNS A LOT OF INFORMATION

@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS Employee_Table;
 
 CREATE TABLE Employee_Table(
 	EMP_ID_Number				INT NOT NULL AUTO_INCREMENT,
-	EMP_Social_Security_Number		usigned long INT NOT NULL
+	EMP_Social_Security_Number		INT NOT NULL,
 	#varchar(13) NOT NULL,
 	EMP_First_Name				varchar(25),
 	EMP_Middle_Name				varchar(25),

@@ -607,7 +607,7 @@
                 Database module to display information sent from the
                 database.\\
 
-%        \newpage
+        \newpage
 
 
         \subsection{System Architecture}
@@ -641,6 +641,8 @@
                 prototype for presentation to the CSC department at the
                 Posters and Pies event.
             \end{description}
+
+\newpage
 
         \subsection{Team Member Roles and Responsibilities}
             The following figure displays a graphical hierarchy of the team's
@@ -735,11 +737,22 @@
     {\bf YardSale Global Database Diagram}\\
     \\
     \\
-    %   \includegraphics{Database_Layout_REDUCED.png}
+    \includegraphics{Database_Layout_REDUCED.png}\\
+    \\
+    The database is broken down into the following sections in the above color coded
+    diagram. Each color corresponds to a section in the latter portion of the Database
+    Design section.\\
+    \\
+    \begin{description}
+	\item[Customer Management]{Red}
+	\item[Inventory Management]{Green}
+	\item[POS Transaction Handling]{White}
+	\item[Shipping Management]{Blue}
+	\item[Employee Management]{Purple}
+    \end{description}
 
-%    \includegraphics[scale=1]{Database_Layout_REDUCED.png}
-
-
+    The following is a legend that describes the database layout diagram. Each number corresponds
+    to a numbered table in the diagram. Each table lists it's key as well.\\
 
     \begin{enumerate}
         \item{Customer Table}
@@ -804,7 +817,7 @@
         {\bf Customer Table}\\
         \\
         \\
-%        \includegraphics{Tables/CustomerTable.png}\\
+        \includegraphics{Tables/CustomerTable.png}\\
         \\
         The above UML diagram shows the layout of the customer table. The object of this
         table is to manage customer personal information for later reference in
@@ -839,7 +852,7 @@
         {\bf Inventory Table}\\
         \\
         \\
-%        \includegraphics{Tables/InventoryTable.png}\\
+        \includegraphics{Tables/InventoryTable.png}\\
         \\
         \\
         This table being the main Inventory storage structure contains all information needed
@@ -864,7 +877,7 @@
         {\bf Tax Table}\\
         \\
         \\
-%        \includegraphics{Tables/TaxTable.png}\\
+        \includegraphics{Tables/TaxTable.png}\\
         \\
         \\
         The tax table is just a support table for the inventory items. It is referenced by ID
@@ -876,7 +889,7 @@
         {\bf Vendor Table}\\
         \\
         \\
-%        \includegraphics{Tables/VendorTable.png}\\
+        \includegraphics{Tables/VendorTable.png}\\
         \\
         \\
         The Vendor Table is used also as a supporting table for the inventory. This information
@@ -887,6 +900,8 @@
         with a sales representative's name. There are optional fields for company specialty, email
         address, and homepage as well.
 
+
+	\newpage
         \subsection{Transaction Handling}
 
         Transaction Handling is a process that has data spanning two tables with two more supporting
@@ -898,7 +913,7 @@
         {\bf Transaction Table}\\
         \\
         \\
-%        \includegraphics{Tables/TransactionLogTable.png}\\
+        \includegraphics{Tables/TransactionLogTable.png}\\
         \\
         \\
         The Transaction Log Table is used to store information that links Customers, Employees, and
@@ -908,10 +923,15 @@
         an equivalent ID belongs to the same transaction.
         \\
         \\
+
+	\newpage
+
+	\subsection{Shipping and Package Management}
+
         {\bf Package Table}\\
         \\
         \\
-%        \includegraphics{Tables/PackageTable.png}\\
+        \includegraphics{Tables/PackageTable.png}\\
         \\
         \\
         The Package Table is used to store information about a package. There is a link to a transaction ID
@@ -925,7 +945,7 @@
         {\bf Carrier Table}\\
         \\
         \\
-%        \includegraphics{Tables/CarrierTable.png}\\
+        \includegraphics{Tables/CarrierTable.png}\\
         \\
         \\
         The Carrier table is a support table for the Package table. It provides information about the different
@@ -942,7 +962,7 @@
         this table. The table just contains the name for the type of shipping, the carrier, and how much
         it costs.\\
         \\
-%        \includegraphics{Tables/ShippingTable.png}\\
+        \includegraphics{Tables/ShippingTable.png}\\
         \\
         \subsection{Employee Management}
 
@@ -955,7 +975,7 @@
         {\bf Employee Table}\\
         \\
         \\
-%        \includegraphics{Tables/EmployeeTable.png}
+        \includegraphics{Tables/EmployeeTable.png}
         \\
         \\
         The Employee Table keeps track of all pertinent information about employees that would
@@ -972,7 +992,7 @@
         {\bf Login Table}\\
         \\
         \\
-%        \includegraphics{Tables/LoginTable.png}\\
+        \includegraphics{Tables/LoginTable.png}\\
         \\
         \\
         The Login Table tracks the amount of time an employee has been logged in based on when
@@ -987,7 +1007,7 @@
         {\bf Access Control List Table}\\
         \\
         \\
-%        \includegraphics{Tables/ACL.png}\\
+        \includegraphics{Tables/ACL.png}\\
         \\
         \\
         The ACL table which is short for Access Control List Table manages which user types have access
@@ -999,7 +1019,7 @@
         {\bf Key Table}\\
         \\
         \\
-%        \includegraphics{Tables/KeyTable.png}\\
+        \includegraphics{Tables/KeyTable.png}\\
         \\
         \\
         The Key Table is used to manage the keys used to unencrypt the data stored in the database. The
