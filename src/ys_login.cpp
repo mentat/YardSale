@@ -1,10 +1,16 @@
+#include "wx/app.h"
 #include "yardsale_wdr.h"
+
+#include "ys_bitmaps.h"
+#include "yardsale.h"
 #include "ys_login.h"
 
 BEGIN_EVENT_TABLE(YardLogin, wxDialog)
     EVT_BUTTON(ID_LOGIN_LOGIN, YardLogin::OnLogin)
     EVT_BUTTON(ID_LOGIN_EXIT, YardLogin::OnExitButton)
 END_EVENT_TABLE()
+
+DECLARE_APP(YardSale)
 
 YardLogin::YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
                    const wxPoint& pos, const wxSize& size, long style)
@@ -17,9 +23,9 @@ YardLogin::YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
     SetSize(sizer->GetMinSize());
     
     wxImageList * list = new wxImageList();
-    list->Add(YardBitmaps(3));
-    list->Add(YardBitmaps(4));
-    list->Add(YardBitmaps(5));
+    list->Add(wxGetApp().Images().GetBitmap(YardBitmaps::USER_PIC1));
+    list->Add(wxGetApp().Images().GetBitmap(YardBitmaps::USER_PIC2));
+    list->Add(wxGetApp().Images().GetBitmap(YardBitmaps::USER_PIC3));
     
     wxListCtrl * listCtrl = (wxListCtrl *)FindWindow(ID_LOGIN_LIST);
     

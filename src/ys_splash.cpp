@@ -21,7 +21,7 @@ YardSplash::YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
     
     wxPanel * panel = new wxPanel(this);
     
-    m_logo = GetBitmap(ID_SPLASH_LOGO);
+    m_logo = new wxBitmap("images/logo.png", wxBITMAP_TYPE_PNG);
     wxASSERT(m_logo);
     
     m_bitmap = new wxStaticBitmap(panel, ID_SPLASH_LOGO, *m_logo, wxDefaultPosition);

@@ -21,6 +21,7 @@
 #include "wx/app.h"
 
 class YardDatabase;
+class YardBitmaps;
 
 /**	\mainpage YardSale
  * <h1>Reference Manual</h1>
@@ -49,7 +50,7 @@ class YardDatabase;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 class YardSale: public wxApp {
  public:
@@ -60,6 +61,8 @@ class YardSale: public wxApp {
      */
     virtual bool OnInit();
  
+    int OnExit();
+ 
     /**
      * Returns a reference to the database object.
      * @throws Exception if pointer error.
@@ -67,16 +70,13 @@ class YardSale: public wxApp {
      */
     YardDatabase& DB();
  
+    YardBitmaps& Images();
+ 
  private:
  
+     YardBitmaps * m_bitmaps;
      YardDatabase * m_db;
 };
 
-/**
- * Loads a bitmap from a disk file.
- * @todo Find some better way to do this
- * @param id The ID associated with a bitmap
- */
-wxBitmap * GetBitmap(int id);
         
 #endif

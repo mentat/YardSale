@@ -2,6 +2,10 @@
 #include <stack>
 #include <iostream>
 
+#include "wx/app.h"
+
+#include "yardsale.h"
+#include "ys_bitmaps.h"
 #include "yardsale_wdr.h"
 #include "ys_calc.h"
 
@@ -17,11 +21,20 @@ BEGIN_EVENT_TABLE(YardCalc, wxPanel)
     EVT_BUTTON(-1, YardCalc::OnNumber)
 END_EVENT_TABLE()
 
+DECLARE_APP(YardSale)
+
 YardCalc::YardCalc(wxWindow* parent, wxWindowID id, 
         const wxPoint& pos, const wxSize& size, 
         long style, const wxString& name)
         :wxPanel(parent, id, pos, size, style, name)
 {
+    wxBitmapButton * plus = new wxBitmapButton(this, ID_CALC_PLUS, 
+        wxGetApp().Images().GetBitmap(YardBitmaps::CALC_PLUS));
+    wxBitmapButton * minus = new wxBitmapButton(this, ID_CALC_MINUS, 
+        wxGetApp().Images().GetBitmap(YardBitmaps::CALC_MINUS));
+    wxBitmapButton * equals = new wxBitmapButton(this, ID_CALC_EQUALS, 
+        wxGetApp().Images().GetBitmap(YardBitmaps::CALC_EQUALS));
+    
     wxSizer * sizer = NumberPad(this, false, true);
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());

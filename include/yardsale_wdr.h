@@ -35,8 +35,8 @@ wxSizer *Splash( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE )
 #define ID_TEXTCTRL 10002
 #define ID_LOGIN_PASSWORD 10003
 #define ID_LOGIN_LIST 10004
-#define ID_LOGIN_EXIT 10005
-#define ID_LOGIN_LOGIN 10006
+#define ID_LOGIN_LOGIN 10005
+#define ID_LOGIN_EXIT 10006
 wxSizer *Login( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 #define ID_MAIN_INVENTORY 10007
@@ -50,10 +50,10 @@ wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE
 #define ID_BUTTON 10013
 #define ID_LINE 10014
 #define ID_LISTCTRL 10015
-#define ID_INVENTORY_EXIT 10016
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_MAIN_LOGO 10017
+#define ID_MAIN_LOGO 10016
+#define ID_PANEL 10017
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 #define ID_SALE_DONE 10018
@@ -95,13 +95,22 @@ wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRU
 #define ID_EMPLOY_ADDRESS 10050
 wxSizer *Employee( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
+#define ID_DEBUG_LOG 10051
+#define ID_DEBUG_DB_CONNECT 10052
+#define ID_DEBUG_DB_DISC 10053
+wxSizer *DebugScreen( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
+#define ID_FOOTER_CALC 10054
+#define ID_FOOTER_KEY 10055
+#define ID_FOOTER_TIME 10056
+#define ID_FOOTER_UNDO 10057
+wxSizer *InfoFooter( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
 // Declare menubar functions
 
 // Declare toolbar functions
 
 // Declare bitmap functions
-
-wxBitmap YardBitmaps( size_t index );
 
 #endif
 

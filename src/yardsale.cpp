@@ -5,6 +5,7 @@
 #include "ys_login.h"
 #include "ys_exception.h"
 #include "ys_database.h"
+#include "ys_bitmaps.h"
 #include "yardsale_wdr.h"
 
 IMPLEMENT_APP(YardSale)
@@ -12,23 +13,49 @@ IMPLEMENT_APP(YardSale)
 bool YardSale::OnInit()
 {
     m_db = 0;
-    wxImage::AddHandler(new wxPNGHandler);
-    //wxDialog * startup = new YardSplash(NULL, -1, "YardSale");
     
-    //startup->ShowModal();
+    wxImage::AddHandler(new wxPNGHandler);    
+    
+    m_bitmaps = new YardBitmaps();
+    try {
+        while(m_bitmaps->LoadBitmaps() != 0)
+        {}
+    } catch (YardException &e)
+    {
+        wxLogError("Exception in OnInit: %s", e.what());
+        return false;
+    }
+    catch (exception &e)
+    {
+        wxLogError("Exception in OnInit: %s", e.what());
+        return false;
+    }
+    catch(...)
+    {
+        wxLogError("Exception in OnInit: Unknown.");
+        return false;
+    }
+#if 0
+    wxDialog * startup = new YardSplash(NULL, -1, "YardSale");
+    
+    startup->ShowModal();
     // load here!
-    //wxDialog * login = new YardLogin(NULL, -1, "YardSale");
-    wxFrame * frame = new YardMain(NULL, -1, "YardSale");
+    wxDialog * login = new YardLogin(NULL, -1, "YardSale");
     
-    // SetTopWindow(login);
+    
+     SetTopWindow(login);
     // end loading
-    /*startup->Destroy();
+    startup->Destroy();
     if (login->ShowModal() == 1)
     {
         frame->Destroy();
         login->Destroy();
         return false;
-    }        */
+    }
+    
+#endif
+
+    wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     
     SetTopWindow(frame);
     
@@ -40,6 +67,11 @@ bool YardSale::OnInit()
     
 }
 
+int YardSale::OnExit() {
+    delete m_db;
+    delete m_bitmaps;
+}
+
 YardDatabase& YardSale::DB() {
     
     if (!m_db)
@@ -48,19 +80,10 @@ YardDatabase& YardSale::DB() {
     return *m_db;
 }
 
-wxBitmap * GetBitmap(int id)
-{
-    wxBitmap * bitmap = 0;
+YardBitmaps& YardSale::Images() {
     
-    switch (id) {
-        case (ID_EMPLOY_PICTURE): 
-            bitmap = new wxBitmap("images/ys_employee_128x128.png", wxBITMAP_TYPE_PNG);
-            break;
-        case (ID_SPLASH_LOGO):
-            bitmap = new wxBitmap("images/logo.png", wxBITMAP_TYPE_PNG);
-            break;
-        default: break;
-    }
-        
-    return bitmap;
+    if (!m_bitmaps)
+        throw YardException("Bitmap manager not allocated.");
+    
+    return *m_bitmaps;
 }
