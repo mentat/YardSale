@@ -220,36 +220,40 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
 wxSizer *Main( wxWindow *parent, bool call_fit, bool set_sizer )
 {
     wxFlexGridSizer *item0 = new wxFlexGridSizer( 2, 0, 0 );
+    item0->AddGrowableCol( 0 );
+    item0->AddGrowableCol( 1 );
+    item0->AddGrowableRow( 0 );
+    item0->AddGrowableRow( 4 );
 
     wxWindow *item1 = parent->FindWindow( ID_MAIN_LOGO );
     wxASSERT( item1 );
-    item0->Add( item1, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item1, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     item0->Add( 320, 20, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxWindow *item2 = parent->FindWindow( ID_MAIN_INVENTORY );
     wxASSERT( item2 );
-    item0->Add( item2, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item2, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
     wxWindow *item3 = parent->FindWindow( ID_MAIN_SALES );
     wxASSERT( item3 );
-    item0->Add( item3, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item3, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
     wxWindow *item4 = parent->FindWindow( ID_MAIN_CUSTOMER );
     wxASSERT( item4 );
-    item0->Add( item4, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item4, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
     wxWindow *item5 = parent->FindWindow( ID_MAIN_REPORTS );
     wxASSERT( item5 );
-    item0->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
     wxWindow *item6 = parent->FindWindow( ID_MAIN_EMPLOYEE );
     wxASSERT( item6 );
-    item0->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item6, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
     wxWindow *item7 = parent->FindWindow( ID_MAIN_LOGOUT );
     wxASSERT( item7 );
-    item0->Add( item7, 0, wxALIGN_CENTER|wxALL, 5 );
+    item0->Add( item7, 0, wxALIGN_CENTER_VERTICAL|wxALL, 20 );
 
     item0->Add( 20, 20, 0, wxALIGN_CENTER|wxALL, 5 );
 

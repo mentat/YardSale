@@ -50,6 +50,7 @@ wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 #define ID_MAIN_LOGO 10013
+#define ID_MAIN_MAX 10014
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions
