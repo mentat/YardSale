@@ -32,6 +32,9 @@ class YardCalc: public wxPanel {
     
     void OnNumber(wxCommandEvent & event);
     void OnPlus(wxCommandEvent & event);
+    void OnClear(wxCommandEvent & event);
+    void OnAllClear(wxCommandEvent & event);
+    void OnDot(wxCommandEvent & event);
     void OnEqual(wxCommandEvent & event);
     
     private:
