@@ -62,6 +62,7 @@ class YardKeybrd: public wxPanel {
     void ClearScreen();
 	
     wxTextCtrl * m_screen;
+    bool shift_down;
     wxString screencontents;
 };
 

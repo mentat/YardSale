@@ -33,6 +33,8 @@ YardKeybrd::YardKeybrd(wxWindow* parent, wxWindowID id,
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
     screencontents = wxString("");
+    shift_down = FALSE;
+    
     
     //initialize a way to get to the screen
     m_screen = (wxTextCtrl *)FindWindow(ID_KBD_SCREEN);
@@ -58,7 +60,7 @@ void YardKeybrd::OnButtonClear(wxCommandEvent & event){
 }
 
 void YardKeybrd::OnButtonShift(wxCommandEvent & event){
-    screencontents = wxString("");
+    shift_down = TRUE;   
     RefreshScreen();
 }
 
@@ -100,7 +102,11 @@ void YardKeybrd::DeleteChar(){
 void YardKeybrd::OnButton(wxCommandEvent & event)
 {   
     wxButton * temp = (wxButton *)FindWindow(event.GetId());
-    AddString(temp->GetLabel());
+    if (!shift_down)
+        AddString(temp->GetLabel());
+    else
+         AddString(temp->GetLabel().MakeUpper());   
+    shift_down = FALSE;
 }
 
 void YardKeybrd::ClearScreen(){
