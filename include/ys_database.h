@@ -2,14 +2,16 @@
 #define YS_DATABASE_H
 
 #include "ys_inv_type.h"
-#include <wx/string.h>
-#include <wx/db.h>
-#include <wx/dbtable.h>
 #include <vector>
 
 using namespace std;
 
+// Forward declarations for speed -jll
 class YardDBConfig;
+class wxDb;
+class wxDbTable;
+class wxDbConnectInf;
+
 
 /**
  * This is the main database backend which does all translation from
@@ -21,7 +23,13 @@ class YardDatabase {
         
     YardDatabase(const wxString& dsn, const wxString& name, const wxString& pass);
     //YardDatabase(const YardDBConfig& config);  
+    
+    /**
+     * Default constructor.
+     */
     YardDatabase();
+    
+    ~YardDatabase();
     
     /* This connects to the database with the options specified
        above.  Dumbass. */
@@ -45,12 +53,12 @@ class YardDatabase {
      * @return A std::vector of YardInvType objects
      */
     vector<YardInvType> InvGet(unsigned int num, unsigned int offset);
+    
  private:
     wxDb * m_db;
     wxDbTable * m_table;
     wxDbConnectInf * m_connectInfo;
     YardInvType * m_inv;
 };
-
 
 #endif
