@@ -1,10 +1,10 @@
 ## the hell with autocon
 INCLUDES =  -I../include -I/usr/local/include
-SUBDIRS = res tests extra
+SUBDIRS = extra res tests
 
 BUILDID = `cat build.id`
 
-CXXFLAGS = $(WX_CXXFLAGS) 
+CXXFLAGS = $(WX_CXXFLAGS) -g
 
 all:
 	perl build.pl
