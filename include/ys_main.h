@@ -24,7 +24,7 @@
  * graphical buttons for accessing the inventory, employees, sales,
  * etc.
  * @author Jesse Lovelace
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 class YardMain: public wxFrame {
     public:
@@ -48,6 +48,8 @@ class YardMain: public wxFrame {
     void OnInventory(wxCommandEvent & event);
     /// Sales buttons
     void OnSale(wxCommandEvent & event);
+    /// Employee button handler
+    void OnEmployee(wxCommandEvent& event);
     
     private:
         

@@ -3,12 +3,14 @@
 #include "ys_main.h"
 #include "ys_inventory.h"
 #include "ys_sale.h"
+#include "ys_employee.h"
 
 
 BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(ID_MAIN_LOGOUT, YardMain::OnLogout)
     EVT_BUTTON(ID_MAIN_INVENTORY, YardMain::OnInventory)
     EVT_BUTTON(ID_MAIN_SALES, YardMain::OnSale)
+    EVT_BUTTON(ID_MAIN_EMPLOYEE, YardMain::OnEmployee)
 END_EVENT_TABLE()
 
 
@@ -77,4 +79,10 @@ void YardMain::OnSale(wxCommandEvent & event) {
     
     wxFrame * sales = new YardSaleScreen(this, -1, wxT("Sales"));
     sales->Show();
+}
+
+void YardMain::OnEmployee(wxCommandEvent & event) {
+    
+    wxFrame * employ = new YardEmployee(this, -1, wxT("Employee"));
+    employ->Show();
 }

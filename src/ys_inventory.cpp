@@ -8,7 +8,7 @@ END_EVENT_TABLE()
 YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                    const wxPoint& pos, const wxSize& size, long style)
 :wxFrame(parent, id, title, pos, size, style) {
-    
+     
     wxPanel * panel = new wxPanel(this);
     
     wxSizer * sizer = Inventory(panel, false, true);
