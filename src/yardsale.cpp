@@ -15,21 +15,20 @@ bool YardSale::OnInit()
     wxDialog * login = new YardLogin(NULL, -1, "YardSale");
     wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     
+    SetTopWindow(login);
     // end loading
-    
+    startup->Destroy();
     if (login->ShowModal() == 1)
     {
         frame->Destroy();
         login->Destroy();
-        startup->Destroy();
         return false;
     }        
-    startup->Destroy();
+    
+    SetTopWindow(frame);
     login->Destroy();
     
     frame->Show(true);
-    
-    SetTopWindow(frame);
     
     return true;
     
