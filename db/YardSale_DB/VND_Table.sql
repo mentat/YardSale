@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS Vendor_Table;
 
 CREATE TABLE Vendor_Table(
-	VND_ID				INT AUTOINCREMENT NOT NULL
+	VND_ID				INT AUTO_INCREMENT NOT NULL,
 	VND_Name			varchar(255),
 	VND_Address			TEXT,
 	VND_City			varchar(50),
@@ -11,6 +11,6 @@ CREATE TABLE Vendor_Table(
 	VND_Sales_Representative	TEXT,
 	VND_Specialty			TEXT,
 	VND_Email_Address		varchar(255),
-	VND_Home_Page			varchar(500),
+	VND_Home_Page			TEXT,
 	Primary Key (VND_ID)
-)
+)type=InnoDB
