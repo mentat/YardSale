@@ -82,6 +82,19 @@ wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 #define ID_CALC_DOT 10039
 wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
+#define ID_EMPLOY_TREE 10040
+#define ID_EMPLOY_PICTURE 10041
+#define ID_EMPLOY_HIRE 10042
+#define ID_EMPLOY_POSITION 10043
+#define ID_EMPLOY_FIRST 10044
+#define ID_EMPLOY_ID 10045
+#define ID_EMPLOY_MIDDLE 10046
+#define ID_EMPLOY_TAX_ID 10047
+#define ID_EMPLOY_LAST 10048
+#define ID_EMPLOY_PHONE 10049
+#define ID_EMPLOY_ADDRESS 10050
+wxSizer *Employee( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
 // Declare menubar functions
 
 // Declare toolbar functions

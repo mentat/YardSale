@@ -489,6 +489,101 @@ wxSizer *NumberPad( wxWindow *parent, bool call_fit, bool set_sizer )
     return item0;
 }
 
+wxSizer *Employee( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 2, 0, 0 );
+    item0->AddGrowableCol( 1 );
+    item0->AddGrowableRow( 0 );
+
+    wxTreeCtrl *item1 = new wxTreeCtrl( parent, ID_EMPLOY_TREE, wxDefaultPosition, wxSize(120,160), wxTR_HAS_BUTTONS|wxTR_LINES_AT_ROOT|wxSUNKEN_BORDER );
+    item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+    wxFlexGridSizer *item2 = new wxFlexGridSizer( 1, 0, 0 );
+    item2->AddGrowableCol( 0 );
+    item2->AddGrowableRow( 1 );
+
+    wxFlexGridSizer *item3 = new wxFlexGridSizer( 2, 0, 0 );
+
+    wxWindow *item4 = parent->FindWindow( ID_EMPLOY_PICTURE );
+    wxASSERT( item4 );
+    item3->Add( item4, 0, wxALL, 5 );
+
+    wxBoxSizer *item5 = new wxBoxSizer( wxVERTICAL );
+
+    wxStaticText *item6 = new wxStaticText( parent, ID_EMPLOY_HIRE, wxT("Hire date: 1/8/81"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item6, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item7 = new wxStaticText( parent, ID_EMPLOY_POSITION, wxT("Title: Manager"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item7, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item3->Add( item5, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item2->Add( item3, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+
+    wxFlexGridSizer *item8 = new wxFlexGridSizer( 4, 0, 0 );
+    item8->AddGrowableCol( 1 );
+    item8->AddGrowableCol( 3 );
+
+    wxStaticText *item9 = new wxStaticText( parent, ID_TEXT, wxT("First Name"), wxDefaultPosition, wxDefaultSize, 0 );
+    item8->Add( item9, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item10 = new wxTextCtrl( parent, ID_EMPLOY_FIRST, wxT(""), wxDefaultPosition, wxSize(100,-1), 0 );
+    item8->Add( item10, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item11 = new wxStaticText( parent, ID_TEXT, wxT("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+    item8->Add( item11, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item12 = new wxTextCtrl( parent, ID_EMPLOY_ID, wxT(""), wxDefaultPosition, wxSize(100,-1), 0 );
+    item8->Add( item12, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item13 = new wxStaticText( parent, ID_TEXT, wxT("Middle"), wxDefaultPosition, wxDefaultSize, 0 );
+    item8->Add( item13, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item14 = new wxTextCtrl( parent, ID_EMPLOY_MIDDLE, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item8->Add( item14, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item15 = new wxStaticText( parent, ID_TEXT, wxT("Tax ID"), wxDefaultPosition, wxDefaultSize, 0 );
+    item8->Add( item15, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item16 = new wxTextCtrl( parent, ID_EMPLOY_TAX_ID, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item8->Add( item16, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item17 = new wxStaticText( parent, ID_TEXT, wxT("Last Name"), wxDefaultPosition, wxDefaultSize, 0 );
+    item8->Add( item17, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item18 = new wxTextCtrl( parent, ID_EMPLOY_LAST, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item8->Add( item18, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item19 = new wxStaticText( parent, ID_TEXT, wxT("Phone"), wxDefaultPosition, wxDefaultSize, 0 );
+    item8->Add( item19, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxTextCtrl *item20 = new wxTextCtrl( parent, ID_EMPLOY_PHONE, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    item8->Add( item20, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    wxStaticText *item21 = new wxStaticText( parent, ID_TEXT, wxT("Address"), wxDefaultPosition, wxDefaultSize, 0 );
+    item8->Add( item21, 0, wxALIGN_RIGHT|wxALL, 5 );
+
+    wxTextCtrl *item22 = new wxTextCtrl( parent, ID_EMPLOY_ADDRESS, wxT(""), wxDefaultPosition, wxSize(80,-1), wxTE_MULTILINE );
+    item8->Add( item22, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item2->Add( item8, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    item0->Add( item2, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
 // Implement menubar functions
 
 // Implement toolbar functions

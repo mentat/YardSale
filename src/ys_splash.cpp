@@ -2,6 +2,7 @@
 #include "wx/image.h"
 #include "wx/statbmp.h"
 
+#include "yardsale.h"
 #include "yardsale_wdr.h"
 #include "ys_splash.h"
 
@@ -20,9 +21,9 @@ YardSplash::YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
     
     wxPanel * panel = new wxPanel(this);
     
-    wxImage::AddHandler(new wxPNGHandler);
-    //wxBitmap logo("logo.png", wxBITMAP_TYPE_PNG); 
-    m_logo = new wxBitmap("images/logo.png", wxBITMAP_TYPE_PNG); 
+    m_logo = GetBitmap(ID_SPLASH_LOGO);
+    wxASSERT(m_logo);
+    
     m_bitmap = new wxStaticBitmap(panel, ID_SPLASH_LOGO, *m_logo, wxDefaultPosition);
     
     wxSizer * sizer = Splash(panel, false, true);

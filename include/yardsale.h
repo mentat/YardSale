@@ -18,24 +18,32 @@
 */
 #ifndef YARDSALE_H
 #define YARDSALE_H
+#include "wx/app.h"
 
 /**	\mainpage YardSale
  * <strong>Reference Manual</strong>
+ * Yardsale is an open source point of sale program.
  *
- * <a href=\"http://yardsale.sf.net\">YardSale</a> 
+ * <a href="http://yardsale.sf.net">YardSale</a> 
  * @author Jesse Lovelace
  */
 
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 class YardSale: public wxApp {
     public:
         
+    /**
+     * This is the function were top level windows are created
+     * @return True if application initialized ok
+     */
     virtual bool OnInit();
 };
+
+wxBitmap * GetBitmap(int id);
         
 
 #endif
