@@ -68,18 +68,18 @@ wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 #define ID_CALC_1 10025
 #define ID_CALC_2 10026
 #define ID_CALC_3 10027
-#define ID_CALC_CLEAR 10028
+#define ID_CALC_PLUS 10028
 #define ID_CALC_4 10029
 #define ID_CALC_5 10030
 #define ID_CALC_6 10031
-#define ID_CALC_AC 10032
+#define ID_CALC_MINUS 10032
 #define ID_CALC_7 10033
 #define ID_CALC_8 10034
 #define ID_CALC_9 10035
-#define ID_CALC_DOT 10036
-#define ID_CALC_PLUS 10037
+#define ID_CALC_EQUALS 10036
+#define ID_CALC_CLEAR 10037
 #define ID_CALC_0 10038
-#define ID_CALC_EQUALS 10039
+#define ID_CALC_DOT 10039
 wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions
