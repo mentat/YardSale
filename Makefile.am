@@ -3,7 +3,7 @@
 ## If you don't want it to overwrite it,
 ## 	Please disable it in the Anjuta project configuration
 
-SUBDIRS = intl po include src
+SUBDIRS = include src
 
 yardsaledocdir = ${prefix}/doc/YardSale
 yardsaledoc_DATA = \

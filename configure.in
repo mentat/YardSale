@@ -42,10 +42,9 @@ AM_PATH_WXCONFIG(2.3.2, wxWin=1)
                CXXFLAGS=$ac_save_CXXFLAGS
         fi
         
-AM_GNU_GETTEXT
+dnl AM_GNU_GETTEXT
 
 AC_CONFIG_FILES([Makefile
-                 intl/Makefile
                  include/Makefile
                  src/Makefile])
 AC_OUTPUT
