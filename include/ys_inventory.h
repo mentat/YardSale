@@ -28,9 +28,11 @@ class wxSpinCtrl;
 class wxCheckBox;    
 
 /**
- * The inventory screen.
+ * The inventory screen displays items in the inventory and allows seaching.
+ * New items can also be added to the inventory via the "New Item" button.
+ *
  * @author Jesse Lovelace
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 class YardInventory: public wxFrame{
  public:
@@ -52,9 +54,20 @@ class YardInventory: public wxFrame{
      * @param event The event being passed in.
      */
     void OnExitButton(wxCommandEvent & event);
-    
+    /**
+     * New Item button handler.
+     * @param event The event being passed in.
+     */
     void OnNew(wxCommandEvent & event);
+    /**
+     * Search button handler.
+     * @param event The event being passed in.
+     */
     void OnSearch(wxCommandEvent & event);
+    /**
+     * Called when an item is selected in the list control.
+     * @param event The event being passed in.
+     */
     void OnSelect(wxListEvent & event);
     
  private:

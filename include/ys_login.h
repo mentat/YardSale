@@ -20,9 +20,12 @@
 #define YS_LOGIN_H
 
 /**
- * This is the customized login screen for YardSale
+ * This is the customized login screen for YardSale.  The user will 
+ * be asked for a username and password.  Also, a quick select icon will
+ * allow the user to rapidly select her/his username.
+ *
  * @author Jesse Lovelace
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 class YardLogin: public wxDialog {
  public:
@@ -42,6 +45,10 @@ class YardLogin: public wxDialog {
      * @param event The event being passed in.
      */
     void OnExitButton(wxCommandEvent & event);
+    /**
+     * Login button handler.
+     * @param event The event being passed in.
+     */
     void OnLogin(wxCommandEvent & event);
     
     private:

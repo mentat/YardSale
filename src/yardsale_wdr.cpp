@@ -411,9 +411,11 @@ wxSizer *Sale( wxWindow *parent, bool call_fit, bool set_sizer )
     item0->AddGrowableRow( 0 );
 
     wxFlexGridSizer *item1 = new wxFlexGridSizer( 2, 0, 0 );
+    item1->AddGrowableCol( 0 );
     item1->AddGrowableRow( 0 );
 
     wxFlexGridSizer *item2 = new wxFlexGridSizer( 1, 0, 0 );
+    item2->AddGrowableCol( 0 );
     item2->AddGrowableRow( 1 );
 
     wxStaticBox *item4 = new wxStaticBox( parent, -1, wxT("Customer") );
@@ -462,7 +464,7 @@ wxSizer *Sale( wxWindow *parent, bool call_fit, bool set_sizer )
     item17->AddGrowableCol( 0 );
     item17->AddGrowableRow( 0 );
 
-    wxTreeCtrl *item18 = new wxTreeCtrl( parent, ID_TREECTRL, wxDefaultPosition, wxSize(120,160), wxTR_HAS_BUTTONS|wxTR_LINES_AT_ROOT|wxSUNKEN_BORDER );
+    wxTreeCtrl *item18 = new wxTreeCtrl( parent, ID_TREECTRL, wxDefaultPosition, wxSize(350,160), wxTR_HAS_BUTTONS|wxTR_LINES_AT_ROOT|wxSUNKEN_BORDER );
     item17->Add( item18, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     item2->Add( item17, 0, wxGROW|wxALIGN_CENTER_HORIZONTAL, 5 );

@@ -22,9 +22,10 @@
 #include "wx/wx.h"
 
 /**
- * Eye-candy splash screen
+ * Eye-candy splash screen that shows a progress bar.
+ * @todo Make this threaded
  * @author Jesse Lovelace
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 class YardSplash: public wxDialog {
     public:

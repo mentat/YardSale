@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.12.24)  22 FEB 2004 14:12
+This is TeX, Version 3.14159 (Web2C 7.4.5) (format=latex 2003.11.7)  2 MAR 2004 21:31
 **refman.tex
-(./refman.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+(./refman.tex
 LaTeX2e <2001/06/01>
 Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
 ohyphenation, loaded.
@@ -50,25 +50,24 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 80.
+Package graphics Info: Driver file: dvips.def on input line 80.
 
-(/usr/share/texmf/tex/latex/graphics/pdftex.def
-File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
-\Gread@gobject=\count88
+(/usr/share/texmf/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
 (/usr/share/texmf/tex/latex/tools/multicol.sty
 Package: multicol 2000/07/10 v1.5z multicolumn formatting (FMi)
-\c@tracingmulticols=\count89
+\c@tracingmulticols=\count88
 \mult@box=\box26
 \multicol@leftmargin=\dimen106
-\c@unbalance=\count90
-\c@collectmore=\count91
-\doublecol@number=\count92
-\multicoltolerance=\count93
-\multicolpretolerance=\count94
+\c@unbalance=\count89
+\c@collectmore=\count90
+\doublecol@number=\count91
+\multicoltolerance=\count92
+\multicolpretolerance=\count93
 \full@width=\dimen107
 \page@free=\dimen108
 \premulticols=\dimen109
@@ -98,8 +97,8 @@ Package: multicol 2000/07/10 v1.5z multicolumn formatting (FMi)
 \@tempa=\box47
 \@tempa=\box48
 \@tempa=\box49
-\c@columnbadness=\count95
-\c@finalcolumnbadness=\count96
+\c@columnbadness=\count94
+\c@finalcolumnbadness=\count95
 \last@try=\dimen111
 \multicolovershoot=\dimen112
 \multicolundershoot=\dimen113
@@ -108,7 +107,7 @@ Package: multicol 2000/07/10 v1.5z multicolumn formatting (FMi)
 )
 (/usr/share/texmf/tex/latex/misc/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count97
+\c@float@type=\count96
 \float@exts=\toks15
 \float@box=\box52
 \@float@everytoks=\toks16
@@ -127,15 +126,15 @@ Package: doxygen
 
 (/usr/share/texmf/tex/latex/tools/calc.sty
 Package: calc 1998/07/07 v4.1b Infix arithmetic (KKT,FJ)
-\calc@Acount=\count98
-\calc@Bcount=\count99
+\calc@Acount=\count97
+\calc@Bcount=\count98
 \calc@Adimen=\dimen114
 \calc@Bdimen=\dimen115
 \calc@Askip=\skip45
 \calc@Bskip=\skip46
 LaTeX Info: Redefining \setlength on input line 59.
 LaTeX Info: Redefining \addtolength on input line 60.
-\calc@denominator=\count100
+\calc@denominator=\count99
 )
 (/usr/share/texmf/tex/latex/tools/array.sty
 Package: array 1998/05/13 v2.3m Tabular extension package (FMi)
@@ -159,7 +158,10 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 38.
 
 
 Writing index file refman.idx
-(./refman.aux (./classYardDatabase.aux))
+(./refman.aux (./classYardDatabase.aux) (./classYardDBType.aux)
+(./classYardEmployee.aux) (./classYardInventory.aux) (./classYardInvType.aux)
+(./classYardLogin.aux) (./classYardMain.aux) (./classYardSale.aux)
+(./classYardSaleScreen.aux) (./classYardSplash.aux) (./deprecated.aux))
 \openout1 = `refman.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -181,42 +183,19 @@ LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 14.
+ [1
 
-(/usr/share/texmf/tex/context/base/supp-pdf.tex
-(/usr/share/texmf/tex/context/base/supp-mis.tex
-loading : Context Support Macros / Missing
-\protectiondepth=\count101
-\scratchcounter=\count102
-\scratchtoks=\toks18
-\scratchdimen=\dimen118
-\scratchskip=\skip50
-\scratchmuskip=\muskip10
-\scratchbox=\box54
-\scratchread=\read1
-\scratchwrite=\write4
-\zeropoint=\dimen119
-\minusone=\count103
-\thousandpoint=\dimen120
-\emptytoks=\toks19
-\nextbox=\box55
-\nextdepth=\dimen121
-\everyline=\toks20
-\!!counta=\count104
-\!!countb=\count105
-\recursecounter=\count106
+
+] [2
+
+] (./refman.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
 )
-loading : Context Support Macros / PDF
-\nofMPsegments=\count107
-\nofMParguments=\count108
-\everyMPtoPDFconversion=\toks21
-) [1
-
-
-{/usr/share/texmf/dvips/config/pdftex.map}] [2
-
-] (./refman.toc)
-\tf@toc=\write5
-\openout5 = `refman.toc'.
+\tf@toc=\write4
+\openout4 = `refman.toc'.
 
  [1
 
@@ -224,25 +203,10 @@ loading : Context Support Macros / PDF
 
 ]
 Chapter 1.
-
-LaTeX Warning: Reference `classYardSale' on page 1 undefined on input line 30.
-
 (./main.tex
-
-LaTeX Warning: Reference `classYardSale' on page 1 undefined on input line 3.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
-
 Underfull \hbox (badness 10000) in paragraph at lines 5--5
 
  []
-
-
-LaTeX Warning: Reference `classYardEmployee' on page 1 undefined on input line 
-5.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
@@ -250,148 +214,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--7
  []
 
 
-LaTeX Warning: Reference `classYardSaleScreen' on page 1 undefined on input lin
-e 7.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
 
  []
-
-
-LaTeX Warning: Reference `classYardInventory' on page 1 undefined on input line
- 9.
 
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 13.
 (/usr/share/texmf/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-
-LaTeX Warning: Reference `classYardSale' on page 1 undefined on input line 13.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 14--14
 
  []
 
 ) [1
 
-]
-
-LaTeX Warning: Reference `classYardSale' on page 1 undefined on input line 32.
-
-[2
+] [2
 
 ]
 Chapter 2.
-(./hierarchy.tex
-
-LaTeX Warning: Reference `classYardDatabase' on page 3 undefined on input line 
-4.
-
-
-LaTeX Warning: Reference `classYardDBType' on page 3 undefined on input line 5.
-
-
-
-LaTeX Warning: Reference `classYardInvType' on page 3 undefined on input line 7
-.
-
-
-LaTeX Warning: Reference `classYardEmployee' on page 3 undefined on input line 
-9.
-
-
-LaTeX Warning: Reference `classYardInventory' on page 3 undefined on input line
- 10.
-
-
-LaTeX Warning: Reference `classYardLogin' on page 3 undefined on input line 11.
-
-
-
-LaTeX Warning: Reference `classYardMain' on page 3 undefined on input line 12.
-
-
-LaTeX Warning: Reference `classYardSale' on page 3 undefined on input line 13.
-
-
-LaTeX Warning: Reference `classYardSaleScreen' on page 3 undefined on input lin
-e 14.
-
-
-LaTeX Warning: Reference `classYardSplash' on page 3 undefined on input line 15
-.
-
-) [3] [4
+(./hierarchy.tex) [3] [4
 
 ]
 Chapter 3.
-(./annotated.tex
-
-LaTeX Warning: Reference `classYardDatabase' on page 5 undefined on input line 
-4.
-
-
-LaTeX Warning: Reference `classYardSale' on page 5 undefined on input line 5.
-
-
-LaTeX Warning: Reference `classYardDBType' on page 5 undefined on input line 5.
-
-
-
-LaTeX Warning: Reference `classYardSale' on page 5 undefined on input line 6.
-
-
-LaTeX Warning: Reference `classYardEmployee' on page 5 undefined on input line 
-6.
-
-
-LaTeX Warning: Reference `classYardInventory' on page 5 undefined on input line
- 7.
-
-
-LaTeX Warning: Reference `classYardSale' on page 5 undefined on input line 8.
-
-
-LaTeX Warning: Reference `classYardInvType' on page 5 undefined on input line 8
-.
-
-
-LaTeX Warning: Reference `classYardSale' on page 5 undefined on input line 9.
-
-
-LaTeX Warning: Reference `classYardLogin' on page 5 undefined on input line 9.
-
-
-LaTeX Warning: Reference `classYardSale' on page 5 undefined on input line 10.
-
-
-LaTeX Warning: Reference `classYardMain' on page 5 undefined on input line 10.
-
-
-LaTeX Warning: Reference `classYardSale' on page 5 undefined on input line 11.
-
-
-LaTeX Warning: Reference `classYardSaleScreen' on page 5 undefined on input lin
-e 12.
-
-
-LaTeX Warning: Reference `classYardSplash' on page 5 undefined on input line 13
-.
-
-) [5] [6
+(./annotated.tex) [5] [6
 
 ]
 Chapter 4.
-(./pages.tex
-
-LaTeX Warning: Reference `todo' on page 7 undefined on input line 3.
-
-
-LaTeX Warning: Reference `deprecated' on page 7 undefined on input line 5.
-
-) [7] [8
+(./pages.tex) [7] [8
 
 ]
 Chapter 5.
@@ -408,24 +257,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 \openout2 = `classYardDatabase.aux'.
 
  (./classYardDatabase.tex
-
-! LaTeX Error: File `classYardDatabase__coll__graph' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8 ...width=60pt]{classYardDatabase__coll__graph}
-                                                  
-? 
-
+File: classYardDatabase__coll__graph.eps Graphic file (type eps)
+ <classYardDatabase__coll__graph.eps>
 Underfull \hbox (badness 10000) in paragraph at lines 17--17
 
  []
-
-
-LaTeX Warning: Reference `classYardInvType' on page 10 undefined on input line 
-17.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 44--44
@@ -437,11 +273,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--49
 
  []
 
+[10
 
-LaTeX Warning: Reference `classYardInvType' on page 10 undefined on input line 
-49.
-
-
+]
 Underfull \hbox (badness 10000) in paragraph at lines 58--58
 
  []
@@ -456,31 +290,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--65
 
  []
 
-
-LaTeX Warning: Reference `classYardInvType' on page 10 undefined on input line 
-65.
-
-[10
-
-]) [11]
+) [11]
 \openout2 = `classYardDBType.aux'.
 
  (./classYardDBType.tex
-
-! LaTeX Error: File `classYardDBType__inherit__graph' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8 ...idth=57pt]{classYardDBType__inherit__graph}
-                                                  
-? 
-
-LaTeX Warning: Reference `classYardSale' on page 12 undefined on input line 14.
-
-
-
+File: classYardDBType__inherit__graph.eps Graphic file (type eps)
+ <classYardDBType__inherit__graph.eps>
 Underfull \hbox (badness 10000) in paragraph at lines 17--17
 
  []
@@ -492,10 +307,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--17
 \openout2 = `classYardEmployee.aux'.
 
  (./classYardEmployee.tex
-
-LaTeX Warning: Reference `classYardSale' on page 13 undefined on input line 8.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
  []
@@ -533,31 +344,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--37
 \openout2 = `classYardInvType.aux'.
 
  (./classYardInvType.tex
+File: classYardInvType__inherit__graph.eps Graphic file (type eps)
+ <classYardInvType__inherit__graph.eps>
+File: classYardInvType__coll__graph.eps Graphic file (type eps)
 
-! LaTeX Error: File `classYardInvType__inherit__graph' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8 ...dth=57pt]{classYardInvType__inherit__graph}
-                                                  
-? 
-
-! LaTeX Error: File `classYardInvType__coll__graph' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...width=57pt]{classYardInvType__coll__graph}
-                                                  
-? 
-
-LaTeX Warning: Reference `classYardSale' on page 15 undefined on input line 20.
-
-
-
+<classYardInvType__coll__graph.eps>
 Underfull \hbox (badness 10000) in paragraph at lines 23--23
 
  []
@@ -577,10 +368,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--29
 
  []
 
-
-LaTeX Warning: Reference `classYardDBType' on page 15 undefined on input line 2
-9.
-
 [15
 
 
@@ -588,10 +375,6 @@ LaTeX Warning: Reference `classYardDBType' on page 15 undefined on input line 2
 \openout2 = `classYardLogin.aux'.
 
  (./classYardLogin.tex
-
-LaTeX Warning: Reference `classYardSale' on page 17 undefined on input line 8.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
  []
@@ -618,10 +401,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--40
 \openout2 = `classYardMain.aux'.
 
  (./classYardMain.tex
-
-LaTeX Warning: Reference `classYardSale' on page 18 undefined on input line 8.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
  []
@@ -725,12 +504,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--54
 ]
 Chapter 6.
 (./todo.tex
-
-LaTeX Warning: Reference `classYardMain_a0' on page 23 undefined on input line 
-4.
-
-
-Overfull \hbox (802.05768pt too wide) in paragraph at lines 4--4
+Overfull \hbox (801.19678pt too wide) in paragraph at lines 4--4
 []
  []
 
@@ -740,49 +514,28 @@ Overfull \hbox (802.05768pt too wide) in paragraph at lines 4--4
 ]
 \openout2 = `deprecated.aux'.
 
- (./deprecated.tex
+ (./deprecated.tex) [24
 
-LaTeX Warning: Reference `classYardSplash_a2' on page 24 undefined on input lin
-e 4.
+] (./refman.ind [25
 
-) [24
 
-]
-No file refman.ind.
-(./refman.aux (./classYardDatabase.aux) (./classYardDBType.aux)
-(./classYardEmployee.aux) (./classYardInventory.aux) (./classYardInvType.aux)
-(./classYardLogin.aux) (./classYardMain.aux) (./classYardSale.aux)
-(./classYardSaleScreen.aux) (./classYardSplash.aux) (./deprecated.aux))
+
+]) (./refman.aux
+(./classYardDatabase.aux) (./classYardDBType.aux) (./classYardEmployee.aux)
+(./classYardInventory.aux) (./classYardInvType.aux) (./classYardLogin.aux)
+(./classYardMain.aux) (./classYardSale.aux) (./classYardSaleScreen.aux)
+(./classYardSplash.aux) (./deprecated.aux))
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 2097 strings out of 95437
- 27347 string characters out of 1190232
- 72115 words of memory out of 1000001
- 5000 multiletter control sequences out of 10000+50000
+ 1776 strings out of 95847
+ 23636 string characters out of 1195948
+ 68909 words of memory out of 1000001
+ 4601 multiletter control sequences out of 10000+50000
  14939 words of font info for 30 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 1000
  29i,11n,43p,809b,431s stack positions out of 1500i,500n,5000p,200000b,5000s
- 110 PDF objects out of 300000
- 0 named destinations out of 131072
- 0 words of extra memory for PDF output out of 65536
- </var/cache/fonts/pk/ljfour/jknappen/ec/ecbi1000.600pk> </var/cache/fonts/pk
-/ljfour/jknappen/ec/ecti0900.600pk>{/usr/share/texmf/dvips/tetex/bbad153f.enc}<
-/usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb> </var/cache/fonts/pk/ljfour
-/jknappen/ec/ecbx1200.600pk> </var/cache/fonts/pk/ljfour/jknappen/ec/ectt1000.6
-00pk> </var/cache/fonts/pk/ljfour/jknappen/ec/ecbx0700.600pk> </var/cache/fonts
-/pk/ljfour/jknappen/tc/tcrm1000.600pk>{/usr/share/texmf/dvips/tetex/aae443f0.en
-c}</usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb> </var/cache/fonts/pk/ljf
-our/jknappen/ec/ecbx1000.600pk> </var/cache/fonts/pk/ljfour/jknappen/ec/ecrm100
-0.600pk> </var/cache/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </var/cache/fo
-nts/pk/ljfour/jknappen/ec/ecrm2488.600pk> </var/cache/fonts/pk/ljfour/jknappen/
-ec/ecbx2074.600pk> </var/cache/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </va
-r/cache/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </var/cache/fonts/pk/ljfour
-/jknappen/ec/ecrm1200.600pk> </var/cache/fonts/pk/ljfour/jknappen/ec/ecrm1440.6
-00pk>
-Output written on refman.pdf (28 pages, 191835 bytes).
+
+Output written on refman.dvi (29 pages, 43748 bytes).

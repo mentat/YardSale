@@ -20,18 +20,26 @@
 #define YS_DEBUG_SCREEN_H
 
 #include "wx/frame.h"
-
+/**
+ * The debug screen allows a user to see the active program log and 
+ * selectively login to databases with a specified username and password.
+ *
+ * @author Jesse Lovelace
+ */
 class YardDebugScreen: public wxFrame {
  public:
-        
+    /// Window contructor    
     YardDebugScreen(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
                long style = wxRESIZE_BORDER|wxFRAME_NO_TASKBAR|wxTAB_TRAVERSAL);
-        
+    /// Destructor    
     virtual ~YardDebugScreen();
     
+    /// Event called when user tries to connect to the database.
     void OnConnect(wxCommandEvent& event);
+ 
+    /// Event called when user tries to disconnect to the database.
     void OnDisc(wxCommandEvent& event);
     
  private:

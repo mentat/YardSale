@@ -1,4 +1,4 @@
-\contentsline {chapter}{\numberline {1}{\bf Yard\discretionary {-}{}{}Sale}{\rm (p.\,\G@refundefinedtrue {\unhbox \voidb@x \hbox {\normalfont \bfseries ??}}\GenericWarning { }{LaTeX Warning: Reference `classYardSale' on page 1 undefined})} }{1}
+\contentsline {chapter}{\numberline {1}{\bf Yard\discretionary {-}{}{}Sale}{\rm (p.\,20\hbox {})} }{1}
 \contentsline {chapter}{\numberline {2}Yard\discretionary {-}{}{}Sale: Open Point of Sale Hierarchical Index}{3}
 \contentsline {section}{\numberline {2.1}Yard\discretionary {-}{}{}Sale: Open Point of Sale Class Hierarchy}{3}
 \contentsline {chapter}{\numberline {3}Yard\discretionary {-}{}{}Sale: Open Point of Sale Class Index}{5}
@@ -12,7 +12,7 @@
 \contentsline {subsection}{\numberline {5.2.1}Detailed Description}{10}
 \contentsline {subsection}{\numberline {5.2.2}Member Function Documentation}{10}
 \contentsline {subsubsection}{\numberline {5.2.2.1}\setlength {\rightskip }{0pt plus 5cm}vector$<${\bf Yard\discretionary {-}{}{}Inv\discretionary {-}{}{}Type}$>$ Yard\discretionary {-}{}{}Database::Inv\discretionary {-}{}{}Get (unsigned int {\em num}, unsigned int {\em offset})}{10}
-\contentsline {subsubsection}{\numberline {5.2.2.2}\setlength {\rightskip }{0pt plus 5cm}vector$<${\bf Yard\discretionary {-}{}{}Inv\discretionary {-}{}{}Type}$>$ Yard\discretionary {-}{}{}Database::Inv\discretionary {-}{}{}Search\discretionary {-}{}{}Keyword (const unsigned long \& {\em sku})}{10}
+\contentsline {subsubsection}{\numberline {5.2.2.2}\setlength {\rightskip }{0pt plus 5cm}vector$<${\bf Yard\discretionary {-}{}{}Inv\discretionary {-}{}{}Type}$>$ Yard\discretionary {-}{}{}Database::Inv\discretionary {-}{}{}Search\discretionary {-}{}{}Keyword (const unsigned long \& {\em sku})}{11}
 \contentsline {section}{\numberline {5.3}Yard\discretionary {-}{}{}DBType Class Reference}{12}
 \contentsline {subsection}{\numberline {5.3.1}Detailed Description}{12}
 \contentsline {section}{\numberline {5.4}Yard\discretionary {-}{}{}Employee Class Reference}{13}

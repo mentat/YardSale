@@ -27,14 +27,19 @@ class YardDatabase;
 using namespace std;
 
 /**
+ * @ingroup database
+ *
  * This is a datatype to represent an Employee record.
  * See Database Tables.
  * @author Jesse Lovelace
+ * @version $Revision: 1.3 $
+ * @see YardDBType
  */
 class YardEmployeeType: public YardDBType {
  public:
     friend class YardDatabase;
-     
+    
+    /// Default constructor
     YardEmployeeType(){}
         
     /// Copy constructor - always deep copy

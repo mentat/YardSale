@@ -25,7 +25,7 @@ using namespace std;
 /**
  * @ingroup database
  *
- * Abstract base class for datebase objects in YardSale
+ * Abstract base class for datebase objects in YardSale.
  * @author Jesse Lovelace
  */
 class YardDBType{
@@ -37,7 +37,11 @@ class YardDBType{
     /** Empty copy constructor */
     YardDBType(const YardDBType& obj) {}
         
-    /** To string **/
+    /** 
+     * To string method formats the datatype internals into string form.
+     * This method is pure virtual and must be implemented in derived classes.
+     * @param delim The string to delimit internal fields with, defaults to newline.
+     **/
     virtual string ToString(const string& delim = "\n") const = 0;
   
     /** Virtual destructor */

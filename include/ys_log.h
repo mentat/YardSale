@@ -32,7 +32,12 @@ enum
 
 // Yes! Fuck you MI haters.
 /**
- * Logging Wiget, based on a wxListCtrl
+ * Logging widget, based on a wxListCtrl and wxLog
+ * This widget resets the default logging system and
+ * redirects all output to itself.  Different icons represent what
+ * type of log message is being displayed.
+ * 
+ * @author Jesse Lovelace
  */
 class YardLog: public wxListCtrl , public wxLog
 {
