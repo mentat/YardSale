@@ -39,7 +39,7 @@
                     <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP</flag>
                     <border>5</border>
                     <object class="wxListCtrl" name="ID_SALES_TRANS">
-                        <size>230,140</size>
+                        <size>250,140</size>
                         <style>wxLC_REPORT|wxSUNKEN_BORDER</style>
                     </object>
                 </object>

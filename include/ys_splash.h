@@ -25,7 +25,7 @@
  * Eye-candy splash screen that shows a progress bar.
  * @todo Make this threaded
  * @author Jesse Lovelace
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 class YardSplash: public wxDialog {
     public:
@@ -59,6 +59,7 @@ class YardSplash: public wxDialog {
     wxBitmap * m_logo;
     
     wxStaticBitmap * m_bitmap;
+    
     wxTimer * m_timer;
     
     DECLARE_EVENT_TABLE()

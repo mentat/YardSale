@@ -49,7 +49,7 @@
             <flag>wxGROW|wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
             <border>5</border>
             <object class="unknown" name="ID_CO_NUM_PAD">
-            <size>220,190</size>
+            <size>220,270</size>
             </object>
         </object>
         <object class="sizeritem">

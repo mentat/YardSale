@@ -20,10 +20,13 @@
 #define YARD_ABOUT_GL_H
 
 #include "wx/dialog.h"
+#include "wx/bitmap.h"
+#include "wx/font.h"
+class wxStaticBitmap;
+class wxTimer;
+class wxTimerEvent;
+class wxPaintEvent;
 
-#ifdef YS_OGL_ABOUT
-class TestGLCanvas;
-    
 class YardAboutGL: public wxDialog
 {
  public: /** 
@@ -36,15 +39,29 @@ class YardAboutGL: public wxDialog
                const wxString& name = wxT("YardAboutGL"));
     
     /// Destructor
-    virtual ~YardAboutGL() {}
+    virtual ~YardAboutGL();
  
     void OnOK(wxCommandEvent& event);
+    void OnTimer(wxTimerEvent& event);
+    void OnPaint(wxPaintEvent& event);
+    void OnIdle(wxIdleEvent& event);
+        
  private:
-     
-     TestGLCanvas * m_gl;
+     wxStaticBitmap * m_bitmapWin;
+     wxBitmap m_bitmap;
+     wxBitmap m_cpy;
+     wxBitmap m_textBmp;
+     wxTimer * m_timer;
+ 
+     wxFont m_font;
+     wxString m_text;
+ 
+     int m_txtWidth;
+     int m_txtHeight;
+ 
+     int m_y;
      DECLARE_EVENT_TABLE()
 };
 
-#endif // YS_OGL_ABOUT
 
 #endif

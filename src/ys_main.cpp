@@ -110,11 +110,11 @@ void YardMain::OnAbout(wxCommandEvent& event)
 
 void YardMain::OnAboutGL(wxCommandEvent& event)
 {
-    #ifdef YS_OGL_ABOUT
+
     YardAboutGL * about = new YardAboutGL(this, -1, wxT("About YardSale"));
     about->ShowModal();
     about->Destroy();
-    #endif
+
     
 }
 

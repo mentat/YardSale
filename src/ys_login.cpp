@@ -10,6 +10,7 @@
 #include "yardsale.h"
 #include "ys_build.h"
 #include "ys_login.h"
+#include "ys_about_gl.h"
 #include "ys_config.h"
 
 #define LOGO_OFFSET_FROM_BOTTOM 30
@@ -46,6 +47,10 @@ YardLogin::YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
     SetSize(sizer->GetMinSize());
    
     Centre();
+    
+    YardAboutGL * about = new YardAboutGL(this, -1, wxT("About YardSale"));
+    about->ShowModal();
+    about->Destroy();
 }
 
 YardLogin::~YardLogin()
