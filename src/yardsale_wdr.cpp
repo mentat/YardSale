@@ -518,71 +518,79 @@ wxSizer *NumberPad( wxWindow *parent, bool call_fit, bool set_sizer )
     item1->SetFont( wxFont( 22, wxROMAN, wxNORMAL, wxNORMAL ) );
     item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxFlexGridSizer *item2 = new wxFlexGridSizer( 4, 0, 0 );
+    wxFlexGridSizer *item2 = new wxFlexGridSizer( 2, 0, 0 );
 
-    wxButton *item3 = new wxButton( parent, ID_CALC_1, wxT("1"), wxDefaultPosition, wxSize(64,64), 0 );
-    item3->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item3, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxFlexGridSizer *item3 = new wxFlexGridSizer( 3, 0, 0 );
 
-    wxButton *item4 = new wxButton( parent, ID_CALC_2, wxT("2"), wxDefaultPosition, wxSize(64,64), 0 );
+    wxButton *item4 = new wxButton( parent, ID_CALC_1, wxT("1"), wxDefaultPosition, wxSize(64,64), 0 );
     item4->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item4, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item4, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item5 = new wxButton( parent, ID_CALC_3, wxT("3"), wxDefaultPosition, wxSize(64,64), 0 );
+    wxButton *item5 = new wxButton( parent, ID_CALC_2, wxT("2"), wxDefaultPosition, wxSize(64,64), 0 );
     item5->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxWindow *item6 = parent->FindWindow( ID_CALC_PLUS );
-    wxASSERT( item6 );
-    item2->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item6 = new wxButton( parent, ID_CALC_3, wxT("3"), wxDefaultPosition, wxSize(64,64), 0 );
+    item6->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item3->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item7 = new wxButton( parent, ID_CALC_4, wxT("4"), wxDefaultPosition, wxSize(64,64), 0 );
     item7->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item7, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item7, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item8 = new wxButton( parent, ID_CALC_5, wxT("5"), wxDefaultPosition, wxSize(64,64), 0 );
     item8->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item8, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item8, 0, wxALIGN_CENTER|wxALL, 5 );
 
     wxButton *item9 = new wxButton( parent, ID_CALC_6, wxT("6"), wxDefaultPosition, wxSize(64,64), 0 );
     item9->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item9, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item9, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxWindow *item10 = parent->FindWindow( ID_CALC_MINUS );
-    wxASSERT( item10 );
-    item2->Add( item10, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item10 = new wxButton( parent, ID_CALC_7, wxT("7"), wxDefaultPosition, wxSize(64,64), 0 );
+    item10->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item3->Add( item10, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item11 = new wxButton( parent, ID_CALC_7, wxT("7"), wxDefaultPosition, wxSize(64,64), 0 );
+    wxButton *item11 = new wxButton( parent, ID_CALC_8, wxT("8"), wxDefaultPosition, wxSize(64,64), 0 );
     item11->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item11, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item11, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item12 = new wxButton( parent, ID_CALC_8, wxT("8"), wxDefaultPosition, wxSize(64,64), 0 );
+    wxButton *item12 = new wxButton( parent, ID_CALC_9, wxT("9"), wxDefaultPosition, wxSize(64,64), 0 );
     item12->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item12, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item12, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item13 = new wxButton( parent, ID_CALC_9, wxT("9"), wxDefaultPosition, wxSize(64,64), 0 );
+    wxButton *item13 = new wxButton( parent, ID_CALC_CLEAR, wxT("C"), wxDefaultPosition, wxSize(50,64), 0 );
     item13->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item13, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item13, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxWindow *item14 = parent->FindWindow( ID_CALC_EQUALS );
-    wxASSERT( item14 );
-    item2->Add( item14, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item14 = new wxButton( parent, ID_CALC_0, wxT("0"), wxDefaultPosition, wxSize(64,64), 0 );
+    item14->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item3->Add( item14, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
-    wxButton *item15 = new wxButton( parent, ID_CALC_CLEAR, wxT("C"), wxDefaultPosition, wxSize(50,64), 0 );
+    wxButton *item15 = new wxButton( parent, ID_CALC_DOT, wxT("."), wxDefaultPosition, wxSize(50,64), 0 );
     item15->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item15, 0, wxALIGN_CENTER|wxALL, 5 );
+    item3->Add( item15, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item16 = new wxButton( parent, ID_CALC_0, wxT("0"), wxDefaultPosition, wxSize(64,64), 0 );
-    item16->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item16, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+    item2->Add( item3, 0, wxALIGN_CENTER|wxLEFT|wxRIGHT|wxBOTTOM, 5 );
 
-    wxButton *item17 = new wxButton( parent, ID_CALC_DOT, wxT("."), wxDefaultPosition, wxSize(50,64), 0 );
+    wxFlexGridSizer *item16 = new wxFlexGridSizer( 1, 0, 0 );
+
+    wxButton *item17 = new wxButton( parent, ID_CALC_MULTIPLICATION, wxT("*"), wxDefaultPosition, wxSize(64,64), 0 );
     item17->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item17, 0, wxALIGN_CENTER|wxALL, 5 );
+    item16->Add( item17, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item18 = new wxButton( parent, ID_CALC_DONE, wxT("done"), wxDefaultPosition, wxSize(50,64), 0 );
+    wxButton *item18 = new wxButton( parent, ID_CALC_DIVISION, wxT("/"), wxDefaultPosition, wxSize(64,64), 0 );
     item18->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
-    item2->Add( item18, 0, wxALIGN_CENTER|wxALL, 5 );
+    item16->Add( item18, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxButton *item19 = new wxButton( parent, ID_CALC_PLUS, wxT("+"), wxDefaultPosition, wxSize(64,64), 0 );
+    item19->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item16->Add( item19, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    wxButton *item20 = new wxButton( parent, ID_CALC_SUBTRACTION, wxT("-"), wxDefaultPosition, wxSize(64,64), 0 );
+    item20->SetFont( wxFont( 25, wxROMAN, wxNORMAL, wxNORMAL ) );
+    item16->Add( item20, 0, wxALIGN_CENTER|wxALL, 5 );
+
+    item2->Add( item16, 0, wxALIGN_CENTER|wxLEFT|wxRIGHT|wxBOTTOM, 5 );
 
     item0->Add( item2, 0, wxALIGN_CENTER|wxLEFT|wxRIGHT|wxBOTTOM, 5 );
 
