@@ -59,7 +59,7 @@ dnl check for (wx)gtk libraries
 dnl --------------------------------------------------------------------------
 
 dnl check for wxWindows installation¤
-AM_PATH_WXCONFIG(2.4.2,wxOK=1)
+AM_PATH_WXCONFIG(2.4.1,wxOK=1)
 
 if test "$wxOK" != 1; then
    AC_MSG_ERROR([
