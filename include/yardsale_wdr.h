@@ -187,9 +187,11 @@ wxSizer *ConfigLog( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRU
 #define ID_KBD_B 10130
 #define ID_KBD_N 10131
 #define ID_KBD_M 10132
-#define ID_KBD_CLEAR 10133
-#define ID_KBD_SPACE 10134
-#define ID_KBD_DONE 10135
+#define ID_KBD_COMMA 10133
+#define ID_KBD_PERIOD 10134
+#define ID_KBD_CLEAR 10135
+#define ID_KBD_SPACE 10136
+#define ID_KBD_DONE 10137
 wxSizer *Keyboard( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions
