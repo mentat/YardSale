@@ -15,7 +15,8 @@ IMPLEMENT_DYNAMIC_CLASS(YardCalc, wxPanel)
 //when a button is pressed, it's ID matches up here with a function
 BEGIN_EVENT_TABLE(YardCalc, wxPanel)
     EVT_BUTTON(XRCID("ID_CALC_CLEAR"), YardCalc::OnClear)
-	EVT_BUTTON(XRCID("ID_CALC_DOT"), YardCalc::OnNumber)
+	//EVT_BUTTON(XRCID("ID_CALC_DOT"), YardCalc::OnNumber)
+    EVT_BUTTON(XRCID("ID_CALC_DOT"), YardCalc::OnDoubleZero)
 	EVT_BUTTON(XRCID("ID_CALC_PLUS"), YardCalc::OnOperator)
 	EVT_BUTTON(XRCID("ID_CALC_MINUS"), YardCalc::OnOperator)
 	EVT_BUTTON(XRCID("ID_CALC_EQUALS"), YardCalc::OnOperator)
@@ -123,6 +124,12 @@ YardCalc::~YardCalc()
     
 }
   
+void YardCalc::OnDoubleZero(wxCommandEvent & event){
+    m_calcstack.top().m_type.m_number = DoubleToString(StringToDouble(m_calcstack.top().m_type.m_number) * .01);
+    
+    RefreshScreen();
+}
+
 //recieve input and keep adding it to
 //the current number, each time refreshing the screen
 
@@ -152,8 +159,7 @@ void YardCalc::OnNumber(wxCommandEvent & event)
         ch = '9'; 
          if (event.GetId() == XRCID("ID_CALC_0"))
         ch = '0'; 
-         if (event.GetId() == XRCID("ID_CALC_DOT"))
-        ch = '.';  
+                    
     //check to see if we need to clear the screen
     //aka, we just previously hit an operator
    // if (!m_calcstack.top().m_isNumber)

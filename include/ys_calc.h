@@ -70,6 +70,9 @@ class YardCalc: public wxPanel {
     DECLARE_EVENT_TABLE()
     DECLARE_DYNAMIC_CLASS(YardCalc)
 	
+ 
+    void OnDoubleZero(wxCommandEvent & event);
+ 
     /**
      * Runs whenever an operator is pressed such as "+" or "-" or "="
      * It calculates the existing stack with EvaluateStack()
