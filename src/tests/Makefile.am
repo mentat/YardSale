@@ -1,7 +1,7 @@
 INCLUDES = -I../../include
 CXXFLAGS = -g $(WX_CXXFLAGS) -ansi 
 
-EXTRA_PROGRAMS = test_emp test_db test_inv test_cust test_trans test_carr test_grp test_vend
+EXTRA_PROGRAMS = test_print test_emp test_db test_inv test_cust test_trans test_carr test_grp test_vend
 
 TESTS = test_db test_inv test_emp test_cust test_trans test_carr test_grp test_vend
 
@@ -38,3 +38,4 @@ test_vend_SOURCES = ../ys_vend_type.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.c
 test_vend_LDADD = -lodbc -lexpat $(WX_LIBS)
 test_vend_CXXFLAGS = -DYS_TEST_VEND_TYPE
 
+test_print_SOURCES = print_test.cpp

@@ -3,7 +3,7 @@
 // Purpose:     XRC resource for wxScrolledWindow
 // Author:      Vaclav Slavik
 // Created:     2002/10/18
-// RCS-ID:      $Id: xh_scwin.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_scwin.cpp,v 1.2 2004/04/21 20:27:51 thementat Exp $
 // Copyright:   (c) 2002 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -19,7 +19,7 @@
     #pragma hdrstop
 #endif
 
-#include "wx/xrc/xh_scwin.h"
+#include "xh_scwin.h"
 #include "wx/scrolwin.h"
 
 

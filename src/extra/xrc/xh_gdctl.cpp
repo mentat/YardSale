@@ -23,7 +23,7 @@
 #if wxUSE_DIRDLG
 
 #include "wx/textctrl.h"
-#include "wx/xrc/xh_gdctl.h"
+#include "xh_gdctl.h"
 #include "wx/dirctrl.h"
 
 wxGenericDirCtrlXmlHandler::wxGenericDirCtrlXmlHandler()

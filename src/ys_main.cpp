@@ -1,5 +1,7 @@
 #include "extra/xrc/xmlres.h"
 #include "wx/sizer.h"
+#include "wx/accel.h"
+#include "wx/msgdlg.h"
 
 #include "ys_debug.h"
 #include "ys_bitmaps.h"
@@ -13,6 +15,7 @@
 #include "ys_reports.h"
 #include "ys_log.h"
 
+enum { ID_SHOW_LOG = 15000, ID_FULLSCREEN, ID_ABOUT, ID_CONFIG };
 
 BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(XRCID("ID_MAIN_LOGOUT"), YardMain::OnLogout)
@@ -22,6 +25,11 @@ BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(XRCID("ID_MAIN_CONFIG"), YardMain::OnOptions)
     EVT_BUTTON(XRCID("ID_MAIN_CUSTOMER"), YardMain::OnCustomer)
     EVT_BUTTON(XRCID("ID_MAIN_REPORTS"), YardMain::OnReports)
+
+    EVT_MENU(ID_SHOW_LOG, YardMain::OnShowLog)
+    EVT_MENU(ID_FULLSCREEN, YardMain::OnFullscreen)
+    EVT_MENU(ID_ABOUT, YardMain::OnAbout)
+    EVT_MENU(ID_CONFIG, YardMain::OnOptions)
 END_EVENT_TABLE()
 
 YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -36,15 +44,53 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
 
     Centre();
     
-    YardDebugScreen * debug = new YardDebugScreen(this, -1, 
+    //ShowFullScreen(true,  wxFULLSCREEN_ALL);
+    
+    wxAcceleratorEntry entries[4];
+    entries[0].Set(wxACCEL_CTRL,  (int) 'L',     ID_SHOW_LOG);
+    entries[1].Set(wxACCEL_CTRL,  (int) 'F',     ID_FULLSCREEN);
+    entries[2].Set(wxACCEL_CTRL, (int) 'A',     ID_ABOUT);
+    entries[3].Set(wxACCEL_CTRL,  (int) 'C',    ID_CONFIG);
+    wxAcceleratorTable accel(4, entries);
+    SetAcceleratorTable(accel);
+    
+    m_log = new YardDebugScreen(this, -1, 
         wxT("Debug"), wxPoint(0,50));
-    debug->Show();
+#ifdef __WXDEBUG___
+    m_log->Show();
+#endif
     
     wxLogDebug(wxT("Main loaded..."));
 }
 
 YardMain::~YardMain()
 {
+}
+
+void YardMain::OnShowLog(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnShowLog"));
+    if (m_log->IsShown())
+        m_log->Show(false);
+    else
+        m_log->Show(true);
+}
+    
+void YardMain::OnFullscreen(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnShowFullscreen"));
+    if (IsFullScreen())
+        ShowFullScreen(false);
+    else
+        ShowFullScreen(true);
+}
+    
+void YardMain::OnAbout(wxCommandEvent& event)
+{
+    wxLogDebug(wxT("OnAbout"));
+    wxMessageBox("YardSale: The Open Point of Sale\n\n"
+                "Copyright (c) 2004 - Jesse Lovelace", "About YardSale",
+                            wxOK, this);    
 }
 
 void YardMain::OnOptions(wxCommandEvent& event){

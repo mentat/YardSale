@@ -3,7 +3,7 @@
 // Purpose:     wxXmlResource::InitAllHandlers
 // Author:      Vaclav Slavik
 // Created:     2000/03/05
-// RCS-ID:      $Id: xmlrsall.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xmlrsall.cpp,v 1.2 2004/04/21 20:28:28 thementat Exp $
 // Copyright:   (c) 2000 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -20,8 +20,8 @@
     #pragma hdrstop
 #endif
 
-#include "wx/xrc/xmlres.h"
-#include "wx/xrc/xh_all.h"
+#include "xmlres.h"
+#include "xh_all.h"
 
 void wxXmlResource::InitAllHandlers()
 {

@@ -1,5 +1,4 @@
 #include "extra/xrc/xmlres.h"
-
 #include "wx/log.h"
 #include "wx/panel.h"
 #include "wx/bmpbuttn.h"

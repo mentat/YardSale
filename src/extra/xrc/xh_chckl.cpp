@@ -3,7 +3,7 @@
 // Purpose:     XRC resource for wxCheckList
 // Author:      Bob Mitchell
 // Created:     2000/03/21
-// RCS-ID:      $Id: xh_chckl.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_chckl.cpp,v 1.2 2004/04/21 20:27:25 thementat Exp $
 // Copyright:   (c) 2000 Bob Mitchell and Verant Interactive
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@
 
 #if wxUSE_OWNER_DRAWN || !defined(__WXMSW__)
 
-#include "wx/xrc/xh_chckl.h"
+#include "xh_chckl.h"
 #include "wx/checklst.h"
 #include "wx/intl.h"
 #include "wx/log.h"

@@ -3,7 +3,7 @@
 // Purpose:     wxXmlDocument - XML parser & data holder class
 // Author:      Vaclav Slavik
 // Created:     2000/03/05
-// RCS-ID:      $Id: xml.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xml.cpp,v 1.2 2004/04/21 20:28:15 thementat Exp $
 // Copyright:   (c) 2000 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -27,9 +27,9 @@
 #include "wx/intl.h"
 #include "wx/strconv.h"
 
-#include "wx/xrc/xml.h"
+#include "xml.h"
 
-#include "xmlparse.h" // from Expat
+#include "expat.h" // from Expat
 
 //-----------------------------------------------------------------------------
 //  wxXmlNode

@@ -20,7 +20,7 @@
 #define YARDSALE_MAIN_H
 
 #include "wx/frame.h"
-
+class YardDebugScreen;
 /**
  * YardMain is the main menu screen for YardSale, it displays
  * graphical buttons for accessing the inventory, employees, sales,
@@ -29,7 +29,7 @@
  * important utilities.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.15 $$
+ * @version \$Revision: 1.16 $$
  */
 class YardMain: public wxFrame {
     public:
@@ -61,8 +61,13 @@ class YardMain: public wxFrame {
     /// Edit program options
     void OnOptions(wxCommandEvent& event);
     
+    // Accelerators
+    void OnShowLog(wxCommandEvent& event);
+    void OnFullscreen(wxCommandEvent& event);
+    void OnAbout(wxCommandEvent& event);
+    
     private:
-        
+    YardDebugScreen * m_log;
     DECLARE_EVENT_TABLE()
 };
 

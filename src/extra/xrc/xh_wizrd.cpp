@@ -3,7 +3,7 @@
 // Purpose:     XRC resource for wxWizard
 // Author:      Vaclav Slavik
 // Created:     2003/03/01
-// RCS-ID:      $Id: xh_wizrd.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_wizrd.cpp,v 1.2 2004/04/21 20:28:15 thementat Exp $
 // Copyright:   (c) 2000 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@
 
 #if wxUSE_WIZARDDLG
 
-#include "wx/xrc/xh_wizrd.h"
+#include "xh_wizrd.h"
 #include "wx/log.h"
 #include "wx/wizard.h"
 

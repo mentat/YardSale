@@ -16,13 +16,13 @@
             <flag>wxGROW|wxALL</flag>
             <border>5</border>
             <object class="wxFlexGridSizer">
-                <cols>2</cols>
+                <cols>3</cols>
                 <rows>0</rows>
                 <vgap>0</vgap>
                 <hgap>0</hgap>
-                <growablecols>0,1</growablecols>
-                <growablerows>0,4</growablerows>
-                <object class="sizeritem">
+                <growablecols>0,2</growablecols>
+                <growablerows>0,1</growablerows>
+               <!-- <object class="sizeritem">
                     <flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>5</border>
                     <object class="wxStaticBitmap" name="ID_MAIN_LOGO">
@@ -36,7 +36,7 @@
                     <object class="wxButton" name="ID_MAIN_CONFIG">
                         <label>Config</label>
                     </object>
-                </object>
+                </object>-->
                 <object class="sizeritem">
                     <flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>20</border>
@@ -54,7 +54,7 @@
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>20</border>
                     <object class="wxBitmapButton" name="ID_MAIN_CUSTOMER">
                     <bitmap>ys_customer_128x128.png</bitmap>
@@ -62,7 +62,7 @@
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                    <flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>20</border>
                     <object class="wxBitmapButton" name="ID_MAIN_REPORTS">
                     <bitmap>ys_reports_128x128.png</bitmap>
@@ -70,7 +70,7 @@
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                    <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>20</border>
                     <object class="wxBitmapButton" name="ID_MAIN_EMPLOYEE">
                     <bitmap>ys_employee_128x128.png</bitmap>
@@ -78,7 +78,7 @@
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>20</border>
                     <object class="wxBitmapButton" name="ID_MAIN_LOGOUT">
                     <bitmap>ys_logout_128x128.png</bitmap>

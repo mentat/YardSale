@@ -69,18 +69,36 @@ class StarDP8340: public YardCommPrinter
  public:
     bool Print(const string& str)
     {
-        ofstream printer("/dev/ttyS0");
-        printer << "Hi\n\n\n";
+        ofstream printer("/dev/ttyS0", ios::out | ios::binary);
+        printer << str;
     }
     void SetRed()
-    {
+    {   
         ofstream printer("/dev/ttyS0", ios::out | ios::binary);
-        printer << 0x1b << 0x2d << 1;
+        printer << (char)0x1b << (char)0x34;
     }
     void SetBlack()
     {
+        ofstream printer("/dev/ttyS0", ios::out | ios::binary);
+        printer << (char)0x1b << (char)0x35;
 
-    }        
+    }    
+    void SetUnderline(bool enabled = true)
+    {
+        ofstream printer("/dev/ttyS0", ios::out | ios::binary);
+        if (enabled)
+            printer << (char)0x1b << (char)0x2d << (char)0x01;
+        else
+            printer << (char)0x1b << (char)0x2d << (char)0x00;
+    }
+    
+    void TestImage()
+    {
+        ofstream printer("/dev/ttyS0", ios::out | ios::binary);
+        printer << (char)0x1b << (char)0x4b << (char)0x04 << (char)0x00
+            << (char)0x10 << (char)0x03 << (char)0x04 << (char)0x06;
+    }
+            
     
 };
 

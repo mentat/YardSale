@@ -1,4 +1,4 @@
-INCLUDES =  -I. -Iexpat/xmltok -Iexpat/xmlparse
+INCLUDES =  -I.
 
 CXXFLAGS = $(WX_CXXFLAGS)  -g
 
@@ -42,7 +42,4 @@ xh_unkwn.cpp \
 xh_wizrd.cpp \
 xml.cpp \
 xmlres.cpp \
-xmlrsall.cpp \
-expat/xmlparse/xmlparse.c \
-expat/xmltok/xmlrole.c \
-expat/xmltok/xmltok.c 
+xmlrsall.cpp

@@ -3,7 +3,7 @@
 // Purpose:     XML resource handler for wxStaticBitmap
 // Author:      Bob Mitchell
 // Created:     2000/03/21
-// RCS-ID:      $Id: xh_sttxt.h,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_sttxt.h,v 1.2 2004/04/21 20:28:13 thementat Exp $
 // Copyright:   (c) 2000 Bob Mitchell
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -15,7 +15,7 @@
 #pragma interface "xh_sttxt.h"
 #endif
 
-#include "wx/xrc/xmlres.h"
+#include "xmlres.h"
 
 
 class WXXMLDLLEXPORT wxStaticTextXmlHandler : public wxXmlResourceHandler

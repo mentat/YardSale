@@ -107,6 +107,13 @@ void YardReports::OnReportEmpHours(wxCommandEvent& event)
     }
     wxLogDebug(wxT("Count: %d"), count);
     
+    if (count == 0)
+    {
+        wxMessageBox("No data was found in that time range.", "No Data",
+                            wxOK, this);   
+        return;
+    }
+    
     xml += "\n</root>\n";
     
     string html = ProcessXSLT(xml, "res/report.xsl");
@@ -151,6 +158,13 @@ void YardReports::OnReportEmpSales(wxCommandEvent& event)
         return;
     }
     wxLogDebug(wxT("Count: %d"), count);
+    
+    if (count == 0)
+    {
+        wxMessageBox("No data was found in that time range.", "No Data",
+                            wxOK, this);   
+        return;
+    }
     
     xml += "\n</root>\n";
     
@@ -202,6 +216,13 @@ void YardReports::OnReportHourlyRev(wxCommandEvent& event)
         return;
     }
     wxLogDebug(wxT("Count: %d"), count);
+    
+    if (count == 0)
+    {
+        wxMessageBox("No data was found in that time range.", "No Data",
+                            wxOK, this);   
+        return;
+    }
     
     xml += "\n</root>\n";
     

@@ -3,7 +3,7 @@
 // Purpose:     XRC resource for wxBitmap and wxIcon
 // Author:      Vaclav Slavik
 // Created:     2000/09/09
-// RCS-ID:      $Id: xh_bmp.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_bmp.cpp,v 1.2 2004/04/21 20:27:24 thementat Exp $
 // Copyright:   (c) 2000 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -19,7 +19,7 @@
     #pragma hdrstop
 #endif
 
-#include "wx/xrc/xh_bmp.h"
+#include "xh_bmp.h"
 #include "wx/bitmap.h"
 
 

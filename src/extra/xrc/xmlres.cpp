@@ -3,7 +3,7 @@
 // Purpose:     XRC resources
 // Author:      Vaclav Slavik
 // Created:     2000/03/05
-// RCS-ID:      $Id: xmlres.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xmlres.cpp,v 1.2 2004/04/21 20:28:17 thementat Exp $
 // Copyright:   (c) 2000 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -35,8 +35,8 @@
 #include "wx/fontmap.h"
 #include "wx/artprov.h"
 
-#include "wx/xrc/xml.h"
-#include "wx/xrc/xmlres.h"
+#include "xml.h"
+#include "xmlres.h"
 
 #include "wx/arrimpl.cpp"
 WX_DEFINE_OBJARRAY(wxXmlResourceDataRecords);

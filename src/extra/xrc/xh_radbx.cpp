@@ -3,7 +3,7 @@
 // Purpose:     XRC resource for wxRadioBox
 // Author:      Bob Mitchell
 // Created:     2000/03/21
-// RCS-ID:      $Id: xh_radbx.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_radbx.cpp,v 1.2 2004/04/21 20:27:43 thementat Exp $
 // Copyright:   (c) 2000 Bob Mitchell and Verant Interactive
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -19,7 +19,7 @@
     #pragma hdrstop
 #endif
 
-#include "wx/xrc/xh_radbx.h"
+#include "xh_radbx.h"
 #include "wx/radiobox.h"
 #include "wx/intl.h"
 

@@ -3,7 +3,7 @@
 // Purpose:     XML resource handler for wxBoxSizer
 // Author:      Vaclav Slavik
 // Created:     2000/08/11
-// RCS-ID:      $Id: xh_toolb.h,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_toolb.h,v 1.2 2004/04/21 20:28:15 thementat Exp $
 // Copyright:   (c) 2000 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -15,7 +15,7 @@
 #pragma interface "xh_toolb.h"
 #endif
 
-#include "wx/xrc/xmlres.h"
+#include "xmlres.h"
 
 #if wxUSE_TOOLBAR
 

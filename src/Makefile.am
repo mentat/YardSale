@@ -1,13 +1,16 @@
 ## the hell with autocon
-INCLUDES =  -I../include
-SUBDIRS = extra res tests
+INCLUDES =  -I../include -I/usr/local/include
+SUBDIRS = res tests extra
 
 BUILDID = `cat build.id`
 
-CXXFLAGS = $(WX_CXXFLAGS)  -g
+CXXFLAGS = $(WX_CXXFLAGS) 
 
 all:
 	perl build.pl
+
+clean:
+	rm -f *.gz
 
 rez: yardsale
 	$(REZFLAGS) yardsale
@@ -47,10 +50,10 @@ yardsale_SOURCES = \
 	ys_customer.cpp\
 	ys_reports.cpp
 
-yardsale_LDFLAGS = -Lextra/xrc
+yardsale_LDFLAGS =
 
 yardsale_LDADD =  \
-	$(WX_LIBS) -lodbc -lxrc -lsablot
+	extra/xrc/libxrc.a -lodbc -lsablot -lexpat $(WX_LIBS_STATIC)
     
 binary: yardsale
 	mkdir yardsale-$(BUILDID)
@@ -62,4 +65,3 @@ binary: yardsale
 	strip yardsale-$(BUILDID)/yardsale
 	tar zcf yardsale-0.$(BUILDID).tar.gz yardsale-$(BUILDID)
 	rm -rf yardsale-$(BUILDID)
-	scp yardsale-$(BUILDID).tar.gz thementat@yardsale.sf.net:/home/groups/y/ya/yardsale/htdocs/builds

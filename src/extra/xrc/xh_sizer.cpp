@@ -3,7 +3,7 @@
 // Purpose:     XRC resource for wxBoxSizer
 // Author:      Vaclav Slavik
 // Created:     2000/03/21
-// RCS-ID:      $Id: xh_sizer.cpp,v 1.1 2004/04/18 20:27:51 thementat Exp $
+// RCS-ID:      $Id: xh_sizer.cpp,v 1.2 2004/04/21 20:27:52 thementat Exp $
 // Copyright:   (c) 2000 Vaclav Slavik
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -19,7 +19,7 @@
     #pragma hdrstop
 #endif
 
-#include "wx/xrc/xh_sizer.h"
+#include "xh_sizer.h"
 #include "wx/sizer.h"
 #include "wx/panel.h"
 #include "wx/log.h"

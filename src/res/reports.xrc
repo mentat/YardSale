@@ -10,100 +10,119 @@
         <rows>0</rows>
         <vgap>0</vgap>
         <hgap>0</hgap>
-        <growablecols>0</growablecols>
         <object class="sizeritem">
-            <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+            <flag>wxALIGN_CENTER|wxALL</flag>
             <border>5</border>
-            <object class="wxStaticBoxSizer">
-                <orient>wxVERTICAL</orient>
-                <label>Employee Hours</label>
+            <object class="wxFlexGridSizer">
+                <cols>1</cols>
+                <rows>0</rows>
+                <vgap>0</vgap>
+                <hgap>0</hgap>
                 <object class="sizeritem">
                     <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>5</border>
-                    <object class="wxStaticText" name="ID_TEXT">
-                        <label>The amount of time an employee has
+                    <object class="wxStaticBoxSizer">
+                        <orient>wxVERTICAL</orient>
+                        <label>Employee Hours</label>
+                        <object class="sizeritem">
+                            <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxStaticText" name="ID_TEXT">
+                                <label>The amount of time an employee has
 worked in a given date range.</label>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="ID_REPORT_EMP_HOURS">
+                                <label>Generate</label>
+                            </object>
+                        </object>
                     </object>
                 </object>
-                <object class="sizeritem">
-                    <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-                    <border>5</border>
-                    <object class="wxButton" name="ID_REPORT_EMP_HOURS">
-                        <label>Generate</label>
-                    </object>
-                </object>
-            </object>
-        </object>
-        <object class="sizeritem">
-            <flag>wxALIGN_CENTER|wxALL</flag>
-            <border>5</border>
-            <object class="wxStaticBoxSizer">
-                <orient>wxVERTICAL</orient>
-                <label>From</label>
-                <object class="sizeritem">
-                    <flag>wxALIGN_CENTER|wxALL</flag>
-                    <border>5</border>
-                    <object class="wxCalendarCtrl" name="ID_REPORT_FROM">
-                    </object>
-                </object>
-            </object>
-        </object>
-        <object class="sizeritem">
-            <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
-            <border>5</border>
-            <object class="wxStaticBoxSizer">
-                <orient>wxVERTICAL</orient>
-                <label>Sales by Employee</label>
                 <object class="sizeritem">
                     <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>5</border>
-                    <object class="wxStaticText" name="ID_TEXT">
-                        <label>Total sales by employee over a 
+                    <object class="wxStaticBoxSizer">
+                        <orient>wxVERTICAL</orient>
+                        <label>Sales by Employee</label>
+                        <object class="sizeritem">
+                            <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxStaticText" name="ID_TEXT">
+                                <label>Total sales by employee over a 
 given date range.</label>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="ID_REPORT_EMP_SALES">
+                                <label>Generate</label>
+                            </object>
+                        </object>
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                    <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
                     <border>5</border>
-                    <object class="wxButton" name="ID_REPORT_EMP_SALES">
-                        <label>Generate</label>
-                    </object>
-                </object>
-            </object>
-        </object>
-        <object class="sizeritem">
-            <flag>wxALIGN_CENTER|wxALL</flag>
-            <border>5</border>
-            <object class="wxStaticBoxSizer">
-                <orient>wxVERTICAL</orient>
-                <label>To</label>
-                <object class="sizeritem">
-                    <flag>wxALIGN_CENTER|wxALL</flag>
-                    <border>5</border>
-                    <object class="wxCalendarCtrl" name="ID_REPORT_TO">
-                    </object>
-                </object>
-            </object>
-        </object>
-        <object class="sizeritem">
-            <flag>wxGROW|wxALIGN_CENTER_VERTICAL|wxALL</flag>
-            <border>5</border>
-            <object class="wxStaticBoxSizer">
-                <orient>wxVERTICAL</orient>
-                <label>Hourly Revenue</label>
-                <object class="sizeritem">
-                    <flag>wxALIGN_CENTER|wxALL</flag>
-                    <border>5</border>
-                    <object class="wxStaticText" name="ID_TEXT">
-                        <label>Total amount of profit made over each
+                    <object class="wxStaticBoxSizer">
+                        <orient>wxVERTICAL</orient>
+                        <label>Hourly Revenue</label>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxStaticText" name="ID_TEXT">
+                                <label>Total amount of profit made over each
 hour in a give date range.</label>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="ID_REPORT_HOURLY_REV">
+                                <label>Generate</label>
+                            </object>
+                        </object>
+                    </object>
+                </object>
+            </object>
+        </object>
+        <object class="sizeritem">
+            <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+            <border>5</border>
+            <object class="wxFlexGridSizer">
+                <cols>1</cols>
+                <rows>0</rows>
+                <vgap>0</vgap>
+                <hgap>0</hgap>
+                <object class="sizeritem">
+                    <flag>wxALIGN_CENTER|wxALL</flag>
+                    <border>5</border>
+                    <object class="wxStaticBoxSizer">
+                        <orient>wxVERTICAL</orient>
+                        <label>From</label>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxCalendarCtrl" name="ID_REPORT_FROM">
+                            </object>
+                        </object>
                     </object>
                 </object>
                 <object class="sizeritem">
-                    <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                    <flag>wxALIGN_CENTER|wxALL</flag>
                     <border>5</border>
-                    <object class="wxButton" name="ID_REPORT_HOURLY_REV">
-                        <label>Generate</label>
+                    <object class="wxStaticBoxSizer">
+                        <orient>wxVERTICAL</orient>
+                        <label>To</label>
+                        <object class="sizeritem">
+                            <flag>wxALIGN_CENTER|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxCalendarCtrl" name="ID_REPORT_TO">
+                            </object>
+                        </object>
                     </object>
                 </object>
             </object>

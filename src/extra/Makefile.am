@@ -1,1 +1,1 @@
-SUBDIRS = xrc wxrc wxrcedit
+SUBDIRS = xrc
