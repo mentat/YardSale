@@ -65,13 +65,13 @@ void YardCalc::DumpStack()
     
     while (!m_calcstack2.empty()){
         if (m_calcstack2.top().m_isNumber){
-            cout << "STACK: number->" << m_calcstack2.top().m_type.m_number << "\n";
+   //         cout << "STACK: number->" << m_calcstack2.top().m_type.m_number << "\n";
         }else
-            cout << "STACK: operator->" << "\n";
+    //        cout << "STACK: operator->" << "\n";
         
         m_calcstack2.pop();
     }
-                cout << "\n\n";
+     //           cout << "\n\n";
 
     
 }
