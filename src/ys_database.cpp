@@ -4,6 +4,7 @@
 #include "ys_exception.h"
 #include "ys_database.h"
 
+#define OTL_ODBC_MYSQL
 #ifndef _WIN32
 #define OTL_ODBC_UNIX
 #else
