@@ -1,5 +1,5 @@
 /*
-    $Id: xmlnode.h,v 1.1 2004/04/18 20:28:40 thementat Exp $
+    $Id: xmlnode.h,v 1.2 2004/04/22 13:46:30 thementat Exp $
  
     XMLNode - A XML DOM tree
     
@@ -206,7 +206,17 @@ public:
     unsigned int numChildren(const string &name) const;
 
     /// Return all children
-    vector<XMLNode> children();
+   // vector<XMLNode> children();
+   template<typename T>
+    vector<T> XMLNode::children() 
+    { 
+        vector<T> ret;
+        for (NodeMap::iterator it = m_xmlData->m_children.begin();
+                it != m_xmlData->m_children.end(); it++)
+           ret.push_back(T(it->second));
+        
+        return ret;
+    }
 
     /// Return all children (read only)
     vector<XMLNode> const_children() const;
@@ -218,7 +228,18 @@ public:
     XMLNode& child(const string &name, unsigned int index=0);
     
     // return all children of name
-    vector<XMLNode> children(const string& name);
+    //vector<XMLNode> children(const string& name);
+    template <typename T>
+    vector<T> XMLNode::children(const string& name)
+    {
+        vector<T> ret;
+        pair<NodeMap::iterator, NodeMap::iterator> p(m_xmlData->m_children.equal_range(name));
+    
+        while (p.first != m_xmlData->m_children.end())
+            ret.push_back(T((p.first++)->second));
+        
+        return ret;   
+    }
     
     /**
      * Returns a child XMLNode

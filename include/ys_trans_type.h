@@ -19,80 +19,94 @@
 #ifndef YS_TRANSACTION_TYPE_H
 #define YS_TRANSACTION_TYPE_H
 
-#include "ys_dbtype.h"
+#include "xmlnode.h"
+#include "ys_inv_type.h"
+#include "ys_cust_type.h"
+#include "ys_employee_type.h"
 #include <vector>
 #include <string>
 
 using namespace std;
-
 class YardDatabase;
-class otl_stream;
     
-class YardTransType: public YardDBType
+class YardTransType: public XMLNode
 {
  public:
    
     friend class YardDatabase;
       
-    YardTransType() {}
-    
-    /**
-     * Copy constructor
-     */
-    YardTransType(const YardTransType& obj);
-    
-    YardTransType& operator=(const YardTransType& obj);
+    YardTransType() { setName("Transaction_Log_Table"); }
+    YardTransType(const string& xml): XMLNode(xml, XMLNode::Str) {}
     
     /* Getters */
-    int GetTransKey() const { return m_transKey; }
-    int GetEmpKey() const { return m_empKey; }
-    int GetInvKey() const { return m_invKey; }
-    int GetCustKey() const { return m_custKey; }
-    float GetItemSalePrice() const { return m_salePrice; }
-    int GetTransID() const { return m_transID; }
-    int GetQuantity() const { return m_quantity; }
-    string GetComment() const { return m_comment; }
-      
-    /* setters */
-    void SetTransKey(const int& a_num) { m_transKey = a_num; }
-    void SetEmpKey(const int& a_num) { m_empKey = a_num; }
-    void SetInvKey(const int& a_num) { m_invKey = a_num; }
-    void SetCustKey(const int& a_num) { m_custKey = a_num; }
-    void SetItemSalePrice(const float& a_num) { m_salePrice = a_num; }
-    void SetTransID(const int& a_num) { m_transID = a_num; }
-    void SetQuantity(const int& a_num) { m_quantity = a_num; }
-    void SetComment(const string& str) { m_comment = str; }
+    string GetEmployeeIdS() const 
+        { return child("TRANS_REF_EMP_ID_Number").data(); }
     
+    long GetEmployeeId() const
+        { return ToLong(GetEmployeeIdS()); }
+        
+    vector<long> GetItemsId() const
+    {
+        vector<long> ret;
+        for (NodeMap::const_iterator it = m_xmlData->m_children.begin();
+             it != m_xmlData->m_children.end(); it++)
+            ret.push_back(YardInvType(it->second).GetKey());
+        return ret;
+    }
+        
+    vector<YardInvType> GetItems() const
+    {   // oh the sexiness of templates!
+        return child("items").children<YardInvType>("Inventory_Table");
+    }
+    
+    unsigned int CountItems() const
+        { return child("items").numChildren("Inventory_Table"); }
+    
+    string GetCustomerIdS() const
+        { return child("TRANS_REF_CUST_Account_Number").data(); }
+    long GetCustomerId() const
+        { return ToLong(GetCustomerIdS()); }
+    
+    string GetIdS() const
+        { return child("TRANS_ID").data(); }
+    long GetId() const
+        { return ToLong(GetIdS()); }
+        
+    string GetQuantityS(long index) const
+        { return child("items").child("Inventory_Table", index).child("Count").data(); }
+    long GetQuantity(long index) const
+        { return ToLong(GetQuantityS(index)); }
+
+    string GetComment(long index) const
+        { return child("items").child("Inventory_Table", index).child("Comment").data(); }
+        
+    string GetSalePrice(long index) const
+        { return YardInvType(child("items").child("Inventory_Table", index)).GetRetailPriceS(); }
+        
+    string GetTime(long index) const
+        { return child("items").child("Inventory_Table", index).child("Time").data(); }
+        
+    string GetOldTransRefS() const
+        { return child("TRANS_REF_TRANS_Old_Trans").data(); }
+        
+    long GetOldTransRef() const
+        { return ToLong(GetOldTransRefS()); }
+        
     /* member functions */
-    float SubTotal(const vector<YardTransType> transVect);
-       /* float subTotal = 0;
-        for(unsigned int i = 0 ;  i< transVect.size(); i++){
-                subTotal += transVect[i].GetItemSalePrice() * transVect[i].GetQuantity();            
+    double SubTotal(const vector<YardTransType> transVect);
+    
+    map<string, float> GetTaxes() const
+        {
+            map<string, float> tax;
+            return tax;
         }
-        return subTotal;
-    } */
-   
+        
     /**
      * Returns string representation of the datatype.
      * @param delim The string to delimit items in database
      * @return A string representation of the object
      */
-    virtual string ToString(const string& delim = ",") const;
-    
-    void FillFromStream(otl_stream * stream);
-   
- private:
-    
-    /* These variables directly correspond with the database */
-    int m_transKey;
-    int m_empKey;
-    int m_invKey;
-    int m_custKey;
-    float m_salePrice;
-    int m_transID;
-    int m_quantity;
-    string m_comment;
-    
+    virtual string ToString(const string& delim = ",", bool quotes = true) const;   
 
 };
 

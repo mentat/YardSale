@@ -27,13 +27,15 @@ class wxChoice;
 class wxSpinCtrl;
 class wxCheckBox;    
 class wxListEvent;
+class wxTreeCtrl;
+class wxTreeEvent;
 
 /**
  * The inventory screen displays items in the inventory and allows seaching.
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.18 $$
+ * @version \$Revision: 1.19 $$
  */
 class YardInventory: public wxDialog{
  public:
@@ -71,7 +73,14 @@ class YardInventory: public wxDialog{
      */
     void OnSelect(wxListEvent & event);
     
+    void OnChange(wxTreeEvent& event);
+    
  private:
+     
+    void ShowItem(const YardInvType& item);
+    YardInvType SaveItem();     
+ 
+    void LoadTreeItems(wxTreeCtrl * tree);
      
     void LoadFromDB();
      
@@ -82,6 +91,8 @@ class YardInventory: public wxDialog{
     void PopulateList();
  
     DECLARE_EVENT_TABLE()
+ 
+    wxTreeCtrl * m_tree;
  
     wxTextCtrl * m_sku;
     wxTextCtrl * m_barcode;

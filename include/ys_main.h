@@ -29,7 +29,7 @@ class YardDebugScreen;
  * important utilities.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.16 $$
+ * @version \$Revision: 1.17 $$
  */
 class YardMain: public wxFrame {
     public:
@@ -65,6 +65,7 @@ class YardMain: public wxFrame {
     void OnShowLog(wxCommandEvent& event);
     void OnFullscreen(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
+    void OnAboutGL(wxCommandEvent& event);
     
     private:
     YardDebugScreen * m_log;
