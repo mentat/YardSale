@@ -9,6 +9,7 @@
 #include "yardsale.h"
 #include "yardsale_wdr.h"
 #include "ys_calc_dlg.h"
+#include "ys_keybrd_dlg.h"
 
 enum { FOOTER_TIMER_ID = 9999 };
 
@@ -105,6 +106,9 @@ void YardFooter::OnCalc(wxCommandEvent& event)
 void YardFooter::OnKeyboard(wxCommandEvent & event)
 {
     wxLogDebug(wxT("OnKeyboard"));
+    YardKeybrdDlg * dlg = new YardKeybrdDlg(this, -1, wxT("Keyboard"));
+    dlg->ShowModal();
+    dlg->Destroy();
     
 }
 
