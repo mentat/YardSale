@@ -122,8 +122,8 @@ class YardDatabase {
      * @return A std::vector of YardInvType objects
      * @throws YardException if database not initialized
      */
-    vector<YardInvType> InventoryGetAll();
-    YardInvType InventoryGet(long key);
+    vector<YardInvType> InventoryGetAll() const;
+    YardInvType InventoryGet(long key) const;
     void InventoryUpdate(const YardInvType& inv);
     
     /**
@@ -181,6 +181,7 @@ class YardDatabase {
     vector<YardTaxType> TaxTypeGetAll() const;
     long TaxTypeAdd(const YardTaxType& taxtype);
     void TaxTypeUpdate(const YardTaxType& taxtype);
+    YardTaxType TaxTypeGet(long key) const;
     
     /* helpers */
     static string tab(int level);

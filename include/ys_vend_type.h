@@ -19,14 +19,13 @@
 #ifndef YS_VEND_TYPE_H
 #define YS_VEND_TYPE_H
 
-#include "ys_dbtype.h"
+#include "xmlnode.h"
 #include <vector>
 #include <string>
 
 using namespace std;
 
 class YardDatabase;
-class otl_stream;
 
 /**
  * The YardSale Vendor Type is a OO representation of the datebase
@@ -36,106 +35,95 @@ class otl_stream;
  * @ingroup database 
  * @see YardVendType
  * @author Michael Swigon	
- * @version \$Revision: 1.1 $$
- * @see YardDBType
+ * @version \$Revision: 1.2 $$
+ * @see XMLNode
  */
 
-class YardVendType: public YardDBType
+class YardVendType: public XMLNode
 {
  public:
    
     friend class YardDatabase;
 
-	  
-    YardVendType() {}
-    
-    /**
-     * Copy constructor
-     */
-    YardVendType(const YardVendType& obj);
-    
-    YardVendType& operator=(const YardVendType& obj);
+    YardVendType() { setName("Vendor_Table"); }
+    YardVendType(const string& xml): XMLNode(xml, Str) {}
 
 	/// Get vendor id
-    int GetVendID() const { return m_vendID; }
+    string GetIdS() const
+        { return child("VND_ID").data(); }
+    long GetId() const 
+        { return ToLong(GetIdS()); }
     /// Get vendor name
-    string GetVendName() const { return m_vendName; }
+    string GetName() const 
+        { return child("VND_Name").data(); }
     /// Return vector of vendor address
-    vector<string> GetVendAddress() const { return m_vendAddress; }
+    string GetAddress() const 
+        { return child("VND_Address"); }
 	/// Get vendor city
-    string GetVendCity() const { return m_vendCity; }
+    string GetCity() const 
+        { return child("VND_City").data(); }
 	/// Get vendor state
-    string GetVendState() const { return m_vendState; }
+    string GetState() const 
+        { return child("VND_State").data(); }
 	/// Get vendor zip code
-    string GetVendZip() const { return m_vendZip; }
+    string GetZip() const 
+        { return child("VND_Zip_Code").data(); }
 	/// Get vendor phone number
-    string GetVendPhone() const { return m_vendPhone; }
+    string GetPhone() const 
+        { return child("VND_Phone_Number").data(); }
 	/// Get vendor sales representative
-    string GetVendSalesRep() const { return m_vendSalesRep; }
+    string GetSalesRep() const 
+        { return child("VND_Sales_Representative").data(); }
 	/// Get vendor specialty
-    string GetVendSpecialty() const { return m_vendSpecialty; }
+    string GetSpecialty() const 
+        { return child("VND_Specialty").data(); }
 	/// Get vendor email address
-    string GetVendEmail() const { return m_vendEmail; }
+    string GetEmail() const 
+        { return child("VND_Email_Address").data(); }
 	/// Get vendor homepage
-    string GetVendHomePage() const { return m_vendHomePage; }
+    string GetHomePage() const 
+        { return child("VND_Home_Page").data(); }
 
 	/* settors */
   
     /// Set the vendor name
-	void SetVendName(const string& str) { m_vendName = str; }
+	void SetName(const string& str) 
+        { child("VND_Name").setData(str); }
     /// Set the vendor 
-    void SetVendAddress(const vector<string>& addr) { m_vendAddress = addr; }
+    void SetAddress(const vector<string>& addr) 
+        { /*m_vendAddress = addr;*/ }
 	/// Set the vendor city
-	void SetVendCity(const string& str) { m_vendCity = str; }
+	void SetCity(const string& str) 
+        { child("VND_City").setData(str); }
 	/// Set the vendor state
-	void SetVendState(const string& str) { m_vendCity = str; }
+	void SetState(const string& str) 
+        { child("VND_State").setData(str); }
 	/// Set the vendor zip code
-	void SetVendZip(const string& str) { m_vendZip = str; }
+	void SetZip(const string& str) 
+        { child("VND_Zip_Code").setData(str); }
 	/// Set the vendor phone number
-	void SetVendPhone(const string& str) { m_vendPhone = str; }
+	void SetPhone(const string& str) 
+        { child("VND_Phone_Number").setData(str); }
 	/// Set the vendor sales representative
-	void SetVendSalesRep(const string& str) { m_vendSalesRep = str; }
+	void SetSalesRep(const string& str) 
+        { child("VND_Sales_Representative").setData(str); }
 	/// Set the vendor specialty
-	void SetVendSpecialty(const string& str) { m_vendSpecialty = str; }
+	void SetSpecialty(const string& str) 
+        { child("VND_Specialty").setData(str); }
 	/// Set the vendor email address
-	void SetVendEmail(const string& str) { m_vendEmail = str; }
+	void SetEmail(const string& str) 
+        { child("VND_Email_Address").setData(str); }
 	/// Set the vendot homepage
-	void SetVendHomePage(const string& str) { m_vendHomePage = str; }
-
+	void SetHomePage(const string& str) 
+        { child("VND_Home_Page").setData(str); }
 
 	/**
      * Returns string representation of the datatype.
      * @param delim The string to delimit items in database
      * @return A string representation of the object
      */
-    virtual string ToString(const string& delim = ",") const;
-    
-    virtual void FillFromStream(otl_stream * stream);
-
-private:
-    
-    /* These variables directly correspond with the database */
-    int m_vendID;
-    string m_vendName;
-    
-	//vendor address
-	
-	string m_vendCity;
-    string m_vendState;
-	string m_vendZip;
-	string m_vendPhone;
-	string m_vendSalesRep;
-	string m_vendSpecialty;
-	string m_vendEmail;
-	string m_vendHomePage;
-
-	string m_vendAddr;
-    vector<string> m_vendAddress;
-
+    virtual string ToString(const string& delim = ",", bool quote = true) const;
 
 };
 
 #endif
-	
-
-

@@ -23,6 +23,14 @@ using namespace std;
 
 int main()
 {   
+    YardGroup test1;
+    
+    test1.SetId(1000);
+    VERIFY(test1.GetId(), 1000);
+    
+    test1.SetName("Z mod n"); // ;)
+    VERIFY(test1.GetName(), string("Z mod n"));
+    
     return failure;
 }
 

@@ -154,7 +154,7 @@ vector<YardEmployeeType> YardDatabase::EmployeeGetAll() const{
     return XMLFromStream<YardEmployeeType>(dbStream.get(), "Employee_Table");
 }
 
-vector<YardInvType> YardDatabase::InventoryGetAll(){
+vector<YardInvType> YardDatabase::InventoryGetAll() const{
     
     if (!m_db)
         throw YardDBException("DB not initialized.");
@@ -175,7 +175,31 @@ vector<YardInvType> YardDatabase::InventoryGetAll(){
     return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
 }
 
-YardInvType YardDatabase::InventoryGet(long key)
+YardVendType YardDatabase::VendorGet(long key) const
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Vendor_Table where VND_ID = "
+        << key << ";";
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStreamSingle<YardVendType>(dbStream.get(), "Vendor_Table");
+
+    
+}
+
+YardInvType YardDatabase::InventoryGet(long key) const
 {
     if (!m_db)
         throw YardDBException("DB not initialized.");
@@ -203,7 +227,7 @@ long YardDatabase::CarrierAdd(const YardCarrierType& carrier)
         throw YardDBException("DB not initialized.");
     
     stringstream sql;
-    sql << "INSERT INTO Carrier_Table values(" << item.ToString() << ");";
+    sql << "INSERT INTO Carrier_Table values(" << carrier.ToString() << ");";
     
     wxLogDebug(sql.str().c_str());
     auto_ptr<otl_stream> dbStream;
@@ -289,7 +313,54 @@ long YardDatabase::InventoryAdd(const YardInvType& item)
     return key;
 }
 
-int YardDatabase::CustomerAdd(const YardCustType& newCust)
+long YardDatabase::VendorAdd(const YardVendType& vendor)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "INSERT INTO Vendor_Table values(" << vendor.ToString() << ");";
+    
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    // This function also does a select to return the key
+    
+    stringstream select;
+    select << "SELECT VND_ID from Vendor_Table where VND_Name = '"
+        << vendor.GetName() << "';";
+    
+    auto_ptr<otl_stream> db;
+    
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        db.reset( new otl_stream(1, select.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    long int key = 0;
+    
+    try {
+        *db >> key;
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return key;
+
+}
+
+long YardDatabase::CustomerAdd(const YardCustType& newCust)
 {
 	if (!m_db)
 		throw YardDBException("DB not Initialized.");
@@ -308,7 +379,72 @@ int YardDatabase::CustomerAdd(const YardCustType& newCust)
     return 0;
 }
 
-long TaxTypeAdd(const YardTaxType& taxtype);
+long YardDatabase::TaxTypeAdd(const YardTaxType& taxtype)
+{
+    if (!m_db)
+		throw YardDBException("DB not Initialized.");
+
+	stringstream sql;
+	sql << "INSERT INTO Tax_Table values(" << taxtype.ToString() << ");";
+    wxLogDebug(sql.str().c_str());
+	auto_ptr<otl_stream> dbStream;
+
+	try {
+		dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+	} catch (otl_exception &e) {
+
+		throw YardDBException((char *)e.msg, (char *)e.stm_text);
+	}
+    
+    // This function also does a select to return the key
+    
+    stringstream select;
+    select << "SELECT TAX_ID from Tax_Table where INV_Name = '"
+        << taxtype.GetName() << "';";
+    
+    auto_ptr<otl_stream> db;
+    
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        db.reset( new otl_stream(1, select.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    long int key = 0;
+    
+    try {
+        *db >> key;
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return key;    
+}
+
+YardTaxType YardDatabase::TaxTypeGet(long key) const
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Tax_Table where TAX_ID = "
+        << key << ";";
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStreamSingle<YardTaxType>(dbStream.get(), "Tax_Table");
+  
+}
 
 string YardDatabase::tab(int level)
 {
@@ -455,9 +591,44 @@ Tests needed:
 */
 
 int TaxTest(YardDatabase * db)
+{
+    YardTaxType test1;
+    test1.SetName("Leetness Tax");
+    
+    long key = 0;
+    VERIFY_NO_THROW(key = db->TaxTypeAdd(test1));
+    
+    YardTaxType test2;
+    VERIFY_NO_THROW(test2 = db->TaxTypeGet(key));
+    
+    VERIFY(test1.GetName(), test2.GetName());
+    
+    return 0;
+}
 
 int VendorTest(YardDatabase * db)
+{
+    YardVendType test1;
+    
+    long key = 0;
+    VERIFY_NO_THROW(key = db->VendorAdd(test1));
+    
+    YardTaxType test2;
+    VERIFY_NO_THROW(test2 = db->VendorGet(key));
+    
+    VERIFY(test1.GetName(), test2.GetName());
+    
+}
+
 int GroupText(YardDatabase * db)
+{
+    YardGroup test1;
+    test1.SetName("Spockets");
+    
+    long key = 0;
+    VERIFY_NO_THROW(key = db->VendorAdd(test1));
+    
+}
 
 int InventoryTest(YardDatabase * db)
 {
@@ -577,6 +748,9 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    TaxTest(&testDB);
+    VendorText(&testDB);
+    GroupText(&testDB);
     InventoryTest(&testDB);
     
     return failure;
