@@ -66,24 +66,17 @@ EXEEXT = @EXEEXT@
 OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 AMTAR = @AMTAR@
-AS = @AS@
 AWK = @AWK@
 BUILD_INCLUDED_LIBINTL = @BUILD_INCLUDED_LIBINTL@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CXX = @CXX@
-CXXFLAGS = @CXXFLAGS@
+CXXCPP = @CXXCPP@
 DATADIRNAME = @DATADIRNAME@
 DEPDIR = @DEPDIR@
-DLLTOOL = @DLLTOOL@
-ECHO = @ECHO@
 GENCAT = @GENCAT@
-GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
 GLIBC21 = @GLIBC21@
 GMSGFMT = @GMSGFMT@
-GTK_CFLAGS = @GTK_CFLAGS@
-GTK_CONFIG = @GTK_CONFIG@
-GTK_LIBS = @GTK_LIBS@
 HAVE_LIB = @HAVE_LIB@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INSTOBJEXT = @INSTOBJEXT@
@@ -94,24 +87,11 @@ INTL_LIBTOOL_SUFFIX_PREFIX = @INTL_LIBTOOL_SUFFIX_PREFIX@
 LIB = @LIB@
 LIBICONV = @LIBICONV@
 LIBINTL = @LIBINTL@
-LIBTOOL = @LIBTOOL@
-LN_S = @LN_S@
 LTLIB = @LTLIB@
 LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 MKINSTALLDIRS = @MKINSTALLDIRS@
-NO_PREFIX_PACKAGE_DATA_DIR = @NO_PREFIX_PACKAGE_DATA_DIR@
-NO_PREFIX_PACKAGE_DOC_DIR = @NO_PREFIX_PACKAGE_DOC_DIR@
-NO_PREFIX_PACKAGE_HELP_DIR = @NO_PREFIX_PACKAGE_HELP_DIR@
-NO_PREFIX_PACKAGE_MENU_DIR = @NO_PREFIX_PACKAGE_MENU_DIR@
-NO_PREFIX_PACKAGE_PIXMAPS_DIR = @NO_PREFIX_PACKAGE_PIXMAPS_DIR@
-OBJDUMP = @OBJDUMP@
 PACKAGE = @PACKAGE@
-PACKAGE_DATA_DIR = @PACKAGE_DATA_DIR@
-PACKAGE_DOC_DIR = @PACKAGE_DOC_DIR@
-PACKAGE_HELP_DIR = @PACKAGE_HELP_DIR@
-PACKAGE_MENU_DIR = @PACKAGE_MENU_DIR@
-PACKAGE_PIXMAPS_DIR = @PACKAGE_PIXMAPS_DIR@
 POSUB = @POSUB@
 RANLIB = @RANLIB@
 STRIP = @STRIP@
@@ -158,7 +138,6 @@ yardsale_LDADD = \
 
 subdir = src
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
-CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 bin_PROGRAMS = yardsale$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
@@ -170,7 +149,7 @@ yardsale_OBJECTS = $(am_yardsale_OBJECTS)
 yardsale_DEPENDENCIES =
 
 DEFS = @DEFS@
-DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
+DEFAULT_INCLUDES =  -I. -I$(srcdir)
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
@@ -182,12 +161,10 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_splash.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
-LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
-CXXLINK = $(LIBTOOL) --mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
+CXXFLAGS = @CXXFLAGS@
 DIST_SOURCES = $(yardsale_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
 SOURCES = $(yardsale_SOURCES)
@@ -195,7 +172,7 @@ SOURCES = $(yardsale_SOURCES)
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .cpp .lo .o .obj
+.SUFFIXES: .cpp .o .obj
 $(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
 	  $(AUTOMAKE) --gnu  src/Makefile
@@ -208,11 +185,10 @@ install-binPROGRAMS: $(bin_PROGRAMS)
 	@list='$(bin_PROGRAMS)'; for p in $$list; do \
 	  p1=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
 	  if test -f $$p \
-	     || test -f $$p1 \
 	  ; then \
 	    f=`echo "$$p1" | sed 's,^.*/,,;$(transform);s/$$/$(EXEEXT)/'`; \
-	   echo " $(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(binPROGRAMS_INSTALL) $$p $(DESTDIR)$(bindir)/$$f"; \
-	   $(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(binPROGRAMS_INSTALL) $$p $(DESTDIR)$(bindir)/$$f; \
+	   echo " $(INSTALL_PROGRAM_ENV) $(binPROGRAMS_INSTALL) $$p $(DESTDIR)$(bindir)/$$f"; \
+	   $(INSTALL_PROGRAM_ENV) $(binPROGRAMS_INSTALL) $$p $(DESTDIR)$(bindir)/$$f; \
 	  else :; fi; \
 	done
 
@@ -225,11 +201,7 @@ uninstall-binPROGRAMS:
 	done
 
 clean-binPROGRAMS:
-	@list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  f=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
-	  echo " rm -f $$p $$f"; \
-	  rm -f $$p $$f ; \
-	done
+	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
 yardsale-yardsale.$(OBJEXT): yardsale.cpp
 yardsale-yardsale_wdr.$(OBJEXT): yardsale_wdr.cpp
 yardsale-ys_splash.$(OBJEXT): ys_splash.cpp
@@ -264,12 +236,6 @@ distclean-depend:
 @AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CXXCOMPILE) -c -o $@ `cygpath -w $<`
 
-.cpp.lo:
-@AMDEP_TRUE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(LTCXXCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
-
 yardsale-yardsale.o: yardsale.cpp
 @AMDEP_TRUE@	source='yardsale.cpp' object='yardsale-yardsale.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-yardsale.Po' tmpdepfile='$(DEPDIR)/yardsale-yardsale.TPo' @AMDEPBACKSLASH@
@@ -281,12 +247,6 @@ yardsale-yardsale.obj: yardsale.cpp
 @AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-yardsale.Po' tmpdepfile='$(DEPDIR)/yardsale-yardsale.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-yardsale.obj `cygpath -w yardsale.cpp`
-
-yardsale-yardsale.lo: yardsale.cpp
-@AMDEP_TRUE@	source='yardsale.cpp' object='yardsale-yardsale.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-yardsale.Plo' tmpdepfile='$(DEPDIR)/yardsale-yardsale.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-yardsale.lo `test -f 'yardsale.cpp' || echo '$(srcdir)/'`yardsale.cpp
 
 yardsale-yardsale_wdr.o: yardsale_wdr.cpp
 @AMDEP_TRUE@	source='yardsale_wdr.cpp' object='yardsale-yardsale_wdr.o' libtool=no @AMDEPBACKSLASH@
@@ -300,12 +260,6 @@ yardsale-yardsale_wdr.obj: yardsale_wdr.cpp
 @AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-yardsale_wdr.obj `cygpath -w yardsale_wdr.cpp`
 
-yardsale-yardsale_wdr.lo: yardsale_wdr.cpp
-@AMDEP_TRUE@	source='yardsale_wdr.cpp' object='yardsale-yardsale_wdr.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-yardsale_wdr.Plo' tmpdepfile='$(DEPDIR)/yardsale-yardsale_wdr.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-yardsale_wdr.lo `test -f 'yardsale_wdr.cpp' || echo '$(srcdir)/'`yardsale_wdr.cpp
-
 yardsale-ys_splash.o: ys_splash.cpp
 @AMDEP_TRUE@	source='ys_splash.cpp' object='yardsale-ys_splash.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_splash.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_splash.TPo' @AMDEPBACKSLASH@
@@ -318,12 +272,6 @@ yardsale-ys_splash.obj: ys_splash.cpp
 @AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_splash.obj `cygpath -w ys_splash.cpp`
 
-yardsale-ys_splash.lo: ys_splash.cpp
-@AMDEP_TRUE@	source='ys_splash.cpp' object='yardsale-ys_splash.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_splash.Plo' tmpdepfile='$(DEPDIR)/yardsale-ys_splash.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_splash.lo `test -f 'ys_splash.cpp' || echo '$(srcdir)/'`ys_splash.cpp
-
 yardsale-ys_main.o: ys_main.cpp
 @AMDEP_TRUE@	source='ys_main.cpp' object='yardsale-ys_main.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_main.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_main.TPo' @AMDEPBACKSLASH@
@@ -335,22 +283,7 @@ yardsale-ys_main.obj: ys_main.cpp
 @AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_main.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_main.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_main.obj `cygpath -w ys_main.cpp`
-
-yardsale-ys_main.lo: ys_main.cpp
-@AMDEP_TRUE@	source='ys_main.cpp' object='yardsale-ys_main.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_main.Plo' tmpdepfile='$(DEPDIR)/yardsale-ys_main.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_main.lo `test -f 'ys_main.cpp' || echo '$(srcdir)/'`ys_main.cpp
 CXXDEPMODE = @CXXDEPMODE@
-
-mostlyclean-libtool:
-	-rm -f *.lo
-
-clean-libtool:
-	-rm -rf .libs _libs
-
-distclean-libtool:
-	-rm -f libtool
 uninstall-info-am:
 
 ETAGS = etags
@@ -447,12 +380,12 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
+clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 
 distclean-am: clean-am distclean-compile distclean-depend \
-	distclean-generic distclean-libtool distclean-tags
+	distclean-generic distclean-tags
 
 dvi: dvi-am
 
@@ -478,21 +411,19 @@ maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool
+mostlyclean-am: mostlyclean-compile mostlyclean-generic
 
 uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 
 .PHONY: GTAGS all all-am check check-am clean clean-binPROGRAMS \
-	clean-generic clean-libtool distclean distclean-compile \
-	distclean-depend distclean-generic distclean-libtool \
-	distclean-tags distdir dvi dvi-am info info-am install \
-	install-am install-binPROGRAMS install-data install-data-am \
-	install-exec install-exec-am install-info install-info-am \
-	install-man install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool tags uninstall uninstall-am \
+	clean-generic distclean distclean-compile distclean-depend \
+	distclean-generic distclean-tags distdir dvi dvi-am info \
+	info-am install install-am install-binPROGRAMS install-data \
+	install-data-am install-exec install-exec-am install-info \
+	install-info-am install-man install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic tags uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-info-am
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
