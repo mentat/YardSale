@@ -1,5 +1,6 @@
 ## the hell with autocon
 INCLUDES =  -I../include
+#SUBDIRS = wxrc
 
 CXXFLAGS = $(WX_CXXFLAGS)  -g
 

@@ -25,7 +25,7 @@
 
 enum
 {
-    wxLOG_CONSOLE = 12000,
+    wxLOG_CONSOLE = 101,
     wxLOG_DB,
     wxLOG_SQL
 };

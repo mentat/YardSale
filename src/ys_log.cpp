@@ -132,11 +132,12 @@ void YardLog::DoLog(wxLogLevel level, const wxChar *szString, time_t t)
 
 }
 
+
 void wxLogCon(const wxChar* sxFormat,  ...)
 {
     va_list argptr;
     va_start(argptr, sxFormat);
-    wxLogGeneric(wxLOG_CONSOLE, sxFormat, argptr);
+    wxVLogGeneric(wxLOG_CONSOLE, sxFormat, argptr);
    // cout << sxFormat << endl;
     va_end(argptr);
     
@@ -146,7 +147,7 @@ void wxLogDB(const wxChar* sxFormat,  ...)
 {
     va_list argptr;
     va_start(argptr, sxFormat);
-    wxLogGeneric(wxLOG_DB, sxFormat, argptr);
+    wxVLogGeneric(wxLOG_DB, sxFormat, argptr);
    // cout << sxFormat << endl;
     va_end(argptr);
     
@@ -156,7 +157,7 @@ void wxLogSQL(const wxChar* sxFormat, ...)
 {
     va_list argptr;
     va_start(argptr, sxFormat);
-    wxLogGeneric(wxLOG_SQL, sxFormat, argptr);
+    wxVLogGeneric(wxLOG_SQL, sxFormat, argptr);
    // cout << sxFormat << endl;
     va_end(argptr);
     

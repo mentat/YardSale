@@ -16,6 +16,7 @@ bool YardSale::OnInit()
 {
     SetVendorName(_T("ASLS"));
     SetAppName(_T("YardSale"));
+    
     m_db = 0;
     
     m_db = new YardDatabase();
@@ -23,6 +24,7 @@ bool YardSale::OnInit()
     wxImage::AddHandler(new wxPNGHandler);    
     
     m_bitmaps = new YardBitmaps();
+    
     try {
         while(m_bitmaps->LoadBitmaps() != 0)
         {}
@@ -61,13 +63,19 @@ bool YardSale::OnInit()
     
 #endif
 
-    wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     
-    SetTopWindow(frame);
+    wxFrame * frame = 0;
+    try {
+        frame = new YardMain(NULL, -1, "YardSale");
     
-    //login->Destroy();
-    
-    frame->Show(true);
+        frame->Show(true);
+        SetTopWindow(frame);
+    }
+    catch (...)
+    {
+        wxLogError(wxT("Fatal! Top Level Exception."));
+        return false;
+    }
     
     return true;
     
