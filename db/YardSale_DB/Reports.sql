@@ -1,5 +1,9 @@
 # Connection: rau
 # Host: rau.ece.ncsu.edu
+# Saved: 2004-04-11 03:11:54
+# 
+# Connection: rau
+# Host: rau.ece.ncsu.edu
 # Saved: 2004-04-11 03:34:58
 # 
 # Connection: local
@@ -10,75 +14,19 @@
 # Host: rau.ece.ncsu.edu
 # Saved: 2004-04-09 12:49:12
 # 
-use YardSale;
+ use YardSale;
 
-SELECT * 
-FROM Transaction_Log_Table
-WHERE 
-TRANS_Time BETWEEN
-'2004-04-01 00:00:00' AND NOW();
-
-SELECT COUNT(DISTINCT TRANS_ID) AS Number_Of_Transactions
-FROM Transaction_Log_Table
-WHERE
-TRANS_Time BETWEEN
-'2004-04-01 00:00:00' AND NOW();
-
-#Get a List of all the transactions and their Inventory Information, and Employee and Customer Information for a date range
-SELECT TRANS_ID, TRANS_REF_EMP_ID_Number AS Employee_ID, 
-             TRANS_REF_INV_Item_ID, TRANS_REF_CUST_Account_Number, 
-             TRANS_Sale_Price, TRANS_ID, TRANS_Quantity, TRANS_Comment,
-             TRANS_Time,
-             EMP_ID_Number, EMP_First_Name, EMP_Middle_Name, EMP_Last_Name
-             INV_Item_Description, (TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price)) AS PROFIT_2 # 
-FROM   Transaction_Log_Table JOIN Employee_Table 
-            ON Transaction_Log_Table.TRANS_REF_EMP_ID_Number = Employee_Table.EMP_ID_Number  JOIN Customer_Table
-            ON Transaction_Log_Table.TRANS_REF_CUST_Account_Number = Customer_Table.Cust_Account_Number JOIN Inventory_Table
-            ON Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID
-WHERE
-TRANS_Time BETWEEN
-'2004-04-01 00:00:00' AND NOW();
-
-#Get a sum of the profits for each transaction
-#try unioning this with the query that gets a list of all items
-#in a transaction
-SELECT TRANS_ID, TRANS_REF_EMP_ID_Number AS Employee_ID, 
-             TRANS_REF_INV_Item_ID, TRANS_REF_CUST_Account_Number, 
-             TRANS_Sale_Price, TRANS_ID, TRANS_Quantity, TRANS_Comment,
-             TRANS_Time,
-             EMP_ID_Number, EMP_First_Name, EMP_Middle_Name, EMP_Last_Name
-             INV_Item_Description, SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT_2 # 
-FROM   Transaction_Log_Table JOIN Employee_Table 
-            ON Transaction_Log_Table.TRANS_REF_EMP_ID_Number = Employee_Table.EMP_ID_Number  JOIN Customer_Table
-            ON Transaction_Log_Table.TRANS_REF_CUST_Account_Number = Customer_Table.Cust_Account_Number JOIN Inventory_Table
-            ON Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID
-WHERE
-TRANS_Time BETWEEN
-'2004-04-01 00:00:00' AND NOW()
-GROUP BY TRANS_ID;
-
-#Get an hourly profit with this query
-SELECT TRANS_ID, TRANS_REF_EMP_ID_Number AS Employee_ID, 
-             TRANS_REF_INV_Item_ID, TRANS_REF_CUST_Account_Number, 
-             TRANS_Sale_Price, TRANS_ID, TRANS_Quantity, TRANS_Comment,
-             EXTRACT(HOUR FROM TRANS_Time),
-             EMP_ID_Number, EMP_First_Name, EMP_Middle_Name, EMP_Last_Name
-             INV_Item_Description, SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT # 
-FROM   Transaction_Log_Table JOIN Employee_Table 
-            ON Transaction_Log_Table.TRANS_REF_EMP_ID_Number = Employee_Table.EMP_ID_Number  JOIN Customer_Table
-            ON Transaction_Log_Table.TRANS_REF_CUST_Account_Number = Customer_Table.Cust_Account_Number JOIN Inventory_Table
-            ON Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID
-WHERE
-TRANS_Time BETWEEN
-'2004-04-01 00:00:00' AND '2004-04-10 23:00:00'
-GROUP BY EXTRACT(HOUR FROM TRANS_Time); 
-
+#####################################################################
+# SALES SUMMARY REPORT QUERY - SHOWS HOURLY PROFIT BREAKDOWN   #
+#####################################################################
 #This is a combined query. It Gives a total amount of profit made over each hour given a date range.
 #This date range should normally be a open - close period although it could range from any 
 #amount of time.
 #
 #The last column will always be the sum of all of the profit - the Hour field for this last column will
 #always be totally bogus information but is required to allow the UNION operation to work.
+#
+# THIS QUERY EXPECTS A START DATE AND AN END DATE
 SELECT EXTRACT(HOUR FROM TRANS_Time) AS Hour,
              SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT # 
 FROM   Transaction_Log_Table  JOIN Inventory_Table
@@ -103,15 +51,51 @@ GROUP BY TRANS_Always_Null;
 ################################################
 
 #SHOW THE AMOUNT OF TIME AN EMPLOYEE HAS WORKED GIVEN A DATE RANGE
-#THE Time_Worked Value is at least 2 digits. The two least significant digits are the minutes 0-60. The 3+ Significant digits are the
-#hours worked. Minutes = Time_Worked / 100, Hours = Time_Worked % 100
+#
+#COLUMNS NAMES RETURNED
+# ID_Number :: ID Number of Employee
+# First_Name :: First Name of Employee
+# Last_Name :: Last Name of Employee
+# Time_Worked_Hours :: Amount of hours worked by the employee
+# Time_Worked_Minutes :: Amount of minutes worked by the employee
+# Worked_On_Date :: Day that the hours were logged
+#
+# THIS QUERY EXPECTS A START DATE AND AN END DATE
 
-SELECT EMP_First_Name, Emp_Last_Name, 
+SELECT EMP_ID_Number AS ID_Number , EMP_First_Name AS First_Name, Emp_Last_Name AS Last_Name, 
              EXTRACT(HOUR FROM LOG_Time_Out - LOG_Time_In) AS Time_Worked_Hours,
              EXTRACT(HOUR_MINUTE FROM LOG_Time_Out - LOG_Time_In)%100 AS Time_Worked_Minutes,
              DATE_FORMAT(Log_Time_Out, '%W %M %D' ) AS Worked_On_Date
 FROM Login_Table JOIN Employee_Table ON LOG_REF_EMP_ID = EMP_ID_Number
 WHERE LOG_Count = 0 AND
 LOG_Time_In BETWEEN '2004-04-01' AND '2004-04-07';
+
+########################################
+# EMPLOYEE SALES STUFF IS BELOW HERE #
+########################################
+
+#COLUMN NAMES RETURNED:
+#Employee_ID :: The ID Number of the Employee Referenced on the current Row
+#First_Name :: The Employee's first name
+#Last_Name :: The Employee's last name
+#PROFIT :: The Amount of profit the Employee Made in the time period
+#RETAIL_TOTAL :: The amount of money the Employee actually brought in not considering the amount the items where bought for
+#TOTAL_WHOLESALE_COST :: Total amount of money invensted in the items sold by the employee
+#
+# THIS QUERY EXPECTS A START DATE AND AN END DATE 
+
+SELECT TRANS_REF_EMP_ID_Number AS Employee_ID, 
+             EMP_First_Name AS First_Name, EMP_Last_Name AS Last_Name,
+             SUM((TRANS_Quantity * (TRANS_Sale_Price - INV_Wholesale_Price))) AS PROFIT,
+             SUM(TRANS_Sale_Price * TRANS_Quantity) AS RETAIL_TOTAL,
+             SUM(INV_Wholesale_Price * TRANS_Quantity) AS TOTAL_WHOLESALE_COST
+FROM   Transaction_Log_Table JOIN Employee_Table 
+            ON Transaction_Log_Table.TRANS_REF_EMP_ID_Number = Employee_Table.EMP_ID_Number  JOIN Customer_Table
+            ON Transaction_Log_Table.TRANS_REF_CUST_Account_Number = Customer_Table.Cust_Account_Number JOIN Inventory_Table
+            ON Transaction_Log_Table.TRANS_REF_INV_Item_ID = Inventory_Table.INV_Item_ID
+WHERE
+TRANS_Time BETWEEN
+'2004-04-01 00:00:00' AND Now()
+GROUP BY TRANS_REF_EMP_ID_Number;
 
              
