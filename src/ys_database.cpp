@@ -234,6 +234,26 @@ int YardDatabase::AddInventoryItem(const YardInvType& item)
     
     return 0;
 }
+
+int YardDatabase::AddCustomer(const YardCustType& newCust)
+{
+	if (!m_db)
+		throw YardDBException("DB not Initialized.");
+
+	stringstream sql;
+	sql << "INSERT INTO Customer_Table values(" << newCust.ToString() << ");";
+
+	auto_ptr<otl_stream> dbStream;
+
+	try { // Who knows?
+		dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
+	} catch (otl_exception &e) {
+
+		throw YardDBException((char *)e.msg, (char *)e.stm_text);
+	}
+
+	return 0;
+}
     
 
 #if (defined(YS_TEST_MAIN) || defined(YS_TEST_DB))
