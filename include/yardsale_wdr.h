@@ -56,6 +56,15 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRU
 #define ID_MAIN_LOGO 10017
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
+#define ID_SALE_DONE 10018
+#define ID_SALE_REMOVE 10019
+#define ID_SALE_CANCEL 10020
+#define ID_SALE_BACK 10021
+wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
+#define ID_BITMAPBUTTON 10022
+wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
 // Declare menubar functions
 
 // Declare toolbar functions

@@ -105,7 +105,8 @@ yardsale_SOURCES = \
 	ys_splash.cpp\
 	ys_main.cpp\
 	ys_inventory.cpp\
-	ys_login.cpp
+	ys_login.cpp\
+	ys_sale.cpp
 
 
 yardsale_LDFLAGS = 
@@ -122,7 +123,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_yardsale_OBJECTS = yardsale-yardsale.$(OBJEXT) \
 	yardsale-yardsale_wdr.$(OBJEXT) yardsale-ys_splash.$(OBJEXT) \
 	yardsale-ys_main.$(OBJEXT) yardsale-ys_inventory.$(OBJEXT) \
-	yardsale-ys_login.$(OBJEXT)
+	yardsale-ys_login.$(OBJEXT) yardsale-ys_sale.$(OBJEXT)
 yardsale_OBJECTS = $(am_yardsale_OBJECTS)
 yardsale_DEPENDENCIES =
 
@@ -138,6 +139,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_inventory.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_login.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_main.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_sale.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_splash.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -188,6 +190,7 @@ yardsale-ys_splash.$(OBJEXT): ys_splash.cpp
 yardsale-ys_main.$(OBJEXT): ys_main.cpp
 yardsale-ys_inventory.$(OBJEXT): ys_inventory.cpp
 yardsale-ys_login.$(OBJEXT): ys_login.cpp
+yardsale-ys_sale.$(OBJEXT): ys_sale.cpp
 yardsale$(EXEEXT): $(yardsale_OBJECTS) $(yardsale_DEPENDENCIES) 
 	@rm -f yardsale$(EXEEXT)
 	$(CXXLINK) $(yardsale_LDFLAGS) $(yardsale_OBJECTS) $(yardsale_LDADD) $(LIBS)
@@ -203,6 +206,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_inventory.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_login.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_sale.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_splash.Po@am__quote@
 
 distclean-depend:
@@ -291,6 +295,18 @@ yardsale-ys_login.obj: ys_login.cpp
 @AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_login.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_login.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_login.obj `cygpath -w ys_login.cpp`
+
+yardsale-ys_sale.o: ys_sale.cpp
+@AMDEP_TRUE@	source='ys_sale.cpp' object='yardsale-ys_sale.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_sale.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_sale.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_sale.o `test -f 'ys_sale.cpp' || echo '$(srcdir)/'`ys_sale.cpp
+
+yardsale-ys_sale.obj: ys_sale.cpp
+@AMDEP_TRUE@	source='ys_sale.cpp' object='yardsale-ys_sale.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_sale.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_sale.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_sale.obj `cygpath -w ys_sale.cpp`
 CXXDEPMODE = @CXXDEPMODE@
 uninstall-info-am:
 

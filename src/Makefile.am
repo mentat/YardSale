@@ -21,7 +21,8 @@ yardsale_SOURCES = \
 	ys_splash.cpp\
 	ys_main.cpp\
 	ys_inventory.cpp\
-	ys_login.cpp
+	ys_login.cpp\
+	ys_sale.cpp
 
 yardsale_LDFLAGS = 
 
