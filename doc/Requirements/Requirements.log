@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  2 MAR 2004 07:11
+This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  2 MAR 2004 07:33
 entering extended mode
 **Requirements.tex
 (Requirements.tex{pdftex.cfg}
@@ -22,12 +22,17 @@ File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (C:\texmf\tex\latex\graphics\graphics.sty
-Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
-(C:\texmf\tex\latex\graphics\trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+) (C:\texmf\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\texmf\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
 )
-(C:\texmf\tex\latex\00miktex\graphics.cfg
+(C:\texmf\tex\latex\graphics\graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+ (C:\texmf\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+) (C:\texmf\tex\latex\00miktex\graphics.cfg
 File: graphics.cfg 2003/03/12 v1.1 MiKTeX 'graphics' configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 80.
@@ -35,8 +40,10 @@ Package graphics Info: Driver file: pdftex.def on input line 80.
 (C:\texmf\tex\latex\graphics\pdftex.def
 File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
 \Gread@gobject=\count88
-)) (Requirements.aux
-(ASLS_Organization.pdf.aux))
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+) (Requirements.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
@@ -49,25 +56,25 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
- (C:\texmf\tex\context\base\supp-pdf.tex
-(C:\texmf\tex\context\base\supp-mis.tex
+
+(C:\texmf\tex\context\base\supp-pdf.tex (C:\texmf\tex\context\base\supp-mis.tex
 loading : Context Support Macros / Missing
 \protectiondepth=\count89
 \scratchcounter=\count90
-\scratchtoks=\toks14
-\scratchdimen=\dimen103
+\scratchtoks=\toks15
+\scratchdimen=\dimen105
 \scratchskip=\skip43
 \scratchmuskip=\muskip10
 \scratchbox=\box26
 \scratchread=\read1
 \scratchwrite=\write3
-\zeropoint=\dimen104
+\zeropoint=\dimen106
 \minusone=\count91
-\thousandpoint=\dimen105
-\emptytoks=\toks15
+\thousandpoint=\dimen107
+\emptytoks=\toks16
 \nextbox=\box27
-\nextdepth=\dimen106
-\everyline=\toks16
+\nextdepth=\dimen108
+\everyline=\toks17
 \!!counta=\count92
 \!!countb=\count93
 \recursecounter=\count94
@@ -75,7 +82,7 @@ loading : Context Support Macros / Missing
 loading : Context Support Macros / PDF
 \nofMPsegments=\count95
 \nofMParguments=\count96
-\everyMPtoPDFconversion=\toks17
+\everyMPtoPDFconversion=\toks18
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 19.
@@ -119,12 +126,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--103
 
  []
 
-[3] [4] [5] [6]
-No file ASLS_Organization.pdf.tex.
+[3] [4] [5] <organization.png, id=44, 451.6875pt x 187.70125pt>
+File: organization.png Graphic file (type png)
+
+<use organization.png> [6 <organization.png>]
 Chapter 2.
 [7
-
-
 
 ]
 Chapter 3.
@@ -134,18 +141,18 @@ Chapter 3.
 Chapter 4.
 [9
 
-] (Requirements.aux (ASLS_Organization.pdf.aux)) ) 
+] (Requirements.aux) ) 
 Here is how much of TeX's memory you used:
- 902 strings out of 95518
- 10051 string characters out of 1189726
- 58052 words of memory out of 1059555
- 3971 multiletter control sequences out of 35000
+ 984 strings out of 95518
+ 11034 string characters out of 1189726
+ 59100 words of memory out of 1060603
+ 4055 multiletter control sequences out of 35000
  9767 words of font info for 34 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 607
- 23i,6n,19p,207b,193s stack positions out of 1500i,500n,5000p,200000b,32768s
- 56 PDF objects out of 65536
+ 25i,6n,19p,207b,191s stack positions out of 1500i,500n,5000p,200000b,32768s
+ 57 PDF objects out of 65536
  0 named destinations out of 20000
- 1 words of extra memory for PDF output out of 65536
-<cmr7.pfb><cmsl10.pfb><cmsy10
-.pfb><cmr10.pfb><cmbx10.pfb><cmr12.pfb><cmr17.pfb><cmbx12.pfb>
-Output written on Requirements.pdf (10 pages, 93442 bytes).
+ 6 words of extra memory for PDF output out of 65536
+<cmr7.pfb><cmsl10.pfb><cmsy10.pfb><cmr10.pfb><cmbx10.pfb>
+<cmr12.pfb><cmr17.pfb><cmbx12.pfb>
+Output written on Requirements.pdf (10 pages, 122535 bytes).

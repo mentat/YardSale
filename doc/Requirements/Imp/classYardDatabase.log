@@ -1,0 +1,52 @@
+This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  25 FEB 2004 23:55
+entering extended mode
+**classYardDatabase.tex
+(classYardDatabase.tex{pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7m> and hyphenation patterns for english, french, german, ngerman, du
+mylang, nohyphenation, loaded.
+! Undefined control sequence.
+l.1 \section
+            {Yard\-Database Class Reference}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \section{Y
+              ard\-Database Class Reference}
+? 
+Missing character: There is no Y in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no D in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no R in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+! Undefined control sequence.
+l.3 {\tt
+         \#include $<$ys\_\-database.h$>$}
+? 
