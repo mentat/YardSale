@@ -59,7 +59,11 @@ YardFooter::YardFooter(wxWindow* parent, wxWindowID id,
     m_timer = new wxTimer(this, FOOTER_TIMER_ID);
     m_timeTxt = (wxStaticText *)FindWindow(ID_FOOTER_TIME);
     
-    m_timer->Start(1000);
+    wxDateTime now = wxDateTime::Now();
+    
+    m_timeTxt->SetLabel(now.FormatISOTime());
+   
+    //m_timer->Start(1000);
     
 }
 
@@ -71,9 +75,9 @@ YardFooter::~YardFooter()
  
 void YardFooter::OnTimer(wxTimerEvent& event)
 {
-    wxDateTime now = wxDateTime::Now();
+    //wxDateTime now = wxDateTime::Now();
     
-    m_timeTxt->SetLabel(now.FormatISOTime());
+    //m_timeTxt->SetLabel(now.FormatISOTime());
     
 }
 
