@@ -69,6 +69,9 @@ bool YardDatabase::connect(){
     return true;
 }
 
+
+/** JOHN!@#$ */
+/* FIXME! */
 vector<YardInvType> YardDatabase::InvSearchKeyword(const unsigned long &sku) {
     wxString sqlQuery;
     vector<YardInvType> m_invVec; // john - had to put this in to compile
