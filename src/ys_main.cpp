@@ -48,8 +48,9 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
-
     Centre();
+    if (wxGetApp().Full())
+        ShowFullScreen(true);
     
     //ShowFullScreen(true,  wxFULLSCREEN_ALL);
     
@@ -88,9 +89,15 @@ void YardMain::OnFullscreen(wxCommandEvent& event)
 {
     wxLogDebug(wxT("OnShowFullscreen"));
     if (IsFullScreen())
+    {
+        wxGetApp().SetFull(false);
         ShowFullScreen(false);
+    }
     else
+    {
+        wxGetApp().SetFull(true);
         ShowFullScreen(true);
+    }
 }
     
 void YardMain::OnAbout(wxCommandEvent& event)

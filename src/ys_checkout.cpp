@@ -33,7 +33,8 @@ YardCheckout::YardCheckout(wxWindow* parent, wxWindowID id, const wxString& titl
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());   
-    Centre();
+    if (wxGetApp().Full())
+        ShowFullScreen(true);
     
 }
 

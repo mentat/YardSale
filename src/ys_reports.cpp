@@ -69,8 +69,10 @@ class YardHTML: public wxDialog
         m_Prn -> SetHeader(m_Name + wxT("(@PAGENUM@/@PAGESCNT@)<hr>"), wxPAGE_ALL);
 
         item0->SetSizeHints(this);
-        SetSize(item0->GetMinSize());   
-        Centre();
+        SetSize(item0->GetMinSize());  
+        Centre();        
+        if (wxGetApp().Full())
+            ShowFullScreen(true);
         
     }
     ~YardHTML() { delete m_Prn; }
@@ -128,12 +130,15 @@ YardReports::YardReports(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos,const wxSize& size, long style,
                const wxString& name): wxDialog(parent, id, title, pos, size, style, name)
 {
+    wxBusyCursor busy();
     wxXmlResource::Get()->Load("res/reports.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Reports");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
-    SetSize(sizer->GetMinSize());   
-    Centre();
+    SetSize(sizer->GetMinSize());  
+    Centre();    
+    if (wxGetApp().Full())
+        ShowFullScreen(true);
     
     m_to = static_cast<wxCalendarCtrl*>(FindWindow(XRCID("ID_REPORT_TO")));
     m_to->SetHighlightColours(*wxRED, *wxBLACK); 

@@ -60,7 +60,7 @@ class YardDatabase;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version \$Revision: 1.17 $$
+ * @version \$Revision: 1.18 $$
  */
 class YardSale: public wxApp {
  public:
@@ -84,9 +84,12 @@ class YardSale: public wxApp {
  
     wxString GetUser() const { return m_user; }
     bool ShowLogin(wxWindow * old = NULL);
+    
+    bool Full() { return m_full; }
+    void SetFull(bool full) { m_full = full; }
  
  private:
-     
+     bool m_full;
      bool LoadConfig();
      bool TryLogin();
      wxString m_user;

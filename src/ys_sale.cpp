@@ -50,12 +50,15 @@ YardSaleScreen::YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& 
                    const wxPoint& pos, const wxSize& size, long style, const wxString& name)
 :wxDialog(parent, id, title, pos, size, style, name) {
     
+    wxBusyCursor busy();
     wxXmlResource::Get()->Load("res/new_sales_wdr.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Checkout");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());   
     Centre();
+    if (wxGetApp().Full())
+        ShowFullScreen(true);
     
     m_list = static_cast<wxListCtrl *>(FindWindow(XRCID("ID_SALES_TRANS")));
     m_book = static_cast<wxNotebook *>(FindWindow(XRCID("ID_SALES_GROUPS")));

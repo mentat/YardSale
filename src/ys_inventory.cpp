@@ -51,6 +51,7 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
                    const wxPoint& pos, const wxSize& size, long style, const wxString& name)
 :wxDialog(parent, id, title, pos, size, style, name) {
      
+    wxBusyCursor busy();
     wxXmlResource::Get()->Load("res/new_inv.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "ItemDisplay");
     wxSizer * sizer = panel->GetSizer();
@@ -58,6 +59,8 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
     SetSize(sizer->GetMinSize());
 
     Centre();
+    if (wxGetApp().Full())
+        ShowFullScreen(true);
    
     // set the window components 
     

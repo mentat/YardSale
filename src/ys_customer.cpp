@@ -39,13 +39,15 @@ YardCustomer::YardCustomer(wxWindow* parent, wxWindowID id,
     const wxString& title, const wxPoint& pos,
     const wxSize& size, long style, const wxString& name)
 :wxDialog(parent, id, title, pos, size, style, name) {
-    
+    wxBusyCursor busy();
     wxXmlResource::Get()->Load("res/customer.xrc");
     wxPanel * panel = wxXmlResource::Get()->LoadPanel(this, "Customer");
     wxSizer * sizer = panel->GetSizer();
     sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());  
     Centre();
+    if (wxGetApp().Full())
+        ShowFullScreen(true);
     
     m_pic = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_CUST_PICTURE")));
     m_sig = static_cast<wxStaticBitmap *>(FindWindow(XRCID("ID_CUST_SIG")));
