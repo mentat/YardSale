@@ -11,6 +11,7 @@ yardsale_include_DATA = \
 	yardsale_wdr.h\
 	ys_splash.h\
 	ys_main.h\
-	ys_inventory.h
+	ys_inventory.h\
+	ys_login.h
 
 EXTRA_DIST = $(yardsale_include_DATA)

@@ -34,24 +34,26 @@ wxSizer *Splash( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE )
 #define ID_TEXT 10001
 #define ID_TEXTCTRL 10002
 #define ID_LOGIN_PASSWORD 10003
-#define ID_LOGIN 10004
+#define ID_LOGIN_LIST 10004
+#define ID_LOGIN_EXIT 10005
+#define ID_LOGIN_LOGIN 10006
 wxSizer *Login( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_MAIN_INVENTORY 10005
-#define ID_MAIN_SALES 10006
-#define ID_MAIN_CUSTOMER 10007
-#define ID_MAIN_REPORTS 10008
-#define ID_MAIN_EMPLOYEE 10009
-#define ID_MAIN_LOGOUT 10010
+#define ID_MAIN_INVENTORY 10007
+#define ID_MAIN_SALES 10008
+#define ID_MAIN_CUSTOMER 10009
+#define ID_MAIN_REPORTS 10010
+#define ID_MAIN_EMPLOYEE 10011
+#define ID_MAIN_LOGOUT 10012
 wxSizer *MainText( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_BUTTON 10011
-#define ID_LINE 10012
-#define ID_LISTCTRL 10013
-#define ID_INVENTORY_EXIT 10014
+#define ID_BUTTON 10013
+#define ID_LINE 10014
+#define ID_LISTCTRL 10015
+#define ID_INVENTORY_EXIT 10016
 wxSizer *Inventory( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_MAIN_LOGO 10015
+#define ID_MAIN_LOGO 10017
 wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions

@@ -16,38 +16,29 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-#ifndef YARDSALE_SPLASH_H
-#define YARDSALE_SPLASH_H
+#ifndef YS_LOGIN_H
+#define YS_LOGIN_H
 
-#include "wx/wx.h"
-
-class YardSplash: public wxDialog {
+/**
+ * This is the customized login screen for YardSale
+ * @author Jesse Lovelace
+ */
+class YardLogin: public wxDialog {
     public:
-        
-    YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
+    YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
                long style = wxSTAY_ON_TOP);
         
-    virtual ~YardSplash();
+    virtual ~YardLogin();  
     
-    void OnClick(wxMouseEvent& event);
-    void OnTimer(wxTimerEvent& event);
-    
-    void Bump(unsigned int amount = 10);
+    void OnExitButton(wxCommandEvent & event);
+    void OnLogin(wxCommandEvent & event);
     
     private:
         
-    int m_progress;
-    int m_limit;
-    
-    wxBitmap * m_logo;
-    
-    wxStaticBitmap * m_bitmap;
-    wxTimer * m_timer;
-    
     DECLARE_EVENT_TABLE()
+    
 };
-
 
 #endif
