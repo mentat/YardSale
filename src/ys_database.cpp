@@ -32,7 +32,7 @@ YardDatabase::~YardDatabase()
   
 }
 
-bool YardDatabase::Init(const string& dsn, const string& name, const string& pass)
+bool YardDatabase::Init(const string& name, const string& pass, const string& dsn)
 {
     if (m_db)
         delete m_db;
@@ -173,17 +173,19 @@ int main(int argc, char ** argv)
     int numItems = 0;
 
     if (argc == 4) {
-        testDB.Init(argv[3], argv[1], argv[2]);
+        
+        testDB.Init(argv[1], argv[2], argv[3]);
+        
         try {
             VERIFY(testDB.connect(), true);
-        } catch (YardDBException &e)
-        {
+        } catch (YardDBException &e) {
             cout << e.GetWhat() << endl;
         }
         vector<YardInvType> invObj;
 
         /* Search for an SKU that probably doesn't exist,
 	   test to see if the shit bombs when we try to print */
+        
         try {
             invObj = testDB.InvSearchSKU(99999);
         }
@@ -197,6 +199,7 @@ int main(int argc, char ** argv)
             numItems = invObj.size();
             
             for (int ii = 0; ii < numItems; ii++){
+    
     /* NO!  BAD John!  Baaad. */
     // 		wxDbLog("%s, %s, %s, %f, %f.\n",invObj[ii].GetItemType(), 
     // 			invObj[ii].GetDescription(), invObj[ii].GetBarCode(), 

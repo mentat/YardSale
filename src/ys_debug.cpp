@@ -34,11 +34,7 @@ YardDebugScreen::~YardDebugScreen()
 }
 
 void YardDebugScreen::OnConnect(wxCommandEvent & event) {
-    
-    wxString f("FUCKME");
-    string fs = f.c_str();
-    wxLogMessage(fs.c_str());
-    
+        
     wxString dsn = ((wxTextCtrl *)FindWindow(ID_DEBUG_DSN))->GetValue();
     wxString user = ((wxTextCtrl *)FindWindow(ID_DEBUG_USER))->GetValue();
     wxString pass = ((wxTextCtrl *)FindWindow(ID_DEBUG_PASS))->GetValue();
@@ -46,7 +42,7 @@ void YardDebugScreen::OnConnect(wxCommandEvent & event) {
     wxLogMessage("Info: %s, %s, %s", dsn.c_str(), user.c_str(), pass.c_str());
     
     try {
-        wxGetApp().DB().Init(dsn.c_str(), user.c_str(), pass.c_str());
+        wxGetApp().DB().Init(user.c_str(), pass.c_str(), dsn.c_str());
     } catch (YardDBException &e)
     {
         ((wxTextCtrl *)FindWindow(ID_DEBUG_SQL))->SetValue(e.GetSQL().c_str());

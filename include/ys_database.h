@@ -64,7 +64,7 @@ class YardDatabase {
      * @param name Name of the user for DB
      * @param pass Password for DB
      */    
-    bool Init(const string& dsn, const string& name, const string& pass);
+    bool Init(const string& name, const string& pass, const string& dsn);
     
     /** Destructor **/
     ~YardDatabase();
