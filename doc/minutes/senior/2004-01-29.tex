@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\begin{document}
+
+\begin{flushleft}
+{\bf Senior Team Leader Meeting}\\
+{\bf January 29, 2004}\\
+{\bf 6:15pm}\\
+\end{flushleft}
+
+\begin{flushleft}
+Attendance:\\
+Jesse Lovelace\\
+Adam Parrish\\
+Mike Swigon\\
+\end{flushleft}
+
+\section{Developmental Instruments}
+\subsection{sourceforge.net}
+an online repository for open source projects.  includes bug tracking, CVS, forums, mailing lists...
+\begin{itemize}
+    \item granted permission to use space under the name 'yardsale'
+    \item created a developmental mailing list at the address 'yardsale-devel@lists.sourceforge.net'
+    \item created a design mailing list at the address 'yardsale-design@lists.sourceforge.net'
+    \item all team members need to create a source forge account
+    \item all team members need to subscribe to the developmental mailing list
+    \item all senior leaders need to subscribe to the design mailing list
+\end{itemize}
+
+\subsection{wxWindows}
+an open source C++ GUI framework for making cross platform applications.
+\begin{itemize}
+    \item will be used for development of all UI for the POS system
+    \item all developmental team members need to obtain the libraries provided at wxwindows.org
+    \item all developmental team members need to obtain a licensed copy of the wxwindows designer
+    \item jesse will provide a short tutorial explaining the basics of wxWindows/designer to the team
+\end{itemize}
+
+\section{Goals/Due Dates}
+\subsection{Long Term}
+
+\begin{description}
+    \item[2004-03-05] FEATURE FREEZE - deadline for adding functional features to the design of the POS
+    \item[2004-04-17] CODE FREEZE - deadline for beginning the coding of features; those not already implemented will be removed; testing only beyond this point
+    \item[2004-04-27] POSTERS and PIES - final deadline; presentation of project to CSC department
+\end{description}
+
+\subsection{Short Term}
+\begin{description}
+    \item[2004-02-04] DB structure - adam and mike to complete the preliminary design of the DB tables
+    \item[2004-02-11]
+    \begin{itemize}
+        \item GUI layout - jesse to complete the preliminary design of the user interface
+        \item SQL queries - adam and mike to complete preliminary SQL commands necessary for populating the DB
+        \item research - entire team to complete reserch on transaction processing and report
+    \end{itemize}
+\end{description}
+
+\section{Preliminary Design Ideas}
+\subsection{GUI basic design}
+the POS will provide the following basic functionality:
+\begin{description}
+    \item[manage inventory] track all new items received and those sold, adding or removing them from the DB as necessary
+    \item[manage customer information] will store information pertaining to customers; including name, address, phone number, items purchased, credit card information...
+    \item[manage employee information] will store information pertaining to employees; including name, address, phone number, hours worked, department(?)...
+    \item[sales/cashier transaction processing] two types of sales possible:
+    \begin{enumerate}
+        \item store/retrieve customer info and proceed to transaction of selling items; will store items purchased with customer info
+        \item {\bf quickSale}: only transaction of items to be sold without recording to customer info
+    \end{enumerate}
+    \item[manager reports] manage/retrieve business reports; including employee hours, payroll, transaction info, incident reports, money info...
+    \item[logout] tracks time for payroll purposes, all transactions made, and a transaction report
+    \item[preliminary screenshots] provided separately
+\end{description}
+
+\subsection{Necessary Interfaces}
+to be researched by john and jay over the next few weeks, due date to be determined later
+\begin{itemize}
+\item check scanner
+\item card swipe: for credit cards and employee card access
+\item touch screen
+\item receipt printer
+\item barcode scanner
+\end{itemize}
+
+\end{document}
