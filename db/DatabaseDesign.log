@@ -1,12 +1,13 @@
-This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.12.24)  10 FEB 2004 18:24
+This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  1 MAR 2004 04:21
+entering extended mode
 **DatabaseDesign.tex
-(./DatabaseDesign.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+(DatabaseDesign.tex{pdftex.cfg}
 LaTeX2e <2001/06/01>
-Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
-ohyphenation, loaded.
-(/usr/share/texmf/tex/latex/base/article.cls
+Babel <v3.7m> and hyphenation patterns for english, french, german, ngerman, du
+mylang, nohyphenation, loaded.
+(C:\texmf\tex\latex\base\article.cls
 Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
-(/usr/share/texmf/tex/latex/base/size10.clo
+(C:\texmf\tex\latex\base\size10.clo
 File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -21,83 +22,27 @@ File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texmf/tex/latex/graphics/graphics.sty
-Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(/usr/share/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
-)
-Package graphics Info: Driver file: pdftex.def on input line 80.
+! LaTeX Error: File `pdfpages.sty' not found.
 
-(/usr/share/texmf/tex/latex/graphics/pdftex.def
-File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
-\Gread@gobject=\count87
-)) (./DatabaseDesign.aux)
-\openout1 = `DatabaseDesign.aux'.
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+Enter file name: x
 
-(/usr/share/texmf/tex/context/base/supp-pdf.tex
-(/usr/share/texmf/tex/context/base/supp-mis.tex
-loading : Context Support Macros / Missing
-\protectiondepth=\count88
-\scratchcounter=\count89
-\scratchtoks=\toks14
-\scratchdimen=\dimen103
-\scratchskip=\skip43
-\scratchmuskip=\muskip10
-\scratchbox=\box26
-\scratchread=\read1
-\scratchwrite=\write3
-\zeropoint=\dimen104
-\minusone=\count90
-\thousandpoint=\dimen105
-\emptytoks=\toks15
-\nextbox=\box27
-\nextdepth=\dimen106
-\everyline=\toks16
-\!!counta=\count91
-\!!countb=\count92
-\recursecounter=\count93
-)
-loading : Context Support Macros / PDF
-\nofMPsegments=\count94
-\nofMParguments=\count95
-\everyMPtoPDFconversion=\toks17
-) <diagrams/Database_Layout.pdf, id=1, 1757.56625pt x 1603.9925pt>
-File: diagrams/Database_Layout.pdf Graphic file (type pdf)
-
-<use diagrams/Database_Layout.pdf>
-! Dimension too large.
-\Gscale@box ...#2\ht \z@ \else \ht \tw@ #2\ht \z@ 
-                                                  \dp \tw@ #2\dp \z@ \fi \if...
-l.7 ...ludegraphics{diagrams/Database_Layout.pdf}}
-                                                  
-? x
- 
+ )
+(\end occurred when \ifx on line 4 was incomplete)
+(\end occurred when \ifx on line 4 was incomplete) 
 Here is how much of TeX's memory you used:
- 776 strings out of 95437
- 9136 string characters out of 1190232
- 54634 words of memory out of 1000001
- 3842 multiletter control sequences out of 10000+50000
+ 206 strings out of 95518
+ 1998 string characters out of 1189726
+ 45721 words of memory out of 1049784
+ 3362 multiletter control sequences out of 35000
  3640 words of font info for 14 fonts, out of 500000 for 1000
- 14 hyphenation exceptions out of 1000
- 23i,5n,17p,209b,86s stack positions out of 1500i,500n,5000p,200000b,5000s
- 1 PDF objects out of 300000
- 0 named destinations out of 131072
- 5 words of extra memory for PDF output out of 65536
+ 14 hyphenation exceptions out of 607
+ 23i,1n,17p,122b,36s stack positions out of 1500i,500n,5000p,200000b,32768s
+ 0 PDF objects out of 65536
+ 0 named destinations out of 20000
+ 1 words of extra memory for PDF output out of 65536
+
 No pages of output.
