@@ -25,425 +25,599 @@
 \begin{document}
 
 \begin{titlepage}
-\vspace*{2cm}
-\begin{center}
+    \vspace*{2cm}
+    \begin{center}
 
-{\LARGE {\bf INTERIM REPORT}}\\
-\vspace*{1cm}
+        {\LARGE {\bf INTERIM REPORT}}\\
+        \vspace*{1cm}
 
+        \LARGE{ YardSale\\The Open Source Point of Sale Solution\\ }
 
+        \includegraphics{aslogic_smaller.png}
 
-\LARGE{ YardSale\\The Open Source Point of Sale Solution\\ }
+        \large{{\bf A.S. Logic Systems Co.}\\Jesse Lovelace\\Adam
+        Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts\\}
+        \vspace*{0.5cm}
 
-%\vspace*{0.5cm}
-
-\includegraphics{aslogic_smaller.png}
-
-\large{{\bf A.S. Logic Systems Co.}\\Jesse Lovelace\\Adam
-Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts\\}
-
-\vspace*{0.5cm}
-
-{April 7, 2004}
-\end{center}
+        {April 7, 2004}
+    \end{center}
 \end{titlepage}
 
 \tableofcontents
 
 \chapter{Requirements Definition}
 
-\section{Introduction}
+    \section{Introduction}
 
-YardSale is an open source Point of Sale system that is being
-developed by A.S Logic Systems.  Current
-implementations of Point of Sale systems are fraught with a number
-of issues including often being extremely overpriced, difficult
-to administer, dated in their functionality, and lacking necessary
-operations.
+        YardSale is an open source Point of Sale system that is being
+        developed by A.S Logic Systems.  Current
+        implementations of Point of Sale systems are fraught with a number
+        of issues including often being extremely overpriced, difficult
+        to administer, dated in their functionality, and lacking necessary
+        operations.
 
-The power of an open source system such as YardSale is the
-open way in which it is designed.  A user of the YardSale system
-can take off the shelf computer hardware (in many cases older hardware
-will perform just as well) and create a point of sale with minimal
-configuration.  In addition, supporting new hardware is trivial since
-the YardSale interface specification is in no way hindered by
-restrictive close-source licenses.
+        The power of an open source system such as YardSale is the
+        open way in which it is designed.  A user of the YardSale system
+        can take off the shelf computer hardware (in many cases older hardware
+        will perform just as well) and create a point of sale with minimal
+        configuration.  In addition, supporting new hardware is trivial since
+        the YardSale interface specification is in no way hindered by
+        restrictive close-source licenses.
 
-The name "YardSale" was concieved to emphasize the
-versatility and simplicity of the system.  The parts of a
-YardSale point of sale can be older, used hardware and
-the underlying software can be completely free.
+        The name "YardSale" was concieved to emphasize the
+        versatility and simplicity of the system.  The parts of a
+        YardSale point of sale can be older, used hardware and
+        the underlying software can be completely free.
 
-Being that YardSale is an open source project the initial
-market will target small, locally owned retail
-stores.  This type of market will allow for extensive on-site
-research, as many of these businesses should be willing to work
-with us to improve on the functionality of their existing POS
-system.  In addition, because A.S. Logic has decided to take the
-open source route, the software itself will be freely available to
-all who wish to use it, the only expense that will come into play
-is if the company wishes to enlist our services in setup,
-troubleshooting, support, expansion, or customization.
+        Being that YardSale is an open source project the initial
+        market will target small, locally owned retail
+        stores.  This type of market will allow for extensive on-site
+        research, as many of these businesses should be willing to work
+        with us to improve on the functionality of their existing POS
+        system.  In addition, because A.S. Logic has decided to take the
+        open source route, the software itself will be freely available to
+        all who wish to use it, the only expense that will come into play
+        is if the company wishes to enlist our services in setup,
+        troubleshooting, support, expansion, or customization.
 
-However, we believe that YardSale can be easily used by
-those who do not wish to purchase support contracts due to
-the clear documentation and well-writen interfaces.
+        However, we believe that YardSale can be easily used by
+        those who do not wish to purchase support contracts due to
+        the clear documentation and well-writen interfaces.
 
-\section{Functional Requirements}
+    \section{Functional Requirements}
 
-This section entails all of the minimal requirements set by the AS
-Logic Systems development team for the Open Source Point of Sale, hereafter referred
-to as YardSale.\\
-\\YardSale should accomplish the
-following Point of Sale operations:
+        This section entails all of the minimal requirements set by the AS
+        Logic Systems development team for the Open Source Point of Sale, hereafter referred
+        to as YardSale.\\
+        \\YardSale should accomplish the following Point of Sale operations:
 
-\begin{itemize}
-    \item {Manage Inventory}
-    \begin{itemize}
-    	\item {Add a product to the inventory}
-	\item {Edit an existing inventory item}
-	\item {Remove an inventory item}
-	\item {Associate attributes such as price, quanity, and tax with an inventory item}
-	\item {Search for an inventory item by various criteria}
-	\item {Add an inventory item to a transaction (see Transaction)}
-    \end{itemize}
-    \item{Manage Customers}
-    \begin{itemize}
-    	\item{Add and remove customers}
-	\item{Edit customer information such as phone number and address}
-	\item{Associate a customer with a transaction (see Transaction)}
-    \end{itemize}
-    \item {Manage Employees}
-    \begin{itemize}
-    	\item{Add and remove employees}
-	\item{Associate a level with employees such as "manager" and "sales associate"}
-    \end{itemize}
-    \item{Perform Point of Sale Transactions}
-    \begin{itemize}
-    	\item{ Allow an "seller/employee" to sell and inventory item to a "buyer/customer"  }
-	\item{ Allow a customer to return an item to the seller }
-	\item{ Calculate the tax on an item being sold }
-    \end{itemize}
-\end{itemize}
-
-Each of these tasks is described in depth in their corresponding
-sub sections. The functionality outlined above is designed to be as 
-extensible as possible; with the correct implementation of these requirements
-the YardSale System will support the expansion of functionality with great ease.
-
-    \subsection{Information Management}
-    YardSale will store information about all aspects of program operation
-    data. The data that is stored can be broken down into four main subsections
-    \begin{itemize}
-	\item{Employee Data}
-	\item{Customer Data}
-	\item{Inventory Data}
-	\item{Sales Data}
-    \end{itemize}
-
-    \subsection{Employee Data}
-    For YardSale to properly manage 
-
-
-    YardSale will store information about all aspects of program operation
-    data. This is inclusive of Employee, Customer, Inventory, and Sales
-    data. Employees shall have all pertinent contact information such
-    as Name, Address, Phone Numbers, and Email address as well as an
-    Employee Number and possibly a Social Security number saved as a
-    record. Customer will have the same contact information stored as
-    well. Inventory Items will have a Name and SKU number associated
-    with every record, and other pertinent information about Items
-    such as their cost, resale value, and tax rate will also be stored.
-    Sale transactions shall be saved by referencing the primary key of
-    each employee, customer, and inventory item sold during a transaction.
-
-    %The goal of the database management tasks are to add, modify, and
-    %delete information in the database. The database backend will run
-    %on a MySQL server and all relevant data will be stored in its own
-    %table or set of tables. More information on the database design
-    %can be found in the database design document.
-
-    \subsubsection{Inventory Management}
-    %The inventory management system will have an interface for the
-    %stock employees to enter new shipments. It will also have an
-    %interface for the management employees to define new items for
-    %sale. The most common use of the inventory management system will
-    %be integrated into the checkout system. When customers are
-    %checking out, inventory will be populated to the checkout screen
-    %from the database, and then decremented on purchase from their
-    %quantity in the database.
-
-    \subsubsection{Customer Management}
-    %The customer management system will work in a similar fashion to
-    %the inventory management system. It will have only one level of
-    %functionality though, the ability to define and update new
-    %customer data. There will also be a small interface with the
-    %database during the checkout of a customer which will allow for
-    %the selection of a customer from the customer table.
-
-    \subsubsection{Employee Management}
-    %The employee management system here again will also function
-    %similarly to the previous two in that it has hooks into the
-    %database for employees. It will allow an authorized user the
-    %ability to add and modify employee information as well as
-    %disable employee accounts.\\
-
-    Among the more specific functionality of each of these sections
-    will be to allow the user to retrieve any item stored in either
-    inventory, customer, or employee tables given a search
-    criteria.
-
-    \subsection{Transactions}
-
-    Transactions are the key to any point of sale system.  The obvious
-    function that a point of sale should perform is selling an item.
-    However, selling an item is not simply adding up a price.  Most sales
-    require information about what is being sold, who is selling it, and to whom
-    the items are being sold.  These attributes are contained in a YardSale
-    transaction.
-
-    YardSale will create a transaction which contains one or more items
-    either being sold or returned.  Each transaction will have an employee
-    and a customer associated with it.  Since tax is extremely important
-    to any transaction, tax must be added to each item since different
-    items require different taxes as mandated by local, state, and national
-    goverment.
-
-    Once a transaction is created, it must be stored by the information
-    management system so that a record of the transaction can be
-    recalled for returns and reports.
-
-    \subsection{Reporting}
-    There will be a wide variety of reporting features available also
-    as a result of the database backend. The following basic reporting
-    functionality will be available in the first iteration of
-    YardSale.
-
-    \begin{itemize}
-        \item{Payroll for Employees}
-        \item{Top Sales for Inventory Items}
-        \item{Top Sales for Employees}
-        \item{Top Sales for Customer}
-        \item{Revenue Reporting given any time frame}
-        \item{Hourly Employee Log Reporting}
-    \end{itemize}
-
-    All of the reports will be output to a pdf via \LaTeX type
-    setting. This will provide ease of portability and a wide range of
-    flexibility in reporting.
-
-    \subsection{User Level Access Rights}
-    YardSale has three different levels of user interactivity. There
-    are Managers, Sales Associates, and Administrative users.
-
-    \subsubsection{Sales Associate Functionality}
-    Sales associates are likely going to be the primary users of the
-    YardSale system. However they will have a limited set of
-    functionality when they login. Their privileges will be limited to
-    basic customer management and transaction processing. They have no
-    real need for full inventory capabilities nor do they need the
-    ability to manage or browse employee information.
-
-    When a sales associate logs into YardSale they will see the following options:
-
-    \begin{itemize}
-        \item Transaction Processing
-        \item Customer Management
-    \end{itemize}
-
-    \subsubsection{Manager Functionality}
-    The managers primary function in YardSale is to make sure that all
-    of the inventory items, customers, and employees are correctly
-    maintained. They are also the only primary user on the system
-    allowed to run reporting functions.
-
-    When a manager logs in to YardSale they will have a full set of
-    functionality available to them from the main screen inclusive of
-    the following:
-
-    \begin{itemize}
-        \item Inventory Management
-        \item Transaction Processing
-        \item Customer Management
-        \item Employee Management
-        \item Reporting
-    \end{itemize}
-
-    \subsubsection{Administrative Functionality}
-
-    The administrative user is basically a built in manager user. This
-    user will have full rights to the system and the password will be
-    able to unlock other accounts in the system that are locked due to
-    loss of password. The administrative user will likely never be
-    used in day to day use of YardSale, however it is provided as a
-    safety to always allow the access of encrypted data in case of
-    total loss of management capability.
-
-\section{Non Functional Requirements}
-
-    \subsection{Cross Platform}
-    The YardSale software is to be developed using the wxWindows libraries for C++,
-    which creates GUIs (Graphical User Interfaces) that are
-    platform independent.  The YardSale software will be able to
-    run on any major operating system on today's market.
-
-    \subsection{Cross Architecture}
-    The main purpose of the YardSale software is to be very
-    independent of all architectural aspects of the system, using
-    minimal system resources.  The idea is to be able to use any system
-    to run the software appropriately.
-
-\section{System Constraints}
-    \subsection{Interfaces}
-    The YardSale system must support the use of several peripheral interfaces
-    to aid in the completion of POS transactions and other functionality outlined
-    previously.  The interfaces are outlined as follows:
         \begin{itemize}
-	    \item {\bf Cash Drawers} The system must support the use of a
-	    cash drawer for storage of money exchanged during transactions.
-	    It shall pop open upon the completion of a transaction or when 
-	    prompted by the user.
-
-	    \item {\bf Magnetic Card Scanners} The system must support the use
-	    of a magnetic card scanner for automatic input of information.  These
-	    scanners must correctly input information stored on both credit cards
-	    and employee access cards.
-
-	    \item {\bf Barcode Scanners} The system must support the use of
-	    a barcode scanner for automatic input of items for inventory
-	    and transaction processing.
-
-	    \item {\bf Receipt Printers} The system must support the use of
-            a receipt printer.  The printers must print specified information
-            at the conclusion of each transaction and will also be used with
-	    the reporting functionality.
-
-            \item {\bf TouchScreen Monitor} The system must support the use
-            of TouchScreen monitors.  The monitor shall act as both input and
-	    output devices for the system.  The monitors must correctly read 
-            the commands given and relay them to the system.
-    \end{itemize}
-
-\section{External Dependencies and Interfaces}
-
-\section{Preliminary Design}
-
-    \subsection{Major Modules}
-
-        \subsubsection{Database}
-        The Database module works as the translator between
-        the user interface and the database.  It converts calls
-        made by the GUI into SQL queries to be sent to the
-        database.  When the query results are returned from the
-        database,the Database converts these items to a
-        Database Type (discussed in next section) to be read by the
-        GUI. OTL Libraries will be used in conjunction with ODBC to
-    provide database connectivity with the user interface. OTL is
-    a cross platform library for ODBC.
-        \subsubsection{Database Types}
-        The Database Types module is the superclass for all information that
-        may be sent to the GUI from the database.  It contains
-        function calls for each of the following types:
-        \begin{list}{}
-            \item{{\bf Inventory Type:} contains variables for all
-            possible inventory management items stored in the
-            database.  Coordinates with the Inventory Management
-            view in the GUI, which is also used by Transactions.}
-            \item{{\bf Customer Type:} contains variables for
-            all possible customer management items stored in the database.
-            Coordinates with the Customer view in the GUI,
-            which is also used by Transactions.}
-            \item{{\bf Employee Type:} contains variables for
-            all possible employee management items stored in the
-            database.  Coordinates with the Employee Management
-            view in the GUI.}
-            \item{{\bf Yard Transaction:} contains variables for all
-            possible transaction items stored in the database.
-            Coordinates with the Transaction view in the GUI.}
-        \end{list}{}
-        \subsubsection{GUI wxWindows}
-        The GUI wxWindows module defines all interfaces used by the
-        GUI.  It contains functions derived from the wxWindows
-        libraries for C++.  It also interacts with the
-        Database module to display information sent from the
-        database.\\
-
-        \newpage
+            \item {Manage Point of Sale Related Data}
+            \begin{itemize}
+                \item {Inventory Data}
+                \begin{itemize}
+                    \item {Add a product to the inventory}
+                    \item {Edit an existing inventory item}
+                    \item {Search for an inventory item by various criteria}
+                    \item {Remove an inventory item}
+                    \item {Add an inventory item to a transaction}
+                \end{itemize}
+                \item{Customer Data}
+                \begin{itemize}
+                    \item{Add and remove customers}
+                    \item{Search for customers by various criteria}
+                    \item{Edit customer information}
+                    \item{Associate a customer with a transaction}
+                \end{itemize}
+                \item {Employee Data}
+                \begin{itemize}
+                    \item{Add and remove employees}
+                    \item{Associate an access level with each employee}
+                    \item{Associate an employee with a
+                    transaction}
+                \end{itemize}
+                \item{Transaction Data}
+                \begin{itemize}
+                    \item{Add new transaction information}
+                    \item{Search for transactions by various
+                    criteria}
+                    \item{Associate values with a transaction}
+                \end{itemize}
+            \end{itemize}
+            \item{Perform Point of Sale Transactions}
+            \begin{itemize}
+                \item{ Allow sale and return of inventory items between
+                customers and employees }
+                \item{ Calculate the tax on an item being sold }
+                \item{ Record all transaction information }
+            \end{itemize}
+            \item{Provide Detailed Reporting}
+            \begin{itemize}
+                \item Allow a manager to produce reports
+                related to the Point of Sale information
+                recorded by the system.
+            \end{itemize}
+            \item{Provide Differing Levels of User Access}
+            \begin{itemize}
+                \item Administrator (Super User) Access
+                \item Manager Access
+                \item Sales Associate Access
+            \end{itemize}
+        \end{itemize}
 
 
-    \subsection{System Architecture}
+        Each of these tasks is described in-depth in the corresponding
+        subsection. The functionality outlined above is designed to be as
+        extensible as possible; with the correct implementation of these
+        requirements, the YardSale System will support the expansion
+        of functionality with great ease.
 
-    The figure shown below outlines the class dependencies and hierarchy of
-    the modules described in section 1.5.1.\\
+        \subsection{Information Management}
+            YardSale will store information about all aspects of program operation
+            data. The data that is stored can be broken down into four main subsections
 
-    \includegraphics{yardsale_modules.png}\\
-    %\caption{System Architecture Flow Chart}
+            \begin{itemize}
+                \item{Inventory Data}
+                \item{Customer Data}
+                \item{Employee Data}
+                \item{Transaction Data}
+            \end{itemize}
 
-\section{Preliminary Project Task Plan}
-    %Scope and Size of Project Paragraph
+            \subsubsection{Inventory Data}
+                YardSale will store data pertaining to all
+                inventory items currently in-stock and on-order.
+                The following fields will be recorded for each
+                item:
 
-    \subsection{Milestones}
-    \begin{description}
-        \item[2004-03-05] FEATURE FREEZE - deadline for adding functional
-        features to the design of the POS.
-        \item[2004-03-07] ITERATION 1 - all requirements for first
-        iteration to be completed and documented in the interim
-        report.
-        \item[2004-04-01] ITERATION 2 - all secondary requirements
-        to be completed for the second iteration.
-        \item[2004-04-17] CODE FREEZE - deadline for beginning the
-        coding of features; those not already implemented will be removed;
-        testing only beyond this point
-        \item[2004-04-27] FINAL DELIVERABLE - completion of
-        prototype for presentation to the CSC department at the
-        Posters and Pies event.
-    \end{description}
+                \begin{itemize}
+                    \item SKU Number
+                    \item Barcode Number
+                    \item Item Name
+                    \item Corresponding Department
+                    \item Item Type
+                    \item Retail Price
+                    \item Wholesale Price
+                    \item Weight (in pounds)
+                    \item Associated Vendor
+                    \item Associated Tax Type
+                    \item Item Description
+                    \item Shipping Flags
+                    \begin{itemize}
+                        \item Freight Only?
+                        \item Oversized?
+                    \end{itemize}
+                    \item Number In-Stock
+                    \item Number On-Order
+                    \item Reorder Level
+                \end{itemize}
 
-    \subsection{Team Member Roles and Responsibilities}
-    The following figure displays a graphical hierarchy of the team's
-    roles:\\
-    \includegraphics{organization.png}
-    \\The team roles are defined as follows:
+                \noindent YardSale shall provide the following functionality
+                to all inventory data in the system:
 
-    \begin{description}
-        \item[Jesse Lovelace] As the CEO of A.S. Logic Systems,
-        Jesse is in charge of all aspects of the project.  Though
-        he works very closely with both VPs, Jesse is the ultimate
-        decision maker for the team.  In addition to his roles as
-        CEO, Jesse is also in charge of the design and
-        implementation of the User Interface and all security
-        aspects.
-        \item[Adam Parrish] Adam is the Vice President in charge
-        of Development at A.S Logic Systems.  He works closely
-        with both the CEO and VP of Marketing to see that
-        YardSale's implementation is both correct and timely.  In
-        addition to these company roles, Adam is also the lead
-        Database Programmer; seeing to it that the database is
-        functioning properly and creating the SQL scripts for
-        populating and querying the database.
-        \item[Mike Swigon] Mike is the Vice President of
-        Marketing at A.S. Logic Systems.  He works closely with
-        both Adam and Jesse to both design the entire system and
-        to insure that its implementation is correct.  In addition
-        to these responsibilities, Mike works with Adam in database
-        setup and creation of SQL scripts for populating and
-        querying the database.
-        \item[John Lamb] John's responsibilities fall primarily in
-        interfacing with the database.  He works closely with Jesse
-        to develop a UI that can correctly and securely
-        communicate information to and from the database; also
-        implementing the SQL statements developed by Mike and
-        Adam.
-        \item[Jay Johnston] Jay's responsibilities fall primarily
-        in creation of the UI and networking the system during
-        setup.  He works closely with Jesse to develop modules
-        for required functionality of the interface.
-        \item[Cameron Watts] Cameron's responsibilities fall
-        primarily on marketing and system research.  He works
-        closely with the design group to ensure YardSale's
-        functionality is top-of-the-line and user friendly.
-    \end{description}
+                \begin{itemize}
+                    \item {\bf Add New Inventory:} new inventory items
+                    shall be able to be added to the current
+                    inventory.
+                    \item {\bf Search Inventory:} all inventory
+                    items shall be available to a search function;
+                    items retrieved based on specified criteria.
+                    \item {\bf Modify Inventory Item:} all inventory items
+                    shall be able to have any field modified and
+                    saved.
+                    \item {\bf Remove Inventory:} existing inventory
+                    items shall be able to be removed from the
+                    list of current inventory items.
+                    \item {\bf Associate Inventory Item with a Transaction:}
+                    each inventory item shall be able to be
+                    associated with a transaction in which the
+                    item's inventory status was altered (see
+                    Transaction).
+                \end{itemize}
 
+            \subsubsection{Customer Data}
+                YardSale will store data pertaining to all
+                customers of the system's business.
+                The following fields will be recorded for each
+                customer:
+
+                \begin{itemize}
+                    \item Customer Account Number
+                    \item First Name
+                    \item Middle Name
+                    \item Last Name
+                    \item Address
+                    \item Phone Number
+                    \item City
+                    \item State
+                    \item Zip Code
+                    \item Credit Card Number
+                    \item Credit Card Expiration Date
+                    \item Name on Credit Card
+                    \item Signature
+                    %\item Photo
+                \end{itemize}
+
+                \noindent YardSale shall provide the following functionality
+                to all customer data in the system:
+
+                \begin{itemize}
+                    \item {\bf Add Customer:} new customers shall
+                    be able to be added to the current customer
+                    list.
+                    \item {\bf Search Customers:} all customers
+                     shall be available to a search function;
+                    customers displayed based on specified criteria.
+                    \item {\bf Modify Customer:} all customers
+                    shall be able to have any field modified and
+                    saved.
+                    \item {\bf Associate Customer with a Transaction:}
+                    customers shall be able to be
+                    associated with a transaction in which they
+                    altered the state of some inventory item (see
+                    Transaction).
+                \end{itemize}
+
+            \subsubsection{Employee Data}
+                YardSale will store data pertaining to all
+                employees currently employed by the business.
+                The following fields will be recorded for each
+                employee:
+
+                \begin{itemize}
+                    \item Social Security Number
+                    \item Employee ID Number
+                    \item First Name
+                    \item Middle Name
+                    \item Last Name
+                    \item Address
+                    \item Phone Number
+                    \item City
+                    \item State
+                    \item Zip Code
+                    %\item Picture
+                    \item Signature
+                    \item Access Control Level
+                \end{itemize}
+
+                \noindent YardSale shall provide the following functionality
+                to all employee data in the system:
+
+                \begin{itemize}
+                    \item {\bf Add New Employee:} new employees
+                    shall be able to be added to the current
+                    employment list.
+                    \item {\bf Remove Employee:} existing
+                    employees shall be able to be removed from the
+                    list of current employees.
+                    \item {\bf Associate Employees with an Access Control Level:}
+                    each existing employee shall be able to be
+                    associated with a predefined access level to
+                    the system.
+                    \item {\bf Associate Employee with a Transaction:}
+                    employees shall be able to be
+                    associated with a transaction in which they
+                    altered the state of some inventory item (see
+                    Transaction).
+                \end{itemize}
+
+
+            \subsubsection{Transaction Data}
+                YardSale will store data pertaining to all
+                transactions made by the system.
+                The following fields will be recorded for each
+                transaction:
+
+                \begin{itemize}
+                    \item Employee ID Number
+                    \item Inventory SKU Number
+                    \item Customer Account Number
+                    \item Transaction ID Number
+                    \item Sale Price
+                    \item Sale Quantity
+                    \item Comments
+                \end{itemize}
+
+                \noindent YardSale shall provide the following functionality
+                to all transaction data in the system:
+
+                \begin{itemize}
+                    \item {\bf Add New Transaction:} new
+                    transaction data shall be able to be
+                    added to the current transaction list.  This
+                    should occur automatically with the completion
+                    of any transaction.
+                    \item {\bf Search Transactions:} all
+                    transactions shall be available to a search function;
+                    transactions displayed based on specified criteria.
+                    \item {\bf Associate Values with a
+                    Transaction:} externally referenced values;
+                    such as employee ID, SKU, and customer
+                    account numbers, shall be able to be
+                    referenced and saved with each transaction.
+                \end{itemize}
+
+
+        \subsection{Point of Sale Transactions}
+            YardSale shall allow for Point of Sale Transactions of inventory items
+            to be made between employees and customers.  Each
+            transaction shall satisfy the following criteria:
+
+            \begin{itemize}
+                \item Must contain one or more inventory items to
+                be either sold or returned.
+                \item Sales transaction functionality shall be available
+                to all current employees in the system, regardless
+                of access control level.
+                \item Return transaction functionality shall only
+                be available to employees with appropriately
+                specified access control level.
+                \item Must associate proper tax type/information
+                with each item of a transaction.
+                \item Completion of a transaction shall create new
+                Transaction Data to be stored by the system;
+                including the following external data:
+                \begin{itemize}
+                    \item {\bf Customer Information:} Transactions
+                    shall be linked with an associated customer stored
+                    in the system.
+                    \item {\bf Employee Information:} Transactions
+                    shall be linked with an associated employee stored
+                    in the system.
+                    \item {\bf Inventory Information:} all information
+                    pertaining to the inventory items altered during
+                    the transaction (either added or removed).
+                \end{itemize}
+                \noindent {\sl see TRANSACTION DATA of section 1.2.1}
+            \end{itemize}
+
+
+        \subsection{Reporting}
+            There will be a wide variety of reporting features available also
+            as a result of the database backend. The following basic reporting
+            functionality will be available in the first iteration of
+            YardSale.
+
+            \begin{itemize}
+                \item{Payroll for Employees}
+                \item{Top Sales for Inventory Items}
+                \item{Top Sales for Employees}
+                \item{Top Sales for Customer}
+                \item{Revenue Reporting given any time frame}
+                \item{Hourly Employee Log Reporting}
+            \end{itemize}
+
+            All of the reports will be output to a pdf via \LaTeX type
+            setting. This will provide ease of portability and a wide range of
+            flexibility in reporting.
+
+        \subsection{User Level Access Rights}
+            YardSale has three different levels of user interactivity. There
+            are Managers, Sales Associates, and Administrative users.
+
+            \subsubsection{Sales Associate Functionality}
+                Sales associates are likely going to be the primary users of the
+                YardSale system. However they will have a limited set of
+                functionality when they login. Their privileges will be limited to
+                basic customer management and transaction processing. They have no
+                real need for full inventory capabilities nor do they need the
+                ability to manage or browse employee information.
+
+                When a sales associate logs into YardSale they will see the following options:
+
+                \begin{itemize}
+                    \item Transaction Processing
+                    \item Customer Management
+                \end{itemize}
+
+            \subsubsection{Manager Functionality}
+                The managers primary function in YardSale is to make sure that all
+                of the inventory items, customers, and employees are correctly
+                maintained. They are also the only primary user on the system
+                allowed to run reporting functions.
+
+                When a manager logs in to YardSale they will have a full set of
+                functionality available to them from the main screen inclusive of
+                the following:
+
+                \begin{itemize}
+                    \item Inventory Management
+                    \item Transaction Processing
+                    \item Customer Management
+                    \item Employee Management
+                    \item Reporting
+                \end{itemize}
+
+            \subsubsection{Administrative Functionality}
+                The administrative user is basically a built in manager user. This
+                user will have full rights to the system and the password will be
+                able to unlock other accounts in the system that are locked due to
+                loss of password. The administrative user will likely never be
+                used in day to day use of YardSale, however it is provided as a
+                safety to always allow the access of encrypted data in case of
+                total loss of management capability.
+
+    \section{Non Functional Requirements}
+
+        \subsection{Cross Platform}
+            The YardSale software is to be developed using the wxWindows libraries for C++,
+            which creates GUIs (Graphical User Interfaces) that are
+            platform independent.  The YardSale software will be able to
+            run on any major operating system on today's market.
+
+        \subsection{Cross Architecture}
+            The main purpose of the YardSale software is to be very
+            independent of all architectural aspects of the system, using
+            minimal system resources.  The idea is to be able to use any system
+            to run the software appropriately.
+
+    \section{System Constraints}
+        \subsection{Interfaces}
+            The YardSale system must support the use of several peripheral interfaces
+            to aid in the completion of POS transactions and other functionality outlined
+            previously.  The interfaces are outlined as follows:
+
+            \begin{itemize}
+                \item {\bf Cash Drawers} The system must support the use of a
+                cash drawer for storage of money exchanged during transactions.
+                It shall pop open upon the completion of a transaction or when
+                prompted by the user.
+
+                \item {\bf Magnetic Card Scanners} The system must support the use
+                of a magnetic card scanner for automatic input of information.  These
+                scanners must correctly input information stored on both credit cards
+                and employee access cards.
+
+                \item {\bf Barcode Scanners} The system must support the use of
+                a barcode scanner for automatic input of items for inventory
+                and transaction processing.
+
+                \item {\bf Receipt Printers} The system must support the use of
+                a receipt printer.  The printers must print specified information
+                at the conclusion of each transaction and will also be used with
+                the reporting functionality.
+
+                \item {\bf TouchScreen Monitor} The system must support the use
+                of TouchScreen monitors.  The monitor shall act as both input and
+                output devices for the system.  The monitors must correctly read
+                the commands given and relay them to the system.
+            \end{itemize}
+
+    \section{External Dependencies and Interfaces}
+
+    \section{Preliminary Design}
+
+        \subsection{Major Modules}
+
+            \subsubsection{Database}
+                The Database module works as the translator between
+                the user interface and the database.  It converts calls
+                made by the GUI into SQL queries to be sent to the
+                database.  When the query results are returned from the
+                database,the Database converts these items to a
+                Database Type (discussed in next section) to be read by the
+                GUI. OTL Libraries will be used in conjunction with ODBC to
+                provide database connectivity with the user interface. OTL is
+                a cross platform library for ODBC.
+
+            \subsubsection{Database Types}
+                The Database Types module is the superclass for all information that
+                may be sent to the GUI from the database.  It contains
+                function calls for each of the following types:
+
+                \begin{list}{}
+                    \item{{\bf Inventory Type:} contains variables for all
+                    possible inventory management items stored in the
+                    database.  Coordinates with the Inventory Management
+                    view in the GUI, which is also used by Transactions.}
+
+                    \item{{\bf Customer Type:} contains variables for
+                    all possible customer management items stored in the database.
+                    Coordinates with the Customer view in the GUI,
+                    which is also used by Transactions.}
+
+                    \item{{\bf Employee Type:} contains variables for
+                    all possible employee management items stored in the
+                    database.  Coordinates with the Employee Management
+                    view in the GUI.}
+
+                    \item{{\bf Yard Transaction:} contains variables for all
+                    possible transaction items stored in the database.
+                    Coordinates with the Transaction view in the GUI.}
+                \end{list}{}
+
+            \subsubsection{GUI wxWindows}
+                The GUI wxWindows module defines all interfaces used by the
+                GUI.  It contains functions derived from the wxWindows
+                libraries for C++.  It also interacts with the
+                Database module to display information sent from the
+                database.\\
+
+%        \newpage
+
+
+        \subsection{System Architecture}
+
+            The figure shown below outlines the class dependencies and hierarchy of
+            the modules described in section 1.5.1.\\
+
+            \includegraphics{yardsale_modules.png}\\
+            %\caption{System Architecture Flow Chart}
+
+    \section{Preliminary Project Task Plan}
+        %Scope and Size of Project Paragraph
+
+        \subsection{Milestones}
+            \begin{description}
+                \item[2004-03-05] FEATURE FREEZE - deadline for adding functional
+                features to the design of the POS.
+
+                \item[2004-03-07] ITERATION 1 - all requirements for first
+                iteration to be completed and documented in the interim
+                report.
+
+                \item[2004-04-01] ITERATION 2 - all secondary requirements
+                to be completed for the second iteration.
+
+                \item[2004-04-17] CODE FREEZE - deadline for beginning the
+                coding of features; those not already implemented will be removed;
+                testing only beyond this point
+
+                \item[2004-04-27] FINAL DELIVERABLE - completion of
+                prototype for presentation to the CSC department at the
+                Posters and Pies event.
+            \end{description}
+
+        \subsection{Team Member Roles and Responsibilities}
+            The following figure displays a graphical hierarchy of the team's
+            roles:\\
+
+            \includegraphics{organization.png}
+            \\The team roles are defined as follows:
+
+            \begin{description}
+
+                \item[Jesse Lovelace] As the CEO of A.S. Logic Systems,
+                Jesse is in charge of all aspects of the project.  Though
+                he works very closely with both VPs, Jesse is the ultimate
+                decision maker for the team.  In addition to his roles as
+                CEO, Jesse is also in charge of the design and
+                implementation of the User Interface and all security
+                aspects.
+
+                \item[Adam Parrish] Adam is the Vice President in charge
+                of Development at A.S Logic Systems.  He works closely
+                with both the CEO and VP of Marketing to see that
+                YardSale's implementation is both correct and timely.  In
+                addition to these company roles, Adam is also the lead
+                Database Programmer; seeing to it that the database is
+                functioning properly and creating the SQL scripts for
+                populating and querying the database.
+
+                \item[Mike Swigon] Mike is the Vice President of
+                Marketing at A.S. Logic Systems.  He works closely with
+                both Adam and Jesse to both design the entire system and
+                to insure that its implementation is correct.  In addition
+                to these responsibilities, Mike works with Adam in database
+                setup and creation of SQL scripts for populating and
+                querying the database.
+
+                \item[John Lamb] John's responsibilities fall primarily in
+                interfacing with the database.  He works closely with Jesse
+                to develop a UI that can correctly and securely
+                communicate information to and from the database; also
+                implementing the SQL statements developed by Mike and
+                Adam.
+
+                \item[Jay Johnston] Jay's responsibilities fall primarily
+                in creation of the UI and networking the system during
+                setup.  He works closely with Jesse to develop modules
+                for required functionality of the interface.
+
+                \item[Cameron Watts] Cameron's responsibilities fall
+                primarily on marketing and system research.  He works
+                closely with the design group to ensure YardSale's
+                functionality is top-of-the-line and user friendly.
+            \end{description}
 
 \chapter{Design}
 
@@ -469,7 +643,7 @@ the YardSale System will support the expansion of functionality with great ease.
     {\bf YardSale Global Database Diagram}\\
     \\
     \\
-    \includegraphics{Database_Layout.png}
+%    \includegraphics{Database_Layout.png}
 
     \newpage
 
@@ -482,7 +656,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Customer Table}\\
         \\
         \\
-        \includegraphics{Tables/CustomerTable.png}\\
+%        \includegraphics{Tables/CustomerTable.png}\\
         \\
         The above UML diagram shows the layout of the customer table. The object of this
         table is to manage customer personal information for later reference in
@@ -517,7 +691,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Inventory Table}\\
         \\
         \\
-        \includegraphics{Tables/InventoryTable.png}\\
+%        \includegraphics{Tables/InventoryTable.png}\\
         \\
         \\
         This table being the main Inventory storage structure contains all information needed
@@ -542,7 +716,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Tax Table}\\
         \\
         \\
-        \includegraphics{Tables/TaxTable.png}\\
+%        \includegraphics{Tables/TaxTable.png}\\
         \\
         \\
         The tax table is just a support table for the inventory items. It is referenced by ID
@@ -554,7 +728,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Vendor Table}\\
         \\
         \\
-        \includegraphics{Tables/VendorTable.png}\\
+%        \includegraphics{Tables/VendorTable.png}\\
         \\
         \\
         The Vendor Table is used also as a supporting table for the inventory. This information
@@ -576,7 +750,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Transaction Table}\\
         \\
         \\
-        \includegraphics{Tables/TransactionLogTable.png}\\
+%        \includegraphics{Tables/TransactionLogTable.png}\\
         \\
         \\
         The Transaction Log Table is used to store information that links Customers, Employees, and
@@ -589,7 +763,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Package Table}\\
         \\
         \\
-        \includegraphics{Tables/PackageTable.png}\\
+%        \includegraphics{Tables/PackageTable.png}\\
         \\
         \\
         The Package Table is used to store information about a package. There is a link to a transaction ID
@@ -603,7 +777,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Carrier Table}\\
         \\
         \\
-        \includegraphics{Tables/CarrierTable.png}\\
+%        \includegraphics{Tables/CarrierTable.png}\\
         \\
         \\
         The Carrier table is a support table for the Package table. It provides information about the different
@@ -620,7 +794,7 @@ the YardSale System will support the expansion of functionality with great ease.
         this table. The table just contains the name for the type of shipping, the carrier, and how much
         it costs.\\
         \\
-        \includegraphics{Tables/ShippingTable.png}\\
+%        \includegraphics{Tables/ShippingTable.png}\\
         \\
         \subsection{Employee Management}
 
@@ -633,7 +807,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Employee Table}\\
         \\
         \\
-        \includegraphics{Tables/EmployeeTable.png}
+%        \includegraphics{Tables/EmployeeTable.png}
         \\
         \\
         The Employee Table keeps track of all pertinent information about employees that would
@@ -650,7 +824,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Login Table}\\
         \\
         \\
-        \includegraphics{Tables/LoginTable.png}\\
+%        \includegraphics{Tables/LoginTable.png}\\
         \\
         \\
         The Login Table tracks the amount of time an employee has been logged in based on when
@@ -665,7 +839,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Access Control List Table}\\
         \\
         \\
-        \includegraphics{Tables/ACL.png}\\
+%        \includegraphics{Tables/ACL.png}\\
         \\
         \\
         The ACL table which is short for Access Control List Table manages which user types have access
@@ -677,7 +851,7 @@ the YardSale System will support the expansion of functionality with great ease.
         {\bf Key Table}\\
         \\
         \\
-        \includegraphics{Tables/KeyTable.png}\\
+%        \includegraphics{Tables/KeyTable.png}\\
         \\
         \\
         The Key Table is used to manage the keys used to unencrypt the data stored in the database. The

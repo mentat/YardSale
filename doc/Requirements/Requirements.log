@@ -1,12 +1,13 @@
-This is TeX, Version 3.14159 (Web2C 7.3.1) (format=latex 2003.2.18)  4 APR 2004 19:32
+This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  6 APR 2004 23:48
+entering extended mode
 **Requirements.tex
-(Requirements.tex
+(Requirements.tex{pdftex.cfg}
 LaTeX2e <2001/06/01>
-Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, i
-talian, nohyphenation, loaded.
-(/usr/share/texmf/tex/latex/base/report.cls
+Babel <v3.7m> and hyphenation patterns for english, french, german, ngerman, du
+mylang, nohyphenation, loaded.
+(C:\texmf\tex\latex\base\report.cls
 Document Class: report 2001/04/21 v1.4e Standard LaTeX document class
-(/usr/share/texmf/tex/latex/base/size10.clo
+(C:\texmf\tex\latex\base\size10.clo
 File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -21,34 +22,31 @@ File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+) (C:\texmf\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texmf/tex/latex/graphics/keyval.sty
+(C:\texmf\tex\latex\graphics\keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(C:\texmf\tex\latex\graphics\graphics.sty
 Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texmf/tex/latex/graphics/trig.sty
+ (C:\texmf\tex\latex\graphics\trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+) (C:\texmf\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2003/03/12 v1.1 MiKTeX 'graphics' configuration
 )
-(/usr/share/texmf/tex/latex/config/graphics.cfg)
-Package graphics Info: Driver file: dvips.def on input line 80.
+Package graphics Info: Driver file: pdftex.def on input line 80.
 
-(/usr/share/texmf/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(C:\texmf\tex\latex\graphics\pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
+(C:\texmf\tex\latex\fancyhdr\fancyhdr.sty
 \headwidth=\dimen105
 ) (Requirements.aux)
-\openout1 = `Requirements.aux'.
-
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
@@ -62,889 +60,614 @@ LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 
+(C:\texmf\tex\context\base\supp-pdf.tex (C:\texmf\tex\context\base\supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count89
+\scratchcounter=\count90
+\scratchtoks=\toks15
+\scratchdimen=\dimen106
+\scratchskip=\skip43
+\scratchmuskip=\muskip10
+\scratchbox=\box26
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen107
+\minusone=\count91
+\thousandpoint=\dimen108
+\emptytoks=\toks16
+\nextbox=\box27
+\nextdepth=\dimen109
+\everyline=\toks17
+\!!counta=\count92
+\!!countb=\count93
+\recursecounter=\count94
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count95
+\nofMParguments=\count96
+\everyMPtoPDFconversion=\toks18
+) <aslogic_smaller.png, id=1, 200.75pt x 202.7575pt>
+File: aslogic_smaller.png Graphic file (type png)
+ <use aslogic_smaller.png>
+[1
 
-! LaTeX Error: Cannot determine size of graphic in aslogic_smaller.png (no Boun
-dingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.40 \includegraphics{aslogic_smaller.png}
-                                          
-? 
-File: aslogic_smaller.png Graphic file (type eps)
-<aslogic_smaller.png> [1
-
-] (Requirements.toc
+{psfonts.map} <aslogic_smaller.png>] (Requirements.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 2.
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [1
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 12.0pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[1
 
 ])
-\tf@toc=\write3
-\openout3 = `Requirements.toc'.
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
+\tf@toc=\write4
  [2]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--99
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 101.
-
-(/usr/share/texmf/tex/latex/base/omscmr.fd
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 95.
+(C:\texmf\tex\latex\base\omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 95.
  [3
 
-]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [4]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [5]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [6]
-Underfull \hbox (badness 10000) in paragraph at lines 365--370
+] [4] [5] [6] [7] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 523--528
 
  []
 
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [7]
-Underfull \hbox (badness 10000) in paragraph at lines 376--378
+Underfull \hbox (badness 10000) in paragraph at lines 534--536
 
  []
 
+<yardsale_modules.png, id=61, 451.6875pt x 191.71625pt>
+File: yardsale_modules.png Graphic file (type png)
 
-! LaTeX Error: Cannot determine size of graphic in yardsale_modules.png (no Bou
-ndingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.379     \includegraphics{yardsale_modules.png}
-                                                \\
-? 
-File: yardsale_modules.png Graphic file (type eps)
-<yardsale_modules.png>
-Underfull \hbox (badness 10000) in paragraph at lines 379--381
+<use yardsale_modules.png>
+Underfull \hbox (badness 10000) in paragraph at lines 537--539
 
  []
 
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 565--567
 
-! LaTeX Error: Cannot determine size of graphic in organization.png (no Boundin
-gBox).
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.405     \includegraphics{organization.png}
-                                            
-? 
-File: organization.png Graphic file (type eps)
-<organization.png>
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [8]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [9]
+<organization.png, id=65, 451.6875pt x 222.8325pt>
+File: organization.png Graphic file (type png)
+ <use organization.png>
+[11 <yardsale_modules.png>] [12 <organization.png>]
 Chapter 2.
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [10
+[13
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 637--641
 
-! LaTeX Error: Cannot determine size of graphic in Database_Layout.png (no Boun
-dingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.472     \includegraphics{Database_Layout.png}
-                                               
-? 
-File: Database_Layout.png Graphic file (type eps)
-<Database_Layout.png>
-Underfull \hbox (badness 10000) in paragraph at lines 469--473
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 469--473
+Underfull \hbox (badness 10000) in paragraph at lines 637--641
 
  []
-
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [11]
+Underfull \hbox (badness 10000) in paragraph at lines 637--641
 
-! LaTeX Error: Cannot determine size of graphic in Tables/CustomerTable.png (no
- BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.485 ...includegraphics{Tables/CustomerTable.png}
-                                                  \\
-? 
-File: Tables/CustomerTable.png Graphic file (type eps)
-<Tables/CustomerTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 482--493
-
  []
-
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--493
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 650--661
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--493
+Underfull \hbox (badness 10000) in paragraph at lines 650--661
 
  []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [12]
-
-! LaTeX Error: Cannot determine size of graphic in Tables/InventoryTable.png (n
-o BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.520 ...ncludegraphics{Tables/InventoryTable.png}
-                                                  \\
-? 
-File: Tables/InventoryTable.png Graphic file (type eps)
-<Tables/InventoryTable.png>
-
-! LaTeX Error: Cannot determine size of graphic in Tables/TaxTable.png (no Boun
-dingBox).
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.545 ...    \includegraphics{Tables/TaxTable.png}
-                                                  \\
-? 
-File: Tables/TaxTable.png Graphic file (type eps)
-<Tables/TaxTable.png>
 
-! LaTeX Error: Cannot determine size of graphic in Tables/VendorTable.png (no B
-oundingBox).
+Underfull \hbox (badness 10000) in paragraph at lines 650--661
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.557 ... \includegraphics{Tables/VendorTable.png}
-                                                  \\
-? 
-File: Tables/VendorTable.png Graphic file (type eps)
-<Tables/VendorTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
-
  []
 
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--567
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
  []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [13]
-
-! LaTeX Error: Cannot determine size of graphic in Tables/TransactionLogTable.p
-ng (no BoundingBox).
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.579 ...egraphics{Tables/TransactionLogTable.png}
-                                                  \\
-? 
-File: Tables/TransactionLogTable.png Graphic file (type eps)
-<Tables/TransactionLogTable.png>
 
-! LaTeX Error: Cannot determine size of graphic in Tables/PackageTable.png (no 
-BoundingBox).
+Underfull \hbox (badness 10000) in paragraph at lines 678--735
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.592 ...\includegraphics{Tables/PackageTable.png}
-                                                  \\
-? 
-File: Tables/PackageTable.png Graphic file (type eps)
-<Tables/PackageTable.png>
-
-! LaTeX Error: Cannot determine size of graphic in Tables/CarrierTable.png (no 
-BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.606 ...\includegraphics{Tables/CarrierTable.png}
-                                                  \\
-? 
-File: Tables/CarrierTable.png Graphic file (type eps)
-<Tables/CarrierTable.png>
-
-! LaTeX Error: Cannot determine size of graphic in Tables/ShippingTable.png (no
- BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.623 ...includegraphics{Tables/ShippingTable.png}
-                                                  \\
-? 
-File: Tables/ShippingTable.png Graphic file (type eps)
-<Tables/ShippingTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--625
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
  []
-
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [14]
+Underfull \hbox (badness 10000) in paragraph at lines 738--793
 
-! LaTeX Error: Cannot determine size of graphic in Tables/EmployeeTable.png (no
- BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.636 ...includegraphics{Tables/EmployeeTable.png}
-                                                  
-? 
-File: Tables/EmployeeTable.png Graphic file (type eps)
-<Tables/EmployeeTable.png>
-
-! LaTeX Error: Cannot determine size of graphic in Tables/LoginTable.png (no Bo
-undingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.653 ...  \includegraphics{Tables/LoginTable.png}
-                                                  \\
-? 
-File: Tables/LoginTable.png Graphic file (type eps)
-<Tables/LoginTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
-
  []
 
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--662
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
-
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [15]
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
-! LaTeX Error: Cannot determine size of graphic in Tables/ACL.png (no BoundingB
-ox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.668         \includegraphics{Tables/ACL.png}
-                                              \\
-? 
-File: Tables/ACL.png Graphic file (type eps)
-<Tables/ACL.png>
-
-! LaTeX Error: Cannot determine size of graphic in Tables/KeyTable.png (no Boun
-dingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.680 ...    \includegraphics{Tables/KeyTable.png}
-                                                  \\
-? 
-File: Tables/KeyTable.png Graphic file (type eps)
-<Tables/KeyTable.png>
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 795--830
 
  []
 
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--691
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
  []
-
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [16]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
- [17]
-Underfull \hbox (badness 10000) in paragraph at lines 695--701
-
  []
 
 
-! LaTeX Error: Cannot determine size of graphic in ys_main_screener.png (no Bou
-ndingBox).
+Underfull \hbox (badness 10000) in paragraph at lines 833--859
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.702     \includegraphics{ys_main_screener.png}
-                                                \\
-? 
-File: ys_main_screener.png Graphic file (type eps)
-<ys_main_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 702--703
-
  []
-
 
-Underfull \hbox (badness 10000) in paragraph at lines 704--711
+[18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 863--869
 
  []
 
+<ys_main_screener.png, id=95, 266.56967pt x 316.55455pt>
+File: ys_main_screener.png Graphic file (type png)
 
-! LaTeX Error: Cannot determine size of graphic in ys_sales_screener.png (no Bo
-undingBox).
+<use ys_main_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 870--871
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.713     \includegraphics{ys_sales_screener.png}
-                                                 \\
-? 
-File: ys_sales_screener.png Graphic file (type eps)
-<ys_sales_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 713--714
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--729
+Underfull \hbox (badness 10000) in paragraph at lines 872--879
 
  []
 
+<ys_sales_screener.png, id=96, 266.56967pt x 209.04546pt>
+File: ys_sales_screener.png Graphic file (type png)
 
-! LaTeX Error: Cannot determine size of graphic in ys_inv_screener.png (no Boun
-dingBox).
+<use ys_sales_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 881--882
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.731     \includegraphics{ys_inv_screener.png}
-                                               \\
-? 
-File: ys_inv_screener.png Graphic file (type eps)
-<ys_inv_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 731--732
-
  []
-
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--748
+[20 <ys_main_screener.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 883--897
 
  []
 
+<ys_inv_screener.png, id=100, 266.56967pt x 260.4109pt>
+File: ys_inv_screener.png Graphic file (type png)
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
+<use ys_inv_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 899--900
 
- [18]
-
-! LaTeX Error: Cannot determine size of graphic in ys_employee_screener.png (no
- BoundingBox).
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.750 ...includegraphics{ys_employee_screener.png}
-                                                  \\
-? 
-File: ys_employee_screener.png Graphic file (type eps)
-<ys_employee_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 750--751
+[21 <ys_sales_screener.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 901--916
 
  []
 
+<ys_employee_screener.png, id=104, 266.56967pt x 229.95pt>
+File: ys_employee_screener.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 752--760
+<use ys_employee_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 918--919
 
  []
-
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
+[22 <ys_inv_screener.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 920--928
 
- [19]
+ []
 
-! LaTeX Error: Cannot determine size of graphic in ys_calc_screener.png (no Bou
-ndingBox).
+[23 <ys_employee_screener.png>]
+<ys_calc_screener.png, id=111, 191.93016pt x 242.49272pt>
+File: ys_calc_screener.png Graphic file (type png)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.764     \includegraphics{ys_calc_screener.png}
-                                                \\
-? 
-File: ys_calc_screener.png Graphic file (type eps)
-<ys_calc_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 764--765
+<use ys_calc_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 932--933
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 766--773
+Underfull \hbox (badness 10000) in paragraph at lines 934--941
 
  []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [20]
+[24 <ys_calc_screener.png>]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 781--782
+Underfull \hbox (badness 10000) in paragraph at lines 949--950
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--802
+Underfull \hbox (badness 10000) in paragraph at lines 968--970
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 805--806
+Underfull \hbox (badness 10000) in paragraph at lines 973--974
 
  []
 
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [21
+[25
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 837--839
+Underfull \hbox (badness 10000) in paragraph at lines 1005--1007
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--842
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1010
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 850--852
+Underfull \hbox (badness 10000) in paragraph at lines 1018--1020
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--856
+Underfull \hbox (badness 10000) in paragraph at lines 1023--1024
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 1049--1051
 
  []
 
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [22]
-Underfull \hbox (badness 10000) in paragraph at lines 881--883
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1054
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--886
+Underfull \hbox (badness 10000) in paragraph at lines 1073--1075
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 905--907
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1078
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 909--910
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1089
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--921
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1092
+
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1105
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 923--924
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1109
 
  []
 
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [23]
-Underfull \hbox (badness 10000) in paragraph at lines 935--937
+Underfull \hbox (badness 10000) in paragraph at lines 1132--1134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 940--941
+Underfull \hbox (badness 10000) in paragraph at lines 1136--1137
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 964--966
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1152
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--969
+Underfull \hbox (badness 10000) in paragraph at lines 1159--1161
 
  []
 
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [24]
-Underfull \hbox (badness 10000) in paragraph at lines 979--981
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 983--984
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 991--993
-
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [25]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [26]
+[29] [30]
 Chapter 4.
+[31
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [27
-
-]
-(Requirements.aux) ) 
+] (Requirements.aux) ) 
 Here is how much of TeX's memory you used:
- 698 strings out of 20880
- 7912 string characters out of 196184
- 57836 words of memory out of 350001
- 3668 multiletter control sequences out of 10000+15000
- 8273 words of font info for 30 fonts, out of 400000 for 1000
- 14 hyphenation exceptions out of 10000
- 26i,11n,40p,1315b,530s stack positions out of 3000i,100n,1500p,50000b,4000s
-
-Output written on Requirements.dvi (28 pages, 86832 bytes).
+ 1119 strings out of 95518
+ 12759 string characters out of 1189726
+ 63989 words of memory out of 1061908
+ 4173 multiletter control sequences out of 35000
+ 8273 words of font info for 30 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 607
+ 29i,11n,43p,210b,399s stack positions out of 1500i,500n,5000p,200000b,32768s
+ 140 PDF objects out of 65536
+ 0 named destinations out of 20000
+ 41 words of extra memory for PDF output out of 65536
+<cmtt9.pfb><cmr7.pfb><cmsl10.pfb><cmsy10.pfb><cmbx7.pfb><
+cmr10.pfb><cmbx10.pfb><cmr12.pfb><cmr17.pfb><cmbx12.pfb>
+Output written on Requirements.pdf (32 pages, 419477 bytes).
