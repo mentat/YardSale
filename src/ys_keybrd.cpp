@@ -72,11 +72,14 @@ void YardKeybrd::OnButtonDone(wxCommandEvent & event){
 }
 
 void YardKeybrd::OnChar(wxKeyEvent & event){
-
+  
         if (event.GetKeyCode() == 8){
                DeleteChar();
         }else{
-            screencontents.Append(event.GetKeyCode());
+            if (!event.ShiftDown())
+                screencontents.Append(event.GetKeyCode());
+            else
+                screencontents.Append(event.GetKeyCode() + 32);
         }
        RefreshScreen();
 }
