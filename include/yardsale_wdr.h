@@ -145,15 +145,10 @@ wxSizer *Config( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE )
 #define ID_CONFIG_DB_PORT 10092
 wxSizer *ConfigDB( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
+#define ID_LISTCTRL 10093
+wxSizer *ConfigLog( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
+
 // Declare menubar functions
-
-#define ID_MENU 10093
-#define ID_MAIN_MENU_CONFIG 10094
-wxMenuBar *MainBar();
-
-#define ID_CONFIG_DELETE 10095
-#define ID_CONFIG_EXIT 10096
-wxMenuBar *ConfigBar();
 
 // Declare toolbar functions
 

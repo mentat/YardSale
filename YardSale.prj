@@ -86,7 +86,8 @@ module.include.files=\
 	ys_bitmaps.h\
 	otlv4.h\
 	ys_debug.h\
-	ys_employee_type.h
+	ys_employee_type.h\
+	ys_calc_dlg.h
 
 module.source.name=src
 module.source.type=

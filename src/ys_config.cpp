@@ -8,8 +8,8 @@ BEGIN_EVENT_TABLE(YardConfig, wxFrame)
     EVT_BUTTON(ID_CONFIG_SAVE, YardConfig::OnSave)
     EVT_BUTTON(ID_CONFIG_CANCEL, YardConfig::OnCancel)
     EVT_BUTTON(ID_CONFIG_DB_BROWSE, YardConfig::OnBrowse)
-    EVT_MENU(ID_CONFIG_EXIT, YardConfig::OnExit)
-    EVT_MENU(ID_CONFIG_DELETE, YardConfig::OnDeleteConfig)
+    //EVT_MENU(ID_CONFIG_EXIT, YardConfig::OnExit)
+    //EVT_MENU(ID_CONFIG_DELETE, YardConfig::OnDeleteConfig)
     EVT_TEXT(-1, YardConfig::OnChange)
     EVT_RADIOBOX(-1, YardConfig::OnChange)
     EVT_SPINCTRL(-1, YardConfig::OnChange)
@@ -21,7 +21,7 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
 :wxFrame(parent, id, title, pos, size, style)
 {    
     m_construct = true;
-    SetMenuBar(ConfigBar());
+   // SetMenuBar(ConfigBar());
     wxPanel * panel = new wxPanel(this);
     
     wxSizer * sizer = Config(panel, false, true);

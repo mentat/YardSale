@@ -19,7 +19,7 @@ BEGIN_EVENT_TABLE(YardMain, wxFrame)
     EVT_BUTTON(ID_MAIN_INVENTORY, YardMain::OnInventory)
     EVT_BUTTON(ID_MAIN_SALES, YardMain::OnSale)
     EVT_BUTTON(ID_MAIN_EMPLOYEE, YardMain::OnEmployee)
-    EVT_MENU(ID_MAIN_MENU_CONFIG, YardMain::OnOptions)
+    //EVT_MENU(ID_MAIN_MENU_CONFIG, YardMain::OnOptions)
 END_EVENT_TABLE()
 
 DECLARE_APP(YardSale)
@@ -29,7 +29,7 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
 :wxFrame(parent, id, title, pos, size, style, name), m_max(false) {
     
     m_inventory = 0;
-    SetMenuBar(MainBar());
+    //SetMenuBar(MainBar());
     wxPanel * panel = new wxPanel(this);
     
     //panel->SetBackgroundColour(wxColor("BLUE VIOLET"));

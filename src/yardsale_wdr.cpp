@@ -814,17 +814,21 @@ wxSizer *Config( wxWindow *parent, bool call_fit, bool set_sizer )
     ConfigDB( item3, FALSE );
     item2->AddPage( item3, wxT("Database") );
 
+    wxPanel *item4 = new wxPanel( item2, -1 );
+    ConfigLog( item4, FALSE );
+    item2->AddPage( item4, wxT("Log") );
+
     item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxFlexGridSizer *item4 = new wxFlexGridSizer( 2, 0, 0 );
+    wxFlexGridSizer *item5 = new wxFlexGridSizer( 2, 0, 0 );
 
-    wxButton *item5 = new wxButton( parent, ID_CONFIG_SAVE, wxT("Save"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item5, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item6 = new wxButton( parent, ID_CONFIG_SAVE, wxT("Save"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item6 = new wxButton( parent, ID_CONFIG_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
-    item4->Add( item6, 0, wxALIGN_CENTER|wxALL, 5 );
+    wxButton *item7 = new wxButton( parent, ID_CONFIG_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+    item5->Add( item7, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    item0->Add( item4, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+    item0->Add( item5, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
 
     if (set_sizer)
     {
@@ -911,31 +915,30 @@ wxSizer *ConfigDB( wxWindow *parent, bool call_fit, bool set_sizer )
     return item0;
 }
 
+wxSizer *ConfigLog( wxWindow *parent, bool call_fit, bool set_sizer )
+{
+    wxFlexGridSizer *item0 = new wxFlexGridSizer( 1, 0, 0 );
+    item0->AddGrowableCol( 0 );
+    item0->AddGrowableRow( 0 );
+
+    wxListCtrl *item1 = new wxListCtrl( parent, ID_LISTCTRL, wxDefaultPosition, wxSize(160,120), wxLC_REPORT|wxSUNKEN_BORDER );
+    item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+    if (set_sizer)
+    {
+        parent->SetAutoLayout( TRUE );
+        parent->SetSizer( item0 );
+        if (call_fit)
+        {
+            item0->Fit( parent );
+            item0->SetSizeHints( parent );
+        }
+    }
+    
+    return item0;
+}
+
 // Implement menubar functions
-
-wxMenuBar *MainBar()
-{
-    wxMenuBar *item0 = new wxMenuBar;
-    
-    wxMenu* item1 = new wxMenu;
-    item1->Append( ID_MAIN_MENU_CONFIG, wxT("&Options\tAlt-o"), wxT("Edit program options") );
-    item0->Append( item1, wxT("&File") );
-    
-    return item0;
-}
-
-wxMenuBar *ConfigBar()
-{
-    wxMenuBar *item0 = new wxMenuBar;
-    
-    wxMenu* item1 = new wxMenu;
-    item1->Append( ID_CONFIG_DELETE, wxT("Delete Configuration"), wxT("Delete's the configuration from the system") );
-    item1->AppendSeparator();
-    item1->Append( ID_CONFIG_EXIT, wxT("Exit"), wxT("Exit the configuration screen") );
-    item0->Append( item1, wxT("&File") );
-    
-    return item0;
-}
 
 // Implement toolbar functions
 
