@@ -32,7 +32,7 @@ class YardDebugScreen: public wxFrame {
     YardDebugScreen(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER|wxFRAME_NO_TASKBAR|wxTAB_TRAVERSAL);
+               long style = wxDEFAULT_FRAME_STYLE);
     /// Destructor    
     virtual ~YardDebugScreen();
     
