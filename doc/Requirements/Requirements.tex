@@ -55,27 +55,17 @@ Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts\\}
 \section{Introduction}
 
 YardSale is an open source Point of Sale system that is being
-developed by A.S Logic Systems.  Current
+designed by A.S Logic Systems to revolutionize the way Point of
+Sale systems are implemented in today's market.  Current
 implementations of Point of Sale systems are fraught with a number
-of issues including often being extremely overpriced, difficult
+of issues; including often being extremely overpriced, difficult
 to administer, dated in their functionality, and lacking necessary
-operations.
+operations.  YardSale was designed to alleviate these problems and
+allow for extensibility as the market of retail sale expands in
+the future.
 
-The power of an open source system such as YardSale is the
-open way in which it is designed.  A user of the YardSale system
-can take off the shelf computer hardware (in many cases older hardware
-will perform just as well) and create a point of sale with minimal
-configuration.  In addition, supporting new hardware is trivial since
-the YardSale interface specification is in no way hindered by
-restrictive close-source licenses.
-
-The name "YardSale" was concieved to emphasize the
-versatility and simplicity of the system.  The parts of a
-YardSale point of sale can be older, used hardware and
-the underlying software can be completely free.
-
-Being that YardSale is an open source projectv the initial
-market will target small, locally owned retail
+Being that YardSale is an open source project with little funding,
+the initial niche market will target small, locally owned retail
 stores.  This type of market will allow for extensive on-site
 research, as many of these businesses should be willing to work
 with us to improve on the functionality of their existing POS
@@ -85,52 +75,33 @@ all who wish to use it, the only expense that will come into play
 is if the company wishes to enlist our services in setup,
 troubleshooting, support, expansion, or customization.
 
-However, we believe that YardSale can be easily used by
-those who do not wish to purchase support contracts due to
-the clear documentation and well-writen interfaces.
-
 \section{Functional Requirements}
 
 This section entails all of the minimal requirements set by the AS
-Logic Systems development team for the Open Source Point of Sale, hereafter referred
+Logic Systems development team for the OpenPOS hereafter referred
 to as YardSale.\\
-\\YardSale should accomplish the
-following Point of Sale operations:
+\\Minimum functionality of YardSale should accomplish the
+following:
 
 \begin{itemize}
-    \item {Manage Inventory}
-    \begin{itemize}
-    	\item {Add a product to the inventory}
-	\item {Edit an existing inventory item}
-	\item {Remove an inventory item}
-	\item {Associate attributes such as price, quanity, and tax with an inventory item}
-	\item {Search for an inventory item by various criteria}
-	\item {Add an inventory item to a transaction (see Transaction)}
-    \end{itemize}
-    \item{Manage Customers}
-    \begin{itemize}
-    	\item{Add and remove customers}
-	\item{Edit customer information such as phone number and address}
-	\item{Associate a customer with a transaction (see Transaction)}
-    \end{itemize}
-    \item {Manage Employees}
-    \begin{itemize}
-    	\item{Add and remove employees}
-	\item{Associate a level with employees such as "manager" and "sales associate"}
-    \end{itemize}
-    \item{Perform Point of Sale Transactions}
-    \begin{itemize}
-    	\item{ Allow an "seller/employee" to sell and inventory item to a "buyer/customer"  }
-	\item{ Allow a customer to return an item to the seller }
-	\item{ Calculate the tax on an item being sold }
-    \end{itemize}
+    \item {Manage Inventory Data}
+    \item {Manage Customer Data}
+    \item {Manage Employee Data}
+    \item {Perform Transactions}
+    \item {Provide Logging Facilities}
+    \item {Report on Data}
+    \item {User Level Access Rights}
 \end{itemize}
 
+
+%% REWORD??
 Each of these tasks is described in depth in their corresponding
 sub sections. There is planned functionality above and beyond this
 basic featureset, although without these functions other
 functionality can not be added.
 
+%% INFORMATION MANAGEMENT
+%% REMOVE ALL REFERENCES TO DATABASE IN ALL FOLLOWING SECTIONS
     \subsection{Database Management}
     The goal of the database management tasks are to add, modify, and
     delete information in the database. The database backend will run
@@ -164,11 +135,15 @@ functionality can not be added.
     disable employee accounts.\\
     \\
 
+%% REFERENCES DATABASE TABLES
     {\sl Among the more specific functionality of each of these sections
     will be to allow the user to retrieve any item stored in either
     inventory, customer, or employee tables given a search
     criteria.}
 
+
+%% THIS SECTION NEEDS TO BE MUCH MORE IN-DEPTH, AS IT IS THE MAIN FUNCTIONALITY
+%  OF A POINT OF SALE SYSTEM.  ALSO REMOVE REFERENCE TO DATABASE.
     \subsection{Transactions}
 
     Transactions in YardSale are basically a 4 step process. The first
@@ -188,6 +163,7 @@ functionality can not be added.
     that will link related elements of the transaction together for
     later reporting.
 
+%% DATABASE REFERENCE NEEDS TO BE REWORDED TO INFORMATION MANAGAMENT
     \subsection{Logging}
     Many program logging features will be provided inherently due to
     the database backend. Among the logging facilities will be the
@@ -197,9 +173,12 @@ functionality can not be added.
         \item {Employee Time Tracking}
         \item {Transaction Logging}
         \item {Shipment Logs}
+
+%% NOT INCLUDED HERE
         \item {SQL String Execution Logging}
     \end{itemize}
 
+%% MORE DB STUFF
     Employee time tracking will be logged based on when the login to
     their first client and when the logout of their last client. An
     entry in the Login table will track this for each instance of a
@@ -214,12 +193,14 @@ functionality can not be added.
     that adds it to the log table for later searching and debug use.
     This feature will likely be disabled in the final deliverable.
 
+%% MORE DB STUFF
     \subsection{Reporting}
     There will be a wide variety of reporting features available also
     as a result of the database backend. The following basic reporting
     functionality will be available in the first iteration of
     YardSale.
 
+%% RECHECK THESE REPORTING ITEMS AND REFINE TO THOSE THAT ARE NECESSARY (FEASIBLE)
     \begin{itemize}
         \item{Payroll for Employees}
         \item{Top Sales for Inventory Items}
@@ -282,6 +263,7 @@ functionality can not be added.
 
 \section{Non Functional Requirements}
 
+%% REMOVE INFO ABOUT wxWIN, AS THIS IS DESIGN STUFF
     \subsection{Cross Platform}
     The YardSale software is to be developed using the wxWindows libraries for C++,
     which creates GUIs (Graphical User Interfaces) that are
@@ -295,6 +277,8 @@ functionality can not be added.
     to run the software appropriately.
 
 \section{External Dependencies and Interfaces}
+
+%% ALL OF THE ITEMS IN THIS SECTION ARE SYS CONSTRAINTS
 
     \subsubsection{Cash Drawers}
     The cash drawers used for the system are a serial interface,
