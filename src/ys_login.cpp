@@ -27,6 +27,8 @@ YardLogin::YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
     listCtrl->InsertItem(0,0);
     listCtrl->InsertItem(0,1);
     listCtrl->InsertItem(0,2);
+    
+    Centre();
 }
 
 YardLogin::~YardLogin()
@@ -43,5 +45,6 @@ void YardLogin::OnExitButton(wxCommandEvent & event)
 void YardLogin::OnLogin(wxCommandEvent & event)
 {
     wxLogDebug(wxT("OnLogin"));
+    EndModal(0);
     
 }

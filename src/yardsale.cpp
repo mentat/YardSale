@@ -2,6 +2,7 @@
 #include "yardsale.h"
 #include "ys_splash.h"
 #include "ys_main.h"
+#include "ys_login.h"
 
 IMPLEMENT_APP(YardSale)
 
@@ -10,13 +11,18 @@ bool YardSale::OnInit()
     wxDialog * startup = new YardSplash(NULL, -1, "YardSale");
     
     startup->ShowModal();
-    startup->Destroy();
-    
+    // load here!
+    wxDialog * login = new YardLogin(NULL, -1, "YardSale");
     wxFrame * frame = new YardMain(NULL, -1, "YardSale");
+    
+    // end loading
+    startup->Destroy();
+    login->ShowModal();
+    login->Destroy();
+    
     frame->Show(true);
     
     SetTopWindow(frame);
-    
     
     return true;
     
