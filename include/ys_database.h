@@ -50,7 +50,7 @@ class YardDatabase {
      * @param name Name of the user for DB
      * @param pass Password for DB
      */
-    YardDatabase(const string& dsn, const string& name, const string& pass);
+    YardDatabase(const string& name, const string& pass, const string& dsn);
     //YardDatabase(const YardDBConfig& config);  
     
     /**

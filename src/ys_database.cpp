@@ -17,7 +17,7 @@
 
 using namespace std;
 
-YardDatabase::YardDatabase(const string& dsn, const string& name, const string& pass) {
+YardDatabase::YardDatabase(const string& name, const string& pass, const string& dsn) {
     m_db = 0;
     Init(dsn, name, pass);
 }
@@ -62,7 +62,7 @@ bool YardDatabase::connect(){
     loginString << "UID=" << m_name << ";PWD=" << m_pass 
         << ";DSN=" << m_dsn;
     
-    wxLogDB(loginString.str().c_str());
+    //wxLogDB(loginString.str().c_str());
     
     try {
         
@@ -70,7 +70,6 @@ bool YardDatabase::connect(){
     
     } catch(otl_exception &e) {
         
-        //throw YardDBException((char *)e.msg, (char*)e.stm_text);
         throw YardDBException("Cannot connect to DB, I dont know why.");
         return false;
     }
@@ -177,7 +176,7 @@ int main(int argc, char ** argv)
         testDB.Init(argv[1], argv[2], argv[3]);
         
         try {
-            VERIFY(testDB.connect(), true);
+            testDB.connect();
         } catch (YardDBException &e) {
             cout << e.GetWhat() << endl;
         }
