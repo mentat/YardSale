@@ -5,7 +5,8 @@ EXTRA_PROGRAMS = test_emp test_db test_inv test_bitmap test_cust test_trans
 
 TESTS = test_db test_inv test_emp test_cust test_trans
 
-test_db_SOURCES = ../ys_database.cpp ../ys_inv_type.cpp ../ys_log.cpp
+test_db_SOURCES = ../ys_database.cpp ../ys_inv_type.cpp ../ys_log.cpp ../xmlnode.cpp ../xml.cpp ../wrapexpat.cpp \
+	../ys_date.cpp ../ys_employee_type.cpp
 test_db_LDADD =  -lodbc $(WX_LIBS)
 test_db_CXXFLAGS =  $(WX_CXXFLAGS) -g -ansi -Wall -DYS_TEST_DB
 

@@ -175,6 +175,75 @@ vector<YardInvType> YardDatabase::InventoryGetAll(){
     return XMLFromStream<YardInvType>(dbStream.get(), "Inventory_Table");
 }
 
+YardInvType YardDatabase::InventoryGet(long key)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "SELECT * FROM Inventory_Table where INV_Item_ID = "
+        << key << ";";
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+        
+    return XMLFromStreamSingle<YardInvType>(dbStream.get(), "Inventory_Table");
+}
+
+long YardDatabase::CarrierAdd(const YardCarrierType& carrier)
+{
+    if (!m_db)
+        throw YardDBException("DB not initialized.");
+    
+    stringstream sql;
+    sql << "INSERT INTO Carrier_Table values(" << item.ToString() << ");";
+    
+    wxLogDebug(sql.str().c_str());
+    auto_ptr<otl_stream> dbStream;
+
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        dbStream.reset( new otl_stream(1, sql.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    // This function also does a select to return the key
+    
+    stringstream select;
+    select << "SELECT CRR_ID from Carrier_Table where CRR_Name = '"
+        << carrier.GetName() << "';";
+    
+    auto_ptr<otl_stream> db;
+    
+    try { // since its a new call might throw bad_alloc, but that is unlikely
+        db.reset( new otl_stream(1, select.str().c_str(), *m_db) );
+    
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    
+    long int key = 0;
+    
+    try {
+        *db >> key;
+    } catch (otl_exception &e) { // so just get otl exceptions
+        
+        throw YardDBException((char *)e.msg, (char*)e.stm_text);
+    }
+    return key;
+    
+}
+
 long YardDatabase::InventoryAdd(const YardInvType& item)
 {
     if (!m_db)
@@ -183,6 +252,7 @@ long YardDatabase::InventoryAdd(const YardInvType& item)
     stringstream sql;
     sql << "INSERT INTO Inventory_Table values(" << item.ToString() << ");";
     
+    wxLogDebug(sql.str().c_str());
     auto_ptr<otl_stream> dbStream;
 
     try { // since its a new call might throw bad_alloc, but that is unlikely
@@ -227,7 +297,7 @@ int YardDatabase::CustomerAdd(const YardCustType& newCust)
 
 	stringstream sql;
 	sql << "INSERT INTO Customer_Table values(" << newCust.ToString() << ");";
-
+    wxLogDebug(sql.str().c_str());
 	auto_ptr<otl_stream> dbStream;
 
 	try {
@@ -389,15 +459,19 @@ int InventoryTest(YardDatabase * db)
     // Setup inventory
     YardInvType test1;
     
+    test1.SetSKU("BFG-5000");
     test1.SetBarCode("QWERTY");
     test1.SetDescription("A very nice object");
     test1.SetDepartment("Sales");
     test1.SetQuantOnHand(69);
     test1.SetQuantOnOrder(96);
     test1.SetReorderLevel(30);
+    test1.SetReorderQuant(1000);
     test1.SetType("Widget");
     test1.SetWeightLbs(1000.45);
     test1.SetTaxType(0);
+    test1.SetVendorId(0);
+    test1.SetGroupId(0);
     test1.SetRetailPrice(34.23);
     test1.SetWholesalePrice(1000.12);
     test1.AddBulkPrice(100, 0.12);
@@ -415,7 +489,7 @@ int InventoryTest(YardDatabase * db)
     YardInvType test2;
     VERIFY_NO_THROW( test2 = db->InventoryGet(key) );
     
-    
+    return  0;
     
 #if 0    
     vector<YardInvType> invObj;
@@ -492,7 +566,7 @@ int main(int argc, char** argv)
         }
         cout << "!!!Could not connect to the database, \n"
             << "the database connection based \n"
-            << "tests will not be run (" << e.GetWhat() "). \n"
+            << "tests will not be run (" << e.GetWhat() << "). \n"
             << "I you have not setup the testing main for your \n"
             << "testing database, please do so!!!" << endl;
         return 1;

@@ -41,8 +41,8 @@ string YardInvType::ToString(const string& delim, bool quotes) const {
     else
         output << q << GetDateLastReceived().ToString() << q << delim;
     output << GetWeightLbsS() << delim
-        << q << IsOverSizedS() << delim
-        << q << MustShipFreightS() << delim
+        << q << IsOverSizedS() << q << delim
+        << q << MustShipFreightS() << q << delim
         << q << GetComment() << q;
   
     wxLogDebug(output.str().c_str());

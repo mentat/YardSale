@@ -1,6 +1,6 @@
 // --*-c++-*--
 /*
-    $Id: xmlnode.cpp,v 1.1 2004/04/18 20:27:48 thementat Exp $
+    $Id: xmlnode.cpp,v 1.2 2004/04/18 22:03:54 thementat Exp $
  
     GNU Messenger - The secure instant messenger
     Copyright (C) 2001-2002  Henrik Abelsson <henrik@abelsson.com>
@@ -274,7 +274,7 @@ XMLNode XMLNode::child(const string& name, unsigned int n) const
     
     // item not found
     if (p.first == m_xmlData->m_children.end())
-#ifdef XMLNODE_THROW_NOTFOUND
+#if (XMLNODE_THROW_NOTFOUND)
         throw InvalidChild("Invalid child");
 #else
         return XMLNode();
@@ -289,7 +289,7 @@ XMLNode XMLNode::child(const string& name, unsigned int n) const
         if (--n == 0)
             return (p.first)->second;
     }
-#ifdef XMLNODE_THROW_NOTFOUND
+#if (XMLNODE_THROW_NOTFOUND)
         throw InvalidChild("Invalid child");
 #else
         return XMLNode();
@@ -332,7 +332,7 @@ XMLNode& XMLNode::delChild(const string &name, unsigned int n)
     
     // item not found
     if (p.first == m_xmlData->m_children.end())
-#ifdef XMLNODE_THROW_NOTFOUND
+#if (XMLNODE_THROW_NOTFOUND)
         throw InvalidChild("Invalid child");
 #else
         return *this;
@@ -354,7 +354,7 @@ XMLNode& XMLNode::delChild(const string &name, unsigned int n)
         }
     }
     
-#ifdef XMLNODE_THROW_NOTFOUND
+#if (XMLNODE_THROW_NOTFOUND)
         throw InvalidChild("Invalid child");
 #else
         return *this;

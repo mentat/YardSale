@@ -24,6 +24,8 @@ YardDate& YardDate::operator=(const otl_datetime& time)
 	SetSecond(time.second);
 	SetFraction(time.fraction);
 	SetFracPrecision(time.frac_precision);
+    
+    return *this;
 }
 
 YardDate& YardDate::operator=(const wxDateTime& time)
@@ -36,7 +38,7 @@ YardDate& YardDate::operator=(const wxDateTime& time)
 	SetSecond(time.GetSecond());
 	SetFraction(time.GetMillisecond());
 	SetFracPrecision(3);
-    
+    return *this;
 }
 
 YardDate::YardDate(const XMLNode& node):XMLNode(node)
