@@ -33,8 +33,9 @@ class YardDatabase;
  *
  * @include INV_Table.sql
  * @ingroup database 
+ * @see YardInvType
  * @author Jesse Lovelace
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @see YardDBType
  */
 

@@ -25,6 +25,8 @@
  * YardEmployee is the employee managment screen for YardSale.
  * Depending on access level, users may insert/modify employee 
  * information via this screen.
+ *
+ * @see YardEmployeeType
  * @author Jesse Lovelace
  */
 class YardEmployee: public wxFrame

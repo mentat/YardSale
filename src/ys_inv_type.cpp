@@ -92,7 +92,7 @@ int main()
     test1.SetItemType("Widget");
     test1.SetItemWeightLbs(1000.45);
     test1.SetTaxType(0);
-    test1.SetVentorId(12345);
+//    test1.SetVentorId(12345);
     test1.SetRetailPrice(34.23);
     test1.SetWholesalePrice(1000.12);
    

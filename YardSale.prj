@@ -85,7 +85,8 @@ module.include.files=\
 	ys_test.h\
 	ys_bitmaps.h\
 	otlv4.h\
-	ys_debug.h
+	ys_debug.h\
+	ys_employee_type.h
 
 module.source.name=src
 module.source.type=
@@ -103,7 +104,8 @@ module.source.files=\
 	ys_inv_type.cpp\
 	ys_database.cpp\
 	ys_bitmaps.cpp\
-	ys_debug.cpp
+	ys_debug.cpp\
+	ys_employee_type.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

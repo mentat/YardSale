@@ -84,6 +84,7 @@ using namespace std;
 
 int main()
 {
+    failure = 0;
     YardBitmaps test;
     
     try {
