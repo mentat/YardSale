@@ -21,6 +21,11 @@
 
 #include "wx/wx.h"
 
+/**
+ * The inventory screen.
+ * @author Jesse Lovelace
+ * @version $Revision: 1.4 $
+ */
 class YardInventory: public wxFrame{
     public:
         
