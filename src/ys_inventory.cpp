@@ -138,7 +138,7 @@ void YardInventory::OnNew(wxCommandEvent & event) {
     temp.SetWholesalePrice(doubleTemp);
     
     try {
-        wxGetApp().DB().AddInventoryItem(temp);
+        wxGetApp().DB().InventoryAdd(temp);
     }
     catch (YardDBException &e)
     {
@@ -156,7 +156,7 @@ void YardInventory::LoadFromDB() {
         wxLogDebug(wxT("Connected"));
         
         try {
-            m_objects = wxGetApp().DB().InvGet();
+            m_objects = wxGetApp().DB().InventoryGetAll();
         }
         catch (YardDBException &e)
         {
