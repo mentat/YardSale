@@ -42,7 +42,7 @@ class wxStaticText;
  * From the transaction screen you can access the payment screen.
  * 
  * @author Jesse Lovelace
- * @version \$Revision: 1.11 $$
+ * @version \$Revision: 1.12 $$
  */
 class YardSaleScreen: public wxDialog{
  public:
@@ -80,6 +80,8 @@ class YardSaleScreen: public wxDialog{
     wxStaticText * m_subTotal;
     wxStaticText * m_tax;
     wxStaticText * m_total;
+    
+    double m_sub, m_taxTotal, m_totalPrice;
 
     std::vector<YardInvType> m_items;    
     

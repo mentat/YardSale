@@ -69,8 +69,12 @@ void YardCheckout::OnPrint(wxCommandEvent& event)
     
     for (unsigned int i = 0; i < m_ref->size(); i++)
     {
+        wxLogDebug(wxT("ToPrinter: %s"), (*m_ref)[i].GetName().c_str());
         rec.additem((*m_ref)[i].GetName(), (*m_ref)[i].GetRetailPriceS());
     }
+    
+    rec.totdata(XMLNode::ToStr(m_subTotal, 2), XMLNode::ToStr(m_tax,2), XMLNode::ToStr(m_total, 2));
+    rec.print();
     
 }
 

@@ -129,18 +129,20 @@ void YardSaleScreen::OnItem(wxCommandEvent& event)
     m_list->SetColumnWidth( 2, wxLIST_AUTOSIZE );
      
     // calc total
-    double total = 0;
-    double tax = 0;
+    m_sub = 0;
+    m_totalPrice = 0;
+    m_taxTotal = 0;
     for (int i = 0; i < m_items.size(); i++)
     {
-        total += m_items[i].GetRetailPrice();
+        m_sub += m_items[i].GetRetailPrice();
         long taxid = m_items[i].GetTaxType();
-        tax += m_taxCache[taxid] * m_items[i].GetRetailPrice();
+        m_taxTotal += m_taxCache[taxid] * m_items[i].GetRetailPrice();
     }
+    m_totalPrice = m_sub + m_taxTotal;
     
-    m_subTotal->SetLabel(XMLNode::ToStr(total, 2).c_str());
-    m_tax->SetLabel(XMLNode::ToStr(tax, 2).c_str()); 
-    m_total->SetLabel(XMLNode::ToStr(total + tax, 2).c_str()); 
+    m_subTotal->SetLabel(XMLNode::ToStr(m_sub, 2).c_str());
+    m_tax->SetLabel(XMLNode::ToStr(m_taxTotal, 2).c_str()); 
+    m_total->SetLabel(XMLNode::ToStr(m_sub + m_taxTotal, 2).c_str()); 
     
 }
 
@@ -205,6 +207,8 @@ void YardSaleScreen::OnCheckout(wxCommandEvent& event)
 {
     wxLogDebug(wxT("OnCheckout"));
     YardCheckout * co = new YardCheckout(this, -1, wxT("Checkout"));
+    co->SetInvRef(&m_items);
+    co->SetCost(m_sub, m_taxTotal, m_totalPrice);
     if (co->ShowModal() == 0)
     {
         co->Destroy();
