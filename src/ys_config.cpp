@@ -62,15 +62,14 @@ YardConfig::YardConfig(wxWindow* parent, wxWindowID id, const wxString& title,
         pConfig->Write(wxT("/DB/Port"), (long)0);
     }
     
-    wxButton * save = (wxButton *)FindWindow(ID_CONFIG_SAVE);
-    
-    wxTextCtrl * user = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_USER);
-    wxTextCtrl * pass = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_PWORD);
-    wxRadioBox * type = (wxRadioBox *)FindWindow(ID_CONFIG_DB_TYPE);
-    wxTextCtrl * driver = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_DRIVER);
-    wxTextCtrl * dsn = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_DSN);
-    wxTextCtrl * server = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_SERVER);
-    wxSpinCtrl * port = (wxSpinCtrl *)FindWindow(ID_CONFIG_DB_PORT);
+    wxButton * save = static_cast<wxButton *>(FindWindow(ID_CONFIG_SAVE));
+    wxTextCtrl * user = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_USER));
+    wxTextCtrl * pass = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_PWORD));
+    wxRadioBox * type = static_cast<wxRadioBox *>(FindWindow(ID_CONFIG_DB_TYPE));
+    wxTextCtrl * driver = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_DRIVER));
+    wxTextCtrl * dsn = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_DSN));
+    wxTextCtrl * server = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_SERVER));
+    wxSpinCtrl * port = static_cast<wxSpinCtrl *>(FindWindow(ID_CONFIG_DB_PORT));
     wxASSERT(save);
     wxASSERT(user);
     wxASSERT(pass);
@@ -101,7 +100,9 @@ YardConfig::~YardConfig()
 {}
 
 void YardConfig::OnBrowse(wxCommandEvent& event) {
-    
+ 
+    wxString driver = wxFileSelector(wxT("Select your ODBC driver"), "",
+        wxT(""), wxT(""), wxT("*.*"), 0, this);    
 }
     
 void YardConfig::OnCancel(wxCommandEvent& event)
@@ -122,13 +123,13 @@ void YardConfig::OnSave(wxCommandEvent& event)
     }
 
     wxLogDebug(wxT("Saving DB"));
-    wxTextCtrl * user = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_USER);
-    wxTextCtrl * pass = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_PWORD);
-    wxRadioBox * type = (wxRadioBox *)FindWindow(ID_CONFIG_DB_TYPE);
-    wxTextCtrl * driver = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_DRIVER);
-    wxTextCtrl * dsn = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_DSN);
-    wxTextCtrl * server = (wxTextCtrl *)FindWindow(ID_CONFIG_DB_SERVER);
-    wxSpinCtrl * port = (wxSpinCtrl *)FindWindow(ID_CONFIG_DB_PORT);
+    wxTextCtrl * user = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_USER));
+    wxTextCtrl * pass = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_PWORD));
+    wxRadioBox * type = static_cast<wxRadioBox *>(FindWindow(ID_CONFIG_DB_TYPE));
+    wxTextCtrl * driver = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_DRIVER));
+    wxTextCtrl * dsn = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_DSN));
+    wxTextCtrl * server = static_cast<wxTextCtrl *>(FindWindow(ID_CONFIG_DB_SERVER));
+    wxSpinCtrl * port = static_cast<wxSpinCtrl *>(FindWindow(ID_CONFIG_DB_PORT));
     wxASSERT(user);
     wxASSERT(pass);
     wxASSERT(type);

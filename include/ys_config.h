@@ -15,10 +15,20 @@ class YardConfig: public wxFrame {
  
     void OnCancel(wxCommandEvent& event);
     void OnSave(wxCommandEvent& event);
+    void OnBrowse(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
+    void OnChange(wxCommandEvent& event);
     void OnDeleteConfig(wxCommandEvent& event);
  
+    enum { ODBC = 0, ODBC_MYSQL };
+ 
  private:
+     // Has the dialog been saved since last change?
+     bool m_saved;
+ 
+     // True if still in constructor
+     bool m_construct;
+ 
      DECLARE_EVENT_TABLE()
 };
 
