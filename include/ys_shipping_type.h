@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardShippingType
  * @author Michael Swigon	
- * @version \$Revision: 1.1 $$
+ * @version \$Revision: 1.2 $$
  * @see YardDBType
  */
 
@@ -64,6 +64,8 @@ class YardShippingType: public YardDBType
 	int GetCarrierID() const { return m_carrierID; }
 	/// Get shipping cost
 	float GetCost() const { return m_cost; }
+	/// Get enabled flag
+	int GetEnabled() consts { return m_enabled; }
 
 	/* settors */
 
@@ -73,6 +75,8 @@ class YardShippingType: public YardDBType
 	void SetCarrierID(const int num) { m_carrierID = num; }
 	/// Set the shipping cost
 	void SetCost(const float num) { m_cost = num; }
+	/// Set enabled flag
+	void SetEnabled(const int flag) { m_enabled = flag; }
 
 
 	/**
@@ -90,6 +94,7 @@ class YardShippingType: public YardDBType
     string m_shipType;
     int m_carrierID;
 	float m_cost;
+	int m_enabled;
 
 };
 

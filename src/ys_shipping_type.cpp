@@ -25,7 +25,7 @@ YardShippingType::YardShippingType(const YardShippingType& obj) {
 string YardShippingType::ToString(const string& delim) const {
     
     stringstream output;
-    output << m_shipType << delim << m_carrierID << delim << m_cost;
+    output << m_shipType << delim << m_carrierID << delim << m_cost << delim << m_enabled;
     
     return output.str();
         
@@ -46,7 +46,8 @@ void YardShippingType::FillFromStream(otl_stream * stream)
         *stream 
             >> m_shipType 
             >> m_carrierID
-            >> m_cost;
+            >> m_cost
+			>> m_enabled;
             
     } catch (otl_exception &e) {
         throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
@@ -58,6 +59,7 @@ YardShippingType& YardShippingType::operator=(const YardShippingType& obj) {
     m_shipType = obj.m_shipType;
     m_carrierID = obj.m_carrierID;
     m_cost = obj.m_cost;
+	m_enabled = obj.m_enabled;
     
     return *this;
 }
@@ -75,6 +77,7 @@ int main()
     test1.SetShipType("overnight");
     test1.SetCarrierID("420420");
     test1.SetCost("254.25");
+	test1.SetEnabled("1");
     
     YardShippingType test2(test1);
     
@@ -86,6 +89,7 @@ int main()
     
     VERIFY(test3.GetCarrierID(), test2.GetCarrierID());
     VERIFY(test3.GetCost(), test2.GetCost());
+	VERIFY(test3.GetEnabled(), test2.GetEnabled());
 
 
     vector<YardShippingType> anArray;
