@@ -1,0 +1,13 @@
+Not sure what we need to do to get this to make a .app file yet, but here is what my one working application does
+
+[nas@nas-Computer link]$ make
+g++  -o LinkClient.app/Contents/MacOS/LinkClient LinkClient.o ShareList.o LinkDialog_wdr.o SingleShare.o `wx-config --libs` -lz -lpthread
+sed -e "s/IDENTIFIER/`echo ./ | sed 's,/,.,g'`/" \
+    -e "s/EXECUTABLE/LinkClient/" \
+    -e "s/VERSION/2.5.1/" /usr/local/share/wx/Info.plist.in > LinkClient.app/Contents/Info.plist
+echo -n "APPL????" > LinkClient.app/Contents/PkgInfo
+cp /usr/local/lib/libwx_mac-2.5.1.rsrc LinkClient.app/Contents/Resources/LinkClient.rsrc
+cp /usr/local/share/wx/wxmac.icns LinkClient.app/Contents/Resources/wxmac.icns
+[nas@nas-Computer link]$ 
+
+also `wx-config --rezflags` executable 
