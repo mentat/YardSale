@@ -19,7 +19,6 @@
 #ifndef YS_DATABASE_H
 #define YS_DATABASE_H
 
-#include "ys_inv_type.h"
 #include "ys_exception.h"
 #include <vector>
 #include <string>
@@ -28,6 +27,16 @@ using namespace std;
 
 // Forward declarations for speed -jll
 class YardDBConfig;
+class YardTaxType;
+class YardCarrierType;
+class YardShipType;
+class YardPackageType;
+class YardInvType;
+class YardEmployeeType;
+class YardCustType;
+class YardVendType;
+class YardTransType;
+    
 class otl_connect;
 class otl_stream;
 
@@ -134,7 +143,7 @@ class YardDatabase {
     /*----------Employee-------------------*/
     
     int AddEmployee(const YardEmployeeType& employ);
-    void DisableCustomer(int key);
+    void DisableEmployee(int key);
     YardEmployeeType GetEmployee(int key) const;
     void EditEmployee(const YardEmployeeType& employ);
     

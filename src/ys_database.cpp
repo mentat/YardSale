@@ -6,6 +6,14 @@
 #include "ys_exception.h"
 #include "ys_database.h"
 
+#include "ys_inv_type.h"
+#include "ys_trans_type.h"
+#include "ys_employee_type.h"
+#include "ys_cust_type.h"
+#include "ys_vend_type.h"
+#include "ys_trans_type.h"
+#include "ys_package_type.h"
+
 #define OTL_ODBC_MYSQL
 #define OTL_STL
 
