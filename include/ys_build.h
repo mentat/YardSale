@@ -6,6 +6,7 @@
 #define YS_DEFAULT_MONEY_PRECISION      3
 #define YS_DEFAULT_TIME_PRECISION       3
 #define YS_BULK_DISCOUNT_PRECISION      4
+#define YS_TAX_PRECISION                4
 
 #include <string>
 

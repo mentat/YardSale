@@ -179,7 +179,7 @@ class YardDatabase {
     /*--------Tax Types-----------------*/
     
     vector<YardTaxType> TaxTypeGetAll() const;
-    int TaxTypeAdd(const YardTaxType& taxtype);
+    long TaxTypeAdd(const YardTaxType& taxtype);
     void TaxTypeUpdate(const YardTaxType& taxtype);
     
     /* helpers */
@@ -201,7 +201,13 @@ class YardDatabase {
         }
         
         return list;
-    }        
+    }     
+
+    template<typename T>
+    T XMLFromStreamSingle(otl_stream * stream, const string& table) const {
+        T temp(ToXML(stream, table));
+        return temp;
+    }      
  
     otl_connect * m_db;
     string m_dsn;

@@ -93,7 +93,20 @@ module.include.files=\
 	ys_keybrd.h\
 	ys_trans_type.h\
 	ys_util.h\
-	otl_xml.h
+	otl_xml.h\
+	ys_build.h\
+	ys_build_id.h\
+	ys_footer.h\
+	variant.h\
+	wrapexpat.h\
+	xml.h\
+	xmlnode.h\
+	ys_carrier_type.h\
+	ys_cust_type.h\
+	ys_package_type.h\
+	ys_shipping_type.h\
+	ys_tax_type.h\
+	ys_vend_type.h
 
 module.source.name=src
 module.source.type=
@@ -117,7 +130,11 @@ module.source.files=\
 	ys_footer.cpp\
 	ys_keybrd.cpp\
 	ys_keybrd_dlg.cpp\
-	otl_xml.cpp
+	otl_xml.cpp\
+	ys_trans_type.cpp\
+	wrapexpat.cpp\
+	xml.cpp\
+	xmlnode.cpp
 
 module.pixmap.name=pixmaps
 module.pixmap.type=

@@ -34,7 +34,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @see XMLNode
  */
 class YardEmployeeType: public XMLNode {
@@ -44,6 +44,8 @@ class YardEmployeeType: public XMLNode {
     /// Default constructor
     YardEmployeeType() { setName("Employee_Table"); }
     YardEmployeeType(const string& xml): XMLNode(xml, XMLNode::Str) {}
+        
+    virtual ~YardEmployeeType() {}
  
     virtual string ToString(const string& delim=",", bool quotes = true) const;
         

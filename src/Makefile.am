@@ -40,7 +40,8 @@ yardsale_SOURCES = \
 	wrapexpat.cpp\
 	xml.cpp\
 	xmlnode.cpp\
-	ys_date.cpp
+	ys_date.cpp\
+	ys_group.cpp
 
 yardsale_LDFLAGS = -Lextra/xrc
 

@@ -38,7 +38,7 @@ class YardDatabase;
  * @ingroup database 
  * @see XMLNode
  * @author Jesse Lovelace
- * @version \$Revision: 1.22 $$
+ * @version \$Revision: 1.23 $$
  */
 
 class YardInvType: public XMLNode
@@ -148,7 +148,7 @@ class YardInvType: public XMLNode
             stringstream ret;
             vector<XMLNode> prices = child("INV_Bulk_Price").const_children();
             for (unsigned int i = 0; i < prices.size(); i++)
-                ret << prices[i] << '\n';
+                ret << prices[i]; /*<< ((i < (prices.size() - 1)) ? "\n" : "");*/
             return ret.str();
         }
         
@@ -191,7 +191,7 @@ class YardInvType: public XMLNode
         { child("INV_Reorder_Quantity").setData(ToStr(num)); }
 	/// Set the group id, references Inventory_Group_Table
     /// @see YardInvGroup
-	void SetGroupID(int a_num)
+	void SetGroupId(int a_num)
         { child("INV_REF_INVGRP_Group_ID").setData(ToStr(a_num)); }
         
     /// Set general item type

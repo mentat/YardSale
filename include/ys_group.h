@@ -16,8 +16,8 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-#ifndef YS_TAX_TYPE_H
-#define YS_TAX_TYPE_H
+#ifndef YS_GROUP_TYPE_H
+#define YS_GROUP_TYPE_H
 
 #include "xmlnode.h"
 #include "ys_build.h"
@@ -27,34 +27,28 @@
 using namespace std;
 
 class YardDatabase;
-class YardTaxType: public XMLNode
+class YardGroup: public XMLNode
 {
  public:
    
     friend class YardDatabase;
       
-    YardTaxType() { setName("Tax_Table"); }
-    YardTaxType(const string& xml):XMLNode(xml, XMLNode::Str) {}
+    YardGroup() { setName("Inventory_Group_Table"); }
+    YardGroup(const string& xml): XMLNode(xml, XMLNode::Str) {}
     
     /* Getters */
     string GetIdS() const
-        { return child("TAX_ID").data(); }
+        { return child("INVGRP_Group_ID").data(); }
     long GetId() const
         { return ToLong(GetIdS()); }
     string GetName() const
-        { return child("TAX_Name").data(); }
-    string GetPercentS() const
-        { return child("TAX_Percent").data(); }
-    double GetPercent() const
-        { return ToDouble(GetPercentS()); }
-    
+        { return child("INVGRP_Group_Name").data(); }
+        
     /* setters */
     void SetId(const int& a_num) 
-        { child("TAX_ID").setData(ToStr(a_num)); }
+        { child("INVGRP_Group_ID").setData(ToStr(a_num)); }
     void SetName(const string& a_str) 
-        { child("TAX_Name").setData(a_str); }
-    void SetPercent(const double a_num) 
-        { child("TAX_Percent").setData(ToStr(a_num, YS_TAX_PRECISION)); }
+        { child("INVGRP_Group_Name").setData(a_str); }
     
     /**
      * Returns string representation of the datatype.

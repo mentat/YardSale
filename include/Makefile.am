@@ -28,6 +28,14 @@ yardsale_include_DATA = \
 	ys_employee_type.h\
 	ys_cust_type.h\
 	ys_trans_type.h\
+	ys_tax_type.h\
+	ys_group.h\
+	ys_build.h\
+	ys_vend_type.h\
+	ys_carrier_type.h\
+	ys_package_type.h\
+	ys_shipping_type.h\
+	ys_date.h\
 	xmlnode.h\
 	xml.h\
 	wrapexpat.h

@@ -454,6 +454,11 @@ Tests needed:
 
 */
 
+int TaxTest(YardDatabase * db)
+
+int VendorTest(YardDatabase * db)
+int GroupText(YardDatabase * db)
+
 int InventoryTest(YardDatabase * db)
 {
     // Setup inventory

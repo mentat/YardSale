@@ -36,7 +36,7 @@ class YardDatabase;
  * @ingroup database 
  * @see YardCarrierType
  * @author Michael Swigon	
- * @version \$Revision: 1.2 $$
+ * @version \$Revision: 1.3 $$
  * @see XMLNode
  */
 
@@ -53,27 +53,27 @@ class YardCarrierType: public XMLNode
 	/* gettors */
 
 	/// Get carrier id
-    long GetCarrierID() const 
+    long GetID() const 
         { return ToLong(child("CRR_ID").data()); }
 	/// Get carrier name
-	string GetCarrierName() const 
+	string GetName() const 
         { return child("CRR_Name").data(); }
 	/// Get pickup location
 	string GetPickupLoc() const 
         { return child("CRR_Pickup_Location").data(); }
 	/// Get carrier phone number
-	string GetPhoneNum() const 
+	string GetPhone() const 
         { return child("CRR_Phone_Number").data(); }
 
 	/* settors */
 	/// Set the carrier name
-	void SetCarrierName(const string& str) 
+	void SetName(const string& str) 
         { child("CRR_Name").setData(str); }
 	/// Set the pickup location
 	void SetPickupLoc(const string& str) 
         { child("CRR_Pickup_Location").setData(str); }
 	/// Set the phone number
-	void SetPhoneNum(const string& str) 
+	void SetPhone(const string& str) 
         { child("CRR_Phone_Number").setData(str); }
 
 	/**
