@@ -44,6 +44,7 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     wxSizer * sizer = Main(panel, false, true);
     //sizer->SetSizeHints(this);
     SetSize(sizer->GetMinSize());
+    Centre();
  
 }
 

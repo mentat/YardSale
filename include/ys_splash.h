@@ -3,13 +3,13 @@
 
 #include "wx/wx.h"
 
-class YardSplash: public wxFrame {
+class YardSplash: public wxDialog {
     public:
         
     YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxSIMPLE_BORDER|wxFRAME_NO_TASKBAR|wxSTAY_ON_TOP);
+               long style = wxSTAY_ON_TOP);
         
     ~YardSplash();
     

@@ -1,4 +1,4 @@
-#include "wx/frame.h"
+#include "wx/dialog.h"
 #include "wx/image.h"
 #include "wx/statbmp.h"
 
@@ -9,14 +9,14 @@ enum {
     ID_SPLASH_TIMER = 22330
 };
 
-BEGIN_EVENT_TABLE(YardSplash, wxFrame)
+BEGIN_EVENT_TABLE(YardSplash, wxDialog)
     EVT_TIMER(ID_SPLASH_TIMER, YardSplash::OnTimer)
     EVT_LEFT_DOWN(YardSplash::OnClick)
 END_EVENT_TABLE()
 
 YardSplash::YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
                    const wxPoint& pos, const wxSize& size, long style)
-:wxFrame(parent, id, title, pos, size, style) {
+:wxDialog(parent, id, title, pos, size, style) {
     
     wxPanel * panel = new wxPanel(this);
     
@@ -48,7 +48,7 @@ YardSplash::YardSplash(wxWindow* parent, wxWindowID id, const wxString& title,
     m_limit-=35;
     
     m_timer = new wxTimer(this, ID_SPLASH_TIMER);
-    m_timer->Start(50);
+    m_timer->Start(20);
     
 }
 
@@ -70,6 +70,7 @@ void YardSplash::OnTimer(wxTimerEvent& event) {
     
     if (m_progress >= m_limit) {
         m_timer->Stop();
+        EndModal(0);
         Destroy();
     }
     

@@ -7,9 +7,15 @@ IMPLEMENT_APP(YardSale)
 
 bool YardSale::OnInit()
 {
+    wxDialog * startup = new YardSplash(NULL, -1, "YardSale");
+    
+    startup->ShowModal();
+    
     wxFrame * frame = new YardMain(NULL, -1, "YardSale");
     frame->Show(true);
+    
     SetTopWindow(frame);
+    
     
     return true;
     
