@@ -33,7 +33,7 @@ yardsale_SOURCES = \
 	ys_calc_dlg.cpp\
 	ys_employee_type.cpp\
     	ys_cust_type.cpp\
-	ys_keybrd_dlg.cpp\
+	ys_keybrd_dlg.cpp
 
 yardsale_LDFLAGS = 
 

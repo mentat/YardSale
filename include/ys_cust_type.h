@@ -77,7 +77,7 @@ class YardCustType: public YardDBType
   
     /// Set the account number - this may need to be removed since account
     /// numbers are handled internally by the RDBMS
-    void SetAccountNumber(const int& a_num) const { return m_accountNumber = a_num; }
+    void SetAccountNumber(const int& a_num) { m_accountNumber = a_num; }
     /// Set the customer first name
     void SetCustFirstName(const string& str) { m_custFirstName = str; }
     /// Set the customer middle name
@@ -117,13 +117,15 @@ class YardCustType: public YardDBType
     string m_custFirstName;
     string m_custMiddleName; 
     string m_custLastName;
-    string m_custAddress
-    string m_custPhone
-    string m_custCity
-    string m_custZip
-    string m_custCCNumber
-    string m_custCCExpiration
-    string m_custCCName
+    string m_custAddress;
+    string m_custPhone;
+    string m_custCity;
+    string m_custZip;
+    string m_custCCNumber;
+    string m_custCCExpiration;
+    string m_custCCName;
+    string m_custSigPath;
+    string m_custPhoto; 
 
 };
 
