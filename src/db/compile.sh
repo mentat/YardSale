@@ -1,1 +1,1 @@
-gcc `wx-config --cxxflags --libs` -g -o clidbtest -I../../include clidbtest.cpp ../ys_database.cpp ../ys_inv_type.cpp
+gcc -o ys_test ys_test.cpp -I../../include -lodbc -lstdc++ -g
