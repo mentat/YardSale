@@ -6,9 +6,11 @@
 
 YardDatabase::YardDatabase(const wxString& dsn, const wxString& name, const wxString& pass) {
 
-    m_inv = new YardInvType();
-    m_connectInfo = new wxDbConnectInf(NULL, dsn, name, pass);
-
+    m_db = 0;
+    m_table = 0;
+    m_inv = 0;
+    m_connectInfo = 0;
+    Init(dsn, name, pass);
 }
   
 YardDatabase::YardDatabase() {
@@ -25,6 +27,22 @@ YardDatabase::~YardDatabase()
     delete m_db;
     delete m_table;
 }
+
+bool YardDatabase::Init(const wxString& dsn, const wxString& name, const wxString& pass)
+{
+    if (m_inv)
+        delete m_inv;
+    
+    m_inv = new YardInvType();
+    
+    if (m_connectInfo)
+        delete m_connectInfo;
+    
+    m_connectInfo = new wxDbConnectInf(NULL, dsn, name, pass);
+
+    return true;
+}
+   
 
 int YardDatabase::GetStatus() const {
     

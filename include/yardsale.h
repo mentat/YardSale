@@ -49,7 +49,7 @@ class YardDatabase;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 class YardSale: public wxApp {
  public:
@@ -66,7 +66,7 @@ class YardSale: public wxApp {
      * @returns Reference to YardDatabase object.
      */
     YardDatabase& DB();
-    
+ 
  private:
  
      YardDatabase * m_db;
