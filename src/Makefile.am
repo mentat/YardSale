@@ -2,11 +2,12 @@
 
 INCLUDES =  -I../include
 
-yardsale_CXXFLAGS =\
-	 $(WX_CXXFLAGS) \
-     -ansi \
-	 -Wall \
-	 -g
+CXXFLAGS = $(WX_CXXFLAGS) -ansi -g
+#yardsale_CXXFLAGS =\
+#	 $(WX_CXXFLAGS) \
+#     -ansi \
+#	 -Wall \
+#	 -g
 
 bin_PROGRAMS = yardsale
 
