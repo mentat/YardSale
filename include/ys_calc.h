@@ -59,6 +59,8 @@ class YardCalc: public wxPanel {
         const wxString& name = "YardCalc");
     
     double GetCalcContents();
+    ///sets the calculator screen contents
+        void SetCalcContents(double contents);
  
     /// Destructor
     virtual ~YardCalc();
