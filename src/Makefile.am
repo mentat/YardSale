@@ -8,9 +8,9 @@ rez: yardsale
 	$(REZFLAGS) yardsale
 
 bin_PROGRAMS = yardsale
-EXTRA_PROGRAMS = test_emp test_db test_inv test_bitmap test_cust    
+EXTRA_PROGRAMS = test_emp test_db test_inv test_bitmap test_cust test_trans   
 
-TESTS = test_db test_inv test_emp test_bitmap test_cust
+TESTS = test_db test_inv test_emp test_bitmap test_cust test_trans
 
 yardsale_SOURCES = \
 	yardsale.cpp\
@@ -33,7 +33,8 @@ yardsale_SOURCES = \
 	ys_calc_dlg.cpp\
 	ys_employee_type.cpp\
     	ys_cust_type.cpp\
-	ys_keybrd_dlg.cpp 
+	ys_keybrd_dlg.cpp\
+	ys_trans_type.cpp
 
 yardsale_LDFLAGS = 
 
@@ -59,3 +60,8 @@ test_emp_CXXFLAGS = -g -ansi -Wall -DYS_TEST_EMPLOYEE_TYPE
 test_cust_SOURCES = ys_cust_type.cpp
 test_cust_LDADD = -lodbc
 test_cust_CXXFLAGS = -g -ansi -Wall -DYS_TEST_CUST_TYPE
+
+test_cust_SOURCES = ys_trans_type.cpp
+test_cust_LDADD = -lodbc
+test_cust_CXXFLAGS = -g -ansi -Wall -DYS_TEST_TRANS_TYPE
+
