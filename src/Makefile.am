@@ -11,6 +11,7 @@ INCLUDES = \
 yardsale_CXXFLAGS =\
 	-ansi\
 	 -Wall\
+	 -O3\
 	 -g
 
 bin_PROGRAMS = yardsale
@@ -22,7 +23,8 @@ yardsale_SOURCES = \
 	ys_main.cpp\
 	ys_inventory.cpp\
 	ys_login.cpp\
-	ys_sale.cpp
+	ys_sale.cpp\
+	ys_calc.cpp
 
 yardsale_LDFLAGS = 
 

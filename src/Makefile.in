@@ -94,6 +94,7 @@ INCLUDES = \
 yardsale_CXXFLAGS = \
 	-ansi\
 	 -Wall\
+	 -O3\
 	 -g
 
 
@@ -106,7 +107,8 @@ yardsale_SOURCES = \
 	ys_main.cpp\
 	ys_inventory.cpp\
 	ys_login.cpp\
-	ys_sale.cpp
+	ys_sale.cpp\
+	ys_calc.cpp
 
 
 yardsale_LDFLAGS = 
@@ -123,7 +125,8 @@ PROGRAMS = $(bin_PROGRAMS)
 am_yardsale_OBJECTS = yardsale-yardsale.$(OBJEXT) \
 	yardsale-yardsale_wdr.$(OBJEXT) yardsale-ys_splash.$(OBJEXT) \
 	yardsale-ys_main.$(OBJEXT) yardsale-ys_inventory.$(OBJEXT) \
-	yardsale-ys_login.$(OBJEXT) yardsale-ys_sale.$(OBJEXT)
+	yardsale-ys_login.$(OBJEXT) yardsale-ys_sale.$(OBJEXT) \
+	yardsale-ys_calc.$(OBJEXT)
 yardsale_OBJECTS = $(am_yardsale_OBJECTS)
 yardsale_DEPENDENCIES =
 
@@ -136,6 +139,7 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/yardsale-yardsale.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-yardsale_wdr.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_calc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_inventory.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_login.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/yardsale-ys_main.Po \
@@ -191,6 +195,7 @@ yardsale-ys_main.$(OBJEXT): ys_main.cpp
 yardsale-ys_inventory.$(OBJEXT): ys_inventory.cpp
 yardsale-ys_login.$(OBJEXT): ys_login.cpp
 yardsale-ys_sale.$(OBJEXT): ys_sale.cpp
+yardsale-ys_calc.$(OBJEXT): ys_calc.cpp
 yardsale$(EXEEXT): $(yardsale_OBJECTS) $(yardsale_DEPENDENCIES) 
 	@rm -f yardsale$(EXEEXT)
 	$(CXXLINK) $(yardsale_LDFLAGS) $(yardsale_OBJECTS) $(yardsale_LDADD) $(LIBS)
@@ -203,6 +208,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-yardsale.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-yardsale_wdr.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_calc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_inventory.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_login.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yardsale-ys_main.Po@am__quote@
@@ -307,6 +313,18 @@ yardsale-ys_sale.obj: ys_sale.cpp
 @AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_sale.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_sale.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_sale.obj `cygpath -w ys_sale.cpp`
+
+yardsale-ys_calc.o: ys_calc.cpp
+@AMDEP_TRUE@	source='ys_calc.cpp' object='yardsale-ys_calc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_calc.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_calc.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_calc.o `test -f 'ys_calc.cpp' || echo '$(srcdir)/'`ys_calc.cpp
+
+yardsale-ys_calc.obj: ys_calc.cpp
+@AMDEP_TRUE@	source='ys_calc.cpp' object='yardsale-ys_calc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/yardsale-ys_calc.Po' tmpdepfile='$(DEPDIR)/yardsale-ys_calc.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(yardsale_CXXFLAGS) $(CXXFLAGS) -c -o yardsale-ys_calc.obj `cygpath -w ys_calc.cpp`
 CXXDEPMODE = @CXXDEPMODE@
 uninstall-info-am:
 

@@ -60,9 +60,23 @@ wxSizer *Main( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 #define ID_SALE_REMOVE 10019
 #define ID_SALE_CANCEL 10020
 #define ID_SALE_BACK 10021
+#define ID_SALE_CALC 10022
+#define ID_SALE_TRANS 10023
 wxSizer *Sale( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
-#define ID_BITMAPBUTTON 10022
+#define ID_CALC_SCREEN 10024
+#define ID_CALC_1 10025
+#define ID_CALC_2 10026
+#define ID_CALC_3 10027
+#define ID_CALC_4 10028
+#define ID_CALC_5 10029
+#define ID_CALC_6 10030
+#define ID_CALC_7 10031
+#define ID_CALC_8 10032
+#define ID_CALC_9 10033
+#define ID_CALC_PLUS 10034
+#define ID_CALC_0 10035
+#define ID_CALC_EQUALS 10036
 wxSizer *NumberPad( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
 
 // Declare menubar functions

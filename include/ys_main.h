@@ -33,7 +33,7 @@ class YardMain: public wxFrame {
     YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxSIMPLE_BORDER|wxFRAME_NO_TASKBAR);
+               long style = wxRESIZE_BORDER|wxFRAME_NO_TASKBAR);
         
     virtual ~YardMain();
     
@@ -44,6 +44,8 @@ class YardMain: public wxFrame {
     void OnMax(wxCommandEvent & event);
     /// Inventory button handler
     void OnInventory(wxCommandEvent & event);
+    /// Sales buttons
+    void OnSale(wxCommandEvent & event);
     
     private:
         
