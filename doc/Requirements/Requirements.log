@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  3 MAR 2004 00:44
+This is pdfeTeX, Version 3.141592-1.11b-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  3 MAR 2004 02:58
 entering extended mode
 **Requirements.tex
 (Requirements.tex{pdftex.cfg}
@@ -145,7 +145,7 @@ Chapter 4.
 Here is how much of TeX's memory you used:
  984 strings out of 95518
  11034 string characters out of 1189726
- 59100 words of memory out of 1060603
+ 59097 words of memory out of 1060600
  4055 multiletter control sequences out of 35000
  9767 words of font info for 34 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 607
@@ -155,4 +155,4 @@ Here is how much of TeX's memory you used:
  6 words of extra memory for PDF output out of 65536
 <cmr7.pfb><cmsl10.pfb><cmsy10.pfb><cmr10.pfb><cmbx10.pfb>
 <cmr12.pfb><cmr17.pfb><cmbx12.pfb>
-Output written on Requirements.pdf (11 pages, 125541 bytes).
+Output written on Requirements.pdf (11 pages, 126441 bytes).
