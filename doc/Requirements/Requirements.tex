@@ -44,7 +44,7 @@ Parrish\\Mike Swigon\\Jay Johnston\\John Lamb\\Cameron Watts\\}
 
 \vspace*{0.5cm}
 
-{March 5, 2004}
+{April 7, 2004}
 \end{center}
 \end{titlepage}
 
@@ -127,9 +127,9 @@ following Point of Sale operations:
 \end{itemize}
 
 Each of these tasks is described in depth in their corresponding
-sub sections. There is planned functionality above and beyond this
-basic featureset, although without these functions other
-functionality can not be added.
+sub sections. The functionality outlined above is designed to be as 
+extensible as possible; with the correct implementation of these requirements
+the YardSale System will support the expansion of functionality with great ease.
 
     \subsection{Information Management}
     YardSale will store information about all aspects of program operation
@@ -293,41 +293,34 @@ functionality can not be added.
     minimal system resources.  The idea is to be able to use any system
     to run the software appropriately.
 
+\section{System Constraints}
+    \subsection{Interfaces}
+    The YardSale system must support the use of several peripheral interfaces
+    to aid in the completion of POS transactions and other functionality outlined
+    previously.  The interfaces are outlined as follows:
+        \begin{itemize}
+	    \item {\bf Cash Drawers} The system must support the use of a
+	    cash drawer for storage of money exchanged during transactions.
+	    It shall pop open upon the completion of a transaction or when 
+	    prompted by the user.
+
+	    \item {\bf Magnetic Card Scanners} 
+
+	    \item {\bf Barcode Scanners} The system must support the use of
+	    a barcode scanner for automatic input of items for inventory
+	    and transaction processing.
+
+	    \item {\bf Receipt Printers} The system must support the use of
+            a receipt printer.  The printers must print specified information
+            at the conclusion of each transaction and will also be used with
+	    the reporting functionality.
+
+            \item {\bf TouchScreen Monitor} The system must support the use
+            of TouchScreen monitors.  The monitor shall act as both input and
+	    output devices for the system.  The monitors must correctly read 
+            the commands given and relay them to the system.
+
 \section{External Dependencies and Interfaces}
-
-    \subsubsection{Cash Drawers}
-    The cash drawers used for the system are a serial interface,
-    which must be supported by each client system.  The drawers
-    must open automatically when a transaction is completed; and
-    manually by managers and authorized users.
-
-    \subsubsection{Magnetic Card Scanners}
-    The magnetic card scanners serve multiple purposes, but all with
-    similar functionality.  The scanners are a serial interface,
-    which must be supported by each client system.  They must read the
-    information stored on the card and relay it to the system.
-    The system will use this interface for both credit card
-    transactions and user access.
-
-    \subsubsection{Barcode Scanners}
-    The barcode scanners are a USB (Universal Serial Bus)
-    interface, which must be supported by each client system.  They must
-    read the barcode scanned and relay the information about the
-    product to the system.
-
-    \subsubsection{Receipt Printers}
-    The receipt printers are a printer (parallel) interface, which
-    must be supported by each client system.  The printers
-    will print specified information at the conclusion of each
-    transaction; and will also be able to print daily user reports.
-
-    \subsubsection{TouchScreen Monitor}
-    Touch screen monitors will be used at every sales location.
-    The monitors use a USB interface, which must be supported by
-    each client system.  The touch screens will act as both the
-    monitor and mouse of the system for easy accessability.  The
-    monitors must correctly read the commands given and relay them
-    to the system.
 
 \section{Preliminary Design}
 
