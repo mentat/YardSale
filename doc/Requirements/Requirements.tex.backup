@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass{book}
 
 
 %opening
@@ -6,6 +6,8 @@
 \author{}
 
 \begin{document}
+
+\chapter*{Requirements Definition}
 
 \section{Introduction}
 
@@ -15,8 +17,8 @@ Being that YardSale is an open source project with little funding, the initial n
 
 \section{Functional Requirements}
 
-\subsection{Overview}
-
+\textbf{Overview}\\
+\\
 This section entails all of the minimal requirements set by the AS Logic Systems development team for the OpenPOS hereafter referred to as YardSale.\\
 \\
 YardSale at its most minimal functionality level should accomplish the following goals:
@@ -28,6 +30,7 @@ YardSale at its most minimal functionality level should accomplish the following
 	\item {Perform Transactions}
 	\item {Provide Logging Facilities}
 	\item {Report on Data}
+	\item {User Level Access Rights}
 \end{itemize}
 
 Each of these tasks is described in depth in their corresponding sub sections. There is planned functionality above and beyond this basic featureset, although without these functions other functionality can not be added.
@@ -36,13 +39,16 @@ Each of these tasks is described in depth in their corresponding sub sections. T
 
 The goal of the database management tasks is to add, modify, and delete information in the database. The database backend will run on a MySQL server and all relevant data will be stored in its own table or set of tables. More information on the database design can be found in the database design document.
 
+\subsubsection{Inventory Management}
 The inventory management system will have an interface for the stock employees to enter new shipments. It will also have an interface for the management employees to define new items for sale. The most common use of the inventory management system will be integrated into the checkout system. When customers are checking out, inventory will be populated to the checkout screen from the database, and then decremented on purchase from their quantity in the database.
 
+\subsubsection{Customer Management}
 The customer management system will work in a similar fashion to the inventory management system. It will have only one level of functionality though, the ability to define and update new customer data. There will also be a small interface with the database during the checkout of a customer which will allow for the selection of a customer from the customer table.
 
-The employee management system here again will also function similarly to the previous two in that it has hooks into the database for employees. It will allow an authorized user the ability to add and modify employee information as well as disable employee accounts.
-
-Among the more specific functionality of each of these sections would be to allow the user to retrieve any item stored in either inventory, customer, or employee tables given a search criteria. 
+\subsubsection{Employee Management}
+The employee management system here again will also function similarly to the previous two in that it has hooks into the database for employees. It will allow an authorized user the ability to add and modify employee information as well as disable employee accounts.\\
+\\
+Among the more specific functionality of each of these sections would be to allow the user to retrieve any item stored in either inventory, customer, or employee tables given a search criteria.
 
 \subsection{Transactions}
 
@@ -77,5 +83,63 @@ There will be a wide variety of reporting features available also as a result of
 \end{itemize}
 
 All of the reports will be outputted to a pdf via \LaTeX type setting. This will provide ease of portability and a wide range of flexibility in reporting.
+
+
+\subsection{User Level Access Rights}
+
+YardSale has three different levels of user interactivity. There are Managers, Sales Associates, and Administrative users.
+
+\subsubsection{Sales Associate Functionality}
+
+
+\subsubsection{Manager Functionality}
+
+The managers primary function in YardSale is to make sure that all of the inventory items, customers, and employees are correctly maintained. They are also the only primary user on the system allowed to run reporting functions.
+
+When a manager logs in to YardSale they will be
+
+\subsubsection{Administrative Functionality}
+
+\section{External Dependencies and Interfaces}
+
+\section{Preliminary Design}
+
+\subsection{Major Modules}
+
+\subsection{System Architecture}
+
+%INSERT PICTURE FLOWCHART OF APPLICATION MODULE RELATIONSHIPS
+
+\section{Preliminary Project Task Plan}
+
+%Scope and Size of Project Paragraph
+
+\subsection{Milestones}
+
+\subsection{Team Member Roles and Responsibilities}
+
+
+\chapter*{Design}
+
+This section is still in the works
+
+\chapter*{Implementation}
+
+\subsection{Class Documentation}
+
+Please note the following section was auto-generated. We are working on tweaking this output a little, but currently it is sectioned wrong.
+
+%\include{Imp/classYardDatabase}
+%\include{Imp/classYardDBType}
+%\include{Imp/classYardEmployee}
+%\include{Imp/classYardInventory}
+%\include{Imp/classYardInvType}
+%\include{Imp/classYardLogin}
+%\include{Imp/classYardMain}
+%\include{Imp/classYardSale}
+%\include{Imp/classYardSaleScreen}
+%\include{Imp/classYardSplash}
+
+\chapter*{Test Plan}
 
 \end{document}
