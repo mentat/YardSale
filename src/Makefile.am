@@ -21,6 +21,7 @@ yardsale_SOURCES = \
 	ys_login.cpp\
 	ys_sale.cpp\
 	ys_calc.cpp\
+	ys_keybrd.cpp\
 	ys_employee.cpp\
 	ys_log.cpp\
 	ys_inv_type.cpp\
@@ -30,6 +31,7 @@ yardsale_SOURCES = \
 	ys_config.cpp\
 	ys_footer.cpp\
 	ys_calc_dlg.cpp\
+	ys_keybrd_dlg.cpp\
 	ys_employee_type.cpp
 
 yardsale_LDFLAGS = 

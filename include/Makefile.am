@@ -11,6 +11,7 @@ yardsale_include_DATA = \
 	ys_login.h\
 	ys_sale.h\
 	ys_calc.h\
+	ys_keybrd.h\
 	ys_employee.h\
 	ys_log.h\
 	ys_inv_type.h\
@@ -22,6 +23,7 @@ yardsale_include_DATA = \
 	ys_config.h\
 	ys_footer.h\
 	ys_calc_dlg.h\
+	ys_keybrd_dlg.h\
 	ys_util.h\
 	ys_employee_type.h
 
