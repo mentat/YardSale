@@ -134,6 +134,9 @@
 				RelativePath="..\src\ys_calc_dlg.cpp">
 			</File>
 			<File
+				RelativePath="..\src\ys_carrier_type.cpp">
+			</File>
+			<File
 				RelativePath="..\src\ys_config.cpp">
 			</File>
 			<File
@@ -167,7 +170,7 @@
 				RelativePath="..\src\ys_main.cpp">
 			</File>
 			<File
-				RelativePath=".\ys_package_type.cpp">
+				RelativePath="..\src\ys_package_type.cpp">
 			</File>
 			<File
 				RelativePath="..\src\ys_sale.cpp">
@@ -200,6 +203,9 @@
 			</File>
 			<File
 				RelativePath="..\include\ys_calc_dlg.h">
+			</File>
+			<File
+				RelativePath="..\include\ys_carrier_type.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_config.h">
@@ -244,7 +250,7 @@
 				RelativePath="..\include\ys_main.h">
 			</File>
 			<File
-				RelativePath=".\ys_package_type.h">
+				RelativePath="..\include\ys_package_type.h">
 			</File>
 			<File
 				RelativePath="..\include\ys_sale.h">
