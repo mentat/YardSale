@@ -61,7 +61,7 @@ test_cust_SOURCES = ys_cust_type.cpp
 test_cust_LDADD = -lodbc
 test_cust_CXXFLAGS = -g -ansi -Wall -DYS_TEST_CUST_TYPE
 
-test_cust_SOURCES = ys_trans_type.cpp
-test_cust_LDADD = -lodbc
-test_cust_CXXFLAGS = -g -ansi -Wall -DYS_TEST_TRANS_TYPE
+test_trans_SOURCES = ys_trans_type.cpp
+test_trans_LDADD = -lodbc
+test_trans_CXXFLAGS = -g -ansi -Wall -DYS_TEST_TRANS_TYPE
 
