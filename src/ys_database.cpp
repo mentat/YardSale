@@ -3,6 +3,7 @@
 
 #include "ys_exception.h"
 #include "ys_database.h"
+#include "ys_log.h"
 
 #define OTL_ODBC_MYSQL
 #ifndef _WIN32
@@ -41,20 +42,6 @@ bool YardDatabase::Init(const string& dsn, const string& name, const string& pas
     m_dsn = dsn;
     m_name = name;
     m_pass = pass;
-    /*
-      int unf;
-    otl_long_string test;
-    otl_connect db; // connect object
-    otl_connect::otl_initialize(); // init ODBC
-    db.rlogon("UID=REPLACE;PWD=REPLACE;DSN=REPLACE"); // connect to ODBC
-    otl_stream dbStream(50, "SELECT INV_SKU_Number, INV_Item_Description "
-                        "FROM Inventory_Table WHERE INV_SKU_Number = '10000'",
-			db);
-    while (!dbStream.eof()){
-	dbStream >> unf >> test;
-	cout << test.v << " " << unf << endl;
-    }
-    db.logoff();*/
     
     return true;
 }
@@ -107,16 +94,26 @@ vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
     vector<YardInvType> invVec;
         
     stringstream sql;
-    sql << "SELECT INV_SKU_Number, INV_Item_Description "
+    sql << "SELECT INV_SKU_Number, INV_Item_Type, "
+	"INV_Item_Description, INV_Bar_Code_Number, "
+	"INV_Retail_Price, INV_Wholesale_Price "
         "FROM Inventory_Table WHERE INV_SKU_Number = '" << sku << "'";
     
     otl_stream dbStream(50, sql.str().c_str(), *m_db);
     
     while (!dbStream.eof()){
-        otl_long_string longStr;
+        otl_long_string longDesc;
+	char itemType[20+1];
+	itemType[0]='\0';
+	char barCode[30+1];
+	barCode[0]='\0';
         YardInvType temp;
-        dbStream >> temp.m_skuNumber >> longStr;
-        temp.m_itemDescription = (char*)longStr.v;
+        dbStream >> temp.m_skuNumber >> itemType >> longDesc \
+		 >> barCode >> temp.m_retailPrice \
+		 >> temp.m_wholesalePrice;
+        temp.m_itemDescription = (char*)longDesc.v;
+	temp.m_barCode = barCode;
+	temp.m_itemType = itemType;
         invVec.push_back(temp);
     }
         
@@ -147,16 +144,44 @@ int main(int argc, char ** argv)
     // argv[1] = name, [2] = pass, [3] = dsn
 
     YardDatabase testDB;
-    
+    int numItems = 0;    
+
     if (argc == 4) {
         testDB.Init(argv[3], argv[1], argv[2]);
         VERIFY(testDB.connect(), true);
         
         vector<YardInvType> invObj;
+
+        /* Search for an SKU that probably doesn't exist,
+	   test to see if the shit bombs when we try to print */
+        invObj = testDB.InvSearchSKU(99999);
+	if (invObj.size()){
+	    numItems = invObj.size();
+	    for (int ii = 0; ii < numItems; ii++){
+/* NO!  BAD John!  Baaad. */
+// 		wxDbLog("%s, %s, %s, %f, %f.\n",invObj[ii].GetItemType(), 
+// 			invObj[ii].GetDescription(), invObj[ii].GetBarCode(), 
+// 			invObj[ii].GetRetailPrice(), invObj[ii].GetWholesalePrice());
+
+		cout << " " << invObj[ii].GetItemType() \
+		     << " " << invObj[ii].GetDescription() << " " \
+		     << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
+		     << " " << invObj[ii].GetWholesalePrice() << endl;
+	    }
+	}
         
-        invObj = testDB.InvSearchSKU(1000);
+        /* Search for an SKU that we know exists, and see if that prints. */
+        invObj = testDB.InvSearchSKU(10000);
+	if (invObj.size()){
+	    numItems = invObj.size();
+	    for (int ii = 0; ii < numItems; ii++){
+		cout << " " << invObj[ii].GetItemType() \
+		     << " " << invObj[ii].GetDescription() << " " \
+		     << invObj[ii].GetBarCode() << " " << invObj[ii].GetRetailPrice() \
+		     << " " << invObj[ii].GetWholesalePrice() << endl;
+	    }
+	}
     }
-    
 }
     
 #endif
