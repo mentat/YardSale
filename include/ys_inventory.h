@@ -19,15 +19,17 @@
 #ifndef YS_INVENTORY_H
 #define YS_INVENTORY_H
 
-#include "wx/wx.h"
+#include "wx/frame.h"
+#include "ys_inv_type.h"
+class wxListCtrl;
 
 /**
  * The inventory screen.
  * @author Jesse Lovelace
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 class YardInventory: public wxFrame{
-    public:
+ public:
     
     /** 
      * Constructs an Inventory screen
@@ -35,7 +37,7 @@ class YardInventory: public wxFrame{
     YardInventory(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER);
+               long style = wxRESIZE_BORDER|wxTAB_TRAVERSAL);
     
     /// Destructor
     virtual ~YardInventory();
@@ -46,8 +48,14 @@ class YardInventory: public wxFrame{
      */
     void OnExitButton(wxCommandEvent & event);
     
-    private:
-        
+    void OnNew(wxCommandEvent & event);
+    void OnSearch(wxCommandEvent & event);
+    void OnSelect(wxListEvent & event);
+    
+ private:
+    DECLARE_EVENT_TABLE()
+    wxListCtrl * m_list;
+    vector<YardInvType> m_objects;
 };
 
 #endif

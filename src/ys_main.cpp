@@ -66,7 +66,8 @@ YardMain::YardMain(wxWindow* parent, wxWindowID id, const wxString& title,
     SetSize(sizer->GetMinSize());
     Centre();
     
-    YardDebugScreen * debug = new YardDebugScreen(this, -1, "Debug");
+    YardDebugScreen * debug = new YardDebugScreen(this, -1, 
+        wxT("Debug"), wxPoint(0,50));
     debug->Show();
     wxLogDebug(wxT("Main loaded..."));
 }

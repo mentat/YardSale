@@ -23,7 +23,7 @@
  * This is the main sale screen.  It contains the current transaction
  * information. 
  * @author Jesse Lovelace
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 class YardSaleScreen: public wxFrame{
     public:
@@ -31,7 +31,7 @@ class YardSaleScreen: public wxFrame{
     YardSaleScreen(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxRESIZE_BORDER);
+               long style = wxRESIZE_BORDER|wxTAB_TRAVERSAL);
         
     virtual ~YardSaleScreen();
     

@@ -175,31 +175,31 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
     wxStaticText *item2 = new wxStaticText( parent, ID_TEXT, wxT("SKU"), wxDefaultPosition, wxDefaultSize, 0 );
     item1->Add( item2, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item3 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(150,-1), 0 );
+    wxTextCtrl *item3 = new wxTextCtrl( parent, ID_INV_SKU, wxT(""), wxDefaultPosition, wxSize(150,-1), 0 );
     item1->Add( item3, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxStaticText *item4 = new wxStaticText( parent, ID_TEXT, wxT("Bar Code"), wxDefaultPosition, wxDefaultSize, 0 );
     item1->Add( item4, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item5 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(120,-1), 0 );
+    wxTextCtrl *item5 = new wxTextCtrl( parent, ID_INV_BARCODE, wxT(""), wxDefaultPosition, wxSize(120,-1), 0 );
     item1->Add( item5, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, wxT("Item Name"), wxDefaultPosition, wxDefaultSize, 0 );
     item1->Add( item6, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item7 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    wxTextCtrl *item7 = new wxTextCtrl( parent, ID_INV_ITEMNAME, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
     item1->Add( item7, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxStaticText *item8 = new wxStaticText( parent, ID_TEXT, wxT("Price"), wxDefaultPosition, wxDefaultSize, 0 );
     item1->Add( item8, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-    wxTextCtrl *item9 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
+    wxTextCtrl *item9 = new wxTextCtrl( parent, ID_INV_PRICE, wxT(""), wxDefaultPosition, wxSize(80,-1), 0 );
     item1->Add( item9, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, wxT("Description"), wxDefaultPosition, wxDefaultSize, 0 );
     item1->Add( item10, 0, wxALIGN_RIGHT|wxALL, 5 );
 
-    wxTextCtrl *item11 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(80,-1), wxTE_MULTILINE );
+    wxTextCtrl *item11 = new wxTextCtrl( parent, ID_INV_DESC, wxT(""), wxDefaultPosition, wxSize(80,-1), wxTE_MULTILINE );
     item1->Add( item11, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
     wxStaticText *item12 = new wxStaticText( parent, ID_TEXT, wxT("Wholesale"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -208,15 +208,15 @@ wxSizer *Inventory( wxWindow *parent, bool call_fit, bool set_sizer )
     wxFlexGridSizer *item13 = new wxFlexGridSizer( 1, 0, 0 );
     item13->AddGrowableCol( 0 );
 
-    wxTextCtrl *item14 = new wxTextCtrl( parent, ID_TEXTCTRL, wxT(""), wxDefaultPosition, wxSize(160,-1), 0 );
+    wxTextCtrl *item14 = new wxTextCtrl( parent, ID_INV_WHOLESALE, wxT(""), wxDefaultPosition, wxSize(160,-1), 0 );
     item13->Add( item14, 0, wxGROW|wxALL, 5 );
 
     wxBoxSizer *item15 = new wxBoxSizer( wxHORIZONTAL );
 
-    wxButton *item16 = new wxButton( parent, ID_BUTTON, wxT("New"), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton *item16 = new wxButton( parent, ID_INV_NEW, wxT("New"), wxDefaultPosition, wxDefaultSize, 0 );
     item15->Add( item16, 0, wxALIGN_CENTER|wxALL, 5 );
 
-    wxButton *item17 = new wxButton( parent, ID_BUTTON, wxT("Search"), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton *item17 = new wxButton( parent, ID_INV_SEARCH, wxT("Search"), wxDefaultPosition, wxDefaultSize, 0 );
     item15->Add( item17, 0, wxALIGN_CENTER|wxALL, 5 );
 
     item13->Add( item15, 0, wxALIGN_CENTER, 5 );
