@@ -1,7 +1,7 @@
 #include <sstream>
 #include <stack>
+#include <iostream>
 
-#include "iostream.h"
 #include "yardsale_wdr.h"
 #include "ys_calc.h"
 
