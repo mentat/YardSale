@@ -86,7 +86,7 @@ am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 
-SUBDIRS = intl po include src
+SUBDIRS = include src
 
 yardsaledocdir = ${prefix}/doc/YardSale
 yardsaledoc_DATA = \
@@ -116,7 +116,7 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
 DIST_COMMON = README ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL \
 	Makefile.am Makefile.in NEWS TODO acconfig.h acinclude.m4 \
 	aclocal.m4 config.guess config.sub configure configure.in \
-	depcomp install-sh missing mkinstalldirs
+	depcomp install-sh ltmain.sh missing mkinstalldirs
 DIST_SUBDIRS = $(SUBDIRS)
 all: all-recursive
 
