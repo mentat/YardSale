@@ -1,4 +1,4 @@
-INCLUDES =  -I.
+#INCLUDES =  -I.
 
 noinst_LIBRARIES = libys_gdc.a
 

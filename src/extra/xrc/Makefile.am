@@ -1,4 +1,4 @@
-INCLUDES =  -I.
+#INCLUDES =  -I. -I/usr/local/include
 
 ## CXXFLAGS = $(WX_CXXFLAGS)  -g
 

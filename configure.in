@@ -12,6 +12,9 @@ if test "x$OSTYPE" = "x"; then
 fi
 
 case "$OSTYPE" in
+    freebsd* | FreeBSD*)
+	ISFREEBSD=1
+        ;;
     darwin* | Darwin*)
 	USE_MAC=1
 	MAKE_USE_MAC="USE_MAC=yes"
@@ -95,20 +98,21 @@ AC_ARG_WITH(static,
 dnl ------------- Check for other libs ----------------
 AC_CHECK_LIB(expat,XML_ParserCreate,[
                 GUI_LIBS="-lexpat $GUI_LIBS"],
-                [AC_MSG_ERROR([
+                [AC_MSG_WARN([
 	   YardSale requires expat to be installed on your system.
    ])])
 
-dnl AC_CHECK_LIB(sablot,SablotGetOptions,[
-dnl                GUI_LIBS="-lsablot $GUI_LIBS"],
-dnl                [AC_MSG_ERROR([
-dnl	   YardSale requires Sablotron to be installed on your system.
-dnl   ])])
-GUI_LIBS="-lsablot $GUI_LIBS"
+AC_CHECK_LIB(sablot,SablotGetOptions,[
+                GUI_LIBS="-lsablot $GUI_LIBS"],
+                [AC_MSG_WARN([
+	   YardSale requires Sablotron to be installed on your system.
+
+   ])
+	GUI_LIBS="-lsablot $GUI_LIBS"])
    
 AC_CHECK_LIB(odbc,SQLConnect,[
                 GUI_LIBS="-lodbc $GUI_LIBS"],
-                [AC_MSG_ERROR([
+                [AC_MSG_WARN([
 	   YardSale requires ODBC to be installed on your system.
    ])])
  
@@ -132,6 +136,13 @@ if test "$USE_MAC" = 1; then
 
     REZFLAGS=`$WX_CONFIG_WITH_ARGS --rezflags`
     AC_SUBST(REZFLAGS)
+fi
+
+if test "$ISFREEBSD" = 1; then
+	echo "Setting FreeBSD paths..."
+	CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+	CFLAGS="$CFLAGS -I/usr/local/include"
+	GUI_LIBS="$GUI_LIBS -L/usr/local/lib"
 fi
 
 AC_ARG_WITH(debug,
