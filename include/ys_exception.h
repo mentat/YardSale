@@ -19,6 +19,7 @@
 #ifndef YS_EXCEPTION_H
 #define YS_EXCEPTION_H
 
+#include <exception>
 #include <string>
 
 using namespace std;
