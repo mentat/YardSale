@@ -34,27 +34,27 @@ class otl_stream;
  *
  * @include SHP_Table.sql
  * @ingroup database 
- * @see YardShippingType
+ * @see YardShipType
  * @author Michael Swigon	
- * @version \$Revision: 1.2 $$
+ * @version \$Revision: 1.3 $$
  * @see YardDBType
  */
 
-class YardShippingType: public YardDBType
+class YardShipType: public YardDBType
 {
  public:
    
     friend class YardDatabase;
 
 	  
-    YardShippingType() {}
+    YardShipType() {}
     
     /**
      * Copy constructor
      */
-    YardShippingType(const YardShippingType& obj);
+    YardShipType(const YardShipType& obj);
     
-    YardShippingType& operator=(const YardShippingType& obj);
+    YardShipType& operator=(const YardShipType& obj);
 
 	/* gettors */
 
@@ -65,7 +65,7 @@ class YardShippingType: public YardDBType
 	/// Get shipping cost
 	float GetCost() const { return m_cost; }
 	/// Get enabled flag
-	int GetEnabled() consts { return m_enabled; }
+	int GetEnabled() const { return m_enabled; }
 
 	/* settors */
 

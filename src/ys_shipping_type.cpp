@@ -16,13 +16,13 @@
 
 using namespace std;
 
-YardShippingType::YardShippingType(const YardShippingType& obj) {
+YardShipType::YardShipType(const YardShipType& obj) {
     
     *this = obj;
     
 }
 
-string YardShippingType::ToString(const string& delim) const {
+string YardShipType::ToString(const string& delim) const {
     
     stringstream output;
     output << m_shipType << delim << m_carrierID << delim << m_cost << delim << m_enabled;
@@ -31,7 +31,7 @@ string YardShippingType::ToString(const string& delim) const {
         
 }
 
-void YardShippingType::FillFromStream(otl_stream * stream)
+void YardShipType::FillFromStream(otl_stream * stream)
 {  
     if (!stream)
         return;
@@ -40,7 +40,7 @@ void YardShippingType::FillFromStream(otl_stream * stream)
     //char oversized, freight;
     otl_datetime lastRec;
     
-    YardShippingType temp;
+    YardShipType temp;
         
     try {
         *stream 
@@ -54,7 +54,7 @@ void YardShippingType::FillFromStream(otl_stream * stream)
     }
 }
 
-YardShippingType& YardShippingType::operator=(const YardShippingType& obj) {
+YardShipType& YardShipType::operator=(const YardShipType& obj) {
     
     m_shipType = obj.m_shipType;
     m_carrierID = obj.m_carrierID;
@@ -73,17 +73,17 @@ using namespace std;
 
 int main()
 {
-    YardShippingType test1;
+    YardShipType test1;
     test1.SetShipType("overnight");
-    test1.SetCarrierID("420420");
-    test1.SetCost("254.25");
-	test1.SetEnabled("1");
+    test1.SetCarrierID(420420);
+    test1.SetCost(254.25);
+	test1.SetEnabled(1);
     
-    YardShippingType test2(test1);
+    YardShipType test2(test1);
     
     VERIFY(test2.GetShipType(), test1.GetShipType());
     
-    YardShippingType test3;
+    YardShipType test3;
     
     test3 = test2;
     
@@ -92,7 +92,7 @@ int main()
 	VERIFY(test3.GetEnabled(), test2.GetEnabled());
 
 
-    vector<YardShippingType> anArray;
+    vector<YardShipType> anArray;
     
     anArray.push_back(test1);
     anArray.push_back(test2);
@@ -100,7 +100,7 @@ int main()
     
     VERIFY(anArray[1].GetCarrierID(), anArray[2].GetCarrierID());
     
-    vector<YardShippingType> copyArray;
+    vector<YardShipType> copyArray;
     copyArray = anArray;
     
     VERIFY(anArray[0].GetCost(), copyArray[0].GetCost());
