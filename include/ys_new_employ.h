@@ -33,6 +33,11 @@ using namespace std;
 
 DECLARE_APP(YardSale)
 
+/**
+ * The new employee wizard.
+ * \image html employee_wizard.png
+ * @author Jesse Lovelace
+ */ 
 class YardNewEmployee: public wxWizard
 {
  public:

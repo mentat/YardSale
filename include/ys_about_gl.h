@@ -27,10 +27,16 @@ class wxTimer;
 class wxTimerEvent;
 class wxPaintEvent;
 
+/**
+ * This is a scrolly, eye-candy about screen.
+ * It shows the authors and the packages that we use.
+ * @author Jesse Lovelace
+ */
 class YardAboutGL: public wxDialog
 {
- public: /** 
-     * Constructs an Inventory screen
+ public: 
+     /** 
+     * Constructs an About screen
      */    
     YardAboutGL(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
@@ -41,8 +47,13 @@ class YardAboutGL: public wxDialog
     /// Destructor
     virtual ~YardAboutGL();
  
+    /// The OK button was pressed.
     void OnOK(wxCommandEvent& event);
+    /// The timer loop for "animation"
+    /// @todo Do something better here, this is CPU intensive.
     void OnTimer(wxTimerEvent& event);
+    /// The window paint event
+    /// @todo Optimize.
     void OnPaint(wxPaintEvent& event);
     void OnIdle(wxIdleEvent& event);
         

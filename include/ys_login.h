@@ -26,8 +26,9 @@
  * be asked for a username and password.  Also, a quick select icon will
  * allow the user to rapidly select her/his username.
  *
+ * \image html login.png
  * @author Jesse Lovelace
- * @version \$Revision: 1.8 $$
+ * @version \$Revision: 1.9 $$
  */
 class YardLogin: public wxDialog {
  public:

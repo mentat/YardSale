@@ -7,7 +7,7 @@
  * This class manages configuration settings which are 
  * platform independant and therefore use dot files in Linux
  * and registry in Win32.
- *
+ * \image html configuration.png
  * @author Jesse Lovelace
  */
 class YardConfig: public wxDialog {

@@ -39,7 +39,8 @@ class wxTreeEvent;
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.22 $$
+ * \image html inventory.png
+ * @version \$Revision: 1.23 $$
  */
 class YardInventory: public wxDialog{
  public:

@@ -33,6 +33,7 @@ class wxButton;
  * information via this screen.
  *
  * @see YardEmployeeType
+ * \image html employee_management.png
  * @author Jesse Lovelace
  */
 class YardEmployee: public wxDialog

@@ -28,8 +28,9 @@ class YardDebugScreen;
  * There is also a footer @see YardFooter which allows users to access
  * important utilities.
  *
+ * \image html main.png
  * @author Jesse Lovelace
- * @version \$Revision: 1.18 $$
+ * @version \$Revision: 1.19 $$
  */
 class YardMain: public wxFrame {
     public:

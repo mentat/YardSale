@@ -41,8 +41,9 @@ class wxStaticText;
  * information and an interface to add new items to the transaction.  
  * From the transaction screen you can access the payment screen.
  * 
+ * \image html sales.png
  * @author Jesse Lovelace
- * @version \$Revision: 1.13 $$
+ * @version \$Revision: 1.14 $$
  */
 class YardSaleScreen: public wxDialog{
  public:

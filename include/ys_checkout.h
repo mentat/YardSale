@@ -9,6 +9,11 @@ using namespace std;
 class YardCalc;
 class wxButton;
 
+/**
+ * The checkout screen.
+ * \image html checkout.png
+ * @author Jesse Lovelace
+*/
 class YardCheckout: public wxDialog{
  public:
     

@@ -24,7 +24,21 @@
 
 using namespace std;
 
+/**
+ * This is the report preview window.  From this screen the user can print
+ * reports.
+ * \image report_sample.png
+ * @author Jesse Lovelace
+*/
+class YardHTML;
+
 class wxCalendarCtrl;
+/**
+ * This is the report management screen, from here the user can 
+ * generate reports and preview them.
+ * \image html reports.png
+ * @author Jesse Lovelace
+*/
 class YardReports: public wxDialog
 {
     public:
@@ -44,9 +58,11 @@ class YardReports: public wxDialog
     
  private:
      
+    /// Generate graph of data.
     void GenerateGraph(const string& xml, const string& labels, 
         const string& data);
-     
+    
+    /// Process the XSLT 
     string ProcessXSLT(const string& xml, const string& xsl);
     DECLARE_EVENT_TABLE()
     wxCalendarCtrl * m_from;

@@ -60,7 +60,7 @@ class YardDatabase;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version \$Revision: 1.18 $$
+ * @version \$Revision: 1.19 $$
  */
 class YardSale: public wxApp {
  public:
@@ -82,10 +82,15 @@ class YardSale: public wxApp {
      */
     YardDatabase& DB();
  
+    /// Return the currently logged in user name
     wxString GetUser() const { return m_user; }
+    /// Show the login screen.
+    /// @param old The old top level window.
     bool ShowLogin(wxWindow * old = NULL);
     
+    /// Is full screen mode.
     bool Full() { return m_full; }
+    /** Set full screen mode. */
     void SetFull(bool full) { m_full = full; }
  
  private:
