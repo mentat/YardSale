@@ -10,3 +10,4 @@ source KEY_Table.sql;
 source SHP_Table.sql;
 source TRANS_Log_Table.sql;
 source PKG_Table.sql;
+source LOGIN_Table.sql;

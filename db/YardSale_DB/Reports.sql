@@ -1,6 +1,6 @@
 # Connection: rau
 # Host: rau.ece.ncsu.edu
-# Saved: 2004-04-11 02:13:44
+# Saved: 2004-04-11 03:34:58
 # 
 # Connection: local
 # Host: localhost
@@ -98,5 +98,20 @@ TRANS_Time BETWEEN
 GROUP BY TRANS_Always_Null;
 
 
+################################################
+# EMPLOYEE TIME TRACKING STUFF IS BELOW HERE #
+################################################
+
+#SHOW THE AMOUNT OF TIME AN EMPLOYEE HAS WORKED GIVEN A DATE RANGE
+#THE Time_Worked Value is at least 2 digits. The two least significant digits are the minutes 0-60. The 3+ Significant digits are the
+#hours worked. Minutes = Time_Worked / 100, Hours = Time_Worked % 100
+
+SELECT EMP_First_Name, Emp_Last_Name, 
+             EXTRACT(HOUR FROM LOG_Time_Out - LOG_Time_In) AS Time_Worked_Hours,
+             EXTRACT(HOUR_MINUTE FROM LOG_Time_Out - LOG_Time_In)%100 AS Time_Worked_Minutes,
+             DATE_FORMAT(Log_Time_Out, '%W %M %D' ) AS Worked_On_Date
+FROM Login_Table JOIN Employee_Table ON LOG_REF_EMP_ID = EMP_ID_Number
+WHERE LOG_Count = 0 AND
+LOG_Time_In BETWEEN '2004-04-01' AND '2004-04-07';
 
              
