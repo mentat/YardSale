@@ -1,4 +1,4 @@
-This is TeX, Version 3.14159 (Web2C 7.3.1) (format=latex 2003.2.18)  8 APR 2004 14:51
+This is TeX, Version 3.14159 (Web2C 7.3.1) (format=latex 2003.2.18)  8 APR 2004 16:10
 **Requirements.tex
 (Requirements.tex
 LaTeX2e <2001/06/01>
@@ -133,12 +133,12 @@ Overfull \vbox (12.0pt too high) has occurred while \output is active []
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [10]
-Underfull \hbox (badness 10000) in paragraph at lines 582--590
+Underfull \hbox (badness 10000) in paragraph at lines 601--609
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--598
+Underfull \hbox (badness 10000) in paragraph at lines 615--617
 
  []
 
@@ -150,12 +150,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.599 ...   \includegraphics{yardsale_modules.png}
+l.618 ...   \includegraphics{yardsale_modules.png}
                                                   \\
 ? 
 File: yardsale_modules.png Graphic file (type eps)
 <yardsale_modules.png>
-Underfull \hbox (badness 10000) in paragraph at lines 599--601
+Underfull \hbox (badness 10000) in paragraph at lines 618--620
 
  []
 
@@ -163,7 +163,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 599--601
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [11]
-Underfull \hbox (badness 10000) in paragraph at lines 627--629
+Underfull \hbox (badness 10000) in paragraph at lines 646--648
 
  []
 
@@ -175,7 +175,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.630 ...       \includegraphics{organization.png}
+l.649 ...       \includegraphics{organization.png}
                                                   
 ? 
 File: organization.png Graphic file (type eps)
@@ -183,47 +183,27 @@ File: organization.png Graphic file (type eps)
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [12]
+Overfull \vbox (12.0pt too high) has occurred while \output is active []
+
+ [13]
 Chapter 2.
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [13
+ [14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 716--720
+Underfull \hbox (badness 10000) in paragraph at lines 735--739
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--720
+Underfull \hbox (badness 10000) in paragraph at lines 735--739
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--720
-
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [14]
-Underfull \hbox (badness 10000) in paragraph at lines 780--784
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 785--796
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 785--796
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 785--796
+Underfull \hbox (badness 10000) in paragraph at lines 735--739
 
  []
 
@@ -231,187 +211,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 785--796
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [15]
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
+Underfull \hbox (badness 10000) in paragraph at lines 799--803
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
+Underfull \hbox (badness 10000) in paragraph at lines 804--815
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
+Underfull \hbox (badness 10000) in paragraph at lines 804--815
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 813--870
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--928
+Underfull \hbox (badness 10000) in paragraph at lines 804--815
 
  []
 
@@ -419,52 +234,187 @@ Underfull \hbox (badness 10000) in paragraph at lines 873--928
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [16]
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--965
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 832--889
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--947
 
  []
 
@@ -472,62 +422,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 930--965
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [17]
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 968--994
+Underfull \hbox (badness 10000) in paragraph at lines 949--984
 
  []
 
@@ -535,10 +475,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 968--994
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [18]
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--1013
+
+ []
+
+
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [19]
-Underfull \hbox (badness 10000) in paragraph at lines 998--1004
+Overfull \vbox (12.0pt too high) has occurred while \output is active []
+
+ [20]
+Underfull \hbox (badness 10000) in paragraph at lines 1017--1023
 
  []
 
@@ -550,17 +553,17 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1005     \includegraphics{ys_main_screener.png}
+l.1024     \includegraphics{ys_main_screener.png}
                                                  \\
 ? 
 File: ys_main_screener.png Graphic file (type eps)
 <ys_main_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 1005--1006
+Underfull \hbox (badness 10000) in paragraph at lines 1024--1025
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1007--1014
+Underfull \hbox (badness 10000) in paragraph at lines 1026--1033
 
  []
 
@@ -572,17 +575,17 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1016     \includegraphics{ys_sales_screener.png}
+l.1035     \includegraphics{ys_sales_screener.png}
                                                   \\
 ? 
 File: ys_sales_screener.png Graphic file (type eps)
 <ys_sales_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 1016--1017
+Underfull \hbox (badness 10000) in paragraph at lines 1035--1036
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1018--1032
+Underfull \hbox (badness 10000) in paragraph at lines 1037--1051
 
  []
 
@@ -594,43 +597,17 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1034     \includegraphics{ys_inv_screener.png}
+l.1053     \includegraphics{ys_inv_screener.png}
                                                 \\
 ? 
 File: ys_inv_screener.png Graphic file (type eps)
 <ys_inv_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1036--1051
-
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [20]
-
-! LaTeX Error: Cannot determine size of graphic in ys_employee_screener.png (no
- BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1053 ...ncludegraphics{ys_employee_screener.png}
-                                                  \\
-? 
-File: ys_employee_screener.png Graphic file (type eps)
-<ys_employee_screener.png>
 Underfull \hbox (badness 10000) in paragraph at lines 1053--1054
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1055--1063
+Underfull \hbox (badness 10000) in paragraph at lines 1055--1070
 
  []
 
@@ -639,24 +616,24 @@ Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [21]
 
-! LaTeX Error: Cannot determine size of graphic in ys_calc_screener.png (no Bou
-ndingBox).
+! LaTeX Error: Cannot determine size of graphic in ys_employee_screener.png (no
+ BoundingBox).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1067     \includegraphics{ys_calc_screener.png}
-                                                 \\
+l.1072 ...ncludegraphics{ys_employee_screener.png}
+                                                  \\
 ? 
-File: ys_calc_screener.png Graphic file (type eps)
-<ys_calc_screener.png>
-Underfull \hbox (badness 10000) in paragraph at lines 1067--1068
+File: ys_employee_screener.png Graphic file (type eps)
+<ys_employee_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 1072--1073
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1076
+Underfull \hbox (badness 10000) in paragraph at lines 1074--1082
 
  []
 
@@ -664,77 +641,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 1069--1076
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [22]
+
+! LaTeX Error: Cannot determine size of graphic in ys_calc_screener.png (no Bou
+ndingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1086     \includegraphics{ys_calc_screener.png}
+                                                 \\
+? 
+File: ys_calc_screener.png Graphic file (type eps)
+<ys_calc_screener.png>
+Underfull \hbox (badness 10000) in paragraph at lines 1086--1087
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1095
+
+ []
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active []
+
+ [23]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1084--1085
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1103--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1122--1124
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1108--1109
+Underfull \hbox (badness 10000) in paragraph at lines 1127--1128
 
  []
 
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [23
+ [24
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1140--1142
+Underfull \hbox (badness 10000) in paragraph at lines 1159--1161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1144--1145
+Underfull \hbox (badness 10000) in paragraph at lines 1163--1164
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1153--1155
+Underfull \hbox (badness 10000) in paragraph at lines 1172--1174
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1158--1159
-
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
- [24]
-Underfull \hbox (badness 10000) in paragraph at lines 1184--1186
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1188--1189
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1208--1210
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1212--1213
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1222--1224
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1226--1227
+Underfull \hbox (badness 10000) in paragraph at lines 1177--1178
 
  []
 
@@ -742,22 +712,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 1226--1227
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [25]
-Underfull \hbox (badness 10000) in paragraph at lines 1238--1240
+Underfull \hbox (badness 10000) in paragraph at lines 1203--1205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1243--1244
+Underfull \hbox (badness 10000) in paragraph at lines 1207--1208
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1267--1269
+Underfull \hbox (badness 10000) in paragraph at lines 1227--1229
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1271--1272
+Underfull \hbox (badness 10000) in paragraph at lines 1231--1232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1241--1243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1245--1246
 
  []
 
@@ -765,17 +745,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 1271--1272
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [26]
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1284
+Underfull \hbox (badness 10000) in paragraph at lines 1257--1259
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1286--1287
+Underfull \hbox (badness 10000) in paragraph at lines 1262--1263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1294--1296
+Underfull \hbox (badness 10000) in paragraph at lines 1286--1288
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1290--1291
 
  []
 
@@ -783,19 +768,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 1294--1296
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [27]
+Underfull \hbox (badness 10000) in paragraph at lines 1301--1303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1305--1306
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1313--1315
+
+ []
+
+
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
  [28]
+Overfull \vbox (12.0pt too high) has occurred while \output is active []
+
+ [29]
 Chapter 4.
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [29
+ [30
 
 ]
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
- [30]
+ [31]
 (Requirements.aux) ) 
 Here is how much of TeX's memory you used:
  672 strings out of 20880
@@ -806,4 +809,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 10000
  26i,11n,40p,1305b,539s stack positions out of 3000i,100n,1500p,50000b,4000s
 
-Output written on Requirements.dvi (31 pages, 97120 bytes).
+Output written on Requirements.dvi (32 pages, 98992 bytes).

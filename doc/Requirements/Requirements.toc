@@ -17,53 +17,57 @@
 \contentsline {subsection}{\numberline {1.3.2}Architecture Independent}{10}
 \contentsline {section}{\numberline {1.4}System Constraints}{10}
 \contentsline {subsection}{\numberline {1.4.1}Interfaces}{10}
-\contentsline {section}{\numberline {1.5}Preliminary Design}{10}
-\contentsline {subsection}{\numberline {1.5.1}Major Modules}{10}
-\contentsline {subsubsection}{Database}{10}
-\contentsline {subsubsection}{Database Types}{10}
+\contentsline {section}{\numberline {1.5}External Dependencies and Interfaces}{10}
+\contentsline {subsection}{\numberline {1.5.1}Host Operating System}{10}
+\contentsline {subsection}{\numberline {1.5.2}Input Processing Device}{10}
+\contentsline {subsection}{\numberline {1.5.3}Output Processing Device}{10}
+\contentsline {section}{\numberline {1.6}Preliminary Design}{11}
+\contentsline {subsection}{\numberline {1.6.1}Major Modules}{11}
+\contentsline {subsubsection}{Database}{11}
+\contentsline {subsubsection}{Database Types}{11}
 \contentsline {subsubsection}{GUI wxWidges}{11}
-\contentsline {subsection}{\numberline {1.5.2}System Architecture}{11}
-\contentsline {section}{\numberline {1.6}Preliminary Project Task Plan}{11}
-\contentsline {subsection}{\numberline {1.6.1}Milestones}{11}
-\contentsline {subsection}{\numberline {1.6.2}Team Member Roles and Responsibilities}{12}
-\contentsline {chapter}{\numberline {2}Design}{13}
-\contentsline {section}{\numberline {2.1}YardSale Database Design}{13}
-\contentsline {subsection}{\numberline {2.1.1}Customer Management}{15}
-\contentsline {subsection}{\numberline {2.1.2}Inventory Management}{16}
-\contentsline {subsection}{\numberline {2.1.3}Transaction Handling}{17}
-\contentsline {subsection}{\numberline {2.1.4}Employee Management}{18}
-\contentsline {subsection}{\numberline {2.1.5}Security}{18}
-\contentsline {section}{\numberline {2.2}YardSale Client Application Design}{20}
-\contentsline {subsection}{\numberline {2.2.1}Main Menu}{20}
-\contentsline {subsection}{\numberline {2.2.2}Sales Screen}{20}
-\contentsline {subsection}{\numberline {2.2.3}Inventory Screen}{20}
-\contentsline {subsection}{\numberline {2.2.4}Employee Management Screen}{21}
-\contentsline {subsection}{\numberline {2.2.5}On-screen Calculator}{22}
-\contentsline {chapter}{\numberline {3}Implementation}{23}
-\contentsline {section}{\numberline {3.1}Database Level Implementation}{23}
-\contentsline {subsection}{\numberline {3.1.1}Customer Management}{23}
-\contentsline {subsection}{\numberline {3.1.2}Inventory Management}{23}
-\contentsline {subsection}{\numberline {3.1.3}Transaction Handling}{24}
-\contentsline {subsection}{\numberline {3.1.4}Employee Management}{26}
-\contentsline {section}{\numberline {3.2}Application Level Implementation}{27}
-\contentsline {subsection}{\numberline {3.2.1}YardCalc}{27}
-\contentsline {subsection}{\numberline {3.2.2}YardDatabase}{27}
-\contentsline {subsection}{\numberline {3.2.3}YardDBType}{27}
-\contentsline {subsubsection}{YardEmployeeType}{27}
-\contentsline {subsubsection}{YardInvType}{27}
-\contentsline {subsection}{\numberline {3.2.4}YardEmployee}{28}
-\contentsline {subsection}{\numberline {3.2.5}YardInventory}{28}
-\contentsline {subsection}{\numberline {3.2.6}YardException}{28}
-\contentsline {subsection}{\numberline {3.2.7}YardLog}{28}
-\contentsline {subsection}{\numberline {3.2.8}YardLogin}{28}
-\contentsline {subsection}{\numberline {3.2.9}YardMain}{28}
-\contentsline {subsection}{\numberline {3.2.10}YardSale}{28}
-\contentsline {subsection}{\numberline {3.2.11}YardSaleScreen}{28}
-\contentsline {subsection}{\numberline {3.2.12}YardSplash}{28}
-\contentsline {chapter}{\numberline {4}Preliminary Test Plan}{29}
-\contentsline {section}{\numberline {4.1}Passive Testing}{29}
-\contentsline {section}{\numberline {4.2}Active Testing}{29}
-\contentsline {subsection}{\numberline {4.2.1}Component Testing}{29}
-\contentsline {subsection}{\numberline {4.2.2}Testing Mains}{29}
-\contentsline {subsection}{\numberline {4.2.3}Warm-Body Testing}{29}
-\contentsline {subsection}{\numberline {4.2.4}Program Flow Tracking}{30}
+\contentsline {subsection}{\numberline {1.6.2}System Architecture}{11}
+\contentsline {section}{\numberline {1.7}Preliminary Project Task Plan}{12}
+\contentsline {subsection}{\numberline {1.7.1}Milestones}{12}
+\contentsline {subsection}{\numberline {1.7.2}Team Member Roles and Responsibilities}{12}
+\contentsline {chapter}{\numberline {2}Design}{14}
+\contentsline {section}{\numberline {2.1}YardSale Database Design}{14}
+\contentsline {subsection}{\numberline {2.1.1}Customer Management}{16}
+\contentsline {subsection}{\numberline {2.1.2}Inventory Management}{17}
+\contentsline {subsection}{\numberline {2.1.3}Transaction Handling}{18}
+\contentsline {subsection}{\numberline {2.1.4}Employee Management}{19}
+\contentsline {subsection}{\numberline {2.1.5}Security}{19}
+\contentsline {section}{\numberline {2.2}YardSale Client Application Design}{21}
+\contentsline {subsection}{\numberline {2.2.1}Main Menu}{21}
+\contentsline {subsection}{\numberline {2.2.2}Sales Screen}{21}
+\contentsline {subsection}{\numberline {2.2.3}Inventory Screen}{21}
+\contentsline {subsection}{\numberline {2.2.4}Employee Management Screen}{22}
+\contentsline {subsection}{\numberline {2.2.5}On-screen Calculator}{23}
+\contentsline {chapter}{\numberline {3}Implementation}{24}
+\contentsline {section}{\numberline {3.1}Database Level Implementation}{24}
+\contentsline {subsection}{\numberline {3.1.1}Customer Management}{24}
+\contentsline {subsection}{\numberline {3.1.2}Inventory Management}{24}
+\contentsline {subsection}{\numberline {3.1.3}Transaction Handling}{25}
+\contentsline {subsection}{\numberline {3.1.4}Employee Management}{27}
+\contentsline {section}{\numberline {3.2}Application Level Implementation}{28}
+\contentsline {subsection}{\numberline {3.2.1}YardCalc}{28}
+\contentsline {subsection}{\numberline {3.2.2}YardDatabase}{28}
+\contentsline {subsection}{\numberline {3.2.3}YardDBType}{28}
+\contentsline {subsubsection}{YardEmployeeType}{28}
+\contentsline {subsubsection}{YardInvType}{28}
+\contentsline {subsection}{\numberline {3.2.4}YardEmployee}{29}
+\contentsline {subsection}{\numberline {3.2.5}YardInventory}{29}
+\contentsline {subsection}{\numberline {3.2.6}YardException}{29}
+\contentsline {subsection}{\numberline {3.2.7}YardLog}{29}
+\contentsline {subsection}{\numberline {3.2.8}YardLogin}{29}
+\contentsline {subsection}{\numberline {3.2.9}YardMain}{29}
+\contentsline {subsection}{\numberline {3.2.10}YardSale}{29}
+\contentsline {subsection}{\numberline {3.2.11}YardSaleScreen}{29}
+\contentsline {subsection}{\numberline {3.2.12}YardSplash}{29}
+\contentsline {chapter}{\numberline {4}Preliminary Test Plan}{30}
+\contentsline {section}{\numberline {4.1}Passive Testing}{30}
+\contentsline {section}{\numberline {4.2}Active Testing}{30}
+\contentsline {subsection}{\numberline {4.2.1}Component Testing}{30}
+\contentsline {subsection}{\numberline {4.2.2}Testing Mains}{30}
+\contentsline {subsection}{\numberline {4.2.3}Warm-Body Testing}{30}
+\contentsline {subsection}{\numberline {4.2.4}Program Flow Tracking}{31}
