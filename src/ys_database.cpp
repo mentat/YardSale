@@ -114,43 +114,11 @@ vector<YardInvType> YardDatabase::FillFromStream(otl_stream * stream){
     vector<YardInvType> invVec;
     
     while (!stream->eof()){
-       // otl_long_string longDesc;
-       // otl_long_string bulkPrice;
-       // otl_long_string comment;
-        //char itemType[20+1];	
-        //itemType[0]='\0';
-            
-        //char barCode[30+1];
-        //barCode[0]='\0';
         
-       // char department[30+1];
         char oversized, freight;
         otl_datetime lastRec;
     
         YardInvType temp;
-        
-        /*        
-        	INV_SKU_Number			INT	NOT NULL,
-	INV_Bar_Code_Number		varchar(30),
-	INV_Item_Description		TEXT,
-	INV_Item_Department		varchar(30),
-	INV_Quantity_On_Hand		INT,
-	INV_Quantity_On_Order		INT,
-	INV_Reorder_Level		INT,
-	INV_Reorder_Quantity		INT,
-	INV_Item_Type			varchar(20),
-	INV_REF_TAX_Tax_Type            INT NOT NULL,
-	INV_REF_VND_Vendor_ID           INT NOT NULL,	
-	INV_Retail_Price		DECIMAL(7,2),
-	INV_Wholesale_Price		DECIMAL(7,2),
-	INV_Bulk_Price			TEXT,
-	INV_Date_Last_Received		DATETIME,
-	INV_Weight_Pounds		FLOAT,
-	INV_Oversized_Flag		enum('T','F'),
-	INV_Ship_By_Freight		enum('T','F'),
-	INV_Comment			TEXT,
-
-        */
         
         try {
             *stream 
@@ -187,9 +155,6 @@ vector<YardInvType> YardDatabase::FillFromStream(otl_stream * stream){
             throw YardDBException((char *)e.msg, (char*)e.stm_text, (char*)e.var_info);
         }
         
-        //temp.m_itemDescription = (char*)longDesc.v;
-        //temp.m_barCode = barCode;
-        //temp.m_itemType = itemType;
         invVec.push_back(temp);
     }
     
@@ -205,7 +170,7 @@ vector<YardInvType> YardDatabase::InvSearchSKU(unsigned long sku) {
     sql << "SELECT * FROM Inventory_Table WHERE INV_SKU_Number = '" << sku << "'";
     
     auto_ptr<otl_stream> dbStream;
-
+    
     try {
         dbStream.reset( new otl_stream(50, sql.str().c_str(), *m_db) );
     

@@ -65,7 +65,7 @@ YardInventory::YardInventory(wxWindow* parent, wxWindowID id, const wxString& ti
         PopulateList();
     }
     else
-        wxLogDebug(wxT("Not Connected"));
+        wxLogError(wxT("Not Connected"));
     
     
 }
@@ -80,7 +80,7 @@ void YardInventory::PopulateList()
     wxLogDebug(wxT("Populating list"));
     for (int i = 0; i < m_objects.size(); i++)
     {       
-        m_list->InsertItem(0, strIToA(m_objects[i].GetSKU()).c_str());
+        m_list->InsertItem(0, m_objects[i].GetSKU().c_str());
         m_list->SetItem(0,1, m_objects[i].GetBarCode().c_str());
         m_list->SetItem(0,2, m_objects[i].GetDescription().c_str());
         m_list->SetItem(0,3, m_objects[i].GetDepartment().c_str());
@@ -163,7 +163,7 @@ void YardInventory::OnSelect(wxListEvent & event){
         return;
     }
     
-    m_sku->SetValue(strIToA(m_objects[index].GetSKU()).c_str());
+    m_sku->SetValue(m_objects[index].GetSKU().c_str());
     m_barCode->SetValue(m_objects[index].GetBarCode().c_str());
     m_name->SetValue(m_objects[index].GetItemType().c_str());
     m_department->SetValue(m_objects[index].GetDepartment().c_str());

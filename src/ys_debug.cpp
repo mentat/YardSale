@@ -57,7 +57,7 @@ void YardDebugScreen::OnConnect(wxCommandEvent & event) {
         wxLogDB(e.GetWhat().c_str());
         return;
     }
-    wxLogDebug(wxT("Connected to %s"), dsn.c_str());
+    wxLogDB(wxT("Connected to %s"), dsn.c_str());
     
 }
 
@@ -71,6 +71,6 @@ void YardDebugScreen::OnDisc(wxCommandEvent & event) {
         wxLogDB(e.GetWhat().c_str());
         return;
     }        
-    wxLogDebug(wxT("Disconnected"));
+    wxLogDB(wxT("Disconnected"));
     
 }
