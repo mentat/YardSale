@@ -85,12 +85,13 @@ void YardInvType::FillFromStream(otl_stream * stream)
     /// maybe throw here
     
     char oversized, freight;
-    otl_datetime lastRec;
+    otl_datetime lastrec;
     
     YardInvType temp;
-        
+    m_key = 1;
     try {
-        *stream 
+        *stream
+           //  >> m_key
             >> m_skuNumber 
             >> m_barCode 
             >> m_itemDescription
@@ -104,11 +105,30 @@ void YardInvType::FillFromStream(otl_stream * stream)
             >> m_retailPrice
             >> m_wholesalePrice
             >> m_bulkPrice
-            >> lastRec
+            >> lastrec
             >> m_itemWeight
             >> oversized
             >> freight
             >> m_comment;
+        /*
+        int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+    int second;
+    unsigned long fraction;
+    int frac_precision;
+        */
+        
+        m_dateLastReceived.year = lastrec.year;
+        m_dateLastReceived.month = lastrec.month;
+        m_dateLastReceived.day = lastrec.day;
+        m_dateLastReceived.hour = lastrec.hour;
+        m_dateLastReceived.minute = lastrec.minute;
+        m_dateLastReceived.second = lastrec.second;
+        m_dateLastReceived.fraction = lastrec.fraction;
+        m_dateLastReceived.frac_precision = lastrec.frac_precision;
             
         if (oversized == 'F')
             m_oversized = false;
@@ -127,6 +147,7 @@ void YardInvType::FillFromStream(otl_stream * stream)
     
 YardInvType& YardInvType::operator=(const YardInvType& obj) {
     
+    m_key = obj.m_key;
     m_skuNumber = obj.m_skuNumber;
     m_barCode = obj.m_barCode;
     m_itemDescription = obj.m_itemDescription;
@@ -142,11 +163,6 @@ YardInvType& YardInvType::operator=(const YardInvType& obj) {
     m_retailPrice = obj.m_retailPrice;
     m_wholesalePrice = obj.m_wholesalePrice;
     
-    /*   struct BulkPricing  */
-    /*     { */
-    /*         unsigned long quantity; */
-    /*         float percent; */
-    /*     }; */
     m_bulkPricing = obj.m_bulkPricing;
     m_bulkPrice = obj.m_bulkPrice;
     m_dateLastReceived = obj.m_dateLastReceived;

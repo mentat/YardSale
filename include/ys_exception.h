@@ -58,6 +58,15 @@ class YardDBException: public YardException {
     string m_sql;
     string m_vars;
 };
+
+class YardDBIntegrityException: public YardDBException {
+ public:
+ YardDBIntegrityException(const string& err, const string& sql="", const string& vars="")
+        :YardDBException(err, sql, vars) {}
+    
+    virtual ~YardDBIntegrityException() throw() {}
+};
+
 /**
  * @ingroup database
    Database Error codes

@@ -209,7 +209,7 @@ int YardDatabase::AddInventoryItem(const YardInvType& item)
         throw YardDBException("DB not initialized.");
     
     stringstream sql;
-    sql << "INSERT INTO Inventory_Table";
+    sql << "INSERT INTO Inventory_Table values(" << item.ToString() << ");";
     
     auto_ptr<otl_stream> dbStream;
 
