@@ -20,7 +20,7 @@
 #define YS_EMPLOY_TYPE_H
 
 #include <string>
-#include "ys_dbtype.h"
+#include "xmlnode.h"
 
 class YardDatabase;
     
@@ -29,118 +29,111 @@ using namespace std;
 /**
  * This is a datatype to represent an Employee record.
  * See Database Tables.
+ * This class is an XML DOM tree.
  *
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.10 $
- * @see YardDBType
+ * @version $Revision: 1.11 $
+ * @see XMLNode
  */
-class YardEmployeeType: public YardDBType {
+class YardEmployeeType: public XMLNode {
  public:
     friend class YardDatabase;
     
     /// Default constructor
-    YardEmployeeType(){}
-        
-    /// Copy constructor - always deep copy
-    YardEmployeeType(const YardEmployeeType& copy);
-    
-    /// Assignment operator overload
-    YardEmployeeType& operator=(const YardEmployeeType & copy);
-        
-    virtual string ToString(const string& delim=",") const;
+    YardEmployeeType() { setName("Employee_Table"); }
+    YardEmployeeType(const string& xml): XMLNode(xml, XMLNode::Str) {}
+ 
+    virtual string ToString(const string& delim=",", bool quotes = true) const;
         
     //----------------Getors--------------------
     
     /// Return DB ID for employee
-    unsigned long GetId() const { return m_id; }
+    unsigned long GetId() const 
+        { return (unsigned long)ToLong(child("EMP_ID_Number").data()); }
     /// Return Tax ID, usually SS
-    string GetTaxId() const { return m_taxId; }
+    string GetTaxId() const 
+        { return child("EMP_Social_Security_Number").data(); }
     /// Return first name
-    string GetFirst() const { return m_firstName; }
+    string GetFirst() const 
+        { return child("EMP_First_Name").data(); }
     /// Return middle name
-    string GetMiddle() const { return m_middleName; }
+    string GetMiddle() const 
+        { return child("EMP_Middle_Name").data(); }
     /// Return last name
-    string GetLast() const { return m_lastName; }
+    string GetLast() const 
+        { return child("EMP_Last_Name").data(); }
     /// Return address
-    string GetAddress() const { return m_address; }
+    string GetAddress() const 
+        { return child("EMP_Address").data(); }
     /// Return city
-    string GetCity() const { return m_city; }
+    string GetCity() const 
+        { return child("EMP_City").data(); }
     /// Return state
-    string GetState() const { return m_state; }
+    string GetState() const 
+        { return child("EMP_State").data(); }
     /// Return zip code
-    string GetZip() const { return m_zip; }
+    string GetZip() const 
+        { return child("EMP_Zip").data(); }
     /// Return phone number
-    string GetPhone() const { return m_phone; }
+    string GetPhone() const 
+        { return child("EMP_Phone_Number"); }
     
     /// Returns location of employee picture on datacenter
     /// @todo Define what a datacenter is
-    string GetPicLocal() const { return m_picture; }
+    string GetPicLocal() const 
+        { return child("EMP_Picture").data(); }
     
     /// Returns the location of the employee signature file
-    string GetSigLocal() const { return m_signature; }
+    string GetSigLocal() const 
+        { return child("EMP_Picture").data(); }
     
     /// Check enabled
-    int GetEnabled() const { return m_enabled; }
+    int GetEnabled() const 
+        { return ToInt(child("EMP_Enabled").data()); }
     
     //-----------------Settors-------------------
     /// @note You cannot set the employee ID, it is set by the DB
     /// @todo Maybe have all these return boolean which says if the set
     ///  violates size limitations.
-    void SetTaxId(const string& id);
+    void SetTaxId(const string& id)
+        { child("EMP_Social_Security_Number").setData(id); }
     /// Set first name
-    void SetFirstName(const string& name);
+    void SetFirstName(const string& name)
+        { child("EMP_First_Name").setData(name); }
     /// Set middle name
-    void SetMiddleName(const string& name);
+    void SetMiddleName(const string& name)
+        { child("EMP_Middle_Name").setData(name); }
     /// Set last name
-    void SetLastName(const string& name);
+    void SetLastName(const string& name) 
+        { child("EMP_Last_Name").setData(name); }
     /// Set address
-    void SetAddress(const string& add);
+    void SetAddress(const string& add)
+        { child("EMP_Address").setData(add); }
     /// Set city
-    void SetCity(const string& city);
+    void SetCity(const string& city)
+        { child("EMP_City").setData(city); }
     /// Set state
-    void SetState(const string& state);
+    void SetState(const string& state)
+        { child("EMP_State").setData(state); }
     /// Set zip
-    void SetZip(const string& zip);
+    void SetZip(const string& zip)
+        { child("EMP_Zip").setData(zip); }
     /// Set phone
-    void SetPhone(const string& phone);
+    void SetPhone(const string& phone)
+        { child("EMP_Phone").setData(phone); }
     /// Set picture
-    void SetPicture(const string& loc);
+    void SetPicture(const string& loc)
+        { child("EMP_Picture").setData(loc); }
     /// Set sig location
-    void SetSig(const string& loc);
+    void SetSig(const string& loc)
+        { child("EMP_Signature").setData(loc); }
     /// Set job title
-    void SetTitle(const string& title);
+    //void SetTitle(const string& title);
     /// Set Enabled
-    void SetEnabled(){ m_enabled = 1;}
-    /// Set Disabled
-    void SetDisabled(){ m_enabled = 0;}
-    
-    /// @todo temp to fix compile
-    
-    virtual void FillFromStream(otl_stream * stream) {}
-
- private:
-    
-    unsigned long m_id; // employee id number
-     
-    string m_taxId; // social in many cases
-    string m_firstName; //first name
-    string m_middleName; //middle name
-    string m_lastName; //last name
-    string m_address; 
-    string m_city;
-    string m_zip;
-    string m_state;
-    string m_phone;
-    
- 
-    string m_picture;
-    string m_signature;
-
-    string m_title; // for grouping
- 
-    int m_enabled;//whether or not an employee is active 
+    void SetEnabled(bool yes = true)
+        { (yes) ? child("EMP_Enabled").setData("1") : child("EMP_Enabled").setData("0"); }
  
 };
 

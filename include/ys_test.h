@@ -21,15 +21,25 @@
 
 #include <iostream>
 #include "ys_exception.h"
+#include <cmath>
 
 using namespace std;
 
 int failure = 0;
 int success = 0;
 
+// close with tolerance TOLERANCE
+#define TOLERANCE 0.0000001
+#define VERIFY_FLOAT(a, b) { \
+     if ( (abs(a - b) <= TOLERANCE ) ) \
+     { cout << "Passed..." << endl; success++; } \
+     else \
+     { cout << "Failed at " << __FILE__ << ":" << __LINE__ << endl; failure++; } \
+}
+     
 #define VERIFY(a,b) { \
     if ((a)==(b)) \
-        { cout << "Passed.." << endl; success++; } \
+        { cout << "Passed..." << endl; success++; } \
     else \
         { cout << "Failed at " << __FILE__ << ":" << __LINE__ << endl; failure++; } \
 }
@@ -60,7 +70,5 @@ int success = 0;
     else \
         { cout << "Failed at " << __FILE__ << ":" << __LINE__ << endl; failure++; } \
 }
-
-
 
 #endif

@@ -19,6 +19,8 @@
 #ifndef YARDSALE_MAIN_H
 #define YARDSALE_MAIN_H
 
+#include "wx/frame.h"
+
 /**
  * YardMain is the main menu screen for YardSale, it displays
  * graphical buttons for accessing the inventory, employees, sales,
@@ -27,7 +29,7 @@
  * important utilities.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.13 $$
+ * @version \$Revision: 1.14 $$
  */
 class YardMain: public wxFrame {
     public:
@@ -54,20 +56,10 @@ class YardMain: public wxFrame {
     void OnSale(wxCommandEvent & event);
     /// Employee button handler
     void OnEmployee(wxCommandEvent& event);
+    /// Edit program options
     void OnOptions(wxCommandEvent& event);
     
     private:
-        
-    /*----------Pointers for Windows---------*/
-    
-    wxFrame * m_inventory;
-    
-    /*--------------Debug Stuff--------------*/
-        
-    wxBitmap * m_enlarge;
-    wxBitmap * m_shrink;
-    wxBitmapButton * m_maxButt;
-    bool m_max; // is the screen maxed
         
     DECLARE_EVENT_TABLE()
 };

@@ -19,7 +19,7 @@ class YardFooter: public wxPanel {
      const wxPoint& pos = wxDefaultPosition, 
      const wxSize& size = wxDefaultSize, 
      long style = wxTAB_TRAVERSAL, 
-     const wxString& name = "YSFooterPanel");
+     const wxString& name = "YardFooter");
  
     virtual ~YardFooter();
  

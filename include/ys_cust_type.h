@@ -19,114 +19,113 @@
 #ifndef YS_CUSTOMER_TYPE_H
 #define YS_CUSTOMER_TYPE_H
 
-#include "ys_dbtype.h"
+#include "xmlnode.h"
 #include <vector>
 #include <string>
 
 using namespace std;
 
 class YardDatabase;
-class otl_stream;
     
-class YardCustType: public YardDBType
+class YardCustType: public XMLNode
 {
  public:
    
     friend class YardDatabase;
       
-    YardCustType() {}
-    
-    /**
-     * Copy constructor
-     */
-    YardCustType(const YardCustType& obj);
-    
-    YardCustType& operator=(const YardCustType& obj);
+    YardCustType() { setName("Customer_Table"); }
+    YardCustType(const string& xml): XMLNode(xml, Str) {}
     
     /* Getters */
     
     /// Get Customer Account Number
-    int GetAccountNumber() const { return m_accountNumber; }
+    long GetAccountNumber() const 
+        { return ToLong(child("CUST_Account_Number").data()); }
     /// Get Customer First Name
-    string GetCustFirstName() const { return m_custFirstName; }
+    string GetFirstName() const 
+        { return child("CUST_First_Name").data(); }
     /// Get Customer Middle Name
-    string GetCustMiddleName() const { return m_custMiddleName; }
+    string GetMiddleName() const
+        { return child("CUST_Middle_Name").data(); }
     /// Get Customer Last Name
-    string GetCustLastName() const { return m_custLastName; }
+    string GetLastName() const 
+        { return child("CUST_Last_Name").data(); }
     /// Get Customer Address
     /// should return a vector of address lines
-    /*vector<string>*/ string GetCustomerAddress() const{ return m_custAddress; }
+    /*vector<string>*/ 
+    string GetAddress() const
+        { return child("CUST_Address").data(); }
     /// Get Customer Phone
-    string GetCustomerPhone() const{ return m_custPhone; }
+    string GetPhone() const
+        { return child("CUST_Phone").data(); }
     /// Get Customer City
-    string GetCustomerCity() const{ return m_custCity; }
+    string GetCity() const
+        { return child("CUST_City").data(); }
     /// Get Customer ZIP 
-    string GetCustomerZip() const{ return m_custZip; }
+    string GetZip() const
+        { return child("CUST_Zip").data(); }
     /// Get Customer Credit Card Number 
-    string GetCustomerCreditCardNumber() const{ return m_custCCNumber; }
+    string GetCreditCardNumber() const
+        { return child("CUST_Credit_Card_Number").data(); }
     /// Get Customer Credit Card Expiration 
-    string GetCustomerCreditCardExpiration() const{ return m_custCCExpiration; }
+    string GetCreditCardExpiration() const
+        { return child("CUST_CC_Exp_Date").data(); }
     /// Get Customer Credit Card Name 
-    string GetCustomerCreditCardName() const{ return m_custCCName; }
+    string GetCreditCardName() const
+        { return child("CUST_Name_On_CC").data(); }
     /// Get Customer Signature 
-    string GetCustomerSignaturePath() const{ return m_custSigPath; }
+    string GetSignaturePath() const
+        { return child("CUST_Signature").data(); }
     /// Get Customer Photo
-    string GetCustomerPhoto() const{ return m_custPhoto; }
+    string GetPhoto() const
+        { return child("CUST_Photo").data(); }
       
     /* setters */
   
     /// Set the account number - this may need to be removed since account
     /// numbers are handled internally by the RDBMS
-    void SetAccountNumber(const int& a_num) { m_accountNumber = a_num; }
+    void SetAccountNumber(const long a_num) 
+        { child("CUST_Account_Number").setData(ToStr(a_num)); }
     /// Set the customer first name
-    void SetCustFirstName(const string& str) { m_custFirstName = str; }
+    void SetFirstName(const string& str) 
+        { child("CUST_First_Name").setData(str); }
     /// Set the customer middle name
-    void SetCustMiddleName(const string& str) { m_custMiddleName = str; }
+    void SetMiddleName(const string& str) 
+        { child("CUST_Middle_Name").setData(str); }
     /// Set the customer last name
-    void SetCustLastName(const string& str) { m_custLastName = str; }
+    void SetLastName(const string& str) 
+        { child("CUST_Last_Name").setData(str); }
     /// Set the Customer Address
-    void SetCustAddress(const string& addr) { m_custAddress = addr; }
+    void SetAddress(const string& addr) 
+        { child("CUST_Address").setData(addr); }
     /// Set the Customer Phone numbers
-    void SetCustPhoneNumber(const string& str) { m_custPhone = str; }
+    void SetPhoneNumber(const string& str) 
+        { child("CUST_Phone").setData(str); }
     /// Set the Customer City 
-    void SetCustCity(const string& str) { m_custCity =  str; }
+    void SetCity(const string& str) 
+        { child("CUST_City").setData(str); }
     /// Set the Customer Zip
-    void SetCustZip(const string& str) { m_custZip = str; }
+    void SetZip(const string& str) 
+        { child("CUST_Zip").setData(str); }
     /// Set the Customer Credit Card Number 
-    void SetCustCreditCardNumber(const string& str) { m_custCCNumber = str; }
+    void SetCreditCardNumber(const string& str) 
+        { child("CUST_Credit_Card_Number").setData(str); }
     /// Set the Customer Credit Card Expiration 
-    void SetCustCreditCardExpiration(const string& str) { m_custCCExpiration = str; }
+    void SetCreditCardExpiration(const string& str) 
+        { child("CUST_CC_Exp_Date").setData(str); }
     /// Set the Name on the Customer Credit Card  
-    void SetCustCreditCardName(const string& str) { m_custCCName = str; }
-  
-
-   
+    void SetCreditCardName(const string& str) 
+        { child("CUST_Name_On_CC").setData(str); }
+    void SetSignature(const string& str)
+        { child("CUST_Signature").setData(str); }
+    void SetPhoto(const string& str)
+        { child("CUST_Photo").setData(str); }
     /**
      * Returns string representation of the datatype.
      * @param delim The string to delimit items in database
      * @return A string representation of the object
      */
-    virtual string ToString(const string& delim = "\n") const;
-    
-    void FillFromStream(otl_stream * stream);
-   
- private:
-    
-    /* These variables directly correspond with the database */
-    int m_accountNumber;
-    string m_custFirstName;
-    string m_custMiddleName; 
-    string m_custLastName;
-    string m_custAddress;
-    string m_custPhone;
-    string m_custCity;
-    string m_custZip;
-    string m_custCCNumber;
-    string m_custCCExpiration;
-    string m_custCCName;
-    string m_custSigPath;
-    string m_custPhoto; 
-
+    virtual string ToString(const string& delim = ",", bool quotes = true) const;
 };
 
 #endif

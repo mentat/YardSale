@@ -27,6 +27,9 @@ yardsale_include_DATA = \
 	ys_util.h\
 	ys_employee_type.h\
 	ys_cust_type.h\
-	ys_trans_type.h
+	ys_trans_type.h\
+	xmlnode.h\
+	xml.h\
+	wrapexpat.h
 
 EXTRA_DIST = $(yardsale_include_DATA)

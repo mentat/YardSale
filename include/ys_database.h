@@ -115,101 +115,99 @@ class YardDatabase {
      * @return A std::vector of YardInvType objects
      * @throws YardException if databae not initialized
      */
-    vector<YardInvType> InvSearchSKU(unsigned long sku);
+    vector<YardInvType> InventorySearchSKU(unsigned long sku);
     
     /**
      * Get a batch of inventory items.
      * @return A std::vector of YardInvType objects
      * @throws YardException if database not initialized
      */
-    vector<YardInvType> InvGet() throw (YardDBException);
+    vector<YardInvType> InventoryGetAll();
+    YardInvType InventoryGet(long key);
+    void InventoryUpdate(const YardInvType& inv);
     
     /**
      * Add an item to the inventory.
      */
-    int AddInventoryItem(const YardInvType& item);
+    long InventoryAdd(const YardInvType& item);
     
     /*-----------Customers----------------*/
 
-    int AddCustomer(const YardCustType& newCust);
-    vector<YardCustType> CustomerGetList();
+    int CustomerAdd(const YardCustType& newCust);
+    vector<YardCustType> CustomerGetAll();
     vector<YardCustType> CustomerSearch(const YardCustType& criteria);
-    void DisableCustomer(int key);
-    YardCustType GetCustomer(int key);
+    void CustomerDisable(long key);
+    YardCustType CustomerGet(int key);
     
     /// Check for key in cust so will not try to edit non-existant customer
-    void EditCustomer(const YardCustType& cust);
+    void CustomerUpdate(const YardCustType& cust);
 
     /*----------Employee-------------------*/
     
-    int AddEmployee(const YardEmployeeType& employ);
-    void DisableEmployee(int key);
-    YardEmployeeType GetEmployee(int key) const;
-    void EditEmployee(const YardEmployeeType& employ);
+    long EmployeeAdd(const YardEmployeeType& employ);
+    void EmployeeDisable(long key);
+    YardEmployeeType EmployeeGet(long key) const;
+    void EmployeeUpdate(const YardEmployeeType& employ);
     
-    vector<YardEmployeeType> GetEmployees() const;
+    vector<YardEmployeeType> EmployeeGetAll() const;
     
     /*----------Vendors--------------------*/
     
-    vector<YardVendType> GetVendors() const;
-    YardVendType GetVendor(int key) const;
+    vector<YardVendType> VendorGetAll() const;
+    YardVendType VendorGet(long key) const;
     
-    int AddVendor(const YardVendType& vendor);
+    long VendorAdd(const YardVendType& vendor);
     
     /*--------Carrier-------------------*/
     
-    vector<YardCarrierType> GetCarriers() const;
-    YardCarrierType GetCarrier(int key) const;
-    
-    int AddCarrier(const YardCarrierType& carrier);
-    
-    vector<YardShipType> GetShippingTypes(int carrierId) const;
-    
-    void AddShippingType(int carrierId, const YardShipType& shiptype);
-    
-    void DisableShippingType(int carrierId, int shipId);
+    vector<YardCarrierType> CarrierGetAll() const;
+    YardCarrierType CarrierGet(long key) const;
+    long CarrierAdd(const YardCarrierType& carrier);
+    vector<YardShipType> CarrierGetShippingTypes(long carrierId) const;
+    void CarrierAddShippingType(long carrierId, const YardShipType& shiptype);    
+    void CarrierDisableShippingType(long carrierId, int shipId);
     
     /*---------Transaction----------------*/
     
     /// throws something if not work
-    void InsertTransaction(const vector<YardTransType>& transaction);
-    
-    vector<YardTransType> GetTransaction(int transactionId) const;
+    void TransactionAdd(const vector<YardTransType>& transaction);
+    vector<YardTransType> TransactionGet(long transactionId) const;
     
     // return transaction id(s)
-    vector<int> SearchTransactions(int employeeId, int custId, int inventoryItem) const;
+    vector<long> TransactionSearch(int employeeId, int custId, int inventoryItem) const;
     
     /*--------Tax Types-----------------*/
     
-    vector<YardTaxType> GetTaxTypes() const;
+    vector<YardTaxType> TaxTypeGetAll() const;
+    int TaxTypeAdd(const YardTaxType& taxtype);
+    void TaxTypeUpdate(const YardTaxType& taxtype);
     
-    int AddTaxType(const YardTaxType& taxtype);
-    
-    void UpdateTaxType(const YardTaxType& taxtype);
+    /* helpers */
+    static string tab(int level);
+    static string escape(const string& esc);
+    /// @param stream The otl_stream being passed in
+    /// @param record The name of the individual record (most likely the table name
+    string ToXML(otl_stream * stream, const string& record) const;
     
  private:
-     
-    template<class T>
-    vector<T> FillFromStream(otl_stream * stream) {
+
+    template<typename T>
+    vector<T> XMLFromStream(otl_stream * stream, const string& table) const {
         vector<T> list;
         
         while (!stream->eof()){
-            T temp;
-        
-            temp.FillFromStream(stream); 
-            
+            T temp(ToXML(stream, table));            
             list.push_back(temp);
         }
         
         return list;
-    }
-        
+    }        
  
     otl_connect * m_db;
     string m_dsn;
     string m_name;
     string m_pass;
-    otl_stream * m_invGetStream;
+    //otl_stream * m_invGetStream;
      
 };
 

@@ -61,7 +61,7 @@ class YardBitmaps;
 /**
  * This is the main application object.
  * @author Jesse Lovelace
- * @version \$Revision: 1.14 $$
+ * @version \$Revision: 1.15 $$
  */
 class YardSale: public wxApp {
  public:
@@ -87,8 +87,13 @@ class YardSale: public wxApp {
     /// the images loaded by the loader.
     YardBitmaps& Images();
  
- private:
+    wxString GetUser() const { return m_user; }
  
+ private:
+     
+     void LoadConfig();
+     wxString m_user;
+     wxString m_pass;
      YardBitmaps * m_bitmaps;
      YardDatabase * m_db;
 };

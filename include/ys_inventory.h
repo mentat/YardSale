@@ -26,13 +26,14 @@ class wxTextCtrl;
 class wxChoice;
 class wxSpinCtrl;
 class wxCheckBox;    
+class wxListEvent;
 
 /**
  * The inventory screen displays items in the inventory and allows seaching.
  * New items can also be added to the inventory via the "New Item" button.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.16 $$
+ * @version \$Revision: 1.17 $$
  */
 class YardInventory: public wxFrame{
  public:

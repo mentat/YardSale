@@ -19,13 +19,15 @@
 #ifndef YS_LOGIN_H
 #define YS_LOGIN_H
 
+#include "wx/dialog.h"
+
 /**
  * This is the customized login screen for YardSale.  The user will 
  * be asked for a username and password.  Also, a quick select icon will
  * allow the user to rapidly select her/his username.
  *
  * @author Jesse Lovelace
- * @version \$Revision: 1.7 $$
+ * @version \$Revision: 1.8 $$
  */
 class YardLogin: public wxDialog {
  public:
@@ -35,7 +37,7 @@ class YardLogin: public wxDialog {
     YardLogin(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos = wxDefaultPosition, 
                const wxSize& size = wxDefaultSize,
-               long style = wxSTAY_ON_TOP | wxRESIZE_BORDER);
+               long style = wxSTAY_ON_TOP);
     
     /// Destructor    
     virtual ~YardLogin();  
@@ -51,7 +53,28 @@ class YardLogin: public wxDialog {
      */
     void OnLogin(wxCommandEvent & event);
     
+    
+    /**
+     * Run the program configuration from the login screen.
+     */
+    void OnConfig(wxCommandEvent & event);
+    
+    /**
+     * Returns the entered username.
+     */
+    wxString GetUser() const { return m_user; }
+    
+    /**
+     * Returns the entered password.
+     */
+    wxString GetPass() const { return m_pass; }
+    
+    
     private:
+    /// Username
+    wxString m_user;
+    /// Password
+    wxString m_pass;
         
     DECLARE_EVENT_TABLE()
     

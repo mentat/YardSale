@@ -19,14 +19,16 @@
 #ifndef YS_INVENTORY_TYPE_H
 #define YS_INVENTORY_TYPE_H
 
-#include "ys_dbtype.h"
 #include <vector>
 #include <string>
+#include <sstream>
+#include "xmlnode.h"
+#include "ys_build.h" // compile time settings
+#include "ys_date.h"
 
 using namespace std;
 
 class YardDatabase;
-class otl_stream;
 
 /**
  * The YardSale Inventory Type is a OO representation of the datebase
@@ -34,13 +36,12 @@ class otl_stream;
  *
  * @include INV_Table.sql
  * @ingroup database 
- * @see YardInvType
+ * @see XMLNode
  * @author Jesse Lovelace
- * @version \$Revision: 1.21 $$
- * @see YardDBType
+ * @version \$Revision: 1.22 $$
  */
 
-class YardInvType: public YardDBType
+class YardInvType: public XMLNode
 {
  public:
    
@@ -54,138 +55,198 @@ class YardInvType: public YardDBType
         float percent;
     };
   
-    YardInvType();
+    YardInvType() { setName("Inventory_Table"); }
+    YardInvType(const string& xml): XMLNode(xml, XMLNode::Str) {}
     
-    /**
-     * Copy constructor
-     */
-    YardInvType(const YardInvType& obj);
-    
-    YardInvType& operator=(const YardInvType& obj);
-    
-    int GetKey() const { return m_key; }
+    string GetKeyS() const 
+        { return child("INV_Item_ID"); }
+    long GetKey() const 
+        { return ToLong(GetKeyS()); }
         
     /// Get SKU
-    string GetSKU() const { return m_skuNumber; }
+    string GetSKU() const 
+        { return child("INV_SKU_Number").data(); }
     /// Get barcode
-    string GetBarCode() const { return m_barCode; }
+    string GetBarCode() const 
+        { return child("INV_Bar_Code_Number").data(); }
     /// Get item description
-    string GetDescription() const { return m_itemDescription; }
+    string GetDescription() const 
+        { return child("INV_Item_Description").data(); }
     /// Get department
-    string GetDepartment() const { return m_itemDepartment; }
-    /// Get quantity on hand
-    unsigned long GetQuantOnHand() const { return m_quantityOnHand; }
+    string GetDepartment() const 
+        { return child("INV_Item_Department").data(); }
+    
+    /// Get quantity on hand string then integer
+    string GetQuantOnHandS() const 
+        { return child("INV_Quantity_On_Hand").data(); }
+    unsigned long GetQuantOnHand() const 
+        { return ToLong(GetQuantOnHandS()); }
     /// Get quantity on order
-    unsigned long GetQuantOnOrder() const { return m_quantityOnOrder; }
+    string GetQuantOnOrderS() const
+        { return child("INV_Quantity_On_Order").data(); }
+    unsigned long GetQuantOnOrder() const 
+        {return ToLong(GetQuantOnOrderS()); }
     /// Get reorder level
-    unsigned long GetReorderLevel() const { return m_reorderLevel; }
+    string GetReorderLevelS() const
+        { return child("INV_Reorder_Level").data(); }
+    unsigned long GetReorderLevel() const 
+        { return ToLong(GetReorderLevelS()); }
+    string GetReorderQuantityS() const
+        { return child("INV_Reorder_Quantity").data(); }
+    unsigned long GetReorderQuantity() const
+        { return ToLong(GetReorderQuantityS()); }
     /// Get item type
-    string GetItemType() const { return m_itemType; }
+    string GetType() const 
+        { return child("INV_Item_Type").data(); }
     /// Get weight in pounds
-    float GetItemWeightLbs() const { return m_itemWeight; } 
+    string GetWeightLbsS() const
+        { return child("INV_Weight_Pounds").data(); }
+    double GetWeightLbs() const 
+        { return ToDouble(GetWeightLbsS()); } 
     /// Get index of tax type, see tax table in DB
-    int GetTaxType() const { return m_taxType; }
+    string GetTaxTypeS() const
+        { return child("INV_REF_TAX_Tax_Type").data(); }
+    int GetTaxType() const 
+        { return ToInt(GetTaxTypeS()); }
     /// Get vendor ID, see vendor table in DB
-    long int GetVendorId() const { return m_vendorId; }
+    string GetVendorIdS() const
+        { return child("INV_REF_VND_Vendor_ID").data(); }
+    long int GetVendorId() const 
+        { return ToLong(GetVendorIdS()); }
     /// Get retail price
-    float GetRetailPrice() const { return m_retailPrice; }
+    string GetRetailPriceS() const
+        { return child("INV_Retail_Price").data(); }
+    double GetRetailPrice() const 
+        { return ToDouble(GetRetailPriceS()); }
     /// Get wholesale price
-    float GetWholesalePrice() const { return m_wholesalePrice; }
-    /// Return vector of bulk pricings
-    vector<BulkPricing> GetBulkPricing() const { return m_bulkPricing; }
+    string GetWholesalePriceS() const
+        { return child("INV_Wholesale_Price").data(); }
+    double GetWholesalePrice() const 
+        { return ToDouble(GetWholesalePriceS()); }
+    
     /// Return oversized status of item
     /// @return True if item is oversized
-    bool IsOverSized() const { return m_oversized; }
+    char IsOverSizedS() const
+        { return (child("INV_Oversized_Flag").data() == "T") ? 'T' : 'F'; }
+    bool IsOverSized() const 
+        { return (child("INV_Oversized_Flag").data() == "T") ? true : false; }
     /// Return if item must be shipped by freight
     /// @return True if item must be shipped by freight
-    bool MustShipFreight() const { return m_mustShipFreight; }
+    char MustShipFreightS() const
+        { return (child("INV_Ship_By_Freight").data() == "T") ? 'T' : 'F'; }
+    bool MustShipFreight() const 
+        { return (child("INV_Ship_By_Freight").data() == "T") ? true : false; }
 	/// Return the group ID
-	int GetGroupID(){ return m_invGroup; }
-  
-    /* settors */
-    /// @throws YardDBIntegrityException if you try to overwrite
-    ///  a value set by the DB
-    void SetKey(int key);
-    /// Set the bar code
-    void SetSKU(const string& sku);
-    void SetBarCode(const string& str);
-    /// Set item description
-    void SetDescription(const string& str) { m_itemDescription = str; }
-    /// Set department
-    void SetDepartment(const string& str);
-    /// Set quantity on hand
-    void SetQuantOnHand(unsigned long num) { m_quantityOnHand = num; }
-    /// Set quantity on order
-    void SetQuantOnOrder(unsigned long num) { m_quantityOnOrder = num; }
-    /// Set reorder level
-    void SetReorderLevel(unsigned long num) { m_reorderLevel = num; }
-	/// Set the group id
-	void SetGroupID(int a_num){ m_invGroup = a_num; }
-	
-    /// Set general item type
-    void SetItemType(const string& str);
-    /// Set weight in pounds
-    void SetItemWeightLbs(float num) { m_itemWeight = num; }
-    /// Set tax type
-    void SetTaxType(int num) { m_taxType = num; }
-    /// Set vendor ID
-    void SetVendorId(long int num) { m_vendorId = num; }
-    /// Set retail price
-    void SetRetailPrice(float num) { m_retailPrice = num; }
-    /// Set wholesale price
-    void SetWholesalePrice(float num) { m_wholesalePrice = num; }
+    string GetGroupIdS() const
+        { return child("INV_REF_INVGRP_Group_ID").data(); }
+	int GetGroupId() const
+        { return ToInt(GetGroupIdS()); }
+        
+    /// @todo Make this an XMLNode type.    
+    string GetBulkPricing() const
+        {  
+            stringstream ret;
+            vector<XMLNode> prices = child("INV_Bulk_Price").const_children();
+            for (unsigned int i = 0; i < prices.size(); i++)
+                ret << prices[i] << '\n';
+            return ret.str();
+        }
+        
+    double GetBulkPrice(unsigned int quant)
+        { return ToDouble(child("INV_Bulk_Price").child(ToStr(quant)).data()); }
+    
+    string GetComment() const
+        { return child("INV_Comment").data(); }
+        
+    YardDate GetDateLastReceived() const
+        { return YardDate(child("INV_Date_Last_Received")); }
+            
    
-    /* bulk pricing addition... */
+    /* settors */
+    /* @throws YardDBIntegrityException if you try to overwrite
+              a value set by the DB */
+    /*void SetID(long key)
+        { child("INV_Item_ID").setData(ToStr(key)); }*/
+    /// Set the bar code
+    void SetSKU(const string& sku)
+        { child("INV_SKU_Number").setData(sku); }
+    void SetBarCode(const string& str)
+        { child("INV_Bar_Code_Number").setData(str); }
+    /// Set item description
+    void SetDescription(const string& str) 
+        { child("INV_Item_Description").setData(str); }
+    /// Set department
+    void SetDepartment(const string& str)
+        { child("INV_Item_Department").setData(str); }
+    /// Set quantity on hand
+    void SetQuantOnHand(unsigned long num) 
+        { child("INV_Quantity_On_Hand").setData(ToStr(num)); }
+    /// Set quantity on order
+    void SetQuantOnOrder(unsigned long num) 
+        { child("INV_Quantity_On_Order").setData(ToStr(num)); }
+    /// Set reorder level
+    void SetReorderLevel(unsigned long num) 
+        { child("INV_Reorder_Level").setData(ToStr(num)); }
+    void SetReorderQuant(unsigned long num)
+        { child("INV_Reorder_Quantity").setData(ToStr(num)); }
+	/// Set the group id, references Inventory_Group_Table
+    /// @see YardInvGroup
+	void SetGroupID(int a_num)
+        { child("INV_REF_INVGRP_Group_ID").setData(ToStr(a_num)); }
+        
+    /// Set general item type
+    void SetType(const string& str)
+        { child("INV_Item_Type").setData(str); }
+    /// Set weight in pounds
+    void SetWeightLbs(double num) 
+        { child("INV_Weight_Pounds").setData(ToStr(num, YS_DEFAULT_WEIGHT_PRECISION)); }
+    /// Set tax type
+    void SetTaxType(int num) 
+        { child("INV_REF_TAX_Tax_Type").setData(ToStr(num)); }
+    /// Set vendor ID
+    void SetVendorId(long int num) 
+        { child("INV_REF_VND_Vendor_ID").setData(ToStr(num)); }
+    /// Set retail price
+    /// @todo Some systems might need differing fractional nums, put this in compile config
+    void SetRetailPrice(double num) 
+        { child("INV_Retail_Price").setData(ToStr(num, YS_DEFAULT_MONEY_PRECISION)); }
+    /// Set wholesale price
+    void SetWholesalePrice(double num) 
+        { child("INV_Wholesale_Price").setData(ToStr(num, YS_DEFAULT_MONEY_PRECISION)); }
+   
+    /* bulk pricing addition... 
+        XML Makes this sooooo easy */
    
     /// Add a bulk type to the object
-    bool AddBulkPrice(const BulkPricing& price);
+    void AddBulkPrice(long quantity, float discount)
+        { child("INV_Bulk_Price").child(ToStr(quantity)).setData(ToStr(discount, YS_BULK_DISCOUNT_PRECISION)); }
     /// Remove a bulk price from vector
-    bool RemoveBulkPrice(unsigned int level);
+    void RemoveBulkPrice(long quantity)
+        { child("INV_Bulk_Price").delChild(ToStr(quantity)); }
    
     /// Set oversized flag
-    void SetOverSized(bool cond) { m_oversized = cond; }
+    void SetOverSized(bool cond)
+        { (cond) ? child("INV_Oversized_Flag").setData("T") : child("INV_Oversized_Flag").setData("F"); }
+ 
     /// Set ship by freight flag
-    void SetShipFreight(bool cond) { m_mustShipFreight = cond; }
-   
+    void SetShipFreight(bool cond) 
+        { (cond) ? child("INV_Ship_By_Freight").setData("T") : child("INV_Ship_By_Freight").setData("F"); }
+    
+    void SetLastReceived(YardDate& date)
+        {
+            date.setName("INV_Date_Last_Recieved");
+            child("INV_Date_Last_Recieved") = date;
+        }
+        
+    void SetComment(const string& str)
+        { child("INV_Comment").setData(str); }
     /**
      * Returns string representation of the datatype.
      * @param delim The string to delimit items in database
      * @return A string representation of the object
      */
-    virtual string ToString(const string& delim = ",") const;
-    
-    virtual void FillFromStream(otl_stream * stream);
-   
- private:
-    
-    int m_key;
-    /* These variables directly correspond with the database */
-    string m_skuNumber;
-    string m_barCode;
-    string m_itemDescription;
-    string m_itemDepartment;
-    long int m_quantityOnHand;
-    long int m_quantityOnOrder;
-    long int m_reorderLevel;
-    long int m_reorderQuantity;
-    string m_itemType;
-
-    float m_itemWeight;
- 	long int m_invGroup;
-    long int m_taxType;
-    long int m_vendorId;
-    float m_retailPrice;
-    float m_wholesalePrice;	
- 
-    string m_bulkPrice;
-    vector<BulkPricing> m_bulkPricing;
-    
-    DateTime m_dateLastReceived;
-    string m_comment;
-    
-    bool m_oversized;
-    bool m_mustShipFreight;
-    
+    virtual string ToString(const string& delim = ",", bool quotes = true) const;
+        
 };
 
 #endif
