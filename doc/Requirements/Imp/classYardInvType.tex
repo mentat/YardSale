@@ -1,0 +1,145 @@
+\section{Yard\-Inv\-Type Class Reference}
+\label{classYardInvType}\index{YardInvType@{YardInvType}}
+{\tt \#include $<$ys\_\-inv\_\-type.h$>$}
+
+Inheritance diagram for Yard\-Inv\-Type:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=57pt]{classYardInvType__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for Yard\-Inv\-Type:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=57pt]{classYardInvType__coll__graph}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+The {\bf Yard\-Sale}{\rm (p.\,\pageref{classYardSale})} Inventory Type is a OO representation of the datebase inventory table. 
+
+\begin{Desc}
+\item[Author:]Jesse Lovelace \end{Desc}
+\begin{Desc}
+\item[Version:]\begin{Desc}
+\item[Revision]1.3 \end{Desc}
+\end{Desc}
+\begin{Desc}
+\item[See also:]{\bf Yard\-DBType}{\rm (p.\,\pageref{classYardDBType})} \end{Desc}
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Yard\-Inv\-Type} (const {\bf Yard\-Inv\-Type} \&obj)\label{classYardInvType_a1}
+
+\begin{CompactList}\small\item\em Copy constructor. \item\end{CompactList}\item 
+{\bf Yard\-Inv\-Type} \& {\bf operator=} (const {\bf Yard\-Inv\-Type} \&obj)\label{classYardInvType_a2}
+
+\item 
+wx\-String {\bf Get\-Bar\-Code} () const \label{classYardInvType_a3}
+
+\item 
+wx\-String {\bf Get\-Description} () const \label{classYardInvType_a4}
+
+\item 
+wx\-String {\bf Get\-Department} () const \label{classYardInvType_a5}
+
+\item 
+unsigned long {\bf Get\-Quant\-On\-Hand} () const \label{classYardInvType_a6}
+
+\item 
+unsigned long {\bf Get\-Quant\-On\-Order} () const \label{classYardInvType_a7}
+
+\item 
+unsigned long {\bf Get\-Reorder\-Level} () const \label{classYardInvType_a8}
+
+\item 
+wx\-String {\bf Get\-Item\-Type} () const \label{classYardInvType_a9}
+
+\item 
+float {\bf Get\-Item\-Weight\-Lbs} () const \label{classYardInvType_a10}
+
+\item 
+float {\bf Get\-Tax\-Type} () const \label{classYardInvType_a11}
+
+\item 
+long int {\bf Get\-Vendor\-Id} () const \label{classYardInvType_a12}
+
+\item 
+float {\bf Get\-Retail\-Price} () const \label{classYardInvType_a13}
+
+\item 
+float {\bf Get\-Wholesale\-Price} () const \label{classYardInvType_a14}
+
+\item 
+vector$<$ Bulk\-Pricing $>$ {\bf Get\-Bulk\-Pricing} () const \label{classYardInvType_a15}
+
+\item 
+bool {\bf Is\-Over\-Sized} () const \label{classYardInvType_a16}
+
+\item 
+bool {\bf Must\-Ship\-Freight} () const \label{classYardInvType_a17}
+
+\item 
+void {\bf Set\-Bar\-Code} (const wx\-String \&str)\label{classYardInvType_a18}
+
+\item 
+void {\bf Set\-Description} (const wx\-String \&str)\label{classYardInvType_a19}
+
+\item 
+void {\bf Set\-Department} (const wx\-String \&str)\label{classYardInvType_a20}
+
+\item 
+void {\bf Set\-Quant\-On\-Hand} (unsigned long num)\label{classYardInvType_a21}
+
+\item 
+void {\bf Set\-Quant\-On\-Order} (unsigned long num)\label{classYardInvType_a22}
+
+\item 
+void {\bf Set\-Reorder\-Level} (unsigned long num)\label{classYardInvType_a23}
+
+\item 
+void {\bf Set\-Item\-Type} (const wx\-String \&str)\label{classYardInvType_a24}
+
+\item 
+void {\bf Set\-Item\-Weight\-Lbs} (float num)\label{classYardInvType_a25}
+
+\item 
+void {\bf Set\-Tax\-Type} (float num)\label{classYardInvType_a26}
+
+\item 
+void {\bf Set\-Ventor\-Id} (long int num)\label{classYardInvType_a27}
+
+\item 
+void {\bf Set\-Retail\-Price} (float num)\label{classYardInvType_a28}
+
+\item 
+void {\bf Set\-Wholesale\-Price} (float num)\label{classYardInvType_a29}
+
+\item 
+bool {\bf Add\-Bulk\-Price} (const Bulk\-Pricing \&price)\label{classYardInvType_a30}
+
+\item 
+bool {\bf Remove\-Bulk\-Price} (unsigned int level)\label{classYardInvType_a31}
+
+\item 
+void {\bf Set\-Over\-Sized} (bool cond)\label{classYardInvType_a32}
+
+\item 
+void {\bf Set\-Ship\-Freight} (bool cond)\label{classYardInvType_a33}
+
+\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf Yard\-Database}\label{classYardInvType_n0}
+
+\end{CompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+ys\_\-inv\_\-type.h\item 
+ys\_\-inv\_\-type.cpp\end{CompactItemize}

@@ -1,0 +1,60 @@
+\section{Yard\-Splash Class Reference}
+\label{classYardSplash}\index{YardSplash@{YardSplash}}
+{\tt \#include $<$ys\_\-splash.h$>$}
+
+
+
+\subsection{Detailed Description}
+Eye-candy splash screen. 
+
+\begin{Desc}
+\item[Author:]Jesse Lovelace \end{Desc}
+\begin{Desc}
+\item[Version:]\begin{Desc}
+\item[Revision]1.6 \end{Desc}
+\end{Desc}
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Yard\-Splash} (wx\-Window $\ast$parent, wx\-Window\-ID id, const wx\-String \&title, const wx\-Point \&pos=wx\-Default\-Position, const wx\-Size \&size=wx\-Default\-Size, long style=wx\-STAY\_\-ON\_\-TOP)\label{classYardSplash_a0}
+
+\item 
+void {\bf On\-Click} (wx\-Mouse\-Event \&event)
+\begin{CompactList}\small\item\em Mouse click event handler. \item\end{CompactList}\item 
+void {\bf On\-Timer} (wx\-Timer\-Event \&event)\label{classYardSplash_a3}
+
+\begin{CompactList}\small\item\em Timer event handler. \item\end{CompactList}\item 
+void {\bf Bump} (unsigned int amount=10)
+\begin{CompactList}\small\item\em Called to nudge progress bar over. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{YardSplash@{Yard\-Splash}!Bump@{Bump}}
+\index{Bump@{Bump}!YardSplash@{Yard\-Splash}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Yard\-Splash::Bump (unsigned int {\em amount} = 10)}\label{classYardSplash_a4}
+
+
+Called to nudge progress bar over. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em amount}]Number of pixels to nudge \end{description}
+\end{Desc}
+\index{YardSplash@{Yard\-Splash}!OnClick@{OnClick}}
+\index{OnClick@{OnClick}!YardSplash@{Yard\-Splash}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Yard\-Splash::On\-Click (wx\-Mouse\-Event \& {\em event})}\label{classYardSplash_a2}
+
+
+Mouse click event handler. 
+
+\begin{Desc}
+\item[{\bf Deprecated}]This handler is for testing only and will be removed \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+ys\_\-splash.h\item 
+ys\_\-splash.cpp\end{CompactItemize}
