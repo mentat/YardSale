@@ -114,7 +114,7 @@ following Point of Sale operations:
 	\item{Associate a customer with a transaction (see Transaction)}
     \end{itemize}
     \item {Manage Employees}
-    \begin{itemize} 
+    \begin{itemize}
     	\item{Add and remove employees}
 	\item{Associate a level with employees such as "manager" and "sales associate"}
     \end{itemize}
@@ -171,35 +171,23 @@ functionality can not be added.
 
     \subsection{Transactions}
 
-
     Transactions are the key to any point of sale system.  The obvious
+    function that a point of sale should perform is selling an item.
+    However, selling an item is not simply adding up a price.  Most sales
+    require information about what is being sold, who is selling it, and to whom
+    the items are being sold.  These attributes are contained in a YardSale
+    transaction.
 
+    YardSale will create a transaction which contains one or more items
+    either being sold or returned.  Each transaction will have an employee
+    and a customer associated with it.  Since tax is extremely important
+    to any transaction, tax must be added to each item since different
+    items require different taxes as mandated by local, state, and national
+    goverment.
 
-    \subsection{Logging}
-    Many program logging features will be provided inherently due to
-    the database backend. Among the logging facilities will be the
-    following items:
-
-    \begin{itemize}
-        \item {Employee Time Tracking}
-        \item {Transaction Logging}
-        \item {Shipment Logs}
-        \item {SQL String Execution Logging}
-    \end{itemize}
-
-    Employee time tracking will be logged based on when the login to
-    their first client and when the logout of their last client. An
-    entry in the Login table will track this for each instance of a
-    session. The transaction logging as was discussed earlier will be
-    maintained in a table of its own tracking related items,
-    customers, and employees with transactions. The shipment logs will
-    be an offshoot of a transaction in that some will be shipped. If
-    so a log of the shipping information will be available as it
-    relates to the customer and the carrier. As a debugging feature a
-    SQL String Execution Log facility will also be included. For every
-    SQL string used on the database, there will be a stored procedure
-    that adds it to the log table for later searching and debug use.
-    This feature will likely be disabled in the final deliverable.
+    Once a transaction is created, it must be stored by the information
+    management system so that a record of the transaction can be
+    recalled for returns and reports.
 
     \subsection{Reporting}
     There will be a wide variety of reporting features available also
@@ -761,21 +749,6 @@ functionality can not be added.
     a basic calculator (add and subtract, multiply and divide to
     be added at a later date).  Numbers entered and the results
     are displayed in the box at the top of the calculator.\\
-
-	\subsection{On-screen Keyboard}
-    \includegraphics{ys_keybrd_screener.png}\\
-	
-	The On-Screen Keyboard is a way for the user to enter standard
-	text into the system when necessary. Like the on-screen
-	calculator it can be called from anywhere within the program via
-	the toolbar to enter text into a field. It provides the user with
-	a familiar keyboard design with letter, number, shift, delete and space buttons.
-	As well as pressing the buttons on the touch-screen corresponding 
-	to the keys, a user can type directly onto an attached keyboard and the
-	text will appear in the on-screen keyboard's display. When the user
-	is finished typing they press the 'done' button to close the keyboard 
-	and the value is entered into the field they were editing.
-
 
 \chapter{Implementation}
 
