@@ -14,5 +14,7 @@ CREATE TABLE Customer_Table(
 	CUST_Name_On_CC			TEXT,
 	CUST_Signature			TEXT,
 	CUST_Photo			TEXT,
+	CUST_Since_Date			DATETIME,
+	CUST_HASH			INT,
 	Primary Key(CUST_Account_Number)
 )type=InnoDB

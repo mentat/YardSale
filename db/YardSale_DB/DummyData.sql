@@ -20,31 +20,31 @@ INSERT INTO Customer_Table
 values(2001,'William','Adam','Parrish',
 '4701 Blue Bird Court Apt A','919.233.7921',
 'Raleigh','27606','0123-4567-8910-1112', '04/04',
-'William Adam Parrish','','' );
+'William Adam Parrish','','',NOW(),'' );
 
 INSERT INTO Customer_Table 
 values(2003,'Jesse','L','Lovelace',
 'Somewhere near cameron village','919.233.9840',
 'Raleigh','27604','0123-4567-8910-1114', '04/04',
-'Jesse  L Lovelace','','' );
+'Jesse  L Lovelace','','',NOW(),'' );
 
 INSERT INTO Customer_Table 
 values(2005,'Mike','R','Swigon',
 'Behind Domino\'s Pizza','919.233.2877',
 'Raleigh','27604','0123-4567-8910-1454', '04/04',
-'Mike R Swigon','','' );
+'Mike R Swigon','','',NOW(),'' );
 
 INSERT INTO Customer_Table 
 values(2004,'Jay','','Johnston',
 'With Jesse!!!','919.233.2877',
 'Raleigh','27604','0123-4267-8910-1454', '04/04',
-'Jay Johnston','','' );
+'Jay Johnston','','',NOW(),'' );
 
 INSERT INTO Customer_Table 
 values(2006,'John','','Lamb',
 'Above Jesse and Jay','919.233.2877',
 'Raleigh','27604','1123-4567-8910-1454', '04/04',
-'John Lamb','','' );
+'John Lamb','','',NOW(),'' );
 
 #END CUSTOMER TABLE STUFF
 
@@ -144,21 +144,21 @@ INSERT INTO ACL_Table VALUES('Warehouse','Powerful Peon');
 
 #BEGIN EMPLOYEE TABLE STUFF
 
-INSERT INTO Employee_Table VALUES('','222334545','Bilbo','','Baggins',
+INSERT INTO Employee_Table VALUES('','bbaggins','222334545','Bilbo','','Baggins',
 	'<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Manager',1,'');
+	'No Phone','The Shire','23456','','','Manager',1,NOW());
 
-INSERT INTO Employee_Table VALUES('','245334545','Frodo','','Baggins',
+INSERT INTO Employee_Table VALUES('','fbaggins','245334545','Frodo','','Baggins',
         '<ADDRESS><1>Somewhere in the Shire</1><2>Green Round Door</2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Clerk',1,'');
+	'No Phone','The Shire','23456','','','Clerk',1,NOW());
 
-INSERT INTO Employee_Table VALUES('','221334545','Smeagle','','',
+INSERT INTO Employee_Table VALUES('','snobody','221334545','Smeagle','','',
         '<ADDRESS><1>Lake Placid</1><2></2></ADDRESS>',
-	'No Phone','The Shire','23456','','','Warehouse',1,'');
+	'No Phone','The Shire','23456','','','Warehouse',1,NOW());
 
-INSERT INTO Employee_Table VALUES('','999999999','G','O','D',
+INSERT INTO Employee_Table VALUES('','elite_r00t_power','999999999','G','O','D',
         '<ADDRESS><1></1><2></2></ADDRESS>',
-	'','','','','','Administrator',1,'');
+	'','','','','','Administrator',1,NOW());
 		
 SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type = ACL_Table.ACL_Type;
 
@@ -167,19 +167,19 @@ SELECT * FROM Employee_Table JOIN ACL_Table ON Employee_Table.EMP_REF_ACL_Type =
 #BEGIN TRANSACTION STUFF
 
 #Transaction 1
-INSERT INTO Transaction_Log_Table VALUES(1,'1',2001, 1.20, 10000, 5, '' ,now(),0,NULL);
-INSERT INTO Transaction_Log_Table VALUES(1,'2',2001, 1.99, 10000, 10, '' ,now(),0,NULL);
-INSERT INTO Transaction_Log_Table VALUES(1,'3',2001, 9.50, 10000, 1, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(1,'1',2003, 1.20, 10000, 5, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(1,'2',2003, 1.99, 10000, 10, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(1,'3',2003, 9.50, 10000, 1, '' ,now(),0,NULL);
 
 #Transaction 2
-INSERT INTO Transaction_Log_Table VALUES(2,'1',2001, 1.20, 10001, 5, '' ,now(),0,NULL);
-INSERT INTO Transaction_Log_Table VALUES(2,'2',2001, 1.99, 10001, 10, '' ,now(),0,NULL);
-INSERT INTO Transaction_Log_Table VALUES(2,'3',2001, 9.50, 10001, 1, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(2,'1',2004, 1.20, 10001, 5, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(2,'2',2004, 1.99, 10001, 10, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(2,'3',2004, 9.50, 10001, 1, '' ,now(),0,NULL);
 
 #Transaction 3
-INSERT INTO Transaction_Log_Table VALUES(2,'1',2001, 1.20, 10002, 5, '' ,now(),0,NULL);
-INSERT INTO Transaction_Log_Table VALUES(2,'2',2001, 1.99, 10002, 10, '' ,now(),0,NULL);
-INSERT INTO Transaction_Log_Table VALUES(2,'3',2001, 9.50, 10002, 1, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(2,'1',2003, 1.20, 10002, 5, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(2,'2',2003, 1.99, 10002, 10, '' ,now(),0,NULL);
+INSERT INTO Transaction_Log_Table VALUES(2,'3',2003, 9.50, 10002, 1, '' ,now(),0,NULL);
 
 
 
