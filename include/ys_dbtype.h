@@ -31,7 +31,7 @@ class otl_stream;
  *
  * @see YardInvType
  * @see YardEmployeeType
- * @version \$Revision: 1.10 $$
+ * @version \$Revision: 1.11 $$
  * @ingroup database
  * @author Jesse Lovelace
  */
@@ -49,7 +49,7 @@ class YardDBType{
      * This method is pure virtual and must be implemented in derived classes.
      * @param delim The string to delimit internal fields with, defaults to newline.
      **/
-    virtual string ToString(const string& delim = "\n") const = 0;
+    virtual string ToString(const string& delim = ",") const = 0;
   
         
     virtual void FillFromStream(otl_stream * stream) = 0;

@@ -36,7 +36,7 @@ class otl_stream;
  * @ingroup database 
  * @see YardInvType
  * @author Jesse Lovelace
- * @version \$Revision: 1.17 $$
+ * @version \$Revision: 1.18 $$
  * @see YardDBType
  */
 
@@ -143,7 +143,7 @@ class YardInvType: public YardDBType
      * @param delim The string to delimit items in database
      * @return A string representation of the object
      */
-    virtual string ToString(const string& delim = "\n") const;
+    virtual string ToString(const string& delim = ",") const;
     
     virtual void FillFromStream(otl_stream * stream);
    

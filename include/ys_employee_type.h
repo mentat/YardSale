@@ -33,7 +33,7 @@ using namespace std;
  * @include EMP_Table.sql
  * @ingroup database
  * @author Jesse Lovelace
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @see YardDBType
  */
 class YardEmployeeType: public YardDBType {
@@ -49,7 +49,7 @@ class YardEmployeeType: public YardDBType {
     /// Assignment operator overload
     YardEmployeeType& operator=(const YardEmployeeType & copy);
         
-    virtual string ToString(const string& delim="\n") const;
+    virtual string ToString(const string& delim=",") const;
         
     //----------------Getors--------------------
     
